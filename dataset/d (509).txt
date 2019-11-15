@@ -1,0 +1,119 @@
+2.2 Problem Formulation
+In our approach, an access graph is used to represent the
+order among the attributes. Our data allocation algorithm
+will be developed based on the access graph. An access
+graph is a directed weighted graph, where each node of the
+access graph represents an attribute and each edge eij is
+associated with a weight which denotes the total frequencies
+of the accesses from attribute i to attribute j. Notice that
+cycles can exist in the access graph. Given a set of query
+patterns, in Section 3, the method of transforming a set of
+query patterns into an access graph will be presented. In the
+following, the concepts used in our approach are introduced.
+Moreover, for easier presentation, attributes appearing
+in SA, JA, or PA are all called data objects.
+Given an access graph G(V, E), where V is the set of
+vertices and E is the set of edges. Let weeijT be the weight of
+edge eij (the edge directed from vertex i to vertex j).
+Moreover, let kik be the size (number of data buckets) of
+data object i associated with vertex i. Assume a client tunes
+in the channel at random during a broadcast cycle. If the
+client tunes in the channel after the start of the broadcast of
+the requested data objects, the client has to wait for the
+broadcast of the data objects in the next broadcast cycle.
+Our goal is to find an optimal broadcast order of the data
+objects in the access graph. The optimal broadcast order is
+the order with minimum average access time
+where b denotes the total number of data buckets, i.e.,
+is used to normalize the weights in the access graph, k
+denotes the offset from the bucket the client first tunes in
+the channel to the first bucket of data object i, and ri!j
+denotes the offset from the first bucket of data object i to the
+last bucket of data object j. Notice that, since data object i
+can be allocated before or after data object j in the broadcast
+channel, the offset from data object i to data object j can be
+computed in two ways, as shown in Fig. 1.
+For the case where data object i appears before data
+object j, ri!j can be computed by elastj 	 firstiT, while, for
+the case where data object i appears after data object j, ri!j
+can be computed by eb 	 firsti t lastjT, where lastj is the
+offset from the first bucket of the broadcast channel to the
+last bucket of data object j and firsti is the offset from the
+first bucket of the broadcast channel to the first bucket of
+data object i. We define the optimal cycle ordering problem as
+follows:
+  Optimal cycle ordering problem: Given an access graph
+G(V, E), the problem is to find a one-to-one function f: such that
+(denoted as costcycle) is minimized, where
+Lemma 1. For an access graph, its corresponding optimal cycle
+order (OCO) is the optimal data broadcast order.
+Proof. Refer to [20]. tu
+There exists a problem named optimal linear ordering,
+which is similar to the optimal cycle ordering problem. In
+the following, the definition of the optimal linear ordering
+problem and the relationship between these two problems
+are presented.
+Optimal linear ordering problem [3]: Given a weighted
+directed graph G(V, E), where V is the set of vertices and E
+is the set of edges. Let be the weight of edge eij (the
+edge directed from vertex i to vertex j). The optimal linear
+ordering problem is to find a one-to-one function f: V !
+f1; 2; 3; . . . ; such that whenever eij 2 E and
+such that is minimized, where
+
+The problem is NP-complete, but is solvable in polynomial
+time if G is a tree. The detailed algorithm to
+determine the optimal linear order (OLO) of a tree can be
+found in [3]. In the following, an important property in [3] is
+presented.
+Property 1. Let  be an OLO for a tree T. If T0 is a tree with a
+subtree identical to T or T0 is formed by adding new children to
+the root of T, then there exists an OLO 0 for T0 in which the
+relative order of  is preserved.
+The original optimal linear ordering problem takes the
+vertices with equal size. To deal with the vertices with
+different sizes, we only need to change the function  to
+where  denotes the size of vertex x. The meaning of the
+new is shown in Fig. 2. With a slight modification, the
+algorithm proposed in [3] can be used to deal with the
+vertices with different sizes. We do not further discuss the
+size issue in the following.
+Because of the cyclic property of the optimal cycle
+ordering problem, the constraint whenever
+ does not exist in the optimal cycle ordering
+problem. However, if the property whenever
+ is held in the OCO of an access graph, the OCO of
+the access graph is the same as the OLO of the access graph.
+Lemma 2. In the optimal cycle ordering problem, if 
+for each eij 2 E can be guaranteed in the given access graph,
+then the OCO of the graph is the same as the OLO of the
+graph.
+Proof. Refer to [20]. tu
+For an arbitrary access graph, the property of does not always hold.
+However, if the graph is a tree, it must be true. Therefore,
+we can transform the access graph to a forest (named access
+forest) by removing some edges, apply the optimal linear
+ordering algorithm on the access forest, then consider the
+removed edges to approach the optimal data broadcast
+problem.
+To transform an access graph to an access forest, which
+keeps as much information as possible, an algorithm named
+maximum branching can be used.
+Maximum branching problem [25]: Consider a
+weighted directed graph G (V, E), where V is the set of
+vertices and E is the set of edges. Let  be the weight of
+edge eij (the edge directed from vertex i to vertex j) and
+W(G) be the sum of the weights of all the edges in G. A
+subgraph Gb containing all vertices of G is a branching of G
+if Gb has no directed cycles and the in-degree of each vertex
+in Gb is at most 1. Clearly, each connected component of Gb
+is a tree and Gb is a forest. The Gb with a maximum 
+is called a maximum branching. The detailed algorithm to
+find the maximum branching can be found in [25]. In the
+following, an important property which will be used to
+transform a set of query patterns to an access graph is
+presented.
+Property 2. Let feixg be the set of edges which point to vertex x.
+Among the edges in feixg, which are not contained in a cycle,
+the edge with the maximum weight will be selected to be in the
+maximum branching.

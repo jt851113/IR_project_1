@@ -1,0 +1,101 @@
+[1] R. Akavipat, L.-S. Wu, F. Menczer, and A.G. Maguitman.
+Emerging semantic communities in peer web search. In P2PIR
+’06: Proceedings of the International Workshop on
+Information Retrieval in Peer-to-Peer Networks, pages 1–8,
+2006.
+[2] M. Bender, S. Michel, P. Triantafillou, G. Weikum, and
+C. Zimmer. Improving collection selection with overlap
+awareness in P2P search engines. In Proceedings of SIGIR ’05,
+pages 67–74, 2005.
+[3] M. Bender, S. Michel, and G. Weikum. P2P Directories for
+Distributed Web Search: From Each According to His Ability,
+to Each According to His Needs. In Proc. of ICDEW ’06,
+page 51, 2006.
+[4] J. Broekstra, M. Ehrig, P. Haase, F. van Harmelen,M. Menken,
+P. Mika, B. Schnizler, and R. Siebes. Bibster - A
+Semantics-Based Bibliographic Peer-to-Peer System. In
+Proceedings of SemPGRID ’04, 2nd Workshop on Semantics
+in Peer-to-Peer and Grid Computing, pages 3–22, 2004.
+[5] J. Callan. Distributed Information Retrieval. In W.B. Croft,
+editor, Advances in Information Retrieval, pages 127–150.
+Kluwer Academic Publishers, 2000.
+[6] J. Callan and M. Connell. Query-based sampling of text
+databases. ACM Transactions on Information Systems,
+19(2):97–130, 2001.
+[7] J. P. Callan, Z. Lu, and W. B. Croft. Searching distributed
+collections with inference networks. In Proceedings of SIGIR
+’95, pages 21–28, 1995.
+[8] S. Chernov, P. Serdyukov, M. Bender, S. Michel, G. Weikum,
+and C. Zimmer. Database Selection and Result Merging in P2P
+Web Search. In Third International Workshop on Databases,
+Information Systems and Peer-to-Peer Computing (DBISP2P
+2005), 2005.
+[9] F. M. Cuenca-Acuna, C. Peery, R. P. Martin, and T. D.
+Nguyen. PlanetP: Using Gossiping to Build Content
+Addressable Peer-to-Peer Information Sharing Communities. In
+12th International Symposium on High Performance
+Distributed Computing (HPDC), 2003.
+[10] J. C. French, A. L. Powell, J. Callan, C. L. Viles, T. Emmitt,
+K. J. Prey, and Y. Mou. Comparing the performance of
+database selection algorithms. In Proceedings of SIGIR ’99,
+pages 238–245, 1999.
+[11] Gnutella. The Gnutella Protocol Specification v0.4. Available
+from www9.limewire.com/developer/gnutella protocol 0.4.pdf,
+2001.
+[12] L. Gravano, H. Garc’?a-Molina, and A. Tomasic. GlOSS:
+text-source discovery over the Internet. ACM Transactions on
+Database Systems, 24(2):229–264, 1999.
+[13] D. Hawking and P. Thistlewaite. Methods for information
+server selection. ACM Transactions on Information Systems,
+17(1):40–76, 1999.
+[14] S. Joseph. Neurogrid: Semantically routing queries in
+peer-to-peer networks. In Proceedings of the International
+Workshop on Peer-to-Peer Computing, 2002.
+[15] V. Kalogeraki, D. Gunopulos, and D. Zeinalipour-Yazti. A local
+search mechanism for peer-to-peer networks. In Proceedings of
+the Conference on Information and Knowledge Management,
+pages 300–307, 2002.
+[16] A. Z. Kronfol. FASD: A Fault-tolerant, Adaptive, Scalable,
+Distributed Search Engine, 2002.
+[17] A. Loeser, S. Staab, and C. Tempich. Semantic Social Overlay
+Networks. IEEE JSAC - Journal on Selected Areas in
+Communication, 25(1):5–14, 2007.
+[18] J. Lu and J. Callan. Pruning long documents for distributed
+information retrieval. In Proceedings of CIKM’02, pages
+332–339, 2002.
+[19] J. Lu and J. Callan. Content-based retrieval in hybrid
+peer-to-peer networks. In CIKM ’03: Proceedings of the
+twelfth international conference on Information and
+knowledge management, pages 199–206, 2003.
+[20] P. Ogilvie and J. Callan. The effectiveness of query expansion
+for distributed information retrieval. In Proceedings of
+CIKM’01, pages 183–190, 2001.
+[21] D. Puppin, F. Silvestri, and D. Laforenza. Query-driven
+document partitioning and collection selection. In Proceedings
+of InfoScale ’06, pages 34–41, 2006.
+[22] S. E. Robertson, S. Walker, M. Hancock-Beaulieu, A. Gull, and
+M. Lau. Okapi at TREC-3. In Proceedings of TREC-3, pages
+21–30, 1992.
+[23] S. Saroiu, P. Gummadi, and S. Gribble. A Measurement Study
+of Peer-to-Peer File Sharing Systems. In Proceedings of
+Multimedia Computing and Networking, 2002.
+[24] M. Shokouhi and J. Zobel. Federated text retrieval from
+uncooperative overlapped collections. In Proceedings of SIGIR
+’07, pages 495–502, 2007.
+[25] E. M. Voorhees, N. K. Gupta, and B. Johnson-Laird. Learning
+collection fusion strategies. In Proceedings of SIGIR ’95, pages
+172–179, 1995.
+[26] H.F. Witschel. Global Term Weights in Distributed
+Environments. Information Processing and Management,
+44(3):1049–1061, 2008.
+[27] H.F. Witschel, F. Holz, G. Heinrich, and S. Teresniak. An
+Evaluation Measure for Distributed Information Retrieval
+Systems. In Proceedings of ECIR’08, 2008.
+[28] L.-S. Wu, R. Akavipat, and F. Menczer. 6S: Distributing
+crawling and searching across Web peers. In Proceedings of
+WTAS2005, 2005.
+[29] J. Xu and J. Callan. Effective retrieval with distributed
+collections. In Proceedings of SIGIR ’98, pages 112–120, 1998.
+[30] Jinxi Xu and W. Bruce Croft. Query expansion using local and
+global document analysis. In Proceedings of SIGIR’96, pages
+4–11, 1996.

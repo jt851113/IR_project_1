@@ -1,0 +1,78 @@
+Table 4 shows “goodness” calculations (Definition 3.2)
+for GREEDY, SA and BnB over all 24 profile classes assuming
+preemption probabilities of ), (likely preemption),
+), (equally likely preemption and completion),
+and ), (unlikely preemption). As with
+the NCP results, we have normalized the goodness values
+by expressing them as percentages of the goodness values
+achieved by GREEDY. The table shows, for each profile
+class, the average of these normalized values over the the
+four profiles belonging to that class. Once again, GREEDY
+produces better caches for more profile classes than SA and
+BnB, producing the best caches for . profile classes
+when the probability of preemption is high, for [profile
+classes when the probability of preemption is moderate,
+and for  profile classes when the probability of preemption
+is low.
+By comparing tables 3 and 4, it becomes clear that the
+algorithm that does best for NCP usually does best for PCP
+when given the same parameter settings. The only four
+cases where this is not the case are listed below:
+where for each, SA has produced the best result for NCP
+and GREEDY has produced the best result for PCP. Figure 5
+illustrates what is happening in these cases. The graph in
+this figure shows how GREEDY, SA and BnB give value to
+a cache over “time”9 for the case where )?,
+and )? . Note how SA produces the highest value
+cache once the cache is filled, but that GREEDY usually produces
+the best partially filled caches,10 thereby confirming
+the anomalous results.
+The explanation for cases (1)-(3) is as follows: for each
+of these cases, )fe1) and the profiles are appreciating.
+For appreciating profiles, when  and A are large,
+it likely will take a while (i.e., many objects placed in the
+cache) before a random algorithm produces a cache with
+sufficient numbers of objects of domains with appreciating
+utility values to give high value to those objects. Therefore,
+what is common to these cases is that SA produces
+a cache that has relatively low value for a long time, and
+then increases in value suddenly, overtaking the value of
+the cache produced by GREEDY by the time the cache is
+full. Because the value of the cache produced by SA was
+low for so long, the area under the curve is less for SA than
+for GREEDY. Case 4 is more subtle. Note that for ),
+])?E, ) and ?) , SA beats GREEDY for
+NCP but loses to GREEDY for PCP. On the other hand, if
+) (and all other parameters are the same), SA beats
+GREEDY for both NCP and PCP. When?)* instead of
+), it takes fewer objects in the cache to give high
+value to those with appreciating utility values. Thus, one
+might think that with )] , an early and sharp increase
+in object value would lead SA to beat GREEDY for PCP. But
+in fact the opposite is true: GREEDY beats SA for PCP in
+this case, but loses to SA when  ) (i.e., when the increase
+in object value occurs at the same time, but to a far
+lesser degree). The explanation for this phenomenon again
+lies with the way we generate random values for  and 
+ .
+Always, our technique is to first generate a random value
+between 50 and 100, assign it to the variable that is supposed
+to be larger (for appreciating equations, 
+ ), and set
+the value of the other variable according to the value of associated with the profile class. Note that when ) ,
+this means that  will always be less than or equal to 10, but
+when ) ,  can be as high as 50. Therefore, when
+) , the initial values of the cache produced by SA
+are so low, that when $c^ is large (thus favoring early values
+of the cache in calculating goodness), even a sharp increase
+in object value is not enough to make SA beat GREEDY for
+PCP. On the other hand, when  )? , initial values of the
+cache are large enough that SA beats GREEDY at PCP.
+The key lessons learned from our experiments for NCP
+and PCP is that despite the apparent complexity of profiles
+that include data dependencies and thresholds, a fairly simple
+and fast algorithm (GREEDY) works quite well in processing
+such profiles to decide what to prefetch into a cache.
+Further, the cases where SA produces a better cache than
+GREEDY (profiles with predominantly appreciating utility
+equations) are arguably, unlikely to occur in practice.

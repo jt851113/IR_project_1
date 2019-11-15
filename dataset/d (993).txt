@@ -1,0 +1,9 @@
+The goal of connectivity analysis is to exploit linkage information
+between documents, based on the assumption
+that a link between two documents implies that the documents
+contain related content (Assumption i), and that
+if the documents were authored by dierent people then
+the rst author found the second document valuable (Assumption
+ii). In 1997 Kleinberg [21] published an algorithm
+for connectivity analysis on the World Wide Web
+which we describe next.

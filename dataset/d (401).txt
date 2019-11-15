@@ -1,0 +1,71 @@
+In this section, we review MPEG-2 encoding briey. Inter-
+ested readers are referred to [19] for details.
+MPEG-2 is a standard for audio and video compression.
+In this section, we limit ourselves to briey describing only
+video compression. The video compression performed by
+MPEG falls in two classes:
+1. Spatial compression: In this class of compression, a
+frame is encoded without reference to any other frame.
+This is based on the observation that in an image,
+there are many portions where the pixel value is the
+same. for example, \sky" in an image would be one
+such portion.
+2. Temporal Compression: In this class of compression, a
+frame is encoded based on previous frames. We focus
+on this form of compression in the remainder of this
+section.
+The idea of temporal compression is based on the observa-
+tion that successive images in a video rarely have signicant
+dierence. MPEG exploits this observation by sending only
+the dierence between the current image and the previous
+image instead of sending the entire current image. The de-
+coder re-constructs the current image by adding the dier-
+ence to the previous picture.
+Figure 1: Block Matching Algorithm in MPEG-2
+The dierence between successive images may become large
+if there is object movement in video. MPEG deals with this
+problem using motion-compensation. The encoder contains
+a motion estimator that measures the direction and distance
+of motion between successive images, and outputs these as
+motion-vectors. The motion-vectors determine the amount
+of horizontal and vertical shift required. These are sent to
+the decoder that uses them to shift data in the previous
+image to more closely resemble the current image. Since
+motion compensation can never be ideal, the encoder still
+needs to send an image-dierence to take care of any short-
+comings in motion-compensation. To compute this image-
+dierence, it makes use of motion decoder logic. When out-
+putting motion-vectors, the encoder also uses them locally
+in a same way that a decoder will, by feeding them into the
+motion-decoder logic to produce a predicted picture. This is
+then subtracted from the actual current picture to produce
+a prediction error. Thus, the encoder encodes the current
+picture as a set of motion-vectors and a prediction error
+(g. 2).
+The decoder takes the previous picture, shifts it with the
+motion-vectors to recreate the predicted picture and then
+adds the prediction error to produce the actual picture. This
+process is shown in Fig. 2. Picture data sent as motion-
+vectors plus prediction error is called P-frame. The ap-
+proach of sending a prediction error allows the motion es-
+timation and compensation logic to be imperfect. Thus it
+allows for simple but inaccurate motion estimations in low-
+cost systems. If the prediction error is very large, the coder
+may simply transmit the current picture as it is. This con-
+stitutes an I-frame.
+In order to generate motion-vectors in MPEG-2, the screen
+is divided into areas called macro-blocks, which are 16x16
+pixels square. Motion vectors are generated for each macro-
+block. One simple technique used for generating these is
+called block-matching (Fig. 1). In this technique, motion-
+vector for a macro-block is obtained by moving it around
+Figure 2: MPEG encoding and decoding process
+over the next consecutive picture looking for matching pixel
+values. When a match is found, the horizontal and verti-
+cal displacement needed to obtain it is used as a basis for
+computing motion-vectors for this macro-block. Thus the
+location of the boundaries of a macro-block is xed and
+a motion-vector does not move the macro-block. Instead
+the vector tells the decoder where to nd pixel data for
+the macro-block in another frame. The pseudo-code for the
+block-matching algorithm appears in appendix A.1.

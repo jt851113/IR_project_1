@@ -1,0 +1,38 @@
+In the following we describe the general burst detection algorithm
+(Algorithm 1) that uses the exponential smoothing. Although
+there exist three separated operators, for clarity we present only
+one all-encompassing algorithm. As presented here, the algorithm
+works for both, single and double exponential smoothing. Thus, it
+is capable of handling linear trends. Which method is actually used
+is controlled by the input variables. For static double smoothing we
+use smoothcont = false. Like this, we determine the smoothing
+values S and b only once in the beginning using the first cnt elements
+of the stream. Dynamic exponential smoothing refers to
+a re-computation of the smoothing values based on jumping windows.
+Thus, only in this case we set smoothcont = true and
+dynamic = true. Single exponential smoothing is always computed
+incrementally in each time step (assured by setting cnt = 1
+and smoothcont = true) and can by static (dynamic = false)
+or dynamic (dynamic = true).
+We start with an initial learning phase in order to get first parameters
+S and b from the exponential smoothing (implemented
+in method expsmoothing – if single smoothing is used, b can be
+an arbitrary value, because it is not used later on). The size cnt
+of the window used for this should depend on the input data and
+the actual application scenario. How to determine an appropriate
+value for cnt is one of the open issues we currently investigate.
+In parallel, we build the aggregation tree (included in method
+burstdetection). After the initial learning, we can start burst detection.
+This is also done by the method burstdetection, which
+runs the detection algorithm from [13].
+The important point is the computation of the current threshold
+f. For this, we use the parameters from the exponential smoothing
+in order to predict the value  expected for the current stream
+element yt. The standard deviation 2 used for computing f is
+determined from the N elements in the regarded time window.
+If we use dynamic smoothing the threshold computation is based
+on only short-term predictions, which can help to identify changes
+in the stream. Currently, we use a fixed interval of cnt elements.
+We are investigating if this should be replaced by a more dynamic
+and flexible approach. Integrating triple exponential smoothing is
+straight forward and omitted here.

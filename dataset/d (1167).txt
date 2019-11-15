@@ -1,0 +1,41 @@
+[CM86] U..S. Chakravarthy and J. Minker. Multiple Query
+Processing in Deductive Databases using Query Graphs. VLDB
+Conference 1986: 384-391.
+[DFF+98] A. Deutsch, M. Fernandez, D. Florescu, A. Levy, D.
+Suciu. XML-QL: A Query Langaage for XML.
+http://www.w3.org/TR/NOTE-xml-ql.
+[HCH+99] E. N. Hanson, C. Carnes, L. Huang, M. Konyala, L.
+Noronha, S. Parthasarathy, J.B.Park and A. Vernon. Scalable
+Trigger Processing. In proceeding of 15th ICDE, page 266-275,
+Sydney, Australia, 1999.
+[HJ94] E. N. Hanson and T. Johnson. Selection Predicate
+Indexing for Active Databases Using Interval Skip List. TR94-
+017. CIS department, University of Florida, 1994.
+[LPBZ96] L. Liu, C. Pu, R. Barga, T. Zhou. Differential
+Evaluation of Continual Queries. ICDCS 1996: 458-465.
+[LPT99] L. Liu, C. Pu, W. Tang. Continual Queries for Internet
+Scale Event-Driven Information Delivery. TKDE 11(4): 610-
+628 (1999).
+[MD89] D. McCarthy and U. Dayal. The architecture of an
+active database management system. SIGMOD 1989: 215-224.
+[RC88] A. Rosenthal and U. S. Chakravarthy. Anatomy of a
+Modular Multiple Query Optimizer. VLDB 1988: 230-239.
+[Sel86] T. Sellis. Multiple query optimization. ACM
+Transactions on Database Systems, 10(3), 1986.
+[SJGP90]M. Stonebraker, A. Jhingran, J. Goh and S.
+Potamianos. On Rules, Procedures, Caching and Views in Data
+Base Systems. SIGMOD Conference 1990: 281-290.
+[SK95] E. Simon, A. Kotz-Dittrich. Promises and Realities of
+Active Database Systems. VLDB 1995: 642-653.
+[SPAM91] U. Schreier, H. Pirahesh, R. Agrawal, and C.
+Mohan. Alert: An architecture for transforming a passive dbms
+into an active dbms. VLDB 1991: 469-478.
+[TGNO92] D. Terry, D. Goldberg, D. Nichols, and B. Oki.
+Continuous Queries over Append-Only Databases. SIGMOD
+1992: 321-330.
+[WF89] J. Widom and S.J. Finklestein. Set-Oriented
+Production Rules in Relational Database Systems. SIGMOD
+Conference 1990: 259-270.
+[ZDNS98] Y. Zhao, P. Deshpande, J. F. Naughton, A. Shukla.
+Simultaneous Optimization and Evaluation of Multiple
+Dimensional Queries. SIGMOD 1998: 271-282.

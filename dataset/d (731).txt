@@ -1,0 +1,24 @@
+There has been considerable work in the privacy and anonymization
+eld on traditionalWeb sites related issues. There
+is a growing amount of literature [2, 6, 17] on OSNs as well,
+although the focus is on examining identity leakage due to
+attacks or data being published. We focus on the scenario
+where no additional information is actively released about
+social network data and with no explicit adversary. However,
+the work on re-identication [4] that allows one to relate
+supposedly anonymous data with actual identities by
+combining external data is related. In OSNs it is easier to
+get various bits of private information and each of them can
+be used to merge with external information to identify a person.
+Given the recent large-scale attempts to have medical
+records online, such concerns are well-motivated.
+Privacy protection measures exist for Web browsing in
+the form of well known extensions in Firefox, anonymized
+access etc. However, in the presence of voluntary information
+provided by users, what matters most is limiting the
+access. Strong co-operation is needed by the OSN and their
+guiding policies will be a key factor in protecting user privacy.
+The recent withdrawal by Facebook of default opt-in
+to beacons whereby visits by users of certain third party ecommerce
+sites could trigger automatic notication to their
+OSN friends, is a step in the right direction.

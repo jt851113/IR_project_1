@@ -1,0 +1,38 @@
+Zhu et al. [14] characterize bursts as “abnormal aggregates in
+data streams”. [6, 11] focus on modeling bursty behavior in data
+streams, but not on an efficient algorithm for detecting them. The
+authors of [10] mine for bursts in web search query logs. Shasha et
+al. [9] propose a technique for elastic burst detection in time series,
+where bursts can be identified over a variety of dynamically chosen
+window sizes. In [13], Zhang and Shasha suggest the utilization
+of shifted aggregation trees for elastic burst detection in acceptable
+time and space. This approach performs very well and its implementation
+is easy and light-weight. The authors propose the data
+structure, how to build and optimize it, as well as how to mine it
+for bursts. The approach proposed in [13] is only applicable to stationary
+data. This is because the threshold for identifying bursts is
+only adapted very slowly with evolving input data. This does not
+perform satisfyingly in the presence of trends or periods, because
+in this case the amount of false positives and wrong negatives is
+usually too high. The main idea of our work is therefore to combine
+their approach with time series forecasting, which allows to
+adapt the threshold to the evolving stream characteristics. To the
+best of our knowledge this is novel for burst detection, although
+forecasting methods have been used for solving similar problems.
+For instance, [12] utilizes auto regression models to detect outliers
+and change points in non-stationary data.
+A closely related problem is the detection of outliers and anomalies
+[8, 5]. In [8], Shahabi et al. introduce a wavelet-based approach
+to detect outliers in time series over different window sizes. Keogh
+et al. [5] introduce a technique to detect anomalous patterns in time
+series. Yamanishi et al. [12] utilize auto regression models to detect
+outliers from non-stationary time series.
+Different approaches have been proposed for forecasting, analyzing
+trends and periods [3, 7, 4]. We currently use exponential
+smoothing following the Holt and Holt-Winters methodologies [2].
+Using this, the next points of the input stream can be predicted
+satisfyingly accurate. Unfortunately, forecasting methods tend to
+become more inaccurate as more points are predicted in the future.
+Because of this, we recompute the forecast periodically, resulting
+in only short-term predictions. Although exponential smoothing is
+suitable in our scenario, we investigate other methods as well.

@@ -1,0 +1,45 @@
+The above three schemes maintain a 0% missing rate
+at the cost of extensive energy consumption by keeping
+MCU and the sensor components unnecessarily
+active. While the SM and CM schemes improve the
+naive scheme, they represent different philosophies to
+achieve energy savings in OTSNs. We envisage that
+there are other energy saving schemes that can take
+strengths of both camps and perform better. Figure 1
+shows a solution space of energy saving schemes for
+OTSNs.
+Figure 1: Solution Space of Energy Saving Schemes
+for OTSNs
+In the figure, the x-axis denotes the sampling frequency
+for each sensor node and y-axis denotes the
+number of sensor nodes who are activated for objects
+tracking. All the possible energy saving schemes for
+OTSNs are restricted within the rectangular area. As
+illustrated, the naive scheme becomes the SM scheme
+if we continue to reduce the sampling frequency until
+it reaches the minimal requirement1. On the other
+hand, the naive scheme becomes the CM scheme if we
+reduce the number of sensor nodes involved in monitoring
+to one. Thus, if we reduce both of the sampling
+frequency and the number of activated nodes to their
+minimal bounds, we may have an ideal scheme which
+represents the optimal solution we can obtain in this
+solution space2. There may be many other possible
+energy saving schemes existing in this solution space
+(denoted by stars). Now the question is whether there
+exists such an optimal scheme and how to obtain it?
+The ideal scheme shows that for each moving object,
+only one sensor node needs to be waken to monitor.
+However it requires that node to be activated at the
+right time (when a sensing period starts) and at the
+right place (where the moving object is located). This
+can only be achieved when the sensor nodes (hence
+the network) have the ability to predict every single
+movement of the object. If this is not achievable, can
+we obtain a near-optimal energy saving scheme based
+on some accurate predictions? Thus, the problem we
+have becomes whether we can obtain an energy saving
+scheme by trading off missing rate (introduced by the
+less perfect predictions). Based on this analysis, in
+Section 4, we propose a prediction-based energy saving
+scheme.

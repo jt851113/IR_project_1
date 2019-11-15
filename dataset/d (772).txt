@@ -1,0 +1,42 @@
+A powerful paradigm in sensor network design has emerged
+recently: Give users a declarative query interface to the sensor
+data, thereby abstracting away the physical properties of the
+network when tasking the sensors. Such a sensor database
+system sends event data from source nodes to selected storage
+nodes called view nodes where the data is collected for further
+processing. Many such sensor networks have strong constraints
+on their energy usage to maximize network lifetime. A significant
+amount of energy can be preserved by (1) carefully
+determining the data that should be stored in designated view
+nodes, and (2) coordinating the data dissemination to these
+nodes.
+In this paper we overview several ongoing research directions.
+Our first direction is view selection. In order to minimize
+the number of messages for a given query workload, we
+introduce a hybrid pull-push model, in which relevant data
+is collected at sensor nodes and pushed to view nodes, from
+where the data can be pulled when queries are issued. Our goal
+is to decide, given a query workload, what data we should store
+and where in the network this data should be stored in order
+to minimize the expected overall query cost.
+A second, related research direction is aggregation tree
+selection. Processing an aggregation query requires that data
+from a set of sensor nodes be routed to the site where the
+query was posed, with in-network aggregation on the route.
+The most natural way is along edges of a spanning tree that
+in some sense “embeds” the query plan. The feasibility and
+cost benefit of a set of views – our first research direction –
+depends in subtle ways on the choice of the routing tree.
+Our third research direction is wave scheduling.We propose
+to schedule transmissions among nodes such that data flows
+quickly from event sources to storage nodes while avoiding
+collisions at the MAC layer. Since all nodes adhere to the
+schedule, most nodes can be turned off and only wake up during
+well-defined time intervals, resulting in significant energy
+savings. We show how routing protocols can be modified to
+interact symbiotically with the scheduling decisions, resulting
+in significant energy savings at the cost of higher latency.
+In the remainder of the paper, we first introduce our model
+of a sensor network (Section II), we then overview ongoing
+work on view selection (Section III), selecting data dissemination
+trees (Section IV), and wave scheduling (Section V).

@@ -1,0 +1,62 @@
+The patterns in ×i=1.. are called n-sets. They associate n subsets of elements
+from the n domains of the relation. For the sake of clarity, an n-set (Si )i=1..n will
+often be represented by ∪i=1..n Si (without loss of generality, the attribute domains Di
+are considered disjoint). For example, given an n-set S = (Si )i=1..n and an element
+e ? ∪i=1..nDi , we write:
+Let us formalize the union and the inclusion on n-sets.
+Definition 1 (n-set union ) Given two n-sets S = (Si )i=1..n ? ×i=1..n2Di and
+T = (T j ) j=1..n ? ×j=1..n2Dj , S  T = (S1 ∪ T 1, . . . , Sn ∪ T n).
+Definition 2 (n-set inclusion ) Given two n-sets S = (Si )i=1..n ? ×i=1..n2Di and
+T = (T j ) j=1..n ? ×j=1..n2Dj , S  T ? S1 ? T 1 ? · · · ? Sn ? T n.
+Notice that, by definition, the union of two n-sets is the n-set with the minimal envelope
+enclosing both of them. The inclusion of n-sets is useful to define a closedness
+constraint.Closed n-sets in n-ary relations (n ? 2) generalize closed itemsets in binary
+relations: the closed 2-sets are the closed itemsets associated to their supporting sets
+of transactions or objects, i. e., the so-called formal concepts (Ganter et al. 2005). The
+generalization of the definition towards n-ary relations is natural. Considering the 0/1
+representation of the n-ary relation (such as RE in Table 1), a closed n-set is a maximal
+hyper-rectangle of ‘1’s modulo arbitrary permutations of the hyperplanes (i. e.,
+the hyperplanes of a pattern need not be contiguous).
+In the following, when X denotes an n-set,we assume X = (Xi )i=1..n ? ×i=1..n2Di .
+Definition 3 (Closed n-set) Given an n-set X, X is a closed n-set iff it satisfies the
+two following constraints:
+- Cconnected(X) ≡ ×i=1..n Xi ? R;
+- Cclosed(X) ≡ ?X ? ×j=1..n2Dj , X  X ? Cconnected(X
+) ? X = X.
+According to the first constraint, Cconnected, taking one element from each of the
+subsets constituting a closed n-set is constructing an n-tuple that is in R. The second
+constraint, Cclosed, tells that X is closed if any strictly larger pattern (more elements
+from any domains) violates Cconnected. It is, for Cconnected, a closure property on the
+n subsets of D1, D2, . . . and Dn altogether. It can easily be proved that an equivalent
+closedness constraint only forces the patterns with one more element (from any
+domain) to break Cconnected. Furthermore, because Cconnected ensures the presence in
+R of every n-tuple in ×i=1..n Xi , checking the closedness constraint can be reduced
+to searching for absent n-tuples involving this additional element only.
+Definition 4 (Closed n-set (equivalent definition)) Given an n-set X, X is a closed
+n-set iff it satisfies the two following constraints:
+- Cconnected(X) ≡ ×i=1..n Xi ? R;
+- Cclosed(X) ≡ ?i = 1..n, ?s ? Di \ Xi ,
+?Cconnected(X1, . . . , {s}, . . . , Xn), i.e., X1×· · ·×{s}×· · ·×Xn ? R.
+Example 1 In RE , represented in Table 1, ({α, γ }, {1, 2}, {A, B}) is a closed 3-set:
+{α, γ} × {1, 2} × {A, B} ? RE (in Table 1 there are ‘1’s at the intersection of all
+the related hyperplanes);
+Every pattern with one more element violates Cconnected:
+- ?Cconnected({β}, {1, 2}, {A, B}), i.e., {β} × {1, 2} × {A, B} ? RE ;
+- ?Cconnected({α, γ }, {3}, {A, B}), i.e., {α, γ} × {3} × {A, B} ? RE ;
+- ?Cconnected({α, γ }, {4}, {A, B}), i.e., {α, γ} × {4} × {A, B} ? RE ;
+- ?Cconnected({α, γ }, {1, 2}, {C}), i.e., {α, γ} × {1, 2} × {C} ? RE .
+({α, β, γ }, {1, 2}, {A}) and ({α, β, γ }, {1, 2, 3, 4}, ?) are two other examples of closed
+3-sets in RE .
+Considering, again, a ternary relation that stands for customers buying items along
+months, a closed 3-set is a maximal subset of customers buying the same maximal
+subset of items during a maximal subset of months. Such a pattern is useful for analyzing
+buying behaviors. The closedness constraint filters out all strict “sub-patterns”
+(i. e., patterns where some elements are removed and none are added) of the largest
+ones that are extracted. The justification for this constraint is the same as with itemset
+mining: a lossless (Boulicaut and Bykowski 2000) reduction of the output, which
+keeps themost informative pattern of every equivalence class (Gallo et al. 2009).With
+collections of n-sets, a “lossless condensation” means that, whatever j = 1..n and
+given any (n ? 1)-set X ? ×i=1..n?i =j 2Di , all elements in Dj that relate with every
+combination of n ? 1 elements taken from the n ? 1 subsets of X can be derived
+from the closed n-sets only. They are the largest set of elements in Dj a closed n-set
+associates with an (n ? 1)-set larger than X (w.r.t. the  order).

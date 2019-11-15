@@ -1,0 +1,20 @@
+TD-DES’s main function is to govern when each node of a
+network (1) receives data, (2) transmits data, and (3) powers
+its radio down to a low-power standby mode. These
+radio modes – Tx, Rx, and standby – are cycled among as
+functions of time determined by the network’s dissemination
+schedule, which is generated primarily by the root node and
+propagated down the tree as part of a control event. The
+root node is assumed to be a base station with greater computational,
+storage, and transmission capabilities than the
+rest of the nodes in the network. The root node typically
+serves an entry point to the sensor network, integrating the
+sensor network with the external wired network where the
+monitoring task GUI resides. As we will describe in Section
+3, the scheduler relies on topology information, event profiles,
+traffic statistics, and Quality-of-Service (QoS) expectations
+when generating dissemination schedules. The basic
+goal of the scheduler is to minimize network-wide power consumption
+(by minimizing the amount of time spent in the
+Rx and Tx modes) without sacrificing timely dissemination
+of data.

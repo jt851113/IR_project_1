@@ -1,0 +1,101 @@
+C. Related Work
+  Privacy becomes a more and more serious concern in many
+applications. The development of techniques that incorporate
+privacy concerns has become a fruitful direction for database
+and data mining research.
+  One of the privacy concerned problems is publishing microdata
+for public use [8], which has been extensively studied
+recently. A large category of privacy attacks is to re-identify
+individuals by joining the published table with some external
+tables modeling the background knowledge of users. To battle
+this type of attacks, the mechanism of k-anonymity was
+proposed in [9], [5]. Specifically, a data set is said to be k-
+anonymous (k ﹐ 1) if, on the quasi-identifier attributes (i.e.,
+the minimal set of attributes in the table that can be joined with
+external information to re-identify individual records), each
+record is indistinguishable from at least k ! 1 other records
+within the same data set. The larger the value of k, the better
+the privacy is protected.
+  Machanavajjhala et al. [6] showed that a k-anonymized
+dataset has some subtle but severe privacy problems due to
+the lack of diversity in the sensitive attributes. In particular,
+they showed that, the degree of privacy protection does not
+really depend on the size of the quasi-identifier attribute set.
+Instead, it is determined by the number of distinct sensitive
+values associated with each quasi-identifier attribute set. The
+observation leads to the notion of l-diversity [6]. [10] proved
+that l-diversity always guarantees stronger privacy preservation
+than k-anonymity.
+  In this paper, we focus on k-anonymity since k-anonymity
+is the most essential and most applicable privacy model, which
+can be used even when sensitive attributes are not defined. A
+few governmental privacy regulations including HIPAA and
+European Union Data Directive adopted k-anonymity.
+  Beyond microdata, some other data sources such as social
+network data also have privacy concerns when they are published
+for public use. Typically, social network data can be
+represented as a graph, in which vertices correspond to people
+or other social entities, and edges correspond to social links
+between them [11]. As a first step to hide information about
+social entities while preserving the global network properties,
+the released social network data has to go through the
+anonymization procedure which replaces social entity names
+with meaningless unique identifiers [12]. Although this kind of
+anonymization can exactly preserve the unannotated structure
+of the social network, it may still leak a lot of information.
+  Attacks in social network data can be regarded as one
+kind of link mining [13]. Specifically, as a pioneer work
+about privacy in social network data, Backstrom et al. [12]
+described a family of attacks based on random graph theory.
+For example, an attacker may plant some well constructed substructures
+associated with the target entities in advance. Once
+the social network data is collected and published, the attacker
+can first try to identify the planted structures and thus peek
+the linkage between the target vertices. However, there is no
+practical solution proposed in [12] to counter those attacks.
+  The attacks proposed in [12] are different from the neighborhood
+attacks addressed in this paper. The attacks in [12]
+need to plant a set of deliberative structures before the social
+network data is anonymized, which is a task hard to achieve
+in some situations. As shown before, even without planting
+deliberative structures, the released social network data is still
+in danger, as neighborhood attacks are still possible.
+  Wang et al. [14] adopted description logic as the underlying
+knowledge representation formalism, and proposed some
+metrics of anonymity for assessing the risk of breaching
+confidentiality by disclosing social network data. However,
+they did not give any anonymization algorithms for social
+network data.
+  Simultaneous to our study, Hay et al. [15] presented
+a framework for assessing the privacy risk of sharing
+anonymized network data. They modeled the adversaries’
+background knowledge as vertex requirement structural
+queries and subgraph knowledge structural queries, and proposed
+a privacy requirement k-candidate anonymity which
+is similar to k-anonymity in tabular data. They developed a
+random graph perturbation method by randomly deleting or
+adding edges to anonymize a social network. Their model
+assumes that the nodes and the edges in a social network are
+not labeled.
+  Recently, Zheleva et al. [16] proposed a model different
+from ours. They focused on social networks where nodes
+are not labeled but edges are labeled. Some types of edges
+are sensitive and should be hidden. They provided the edge
+anonymization methods based on edge clustering and removal
+to prevent link re-identification.
+
+	III. AN ANONYMIZATION METHOD
+  In this section, we introduce a practical method to
+anonymize a social network to satisfy the k-anonymity requirement.
+The method is in two steps.
+  First, we extract the neighborhoods of all vertices in the
+network. To facilitate the comparisons among neighborhoods
+of different vertices including the isomorphism tests which will
+be conducted frequently in anonymization, we propose a simple
+yet effective neighborhood component coding technique to
+represent the neighborhoods in a concise way.
+  In the second step, we greedily organize vertices into groups
+and anonymize the neighborhoods of vertices in the same
+group. Due to the well recognized power law distribution of
+the degrees of vertices in large social networks, we start with
+those vertices of high degrees.

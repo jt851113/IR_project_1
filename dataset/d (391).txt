@@ -1,0 +1,21 @@
+To observe the impact of moving behavior of tracked
+objects on energy consumptions and missing rate of
+PES scheme, we vary two important control parameters
+for our simulation, the pause time and the average
+speed of the moving objects. The pause time
+controls the frequency a moving object changing its
+state in terms of speed and direction, while the average
+
+speed control an object’s possible moving range.
+The average direction change, also controllable in our
+simulation, is fixed to simplify our study.
+A small pause time makes the moving pattern of
+an object dynamic and thus difficult to predict. On
+the other hand, a moving object with long pause time
+keeps constant movement state longer and thus easier
+to predict. Since the CM scheme significantly outperforms
+the SM scheme when there is a limited number
+of objects in the network, we use the total energy consumption
+of CM as the watermark to compare the
+PES scheme with various heuristics. In the remaining
+experiments, we only include CM for comparison.

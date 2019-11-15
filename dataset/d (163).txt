@@ -1,0 +1,40 @@
+The dominant skyline problem so far gives every dimension
+equal importance in the result. This may not be enough
+in all the cases, since sometimes the user may want to give
+some bias to some attributes of greater interest. A simple
+extension from the original problem is to assign some
+weights to the dimensions and determine the (dominant)
+skyline points over some subset of dimensions with enough
+weights. In the basketball players’ statistics data, for example,
+the user may want to find those exceptional players who
+are better at defense than attack, by giving more weight to
+defensive attributes, such as block and steal.
+To support this type of weighted query, our previous algorithms
+need to be extended only slightly. Specifically, when
+comparing two points p1 and p2, we record the weights of
+the dimensions on which p1 dominates p2 and sum them up.
+If the sum exceeds a threshold w, we say that p1 dominates
+p2 with weight w. A point p is said to be a w-dominant skyline
+if no point can dominate p on dimensions whose weight
+sum is over w. The following lemma shows that weighted
+dominant skyline shares similar properties as the original
+dominant skyline.
+
+From the simple lemma above, we can restate almost all
+of the earlier theorems in a weighted form. Since the onescan
+and two-scan algorithms are based on point comparison,
+the weight assignments for the dimensions have no
+impact on its correctness. The structure of these two algorithms
+remain largely unchanged and only the pair-wise
+domination comparison procedure must be modified to cater
+to the weights. For the sorted retrieval method, instead of
+counting the number of times a point has been processed
+from the sorted arrays, we need to sum up all the weights
+of the processed dimensions.
+Note that these modification do not affect the computational
+complexities of all the proposed methods. However,
+having weight assignments on the dimensions can impact the
+effectiveness of the pruning and the frequency distribution
+of w-dominant skyline points with varying w. We will show
+how these affect the running time of the algorithms in our
+experimental study.

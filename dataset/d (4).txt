@@ -1,0 +1,18 @@
+The constraints on the quality of the answer to a monitor-
+ing query required by a user govern the amount of energy
+savings that may be achieved. The quality of answer is con-
+trolled by two parameters:
+1. Error tolerance: Controls the amount by which the
+received answer may deviate from its actual reading
+2. Delay tolerance: Controls the interval from the time a
+sensor's reading changes to the time it is received at
+the user.
+The more the error tolerance, the less precise the prediction-
+models need to be, and hence, more is the potential for
+saving energy. In the extreme case when the error tolerance
+is innite, the sensors do not have to transmit anything.
+Also, the more the delay tolerance, the more time is available
+to generate prediction-models. This increases the potential
+for generating close-to-perfect prediction models at the base
+station, which, in turn, increases the potential for saving
+energy.

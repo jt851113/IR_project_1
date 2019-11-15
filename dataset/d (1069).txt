@@ -1,0 +1,16 @@
+By using X, we progressively output k-dominant skyline objects as follows. We
+scan X to compare each object p ? X against the first object q. In the scan
+procedure, objects that are k-dominated by the first object are removed from X.
+During the procedure, if the first object q is k-dominated by any other objects
+p ? X, we remove q from X and stop the scanning procedure. If q is not
+removed in the scanning procedure, then output q as a k-dominant object and
+remove q from X. We repeat this scanning procedure until X becomes empty.
+Applying the k-dominant check with k = 5 for Table 3, we note that in
+the first scan N5, N3, N8, N1 and N6 are 5-dominated by the first object, N2.
+Therefore, those dominated objects are removed from X. On the other hand, N2
+is not 5-dominated by any other notebooks. So, after the first scan, our method
+outputs N2 as a 5-dominant skyline object and then remove N2 from X. In the
+second scan, N4 becomes the first object and it 5-dominates N7. So, we remove
+N7 and outputs N4 as a 5-dominant skyline object. Similarly, if we apply k = 4
+for the same database X, then our Sort-Filtering method returns only N2 as a
+4-dominant skyline object.

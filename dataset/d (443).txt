@@ -1,0 +1,4 @@
+Definition 2.1 A pattern with period is an array of events
+each of which is either an event in  or *, i.e.,.
+We say that the jth position is instantiated
+For any two patterns of the same period is a superpattern

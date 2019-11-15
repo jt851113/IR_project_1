@@ -1,0 +1,18 @@
+Directed diffusion consists of several elements. Data is named
+using attribute-value pairs. A sensing task (or a subtask
+thereof) is disseminated throughout the sensor network as
+an interest for named data. This dissemination sets up gradients
+within the network designed to "draw" events (i.e.,
+data matching the interest). Events start flowing towards
+the originators of interests along multiple paths. The sensor
+network reinforces one, or a small number of these paths.
+Figure 1 illustrates these elements.
+In this section, we describe these elements of diffusion with
+specific reference to a particular kind of sensor network--
+one that supports the task described in Section 2. Such a
+network performs location tracking. As we shall see, several
+design choices present themselves even in the context
+of this specific instantiation of diffusion. We elaborate on
+these design choices while describing the design of our sensor
+network. Our initial evaluation (Section 4) focuses only
+a subset of these design choices.

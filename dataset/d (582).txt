@@ -1,0 +1,5 @@
+In this section, we attempt to analytically compare the average latency in obtaining a response
+to a query by these 3 mechanisms. The metric for latency that we examine is the
+expected number of sequential transmissions required before a response is obtained to a given
+query. We should note that this is a network layer analysis that does not take into account
+MAC delay due to contentions.

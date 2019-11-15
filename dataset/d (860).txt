@@ -1,0 +1,5 @@
+In this section, simple models for the sensor network and objects
+are defined. A system level approach is taken, assuming much
+about the capabilities of the network in terms of organization and
+communication. Efficient protocols for these are being developed
+elsewhere [1].

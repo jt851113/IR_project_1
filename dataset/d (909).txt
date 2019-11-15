@@ -1,0 +1,7 @@
+In this section we evaluate the performance of the DAB tree
+construction based on simulation results; in particular, we
+apply DAB to 1D and 2D sensor graphs to show it achieves
+better performance than a method which ignores the traffic pattern
+information. We first describe a mobility model, called the
+city mobility model, that we have developed for the purpose of
+generating traffic to support simulation.

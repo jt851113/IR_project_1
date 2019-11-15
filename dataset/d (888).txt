@@ -1,0 +1,26 @@
+We study the network traffic incurred by query propagation.
+We set the query rate γ = 0.2 and cache drop rate
+λ = 0.035. We randomly set the issuing time of the first
+query for each node in the range of [0, 60s]. We vary the
+data cardinality D from 50 to 250 and the network size N
+from 100 to 1000. The value of D affects the speed of IA
+value dissemination because a large D value provides more
+choices when a node issues a query, which introduces fewer
+cached data replicas of certain resources in the network. It
+sequentially slows down the dissemination of IA values, and
+indirectly lengthens the forwarding paths of queries. Therefore,
+in Figure 5, the query traffic of our IA approach increases.
+However, our approach outperforms the other two
+approaches in all cases. The flooding approach suffers more
+than one order of magnitude query traffic compared with
+the IA approach because IA only chooses the most promising
+neighbor to forward the query instead of flooding the
+query. Eureka also incurs much higher query traffic than
+the IA approach, because it blindly floods the query to its
+neighbors. Those neighbors then evaluate whether their information
+densities are larger than the former ones, and one
+or some of these neighbors take the forwarding process and
+flood the query to all its neighbors continuously, until the
+result is found. Although Eureka is much better than pure
+flooding, its blind flooding to the neighbors results in higher
+query traffic.

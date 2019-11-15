@@ -1,0 +1,47 @@
+The first sensor dataset that we consider is a geospatial dataset
+that provides 50 km resolution daily precipitation for the Pacific
+NorthWest from 1949-1994 [16]. While the dataset is at a significantly
+larger scale than densely deployed sensor networks, the
+data exhibits spatio-temporal correlations, providing a useful performance
+case study.
+The setup comprises a 15x12 grid of nodes, each recording daily
+precipitation values. A wide set of queries can be envisaged on such
+a dataset: (a) range-sum queries, such as total precipitation over
+a specified period from a single node or a region; (b) drill-down
+max queries, to efficiently access the node or region that receives
+maximum precipitation over a specified period; (c) drill-down edge
+queries, to efficiently access and query nodes on an edge between
+a high-precipitation and low-precipitation region.
+The hierarchy construction proceeds as outlined in Section 3,
+with nodes at level 0 performing a one-dimensional temporal wavelet
+subband decomposition, and clusterheads at other levels combining
+data from the previous level, and performing a three-dimensional
+decomposition. We use communication bandwidth as the cost metric
+for the compression. Thus, at level i, data from four level 
+nodes are combined, subband coded, thresholded, quantized, and
+losslessly compressed using Run-Length encoding and Huffman
+encoding to fit within the specified target bandwidth. An approximate
+target communication bandwidth is chosen since it is computationally
+intensive to choose parameters to exactly fit the target
+bandwidth.
+In the following example, we look at the performance of the hierarchy
+for a specific range-sum query: “Find the annual precipitation
+between 1949-1994 for each sensor node”. We use two performance
+metrics:
+ Compression Ratio at level i is ratio of number of bits of
+transmitted data to the raw data size. Table 4 shows that the
+number of bits transmitted is approximately the same at each
+level of the hierarchy, giving us large compression ratios, especially
+at higher levels since more data is combined into the
+target bandwidth.
+ Query error at level i is calculated as jmeasured truej
+true . This
+metric corresponds to the accuracy in the response for the
+range-sum query when clusterheads at level i are queried.
+While the error increases at higher levels of the hierarchy,
+it is still reasonably low at all layers. For example, 80% of
+measurements are within 30% of the true answer for level
+1, and 80% of measurements are within 50% at level 3. We
+suggest that that such error is sufficient to make preliminary
+searchs and then, if desired, drill-down with more detailed
+queries.

@@ -1,0 +1,23 @@
+The parameters in our experiments are:
+1. N, the number of installed queries, is an important measure
+of system scalability.
+2. F, the number of fired queries in the grouping case. The
+number of fired queries may vary depending on triggering
+conditions in the grouping case. For example, in a Tye-1 query,
+if Intel stock does not change, queries defined on “INTC” are
+not scheduled for execution after the common computation of
+the group. This parameter does not affect non-grouping queries.
+3. C, the number of tuples modified.
+In our grouping approach, a user-defined query consists of
+grouped part and non-grouped part. Tg and Tng represent the
+execution time of each part. The execution time T for evaluating
+N queries is the sum of Tg and Tng of each of F fired queries,  
+because the grouped portion is executed
+only once.Since the non-grouping strategy needs to scan each XML data
+source file multiple times, we cache parsed XML files in
+memory so that both approaches scan and parse XML files only
+once. This ensures that the comparison between the two
+approaches is fair. However, in a production system, parsed
+XML files probably could not be retained in memory for long
+periods of time. Thus, many non-grouped queries may each have
+to scan and parse the same XML files multiple times.

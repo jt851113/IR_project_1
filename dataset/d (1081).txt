@@ -1,0 +1,41 @@
+One issue not yet addressed is when a master agent should deliver its tracking result to the outside
+world. We assume that one of the sensors in the network serves as the gateway connecting to a
+location server in the wireline network. From time to time, the tracking result should be sent to the
+location server. We assume that more tracking result will be accumulated as time proceeds. So an
+optimization problem is that the master agent needs to decide whether it should carry the tracking
+result from sensor to sensor, or forward the result to the gateway.
+We assume that for each object being tracked, the tracking results are generated at a constant rate
+r, and each tracking result is of size d bytes. That is, in time interval t, the amount of tracking
+result is t · r · d. Further, a sequence of tracking results can be combined with a fusion factor ,
+0< 1, at a basic cost of b bytes. Specifically, the above tracking results can be compressed into
+b + t · r · d ·  bytes. In most cases, data fusion is beneficial. This is normally happens when data
+has certain level of dependence. In the following, we propose three data delivery solutions. Note that
+the first one is in fact not an agent-based solution. It only serves as a referential strategy so as to make
+comparison to our agent-based solutions.
+The first one is called the Non-Agent-Based (NAB) strategy. Each sensor works independently
+and forwards its sensing results back to the gateway from time to time. Note that the sensing result is
+raw data and needs to be combined with other sensors’ sensing results at the gateway to calculate the
+object’s locations. The shortest paths, which are assumed to be supported by the underlying routing
+protocol, are always used for data delivery. Also, we assume an ideal situation that only the three
+sensors nearest to the object will track the object.
+The second solution is called the Threshold-Based (TB) strategy. A predefined threshold value T
+is given. The master agent will accumulate the tracking results and “carry” the result with it as long
+as the amount of result does not exceed T. Whenever the amount of results (after fusion) reaches T,
+it will be forwarded to the gateway through a shortest path.
+The third solution is called the Distance-Based (DB) strategy. The delivery action may be taken
+only when the master agent moves. Basically, the distances from the agent’s current and next sensors
+to the gateway are considered. Suppose that the master agent is currently at sensor Si and is going
+to be migrated to sensor Si+1. Let Ni be the current amount of tracking results accumulated by the
+agent before it leaves Si. Also, we assume that Ni+1 is the expected amount of tracking results that
+shall be accumulated by the agent at Si+1 (this value can be formulated by a constant T · r · d · ,
+where T is the expected residential time of an agent at a sensor).
+If the master decides to carry the tracking result with it, the expected cost is:
+where the first term is the cost to migrate the current result to the next sensor, and the second term
+is the expected cost to deliver the fused result at the next sensor to the gateway, g. Function d()
+specifies the minimum number of hops between two sensors. If the master decides to deliver its
+current tracking result to the gateway, the expected cost is:
+Subtracting these two factors, we have
+So the master agent will carry the results with it iff C1 < C2; otherwise, the results will be sent
+back to the gateway. Since sensors Si and Si+1 are neighbors, d(g, St) ? d(g, St+1) = ?1, 0, or
+1. Considering whether the agent is moving away from or closer to the gateway, we simplify the
+condition into three cases.

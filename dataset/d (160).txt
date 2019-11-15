@@ -1,0 +1,10 @@
+The key idea behind the extension of One-Scan approach
+(shown as Algorithm 4) is to keep track, for each point
+, the maximum value of k for which p has been kdominated.
+We use maxkdom(p) to denote this value for
+p. A point is maintained in R so long as maxkdom(p) <
+|S| (i.e., p is at least a free skyline point). At the end of
+processing all the points in D, for each point, p is a kdominant
+skyline point  [maxkdom(p) + 1, |S|]. Thus,
+the top-δ dominant skyline points are the δ points in R with
+the smallest value of maxkdom(.).

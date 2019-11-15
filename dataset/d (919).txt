@@ -1,0 +1,151 @@
+Although the Apriori trick may reduce the search space in
+partial periodicity mining in a similar way as association
+rule mining, it is important to note that the data characteristics
+in the two cases are very different. In mining association
+rules, the number of frequent -itemsets shrinks quickly
+as increases because of the sparsity of frequent itemsets
+in a large transaction database. However, in mining partial
+periodicity, very often the number of frequent patterns
+shrinks slowly (when )as increases. The slow speed
+of decrease in the number of frequent patterns is due to a
+strong correlation between frequencies of patterns and their
+subpatterns. We now illustrate this point.
+Example 3.1 Suppose we have two frequent 1-patterns,and such that
+and in a time-series Then it must be the case that as explained 
+below. Since all period segments that match match both and 
+holds. To derive the other inequality, let denote the predicate
+that a letter is not similarly The confidence of in is at most
+because Similarly, Since it follows that
+The slow reduction of the set of candidate frequent
+patterns as
+grows makes the Apriori pruning of Algorithm
+3.1 less attractive. Is there a better way?
+The unit of space is the space needed to hold the feature identifier and
+its associated count, and its size is usually 2-8 bytes, depending on the
+implementation. This is equal to the total space that the time series occupies.
+Obviously, the derivation of frequent
+
+-patterns is still
+an effective way to dramatically reduce the candidate set
+to be examined later because there are usually only a small
+number of features being frequent at a particular position
+but there could be a large number of features appearing in
+the position. This is especially true when the average number
+of features per position is larger than
+. Thus
+our discussion will be focused on how to reduce the search
+effort after the set of frequent
+-patterns,
+, is found.
+Our key idea is based on the notions of max-patterns and
+hit patterns, defined next.is the
+maximal pattern which can be generated fromthe set of
+frequent 1-patterns. For example, if the frequent 1-pattern
+set is , the candidate set is , the candidate max-pattern is . Notice that
+a position in the candidate max-pattern may be allowed to have a disjunction of 
+more tahan one non- letter. For example, if the frequent 1-pattern set is,
+the candidate max-pattern is
+  Let the L-length of the candidate max-pattern,be A subpattern of is hit in a period 
+segment of if it is the maximal subpattern of in For exmaple, for the hit subpattern
+for a period segment is because it it true in and none of its superpatterns and is in .
+The hit set, of a time series is the set of all hit subpatterns of in.
+The usefulness of hit max-patterns is: We can derive the
+complete set of partial periodic patterns, from the frequency
+counts of all the hit maximal subpatterns of. This will
+be detailed below.
+We would like to give an estimate of the buffer size
+needed in computation based on the idea of hit patterns.
+One upper bound of the buffer size is estimated in terms
+of the total number of periods in the size of the hit set in a time series
+should be no bigger than This is obvious since each period segment
+can generate at most one hit subpattern, and a hit subpattern
+may be hit in more than one period segment. The other
+upper bound of the buffer size is estimated in terms of the
+maximal number of patterns that can be generated from the set of frequent 
+1-patterns. Since each hit pattern of is a subpattern of which is generated from
+similar
+to the analysis performed in Algorithm 3.1, the size of
+the set of subpatterns which can be generated from is Therefore,the size of the hit set in 
+a time series, should be no bigger than .Combining both upper bounds, we have 
+Property 3.2 [The bound of hit set] The size of the hit
+set is bounded by the formulawhere a is the total number of periods in , andis the
+set of frequent 1-patterns.
+  Using this formula, we can calculate the bound of the
+maximal buffer size needed in the processing: Given the set
+of frequent 1-patterns,the maximal (additional) buffer
+size needed for registering the counts of all the maximal
+subpatterns of This property is very useful in practice. For example, if
+we found 500 frequent 1-patterns when calculating yearly
+periodic patterns for 100 years, the buffer size needed is
+at most 100; on the other hand, if we found 8 frequent
+1-patterns for calculating weekly periodic patterns for 100
+years, the buffer size needed is at most We can always select the smaller one in estimating 
+the maximal buffer size needed in computation.
+Before turning to our hit-set based algorithm, we examine
+the probability distributions of maximal subpatterns of
+Heuristic 3.1 [Popularity of longer subpatterns] The
+probability distribution of the maximal subpatterns of is usually denser for longer 
+subpatterns (i.e., with the(-length closer to ) than the shorter ones
+This heuristic can be observed in Example 3.1. From the example,
+we have 
+In most
+cases, the existence of a short max-subpattern indicates that
+the nonexistence of some non-)-letter, which reduces the
+chance for the corresponding non-)
+letter patterns to reachhigh confidence. Thus we have the heuristic.
+This heuristics will imply that the number of nodes in
+the tree data structure of the next section is usually small.
+It is also useful for efficient buffer management: In order
+to reduce the overall cost of access, the longer subpatterns
+should be arranged to be more easily accessible (such as put
+in main memory) than the shorter ones.
+We now present a main algorithm for mining partial periodic
+patterns for a given period, which is based on the
+discussions above.
+Algorithm 3.2 [Max-subpattern hit-set] Find all the partial
+periodic patterns for a given period in a time-series based on the max-subpattern 
+hit-set, for a given min conf threshold.
+Method.
+1. Scan  once to find, the set of frequent 1-patterns of period
+?, using Step 1 of Algorithm 3.1. Form the candidate max-pattern,
+G, from
+?2. Scan  once. During the scan, for each period segment,
+if its hit set is nonempty, do the following: add the
+max-subpattern into the hit set buffer (with the associated
+count initialized to 1) if it is not already there; otherwise,
+increase the count of the max-subpattern by one. The hit
+set buffer is implemented in the form of a max-subpattern
+tree, a novel data structure, to be discussed in Section 4.
+3. After the scan, derive the frequent patterns from the hit
+set. We will discuss how to implement the finding of the
+counts of the hit patterns and how to use these counts to
+derive the frequent patterns in Section 4. It turns out that
+both can be done efficiently.
+Analysis.
+Number of scans over the time series. The first step of
+the algorithm needs to scan once. The second step needs
+to scan one more time. Thus the total number of timeseries
+scans is 2, independent of the period
+Space needed. (1) The space needed for Step 1 is the
+same as Algorithm 3.1. After Step 1, we need
+units of space to keep, the set of frequent-patterns in . (2) At
+the second step, suppose there arefrequent-patterns
+in . According to Property 3.2, the total space needed for
+the hit set is at most, where a is the
+total number of periods in .
+In comparison with Algorithm 3.1, Algorithm 3.2 reduces
+the total number of scans of the time series from
+? (the length of the period) to 2, and it also uses much less
+buffer space in the computation in most cases. This can
+also be seen from the following observation: Suppose the
+hit subpattern for a period segment is 
+, which is not
+in the hit set yet. We need only one unit space to register
+the string and its count 1. However, for the Apriori
+technique, the candidate 2-patterns to be generated will be
+3-patterns to be generated will be, and the
+4-patterns will be, plus we have to update the count
+associated with each of them. Thus, it is expected that the
+max-subpattern hit set method may have better performance
+in most cases. We will compare the performance of the two
+algorithms in Section 5.

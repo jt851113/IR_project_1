@@ -1,0 +1,22 @@
+A pre-processing phase takes place on each peer independently
+of other peers. This phase includes typical techniques used in IR,
+such as document parsing, stop-word removal, tokenization, and
+calculation of local TF/IDF scores based on the peer’s local contents
+only. Obviously other IR techniques or weight computation
+schemes can be employed, however in this paper we assume peers
+use TF/IDF. Then each peer runs a clustering algorithm on its local
+documents. Since local document clustering can be a costly process
+for a peer with many documents, it is left to the individual
+peers to decide how often this process should be performed, based
+on the rate of content change, so it does not necessarily have to be
+performed each time the global clustering process occurs.
+In the end of this phase, each peer can provide to the network a
+set of clusters representing its local data. Each cluster c is represented
+by a feature vector F of tuples Fi = (fi,wi, tfi, dfi,Di),
+where each tuple contains a feature/term fi, the term’s weight wi,
+the term frequency tfi and document frequency dfi, and the number
+of documents Di represented by this feature vector. Although
+the set of terms and their respective weights are sufficient to represent
+the term’s importance in the cluster, we keep some extra information
+in each tuple, in order to enable accurate weight computation
+in subsequent phases, as will be shown shortly.

@@ -1,0 +1,63 @@
+We have implemented the fusion architecture in C as a layer
+on top of the Stampede runtime system. All the buffers (input
+buffers, fusion buffer, and prefetch buffer) are implemented
+as Stampede channels. Since Stampede channels hold timestamped
+items, it is a straightforward mapping of the fusion attribute
+to the timestamp associated with a channel item. The
+Status and Command registers of the fusion architecture are implemented
+using the Stampede register abstraction. In addition
+to these Stampede channels and registers that have a direct relationship
+to the elements of the fusion architecture, the implementation
+uses additional Stampede channels and threads. For
+instance, there are prefetch threads that gather items from the
+input buffers, fuse them, and place them in the prefetch buffer
+for potential future requests. This feature allows latency hiding
+but comes at the cost of potentially wasted network bandwidth
+and hence energy (if the fused item is never used). Although
+this feature can be turned off, we leave it on in our evaluation
+and ensure that no such wasteful communication occurs. Similarly,
+there is a Stampede channel that stores requests that are
+currently being processed by the fusion architecture to eliminate
+duplication of work.
+The createFC call from an application thread results in
+the creation of all the above Stampede abstractions in the address
+space where the creating thread resides. An application
+can create any number of fusion channels (modulo system limits)
+in any of the nodes of the distributed system. An attachFC
+call from an application thread results in the application
+thread being connected to the specified fusion channel for
+getting fused data items. For efficient implementation of the
+getFCItem call, a pool of worker threads is created in each
+node of the distributed system at application startup. These
+worker threads are used to satisfy getFCItem requests for
+fusion channels created at this node. Since data may have to
+be fetched from a number of input buffers to satisfy the get-
+FCItem request, one worker thread is assigned to each input
+buffer to increase the parallelism for fetching the data items.
+Once fetching is complete, the worker thread rejoins the pool
+of free threads. The worker thread to fetch the last of the requisite
+input items invokes the fusion function and puts the resulting
+fused item in the fusion buffer. This implementation is
+performance-conscious in two ways: first, there is no duplication
+of fusion work for the same fused item from multiple requesters;
+second, fusion work itself is parallelized at each node
+through the worker threads.
+The duration to wait on an input buffer for a data item to
+be available is specified via a policy flag to the getFCItem.
+For example, if try for time delta policy is specified, then the
+worker thread will wait for time delta on the input buffer. On
+the other hand, if block policy is specified, the worker thread
+will wait on the input buffer until the data item is available.
+The implementation also supports partial fusion in case some
+of the worker threads return with an error code during fetch of
+an item. Taking care of failures through partial fusion is a very
+crucial component of the module since failures and delays can
+be common in WASN.
+As we mentioned earlier, Stampede does automatic reclamation
+of storage space of data items in channels. Stampede
+garbage collection uses a global lower bound for timestamp
+values of interest to any of the application threads (which is derived
+from a per-thread state variable called thread virtual time).
+Our fusion architecture implementation leverages this feature
+for cleaning up the storage space in its internal data structures
+(which are built using Stampede abstractions).

@@ -1,0 +1,129 @@
+3.2 Segment-based OIS Pruning To reduce the number of
+singular patterns for collecting the MIG counts, we introduce a
+pruning step OIS based on a concept to score consecutive periodic
+appearances of an event based on generalized information
+gain. OIS determines for each event, what are the likely periods
+(or equivalently for each period, what are the likely events that
+will have the period). For each likely period  of event , there
+are  possible singular patterns, e.g., for   , the three singular
+patterns are   ,   , and   . We then use the
+MIG counters to screen these singular patterns. As we shall see
+the OIS storage requirement is   
+ which is substantially
+lower than that of MIG counters and the OIS step can
+greatly reduce the candidates for MIG counters. Consider the
+occurrence of event  in an event sequence       .
+Intuitively,  would generate the most information gain if it repeats
+itself perfectly at a certain period in a subsequence of .
+If  participates in some pattern of period , each occurrence
+of  could contribute to the generalized information gain of the
+pattern by an amount  in the optimistic scenario. However,
+in most case, the net information gain that  can contribute to
+a pattern is much smaller because (1) some information loss
+would incur due to the absence of  at some position; (2) some
+scattered/random occurrence of  has to be matched with the
+eternal event *. For example, the circled position in Figure 4
+is considered as an absence of  for pattern   . On the
+other hand, the third occurrences of  have to be matched with
+the eternal event for pattern   . It is obvious that all of
+these suboptimal scenarios would weaken the net information
+gain that  may contribute to any pattern. Since it is very complicated
+to track all of them, we choose to consider only one
+suboptimal scenario for estimating the information loss at this
+moment: the distance between two consecutive occurrences is
+greater than the length of the period. Let    be the set
+of patterns of period  which contains . We employ the following
+disciplines to estimate the OIS that an event  might
+contribute to any pattern in   .
+1. Each occurrence of  is considered to be a positive
+contribution by amount .
+2. When the distance between any two consecutive occurrences
+is greater than , information loss must incur due
+to the absence of . In fact, there are at least  	
+ 
+absences, one for each segment following the previous occurrence
+of . Each absence would cause an information
+loss of .
+Figure 5 shows the process to estimate the OIS that event 
+could contribute to any pattern of period 3. Each occurrence introduces
+a generalized information gain. There are three places
+where the distances between two consecutive occurrences are 4,
+5, and 7, respectively. Information loss of  incurs for each
+period in these subsequence(s) deficient in .
+These information losses and gains are essentially two
+lists of real numbers, namely    and    in Figure
+5(b). At the th occurrence of , we can easily compute
+the the optimal net information surplus  could contribute
+in any event subsequence ending at that position, denoted by
+  . Let    be the maximum net information
+aggregation of any subsequences ending exactly at the th occurrence
+of . We have
+In the formula for     , 	    
+     represents the contribution from subsequence
+ending at  and      represents the contribution from
+  th position. Note that since      captures the
+potential information loss in the portion of subsequence prior to
+th position and should not affect the subsequence starting
+at th position,    and    are treated
+differently in the above formula. A linear algorithm would compute
+all  values as illustrated in Figure 5(b). Note that the
+OIS is an optimistic estimation and only gives an upperbound
+of the generalized information gain that an event  would contribute
+to any pattern. It is obvious that event  does not exhibit
+strong pattern in Figure 5(a). However, the above OIS pruning
+method overestimates the generalized information gain of   in
+Figure 5(b). Therefore, we propose another more sophisticated,
+but more effective OIS pruning method at the end of this section.
+MIG Counter Generation after OIS Pruning After obtaining
+OIS values, for each period length , we want to find which
+event is likely to appear in a valid pattern of period . Let 
+denote the set of such events. By definition, any pattern of
+period  may contain at most  different events. The problem
+can be converted to testing whether the combined OIS of a
+set of  events may exceed the generalized information gain
+threshold  at some position in the sequence. Even though
+there are totally    
+  different event combinations, it is
+not necessary to examine all of them. Conceptually, each event
+in a valid pattern must play a supporting role in accumulating
+generalized information gain. Therefore, we only need to
+consider the set of events with positive OIS at any time. (Note
+that this set may vary over time.) As we mentioned before, the
+event sequence can be treated as a list of segments of length
+ as shown in Figure 6. Each segment might serve as the last
+segment of a valid subsequence for some pattern.  need to
+be updated at the end of each segment. Let    be the set
+of events with positive OIS at the end of the  th segment, i.e.,
+         ! 	,  is the last occurrence
+of  before the end of the  th segment . For example,  and
+ are the only events with positive OIS value in segment 3,
+i.e.,     . Since the OIS value of an event  is
+updated for each occurrence of , it might not be updated in
+every segment and might also be updated multiple times within
+a segment. In any case, we always use the most recent value
+for the computation. In Figure 6, the OIS value of  is not
+updated in segment 4 and is updated twice in segment 5. Then
+the OIS value that we use for these two segments are 1.74 and
+2.61, respectively.
+For each segment  , let    be the set of events that
+may appear in a pattern whose valid subsequence ends at the
+ th segment.    is essentially a subset of    and can be
+computed easily9. After we calculate    for all segments,
+the set  can be trivially obtained by taking the union, i.e.,
+  
+   . Figure 6 shows the process to compute the
+candidate events for period . Note that a single scan of the
+event sequence is sufficient to compute the candidate events for
+all possible periods. For any given period , if the candidate
+event set  is empty, then no pattern of period  would be able
+to meet the required generalized information gain. Once 
+is determined, for each event in , we proceed to determine
+the singular pattern candidates with period  using the MIG
+counters. A counter is initialized for each event   
+at each position in the period. There are totally    
+counters where    is the cardinality of . For example,
+     for period . There are 3 different positions
+an event may occupy in a period. In turn, 3 MIG counters are
+initialized for each event, one for each position as illustrated in
+Figure 7(a). The procedure presented in the previous subsection
+is then carried out to collect all these MIG counters.

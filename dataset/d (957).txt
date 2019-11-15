@@ -1,0 +1,7 @@
+We now present two performance studies to motivate the
+architecture given above. The first study, given in this section,
+covers the performance of Fjords. The second study,
+given in Section 5, examines the interaction of sensor power
+consumption and the sensor proxy and demonstrates several
+approaches to traffic sensor programs which can dramatically
+alter sensor lifetime.

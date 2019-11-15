@@ -1,0 +1,64 @@
+The ARC algorithm of Chakrabarti et al [6] also extends
+Kleinberg's algorithm with textual analysis. ARC
+computes a distance-2 neighborhood graph and weights
+edges. The weight of each edge is based on the match
+between the query terms and the text surrounding the
+hyperlink in the source document. Regulation is similar
+to their approach but there are three dierences: (i) We
+use an expanded query instead of the original query. (ii)
+The relevance is computed using the whole document,
+not just a window surrounding the hyperlink. (iii) The
+weight of an edge is either the relevance of the source
+document or the target document depending on whether
+authority or hub scores are being computed.
+Connectivity analysis ofWeb hyperlinks resembles the
+work on citation and co-citation analysis in the area of
+bibliometrics. This is used to discover inuential publications
+and authors with similar interests within the articles
+of a certain eld of study. See [22] for a discussion on
+applying bibliometrics to the World Wide Web. Citation
+analysis has been criticized (see [8]) as a source of systematic
+bias, since members of cliquish communities tend to
+out of deference rather than relevance. On the Web this
+is less of a problem since the community is diverse and
+distributed, and the right to publish cannot be restricted
+by cliques. Indeed, the importance of considering referential
+statistics in document selection is increased since
+there is no quality control on the Web.
+Others have used inter-document linkage to compute
+useful data on the Web as well. Pirolli et al [26] run a
+computation on a inter-document matrix, with weights
+derived from linkage, content similarity and usage data,
+to identify usable structures. PageRank [25] is a ranking
+algorithm for Web documents that uses connectivity to
+compute a topic-independent score for each document.
+There has been much work in IR on supporting topic
+exploration. This is typically done by letting users browse
+topic hierarchies that are either predetermined (e.g., Cata-
+Cone [19]), or dynamically constructed by clustering
+based on user selection (e.g., Scatter/Gather [10], Paraphrase
+[3]). Another approach to topic exploration is
+interactive query expansion where new terms are suggested
+to help focus the query (e.g., [24, 15]). On the
+Web there are examples of topic hierarchies (e.g., Yahoo!
+[30, 16]), dynamic clustering (AltaVista's Live-
+Topics [5]) and query expansion (as in Excite [13]). The
+goal of topic exploration is to locate a set of documents
+dealing with the user's topic of interest, whereas topic
+distillation assumes such a set and nds quality documents
+within it. Hence, topic exploration may be viewed
+as a powerful preliminary step to topic distillation. This
+was suggested by Hearst in [18], who observed that Kleinberg's
+algorithm does not bring forth documents that
+deal with less popular interpretations of the query. She
+suggests rst clustering the documents to separate out
+the subtopics and then analyzing the induced subgraphs
+individually. Another option would be to modify the algorithm
+so that within-cluster edges have a higher weight
+than cross-cluster edges. This would allow nodes belonging
+to smaller, less developed topics to be supported by
+nodes belonging to other related topics.
+Finally, our approach to evaluating precision at a
+xed number of result documents based on user relevance
+ratings seems typical of ranking evaluations done
+on the Web (e.g., search service comparisons [7, 11]).

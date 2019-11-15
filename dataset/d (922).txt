@@ -1,0 +1,15 @@
+In this section we report a performance study which
+compares the performance of the periodicity mining algorithms
+proposed in this paper. In particular, we give a performance
+comparison between the single-period Apriori
+algorithm (Algorithm 3.1) (or simply called Apriori), and
+the max-subpattern hit-set algorithm (Algorithm 3.2) (or
+simply hit-set) applied to a single period.
+This comparison indicates that there is a significant
+gain in efficiency by max-subpattern hit-set over Apriori.
+Since there is more gain when applied to multiple periods
+by using max-subpattern hit-set, it is clear that
+max-subpattern hit-set is the winner.
+The performance study is conducted on a Pentium 166
+machine with 64 megabytes main memory, running inWindows/
+NT. The program is written in Microsoft/VisualC++.

@@ -1,0 +1,7 @@
+Definition 2.12 A pattern is a singular
+pattern if only one position is instantiated.
+
+Intuitively, a singular pattern of periodm consists one regular
+event and eternal events. The event may occur at one of
+the positions. For example, and
+are all singular patterns of period 3 involving event.

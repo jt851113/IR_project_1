@@ -1,0 +1,46 @@
+Considerable work has been developed on data stream management,
+processing and mining. Hence, this section is by no means a complete list,
+but only an overview of recent research on the issue.
+Data stream management has received much attention of the database
+community because the technology developed over traditional relational
+databases does not meet the requirements of data stream applications. To put it
+briefly, a data stream is a continuous, potentially unbounded sequence of events
+(or data items) which arrive on-line. Moreover, as opposed to conventional
+databases, data streams usually are not stored. Thus, managing data streams
+requires, at least, support for continuous, real-time processing of events and for
+continuous queries.
+Interesting surveys on data stream management are presented in
+Reference) and). The authors discuss characteristics of a data stream
+model, review some common applications and give an overview of studies
+on continuous query processing, query languages, streaming operators and
+streaming algorithms. More recent researches on data stream management
+include continuous query processing and optimization;) approximation
+queries;) window aggregates;) indexing) and punctuation.)
+Precise denotation and representation of data stream, based on reconstitution
+functions, are discussed in Reference).
+Research on data streams has also come up with Data Stream
+Management Systems (DSMS), such as Aurora,1) devised primarily to manage
+data streams in monitoring applications; NiagaraCQ,) developed to retrieve,
+query and monitor XML data; OpenCQ,) a continuous query system developed
+for Internet-scale monitoring; STREAM,) a general-purpose Data Stream
+Management System (DSMS) focusing on query processing of continuous, rapid,
+time-varying data streams; TelegraphCQ,) designed to meet requirements of
+continuous adaptive queries over large streams.
+Recent results in the stream mining field include burst detection,)
+clustering,) classification,) frequent items identification, maintenance
+and processing), and stream distance evaluation.)
+Recent techniques to discover changes in trends of evolving data)
+are closely related to the main issue in this work. In particular, the
+techniques proposed in Reference) focus on identifying changes on relative
+data concentrations at distinct spacial locations over time, thus using velocity
+density estimation to create temporal and spacial velocity profiles. This profiles
+provide mechanisms to analyze the nature of data changes and to diagnose
+trends in specific spatial locations. The work in Reference) is focused on
+detecting changes in the distribution that generates the data. Thus, the authors
+propose distance measures which can capture statistically significant differences
+between the probability distributions of two samples of the stream (two-window
+approach). In this paper, we focus on tracking evolving behavior based mainly
+on changes in the correlations between the attributes of the data stream. Our
+technique provides a continuous measure of the real amount of information
+represented by the data over time. This measure can be particularly useful
+to process high-dimensional data streams.

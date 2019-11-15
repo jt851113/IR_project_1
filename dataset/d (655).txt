@@ -1,0 +1,29 @@
+In situations where computational resources are
+severely constrained, it may be desirable to re-
+duce the cost of performing insertion operations
+with summation sketches. We now briey men-
+tion some tradeos in the computational time at the
+cost of increased communication and decreased accu-
+racy. While this is unlikely to be desirable in sensor
+networks, given the high power costs of commu-
+nication relative to computation, it may be desir-
+able in other settings where there are large numbers
+of items per node.
+Suppose that the largest value being inserted is
+bounded by yx. Insertions with the algorithm described
+already take O(x2 log2 y) time. We can instead use x
+dierent summation sketches, each corresponding to a
+dierent digit of the ci's using radix y. To add a ci
+value, each digit of ci is inserted into the correspond-
+ing sketch, taking expected O(x log2 y) time, and esti-
+mates are made by summing the counting sketch esti-
+mates with the appropriate weights. The accuracy of
+this approach is essentially the same as before, and the
+increase in space is bounded by a factor of x.
+An alternative approach for reducing the space over-
+head is to replace FM sketches with the very recently
+developed \loglog" sketches of [5]. The reduction of
+Section 3.2 can be applied similarly, again with small
+eects on accuracy. In parallel with our work, the
+sketches of [1] were adapted to summations in [17], but
+their methods involve both logarithms and exponenti-

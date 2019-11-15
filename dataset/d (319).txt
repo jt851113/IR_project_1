@@ -1,0 +1,51 @@
+We have implemented the STAR framework, and STARs
+and cost models for wrappers of several data sources, including
+DB2, Oracle, ObjectStore, an image processing
+system called QBIC [N
+
+93], two Lotus Notes databases,
+and two Web sources. Our implementation extends the
+DB2 CS V2 optimizer with the STARs and POPs described
+above. During plan enumeration, the RepoAccess STAR
+is invoked once for each collection in the query, and invokes
+the appropriate wrapper’s plan access STAR. All
+of Garlic’s join STARs are applied in every step of the
+second phase of plan enumeration to ensure that all possibilities
+are considered. However, the conditions on the
+RepoJoin and BindJoin rules ensure that they will return
+plans only when such plans are possible.
+In the current system, all STARs and POPs are implemented
+in C++. An alternative would be to implement
+STARs as declarative rules and interpret the STARs as proposed
+in [LFL88]. This might simplify the implementation
+of STARs, especially for wrapper writers; hard-coding all
+STARs in C++, however, provides significantly better performance
+during plan enumeration.
+Our approach to optimization has several key advantages.
+It is a simple extension of traditional optimizer technology,
+allowing us to both enumerate a full set of plans and
+to take advantage of any and all advances in optimization
+and execution strategies. Since we enumerate all possible
+plans, we are guaranteed to find the optimal plan as defined
+by our cost model; as with all optimizers, however, this may
+not be the actual best execution plan if the cost model used
+by the optimizer is not sufficiently accurate. The extensions
+we make are isolated and few in number, consisting of one
+generic PushDown POP and a few generic STARs.
+As a further consequence of this design, our system is
+extremely flexible. Wrappers for new data sources can be
+added at any time without considering the capabilities of
+other wrappers, and without changing the optimizer code.
+Because Garlic does not have to understand the wrapper
+plans, relying only on a fixed set of properties to describe
+them, a wide range of data sources can be wrapped. These
+sources may differ in data model and vary widely in query
+processing abilities, yet no special properties have been
+added to deal with heterogeneity.
+Finally, STARs are a powerful construct for a distributed
+system. In addition to standard relational function, Garlic’s
+STARs can handle approximate search, replicated collections,
+and gateways [K
+
+96]. An example involving approximate
+search is given in Section 4.

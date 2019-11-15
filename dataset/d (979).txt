@@ -1,0 +1,48 @@
+Directed diffusion [12] is an approach to attribute-based data communication for wireless sensor networks. The goal
+of directed diffusion is to establish efficient communication between sources and sinks. Directed diffusion consists
+of several elements. Data is named using attribute-value pairs. A sensing task (or a subtask thereof) is disseminated
+throughout the sensor network as an interest for named data. This dissemination sets up gradients within the network
+designed to “draw” events (i.e., data matching the interest). Events start flowing towards the originators of interests
+along multiple paths. The sensor network reinforces one, or a small number of these paths. Figure 2 illustrates these
+elements.
+To describe the elements of diffusion, we take the simple example of a sensor network designed for tracking
+animals in a wilderness refuge. Suppose that a user in this network would like to track the movement of animals
+in some remote sub-region of the park. In directed diffusion, this tracking task represents an interest. An interest
+is a list of attribute-value pairs that describe a task using some task-specific naming scheme. Intuitively, attributes
+describe the data that is desired by specifying sensor types and some geographic region. They are then used to
+identify and contact all relevant sensors. We use the term sink to denote the node that originates an interest.
+The interest is propagated from neighbor-to-neighbor towards sensor nodes in the specified region. A key feature
+of directed diffusion is that every sensor node is task-aware—by this we mean that nodes store and interpret interests,
+rather than simply forwarding them along. In our example, each sensor node that receives an interest remembers
+which neighbor or neighbors sent it an interest. To each such neighbor, it sets up a gradient. A gradient represents
+both the direction towards which data matching an interest flows, and the status of that demand (whether it is active
+or inactive and possibly the desired update rate). Subsequent to setting up a gradient, the sensor node redistributes
+the interest to its neighbors. To do this, the node floods the interest to all its neighbors, or send only to a subset of
+neighbors in the direction of the specified region.
+When a sensor node that matches the interest is found, it activates its local sensors to begin collecting data.
+(Prior to this, the node’s sensing circuitry operates in a low-power mode). The sensor node then generates data
+messages matching the interest. In directed diffusion, data is also represented using an attribute-value pair based
+naming scheme. A sensor node that generates such an event description is termed a source.
+The source sends the data message to each of those neighbors for which it has gradients for the matching interest.A node that receives this message checks if it has received the identical message before—for this purpose, each node
+maintains a small cache of recently received data items. This cache serves to avoid duplicates, prevent loops, and
+can be used to preferentially forward interests. This is a key capability of directed diffusion. If an identical data
+item exists in the cache, the node drops the message. The node also triggers application-specific filters that do more
+sophisticated processing. Application-specific, in-network processing is another key feature of diffusion; in-network
+aggregation can reduce data transferred across the network, and thereby conserve energy. If this data item does not
+exist in its cache, the node determines the matching interest, and resends the data along the gradient towards the
+neighbor.
+If the sink has multiple neighbors, it chooses to receive subsequent data messages for the same interest from a
+preferred neighbor (for example, the one which delivered the first copy of the data message). To do this, the sink
+reinforces the preferred neighbor, which, in turn reinforces its preferred upstream neighbor, and so on. Finally, if a
+node on this preferred path fails, sensor nodes can attempt to locally repair the failed path.
+Even this simplified description points out several key features of diffusion, and how it differs from traditional
+networking. First, diffusion is data-centric; all communication in a diffusion-based sensor network uses interests to
+specify named data. Second, all communication in diffusion is neighbor-to-neighbor or hop-by-hop, unlike traditional
+data networks with end-to-end communication. Every node is an “end” in a sensor network. A corollary to
+this previous observation is that there are no “routers” in a sensor network. Each sensor node can interpret data and
+interest messages. This design choice is justified by the task-specificity of sensor networks. Sensor networks are not
+general-purpose communication networks. Third, nodes do not need to have globally unique identifiers or globally
+unique addresses. Nodes, however, do need to distinguish between neighbors. Finally, because individual nodes can
+cache, aggregate, and more generally, process messages, it is possible to perform coordinated sensing close to the
+sensed phenomena. It is also possible to perform in-network data reduction, thereby resulting in significant energy
+savings.

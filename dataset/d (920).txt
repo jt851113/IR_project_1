@@ -1,0 +1,85 @@
+Mining partial periodicity for a given period covers a
+good set of applications since people often like to mine periodic
+patterns for natural periods, such as annually, quarterly,
+monthly, weekly, daily, or hourly. However, certain patterns
+may appear at some unexpected periods, such as every 11
+years, or every 14 hours. It is interesting to provide facilities
+to mine periodicity for a range of periods.
+To extend partial periodicity mining from one period to
+multiple periods, one might wish to extend the idea of Apriori
+to computing partial periodicity among different periods,
+that is, to use the patterns of small periods
+as filters for candidate patterns of periods of the form?
+for an integer. This will work if all frequent patterns
+of period are frequent patterns of period. Unfortunately,
+this is not the case. For example, for the time series. Suppose 
+the confidence threshold is. If we use from partial periodic 
+patterns of periodas filter for candidate partial periodic patterns 
+of period, we will miss the partial periodic pattern.
+Given that we cannot extend the Apriori “trick” to multiple
+periods, one obvious way to mine partial periodic patterns
+for a range of periods is to repeatedly apply the singleperiod
+algorithm for each period in the range.
+Algorithm 3.3 [Looping over single period computation]
+Find all the partial periodic patterns for a set of periods
+in a given range of interest,, in the time-series ,with the given min 
+conf threshold.Method.
+1. for each periodin the range of interest (i.e.,
+?), apply Algorithm 3.2 (“max-subpattern hitset”) on period.
+Analysis.
+Number of scans over the time series. Since each period
+will take 2 scans of the time series, the total number of scans
+of the time series is. Space needed. For computing partial periodicity 
+for periods from to, the space required is basically the sum of
+space for each. Notice that the space required for initial
+Step 1 computation is still in the worst case since
+the space once used in computation for period, can be
+reinitialized and reused for computing other periods. But
+we need in total units of space to keep different
+sets of frequent 1-patterns, where is the set of frequent
+-patterns in derived for period. Similarly, it takes at most
+units of space to compute all, where is the total number of periods
+in. Algorithm 3.3 provides an iterative method for mining
+partial periodicity for multiple periods. However, when the
+number of periods is large, we still need a good number
+of scans to mine periodicity for multiple periods. An improvement
+to the above method is to maximally explore the
+mining of periodicity for multiple periods in the same scan,
+which leads to the shared mining of periodicity for multiple
+periods, as illustrated below.
+Algorithm 3.4 [Shared mining of multiple periods]
+Shared mining of all the partial periodic patterns for a set
+of periods in a given range of interest, in timeseries, with the 
+given min conf threshold. Method.
+1. Scan once, for all periods in the range of interest, do
+the same as Step 1 in Algorithm 3.2.
+That is, for all periods in the range of interest (i.e.,), find, 
+the set of frequent 1-patterns of
+period, using the same Step 1 as in Algorithm 3.1.For each set of 
+frequent 1-patterns of period, form the candidate max-pattern,
+from.
+2. Scan once, for all periods in the range of interest, do the same 
+as Step 2 in Algorithm 3.2. A similar process which will not be 
+explained in detail.
+Analysis.
+Number of scans over the time series. The first step of
+the algorithm needs to scan once. The second step needs
+to scan one more time. Thus the total number of timeseries
+scans is 2, independent of the period.
+Space needed. The total space required in the worst case
+is same as in Algorithm 3.3.
+Algorithm 3.4 explores shared processing at mining partial
+periodicity for multiple periods. The advantage of the
+method is that we only need two scans of time series for
+mining partial periodicity for multiple periods. The overhead
+of the method is that although it reduces the number
+of scans to 2, it will require more space in the processing
+of each scan than the multiple scan method because it
+needs to register the corresponding counts for each period
+(for). However, since the shared features will
+share the space as well (with counts incremented), and there
+should be many shared features in periodicity search (otherwise,
+why mining periodicity?), the space required will
+hardly approach the worst case. Therefore, it should still be
+an efficient method in many cases for mining partial periodicity
+with multiple periods.

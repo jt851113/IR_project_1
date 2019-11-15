@@ -1,0 +1,12 @@
+Through a series of experiments, we have shown that
+the interleaved algorithm is significantly better than the
+sequential algorithm. The interleaved algorithm performs
+at least as well, and often times, significantly better than the
+sequential algorithm. Performance benefits range from 5%,
+when support is very high, to several hundred percent, when
+large itemset sizes are over 5. (Much of this overhead comes
+from the increased I/O costs that the sequential algorithm
+incurs.) Further, the interleaved algorithm scales nicely
+with increasing data. Thus, one can conclusively say that
+the interleaved algorithm and the pruning ideas behind it
+provide significant gains in performance.

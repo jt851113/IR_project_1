@@ -1,0 +1,24 @@
+The spatial velocity profile provides an idea of the
+significant shifts in the data at a fixed point in time. This
+can easily be extended to create animations by providing
+multiple frames at different moments in time. In order to
+provide the animations, we generate the spatial profiles in
+overlapping time windows. The number of overlapping
+frames in a given time window is denoted by ko. Then,
+successive frames are generated corresponding to the data
+arriving in the times . Since there
+are ko overlapping frames at a given moment in time, we
+need to maintain ko sets of velocity densities for each grid
+point. Thus, the time and space requirements for creating
+the animation are a factor of ko greater than the requirements
+for presenting a fixed spatial or temporal profile. The
+use of larger values of ko is more computationally
+expensive, but provides the user with a smoother view of
+the occurring changes, since the successive frames are
+presented at time intervals of . This provides the user a
+dynamic view of the changes in the data as they occur. An
+example of the successive frames in an animation will be
+presented in the empirical section in order to illustrate the
+dramatic affects of this method. We note that the animations
+can be performed not only with spatial velocity profiles, but
+also with temporal velocity profiles.

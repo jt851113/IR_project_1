@@ -1,0 +1,3 @@
+Simple linear trajectories for the objects are assumed. It is assumed the objects travel at an initial velocity taken from a uniform distribution centered on zero and extending to some maximum Vmax. Each object has a 4-element state vector x consisting of position and velocity with evolves at each time interval ζ according to the following model:
+w(tk) is a white noise sequence with zero mean and covariance Q.
+T is the time between two successive intervals.

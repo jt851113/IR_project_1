@@ -1,0 +1,12 @@
+Detecting bursts in data streams is an important and challenging
+task. Due to the complexity of this task, usually burst detection
+cannot be formulated using standard query operators. Therefore,
+we show how to integrate burst detection for stationary as well as
+non-stationary data into query formulation and processing, from
+the language level to the operator level. Afterwards, we present
+fundamentals of threshold-based burst detection. We focus on the
+applicability of time series forecasting techniques in order to dynamically
+identify suitable thresholds for stream data containing
+arbitrary trends and periods. The proposed approach is evaluated
+with respect to quality and performance on synthetic and real-world
+sensor data using a full-fledged DSMS.

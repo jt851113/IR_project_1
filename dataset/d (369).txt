@@ -1,0 +1,15 @@
+The last stage of the TD-DES scheduling algorithm involves
+determining the actual sequence of the time slots allocated
+for the next iteration. At this point, the number
+and ordering of events in downstream schedule is complete,
+as well as number of slots in upstream schedule. From these
+two schedules, the sequencer must derive a set of ordered
+slots for the next iteration. There are two choices here: either
+place upstream and downstream slots separately side
+by side (a.k.a. clustered) or interleave them.
+In the clustered version, the ordered downstream set is
+placed unbroken, followed immediately by ordered upstream
+set. These are lastly followed by some blank time slots. Additionally,
+a downstream control event is placed at the beginning
+of each iteration. The details of interleaving are
+skipped due to space limitations

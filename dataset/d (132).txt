@@ -1,0 +1,13 @@
+In order to verify the security property, we must con-
+sider the protocol with respect to a particular threat model.
+We assume the verier nodes are all trusted, and they can
+communicate securely amongst themselves. In contrast, the
+prover p might behave maliciously, and we will consider an
+adversarial prover consisting of multiple colluding nodes, ar-
+bitrary computing power, and secure RF (speed of light)
+communication amongst its own nodes as well as sound gen-
+eration and detection capability on each of its nodes.
+Lastly, by denition, the adversary must not actually have
+any presence in the region R. Otherwise, it would be able to
+make a legitimate claim and would not need to attack the
+protocol.

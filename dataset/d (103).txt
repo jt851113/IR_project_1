@@ -1,0 +1,28 @@
+The second scenario is a situation where digital libraries
+specialised in various subdisciplines are joined together. In
+order to evaluate this, two test collections were used, Ohsumed
+and the German GIRT-4 collection. In both cases, documents
+have classes from a thesaurus-like resource assigned
+to them which are identified with peers, i.e. a peer shares all
+documents that are classified under the corresponding category.
+In case of Ohsumed, the classes are so-called MeSH
+terms (Medical Subject Headings), in case of GIRT controlled
+terms from a thesaurus for the social sciences.
+In the Ohsumed collection, documents have an average
+of 10.6 MeSH terms assigned to them (standard deviation is
+4.3), in GIRT documents have an average of 10.15 controlled
+terms (standard deviation 3.99). The distribution of peer
+sizes – when identifying MeSH terms or controlled terms
+with peers – again resembles a power law in both cases.
+In Ohsumed, there is a total of 14,623 MeSH terms in the
+collection, of which only 7,124 havemore than 40 documents.
+In GIRT, we have 7,151 distinct controlled terms, with 3,847
+having more than 40 documents.
+This means that, in both cases, a significant number of
+peers will share only few documents. This might seem unrealistic
+for a digital library scenario. On second thought,
+however, there are also reasons for assuming the contrary:
+if we allowed digital libraries to be linked in a peer-to-peer
+fashion, it is not unlikely that their sizes would evolve into a
+power-law distribution, a phenomenon which is almost ubiquitous
+in real-life distributions.

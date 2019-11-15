@@ -1,0 +1,6 @@
+A model is needed for the false events at the sensor nodes. These
+could be caused by interference from objects not of interest,
+background phenomena, and faulty sensors. A simple model
+incorporating many of these phenomena would be a discrete
+Bernoulli i.i.d. random process at each node with probability of
+occurrence p at each time interval ζ of the simulation.

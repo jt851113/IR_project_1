@@ -1,0 +1,99 @@
+The large scale deployment of tiny, low power networks
+of radio-driven sensors, raises the need for power sensitive
+techniques for querying the data they collect.
+Our solution addresses the low level infrastructure issues
+in a sensor stream query processor via two techniques: First,
+the Fjords architecture combines proxies, non-blocking operators
+and conventional query plans. This combination allows
+streaming data to be pushed through operators that pull
+from traditional data sources, efficiently merging streams
+and local data as samples flow past and enabling sharing
+of work between queries. Second, sensor proxies serve
+as intermediaries between sensors and query plans, using
+sensors to facilitate query processing while being sensitive
+to their power, processor, and communications limitations.
+These solutions are an important part of the Telegraph
+Query Processing System, which seeks to extend traditional
+query processing capabilities to a variety of nontraditional
+data sources. Telegraph, when enhanced with
+our sensor stream processing techniques, enables query processing
+over networks of wireless, battery powered devices
+that can not be queried via traditional means.
+References
+[1] M. Altinel and M. Franklin. Efficient filtering of XML documents for
+selective dissemination of information. In VLDB, September 2000.
+[2] Atmel Corporation. Atmel 8bit AVR microcontroller datasheet.
+http://www.atmel.com/atmel/acrobat/doc1041.pdf.
+[3] R. Avnur and J. M. Hellerstein. Eddies: Continuously adaptive query
+processing. In ACM SIGMOD, pages 261–272, Dallas, TX, May
+2000.
+[4] California Highway Patrol. Traffic incident information page.
+http://cad.chp.ca.gov/.
+[5] J. Chen, D. DeWitt, F. Tian, and Y. Wang. NiagaraCQ: A scalable
+continuous query system for internet databases. In ACM SIGMOD,
+2000.
+[6] J. Elson and D. Estrin. Time synchronization for wireless sensor networks.
+In Proceedings of the 2001 International Parallel and Distributed
+Processing Symposium (IPDPS), Workshop on Parallel and
+Distributed Computing Issues in Wireless and Mobile Computing,
+April 2001.
+[7] J. Gehrke, F. Korn, and D. Srivastava. On computing correlated aggregates
+over continual data streams. In ACM SIGMOD, Santa Barbara,
+CA, May 2001.
+[8] G. Graefe. Query evaluation techniques for large databases. ACM
+Computing Surveys, 25(2):73–170, 1993.
+[9] P. Hass and J. Hellerstein. Ripple joins for online aggregation. In
+ACM SIGMOD, pages 287–298, Philadelphia, PA, June 1999.
+[10] J. Hellerstein, P. Hass, and H. Wang. Online aggregation. In ACM
+SIGMOD, pages 171–182, Tucson, AZ, May 1997.
+[11] J. M. Hellerstein, R. Avnur, A. Chou, C. Hidber, C. Olston, V. Raman,
+T. Roth, and P. J. Haas. Interactive data analysis with CONTROL.
+IEEE Computer, 32(8), August 1999.
+[12] J. Hill, R. Szewczyk, A. Woo, S. Hollar, and D. C. K. Pister. System
+architecture directions for networked sensors. In ASPLOS, November
+2000.
+[13] C. Intanagonwiwat, R. Govindan, , and D. Estrin. Directed diffusion:
+A scalable and robust communication paradigm for sensor networks.
+In MobiCOM, Boston, MA, August 2000.
+[14] Z. G. Ives, D. Florescu, M. Friedman, A. Levy, and D. S. Weld. An
+adaptive query execution system for data integration. In ACM SIGMOD,
+1999.
+[15] J. M. Kahn, R. H. Katz, and K. S. J. Pister. Mobile networking for
+smart dust. In MobiCOM, Seattle, WA, August 1999.
+[16] S. Madden, M. Shah, J. M. Hellerstein, and V. Raman. Continuously
+adaptive continuous queries over streams. Submitted for Publication,
+2001.
+[17] D. S. Parker. Stream databases. Technical report, UCLA, 1989. Final
+Report for NSF Grant IRI 89-17907.
+[18] P.Bonnet, J.Gehrke, and P.Seshadri. Towards sensor database systems.
+In 2nd International Conference on Mobile Data Management,
+Hong Kong, January 2001.
+[19] G. Pottie and W. Kaiser. Wireless sensor networks. Communications
+of the ACM, 43(5):51 – 58, May 2000.
+[20] N. B. Priyantha, A. Chakraborty, and H. Balakrishnan. The cricket
+location-support system. In MobiCOM, August 2000.
+[21] RFM Corporation. RFM TR1000 Datasheet.
+http://www.rfm.com/products/data/tr1000.pdf.
+[22] P. Seshadri, M. Livny, and R. Ramakrishnan. The design and implementation
+of a sequence database systems. In VLDB, Mumbai, India,
+September 1996.
+[23] M. Shah, S. Madden, M. Franklin, and J. M. Hellerstein. Java support
+for data intensive systems. SIGMOD Record, December 2001. To
+Appear.
+[24] J. Shanmugasundaram, K. Tufte, D. DeWitt, J. Naughton, and
+D. Maier. Architecting a network query engine for producing partial
+results. In WebDB, May 2000.
+[25] M. Sullivan and A. Heybey. Tribeca: A system for managing large
+databases of network traffic. In USENIX, New Orleans, LA, June
+1998.
+[26] T. Urhan and M. Franklin. XJoin: A reactively-scheduled pipelined
+join operator. IEEE Data Engineering Bulletin, pages 27–33, 2000
+2000.
+[27] M. Welsh, S. D. Gribble, E. A. Brewer, and D. Culler.
+A design framework for highly concurrent systems. Technical
+Report UCB/CSD-00-1108, UC Berkeley, April 2000.
+http://www.cs.berkeley.edu/ mdw/papers/events.pdf.
+[28] A. Wilschut and P. Apers. Dataflow query execution in a parallel
+main-memory environment. In Proc. of the International Conference
+on Parallel and Distributed Information Systems (PDIS, pages 68–
+77, December 1991.

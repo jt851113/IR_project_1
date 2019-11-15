@@ -1,0 +1,34 @@
+In this paper, we described the directed diffusion paradigm
+for designing distributed sensing algorithms. There are several
+lessons we can draw from our preliminary evaluation of
+diffusion. First, directed diffusion has the potential for significartt
+energy efficiency. Even with relatively unoptimized
+path selection, it outperforms an idealized traditional data
+dissemination scheme like omniscient multicast. Second, dif-
+fusion mechanisms are stable under the ranges of network
+dynamics considered in this paper. Finally, for directed diffusion
+to achieve its full potential, however, careful attention
+has to be paid to the design of sensor radio MAC layers.
+Directed diffusion has some novel features--data-centric dissemination,
+reinforcement-based adaptation to the empirically
+best path, and in-network data aggregation and caching.
+To our knowledge, no previous networking work has designed
+and evaluated a data distribution mechanism incorporating
+these features. There is a good reason for this--
+these features may not be justifiable in the context of traditional
+networks. However, as we show here, these features
+can enable highly energy-efficient and robust dissemination
+in dynamic sensor networks, while at the same time minimizing
+the per-node configuration that is characteristic of
+today's networks.
+As we have emphasized before, this work represents an initim
+foray into the design of diffusion mechanisms. Our
+remote surveillance network represents a non-trivial exploration
+of this design space. Even for this network, we have
+not explored the entire space of alternative designs. To draw
+a simple analogy, we are with sensor networks where we were
+with the Internet about 3 decades ago.
+Acknowledgements
+The authors would like to thank members of the SCADDS
+and SCOWR groups at USC and ISI, and John Heidemann,
+in particular, for their contributions to this work.

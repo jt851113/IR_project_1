@@ -1,0 +1,12 @@
+This approach seeks to modulate how much a node inuences
+its neighbors based on its relevance weight. If W[n]
+is the relevance weight of a node n and A[n] the authority
+score of the node we use W[n]  A[n] instead of A[n]
+in computing the hub scores of nodes that point to it.
+Similarly, if H[n] is its hub score we use W[n]H[n] instead
+of H[n] in computing the authority score of nodes
+it points to. This reduces the inuence of less relevant
+nodes on the scores of their neighbors.
+Combining the previous four approaches with the
+above strategy gives us four more algorithms, which we
+call: impr, medr, startmedr, and maxby10r.

@@ -1,0 +1,32 @@
+After being downloaded and installed by the user, the peer
+client software automatically connects to the CFRS. Whenever
+a user submits a query, this query is sent transparently
+to both a centralized search engine and the CFRS. The user
+obtains two results list: one from the search engine, one from
+the CFRS. In the result list from the CFRS, documents that
+match best the user’s interest domains are ranked higher.
+A typical example is when a user submits the query“Java”.
+The first results returned by the Google search engine are
+for the programming language, the island in Indonesia, and
+a band named Java. A person, who has issued requests
+for tourism-related content in the past, and never about
+computer programming, would probably prefer to get the
+island-related content first. Such a user-centric ranking is
+not feasible with only structural information (links between
+content, content popularity, etc.). Second, the same request
+“Java” made by a programmer returns a set of resources
+that have high structural rank (e.g. Pagerank) but that are
+not necessarily the ones that would be useful first (the Java
+API documentation page in this case). Using information
+about pages ranked higher (i.e., visited more often) by users
+for this query would help the system propose more accurate
+results.
+Perceivably, results from the CFRS rise in quality when:
+(1) the user submits more queries (as the system is able to
+determine his interest profile) and (2) all users submit more
+queries and relevance tracking information (as they indicate
+which data is deemed interesting by users as a whole). After
+the user selects and accesses an element in any of the two
+lists, information about this access is sent to the CFRS,
+which will in turn use it for improving the quality of replies
+to the same query made by other users.

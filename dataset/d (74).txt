@@ -1,0 +1,51 @@
+Given the sensor-catalog as a way to identify motes, it is possible to explore techniques for doing in-network
+query processing. The first attempt at such a technique is a system for computing aggregates. Aggregation is the
+process in which standard statistics are computed over groups of data items. In a sensor network, this involves
+two tasks: identifying groups, and computing statistics over members of those groups. The goal of in-network
+aggregation is to reduce the cost of computing aggregates from the naive solution where each sensor reports its
+values to a central query processor that determines group membership and computes statistics locally.
+As a part of my work with the TinyOS group, I have developed a technique called TAG (Tiny AGregation)
+for computing aggregates in a more efficient way than simply sending all sensor readings to a centralized workstation
+for processing. The approach works by taking advantage of the routing topology used by sensor networks
+to propagate messages from one sensor to another, so it is necessary to understand the basic routing algorithm
+used in large sensor networks. 1
+Routing works as follows: network topologies are represented as connectivity graphs, upon which a routing
+tree is overlaid. To route a message to some node
+
+, the message is introduced at some root node, which broadcasts
+the message to its children, which in turn broadcast that message to their children, and so on, eventually
+reaching node
+
+. During this routing process, each node chooses a single parent, thus forming a routing tree
+which can be used to propagate messages from any node back to the root. When
+
+wants to reply, it sends a
+message to its parent, which sends a message to its parent, and so on, until the message reaches the root. Figure
+7 shows a simple example of how a tree is built on the fly from an undiscovered routing topology as a message
+propagates from the root to the leaves of the network.
+Now, to compute an aggregate, the aggregate is introduced at the root of the network and propagated down
+the graph of sensors to form a routing tree. Once an aggregate message has propagated down the tree, the leaves
+propagate up a partial-aggregate, the value of the aggregate function is computed over just the local sensor
+reading. The parents then compute a new partial aggregate which combines their children’s values with their
+own local readings and propagate that value up. This continues to the root of the network, where the final value
+1Note that the TAG algorithm is independent of a specific routing protocol; the protocol presented here is an example of a commonly
+used, simple approach.
+of the aggregate is computed.
+A paper on this work has been submitted to VLDB 2002 [29]. This paper classifies aggregate functions according
+to their state requirements and semantic properties. This classification partitions aggregates according to
+their memory requirements and functional properties (e.g. monotonicity) and uses that partitioning to generalize
+about their behavior in the face of network errors and the applicability of various optimizations. A number of
+experiments on the storage and communication of each type or aggregate are also presented. Additionally, the
+paper presents techniques for handling grouping (and the limited storage available on sensor nodes), and for
+mitigating the effects of loss due to low-quality radio links in the current generation of TinyOS hardware.
+Figure 8 (from [29]) shows an example of the benefit of the TAG approach, in terms of the aggregate number
+of bytes that must be sent by all sensors in the network, for a variety of different aggregation functions. In the
+simulation used to generate this graph, sensors were placed on a fully-packed grid of the specified diameter;
+sensor values were randomly selected from the uniform distribution over the range [0,1000]. MEDIAN, MAX,
+and COUNT, and AVERAGE are standard statistical functions; HISTOGRAM partitions values into a fixed number
+of bins; DISTINCT counts the total number of distinct sensor values reported. MEDIAN requires all values to
+be sent to the root of the network, and thus its performance matches the centralized algorithm. Other aggregates,
+however, show a substantial reduction in the number of messages: better than an order of magnitude over the
+centralized approach in the case of simple aggregates like MAX and COUNT.
+This completes the summary of the completed elements of the TeleTiny system. The next section summarizes
+related work.

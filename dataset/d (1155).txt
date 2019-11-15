@@ -1,0 +1,4 @@
+Figure 4.2 shows the interactions among the Continuous Query
+Manager, the Event Detector and the Data Manager as
+continuous queries are installed, detected, and executed.
+Continuous query processing is discussed in following sections.

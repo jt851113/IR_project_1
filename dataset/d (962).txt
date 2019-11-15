@@ -1,0 +1,120 @@
+In this section, we assume that motes are placed or can
+self organize into pairs of sensors less than a car’s length
+apart and in the same lane. We call these sensors, the
+pstream sensor, and, the downstream sensor. We assume
+that through radio telemetry with fixed basestations
+and each other, of the sort described in [20], it is possible
+for the sensors to determine that their separation along the
+axis of the road is feet. These sensors are equipped with
+light or infrared detectors that tell them when a car is passing
+overhead.Traffic engineers are interested in deducing the speed and
+length of vehicles traveling down the freeway; this is done
+via four time readings:, the time the vehicle covers, the time the 
+vehicle completely covers both, the time the vehicle ceases to cover
+time the vehicle no longer covers either sensor. These states
+are shown in Figure 8. Notice that the collection of these
+times can be done independently by the sensors, if the query
+processor knows how they are placed:collects, while collects. Given 
+that the sensors are feet apart, the speed of a vehicle is then,
+since is the amount of time it takes for the front of the vehicle to 
+travel from one sensor to the other to the other. The length of the 
+vehicle is just,since is the time it takes for both the front and back
+of the car to pass the.
+These values are important because they indicate how
+accurate the timing measurements from the sensors need to
+be; we omit specific calculations due to space limitations,
+but a sample rate of about 180Hz is needed to compute vehicle
+lengths to an accuracy of one foot when vehicles are
+traveling 60mph.
+Sensors relay readings to base stations placed regularly
+along the freeway. These base stations have wired Internet
+connections or high power wireless radios which can relay
+information back to central servers for processing. Such
+base stations are elevated, to overcome propagation problems
+that result between sensors that are on or embedded in
+a low reflectivity surface like the roadway. Sensors transmit
+samples along with time-stamps, which can be generated
+via techniques such as those proposed in [6].
+The results described in this section were produced via
+simulation. Processor counts were obtained by implementing
+the described algorithms on an Atmel simulator, power
+consumption figures were drawn from the Atmel 8515
+datasheet [2], and communication costs were drawn from
+the TinyOS results in [12], which uses the RFM TR100 916
+Mhz [21] radio transceiver. Table 1 summarizes the communication
+and processor costs used to model power consumption
+in this section.
+We present three sensor scenarios, as shown in Figure 9.
+In each scenario, the vehicle speed and length computation
+presented above is performed. By choosing to perform that
+computation in the network, rather than on the host PC, we
+will show a performance benefit of two orders of magnitude.
+In the first scenario, sensors relay data back to the host
+PC at their sample rate, performing no aggregation or processing,
+and transmitting raw voltages. The code is extremely
+simple: the sensor reads from its A-to-D input,
+transmits the sample, then sleeps until the next sample period
+arrives. In this naive approach, power consumption
+is dominated by communication costs. Figure 9(a) illustrates
+this; the idle cost, computation cost, and A-to-D costs
+are all so small as to be nearly invisible. For the baseline
+sample rate of 180Hz, the power draw comes to 13mW or
+2.6mA/h, enough for our sensor pairs to power themselves
+for about a day and a half: clearly this approach does not
+produce low maintenance road sensors. Furthermore, this
+approach places a burden on the database system: as Figure
+9(a) shows, at 180 samples/per second a Fjord is limited to
+about 50 simultaneous simple queries, if the entire sample
+stream is routed through each query. In practice, of course,
+not all of the queries are interested in the entire data stream,
+so the sensor proxy can aggregate the samples into identified
+vehicles or vehicle counts.
+In the second scenario (shown in Figure 9(b)), we use a
+small amount of processor time to dramatically reduce communication
+costs. Instead of relaying raw voltages, the sensors
+observe when a car passes over them, and transmit the
+or 
+tuples needed for the host computer to
+reconstruct the speed and length of the vehicle. The sensors
+still sample internally at a fast sample rate, but relay only a
+few samples per second – in this case, we assume no more
+than five vehicle pass in any particular second. In this scenario,
+for higher sample rates, power consumption is dominated
+by the processor and A-to-D converter; communication
+is nearly negligible. At 180Hz, the total power drawhas
+fallen to 1.1mW, or .22mA/h, still not ideal for a long lived
+sensor, but enough to power our traffic sensors for a more
+reasonable two and a half weeks. Also, by aggregating and
+decreasing the rate at which samples are fed into the query
+processor, the sensors contribute to the processing of the
+query and require fewer tuples to be routed through Fjords.
+Although this may seem like a trivial savings in computation
+for a single sensor, in an environment with hundreds or
+thousands of traffic sensors, it is non-negligible.
+In the final scenario, we further reduce the power demands
+by no longer transmitting a sample per car. Instead,
+we only relay a count of the number of vehicles that
+passed in the previous second, bringing communications
+costs down further for only a small additional number of
+processor instructions per sample. This is shown in Figure
+9(c); the power draw at 180Hz is now only .38mW, a
+threefold reduction over the second scenario and nearly two
+orders of magnitude better than the naive approach. Notice
+that the length and speed of vehicles can no longer be reconstructed;
+only the number of vehicles passing over each
+sensor per second is given. Thus, this scenario is an example
+of a technique that a properly programmed sensor proxy
+could initiate when it determines that all current user queries
+are interested only in vehicle counts.
+To summarize, for this particular sensor application,
+there are several possible approaches to sampling sensors.
+For traffic sensors, we gave three simple sampling alternatives
+which varied in power consumption by nearly two orders
+of magnitude. Lowering the sample rate increases sensor
+lifetime but reduces the accuracy of the sensor’s model.
+Aggregating multiple samples in memory increases processor
+and CPU burden but reduces communication cost. Thus,
+a sensor proxy which can actively monitor sensors, weighing
+user needs and current power conditions, and can appropriately
+program and control sensors is necessary for
+achieving acceptable sensor battery life and performance.

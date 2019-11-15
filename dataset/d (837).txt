@@ -1,0 +1,16 @@
+In building this system, we draw from significant research in information
+theory [5, 6, 17], databases [7, 14], spatio-temporal data
+mining [18, 19], and previous work in sensor networks [11, 20].
+[14] and others have used wavelet-based synopsis data structures
+for approximate querying of massive data sets. Quadtrees are popularly
+used in image processing and databases [19], and resemble the
+hierarchies that we build up. Other data structures such as R-trees,
+kd-trees and their variants [18] are used for spatial feature indexing.
+Triangular Irregular Networks (TIN [18]) is used in for multilayered
+processing in cartography, and other geographical datasets.
+Some of these structures could find applicability in our context, and
+will be considered in future work. [11] proposes a sensor network
+storage architecture that leverage the excellent lookup complexity
+of distributed hash tables (DHT) for event storage. DHTs are useful
+when queries are not spatio-temporal in nature, while our system
+organizes data spatially to enable such queries.

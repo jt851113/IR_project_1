@@ -1,0 +1,75 @@
+We plan to explore the following future directions:
+1. Learning in PREMON:
+We plan to explore how one can incorporate learning
+patterns of movement based on history, and use them
+to guide the prediction-generation logic.
+2. Duty Cycles:
+A possible way of reducing the energy usage in a sensor
+network is by reducing the duty cycle of sensors that
+are not seeing frequent activities. Thus, we would like
+to partition a sensor network into regions based on the
+level of activity they see. For sensors in these dierent
+types of areas, the duty cycle requirement is clearly
+dierent. We plan to look at protocols for dynami-
+cally partitioning a sensor eld into these dierent ar-
+eas and adjust the duty cycles of sensors appropriately
+to achieve near-optimal energy usage.
+3. Extracting patterns at larger time-scales:
+We observe that MPEG encoding algorithms only look
+at patterns that occur in smaller time-scales. We be-
+lieve that one may improve the accuracy of the pre-
+dictions by extracting patterns that occur frequently
+at medium and larger time-scales and using them to
+improve predictions on smaller time-scales. As an ex-
+ample, consider a sensor network consisting of acous-
+tic sensors thrown over a battleeld. As a tank ap-
+proaches an acoustic sensor, the sensor will record higher
+
+Figure 10: Architecture of the system making use
+of long-term patterns
+amplitude in the sensed reading. The amplitude of the
+sensed reading will reach a peak value and will start
+decreasing as the tank passes by. If one were to look
+only at pattern on a smaller time-scale, by seeing a
+steady increase in amplitude of the reading, one would
+predict that the amplitude of the sensed reading would
+continue to rise. Similarly, by noticing a steady decline
+in amplitude, one would predict that the amplitude of
+the sensed reading will continue to decrease. However,
+by processing the data over a longer time period, one
+would be able to extract the signature pattern (steady
+rise followed by steady decline) of a tank. If this in-
+formation is given to the base station, it will be able
+to identify the pattern just by looking at the steady
+increase in amplitude. It would then predict not only
+the steady rise in amplitude but also the steady decline
+following that. Assuming that the signature pattern
+is unique enough, this would substantially reduce the
+number of prediction misses.
+Extracting patterns on larger time-scales however can
+be a computationally intensive task. We assume that a
+powerful wired node in the wired network will do this
+processing. The architecture of envisaged system is
+illustrated in gure 10. The sensed reading are mined
+by a \long-term predictor" for patterns that recur at
+larger time scales. These long-term patterns are given
+to the base station. The base station uses them as
+input in its prediction process.
+We are investigating two approaches for extracting long-
+term patterns. One makes use of data-mining tech-
+niques and the other is based on compression theory
+(interested readers are referred to [5] for details). We
+intend to evaluate the eectiveness of these mecha-
+nisms.
+4. Predicting aggregates:
+In this paper, we have looked at predicting values of
+sensors. However, in many instances one is interested
+in the aggregate value over a small spatial region (e.g.,
+what is the average temperature in DataMan Lab).
+The challenge is to apply the PREMON paradigm to
+predict the values of aggregates.
+
+5. Simulations:
+We are in the process of performing simulations to an-
+alyze the performance of the proposed algorithms over
+large sensor networks.

@@ -1,0 +1,23 @@
+We now show the improvement in the recall achieved by
+the adaptive algorithm of Section 4. In the first round of this
+algorithm, we use hist-LDA to select the 10 most promising
+peers. After getting the top-10 answers from the selected
+peers, we re-rank the rest of the peers using the score of the
+fifth-ranked answer as mink (see Section 4 for details). We
+prefer this choice of mink (rather than taking mink to be the
+smallest score among the top-10 answers), because high(h)
+(defined in Equation (3)) is typically much larger than the
+score of any document d that is actually in h.
+Figure 3 shows the recall of the top-10 results vs. the
+number of selected peers for the adaptive and non-adaptive
+versions of hist-LDA, using score intervals of 0.2. In the
+former, we re-rank the remaining peers after each round of
+getting answers from another 10 peers. When re-ranking,
+mink is the score of an answer that is ranked slightly lower
+(e.g., sixth position) than the one used in the previous round
+(since the new top-10 are closer to the exact top-10). Figure
+3 shows an increasing improvement in the recall with
+each additional round. For example, the adaptive hist-LDA
+achieves a recall of 0.56 after two rounds (i.e., accessing 20
+peers), compared to 0.52 for the non-adaptive version. After
+five rounds (50 peers), the recall increases from 0.69 to 0.79.

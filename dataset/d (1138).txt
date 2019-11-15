@@ -1,0 +1,105 @@
+Continuous queries [TGNO92][LPT99][LPBZ96] allow users to
+obtain new results from a database without having to issue the
+same query repeatedly. Continuous queries are especially useful
+in an environment like the Internet comprised of large amounts
+of frequently changing information. For example, users might
+want to issue continuous queries of the form
+In order to handle a large number of users with diverse interests,
+a continuous query system must be capable of supporting a large
+number of triggers expressed as complex queries against webresident
+data sets.
+The goal of the Niagara project is to develop a distributed
+database system for querying distributed XML data sets using a
+query language like XML-QL [DFF+98]. As part of this effort,
+our goal is to allow a very large number of users to be able to
+register continuous queries in a high-level query language such
+as XML-QL. We hypothesize that many queries will tend to be
+similar to one another and hope to be able to handle millions of
+continuous queries by grouping similar queries together. Group
+optimization has the following benefits. First, grouped queries
+can share computation. Second, the common execution plans of
+grouped queries can reside in memory, significantly saving on
+I/O costs compared to executing each query separately. Third,
+grouping makes it possible to test the “firing” conditions of
+many continuous queries together, avoiding unnecessary
+invocations.
+Previous group optimization efforts [CM86] [RC88] [Sel86]
+have focused on finding an optimal plan for a small number of
+similar queries. This approach is not applicable to a continuous
+query system for the following reasons. First, it is
+computationally too expensive to handle a large number of
+queries. Second, it was not designed for an environment like the
+web, in which continuous queries are dynamically added and
+removed. Our approach uses a novel incremental group
+optimization approach in which queries are grouped according
+to their signatures. When a new query arrives, the existing
+groups are considered as possible optimization choices instead
+of re-grouping all the queries in the system. The new query is
+merged into existing groups whose signatures match that of the
+query.
+Our incremental group optimization scheme employs a querysplit
+scheme. After the signature of a new query is matched, the
+sub-plan corresponding to the signature is replaced with a scan
+of the output file produced by the matching group. This
+optimization process then continues with the remainder of the
+query tree in a bottom-up fashion until the entire query has been
+analyzed. In the case that no group “matches” a signature of the
+new query, a new query group for this signature is created in the
+system. Thus, each continuous query is split into several smaller
+queries such that inputs of each of these queries are monitored
+using the same techniques that are used for the inputs of userdefined
+continuous queries. The main advantage of this
+approach is that it can be implemented using a general query
+engine with only minor modifications. Another advantage is that
+the approach is easy to implement and, as we will demonstrate
+in Section 4, very scalable.
+Since queries are continuously being added and removed from
+groups, over time the quality of the group can deteriorate,
+leading to a reduction in the overall performance of the system.
+In this case, one or more groups may require “dynamic regrouping”
+to re-establish their effectiveness.
+Continuous queries can be classified into two categories
+depending on the criteria used to trigger their execution.
+Change-based continuous queries are fired as soon as new
+relevant data becomes available. Timer-based continuous
+queries are executed only at time intervals specified by the
+submitting user. In our previous example, day traders would
+probably want to know the desired price information
+immediately, while longer-term investors may be satisfied being
+notified every hour. Although change-based continuous queries
+obviously provide better response time, they waste system
+resources when instantaneous answers are not really required.
+Since timer-based continuous queries can be supported more
+efficiently, query systems that support timer-based continuous
+queries should be much more scalable. However, since users can
+specify various overlapping time intervals for their continuous
+queries, grouping timer-based queries is much more difficult
+than grouping purely change-based queries. Our approach
+handles both types of queries uniformly.
+NiagaraCQ is the continuous query sub-system of the Niagara
+project, which is a net data management system being developed
+at University of Wisconsin and Oregon Graduate Institute.
+NiagaraCQ supports scalable continuous query processing over
+multiple, distributed XML files by deploying the incremental
+group optimization ideas introduced above. A number of other
+techniques are used to make NiagaraCQ scalable and efficient.
+1) NiagaraCQ supports the incremental evaluation of continuous
+queries by considering only the changed portion of each updated
+XML file and not the entire file. Since frequently only a small
+portion of each file gets updated, this strategy can save
+significant amounts of computation. Another advantage of
+incremental evaluation is that repetitive evaluation is avoided
+and only new results are returned to users. 2) NiagaraCQ can
+monitor and detect data source changes using both push and poll
+models on heterogeneous sources. 3) Due to the scale of the
+system, all the information of the continuous queries and
+temporary results cannot be held in memory. A caching
+mechanism is used to obtain good performance with limited
+amounts of memory.
+The rest of the paper is organized as follows. In Section 2 the
+NiagaraCQ command language is briefly described. Our new
+group optimization approach is presented in Section 3 and its
+implementation is described in Section 4. Section 5 examines
+the performance of the incremental continuous query
+optimization scheme. Related work is described in Section 6.
+We conclude our paper in Section 7.

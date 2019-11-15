@@ -1,0 +1,33 @@
+Our location-tracking protocol is derived by the cooperation of sensors. Whenever an object is detected,
+an election process will be conducted by some nearby sensors to choose a sensor, on which
+an agent will be initiated, to monitor the roaming behavior of the object. As the object moves, the
+agent may migrate to a sensor that is closer to the object to keep on monitoring the object. Fig. 3
+illustrates this concept, where the dash line is the roaming path of the object, and arrows are the migration
+path of the agent. By so doing, the computation and communication overheads can be reduced
+significantly.
+Recall that positioning an object requires the cooperation of at least three sensors. The mobile
+agent, called the master, will invite two neighboring sensors to participate by dispatching a slave agent
+to each of them. These three agents (master and slaves) will cooperate to perform the trilateration
+algorithm [1]. From time to time, the slaves will report their sensing results to the master agent,
+who will then calculate the object’s precise locations. As the object moves, these slave agents may
+be revoked and reassigned. Certain signal strength thresholds will be used to determine when to
+revoke/reassign a slave agent. The details will be given later. In Fig. 3, those sensors that ever host
+a slave agent are marked by black. We comment that although our development is based on the
+cooperation of two slave agents, it will be straightforward to extend our work to more slave agents
+to improve the positioning accuracy. To reduce the amount of data to be carried on, a master may
+decide to forward some tracking histories to the location server. This issue will be further addressed
+in Section 4.
+We now discuss how slave agents are revoked and reassigned. Observe the top part of Fig. 3.
+Figure 3: Roaming path of an object (dash line) and the migration path of the corresponding master
+agent (arrows). Sensors that ever host a slave agent are marked by black.
+When resident in the working area A0, the object is tracked by sensors S0, S1, and S2. On entering
+the backup area A1, since the signals received by S2 will reduce to a level below a threshold, the slave
+agent at S2 will be revoked and a new slave will be issued to S6. Similarly, on entering the backup
+area F1, the slave at S1 will be revoked, and a new one will be issued to S5. As the object passes S5,
+the master itself will lose the target, in which case the master will migrate itself to S5. All old slaves
+will be revoked and new slaves will be invited.
+When an object is in the backup areas of some sensors, it is possible that it can be sensed by more
+than three sensors. To reduce the sensing overheads, master and slave agents can inhibit other irrelevant
+sensors from monitoring the object. This concept is illustrated in Fig. 4. The object is currently
+in area A0. Sensors S3, S4, . . . , S11, which may sometimes detect the object, will be inhibited from
+tracking this object by warning signals that are issued periodically by the agents in S0, S1, and S2.

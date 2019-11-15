@@ -1,0 +1,21 @@
+This paper experimentally studies approaches to the problem
+of ranking information resources w.r.t. user queries in
+peer-to-peer information retrieval. In distributed environments,
+for each given user query and a set of information resources
+that are available, we need to select the right subset
+of these resources to forward the query to. Here, we study
+the problem of pruning descriptions of resources to acceptable
+lengths in a peer-to-peer scenario and two approaches
+to overcome the mismatch problem that may arise as a consequence
+of the pruning, namely query expansion and learning
+better resource descriptions from query streams. The
+results show that resource descriptions can be pruned to a
+large extent without ill effects and that learning better descriptions
+from query streams works much better than query
+expansion.
+Categories and Subject Descriptors: H.3.3 [Information
+Search and Retrieval]: Selection Process, C.2.4 [Distributed
+Systems]: Distributed Applications.
+General Terms: Algorithms, Experimentation.
+Keywords: Peer-to-peer information retrieval, profiles, query
+expansion, intelligent query routing, profile adaptation.

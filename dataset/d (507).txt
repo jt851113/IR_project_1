@@ -1,0 +1,123 @@
+RAPID advances in wireless communications and software/
+hardware technologies enable a client carrying a
+mobile device to access information without the restriction
+of time and location. Broadcast-based information systems
+provide dissemination of information with a cost independent
+of the number of clients, which compensates for the
+limited bandwidth in wireless communications. Moreover,
+the clients can retrieve the broadcast data by just tuning to
+the broadcast channel, which results in a certain degree of
+energy saving. Therefore, data broadcast has become an
+attractive solution for information dissemination. Database
+broadcast is first addressed in the Datacycle project [12],
+where the communication medium is high-speed optical
+fiber. The queries are processed by a hardware device
+which filters the data on the channel. The Datacycle
+architecture is improved in [27] by maintaining only the
+needed data on the broadcast channel. Several forms of data
+broadcast have been used in commercial products [2].
+Assume the data on the broadcast channel are composed
+of data objects which may correspond to web pages or
+relation tuples. A client submits a query to retrieve data
+objects from the broadcast channel. The query may access
+one data object (called simple query) or more than one data
+object (called complex query). Many approaches have been
+proposed to schedule data objects for efficient processing of
+simple queries. In [17], a broadcast program where the data
+objects are broadcast in a periodic fashion is proposed.
+According to the access frequencies of the data objects,
+some frequently accessed data objects can be replicated in
+the broadcast program to reduce the access time. The
+methods to replicate data objects are presented in [1], [13],
+[26]. Moreover, in [14], [16], [18], [19], [23], index techniques
+are used to reduce the tuning time. For efficient processing
+of complex queries, to allocate the data objects accessed
+together on the broadcast channel can also improve the
+performance. As discussed and justified in [6], the traditional
+disk-based data allocation techniques perform poorly
+for the broadcast data due to the lack of the random-access
+feature on the broadcast channel. New channel-based data
+allocation techniques should be studied.
+There exist relationships among the data objects to be
+broadcast. For example, the anchor relationship for the web
+pages, the referential integrity constraint for the relations in
+the relational database, and the composition relationship for
+the objects in the object database. In these cases, the related
+data objects for a complex query should be allocated in an
+order according to their relationships for a better performance,
+which complicates the data allocation problem. The
+issues of database broadcast in the mobile environment are
+studied in [24]. The data objects on the broadcast channel
+are relations in a relational database or classes in an object
+database. As mentioned before, clustering the data objects
+accessed in the complex queries frequently submitted can
+reduce the average access cost for processing the queries.
+The objective in [24] is to find an optimal broadcast order of
+the data objects such that the average access cost for a set of
+queries is minimized. This problem is formulated by a
+graph-based model. The optimal broadcast order is found
+by a branch-and-bound searching algorithm. However, as
+the number of data objects increases, the time needed to
+compute the optimal broadcast order increases exponentially.
+In fact, this kind of ordering problems can be proven
+to be NP-complete through the optimal linear ordering
+problem [8]. In [5], the method for finding the optimal
+broadcast program for two dependent files is proposed. In
+[4], a lower bound on the average access time of the optimal
+broadcast program for the complex queries is derived.
+Moreover, an algorithm to achieve a random permutation
+of the broadcast data is proposed whose corresponding
+average access time is twice of the lower bound on the
+average access time. A special case where there is no cyclic
+dependence among the dependent data is discussed in [6].
+The broadcast order is decided by a set of heuristic rules. In
+[7], the scheduling method for answering complex queries
+where there is no access order constraint among the
+required data objects is presented. The broadcast order is
+decided by a greedy method based on the frequencies of
+queries. Based on [7], [21], [22] propose a more efficient
+algorithm to solve this problem. The index issues for
+answering complex queries are discussed in [9], where the
+client always waits for the index placed at the beginning of
+the broadcast cycle before any data access. In [11], the issue
+of allocating dependent data on multiple channels is
+discussed. A heuristic algorithm is proposed to cluster
+related data objects to minimize overall broadcast time.
+In this paper, database broadcasting with query optimization
+is considered. To measure the cost of query
+processing, two metrics introduced in [16] can be used.
+The access time is the time elapsed from the moment a client
+first tunes in the broadcast channel to the moment all the
+relevant data are downloaded. The tuning time is the time
+spent by the client listening to the broadcast channel, which
+is an indicator of the power consumption. To reduce the
+access time, relevant attributes accessed in a query should
+be allocated nearby in the broadcast channel. To reduce the
+tuning time, the amount of data involved in the query
+processing should be small. In our approach, a relational
+database is first vertically partitioned into fragments based
+on attributes. Given the information of a set of complex
+queries with their querying frequencies in the past, we
+predict future data accesses and allocate relevant attributes
+instead of the whole database on the broadcast channel. A
+client can retrieve the attributes involved in the query by
+directly listening to the broadcast channel. The query
+processing is performed during the access of the relevant
+attributes. For the case where the needed attribute is not
+allocated on the broadcast channel, the client can submit the
+query to the server and receive the needed data on the
+on-demand channel. Our problem is to allocate the attributes
+on the broadcast channel such that the average access time to
+access the attributes involved in the queries according to the
+query optimization order is minimized. Accessing attributes
+and processing queries according to the query optimization
+order minimizes the amount of downloaded data and,
+therefore, minimizes the tuning time.
+  The rest of the paper is organized as follows: Section 2
+discusses the database broadcasting issues and introduces
+some existing problems related to our approach. A graph
+representation method for solving our problem is discussed
+in Section 3. In Section 4, how to allocate attributes on the
+broadcast channel is presented. A simulation model and the
+analysis of the simulation results are described in Section 5.
+Finally, Section 6 concludes this work.

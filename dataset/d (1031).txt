@@ -1,0 +1,59 @@
+Our partial indexing scheme is not limited to BATON. In this
+section, we discuss how to extend the approach to other overlays.
+In particular, we have also implemented our scheme on CAN [30].
+To support partial indexing scheme in CAN, we only need to modify
+CAN to support range index. In [32], Sahin et al. propose a
+method on CAN to process range queries. We modify their scheme
+to support the approximate range index. For a range R = [x, y], it
+can be represented as a point p=(x, y) in a 2-dimensional CAN. The
+range R
+= [x , y] that overlaps with R satisfies:
+The search area for the corresponding point of R is indicated as the
+shaded area in Figure 6(a). Hence, to retrieve the range index for a
+range query, we should search the query’s shaded area.
+For an exact query q = x, we use a point (x, x) in the diagonal to
+represent it. Then, only the space in the left-upper corner is used
+(the space above the blue line), because values of y-axis are always
+greater than those of x-axis. In our scheme, we use the cell as a
+unit to store the data. So the value v is actually stored at the node
+responsible for the point (vl
+, vl
+ + l), where l is the cell length.
+Thus, the usable data space in CAN is the space above the line
+Y = X + l, the red line in Figure 6(a).
+To optimize the search efficiency and ensure load balancing, two
+strategies are applied.
+1. Searching the whole shaded area of a query incurs too much
+overhead. Instead, we use skyline points [11] to prune the
+search space. As shown in Figure 6(b), the red triangle represents
+the dominated range of range index r1. Only queries
+within the triangle need to search r1. To prune the search
+space, when publishing a range index r1, we invoke Algorithm
+6 to inform the corresponding nodes. Specifically, we
+keep a skyline point set for each node and their neighbors respectively.
+Figure 6(b) shows the idea of Algorithm 6. The
+first range index r1 is indexed at node A and A will update
+its R[A], the skyline point set for itself, as {r1} and send notification
+to its neighbors, B and C. Then, the second range
+index r2 is indexed at E and the notification is sent to A. Node
+A updates both skyline point sets for neighbor E (R[E]) and
+itself (R[A]) as {r2}. The notification is sent to A’s neighbors
+as well. Finally, the third range index r3 comes to A. But A
+finds that r3’s point is dominated by r2 ? R[A]. So A will not
+send notification to its neighbors. Once receiving a query q,
+A first processes it locally and then checks the skyline point
+sets of its neighbors. Query q is forwarded to neighbor E,
+only if q is dominated by a point in R[E].
+2. As only the space above the line Y = X +l is used, to balance
+the load, we modify CAN’s partitioning strategy to split the
+space above Y = X + l evenly, instead of partitioning the
+whole space evenly. Figure 6(b) illustrates a result of such
+partition.
+The cost model of CAN is slightly different to BATON, as the
+routing cost in CAN is O( dN). However, we can follow the same
+analysis and the details are therefore omitted due to space constraint.
+Other overlays such as P-Grid [6] and Pastry [31] can apply the
+scheme proposed in [15] to process the range index. The routing
+request is always sent to the parent node which maintains a larger
+search range. Our scheme does not need any modification to be
+integrated to these overlays.

@@ -1,0 +1,19 @@
+Our setup consists of a 100m x 100m grid with 104 sensors placed at a distance of 1m from
+each other. The communication range of each sensor is 1m. The total number of variables
+in our simulations is set to 100. For all the querying mechanisms, a query is always injected
+at the center of the grid i.e. at sensor (50, 50). We ran our simulations on 1000 queries. In
+order to take advantage of the caching, the query was made to follow a fixed trajectory in
+ACQUIRE. The first query out of the set of 1000 queries fixes the trajectory, while all the
+subsequent queries follow the same trajectory.
+Our analysis assumed that there are no loops in the query trajectory. It turned out that
+this can very effectively achieved by ACQUIRE’s local update phase at no additional cost.
+Each node maintains a flag called queried. Whenever a node is requested for an update, it
+sets this flag to true. Subsequently, whenever a node is requested for an update, it sends
+the value of the queried flag along with the variable. Once an active node has processed the
+query based on the information in its neighborhood, it forwards the remaining query to a
+node at d hops whose queried flag is false. Using this mechanism, most of our simulations
+have no loops in the query trajectory for d  1. However, for the random walk (d = 0),
+there is no local update phase. Hence, in this case, there are loops in the query trajectory
+causing the random walk to revisit nodes. These loops lead to a 45 ? 50% degradation in
+the performance11 as we will show in section 7.3. For ERS and FBQ, there is no trajectory
+as the query is never forwarded to other nodes.

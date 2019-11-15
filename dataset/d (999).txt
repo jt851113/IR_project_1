@@ -1,0 +1,17 @@
+The relevance weight of a node equals the similarity of its
+document to the query topic. We describe next how to
+compute the similarity score of a document D. As mentioned
+before, the query topic is broader than the query
+itself. Thus matching the query against the document is
+usually not sucient. Instead we use the documents in
+the start set to dene a broader query and match every
+document in the graph against this query. Specically,
+we consider the concatenation of the rst 1000 words
+from each document to be the query, Q and compute
+similarity(Q;D).
+In our implementation, since queries are long and the
+document vocabulary tends to be varied we use term
+frequency weighting. We use cosine normalization in
+weighting both the query and the documents since the
+deviation in term vector lengths is large. See Salton and
+Buckley [28] for a discussion of weighting options. Specifically,

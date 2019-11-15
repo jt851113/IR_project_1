@@ -1,0 +1,19 @@
+2.2.3. Processing Multiple Queries. Sensors pose additional
+difficulties when processing complex or concurrent
+queries. In many sensor scenarios, multiple users pose similar
+queries over the same data streams. In the traffic scenario,
+for example, commuters will want to know about
+road conditions on the same sections of road, and so will
+issue queries against the same sensors. Since streams are
+append-only, there is no reason that a particular sensor reading
+should not be shared across many queries. As our experiments
+in Section 4.3 show, this sharing greatly improves
+the ability of a sensor query system to handle many simultaneous
+queries.
+Furthermore, the demands placed on individual sensors
+vary based on time of day, current traffic conditions, and
+user requirements. At any particular time users are very
+interested in some sensors, and not at all interested in others.
+A query processing system should be able to account
+for this by dynamically turning down the sample and data
+delivery rates for infrequently queried sensors.

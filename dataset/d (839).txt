@@ -1,0 +1,64 @@
+[1] G.J. Pottie and W.J. Kaiser. Wireless integrated network sensors.
+Communications of the ACM, 43(5):51–58, May 2000.
+[2] M. Kohler. UCLA factor building. CENS Presentation.
+[3] A. Cerpa, J. Elson, D. Estrin, L. Girod, M. Hamilton, and J. Zhao.
+Habitat monitoring: Application driver for wireless communications
+technology. In Proceedings of the 2001 ACM SIGCOMM Workshop
+on Data Communications in Latin America and the Caribbean, April
+2001.
+[4] A. Chankhunthod, P.B. Danzig, C. Neerdaels, M.F. Schwartz, and
+K.J. Worrell. A hierarchical internet object cache. In USENIX Annual
+Technical Conference, pages 153–164, 1996.
+[5] R. M. Rao and A. S. Bopardikar. Wavelet Transforms: Introduction
+to Theory and Applications. Addison Wesley Publications, 1998.
+[6] M. Vetterli and J. Kovacevic. Wavelets and Subband coding. Prentice
+Hall, New Jersey, 1995.
+[7] J. S. Vitter, M. Wang, and B. Iyer. Data cube approximation and
+histograms via wavelets,. In D. Lomet, editor, Proceedings of Seventh
+International Conference on Information and Knowledge
+Management (CIKM’98), pages 69–84, Washington D.C, November
+1998.
+[8] J. Kubiatowicz, D. Bindel, Y. Chen, P. Eaton, D. Geels, R. Gummadi,
+S. Rhea, H. Weatherspoon, W. Weimer, C. Wells, and B. Zhao.
+Oceanstore: An architecture for global-scale persistent storage. In
+Proceedings of ACM ASPLOS. ACM, November 2000.
+[9] A. Rowston and P. Druschel. Storage management and caching in
+past, a large-scale, persistent peer-to-peer storage utility. In 18th
+ACM SOSP, volume 1, Lake Louise, Canada, October 2001.
+[10] I. Gupta, R. van Renesse, and K. Birman. Scalable fault-tolerant
+aggregation in large process groups, 2001.
+[11] S. Ratnasamy, D. Estrin, R. Govindan, B. Karp, L. Yin S. Shenker,
+and F. Yu. Data-centric storage in sensornets. In ACM First Workshop
+on Hot Topics in Networks, 2001.
+[12] B. Karp and H. T. Kung. GPSR: greedy perimeter stateless routing
+for wireless networks. In Proceedings of Mobicom, 2000.
+[13] J. Hill, R. Szewczyk, A Woo, S. Hollar, D. Culler, and K. Pister.
+System architecture directions for networked sensors. In Proceedings
+of ASPLOS-IX, pages 93–104, Cambridge, MA, USA, November
+2000. ACM.
+[14] K. Chakrabarti, M. Garofalakis, R. Rastogi, and K. Shim.
+Approximate query processing using wavelets. VLDB Journal: Very
+Large Data Bases, 10(2–3):199–223, 2001.
+[15] D. Ganesan, B. Krishnamachari, A. Woo, D. Culler, D. Estrin, and
+S. Wicker. Complex behavior at scale: An experimental study of
+low-power wireless sensor networks. Technical Report CSD-TR
+02-0013, UCLA, 2002.
+[16] M. Widmann and C.Bretherton. 50 km resolution daily preciptation
+for the Pacific Northwest, 1949-94.
+[17] S. Pradhan, J. Kusuma, and K. Ramchandran. Distributed
+compression in a dense sensor network. IEEE Signal Processing
+Magazine, 1, March 2002.
+[18] M. Krevald, J. Nievergelt, T. Roos, and P. Widmayer. Algorithmic
+Foundations of Geographic Information Systems. Springer-Verilag,
+1997.
+[19] R. Agrawal, C. Faloutsos, and A.N. Swami. Efficient Similarity
+Search In Sequence Databases. In D. Lomet, editor, Proceedings of
+the 4th International Conference of Foundations of Data
+Organization and Algorithms (FODO), pages 69–84, Chicago,
+Illinois, 1993. Springer Verlag.
+[20] C. Intanagonwiwat, R. Govindan, and D. Estrin. Directed diffusion:
+A scalable and robust communication paradigm for sensor networks.
+In Proceedings of Mobicom, pages 56–67, Boston, MA, August
+2000. ACM Press.
+[21] I. Foster, C. Kesselman, J. Nick, and S. Tuecke. Grid services for
+distributed system integration. Computer, 35(6), 2002.

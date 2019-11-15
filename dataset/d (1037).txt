@@ -1,0 +1,36 @@
+In this section, we evaluate our PISCES on PlanetLab[2], an
+open platform for deploying distributed systems. 256 nodes are
+selected from different continents in the world. We test our system
+in different network configurations to demonstrate its flexibility and
+scalability. And the results show that PISCES outperforms the full
+indexing scheme significantly, especially in the case of large data
+size, high update rate and high churn rate.
+To simulate the real data, TPC-H[4] generator is used to generate
+data for the nodes. TPC-H is a decision support benchmark, and its
+schema is shown in Figure 8. Specifically, the following query is
+used as the test query:
+SELECT sum(TOTALPRICE) as totalSales
+FROM ORDERS
+WHERE TOTALPRICE>x and TOTALPRICE<y
+The tuples in ORDERS table are grouped according to the SUPPKEY
+of LINEITEM (this is done by joining the ORDERS and
+LINEITEM tables and grouping tuples by SUPPKEY). Then the
+orders for the same SUPPKEY is disseminated to the same node,
+which simulates the real scenario. Each node is assigned between
+1k to 10k tuples. Every experiment is run for one hour (the network
+initialization time is not included). The queries with selectivity of
+0.01 are generated based on the Zipfian distribution with θ ranging
+from 0.4 (mildly skewed) to 1.4 (highly skewed). This allows us
+to evaluate the performance of PISCES under the conditions when
+there are some popular data in the dataset and the query distribution
+changes after a time interval.
+The above table lists default configuration of the experiments.
+We use CAN-PISCES,CAN-FULL, BATON-PISCES and BATONFULL
+to denote the PISCES in CAN, full indexing scheme in CAN,
+PISCES in BATON and full indexing scheme in BATON respectively.
+We count the total number of messages each node received
+in an experiment, including query messages and index maintenance
+messages (including index messages caused by node joining or
+leaving to create/delete new/old indexes, migration of indexes, etc).
+Then, the average message number in a minute (per node) is used
+as our main performance metrics.

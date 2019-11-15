@@ -1,0 +1,26 @@
+This model is to simulate large scale object movements
+which exhibit locality. As we have argued in the beginning of
+the paper, such behavior is likely to occur in some real-world
+scenarios.
+The model works as follows. The main region in which the
+object movements are being tracked is divided into several
+smaller subregions, which represent points of interest such as
+shopping areas of a city, main squares, etc. These subregions,
+which we will refer to as level-1 regions are in turn subdivided
+further, representing increasingly local attraction points such as
+popular areas of a shopping center, or the sidewalks in a main
+square. We will refer to these increasingly nested subregions as
+level-2, level-3, etc. The subdivisions continue until some fixed
+depth is reached.
+Each object travels with a constant speed along a straight
+path to its destination. Once it reaches the destination, a new
+destination is selected for the object as follows. First, the object
+decides with some probability p1 whether to leave its level-1
+region. If so, it selects a destination in a neighboring level-1
+region uniformly at random. Otherwise, it remains in the same
+level-1 region, and repeats the same process at the next lower
+level, level-2, with probability p2, and so on until it either
+reaches a bottom region or decides to leave a current subregion.
+The probabilities pi to leave the current level-i region
+decrease with the region’s size. This forces the object movements
+to exhibit locality; they are less likely to embark on long

@@ -1,0 +1,71 @@
+Users are reluctant to do extra work when searching distributed
+content and usually submit short queries. This can
+lead to ambiguous or inadequate results. Therefore, automatically
+exploiting user-specific information to personalize
+retrieval result ranking has received considerable attention
+[9]. Several data sources can be considered for personalizing
+retrieval, notably the history of queries and accessed
+documents, and search independent user-centric information
+(shared documents, bookmarked items, etc.). Some
+approaches [23, 24] obtained noticeable improvements by
+employing automatically created models to re-rank search
+results with user profiles. Using the overlap of shared documents
+as a measure of proximity for interest profiles has
+been successfully used in the context of search mechanisms
+for P2P file sharing systems [8].
+In our approach, we rely on user profiles, which correspond
+to sets of representative keywords, extracted from visited
+Web pages and user’s query history, and are used by the
+CFRS system to better estimate what the user is actually
+searching for.
+In addition, as the profiles are transmitted with the queries,
+they need to be small and encoded (in order to preserve privacy).
+For this purpose, in the CFRS system, the profiles
+are represented in the form of space-efficient probabilistic
+data structures, the Bloom filters [4].
+As described in [5], the very simple structure of the Bloom
+filters makes several useful operations straightforward to implement.
+A Bloom filter representing the union of two sets
+(S1 and S2) is obtained by the logical OR of their bit vectors.
+Bloom filters are also used to approximate the size
+of the intersection between two sets S1 and S2. It follows
+that Jaccard  similarities between
+2 sets are easily estimated with Bloom filters. These
+similarities allow us to rank the documents in the result list
+of a query, based on a profile sent with the query.
+Profile maintenance. We assume that each user has
+several topical interests. Each topic is represented by a different
+profile, built and maintained locally at the user’s side.
+The first time a user accesses the system, his profile set is
+empty. However, to use the system efficiently from the start,
+an initial user profile could be built from his bookmarked
+documents or some local specific document collection.
+When the user selects a document in the result list obtained
+for a query Q, keywords are extracted, either from
+the document itself, or from the document summary (title,
+snippet) appearing in the result list. These keywords
+are weighted and the most representative ones are selected.
+The terms of the query are also added into the set if they are
+not already present in the set of top keywords. A Bloom filter
+DP is then generated from the selected keyword set and
+inserted in the local profile storage. The following insertion
+mechanism is considered: if the maximal size of the local
+profile set is not reached, the new document profile DP is
+simply inserted as a local user profile UP. Otherwise, the
+new profile is first temporarily inserted, and we compute the
+maximal similarity smax = max{sim(UPi1,UPi2)}, where
+the UPi are the profiles in the local storage. The pairs of
+profiles with maximal similarity are merged into a single one
+of the form 
+Profile usage. Profiles are used when submitting queries
+to the CFRS. At query submission, the system finds in the
+set of local profiles the one that has the highest similarity
+with the query, and sends it along with the query to
+the storage layer. Section 2.3.4 gives more detail on how
+queries and profiles are processed by the storage layer. The
+relevance feedback tracker, to be described next, also uses
+interest profiles. When the user accesses a document from
+the result lists (returned by centralized search engine or distributed
+collaborative service), a profile is build from this
+document and is sent together with the relevance feedback
+information.

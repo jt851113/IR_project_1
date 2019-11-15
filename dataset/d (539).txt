@@ -1,0 +1,158 @@
+Peer-to-peer (P2P) architecture and technologies have received
+considerable attention as an efficient way for providing
+large-scale distributed storage and information retrieval. P2P
+systems consist of Internet hosts that act as peers and form
+an overlay network. Significant amount of research has been
+directed towards designing structured P2P systems [20], [22],
+[26], [18], [14]. Many of these implement distributed hash
+tables (DHTs), which are highly scalable and offer efficient,
+low latency lookups (i.e., search and retrieval of data). However,
+some applications such as naming services require lower
+latencies than can be offered by these DHTs [6]. In this paper,
+we focus on the problem of improving the lookup performance
+of such structured P2P systems.
+Every node in a P2P system1 is responsible for a certain
+set of items and the system has an appropriate protocol for
+efficient routing of queries for items. The design objective is
+to have every node store pointers to certain other nodes in the
+system such that a query for an item reaches the destination
+node (i.e., the node with the queried item) in as few hops
+as possible. There is an inherent trade-off between the worstcase
+number of hops required by a query, and the number of
+neighbor pointers maintained by a node [23].
+There are two key components in the design of P2P systems:
+the design of the routing protocol and the choice of neighbors.
+In two popular DHTs, Pastry [20] and Chord [22], each node
+stores O(log n) neighbors in its routing table, where n is the
+number of nodes. These neighbors are chosen intelligently
+to ensure that queries take O(log n) hops in the worst case.
+However, the average query latency (in terms of hops) can
+be markedly different depending on the popularity distribution
+of nodes. In this work, we present efficient, scalable
+algorithms to minimize average query latency by caching
+additional neighbors based on frequencies of node accesses.
+Intuitively, the existing neighbors based on the underlying P2P
+system (henceforth, referred to as core neighbors) attempt to
+minimize the worst-case query latency, while the additional
+neighbors selected by our algorithms try to reduce the average
+query latency by accounting for the non-uniformity of
+query popularities. We refer to these additional neighbors as
+auxiliary neighbors since they supplement the core neighbors
+for accelerating query lookups.
+The number of neighbors maintained by each node is
+directly related to the maintenance cost induced by peers
+joining and leaving the system. In this paper, we provide
+algorithms that take the size of the routing table as input,
+and provide the appropriately-sized set of optimal auxiliary
+neighbors. The size of the routing table is a design choice, and
+needs to be traded off with the cost of maintaining the routing
+table. The maintenance cost consists of the overhead messages
+for ensuring that all the entries point to live neighbors in the
+presence of churn. This cost might be incurred when a node
+leaves (maybe, after making an announcement), or when nodes
+refresh their neighbor list. For instance, at regular intervals, a
+P2P node may send ping messages to check the liveness of its
+neighbors; the neighbors found dead after pinging are replaced
+by new neighbors. If the churn is high, then the refresh interval
+needs to be smaller to ensure that stale neighbors in the
+routing table do not result in unanswered queries. Clearly, the
+maintenance cost of the routing table grows with the size of the
+routing table (refer to [13] for an excellent evaluation of how
+the maintenance cost varies with different system parameters).
+To keep the maintenance cost roughly of the same order
+as before, it is reasonable to keep the number of auxiliary
+neighbors around the same as the number of core neighbors.
+In [12], the authors propose a protocol that adjusts the size
+of the routing table based on a given bandwidth budget for
+maintenance. Our approach can be used to populate the routing
+table entries on top of such an approach.
+It is important to recognize that there are several different
+ways to improve lookup performance in P2P systems,
+including replication and caching of items. In item caching, a
+node caches items that have been queried previously, and in
+a replication-based approach, the popular items are replicated
+at several nodes. [16] presents a replication scheme that can
+achieve O(1) hops in lookup performance, assuming a zipfian
+distribution for item popularities. However, item caching and
+replication schemes have some inherent drawbacks, especially,
+in scenarios where the items are large or the items are updated
+frequently and peer churn is relatively low. Clearly, if items
+are large and storage at nodes is limited, then storage will
+be a bottleneck. Moreover, large items imply high replication
+costs. Further, even if items are small, if they are updated
+frequently, then item caching will result in a large number of
+stale copies, and replication will incur a large cost due to the
+necessary updates. One example of such a scenario would be a
+P2P implementation [6], [17], [4], [15] of the Domain Name
+System (DNS) with support for mobile IP. In this example
+system, IP addresses of domain names may change frequently
+but the DNS servers (which are the peers in this case) can
+be expected to be reasonably stable. An approach based on
+caching additional neighbor pointers does not suffer from the
+above-mentioned problems even in the face of frequent item
+updates or large items. Another drawback with item caching
+and replication is that such approaches exclusively benefit the
+queries to the particular items that are cached or replicated.
+On the other hand, caching a pointer to a peer not only
+benefits queries to items in the cached peer, but also queries to
+items in other peers that can be reached faster via the cached
+peer. Nevertheless, our approach does not preclude the use of
+replication and item caching and can be used in conjunction
+with such schemes for added benefit.
+As hinted above, one of the motivations for improving query
+lookup times in P2P systems comes from the proposed use
+of P2P architectures for implementing DNS [6], [17], [4],
+[15]. In [15], the authors compare hierarchical and DHT-based
+naming services, and note that an ideal naming service needs
+to combine features of both: though P2P systems are more resilient
+to attacks, they suffer from poor query response times as
+compared to hierarchical DNS. Our work is motivated by the
+fact that today’s DNS servers obtain enormous performance
+gains by caching IP addresses of other DNS servers [10]. We
+leverage this idea to accelerate query lookups in P2P systems
+as well. Interestingly, the dynamic nature and the structure
+of P2P systems not only pose some unique challenges (quite
+different from hierarchical DNS implementations), but also
+provide scope for designing intelligent algorithms that exploit
+the underlying structure and routing policy.
+In this paper, we focus primarily on Pastry [20] and
+Chord [22]. However, the basic technique is also applicable to
+other P2P systems that employ similar routing policies. More
+precisely, the techniques presented for Pastry can be directly
+applied to Tapestry [26] and PGrid [1], and the techniques for
+Chord are applicable to SkipGraphs [2].
+There are three main contributions of this paper.
+1) We propose a novel technique for optimizing average
+lookup times in Pastry and Chord by caching additional
+neighbor pointers based on the access frequencies of
+peers. Our algorithms are efficient and scale well with
+the number of nodes in the system. Any node S wishing
+to choose the optimal set of k auxiliary neighbors can
+compute the desired pointers in O(nk) time in Pastry
+and O(nk log n) time in Chord, where n is the number
+of distinct nodes for which S has seen queries. We
+also provide an incremental version of our algorithm
+for Pastry that runs in O(k) time and can be used to
+efficiently maintain the optimal set of neighbors as peer
+popularities change and peers join or leave the system.
+2) We also extend our algorithms to support multiple
+QoS classes by handling queries that require guaranteed
+worst-case lookup times.
+3) We present extensive simulation results, which clearly
+demonstrate that our schemes provide substantial improvements
+in the query lookup times as compared
+to an approach that does not account for the access
+frequencies in choosing the auxiliary neighbors. For
+example, with log n auxiliary neighbors in Chord, the
+improvement is up to 57% when the item popularities are
+zipfian with parameter 1:2. In other words, our algorithm
+for Chord results in response times less than half of
+what is achieved without taking access frequencies into
+account.
+The rest of the paper is organized as follows. In Section II,
+we provide a quick overview of Chord and Pastry, and also
+discuss other related work. In Section III, we formally define
+the problem addressed in this paper. In Sections IV and V,
+we present optimal algorithms for auxiliary neighbor selection
+in Pastry and Chord, respectively. We present the simulatio
+results in Section VI. Finally, we conclude in Section VII.

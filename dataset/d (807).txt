@@ -1,0 +1,19 @@
+DFuse uses a distributed role assignment algorithm for placing
+fusion points in the network. Role assignment is a mapping
+from a fusion point in an application task graph to a network
+node. The distributed role assignment algorithm is triggered at
+the root node. The inputs to the algorithm are an application
+task graph (assuming the source nodes are known), a cost function,
+and attributes specific to the cost function. The output is
+an overlay network that optimizes the role to be performed by
+each node of the network. The “goodness” of the role assignment
+is with respect to the input cost function.
+A network node can play one of three roles: end point (source
+or sink), relay, or fusion point [3]. An end point corresponds to
+a data source or a sink. The network nodes that correspond to
+end points and fusion points may not always be directly reachable
+from one another. In this case, data forwarding relay nodes
+may be used to route messages among them. The routing layer
+(Figure 2) is responsible for assigning a relay role to any network
+node. The role assignment algorithm assigns only the
+fusion point roles.

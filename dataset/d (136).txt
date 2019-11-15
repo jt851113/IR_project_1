@@ -1,0 +1,21 @@
+Next, we describe the design of our proposal for location
+verication, which we dub the Echo protocol. For expository
+purposes, we start by considering a simplied toy scenario
+and developing a simple protocol for this scenario (Section
+3.1); then, we extend it repeatedly (Section 3.2) until we
+obtain the full protocol (Section 3.3).
+Notation.. We dene s to be the speed of sound, or 331 m/s.
+Likewise, we will take c to be the speed of light, or 3  108
+m/s. Dene d(x; y) to be the distance between x and y.
+We dene R to be the area in which we would like to verify
+the location of a prover p. The set of all verier nodes is
+denoted by V . N denotes a nonce, i.e., an unpredictable
+random value.
+Figure 1: An illustration of our rst simplication
+of the problem. The prover (not shown here) will
+try to convince the single verier node v that it is
+inside the region R (depicted as a shadowed circle,
+which in this rst scenario is assumed to be centered
+at v).
+Figure 2: A protocol that solves our rst simplica-
+tion of the problem.

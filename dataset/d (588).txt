@@ -1,0 +1,31 @@
+In this paper, we have proposed ACQUIRE - a novel mechanism for data extraction in energyconstrained
+sensor networks. The key feature of ACQUIRE is the injection of active queries
+into the network with triggered local updates. We first categorized sensor network query
+types and identified those for which ACQUIRE is likely to perform in an energy-efficient
+manner: complex, one-shot, non-aggregate queries for replicated data.
+We have developed a fairly sophisticated mathematical model that allows us to analytically
+evaluate and characterize the performance (in terms of energy costs and response latency)
+of ACQUIRE, as well as alternative techniques such as flooding-based queries (FBQ) and
+expanding ring search (ERS). As far as we are aware, there are very few similar results in the
+literature that provide similar mathematical characterizations of the performance of query
+techniques for sensor networks. We validated our analysis through extensive simulations and
+also identified ways in which the models can be extended and improved.
+In our analysis we defined an amortization factor c to meaningfully capture the relationship
+between the query rate and data dynamics. When c is low, more queries can be processed
+in the time that a given datum remains “fresh.” Our analysis revealed that this parameter
+has a significant impact on the energy costs of cached update schemes such as the one used
+in ACQUIRE. Indeed, we showed that the optimal look-ahead in ACQUIRE depends solely
+upon c, not on other parameters such as the size of the network or the size of the queries.
+We found that ACQUIRE with optimal parameter settings outperforms the other schemes for
+complex, one-shot queries in terms of energy consumption. Specifically, optimal ACQUIRE
+performs many orders of magnitude better than flooding-based schemes (such as Directed
+Diffusion) for such queries in large networks. We also observed that optimal ACQUIRE
+can reduce the energy consumption by more than 60 ? 75% as compared to expanding ring
+search (in highly dynamic environments and high query rates). The energy savings are
+highest when c is high and NlnM is high. However, this energy savings come at the cost of
+increased average latency in answering a query.
+To conclude, we believe that there is no one-size-fits-all answer to the question: “How do we
+efficiently query sensor networks?” We propose ACQUIRE as a highly scalable technique,
+energy-efficient at solving complex one-shot queries for replicated data. We argue that
+ACQUIRE deserves to be incorporated into a portfolio of query mechanisms for use in realworld
+sensor networks.

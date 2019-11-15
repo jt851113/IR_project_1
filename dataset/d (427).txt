@@ -1,0 +1,17 @@
+The IBM Intranet traces consist of 160 critical nodes, e.g.,
+file servers, routers, etc., in the IBM T. J. Watson Intranet.
+Each node issues a message in response of certain situation,
+e.g., CPU saturation, router interface down, etc. There are total 20 types of messages. We treat a certain message from
+a particular node as a distinct event, thus there are total 500
+distinct events in the trace because a certain type of node
+may only send out 4 or 5 types of messages. The IBM Intranet
+trace consists of 10,000 occurrences of the events. By
+applying InfoMiner on this trace, we found some surprising
+patterns that are also interesting. For example, the pattern
+(nodea_fail,*, nodeb_saturated,*) has the eighth highest information
+gain. This pattern means that a short time after a
+router (node~) fails, the CPU on another node (nodeb) is saturated.
+Under a thorough investigation, we found that nodeb
+is a file server and after node~ fails, all requests to some files
+are sent to nodeb, thus causes the bottleneck. Further experimental
+results can be found in [14].

@@ -1,0 +1,16 @@
+TUN (Scalable Tracking using Networked Sensors), a
+method for tracking large numbers of moving objects that
+gains efficiency through hierarchical organization.
+Second, we described the DAB (drain-and-balance) method
+for building STUN hierarchies that take advantage of information
+about the mobility patterns of the objects being tracked.
+We have demonstrated that this method gains an advantage
+over traffic-oblivious schemes when the mobility patterns
+exhibit locality. As we argued, locality is to be expected in
+large-scale environments, and so we conclude that the DAB
+method is useful in large-scale sensor tracking systems.
+Acknowledgments. This research was supported in part by
+the Air Force Office of Scientific Research Multidisciplinary
+University Research Initiative Grant F49620-97-1-0382, and in
+parts by research grants from Microsoft Research and Sun
+Microsystems.

@@ -1,0 +1,52 @@
+We implement a simulator of OTSN and various energy
+saving schemes using CSIM [15]. We use the
+3For the PES with ALL NBR heuristic, it enters directly
+into the second stage of the recovery described below.
+
+shortest path multi-hop routing algorithm for communications
+between the base station and sensor nodes
+and adopt energy consumption forWINS sensor nodes
+[14, 18] as the basis for our simulation (shown in table
+2). Two metrics are used for our performance evaluation:
+‧ Total energy consumption: the total energy
+consumed in both active and sleeping modes by
+the network during the simulated period;
+‧ Missing rate: the ratio of the number of missed
+reports to the total number of reports the application
+is supposed to receive from the OTSN.
+These two metrics measure the energy consump-tions
+of various energy saving schemes and their effectiveness
+to meet the application requirements.
+Our simulation models a OTSN of 95 logical sen-sor
+nodes in a 120 × 120meter2 monitored region.
+We assume the sensing coverage range is 15m. The
+network is based on a hexagon topology, i.e., sensor
+nodes are evenly placed in the area such that each
+sensor node has a hexagon-shaped detection area with
+exact six neighbor nodes. To model moving behavior
+of the tracked objects, the Gauss-Markov mobility
+model [10] is used (with a default speed=5m/s, pause
+time=600ms, and α = 0.8)4.
+
+Table 2: Energy Consumption on WINS Nodes.
+The workload of the network is captured by the
+number of moving objects at any point of the simulation.
+For sensing operations, we assume that the sensor
+nodes need to sample the environment for 100ms
+to obtain stable data and that the sampling frequency
+should be greater than the reporting frequency. In
+addition, we assume that the application requires the
+OTSN to report the locations of tracked objects (represented
+by the sensor ID) every second. The average
+size of the data packet sent to the base station is 48
+bits; the wake up packet is 40 bits; and the prediction
+packet used for the heuristic EXP AVG is 64 bits. We
+run 25 trials to obtain the average result, where each
+trial simulates 120 second object tracking activities.
+We assume there is no congestion or transmission conflict
+in the network. Exploring the behavior of PES
+4α is the tuning parameter used to control the randomness of
+the next move. Total randomness is obtained by setting α = 0,
+while linear motion is obtained by setting α = 1.
+under congestion and transmission conflict is the subject
+of our future research.

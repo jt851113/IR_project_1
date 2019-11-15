@@ -1,0 +1,19 @@
+In this set of experiments, we evaluate the query response
+time for successful queries. Adopting the typical policy in
+many mobile networks, we set a time threshold for queries,
+and assume a query fails if its issuer does not get any reply
+within the threshold. In Figure 7, we show the average query
+response time of all successful queries in the network by
+varying the network size and data cardinality. The flooding
+approach has the shortest response time owing to its fully
+distributed nature. Our IA approach is faster than Eureka,
+which means IA has shorter query paths than Eureka on
+average. As we can see, Eureka is a constrained distributed
+approach which propagates queries in a selective and parallel
+way. IA has only one but probably most optimal query path,
+thus it outperforms Eureka. This is owing to the advantages
+of its Intelligence Accuracy evaluation technique as well as
+the cooperation of each node. Meanwhile, the gaps among
+IA, Eureka and flooding are getting smaller when network
+size becomes larger, because the query paths of all three
+approaches get closer to TTL for larger networks.

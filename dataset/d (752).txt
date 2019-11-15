@@ -1,0 +1,79 @@
+The qualities obtained with ternary relations are plotted in Fig. 11. In this setting, the
+hidden patterns contain eight elements in every attribute domain (of 32 elements) and
+the patterns are constrained to have at least four elements per attribute. According to
+Fig. 11a, the best parametrization for Fenster is  = 2 when the level of noise is
+below 0.15. At this point, the quality of the extracted collection of closed ET-3-sets
+is almost perfect, whereas the collection of exact closed patterns shows a quality of
+0.25. The noisiest settings are advantageously mined with  = 3. This confirms that
+greater noise tolerances are preferred to mine relations suffering from higher levels of
+noise.
+Comparing these quality results with those of DCE allows to defend our choice
+of a per-element tolerance to noise. In Fig. 11b, DCE considers the noise covered by
+whole patterns and, doing so, the quality results are both worse and more sensitive to
+the choice of the noise tolerance threshold. In particular, tolerating a little more noise
+than necessary provides poor results. This is explained by the fact that an extracted
+pattern is somehow allowed to “go beyond” an hidden pattern if the covered part of
+the hidden pattern has not been altered by much noise. If this is the case, the tolerated
+proportion of absent tuples is far enough from being reached to accept additional
+elements outside the hidden pattern. Understanding this problem, the authors of DCE
+have proposed a post-process that additionally forces each element of the pattern to
+cover at most the chosen proportion of noise. With this post-process the only difference
+with Fenster’s tolerance to noise relates to the absolute/relative dilemma.
+Nevertheless, the ability to tolerate a greater number of absent tuples in larger patterns
+does not affect the quality in this experiment, i. e., Fenster (see Fig. 11a) and DCE +
+post-process (see Fig. 11c) extract patterns that cover the exact same tuples.
+Fenster and DCE are tested on 4-ary relations. The experimental protocol still
+follows what Sect. 5.1 details. The hidden patterns contain four elements in every
+attribute domain (of 16 elements) and the patterns are forced to have at least two elements
+per attribute. Figure 12 plots the qualities obtained in this setting. Whatever the
+level of noise, Fenster (see Fig. 12a) outputs better collections of closed ET-4-sets
+with  = 1 than without any tolerance to noise (i. e.,  = 0).With a noise level of 0.25,
+the quality of the collection of exact closed 4-sets is below 0.3, whereas it reaches 0.65
+when  = 1. Furthermore, because of the loose minimal size constraints,  = 2 is
+too high. Comparing Fenster’s results with those of DCE with (Fig. 12c) and without
+(Fig. 12b) the filtering post-process leads to similar conclusions as those drawn
+from the 3-dimensional case: the quality of the patterns globally tolerating noise is
+far beneath that of the patterns tolerating noise per element and, in this latter context,
+DCE’s relative tolerance to noise has almost no effect on the quality w.r.t. Fenster’s
+absolute tolerance.
+The worse quality results of a per-pattern tolerance to noise were explained by the
+possibility for those patterns to “go beyond” the hidden patterns. The mere quality
+measure is not enough to justify this explanation. That is why Fig. 13 plots the proportion
+of the covered tuples that is outside the hidden patterns, i. e., |E\Rhidden|
+|E| .When the
+noise is tolerated per-pattern (Fig. 13b) instead of per-element (Fig. 13a), as Fenster
+does, this quantity of incorrectly covered tuples clearly is higher. These results relate
+to the experiment on 4-ary relations but a same conclusion is drawn from the analysis
+of the patterns extracted in the ternary relations.
+Fenster and DCE are now seen as binary classifiers of tuples (in the classes “being
+covered by the hidden patterns” and “not being covered by the hidden patterns”) so
+that ROC curves can be plotted.6 For a given noise level, such a curve represents
+the proportion of correctly covered tuples, |E∩Rhidden|
+|Rhidden| , in function of the proportion
+of incorrectly covered tuples, |E\Rhidden|. Figure 14 shows the results obtained
+from the experiment on 4-ary relations. For more clarity, the curves related to noise
+levels up to 0.15 were omitted: they all coincide with the leftmost and topmost axises
+of the plots, i. e., the hidden patterns are entirely covered before any false positive tuple
+is ever covered. Every number written next to a point corresponds to the related noise
+tolerance threshold. The ROC curves obtained with a per-element tolerance to noise
+are similar to those obtained with a per-pattern tolerance to noise. This means that
+the correctly and incorrectly covered tuples are “ranked” in about the same way when
+moving from no tolerance to noise (where, obviously, the way to tolerate noise has no
+influence on the output patterns) to tolerating much noise. Nevertheless, with DCE’s
+per-pattern tolerance, increasing the density thresholdmore quickly leads to the upperright
+corner of the ROC space (one can, for instance, compare the positions of DCE’s
+points relating to a minimal density of 0.875 with those obtained by Fenster and an
+absolute tolerance of 1). This reflects the greater sensitivity to parametrization that has
+already been commented from the quality results. This difference is quite important in
+practice because, contrary to a standard classification problem, the pattern extraction
+is unsupervised and the analyst usually has no way to precisely know the level of noise
+affecting the data, hence the optimal noise tolerance thresholds. The analog analysis
+of the patterns extracted in the ternary relations leads to the same conclusions.
+To limit the false-negative rate, stronger minimal size constraints can be used. By
+requiring at least five (respectively three) elements per attribute of the ternary (respectively
+4-ary) relations, none of the false-positive tuples are ever covered, i. e., the
+ROC curves coincide with the leftmost axis of the ROC space. Unfortunately, many
+true-positive tuples end up not being covered as well and the quality is worse. In fact,
+from a noise level of 0.3 (respectively 0.25) and with the greatest noise tolerance
+we have tested ( = 4), no closed ET-3-set (respectively closed ET-4-set) satisfy the
+minimal size constraints.

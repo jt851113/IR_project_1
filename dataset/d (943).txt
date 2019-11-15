@@ -1,0 +1,32 @@
+2.1.2. Next-Generation Traffic Sensors. Current research
+on sensor devices is focused on producing very small sensors
+that can be deployed in harsh environments (e.g. the
+surface of a freeway.) Current sensor prototypes at UC
+Berkeley, MIT, and UCLA share similar properties: they
+are very small, wireless radio-driven, and battery powered,
+with a size of about 10 cm. The ultimate goal is to produce
+devices in the 1 mm range – about the size of a gnat [15].
+We refer to such miniscule sensors as “motes”. Current
+prototypes use 8bit microprocessors with small amounts of
+RAM (less than 32kBytes) running from 1 to 16 MHz, with
+a small radio capable of transmitting at tens of kilobits per
+second with a range of a few hundred feet[12]. As sensors
+become miniaturized, they will be small enough that they
+could be scattered over the freeway such that they will not
+interfere with cars running over them, or could fit easily
+between the grooves in the roadway. Sensors could be connected
+to existing inductive loops, or be augmented with
+light or pressure sensors that could detect whenever a car
+passed over them.
+One key component of this new generation of sensors is
+that they are capable of on board computation, which may
+take the form of simple filtering or aggregation. This ability
+allows the computational burden on the server and the
+communications burden on the motes to be reduced. For example,
+rather than directly transmitting the voltage reading
+from a light sensor many times a second, motes could transmit
+a count of the number of cars which have passed over
+them during some time interval. This aggregation reduces
+the amount of communication required and saves work at
+the central server. In an environment with tens of thousands
+of sensors, the benefits of such reductions can be substantial.

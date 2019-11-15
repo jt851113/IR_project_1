@@ -1,0 +1,21 @@
+Today's sensor motes (e.g. [12]) are full edged com-
+puter systems, with a CPU, main memory, operat-
+ing system and a suite of sensors. They are powered
+by small batteries and their lifetime is primarily de-
+pendent on the extent to which battery power is con-
+served. The power consumption tends to be dominated
+by transmitting and receiving messages and most sys-
+tems try to minimize the number of messages in order
+to save power. Also, the communication between sen-
+sors is wireless and the packet loss rate between nodes
+can be high. For example, [23] reports on experiments
+in which more than 10% of the links suered average
+loss rate greater than 50%. Another challenge is that
+links may be asymmetric, both in loss rates and even
+reachability. These limitations motivate query evalua-
+tion methods in sensor networks that are fundamen-
+tally dierent from the traditional distributed query
+evaluation approaches. First, the query execution plan
+must be energy eAcient and second, the process must
+be as robust as possible given the communication lim-
+itations in these networks.

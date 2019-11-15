@@ -1,0 +1,13 @@
+In this paper, we have presented a novel approach for P2P similarity
+search, based on unsupervised and decentralized SON generation.
+We have shown how peers in an unstructured P2P network
+can be self-organized in SONs in a distributed way, thus forming a
+super-peer architecture. Then we introduced an efficient and highquality
+similarity search mechanism. Finally, we have presented
+experimental results on two document collections justifying our
+claims for efficiency and quality.
+Future work includes the study of more efficient routing techniques
+among SONs, integration of semantic similarity search into
+our system using query expansion techniques, and use of other
+clustering algorithms in order to improve the quality of the global
+SONs.

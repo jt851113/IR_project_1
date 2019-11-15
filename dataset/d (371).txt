@@ -1,0 +1,67 @@
+Efforts to decrease the power consumption of wireless devices
+were made at all networking layers. At the physical
+layer, efforts have included utilizing lower-power radio propagation
+techniques, such as code division spread spectrum
+(e.g., DSSS and FHSS [35]). At the datalink layer, medium
+access control (MAC) protocols govern when and how the
+nodes of the network coordinate to share a broadcast channel
+effectively. CSMA MAC protocols [6, 24, 11] are generally
+wasteful inasmuch as nodes must constantly monitor
+the broadcast channel in Rx mode – an expensive radio
+function. Other protocols, such as TDMA [20, 23], have
+been designed to allow nodes to power down their antennas
+during particular time-slots of a predetermined schedule.
+However, these work do not consider network topology
+and application-specific data interests.
+Imielinski’s work [17], where a wireless server broadcasts
+data items according to a temporal directory, also has the
+goal of reducing power consumption. The directory tells
+clients when to listen for particular data items. This is
+analagous to the downstream control event in TD-DES. Another
+related model is that of broadcast disks [7] proposed
+for asymmetric systems in which a server broadcasts a rotating
+schedule, or disk, of data downstream to clients. This
+model was later extensively studied and extended for hierarchical
+data dissemination (e.g., [15]). TD-DES borrows
+from both models the basic notion of disseminating events
+through a schedule. TD-DES also assumes a multi-hop network
+environment where the topology of the network can
+be arbitrary and needs to be taken into account, which significantly
+complicates the problem. Furthermore, TD-DES
+is designed for symmetric data flow, downstream as well as
+upstream, whereas the other protocols address asymmetric,
+downstream communication only.
+Recent work on wireless publish/subscribe [16] also uses
+soft-state trees for data dissemination. This work describes
+several heuristics for dissemination tree construction but
+does not address power-management through scheduled powerdown
+periods.
+Directed diffusion [19], TAG [26], and the COUGAR [37]
+address data-centric extraction of information from wireless
+sensor networks, commonly through intelligent in-network
+data aggregation. Our approach can be regarded as a generalization
+of TAG’s epoch-based aggregation approach. In
+the TAG approach, aggregation takes place over time as
+a sequence of epochs, each consisting of data propagation
+from children to parent nodes and generic data aggregation
+at the parents. The TAG approach is geared specifically
+towards upstream aggregation, whereas our approach is a
+step towards generic upstream and downstream event-based
+data dissemination. Furthermore, the scheduling issues we
+investigate have not been addressed by prior work.
+Most relevant to our approach are topology management
+schemes that address the issue of which nodes should turn
+their radios off and when. S-MAC [38] allows nodes to go
+to sleep periodically. Nodes go to sleep for some time, and
+then wake up to listen to see if other nodes want to talk
+to them. Sleep schedules can be adjusted on a per-node
+basis. In STEM [34], nodes use two seperate radios, one
+acting as a low-power paging channel and one as a data
+transmission channel, to trade off power savings for path set
+up latency. Nodes use the paging radio to detect tranmission
+requests from their neighbors, and then wake up their
+primary radio to pick up the actual data transmission. TDDES
+shares similar goals with these topology management
+schemes. Unlike these schemes, however, TD-DES also addresses
+application semantics-based data dissemination and
+scheduling.

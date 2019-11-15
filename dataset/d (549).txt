@@ -1,0 +1,23 @@
+It is also easy to extend our algorithm to handle different
+query classes. Given that QoS-sensitive applications such as
+VoIP, IPTV, and video on demand are gaining prominence, it
+is easy to envision real-time applications that require certain
+queries to be answered within a fixed time period and hence
+within a certain number of hops. It is also reasonable to
+expect such queries to be small in number, and hence destined
+for a small, specific set of nodes. The new minimization
+problem is now a constrained version of the original minimization
+problem stated in Section III: given per-node access
+frequencies and delay bounds, the goal is to identify a set
+of auxiliary neighbors that minimize the average lookup time
+while ensuring that the per-node delay bounds are met. The
+algorithm, presented in Section IV-B, can be easily adapted
+to handle this case. Note that the delay bounds translate
+to restrictions on the vertices of the trie. In particular, if a
+node has a delay bound of x, then the subtree of height x
+that contains the corresponding leaf must have a auxiliary
+neighbor. This additional constraint can be easily added to
+the algorithm by marking such subtrees, and modifying the
+algorithm to select at least one pointer from such subtrees. This
+modification can be easily accomplished without any increase
+in complexity.

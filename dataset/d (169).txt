@@ -1,0 +1,30 @@
+In Figs. 11(a) and 11(b), we show several experimental
+results on the NBA data set with equal weights on all attributes.
+When varying the constraint parameter k, TSA
+is the most efficient algorithm when k < 14, but is worst
+among the three algorithms when k > 15. SRA is faster
+than the other two when k is large. For top-δ dominant skyline
+query, SRA is much more efficient than TSA because of
+its great advantage over TSA on k-dominant skyline query
+with large k.
+In Table 3, we show the top-5 dominant skyline results on
+NBA data set with three different weights assignments. The
+first assignment is equal-weight assignment, i.e., all dimensions
+are assigned the same weight. With the same weight on
+all dimensions, we successfully find the superstars in NBA’s
+history, such as Chamberlain and Jordan, listed in the first
+column. In the second weight assignment, six attributes
+related to defense, such as block, steal and rebound, are
+given weights two times more than all other dimensions.
+From the result of the defender biased weights in the second
+column of the table, we can find famous defenders in
+NBA. The third weight assignment concentrates on shooters,
+which gives shooters’ strengths, such as points scored
+and three pointers, two times more weight than other attributes.
+Legendary shooters appear in the third column as
+expected.
+Since the NBA data set is fairly correlated, especially on
+those attacking attributes, TSA is faster on shooter biased
+weights than the other weights assignments in Fig. 11(c).
+This shows that TSA is more sensitive to weight assignment
+than the other two algorithms.

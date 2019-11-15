@@ -1,0 +1,11 @@
+In this section, we first define the application requirements
+for object tracking and examine two performance
+criteria. Then, we investigate some energy
+saving schemes to meet these requirements and criteria
+set for our study. All the schemes we discuss
+below do not consider the energy overhead for transiting
+between operating modes of all the components on
+the sensor nodes. Unless specified explicitly, a sensor
+node is activated when both of MCU and sensor components
+are in active mode. The operations of radio
+components is discussed later.

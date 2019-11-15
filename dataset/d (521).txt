@@ -1,0 +1,75 @@
+5.3 Experimental Results
+5.3.1 Evaluating the Performance of the Complete
+Approach
+Fig. 17 shows the effect of the number of data objects. The
+average access time increases as the number of data objects
+increases. The smaller the number of data objects is, the
+better the performance of our approach is. For example,
+when the number of data objects is 100 and 700, the ratio of
+the average access time of our approach to the lower bound
+on the average access time of the optimal broadcast
+program is 2.13 and 2.30, respectively. In our approach,
+the access graph is first constructed to represent the query
+patterns, then the scheduling algorithm is applied on the
+access graph to get the broadcast program. As the number
+of data objects increases, the performance of the scheduling
+algorithm degrades (the performance of the scheduling
+algorithm will be separately discussed in Section 5.3.2).
+Moreover, as the number of data objects increases, the
+number of the data objects in the query patterns whose
+access order should be determined by MIW also increases.
+However, the ratio of the average access time of our
+approach to the lower bound on the average access time of
+the optimal broadcast program remains about the same. In
+the simulation, the ratios are 2.13, 2.21, 2.26, 2.28, 2.29, 2.29,
+and 2.30 when the number of data objects are 100, 200, 300,
+400, 500, 600, and 700, respectively.
+The effect of the data object sizes is shown in Fig. 18.
+When  equals zero, the data object sizes are uniformly
+distributed between [20, 80]. Moreover, as the value of 
+increases, the probability of generating larger data objects
+increases. Therefore, the larger the value of  is, the more
+the number of data buckets in a broadcast cycle is needed,
+i.e., which lengthens the average access time. The ratio of
+the average access time of our approach to the lower bound
+on the average access time of the optimal broadcast
+program is invariant to the data object size distribution.
+Fig. 19 shows the effect of the access frequency of query
+patterns. As shown in the figure, the ratio of the average
+access time of our approach to the lower bound on the
+average access time of the optimal broadcast program is
+invariant to the access frequency distribution. The effect of
+the number of query patterns is shown in Fig. 20. As shown
+in the result, when the number of query patterns is small,
+say 100, the ratio of the average access time of our approach
+to the lower bound on the average access time of the
+optimal broadcast program is 2.54, which is not as good as
+the performance shown in Fig. 18. The reason is that, when
+the number of query patterns is small, the number of data
+objects in the query patterns whose access order should be
+determined by MIW increases.
+Fig. 21 shows the effect of the number of data objects in a
+query pattern. As shown in the result, in our approach, the
+average access time increases as the number of data objects
+in a query pattern increases. However, the lower bound on
+the average access time of the optimal broadcast program
+decreases as the number of data objects in a query pattern
+increases. The reason is that, as the number of data objects
+in a query pattern increases, the number of data objects in
+SA (|SA|) increase. Therefore, eb 	 jSAjjT2=jSAjj decreases.
+Referring to Section 5.1.2, the minimal value of
+occurs when
+According to the Cauchy-Schwarz inequality, it means that
+the direction of are the same.
+That is,, which means that the data
+objects in SA are uniformly allocated in the broadcast
+program. However, when considering di
+SAj , the minimal
+value occurs when the data objects in SA are allocated
+adjacently, i.e., kSAjk. These two conditions cannot be
+satisfied at the same time. Moreover, as the number of data
+objects in a query pattern increases, the time needed to
+access all the data objects in a query pattern increases.
+Therefore, in our approach, the average access time
+increases as the number of data objects in a query pattern
+increases.

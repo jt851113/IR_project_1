@@ -1,0 +1,31 @@
+We now describe the two-dimensional histograms for term
+statistics. We show how to utilize them in query processing
+to achieve high recall of the top-k documents that match a
+conjunctive multi-term query, while keeping at a minimum
+both the number of peers that are contacted and the communication
+cost.
+The general idea is the following. Each peer pi partitions
+its documents into groups, which are not necessarily disjoint.
+For all groups g and terms tj, peer pi keeps the score
+distribution of the documents in g with respect to term tj .
+Thus, we obtain a two-dimensional histogram Hij(g, s) for
+term tj in peer pi, where rows represent document groups
+and columns represent score ranges. The cell (g, s) contains
+the number of documents in group g that have scores in the
+range (i.e., interval) that is represented by column s.
+Figure 1 shows two equi-width histograms for the terms
+t1 and t2 in some peer. In this example, the partitioning is
+naively done according to the document id’s, namely, every
+100 documents form a group. The score dimension is given
+in ascending order with an interval width of 0.2. For example,
+the histogram for t1 shows that five out of the first
+100 documents have a score in the interval [0.6, 0.8). Note
+that in each peer, the histograms of all the terms use the
+same partitioning. However, distinct peers have different
+documents (and, hence, different groups).
+For each term t, a document d has a score denoted by
+scoret(d). For a query q = (t1, . . . , tn), the score of d is
+denoted by scoreq(d) and is defined by some monotonic aggregate
+function f(scoret1 (d), . . . , scoretn(d)). For example,
+f can be the sum of the scores. However, if some of the keywords
+of q do not appear in d, then scoreq(d) = 0; thus, d is

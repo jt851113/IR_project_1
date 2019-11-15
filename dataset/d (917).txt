@@ -1,0 +1,5 @@
+In this section, we explore methods for mining partial
+periodicity in a time series, proceeding from mining partial
+periodicity for a single given period to mining partial
+periodicity for a specified range of periods (i.e., multiple
+periods).

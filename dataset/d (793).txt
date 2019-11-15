@@ -1,0 +1,9 @@
+We now present the results of an extensive set of experiments
+conducted to analyze the behaviour of the sequential
+and interleaved algorithms. In these experiments, it should
+be kept in mind that the sequential algorithm had an inherent
+advantage in considering the time segments of the
+data one by one. All but the largest time segments that we
+used fit entirely in the main memory of the machine that we
+used. The interleaved algorithm which sweeps repeatedly
+through the entire data incurs more I/O’s.

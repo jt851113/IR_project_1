@@ -1,0 +1,39 @@
+The prediction models may be classied into four categories:
+ Spatial: These prediction models specify the reading
+3A prediction-model is a concise representation of the read-
+ings that a sensor is expected to sense in the near future
+
+at a sensor as a function of the readings at nearby
+sensors. Example: \Reading at sensor X in time slot
+t is the same as reading at sensor Y during the same
+time slot".
+ Temporal: These prediction models specify the reading
+at a sensor as a function of its readings in the past.
+Example: \Reading at sensor X in time slot t is 2
+greater than its reading in the previous time slot".
+ Spatio-temporal: A combination of the above two. Ex-
+ample: \Reading at sensor X in time slot t is the same
+as the reading of sensor Y in the previous time slot".
+ Absolute: These prediction models directly specify the
+readings that a sensor is going to sense in the near
+future. The readings may be specied as a list of tu-
+ples <time, reading>, or they may be specied by a
+function. Unlike spatial or temporal models however,
+the function neither depends on any past reading of
+the sensor, nor on the reading of any nearby sensor.
+Example: \Readings at sensor X in time slots t, t+1,
+and t+2 will be 32, 34, and 35 respectively".
+
+In some cases, one may need to represent spatial, temporal,
+or spatio-temporal prediction model as an absolute predic-
+tion model. This happens when the readings on which future
+readings depend, are not available at the sensor. for exam-
+ple, if a sensor only stores a limited amount of history, then
+readings needed to compute a temporal model may not be
+available. Similarly, if a sensor can hear only a few neighbor-
+ing sensors, then the readings of sensors needed to compute
+a spatial model may not be available to it.
+A prediction model is always qualied with a time inter-
+val in which it is valid. At the end of the time interval,
+the prediction model expires and the sensor reverts to the
+update-mode described earlier.

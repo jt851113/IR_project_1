@@ -1,0 +1,47 @@
+DFuse is implemented as a multi-threaded runtime system,
+assuming infrastructure support for timestamping data produced
+from different sensors, and a reliable transport layer for moving
+data through the network. Multi-threading the runtime system
+enhances opportunities for parallelism in data collection and fusion
+function execution for streaming tasks. The infrastructural
+assumptions can be satisfied in various ways. As we mentioned
+in Section 3, the timestamps associated with the data can be
+virtual or real. Virtual timestamping has several advantages,
+the most important of which is the fact that the timestamp can
+serve as a vehicle for propagating the causality between raw and
+processed data from a given sensor. Besides, virtual timestamps
+allows an application to choose the granularity of real-time interval
+for chunking streaming data. Further, the runtime overhead
+is minimized since there is no requirement for global clock
+synchronization, making virtual time synchrony attractive for
+WASN. For transport, given the multi-hop network topology of
+WASN, a messaging layer that supports ad hoc routing is desirable.
+Assuming above infrastructure support, implementing DFuse
+consists of the following steps:
+1. Implementing a multi-threaded architecture for the fusion
+module that supports the basic fusion API calls (Section
+3), and the other associated optimizations such as
+prefetching;
+2. Implementing the placement module that supports the
+role assignment tasks (Section 4); and
+3. Interfacing the two modules for both instantiating the application
+task graph and invoking changes in the overlay
+network during execution.
+The infrastructural requirements are met by a programming
+system called Stampede [13, 2]. A Stampede program consists
+of a dynamic collection of threads communicating timestamped
+data items through channels. Stampede also provides registers
+with full/empty synchronization semantics for inter-thread signaling
+and event notification. The threads, channels, and registers
+can be launched anywhere in the distributed system, and
+the runtime system takes care of automatically garbage collecting
+the space associated with obsolete items from the channels.
+Though Stampede’s messaging layer does not support adaptive
+multi-hop ad hoc routing, we adopt a novel way of performing
+the evaluation with limited routing support (Section 6). For the
+ease of evaluation, we have decoupled the fusion and placement
+module implementations. Their interface is a built-in communication
+channel and a protocol that facilitates dynamic task
+graph instantiation and adaptation using the DFuse API. Transmission
+rates exhibited by the application are collected by this
+interface and communicated to the placement module.

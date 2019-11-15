@@ -1,0 +1,30 @@
+Extracting every noise-tolerant itemset in binary relations is a difficult task. Available
+approaches usually suffer from scalability issues and no closedness constraint is
+enforced, hence much redundancy in the returned collections.With relations of higher
+arities, faint noise affects more and more the quality of the patterns. This article presented
+an algorithm for the complete extraction of noise-tolerant patterns in arbitrary
+n-ary relations. How much noise is tolerated is parameterized by as many integers as
+there are attributes in the relation. In every pattern, these integers are upper-bounds
+of the number of n-tuples involving an element from the related attribute domain,
+encompassed by the patterns, but absent from the relation. This definition allows a
+closedness constraint to support a lossless condensation of the extracted collections.
+Furthermore, and thanks to the incremental computation of counters of absent n-tuples
+in many subspaces of the relation, the proposed algorithm remains tractable on large
+relations.
+Relevant patterns were discovered in a real-life 4-ary relation involving more
+than 100,000 tuples and mined under rather loose minimal size constraints. With
+the possible enforcement of additional relevance constraints, which even more alleviate
+the computational requirements, many applicative perspectives are opened up.
+For instance, we are currently working on the analysis of large amounts of usergenerated
+data on the Web. In such a context, the time is an essential dimension that
+n-ary relations can take into consideration without having to drop another one. Synthetic
+datasets have allowed to quantitatively assess the effectiveness and the efficiency
+of the algorithm. By comparison with its main competitor, which tolerates noise in
+a different way, this proposal has been shown to extract, orders of magnitude faster,
+smaller pattern collections of higher quality. In this regard, this contribution increases
+our understanding of the solution to bring to the unwanted alterations of the relation.
+Nevertheless a complete approach usually cannot, in a reasonable time, tolerate as
+much noise as contained in the data. As a consequence, the returned closed patterns
+remain fragments (though larger fragments than without noise tolerance) of the hidden
+patterns. To heuristically complement this approach, a hierarchical agglomeration of
+the patterns (Cerf et al. 2009b) was developed.

@@ -1,0 +1,25 @@
+When a new continuous query enters the system, the query is
+parsed and the query plan is fed into the group optimizer for
+incremental grouping. The group optimizer may split this query
+into several queries using the query-split scheme described in
+Section 3. The continuous query manager then invokes the
+Niagara query optimizer to perform common query optimization
+for these queries and the optimized plans are stored for future
+execution. Timer information and data source names of these
+queries are given to the Event Detector (Step 1 in Figure 4.2).
+The Event Detector then asks the Data Manager to monitor the
+related source files and intermediate files (Step 2 in Figure 4.2),
+which in turn caches a local copy of each source file. This step
+is necessary in order to detect subsequent changes to the file.
+The Event Detector monitors two types of events: timer events
+and file-modification events. Whenever such events occur, the
+Event Detector notifies the Continuous Query Manager about
+which queries need to be fired and on which data sources.
+The Data Manager in Niagara monitors web XML sources and
+intermediate files on its local disk. It handles the disk I/O for
+both ordinary queries and continuous queries and supports both
+push-based and pull-based data sources. For push-based data
+sources, the Data Manager is informed of a file change and
+notifies Event Detector actively. Otherwise, the Event Detector
+periodically asks the Data Manager to check the last modified
+time.

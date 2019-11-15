@@ -1,0 +1,12 @@
+Next, we define some baselines that the advanced query
+routing strategies can be compared to:
+‧ Random: Rank peers in random order.
+‧ By size: instead of creating a content-related profile for
+each peer, just rank peers by the number of documents
+they hold.
+‧ Base CORI: apply the procedure described in the previous
+section, refining neither queries nor profiles.
+1This is again unknown in a P2PIR setting, but was taken
+from the whole collection for the experiments. The effect of
+using only a rough estimate for this quantity remains to be
+examined in future work.

@@ -1,0 +1,8 @@
+The basic concept of DAB as described above applies to
+multi-dimensional sensor graphs. Consider, for example, the
+2D case. The input sensor graph would now be a weighted
+mesh with sensors scattered around a 2D region. The draining
+process is exactly the same as that in the 1D case. However, for
+the balancing step, the “best” pair of adjacent trees to merge
+would now be those whose sensors which are contained by the
+smallest bounding square.

@@ -1,0 +1,15 @@
+There are four primary differences between sensor based data sources and traditional database sources which
+make standard query processors poorly suited for querying sensor data. First, sensors typically deliver data in
+streams: they produce data continuously, often at well defined time intervals, without having been explicitly
+asked for that data. Queries over those streams need to be processed in near real-time, as data arrives, partly
+1
+because it may be extremely expensive to save raw sensor streams to disk, and partly because sensor streams
+represent real-world events, like traffic accidents and attempted network break-ins, which need to be responded
+to. The second major challenge with processing sensor data is that sensors are fundamentally different from the
+well engineered data-sources typical in a business DBMS. They do not deliver data at reliable rates, the data
+is often garbled, and they have limited processor and battery resources that the query engine needs to conserve
+whenever possible. Third, sensors are general purpose computing devices, not just blind producers of data and
+can thus be used to partially compute queries as data flows through them. Finally, sensors are typically connected
+together in ad-hoc networks that cover a geographic area larger than the radio range of a single sensor, such that
+receiving data from arbitrary parts of the network requires the sensors to agree on a multi-hop transmission
+protocol and coordinate to route and process each other’s data.

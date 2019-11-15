@@ -1,0 +1,57 @@
+The algorithms of the previous sections select the top-K
+most promising peers and get the top-k results from each
+one. A naive approach to improving the recall is simply by
+increasing K. In this section, we describe an algorithm that
+achieves a recall that is higher than the one gained by the
+naive approach. The algorithm increases K, but it does so in
+stages as follows. Initially, K = k and the algorithm selects
+the top-k most promising peers, and each one of them sends
+its top-k documents to the initiating peer. Let mink be the
+minimal score among the top-k documents obtained from
+the k × k results. When applying Expression (1) again, we
+would like to exclude all documents d that cannot have a
+score higher than mink. We do it as follows.
+Let h = (h1, . . . , hn) be a tuple of C. Recall that score(h)
+is obtained by applying the aggregate function f to the middle
+points of the hj . We similarly define high(h), except that
+f is computed over the highest endpoints of the hj, namely,
+high(h) = f(high(h1), . . . , high(hn)) (3)
+where high(hj) is the right endpoint of the interval hj .
+For example, consider again the tuple h = (3, 4) and the
+first group (first row) in the histograms of Figure 1. Then,
+high(h) = f(0.8, 1.0), which is 1.8 if f is sum.
+The following Lemma gives a lower bound on the score of
+documents that can be among the top-k (instead of some of
+those that are in the current top-k).
+Lemma 4.1. Let mink be the minimal score among the
+current top-k results. Consider a tuple h ? C. If high(h) <
+mink, then there is no document d in h that can replace any
+of the current top-k results.
+Proof. Suppose that a document d is in h. By definition,
+high(h) is an upper bound on the score of d. Therefore,
+scoreq(d) < mink.
+We use the above lemma as follows. When evaluating
+Expression (1), we eliminate from the sum all tuples h ? C,
+such that high(h) < mink. Thus, we get a better estimate
+of the expected score of a random document (of the given
+group), because we compute it only over documents that can
+still be among the top-k.
+To summarize, the algorithm works as follows. In each
+stage, it selects the next top-k most promising peers by using
+the remaining histograms (i.e., of the peers that have not
+yet been chosen). The selection is done by applying Expression
+(1) as described above. After the selection is made, the
+initiating peer gets the top-k documents from each of the
+selected peers, updates its list of the top-k results, updates
+mink, and then continues to the next stage. The algorithm
+can safely terminate when high(h) < mink holds for all the
+remaining h.
+In practice, this termination condition is rarely reached
+before selecting a large portion of the peers, because high(h)
+is a very rough upper bound on the actual score of documents
+in h.
+The experiments of Section 5 show that the adaptive peer
+selection improves the recall. In fact, we even apply a more
+aggressive strategy by taking mink to be the score of the
+document in position k/2. This strategy gives, in practice,
+a better improvement compared to using mink.

@@ -1,0 +1,2 @@
+This section, summarizes Fjords, Sensor Proxies, the CACQ system, and the visualization prototypes which
+serve as the core of the server side sensor-data query processor.

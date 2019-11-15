@@ -1,0 +1,171 @@
+In this section, we examine the implementation considerations
+of our proposed algorithms. Algorithm 3.1 is an
+Apriori-like algorithm which can be implemented similarly
+as other Apriori-like algorithms for mining association rules
+(e.g. [2]). Algorithm 3.2 forms the basis for all the three
+remaining algorithms and requires new tricks to achieve efficiency,
+and thus our discussion is focused on its efficient
+implementation.
+Algorithm 3.2 consists of two steps: Step 1, scan the
+time series once and find frequent 1-pattern set; and
+Step 2, scan the time series one more time, collect the set
+of the max-subpatterns hit in , and derive the set of frequent
+patterns. The implementation of Step 1 is straightforward
+and has been discussed in the presentation of Algorithm
+3.1. However, Step 2 is nontrivial and needs some
+good data structure to facilitate the storage of the set of maxsubpatterns
+hit in and the derivation of the set of frequent
+patterns.
+A new data structure, called max-subpattern tree, is designed
+to facilitate the registration of the hit count of each
+max-subpattern and derivation of the set of frequent patterns,
+as illustrated in Figure 1. Its design is now outlined.
+The max-subpattern tree takes the candidate max-pattern
+as the root node, where each subpattern of Gwith one 
+letter missing is a direct child node of the root.
+The tree expands recursively, according to the following
+rules. A node, if containing more than 2 non-letters,
+may have a set of children, each of which is a subpattern of
+with one more non-letter missing. Notice that a node
+containing only 2 non-letters will not have any children
+since every frequent-1 pattern is already in. Importantly,
+we do not create a node if neither the node nor its descendant(
+s) containing more than 1 non-)letter is hit in AA.
+Each node has a “count” field (which registers the number
+of hits of the current node), a parent link (which is nil for
+the root), and a set of child links; each child link points a
+child and is associated with a corresponding missing letter.
+A link can be nil when the corresponding child has not been
+hit.
+Notice that a non-
+letter position of a max-subpattern
+in a max-subpattern tree may contain a set of letters, which
+matches the set of letters at the position in a period segment.
+For example, for, the max-subpattern
+of the period segment , and the segment will contribute one count 
+to this node.The update of the max-subpattern tree is performed as
+follows.Algorithm 4.1 [Insertion in the max-subpattern tree
+Insert a max-subpattern found during the scan of into the max-33
+subpattern tree
+Method.
+1. Starting from the root of the tree, find the corresponding
+node by checking the missing non-letter in order.For example, 
+for a max-pattern node in a tree with the root,, there are two 
+letters, F and, missing. The node can be found by (1) following
+the link (marked as “in Figure 1) to,and then (2) following the ~? 
+link to as shown in Figure 1
+2. If the node is found, increase its count by 1. Otherwise,
+create a new node (with count 1) and its missing ancestor nodes 
+(only those on the path to, with count0), if any, and insert it 
+(or them) into the corresponding place(s) of the tree.For example, 
+if the very first max-subpattern node found in  is) for, we will
+create the node(with count 1), after creating two ancestor nodes 
+(with count 0):(which is the root of the tree), and (which is
+child, following the link). The node is child, following the ~? 
+link.
+Analysis.
+Let the total number of non-letters in be For a max-subpattern
+?containing letters, we need to follow links to find the node and 
+create at most new nodes in the worst case. Therefore, the time 
+complexity of node search and node creation will be less than. 
+Also, since each insertion of maxsubpattern will create either 
+only 0 node (when it hits) or less than nodes, the total number 
+of the nodes in the tree is less than, where is the size of the 
+hit set.In general, to insert a subpattern we need to both locate
+the position and update the count of the node if the node is
+found, or otherwise insert one or several new nodes.
+Example 4.1 Let Figure 1 be the current max-subpattern
+tree. To insert a (max)subpattern )into the tree, we search the 
+tree starting with the root,The first letter missing is and the 
+second letter missing is. Thus we first follow the branch to
+node , and then follow the branch. Since the node is located, its
+count is incremented by 1.Before discussing the derivation of the 
+set of frequent patterns, we need to introduce the concept of 
+reachable ancestors.Since the traversal and creation of the children
+of a node in the max-subpattern tree follow the non letter position
+order, some of the ancestor nodes of a node may not
+be directly linked to a node. For example, in Figure 1, the
+node is linked to only one parent but not
+the other (note: this missing link is marked by a
+dashed line in the Figure).
+In general, the set of reachable ancestors of a node in a max-subpattern 
+tree is the set of all the nodes in which are proper superpatterns of
+It can be computed as follows: (1) derive a list of missing letters from
+based on which is roughly the position-wise difference, (2)
+the set of linked ancestors consists of those patterns whose
+missing letters form a proper prefix of and (3) the set
+of not-linked ancestors are those patterns whose missing letters
+form a proper sublist (but not prefix) of
+Example 4.2 We compute the set of reachable ancestors
+for a node in a max-subpattern tree with root The list of missing non-
+letters is Thus, the set of linked ancestors is(1) missing
+nothing, which is the root); (2) (i.e., missing F, which
+is the node (i.e., missing F, then missing which is the node The set of 
+notlinked ancestors is:(corresponding to the missing letter pattern 
+(corresponding to ) (corresponding to)and (corresponding to) In other 
+words, one can follow the links whose mark is not in ordered way (to 
+avoid visiting the same node more than once) and collect all the non 
+nodes reached in
+Essentially there is a tree traversal for each fixed pattern,
+except that we do not visit a node and its descendants if the
+node is not an ancestor pattern of our current pattern.
+The derivation of the frequent patterns is performed as
+follows.
+Algorithm 4.2 [Derivation of frequent patterns from max-subpattern tree] 
+The derivation of the frequent patterns for all given a max-subpattern 
+tree by an Apriori-like technique.
+Method.
+1. The set of frequent patterns is derived in the firstscan of Algorithm 3.2.
+2. The max-subpattern tree is derived in the second scan of Algorithm 3.2. 
+The set of frequent patterns is derived as follows
+derive candidate patterns with length from frequent patterns with length
+scan tree T to find frequency counts of these candidate
+patterns and eliminate the non-frequent ones.
+Notice that the frequency count of a node is the sum
+of the count of itself and those of all of its reachable
+ancestors. If the derived frequent attern set
+is empty, return.
+Analysisi.
+   Let the total number of non letters in be. As shown in the analysisi of 
+Alogorithm 4.1 the time complexity for searching a node is less than 
+Since there are at most nodes to be generated from the max-pattern tree
+(including all the missing descendants), and there are at most reachable ancestors 
+in where is the size of
+the hit set, the worst case time complexity for derivation of
+all the frequent patterns is O i.e., proportional
+to and the size of the hit set, but exponential to (i.e., proportional to the size 
+of the tree that can be generated by Since an infrequent node will reduce the number
+of candidates to be generated in the future rounds, the real processing cost is 
+usually much smaller than the cost in the worst case.
+We illustrate how to derive the frequent patterns for from the max-subpattern tree
+Example 4.3 Let Figure 1 be the derived max-subpattern tree and We can traverse the 
+maxsubpattern tree to find all the frequent patterns for as follows. Starting at 
+level 2, we have the following frequent patterns:We show the derivation of 
+here: since the list of missing letters in this node is its set of reachable ancestors
+is and thus its frequent count = 10 + 0 + 50 +
+8 (itself) = 68. Since level-2 has no infrequent nodes, we
+search all the nodes at level-1 and have the following frequent
+patterns:Since there is
+one node infrequent, level-0 (root) has no frequent patterns.
+Notice although we only saved one node computation in this
+case, it will save much more when the tree is large and there
+are more missing nodes.
+From the above example, one can see that there are many
+frequent patterns with small that can be generated from
+a max-subpattern tree. In practical applications, people may
+only be interested in the set of maximal frequent patterns
+instead of all frequent patterns, where a set of maximal frequent
+patterns is a subset of the frequent pattern set and
+every other pattern in the set is a subpattern of an element
+in the set. For example, if the set of frequent pattern (for the set of maximal
+frequent patterns is
+If a user is interested in deriving the set of maximal frequent
+patterns, the MaxMiner algorithm developed by Bayardo
+[4] is a good candidate. The success of this algorithm
+stems from generating new candidates by joining frequent
+itemsets and looking head. However, it still requires to scan
+up to period times in the worst case. The mixture of
+max-subpattern hit set method and the MaxMiner can get
+rid of this problem and will be more efficient than pure
+MaxMiner. The details of the new method will be examined
+in future research.

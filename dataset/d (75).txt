@@ -1,0 +1,10 @@
+The TeleTiny system is related to two major branches of research: database research on continuous queries and
+querying data streams and networking projects that discuss routing, data-shipping, and aggregation in sensornetworks.
+The most immediately relevant work is the Cougar [36] project from Cornell for querying sensor-networks.
+Cougar’s primary focus is on the use of Object-Relational abstractions for querying sensor-based systems rather
+than on architectural aspects of sensor query processing. According to [14], the current implementation of the
+Cougar system is designed to run on WINS nodes designed by Sensoria Corporation [8], which are large, Linux
+based devices that are not subject to the same power or communications limitations as the sensor devices being
+developed for the TinyOS project. Indeed, the decision by the Cougar group to use XML to encode messages
+between sensors reveals the lack of bandwidth concerns in their environment, suggesting that the tradeoffs and
+correct design decisions in Cougar will be substantially different than those in TeleTiny.

@@ -1,0 +1,12 @@
+In this paper we discussed how to adapt a publish/subscribe
+system to a mobile operating environment. We described
+several architectures of a publish/subscribe system, starting
+from the simple centralized approach, to distributed ones
+with improved scalability, and nally to replication that in-
+creases reliability but may cause consistency problems. We
+discussed issues and possible solutions specic to adapting
+the various architectures to a mobile and/or wireless en-
+vironment. We also sketched solutions to the more chal-
+lenging problems posed by ad-hoc networks. In presenting
+our work, we also surveyed some of the important work on
+content-based publish/subscribe systems in xed networks.

@@ -1,0 +1,5 @@
+Greedy aggregation is a novel diffusion approach to construct a greedy incremental tree for data aggregation. This
+approach differs from the previous diffusion approach (i.e., the opportunistic aggregation on a lowest latency tree) in
+path establishment and maintenance. To construct a greedy incremental tree, a shortest path is established for only
+the first source to the sink whereas each of the other sources is incrementally connected at the closest point on the
+existing tree.

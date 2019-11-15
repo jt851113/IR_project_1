@@ -1,0 +1,4 @@
+We have implemented all the algorithms proposed in this
+paper: One-Scan Algorithm (OSA), Two-Scan Algorithm
+(TSA) and Sorted Retrieval Algorithm (SRA). In this section,
+we compare their performances, and report our findings.

@@ -1,0 +1,77 @@
+[1] Apache Xindice Database. http://www.dbxml.org.
+[2] Xalan-Java. http://xml.apache.org/xalan-j.
+[3] D. Agrawal and S. Sengupta. Modular synchronization in
+distributed, multi-version databases: Version control and
+concurrency control. IEEE TKDE, 1993.
+[4] R. Alonso, D. Barbara, and H. Garcia-Molina. Data caching
+issues in an information retrieval system. ACM TODS, 1990.
+[5] P. Bonnet, J. E. Gehrke, and P. Seshadri. Towards sensor
+database systems. In MDM, 2001.
+[6] S. W. Chen and C. Pu. A structural classification of
+integrated replica control mechanisms. ACM TODS, 1992.
+[7] A. Crespo and H. Garcia-Molina. Routing indices for
+peer-to-peer systems. In ICDCS, 2002.
+[8] A. Fox et al. Cluster-based scalable network services. In
+SOSP, 1997.
+[9] D. Carney et al. Monitoring streams - A new class of data
+management applications. In VLDB, 2002.
+[10] D. Ferguson et al. An economy for managing replicated data
+in autonomous decentralized systems. In ISADS, 1993.
+[11] D. R. Karger et al. Consistent hashing and random trees:
+Distributed caching protocols for relieving hot spots on the
+world wide web. In ACM STOC, 1997.
+[12] J. Gray et al. The dangers of replication and a solution. In
+SIGMOD, 1996.
+[13] J. Sidell et al. Data replication in mariposa. In ICDE, 1996.
+[14] M. Harren et al. Complex queries in dht-based peer-to-peer
+networks. In IPTPS, 2001.
+[15] M. J. Carey et al. XPERANTO: Publishing object-relational
+data as XML. In WebDB, 2000.
+[16] P. Kalnis et al. An adaptive peer-to-peer network for
+distributed caching of olap results. In SIGMOD, 2002.
+[17] R. Blumofe et al. Cilk: An efficient multithreaded runtime
+system. In PPoPP, 1995.
+[18] R. Motwani et al. Query processing, approximation, and
+resource management in a data stream management system.
+In CIDR, 2003.
+[19] S. Abiteboul et al. Incremental maintenance for materialized
+views over semistructured data. In VLDB, 1998.
+[20] S. Chandrasekaran et al. Telegraphcq: Continuous dataflow
+processing for an uncertain world. In CIDR, 2003.
+[21] S. Gribble et al. What can databases do for peer-to-peer. In
+WebDB, 2001.
+[22] M. Franklin and M. Carey. Client-server caching revisited. In
+IWDOM, 1992.
+[23] G. Graefe. Query evaluation techniques for large databases.
+ACM Computing Surveys, 1993.
+[24] M. Klettke and H. Meyer. XML and object-relational
+database systems— enhancing structural mappings based on
+statistics. LNCS, 1997:151, 2001.
+[25] N. Krishnakumar and A. Bernstein. Bounded ignorance in
+replicated systems. In PODS, 1991.
+[26] S. Madden and M. J. Franklin. Fjording the stream: An
+architecture for queries over streaming sensor data. In ICDE,
+2002.
+[27] S. Madden, M. J. Franklin, J. M. Hellerstein, and W. Hong.
+Tag: A tiny aggregation service for ad hoc sensor networks.
+In OSDI, 2002.
+[28] P. V. Mockapetris and K. J. Dunlap. Development of the
+Domain Name System. In SIGCOMM, 1988.
+[29] C. Olston and J. Widom. Best-effort cache synchronization
+with source cooperation. In SIGMOD, 2002.
+[30] C. Pu and A. Leff. Replica control in distributed system: An
+asynchronous approach. In SIGMOD, 1991.
+[31] T. Shimura, M. Yoshikawa, and S. Uemura. Storage and
+retrieval of XML documents using object-relational
+databases. In Database and Expert Systems Applications,
+pages 206–217, 1999.
+[32] M. Stonebraker and G. Kemnitz. Postgres next generation
+database management system. CACM, 1991.
+[33] B. Surjanto, N. Ritter, and H. Loeser. XML content
+management based on object-relational database technology.
+In Web Info. Sys. Eng., pages 70–79, 2000.
+[34] B. W. Wah. File placement on distributed computer systems.
+IEEE Computer, 1984.
+[35] M. Wahl, T. Howes, and S. Kille. Lightweight Directory
+Access Protocol (v3). Technical report, IETF, 1997. RFC
+2251.

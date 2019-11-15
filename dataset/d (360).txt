@@ -1,0 +1,6 @@
+This paper presents TD-DES, a data event scheduling
+and dissemination protocol specifically designed for wireless
+multi-hop networks of energy-constrained devices. TD-DES
+is intended as an application overlay to a CSMA/CA wireless
+MAC layer (such as 802.11 MAC DCF [6] and MACA
+[24]), rather than a MAC/networking layer in itself.

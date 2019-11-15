@@ -1,0 +1,15 @@
+As the form factor of computing and communicating devices
+shrinks and the capabilities of such devices continue to grow, it
+has become reasonable to imagine applications that require rich
+computing resources today becoming viable candidates for future
+sensor networks. With this futuristic assumption, we have
+embarked on designing APIs for mapping fusion applications
+such as distributed surveillance on wireless ad hoc sensor networks.
+We argue that the proposed framework will ease the
+development of complex fusion applications for future sensor
+networks. Our framework uses a novel distributed role assignment
+algorithm that will increase the application runtime by
+doing power-aware, dynamic role assignment. We validate our
+arguments by designing a sample application using our framework
+and evaluating the application on an iPAQ based sensor
+network testbed.

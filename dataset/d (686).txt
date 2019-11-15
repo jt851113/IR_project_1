@@ -1,0 +1,29 @@
+As discussed in section 3, in approximate aggregate
+monitoring, two invariances need to be maintained to ensure
+correctness of the final result. Our protocol has been
+illustrated using the invariance for SUM query as shown
+in equation 1. The Average (AV G) query has similar invariance
+and shares a similar protocol. The invariances
+for MAX/MIN queries are different and in fact less complicated.
+For MAX queries, the invariances are
+Invariance 11 indicates that we should set error tolerances
+for all child nodes at a same value. Since cluster-head
+will take the maximum, it is only advantageous to set
+all nodes to the maximum error bound. This further implies
+that all nodes in the AT share the same error bound.
+With identical error bound, the adjustment component
+of the protocol disappears. A cluster-head only needs
+to monitor the maximum default value among its child
+nodes. To do this, a cluster-head keeps in its cache all default
+values of its children. When it receives new values
+from some children in a specific round (which implies
+error bound violations occur with these nodes), it resets
+the corresponding default values in its cache. Next, if
+the maximum value among all the cached default values
+is changed from the previous round, the new maximum
+value is sent to its parent node. Note the protocol is simpler
+since, besides identical error bounds, there is no need
+for a parent node to reset default values of its children.
+The default values are automatically set at their reported
+values. MIN aggregates can be monitored with exactly
+the same protocol.

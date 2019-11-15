@@ -1,0 +1,9 @@
+We start by describing a simple scheme for performing mon-
+itoring operations in sensor networks. We then describe
+how we may save energy by employing PREMON. Next, we
+present the details of the mechanisms based on the PRE-
+MON paradigm. Finally, we evaluate these mechanisms
+with simple experiments and show their eectiveness.
+2we use the words cluster-head and base station interchange-
+ably in the paper to refer to the cluster-head
+

@@ -1,0 +1,34 @@
+For top-δ dominant skyline query, the most important parameter
+is δ, the number of dominant skyline points desired.
+The efficiency of TSA on top-δ query is strongly related to
+the distribution of the dominant skyline points. On the 15-
+dimensional correlated data set, for example, there are 57
+dominant skyline points when k = 12 (shown in Table 2).
+When δ grows from 50 to 100, TSA has to run on k = 13
+instead of k = 12 before finding all these top dominant skyline
+points. Since the computation time of TSA on k = 13 is
+much more than that on k = 12 (shown in Fig. 4), it spends
+much more time on top-100 query than top-50 query. Using
+the same logic, we can explain all the sudden increase in
+time of TSA on Fig. 7. For SRA, the increase of computation
+time of SRA is much smaller because fewer points in
+the candidate set do not improve the pruning threshold of
+lower bounds greatly in the early stages of SRA. Unlike the
+other two algorithms, OSA’s efficiency is worst but it is the
+most stable since the final number of points desired does not
+have impact on its computing process until the final step.
+When tested on data sets with different dimensions, we
+observe from Fig. 8 that TSA is faster on higher dimensional
+data set on anti-correlated distribution. This phenomenon
+is still related to the distribution of the dominant
+skyline points. When dimensionality grows, the top dominant
+skyline points can be obtained at a lower level of k,
+which contributes to TSA’s efficiency. OSA and SRA cannot
+take advantage of this since both schemes’ efficiency are
+proportional to the dimension number but not to the level
+where the top-dominant skyline can be obtained.
+In Fig. 9, we present the impact of data size on the efficiency
+of top-δ dominant skyline query. The trends of
+the algorithms are similar to the performance to that on
+k-dominant skyline query shown in Fig. 6: TSA performs
+the best, followed by SRA, and OSA is the worst.

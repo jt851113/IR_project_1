@@ -1,0 +1,10 @@
+Fenster is a depth-first search algorithm. It takes three arguments: U, V and S. It
+starts withU0 = (?, . . . , ?), V0 = (D1, . . . ,Dn) and S0 = (?, . . . , ?). Its major steps
+are presented in the pseudo-code of Fig. 10, which can be seen as a translation of the
+diagram in Fig. 8. First of all, the closedness pro is checked (see Sect. 3.3). If it is
+satisfied and no element remains to be enumerated, the n-set U is output. Otherwise
+an element e of V is chosen (Sect. 4.2 discusses this step) and the search space is
+split between the n-sets that contain e and those that do not (see Sect. 3.1 and 3.2).
+Finally, Fenster is recursively called on the two related enumeration nodes. Moreover,
+any user-defined relevancy constraint C can be additionally enforced as long as
+it is piecewise (anti)-monotone (Cerf et al. 2009a).

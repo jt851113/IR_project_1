@@ -1,0 +1,21 @@
+6. References
+1. Yu, H., Li, H., Wu, P., Agrawal, D. and Abbadi, A. E.:
+Efficient Processing of Distributed Top-k Queries. 2005. In
+Proceedings of the 16th DEXA.
+2. Chrysakis, I., Chalkidis, C., Plexousakis D.: A Detailed
+Evaluation of Threshold Algorithms for Answering Top-k
+queries in Peer-to-Peer Networks. 2010. Technical Report.
+TR-407, ICS-FORTH, Greece
+3. Fagin R. Combining fuzzy information from multiple systems.
+1996. In Proceedings of the 15th ACM Symposium on
+Principles of Database Systems, Montreal.
+4. Cao, P. and Wang Z. Efficient Top-k Query Calculation in
+Distributed Networks. 2004. In Proceedings of the 23rd
+PODC.
+5. Chrysakis, I. and Plexousakis D.: Semantic Query Routing
+and Distributed Top-k Query Processing in P2P Networks.
+2006. Technical Report. TR-387, ICS-FORTH, Greece.
+6. The SSFNET. http://www.ssfnet.org/javadoc/
+7. The Internet Movie Database. http://www.imdb.com/
+8. The PlanetSim Simulator. http://planet.urv.es/trac/planetsim/
+9. The Chord Project. http://pdos.csail.mit.edu/chord/

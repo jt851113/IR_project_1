@@ -1,0 +1,18 @@
+Property 2 allows to reduce the search space of the left child, i. e., the number of elements
+in VL . Indeed, by Property 2, if an element v ? VL is such that?C-connected(UL∪
+{v}), then ?X  UL ∪ {v}, ?C-connected(X). In other terms, among the n-sets represented
+by (UL , VL ), those involving such an element v necessarily violate C-connected.
+As a consequence, all such elements (i. e., {v ? VL | ?C-connected(UL ∪ {v})}) are
+safely removed from the search space VL . Figure 4 depicts this process, which also
+guarantees that, at any node (U, V) of the enumeration tree, U can be “augmented”
+with any element e ? V and necessarily remains -connected. In this way, and ignoring
+the enforcement of C-closed detailed in the next section, every n-set satisfying
+C-connected is considered once (and only once) along the enumeration. The performance
+costs pertaining to the verification of C-connected are fundamental and are detailed in
+Sect. 4.1.
+Example 6 Let  = (1, 1, 1). In our running example, and according to Table 1, neither
+the element 3 nor the element 4 can be added to UL = ({α, γ }, ?, {A, B}) to
+form a 3-set satisfying C-connected. Indeed, neither C-connected({α, γ }, {3}, {B}) nor
+C-connected({α, γ }, {4}, {B}) is true (see Fig. 5).
+Until now, we discussed how to extract all n-sets satisfying C-connected in n-ary
+relations. We now need to enforce the closedness property.

@@ -1,0 +1,83 @@
+[1] W. Adjue-Winoto, E. Schwartz, H. Balakrishnan, and J. Lilley. The design and implementation of an intentional naming system.
+In ACM SOSP, December 1999.
+[2] D. Aksoy, M. J. Franklin, and S. Zdonik. Data staging for on-demand broadcast. In VLDB, Rome, September 2001.
+[3] M. Altinel and M. Franklin. Efficient filtering of XML documents for selective dissemination of information. In International
+Conference on Very Large Data Bases, September 2000.
+[4] R. Avnur and J. M. Hellerstein. Eddies: Continuously adaptive query processing. In ACM SIGMOD, pages 261–272, Dallas, TX,
+May 2000.
+[5] B. Babcock, S. Babu, M. Datar, R. Motwani, and J. Widom. Modes and issues in data stream systems. In ACM PODS, 2002.
+[6] J. Chen, D. DeWitt, F. Tian, and Y. Wang. NiagaraCQ: A scalable continuous query system for internet databases. In ACM
+SIGMOD, 2000.
+[7] J. Clark and S. DeRose. XML path language (XPath) version 1.0, November 1999. http://www.w3.org/TR/xpath.
+[8] S. Corporation. WINSNG 2.0 platform status. Presentation, April 2001. http://www.darpa.mil/ito/research/proceedings/sensit2001apr/WINS NG2PlatformStatus-
+Sensoria-200104.pdf.
+[9] A. Deutsch, M. Fernandez, D. Florescu, A. Levy, and D. Suciu. XML-QL: A query language for XML, 1998.
+http://www.w3.org/TR/NOTE-xml-ql.
+[10] D. DeWitt, J. Naughton, and D. Schneider. An evaluation of non-equijoin algorithms. In VLDB, Barcelona, Spain, 1991.
+[11] Y. Diao, M. Franklin, H. Zhan, and P. Fischer. Path sharing and predicate evaluation for high-performance xml filtering. Submitted
+for Publication.
+[12] D. Estrin, L. Girod, G. Pottie, and M. Srivastava. Instrumenting the world with wireless sensor networks. In International
+Conference on Acoustics, Speech, and Signal Processing (ICASSP 2001), Salt Lake City, Utah, May 2001.
+[13] C. Forgy. RETE: A fast algorithm for the many patterns/many objects match problem. Artificial Intelligence, 19(1):17–37, 1982.
+[14] J. Gerhke, M. Calimlim, W. F. Fung, and D. Sun. Cougar design and implementation. Design Documnent.
+http://www.cs.cornell.edu/database/cougar/CougarDesignDoc.htm.
+[15] T. Goff, N. Abu-Ghazaleh, D. Phatak, and R. Kahvecioglu. Preemptive routing in ad hoc networks. In ACM MobiCom, July 2001.
+[16] G. Graefe. Query evaluation techniques for large databases. ACM Computing Surveys, 25(2):73–170, 1993.
+[17] E. Hanson, N. A. Fayoumi, C. Carnes, M. Kandil, H. Liu, M. Lu, J. Park, and A. Vernon. TriggerMan: An Asynchronous Trigger
+Processor as an Extension to an Object-Relational DBMS. Technical Report 97-024, University of Florida, December 1997.
+[18] J. Heidemann, F. Silva, C. Intanagonwiwat, R. Govindan, D. Estrin, and D. Ganesan. Building efficient wireless sensor networks
+with low-level naming. In SOSP, October 2001.
+[19] J. M. Hellerstein, M. J. Franklin, S. Chandrasekaran, A. Deshpande, K. Hildrum, S. Madden, V. Raman, and M. Shah. Adaptive
+query processing: Technology in evolution. IEEE Data Engineering Bulletin, 23(2):7–18, 2000.
+[20] J. Hill, R. Szewczyk, A. Woo, S. Hollar, and D. C. K. Pister. System architecture directions for networked sensors. In ASPLOS,
+November 2000.
+[21] C. Intanagonwiwat, R. Govindan, , and D. Estrin. Directed diffusion: A scalable and robust communication paradigm for sensor
+networks. In MobiCOM, Boston, MA, August 2000.
+[22] Z. G. Ives, D. Florescu, M. Friedman, A. Levy, and D. S. Weld. An adaptive query execution system for data integration. In
+Proceedings of the ACM SIGMOD, 1999.
+[23] J. M. Kahn, R. H. Katz, and K. S. J. Pister. Mobile networking for smart dust. In MOBICOM, Seattle,WA, August 1999.
+[24] J. Kulik, W. Rabiner, and H. Balakrishnan. Adaptive protocols for information dissemination in wireless sensor networks. In
+MobiCOM, Seattle, WA, 1999.
+[25] P. Levis and D. Culler. Mat’e: A tiny virtual machine for sensor networks. Submitted for Publication.
+[26] F. Li, S. Madden, and M. Thomas. Traffic sensor data visualzation. Project Report.
+http://www.cs.berkeley.edu/ mct//infovis/project/traffic.html, December 2000.
+[27] L. Liu, C. Pu, and W. Tang. Continual queries for internet-scale event-driven information delivery. IEEE Knowledge and Data
+Engineering, 1999. Special Issue on Web Technology.
+[28] S. Madden and M. J. Franklin. Fjording the stream: An architechture for queries over streaming sensor data. In ICDE, San Jose,
+CA, February 2002.
+[29] S. Madden, M. J. Franklin, J. Hellerstein, and W. Hong. TAG: Tiny AGgregate Queries in Ad-Hoc Sensor Networks. Submitted
+for Publication, 2002.
+[30] S. Madden, M. A. Shah, J. M. Hellerstein, and V. Raman. Continously adaptive continuous queries over data streams. In ACM
+SIGMOD, Madison, WI, June 2002. To Appear.
+[31] S. Madden, R. Szewczyk, M. Franklin, and D. Culler. Supporting aggregate queries over ad-hoc wireless sensor networks. Submitted,
+Workshop on Mobile Computing and Systems Applications, 2002.
+[32] R. Min, M. Bhardwaj, S.-H. Cho, A. Sinha, E. Shih, A.Wang, and A. Chandrakasan. An architecture for a power-aware distributed
+microsensor node. In IEEE Workshop on Signal Processing Systems (SiPS ’00), October 2000.
+[33] D. P. Miranker. TREAT: A better match algorithm for ai production system matching. In Proceedings of AAAI, pages 42–47, 1987.
+[34] H. Mistry, P. Roy, S. Sudarshan, and K. Ramamritham. Materialized view selection and maintenance using multi-query optimization.
+In ACM SIGMOD, 2001.
+[35] D. S. Parker, E. Simon, and P. Valduriez. SVP - a model capturing sets, streams, and parallelism. In VLDB, Vancouver, British
+Columbia, 1992.
+[36] P.Bonnet, J.Gehrke, and P.Seshadri. Towards sensor database systems. In 2nd International Conference on Mobile Data Management,
+Hong Kong, January 2001.
+[37] P. Roy, S. Seshadri, S. Sudarshan, and S. Bhobe. Efficient and extensible algorithms for multi query optimization. In ACM
+SIGMOD, pages 249–260, 2000.
+[38] P. Saffo. Sensors: The next wave of innovation. Communications of The ACM, 40(2):92 – 97, February 1997.
+[39] P. Selinger, M. Astrahan, D. Chamberlin, R. Lorie, and T. Price. Access path selection in a relational database management system.
+pages 23–34, Boston, MA, 1979.
+[40] T. Sellis. Multiple query optimization. ACM Transactions on Database Systems, 1986.
+[41] P. Seshadri, M. Livny, and R. Ramakrishnan. The design and implementation of a sequence database system. In VLDB, 1996.
+[42] A. Shatdal and J. Naughton. Adaptive parallel aggregation algorithms. In ACM SIGMOD, 1995.
+[43] R. T. Snodgrass, editor. The TSQL2 Temporal Query Language. Kluwer Academic Publisher, 1995.
+[44] M. Sullivan and A. Heybey. Tribeca: A system for managing large databases of network traffic. In Proceedings of the USENIX
+Annual Technical Conference, New Orleans, LA, June 1998.
+[45] D. Tennenhouse. Active networks. In OSDI, October 1996.
+[46] D. Terry, D. Goldberg, D. Nichols, and B. Oki. Continuous queries over append-only databases. In ACM SIGMOD, pages 321–330,
+1992.
+[47] T. Urhan and M. Franklin. XJoin: A reactively-scheduled pipelined join operator. IEEE Data Engineering Bulletin, pages 27–33,
+2000 2000.
+[48] T. Urhan, M. J. Franklin, and L. Amsaleg. Cost-based query scrambling for initial delays. In ACM SIGMOD, 1998.
+[49] M. Weiser. Some computer science problems in ubiquitous computing. Communications of the ACM, July 1993.
+[50] A. Wilschut and P. Apers. Dataflow query execution in a parallel main-memory environment. In PDIS, pages 68–77, December
+1991.
+[51] W. P. Yan and P. A° . Larson. Eager aggregation and lazy aggregation. In VLDB, 1995

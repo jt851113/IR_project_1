@@ -1,0 +1,41 @@
+In a P2P network, each peer Pi shares a collection Di of Ni
+documents. Denote the term set of a document dij IDi by T(dij)
+and the vocabulary of a peer Pi by Vi, where Vi = ET(dij), dij IDi.
+Each term t in Vi is associated with one peer in the network, called
+the peer responsible for t, denoted by resp(t). Locating the peer
+responsible for t in structured P2P networks is efficient, by
+querying O(logNP) peers, where NP is the number of peers in the
+network [2].
+Peer Pi builds a set of posting lists, one for each term in its
+vocabulary Vi, based on its local shared content Di. Denote the
+local posting list of term t built by Pi by li(t). When joining the
+network, Pi sends li(t) to resp(t). Denote the global posting list of t
+by l(t). The peer resp(t) just concatenates all received local
+posting lists to have the global posting (i.e., l(t) = Eli(t)). We refer
+to the process of building global posting lists as “index building.”
+Each local posting list is a list of postings. Depending on the
+indexing strategy, a posting might or might not contain
+information about the individual documents. For example, if peerlevel
+indexing is used, a posting contains only the peer ID, and if
+document-level indexing is used, a posting contains both a
+document ID and a peer ID. Formally, for peer-level indexing,
+li(t) = {Pi}; for document-level indexing, li(t) = {<dij, Pi>? dij I
+Di, t I T(dij)}.
+A query q is a set of terms, q = {t1, …, tQLen}. The querying peer
+PQ sends a message to resp(ti) for each ti I q, requesting the
+global posting list l(ti). When all the global posting lists are
+retrieved, their intersection is computed by PQ. Denote the
+intersection by I(q) (i.e., I(q) = Cl(ti), ti I q). Finally, a message
+containing q is issued to each of the peers whose ID is in I(q). We
+refer to the peers in I(q) as matching peers.
+A query q that is issued to a peer Pi is matched with all documents
+in Di. By default, queries are processed conjunctively, so a
+document dij is a result for a query q if its term set contains all
+query terms (i.e., if q I T(dij)). Thus the result set returned by a
+peer Pi for the query q is Ri(q) = {dij ? dij I Di, q I T(dij)}. In the
+event of a match, Ri(q) and Pi are returned to the client who issued
+q, which uses this information to decide whether or not to
+download the associated document. A query q is erroneously
+issued to a peer Pi if Pi does not have any results for it (i.e., if
+Ri(q) = A). We refer to erroneously issued queries as failed
+queries.

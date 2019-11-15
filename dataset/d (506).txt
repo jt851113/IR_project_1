@@ -1,0 +1,44 @@
+[1] ARASU, A., BABU, S., AND WIDOM, J. The CQL
+Continuous Query Language: Semantic Foundations and
+Query Execution. Tech. rep., University of Stanford, 2003.
+[2] CHATFIELD, C., AND YAR, M. Holt-Winters Forecasting:
+Some Practical Issues. The Statistician, Special Issue:
+Statistical Forecasting and Decision-Making 37, 2 (1988),
+129–140.
+[3] ERG‥U N, F., MUTHUKRISHNAN, S., AND SAHINALP, S. C.
+Sublinear methods for detecting periodic trends in data
+streams. In LATIN (2004).
+[4] HINNEBURG, A., HABICH, D., AND KARNSTEDT, M.
+Analyzing Data Streams by Online DFT. In IWKDDS-2006
+(2006), pp. 67–76.
+[5] KEOGH, E., LONARDI, S., AND CHI’ CHIU, B. Y. Finding
+surprising patterns in a time series database in linear time
+and space. In KDD’02 (2002), pp. 550–556.
+[6] KLEINBERG, J. M. Bursty and hierarchical structure in
+streams. Data Min. Knowl. Discov. 7, 4 (2003), 373–397.
+[7] PAPADIMITRIOU, S., BROCKWELL, A., AND FALOUTSOS,
+C. AWSOM: Adaptive, Hands-Off Stream Mining. In VLDB
+2003 (2003), pp. 560–571.
+[8] SHAHABI, C., TIAN, X., AND ZHAO, W. Tsa-tree: A
+wavelet-based approach to improve the efficiency of
+multi-level surprise and trend queries on time-series data. In
+SSDBM’00 (2000), p. 55.
+[9] SHASHA, D., AND ZHU, Y. High Performance Discovery in
+Time Series: Techniques and Case Studies. Springer, 2004.
+[10] VLACHOS, M., MEEK, C., VAGENA, Z., AND
+GUNOPULOS, D. Identifying Similarities, Periodicities and
+Bursts for Online Search Queries. In SIGMOD 2004 (2004),
+pp. 131–142.
+[11] WANG, M., MADHYASTHA, T. M., CHAN, N. H.,
+PAPADIMITRIOU, S., AND FALOUTSOS, C. Data mining
+meets performance evaluation: Fast algorithms for modeling
+bursty traffic. In ICDE (2002).
+[12] YAMANISHI, K., AND TAKEUCHI, J.-I. A Unifying
+Framework for Detecting Outliers and Change Points from
+Non-stationary Time Series Data. In SIGKDD 2002 (2002),
+pp. 676–681.
+[13] ZHANG, X., AND SHASHA, D. Better burst detection. In
+ICDE ’06 (2006), pp. 146–149.
+[14] ZHU, Y., AND SHASHA, D. Efficient Elastic Burst Detection
+in Data Streams. In SIGKDD 2003, Washington, D.C., USA
+(2003), pp. 336–345.

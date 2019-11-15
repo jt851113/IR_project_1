@@ -1,0 +1,33 @@
+Sampling frequency is the number of sampling performed
+during a reporting period. To meet the application
+requirement, a sensor node has to perform
+sampling at least once per reporting period. However,
+increasing the sampling frequency at a sensor
+node may increase the freshness of an object’s moving
+history (for AVERAGE and EXP AVG prediction
+models), but reduce the duration the node can turn
+to sleep and thus save energy. Thus, sampling frequency
+represents a tradeoff between the accuracy of
+predictions and the cost of sensing operation. With
+a small prediction period (i.e., sleep time), the probability
+that an object stays in the same speed and
+direction is high; thus, the prediction is more likely
+to be correct. However, a higher sampling frequency
+also implies unnecessary monitoring (because the results
+are not needed for reporting).
+Figure 8 shows that the energy consumption is linearly
+increased when the sampling frequency is increased.
+However, the missing rate (not shown here)
+is dramatically decreased. Based on our simulation
+result, the missing rates of the PES scheme with all
+three wakeup heuristics are below 1% when the sampling
+frequency equals to 3. However, continue to increase
+the sampling frequency is not a good strategy,
+because the extra operation cost will eventually overwhelm
+the gain achieved by the higher prediction accuracy.
+As we observed from the above figure, all the
+PES schemes consume more energy than CM at some
+point. From this experiment, we can deduce that the
+sampling frequency is a tunable parameter between
+energy consumption and objects missing rate that may
+worth further study.

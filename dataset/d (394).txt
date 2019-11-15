@@ -1,0 +1,7 @@
+In addition to the moving behavior of tracked objects,
+we also study the impact of sensor components on energy
+saving schemes for OTSNs. We vary two control
+parameters, i.e., sampling duration and sampling
+frequency, to observe their effect on total energy consumption
+and missing rate. Due to the space constraint,
+the figure of missing rate is not shown.

@@ -1,0 +1,29 @@
+In this section, we will study the question whether query
+expansion can improve peer rankings. To that end, we expand
+queries using the three strategies discussed in section
+3.3 and use the expanded queries with the CORI selection
+algorithm to obtain a peer ranking. Expansion is only used
+for ranking peers, not for retrieving and ranking documents.
+This means that the scores of documents remain the same
+as in the experiments above.
+Table 3 shows the effectiveness of expanded queries as
+compared to that of unexpanded ones for Ohsumed. This
+is done by analysing performance within the first 15 peers
+visited and giving all intervals M where expanded queries
+perform significantly better than unexpanded ones and all
+intervals M'where they perform significantly worse.
+The picture for Ohsumed and GIRT (which is not shown
+here) is rather unclear. However, there are rather few cases
+in which expanded queries are actually significantly better
+than unexpanded ones. We also see that – when we concentrate
+on the very first peer in the ranking – virtually all
+query expansion methods fail to produce better results than
+the CORI baseline, in fact most of them are significantly
+worse. For Citeseer, the situation is easier to interpret:
+global pseudo feedback improves over unexpanded queries,
+but the other two expansion strategies are detrimental in all
+ranges.
+All in all, query expansion seems a dangerous – instead of
+a helpful – tool when applied to ranking peers w.r.t. queries,
+regardless of whether we use global (from the web) or local
+information in the expansion process.

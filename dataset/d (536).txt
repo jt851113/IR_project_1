@@ -1,0 +1,16 @@
+We presented an effective and efficient method for fulltext
+search in an environment of autonomous peers that are
+organized as a structured P2P network. Our approach is
+based on locally partitioning the collection of each peer and
+using two-dimensional histograms that describe score distributions.
+The experiments showed an improvement of more
+than 50% in the recall compared to state-of-the-art methods
+when accessing the same number of peers. By using the
+two-phase and adaptive algorithms, we can further improve
+the recall while reducing the communication cost.
+For future work, we plan to investigate other types of histograms;
+for example, equi-depth histograms for the score
+dimension. Another important problem is how to efficiently
+maintain the histograms in a dynamic environment, where
+the document collections of the peers are constantly updated
+and peers can join and leave the network.

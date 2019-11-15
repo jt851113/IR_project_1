@@ -1,0 +1,69 @@
+First, we evaluate the communication cost of each
+approach. Table 1 shows the total number of bytes
+transmitted for a single sum query during one epoch,
+along with the total number of messages sent and re-
+ceived (assuming no losses). For TAG1 and TAG2, we
+assume that values are 16 bits each. SKETCH uses 20
+bitmaps and the compression techniques of [18] with
+group size of 2 (the uncompressed size is 36000 bytes).
+LIST sends (id; value) pairs as its message format us-
+ing 32 bits in total for ids and values (two bytes each).
+As expected, the TAG strategies send the least data,
+while LIST sends the most and SKETCH is between
+them. We note that the message size of SKETCH can
+be tuned further at the cost of accuracy by changing
+the number of bitmaps used, as Figure 2 illustrates.
+Similar results were obtained for count queries.
+Figure 3 shows the eects of link losses on the per-
+formance of each strategy for a count query. In Fig-
+ure 3(a), we see that for all loss rates, the average
+counts returned by LIST and SKETCH are extremely
+close, as are the average counts returned by TAG1
+and TAG2. As the loss rates increase, the counts re-
+turned by LIST and SKETCH decrease slowly, while
+the counts returned by TAG1 and TAG2 decrease at
+a much higher rate. For both pairs, the main dier-
+ence is that SKETCH and TAG1 have higher variation
+than LIST and TAG2 respectively.
+Figure 3(b) shows the relative errors of SKETCH,
+TAG1, and TAG2 compared to LIST. Here, given sam-
+ple value x and correct value ^x, the relative error is
+. Again, TAG1 and TAG2 are virtually identi-
+cal, with quickly growing relative errors. In compar-
+ison, the relative error of SKETCH only increases a
+small amount, but we note that SKETCH has higher
+relative errors for very small loss rates. We omit plots
+of the relative error for most of the remaining scenarios
+since they have similar performance trends and are eas-
+ily extrapolated from the average counts returned. We
+also omit plots for LIST and TAG1 since LIST is in-
+feasible in practice, and TAG1 is strictly worse than
+TAG2.
+Figure 4 shows the eect of node losses for the same
+query. The general trends here look similar to link loss
+plots in Figure 3(a), but the average counts reported
+drop o faster, while the average relative error grows
+more slowly. Intuitively, a major dierence here for the
+LIST and SKETCH strategies is that a value can be
+\lost" if just the node fails, while all of the links to par-
+ents must fail to achieve the same loss.
+Figure 5 shows the results of placing sensor nodes at
+random grid locations, with the communication range
+was increased to 2p2 for the random grid placements
+ure 6 shows the results of using sum sketches, where
+each node chose an integer value uniformly at ran-
+dom from the range [0; 100], so the expected sum is
+50  900 = 45; 000. The basic trends in both gures
+were essentially the same as when just loss rates were
+varied. Results for AVG aggregates, combining summa-
+tion and count sketches, were similar to those of SUM
+and were omitted.
+Finally, Figure 7 shows the results of varying the net-
+work size while preserving the grid shape. Despite the
+loss rate being held constant, the TAG strategies per-
+form increasingly poorly as the network size increases.
+Meanwhile, the SKETCH strategy maintains an al-
+most constant average relative error around 13 per-
+cent, though it seems slightly higher for the larger net-
+work sizes (14 percent).
+to compensate for sparse regions of connectivity. Fig-

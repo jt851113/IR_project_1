@@ -1,0 +1,129 @@
+From webcams to smart dust, pervasive sensors are becoming
+a reality, providing opportunities for new sensor-based services.
+Consider for example a Parking Space Finder service for locating
+available parking spaces near a user’s destination. The driver enters
+into a PDA (or a car navigation system) her destination and
+her criteria for desirable parking spaces — e.g., within two blocks
+of her destination, at least a four hour meter, minimum price, etc.
+She gets back directions to an available parking space satisfying
+her criteria. If the space is taken before she arrives, the directions
+are automatically updated to head to a new parking space.
+What is required to create such a Parking Space Finder service
+for a large metropolitan area? First, sensors are needed that can
+determine whether or not a parking space is available. We envision
+a large collection of webcams overlooking parking spaces,
+pressure sensors on the spots themselves, or some combination of
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+Submitted and accepted to SIGMOD ’03 San Diego, California USA
+Copyright 2003 ACM ...$5.00.
+both. Second, a sensor database is needed, which stores the current
+availability information along with static attributes of the parking
+spaces such as the price and hours of their meters. Finally, a webaccessible
+query processing system is needed, to provide answers
+to high-level user queries.
+Given the large number of sensors spread over a wide area, and
+the desire to support high query volumes, what is a good sensor
+database system architecture? Our group has developed a wide
+area sensor database system as part of the Internet-scale Resource-
+Intensive Sensor Network services (IrisNet) project, with the following
+architectural design.
+ For high update and query throughputs, the sensor database
+is partitioned across multiple sites operating in parallel, and
+the queries are directed to the sites containing the answers.
+We assume that sites are Internet-connected (powered) PCs.
+A site manager runs on each site.
+ Communication with the sensors is via sensor proxies [26],
+which collect nearby sensor data, process/filter it to extract
+the desired data (e.g., parking space availability information),
+and send update queries to the site that owns the data (and
+possibly other sites). As in [26], we assume that sensor proxies
+run on Internet-connected (powered) PCs.1 A large collection
+of sensor proxies operating in parallel ensure that the
+system scales to a larger number of sensors. Moreover, a
+potentially high volume of data (webcam feeds) is reduced
+at the sensor proxy to a much smaller volume of data (e.g.,
+availability information) sent to site managers.
+ To make posing queries easy for users, IrisNet supports a
+standard data representation (XML), a standard high-level
+query language (XPATH), and a logical view of its distributed
+database as a single centralized database (data transparency)2 .
+XML is used to accommodate a heterogeneous and evolving
+set of data types, aggregate fields, etc., best captured by
+self-describing tags. Moreover, each sensor takes readings
+from a geographic location, so it is natural to organize sensor
+data into a geographic/political-boundary hierarchy (as depicted
+in Figure 1) —again, a good match for XML. We use
+an off-the-shelf XML database system, and interact with the
+database using standard APIs (XPATH or XSLT for querying,
+and SixDML or XUpdate for updates), in order to take
+advantage of future improvements in XML database technology.
+Although we have used Parking Space Finder as a motivating application,
+we envision IrisNet as a general platform for wide area
+sensor services. For example, we are currently working with a team
+of oceanographers to deploy IrisNet along the Oregon coastline.
+Moreover, we believe that future wide area sensor databases (not
+just IrisNet) will build upon a similar design, in order to meet the
+desired performance requirements.3 Thus providing techniques for
+correctly and efficiently processing queries on such databases is
+crucial to the widespread use of wide area sensor systems. However,
+as outlined below, there are a number of challenges to providing
+fast execution of XPATH queries on such a system; this paper
+is the first to address these challenges.
+In this paper, we present techniques for query processing and
+caching in wide area sensor databases. The contributions of this
+paper are:
+ We present the first scalable system for executing XPATH
+queries on wide area sensor databases. The system uses a
+logical hierarchy of sites dictated by the XML document;
+these logical sites are mapped to a smaller collection of physical
+sites, as dictated by the system administrator or the queries
+themselves.
+ We give a technique for self-starting distributed queries, which
+jump directly to the lowest common ancestor (LCA) of the
+query result, by using DNS-style site names extracted from
+the query itself. A key feature is that although a query can
+be posed anywhere in the Internet, no global information is
+needed to produce the LCA site name for the query.
+ We show how general XPATH queries can be evaluated on
+a single XML document when the document itself is fragmented
+across machines, and the fragmentation is constantly
+changing. We propose a novel query-evaluate-gather (QEG)
+technique for detecting (1) which data in the database fragment
+at a site is part of the query result, and (2) how to gather
+the missing parts. To our knowledge, no effective solution to
+this problem was known prior to our work.
+ Our QEG technique uses XSLT programs, and we show how
+these programs can be generated directly from the XPATH
+query, without accessing the database. Moreover, we show
+how to avoid the overheads of query-time compilation of
+XSLT programs by generating them (almost) already compiled.
+ We present a scheme for caching query results at sites as dictated
+by the queries (auto-tuning). Owned data and cached
+data are stored in the same site database, with different tags,
+unifying the query processing at a site. Moreover, we support
+query-based consistency, in which each user query may
+specify its tolerance for using stale (cached) data to quickly
+answer the query.
+ We define partitioning and cache invariants supporting partial
+match caching, which ensures that even partial matches
+on cached data can be exploited and that correct answers are
+returned, despite our dynamic query-driven caching. Our approach
+is based on leveraging the data residing in the site
+database, which differs from previous approaches based on
+leveraging a collection of views.
+ We present experimental results demonstrating the effectiveness
+of our techniques in dramatically increasing update and
+query throughputs and decreasing query response times in
+wide area sensor databases.
+The remainder of this paper is organized as follows. Section 2
+describes the query processing challenges. Section 3 presents our
+basic query processing and caching techniques. Then in Section 4,
+we describe extensions to more general XPATH queries, cache consistency,
+and ownership migration. Experimental results are in Section
+5. Section 6 describes related work, and conclusions are in
+Section 7.

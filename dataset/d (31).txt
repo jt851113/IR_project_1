@@ -1,0 +1,22 @@
+A centralized Event Brokering System consists of only one
+Event Broker (Figure 2). The central EB stores all currently
+active subscriptions in the system. Every new event is pub-
+lished to the EB, which is responsible for matching it against
+all the subscriptions. Afterwards the event is forwarded to
+all Event Displayers whose subscriptions match. Represen-
+tative systems in this category include the SIFT Information
+Dissemination System ([21]) and active databases ([7]).
+An important problem that any centralized system would
+Figure 2: Centralized architecture: one server does
+all the matching and ltering.
+need to address is how to eciently match a new event
+against a large set of subscriptions to gure out which ones
+match. Although the matching problem is challenging and
+interesting to study, it is beyond the scope of this paper.
+Interested readers are referred to [21, 1, 7] for more detailed
+discussions.
+Even though the central EB may be a performance bottle-
+neck and a single point of failure, it is important to under-
+stand how it could operate in a mobile environment. In later
+sections, we will look at how distribution alleviates the scal-
+ability problem, and how replication helps with reliability.

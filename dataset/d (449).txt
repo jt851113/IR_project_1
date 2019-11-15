@@ -1,0 +1,10 @@
+Definition 2.5 Given a pattern with period
+and a sequence of events
+we say that P matches D' (or D' supports P),itff D' is in compliance
+with P at every position j (1<=j<=l). 
+
+For the sake of simplicity of exploration, we assume that, without additional
+tional qualification,occurs equally likely at any position with probability
+All results presented in this paper can be modified to apply to a
+more general scenario.
+Another way of looking at it is that at any time.

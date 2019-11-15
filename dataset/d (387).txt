@@ -1,0 +1,34 @@
+No matter what heuristic used in prediction mechanisms
+and wake up mechanisms, we are not able to
+guarantee 0% missing rate, except for waking up all
+the sensor nodes each time as the SM scheme does.
+Therefore, PES needs a recovery mechanism to relocate
+the object, when the object is not found by the
+current and target nodes.
+To be conservative to the energy resource, upon the
+object miss, the current node first wakes up all the
+nodes surrounding the estimated route of the moving
+objects by using the heuristic ALL NBR described in
+Section 4.23. As the ALL NBR heuristic in wake up
+mechanism, the ALL NBR recovery does not guarantee
+the activated nodes can find the missing object.
+Therefore a more aggressive recovery approach takes
+place as the second step. In case that ALL NBR recovery
+fails, the current node will initiate flooding recovery
+which wakes up all the nodes in the network
+for object relocation, which ensures 0% missing rate.
+The recovery message used as wake-up call in both
+recovery stages is transmitted via ultra low energy
+paging channel with reasonable communication overhead.
+One of the information encapsulated in the recovery
+message is the activate time, which regulates
+the time when all the sensor nodes should wake up to
+capture the missing object. When the activate time
+arrives, the nodes receiving the recovery message wake
+up together and try to find the object. In ALL NBR
+recovery the sensor node who captures the missing object
+has to notify the current node, thus preventing
+the second step of the recovery. The notification is
+not needed in flooding recovery, since at least one sensor
+can locate the missing object as long as the object
+is still inside the monitored region.

@@ -1,0 +1,106 @@
+There are two distinct aspects to data partitioning: data ownership,
+which dictates who owns what data, and data storage, which
+describes the actual data stored at each site. Our partitioning
+scheme is based on a series of partitioning rules, tags (i.e., special
+attributes), and invariants that must be maintained to ensure correct
+answers. Our scheme uses the following definitions.
+IDable nodes. We associate with certain (element) nodes in a document
+an “id” attribute (see Figure 3). This id attribute is in the
+spirit of a DTD’s ID type.5 However, we require only that the id
+be unique among its siblings with the same element name (e.g., the
+parkingSpace siblings within a block), whereas ID type attributes
+must have globally unique values. This distinction is quite helpful
+for us, because our document is fragmented across many sites, so it
+would be difficult to ensure globally unique names. Moreover, the
+values for our id attributes are short names that make sense to the
+user query (e.g., New York).
+DEFINITION 3.1. A node in a document is called an IDable
+node only if (1) it has a unique id among its siblings with the same
+element name, and (2) its parent is an IDable node. The root node
+of a document is also an IDable node. The ID of an IDable node is
+defined to be its pair.
+Figure 4 shows an example document, and its IDable nodes (denoted
+in bold). Note that each IDable node can be uniquely identified
+by the sequence of IDs on the path from the root to the node.
+We will frequently exploit this feature in our system. For instance,
+IDable nodes can be placed on different sites than their parents or
+siblings, without any ambiguity.
+DEFINITION 3.2. The local information of an IDable node is defined to be the document fragment containing: (1) all the at+ -
+tributes of + , (2) all its non-IDable children and their descendants,
+and (3) the IDs of its IDable children. The local ID information
+of an IDable node + is defined to be the document fragment that
+contains (1) the ID of the node, and (2) the IDs of all its IDable
+children.
+Thus the local ID information of an IDable node is a subset of the
+local information of that node. For example, the local information
+of the Soho node in Figure 4 is:
+<neighborhood @id=’Soho’ @zipcode=’10012’>
+<block @id=’1’></block>
+<block @id=’2’></block>
+<available-spaces>8</available-spaces>
+</neighborhood>
+Its local ID information is:
+<neighborhood @id=’Soho’>
+<block @id=’1’></block>
+<block @id=’2’></block>
+</neighborhood>
+Note that the document fragments corresponding to the local informations
+of the IDable nodes form a nearly-disjoint partitioning
+of the original document, with the only overlap being the IDs of
+the IDable nodes. Also, the notion of an IDable node could be
+extended to include any node with a uniquely named root-to-node
+path (such as available-spaces in Figure 4); however, this would
+complicate our technique below for self-starting queries.
+Data ownership. We permit each site to own an arbitrary set of
+nodes from the document, under the following constraints:
+ Each node in the document must be owned by exactly one
+site.
+ A node may have a different owner than its parent only if it
+is an IDable node.
+This enables considerable flexibility for partitioning. For example,
+a site may own a node, a few of its grandchildren and cousins, but
+not the intervening nodes in the hierarchy. Our query processing
+algorithms must ensure correct answers in the presence of any such
+partitionings.
+The owner of a node is ultimately responsible for any queries on
+that node. By requiring that only an IDable node may be on a different
+site than its parent, we ensure that any such node is globally
+addressable. (We describe in Section 3.4 how the system locates
+the site corresponding to the node.)
+Data stored at each node. The data that is stored at each site is
+essentially the union of the local informations and the local ID informations
+of a set of nodes. There are two invariants we maintain
+on the stored data: (I1) each site must store the local information
+for the nodes it owns, and (I2) if (at least) the ID of a node is stored,
+then the local ID information of its parent must also be stored. Note
+that this implies that the local ID information of all ancestors of
+such a node is also stored.
+A special attribute called status (meaningful only for IDable nodes)
+is used to summarize the stored data for a node, in order to ensure
+correct and efficient query processing. It has four possible values:
+ owned: The site owns this node. By invariants (I1) and (I2),
+it has the local information of the node and at least the local
+ID information of all its ancestors.
+ complete: The site has the same information stored as owned,
+except that it does not own the node.
+ ID-complete: The site has the local ID information for this
+node and the local ID information of all its ancestors, but it
+does not have all the local information for the node.
+ incomplete: For this node, the site has only its ID.
+Our system maintains the invariant that each node at a site falls
+into one of these four categories (a non-IDable node is implicitly
+assumed to have the same status as its lowest IDable ancestor).
+Intuition behind this structure. What have we accomplished by
+these partitioning rules, special attributes, and invariants? If a site
+has information about a node (beyond just its ID), it knows at least
+the IDs of all its IDable children, and also the IDs of all its ancestors
+and their siblings. Thus when a query is routed to this site,
+it can either answer it using the document fragment it has, or it
+knows which parts are missing (the missing parts will always be
+IDable nodes and the information in the subtrees below them). It
+can then contact the appropriate sites that own the missing parts
+(because it has their unique names) and get the information from
+them.
+As such, any given site has in its document fragment the information
+needed to gather an answer to a query, even if it does not
+have all the data itself.

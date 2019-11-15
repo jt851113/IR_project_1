@@ -1,0 +1,44 @@
+To validate our algorithms on Pastry, we used the opensource
+Pastry implementation called Freepastry [8], while we
+implemented our own event-driven simulator for Chord.
+Given a set of nodes and items with randomly-generated
+identifiers, we assign popularities to items based on a zipfian
+distribution, and the queries are samples from this distribution.
+Depending on the underlying application, the popular items
+might be different at different peers. We have thus considered
+two possibilities for ranking the items based on their
+popularities: (i) identical at all nodes, and (ii) different at
+different nodes. While we have covered both of these cases in
+our simulations, due to space constraints, the results for the
+former case are demonstrated in our plots with Pastry, and
+the results for the latter are demonstrated in our plots with
+Chord. For the latter case, we used five distinct item popularity
+lists in our experiments, each with identical zipfian parameter,
+but with different rankings of the items. Each node is then
+assigned one of the five item popularity lists at random. This
+is done primarily to simulate the fact that the item popularities
+may vary across nodes, but can be expected to follow a
+zipfian distribution with a similar parameter. In addition, the
+experiments were run in two distinct modes: a stable mode
+with no peer insertions and deletions, and a churn-intensive
+mode where peers are inserted and deleted regularly.
+We used the following default parameters for our experiments:
+number of nodes n = 1024, number of auxiliary
+neighbors k = log n and the item popularities follow a zipfian
+distribution with parameter R = 1:2. We used 32-bit binary ids
+for the experiments. In addition, we show the effects of using
+R = 0:91 in the Pastry plots, and high churn in the Chord
+plots.
+Performance Metric: To illustrate the advantages of our
+schemes, we compared our algorithms for choosing the k
+auxiliary neighbors with a scheme where the k additional
+neighbors are chosen without taking the access frequencies
+into account. We refer to this scheme as the frequencyoblivious
+scheme, and have implemented it as follows. In
+Chord, if k is r log n, then the frequency-oblivious approach
+selects r auxiliary neighbors at random in the range (2i; 2i+1]
+for all i.3 Similarly, in Pastry, the r auxiliary neighbors are
+chosen for each prefix match of a certain length. In all our
+plots, the performance metric used is the percentage reduction
+in the average number of hops compared to the frequencyoblivious
+scheme.

@@ -1,0 +1,13 @@
+4.2.1. Fault Resilience of the Spanning Tree
+First, we consider a baseline routing topology in which
+aggregates are computed across a single spanning tree.
+For simplicity, we assume that we have a complete
+d-ary tree of height h. In general, the probability of
+a value from a node at level i to reach the root is
+proportional to ()i. The expected value of the
+COUNT aggregate is E(count) = Ph
+where ni is the number of nodes at level i. This gives
+us E(count) = . For
+h = 10, d = 3 and p = 0:1 (a 10% link loss rate) the
+expected fraction of the nodes that will be counted is
+poor, only 0:369.

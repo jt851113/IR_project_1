@@ -1,0 +1,21 @@
+We partitioned the data on each peer pi into sqrt(|Di|)
+clusters, where |Di| is the number of documents in pi. We
+used two types of clustering. The first is a naive clustering
+that is done by taking equal ranges of document id’s
+as the groups. The second approach is by applying the
+latent-Dirichlet-allocation (LDA) clustering algorithm [2].
+Figure 2 shows the recall of the top-10 results vs. the number
+of selected peers (i.e., K) for the following five methods.
+The first two, hist-naive and hist-LDA, use two-dimensional
+histograms with score intervals of 0.5 in conjunction with
+the above two clustering techniques, respectively. Both cdfctf
+[1] and CORI [3] are methods that use peer-level (rather
+than group-level) statistics. The fifth method, cdf-ctf-LDA,
+uses the cdf-ctf information at the cluster level.
+The combination of histograms with LDA clustering (hist-
+LDA) outperformed all the other methods. For example,
+when selecting 20 peers, CORI and cdf-ctf achieved a recall
+of 0.25 and 0.33, respectively, while hist-LDA was better by
+more than 50% (a recall of 0.52).
+Due to space limitation, we do not show the saving in the
+communication cost when using the two-phase algorithm.

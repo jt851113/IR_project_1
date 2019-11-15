@@ -1,0 +1,79 @@
+In introducing the various elements of directed diffusion, we
+also implicitly described a particular usage--interests set
+up gradients drawing down data. The directed diffusion
+paradigm itself does not limit the designer to this particular
+usage. Other usages are also possible, such as the one in
+which nodes may propagate data in the absence of interests,
+implicitly setting up gradients when doing so. This is useful,
+for example, to spontaneously propagate an important event
+to some section of the sensor field. A sensor node can use
+this to warn other sensor nodes of impending activity.
+Our description points out several key features of diffusion,
+and how it differs from traditional networking. First, diffusion
+is data-centric; all communication in a diffusion-based
+sensor network uses interests to specify named data. All
+communication in diffusion is neighbor-to-neighbor, unlike
+the end-to-end communication in traditional data networks.
+In other words, every node is an "end" in a sensor network.
+Second, there are no "routers" in a sensor network.
+Each sensor node can interpret data and interest messages.
+This design choice is justified by the task-specificity of sensor
+networks. Sensor networks are not general-purpose communication
+networks. Third, sensor nodes do not need to
+have globally unique identifiers or globally unique addresses.
+Nodes, however, do need to distinguish between neighbors.
+Finally, in an IP-based sensor network, for example, sensor
+data collection and processing might be performed by a collection
+of specialized servers which may, in general, be far
+removed from the sensed phenomena. In our sensor network,
+because every node can cache, aggregate, and more generally,
+process messages, it is possible to perform coordinated
+sensing close to the sensed phenomena.
+Diffusion is clearly related to traditional network data routing
+algorithms. In some sense, it is a reactive routing technique,
+since "routes" are established on demand. However,
+it differs from other ad-hoc reactive routing techniques in
+several ways. First, no attempt is made to find one loopfree
+path between source and sink before data transmission
+commences. Instead, constrained or directional flooding is
+used to set up a multiplicity of paths, and data messages
+are initially sent redundantly along these paths. Second,
+soon thereafter, reinforcement attempts to reduce this multiplicity
+of paths to a small number, based on empirically
+observed path performance. Finally, a message cache is used
+to perform loop avoidance. The interest and gradient setup
+mechanisms themselves do not guarantee loop-free paths between
+source and sink.
+Why this peculiar choice of design? At the outset of this
+research, we consciously chose to explore path setup algorithms
+that establish network paths using strictly local
+(neighbor-to-neighbor) communication. The intuition behind
+this choice is the observation that physical systems
+(e.g., ant colonies [5]) that build up transmission paths using
+such communication scale well and are extraordinarily
+robust. However, using strictly local communication implies
+that path setup cannot use global topology metrics;
+local communication implies that, as far as a node knows,
+the data that it received from a neighbor came from that
+neighbor 9. This can be energy efficient in highly dynamic
+networks when changes in topology need not be propagated
+across the network. Of course, the resulting communication
+paths may be sub-optimal. However, the energy inefficiency
+due to path sub-optimality can be countered by carefully
+designed in-network aggregation techniques. Overall, we believe
+that this approach trades off some energy efficiency for
+increased robustness and scale.
+Finally, it might appear that the particular instantiation
+that we chose, location tracking, has limited applicability.
+We believe, however, that such location tracking captures
+many of the essential features of a large class of remote
+9
+The location information in a data message might reveal otherwise, hut that
+information still doesn't contain topology metrics.
+surveillance sensor networks. We emphasize that, even though
+we have discussed our tracking network in some detail, much
+experimentation and evaluation of the various mechanisms is
+necessary before we fully understand the robustness, scale
+and performance implications of diffusion in general, and
+some of our mechanisms in particular. The next section
+takes an initial step in this direction.

@@ -1,0 +1,96 @@
+The skyline query, which returns a set of objects not
+dominated by any other objects, has widely been applied
+in preference queries in relational datasets. Skyline query
+functions are important for several database applications,
+including customer information systems, decision support,
+data visualization, and so forth. Given an n-dimensional
+database DB, an object Oi is said to be in skyline of
+DB if there is no other object Oj (i ?= j) in DB such
+that Oj is better than Oi in all dimensions. If there
+exist such Oj , then we say that Oi is dominated by
+Oj or Oj dominates Oi. Figure 1 shows an example
+of skyline. The table in the figure is a list of stocks,
+each of which contains two numerical attributes: risk
+and return. Stock S1 dominates stock S2 if S1:risk ?
+S2:risk, S1:return ? S2:return, and strictly S1:risk <
+S2:risk or S1:return > S2:return. The most interesting
+stocks are called skyline stocks which are not dominated
+by any other stock. From our example dataset an investor
+choice usually comes from the stocks in skyline, i.e.,
+one of A;C;D (See figure 1(b)). Stock D has lower
+risk and higher return than B and E, meaning that D is
+better independently of the relative importance of the two
+attributes. On the other hand, D and A are incomparable
+since a long-term investor may be willing to obtain lower
+return to ensure lower risk. Hence, computing skyline
+from a dataset is helpful for users’ decision-making. A
+number of efficient algorithms for computing skyline
+objects have been reported in the literature [1]–[5], [11],
+[13], [14].
+For skyline computation it is always assumed that
+the dominating relationship is evaluated based on every
+dimensions (attributes) of the dataset. However, a major
+drawback of skylines is that, in datasets with many
+dimensions, the number of skyline objects becomes large
+and no longer offer any interesting insights. The reason is
+that as the number of dimensions increases, for any object
+O1, it is more likely there exists another objects O2 where
+O1 and O2 are better than each other over different subsets
+of dimensions. If the investor, cared not just about risk
+and return, but also about the price/earning (P/E) ratio
+and price-to-book ratio, then most stocks may have to be
+included in the skyline answer since for each stock there
+may be no one stock that beats it on all criteria.
+To reduce the size of result set and to find more
+important and meaningful objects, Chan, et al. considered
+k-dominant skyline query [6]. They relaxed the definition
+of “dominated” so that an object is more likely to be
+dominated by another. Given an n-dimensional dataset,
+an object Oi is said to k-dominates another object Oj
+(i ?= j) if there are k (k ? n) dimensions in which Oi is
+better than or equal to Oj . A k-dominant skyline object
+is an object that is not k-dominated by any other objects.
+Motivating Example. Assume we have a symbolic
+dataset as listed in Table I. In the table, each object is represented
+as a tuple containing six dimensions from D1 to
+D6. Without loss of generality, we assume smaller value
+is better in each dimension. Conventional skyline query
+for this dataset returns five objects: O2;O3;O5;O6, and
+O7. Objects O1 and O4 are not in skyline because they
+are dominated by O7. If we take a look at these skyline
+objects more closely, we can find that some objects are
+not significant in a sense. For example, compared with
+O2, O6 is survived only by its value of D2. O3 is in
+skyline because no other object fails to dominate it in
+all dimensions, even though it does not have any minimal
+feature value. In such a situation, the user naturally wants
+to eliminate the non-significant skyline objects by using
+selective criterion.
+The k-dominant skyline query can control the selectivity
+by changing k. Consider the case where k = 5. Now
+the 5-dominant skyline query for this dataset returns two
+objects: O5 and O7. Objects O1;O2;O3;O4 and O6 are
+not in 5-dominant skyline because they are 5-dominated
+by O7. 4-dominant skyline query (i.e., k = 4) returns only
+one object, O7. If we decrease the value of k by one, then
+3-dominant skyline query returns empty.
+The main contribution of this paper are as follows:
+‧ We propose a new algorithm called Two Scan Algorithm
+with Domination Power Index (TSADPI), which
+offers a substantial improvement over k-dominant skyline
+computation.
+‧ We conduct extensive performance evaluation using
+both real and synthetic datasets and compare our method
+with the Two-Scan Algorithm (TSA) technique [6], which
+is currently considered to be the most efficient k-dominant
+skyline method. Our evaluation shows that proposed
+method is significantly faster than TSA technique.
+The rest of the paper are organized as follows: Section
+II the related work. Section III presents the notions
+and properties of k-dominant skyline computation. We
+provide detailed examples and analysis of the algorithm
+is examined in Section IV. We present experimental
+evaluations of the proposed algorithm in Section V under
+a variety of settings. Finally, the conclusion of the paper
+is explained with some directions for future work in
+Section VI.

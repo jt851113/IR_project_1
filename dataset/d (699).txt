@@ -1,0 +1,9 @@
+An update from a sensing agent is typically routed directly to
+the site manager that owns the relevant node in the hierarchy. On
+the site manager side, processing a sensor update involves updating
+the document at the site with the new availability information, as
+well as timestamping the data. A single site manager is typically
+able to handle 200 updates a second in our current prototype. The
+total number of updates that can be handled by the system scales
+linearly with the number of site managers among which the data is
+distributed.

@@ -1,0 +1,50 @@
+Since join operators are usually expensive, sharing common join
+operations can significantly reduce the amount of computation.
+Figure 3.11 shows a query with a join operator that, for each
+company, retrieves the price of its stock and the company’s
+profile. The signature for the join operation is shown on the
+right side of the figure. A join signature in our approach
+contains the names of the two data sources and the predicate for
+the join. The group optimizer groups join queries with the same
+join signatures. A constant table is not needed in this case
+because there is only one output intermediate file, whose name
+is stored in the split operator. This file is used to hold the results
+of the shared join operation.
+There are two ways to group queries that contain both join
+operators and selection operators. Figure 3.12 shows such an
+example, which retrieves all stocks in the computer service
+industry and the related company profiles. The group optimizer
+can place the selection either below or above the join, so that
+two different grouping sequences can be used during
+incremental group optimization process. The group optimizer
+chooses the better one based on a cost model. We discuss these
+alternatives below using the query example in Figure 3.12.
+If the selection operator (e.g., on Industry) is pulled above the
+join operator, the group optimizer first groups the query by the
+join signature. The selection signature, which contains the
+intermediate file, is grouped next. The advantage of this method
+is that it allows the same join operator to be shared by queries
+with different selection operators. The disadvantage is that the
+join, which will be performed before the selection, may be very
+expensive and may generate a large intermediate file. If there are
+only a small number of queries in the join group and each of
+them has a highly selective selection predicate, then this
+grouping method may be even more expensive than evaluating
+the queries individually.
+Alternatively, the group optimizer can push down the selection
+operator (e.g., on Industry) to avoid computing an expensive
+join. First, the signature for the selection operator is matched
+with an existing group. Then a file scan operator on the
+intermediate file produced by the selection group is added and
+the join operator is rewritten to use the intermediate file as one
+of its inputs. Finally, the group optimizer incrementally groups
+the join operation using its signature. Compared to the first
+approach, this approach may create many join groups with
+significant overlap between them. Note, however, that this same
+overlap exists in the non-grouping approach. Thus, in general,
+this method always outperforms than non-grouping approach.
+The group optimizer will select one of these two strategies based
+on a cost model. To date we have implemented the second
+approach in NiagaraCQ. In the future we plan on implementing
+the first strategy and compare the performance of the two
+approaches.

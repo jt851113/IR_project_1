@@ -1,0 +1,4 @@
+In this section, we present an efficient method for computing k-dominant skyline
+objects from X. We used a Sort-Filtering method that consists of two parts: one
+is “domination power” calculation and sorting, and the other is k-dominant
+skyline objects checking.

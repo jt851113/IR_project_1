@@ -1,0 +1,74 @@
+We built an ad-hoc networking simulator to characterize
+the behavior of two data dissemination models. The first
+model implemented a CSMA/CA MAC layer (with exponential
+random backoff and RTS/CTS) along with the TDDES
+scheduling overlay and tree construction protocol. The
+second model, which emulates conventional protocols, implemented
+the same MAC layer and a similar wireless tree
+construction protocol, but without TD-DES. Rather than
+being scheduled, events in the latter network are propagated
+immediately after generation. We refer to this second network
+of each pair as the “non-scheduled” network. Without
+a schedule to follow, nodes in this network must listen
+“promiscuously,” always in Rx mode (except when transmitting).
+They cannot make use of the standby modes of
+their tranceivers.
+For comparison, both networks were identical in their
+topologies and event subscription profiles. The same poisson
+event generation distribution was used to simulate events
+being generated and disseminated. Topologies were static
+and all nodes had omnidirectional, uniform broadcast ranges
+(i.e., links were symmetric)
+Figure 5 graphs the relative power consumption of the
+non-scheduled network to TD-DES as a function of the minimum
+iteration length (i.e., the minimum number of time
+slots between two control events). The network consists of
+20 nodes; there are three event types; and each node has a
+0.2 probability of subscribing to each event type. The time
+slot width ratio was one – meaning that time slots were
+exactly the required width to propagate one event (i.e., 2
+ms). The radio hardware was modeled after the Proxim
+RangeLAN2 2.4 GHz 1.6 Mbps PCMCIA card, which expends
+1.82W in transmit mode, 1.80W in receive mode, and
+0.18W in standby mode [20]. Each node had a radio range of
+30 meters and area range was varied from 200 square meters.
+There are five event generation rates (or EGRs), where an
+EGR is defined as the average number of time slots between
+Figure 5: Power consumption ratio (non-scheduled
+network vs. TD-DES) as a function of iteration
+length (20 nodes, 0.2 subscription ratio).
+events, used by the poisson event generation distribution.
+The graph shows that the non-scheduled network consumed
+anywhere from 142% up to 550% as much as its
+counterpart TD-DES network. We also observe that the
+relative power consumption increases with decreasing eventgeneration
+frequency. This is because TD-DES can best
+leverage its power-saving abilities when the traffic load is
+light. With heavy traffic, nodes cannot utilize their lowpower
+standby modes (as they are nearly always receiving
+or transmitting data), so the relative power consumption approaches
+one. Furthermore, as the minimum iteration lenght
+increases, the power savings also increase because the nodes
+typically need to listen fewer control messages.
+For the same set of results, average dissemination latencies
+for events were also recorded (but not shown due to
+space considerations). Dissemination latency is the total
+time that expires between when an event is generated and
+when it is received by an interested node. This is the sum of
+two components: the scheduling delay and the propagation
+delay. The non-scheduled network experiences no scheduling
+delay – that is, events are propagated almost immediately
+after generation. The only source of delay before propagation
+would be from queueing (if events are generated faster
+than the rate at which they can be propagated one hop) or
+medium contention. We observed that the TD-DES network
+consumed anywhere from 250% up to 1100% as much delay
+as its counterpart non-scheduled network did. We also observed
+that the latencies increase with increasing minimum
+iteration lenght.
+These results reveal that TD-DES trades off dissemination
+latency for power savings. As a result, TD-DES may not be
+appropriate for real-time applications where dissemination
+latencies should be kept minimal (on the order of milliseconds)
+– we do, however, believe that many of the target
+applications do not have such strict latency constraints.

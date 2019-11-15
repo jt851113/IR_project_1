@@ -1,0 +1,13 @@
+A prototype version of NaigraCQ has been developed, which
+includes a Group Optimizer, Continuous Query Manager, Event
+Detector, and Data Manager. As the core of our incremental
+group optimization, the Group Optimizer currently can
+incrementally group selection and join operators. Our
+incremental group optimizer is still at a preliminary stage.
+However, incremental group optimization has been shown to be
+a promising way to achieve good performance and scalability.
+We intend to extend incremental group optimization to queries
+containing operators other than selection and join. For example,
+sharing computation for expensive operators, such as
+aggregation, may be very effective. “Dynamic regrouping” is
+another interesting future direction that we intend to explore.

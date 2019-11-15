@@ -1,0 +1,12 @@
+During the pre-processing phase, each peer has performed feature
+extraction on its local documents and has performed local clustering.
+Thus each document is represented by a feature vector,
+and the same holds for local clusters of documents. A similarity
+query qk is forwarded to a peer by its super-peer. Then the peer
+needs to find the k most similar documents to the query. In order
+to avoid computing the query similarity with each local document
+(cos(qk, di)), a similarity threshold Ts is employed, so that only
+those documents that belong to local clusters cj with 
+Ts may belong to the result list. These documents are ranked according
+to their similarity to the query and only the top-k documents
+are returned to its super-peer.

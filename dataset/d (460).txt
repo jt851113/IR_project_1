@@ -1,0 +1,50 @@
+In this section, we outline the general strategy we use to mine
+patterns that meet certain generalized information gain threshold
+ . There exist three challenges for mining patterns with
+information gain: (1) The number of different patterns is
+
+where and are the overall number of distinct events
+and the maximum period length, respectively. Since can
+be quite large, e.g., in the thousands, it is infeasible to verify
+each pattern against the data directly. Some pruning mechanism
+has to be developed to circumscribe the search space. (2)
+By definition, the generalized information gain measure does
+not have the property of downward closure as the traditional
+support measure does. This prevents us from borrowing existing
+algorithms developed for association rule problems to
+mine the qualified patterns. (3) The subsequence concept introduced
+in this paper poses a difficult challenge to determine
+when a subsequence should start and end. If a pattern misses
+some “matches”, it is hard to tell whether this signals the end
+of a subsequence or this merely means some noise within a
+subsequence.
+  Fortunately, the triangle inequality holds for the generalized
+information gain. In other word, for a set of complementary
+patterns II, the generalized information gain of the
+minimum common superpattern (MCSP) of II is always less
+than or equal to the sum of that of each individual pattern in II
+over the same subsequence of events. Inspired by this observation,
+we can first collect the generalized information gain of
+all singular patterns, and then generate candidate patterns by
+combining these singular patterns.
+
+  In the first phase, the valid singular patterns are discovered.
+The second phase generates the candidates of valid complex
+pattern based on the candidates of valid singular patterns via
+triangle inequality. Finally, InfoMiner+ verifies all candidates,
+and finds the corresponding subsequence for each valid pattern
+so as to maximize its generalized information gain. The
+first phase can be further divided into two steps: (1) identify
+the likely periods for each event and (2) find the valid singular
+pattern for each likely period. In the first step, the negative
+impact of gap penalties towards the overall GIG is taken into
+account to prune out disqualified periods of each event; while
+in the second step all possible format of singular patterns are
+considered and evaluated. For each likely period ιof event
+a, there are ι possible singular patterns, e.g., for ι = 3,the
+three singular patterns are ,and . Af-
+ter valid singular patterns are identified, the candidate complex
+patterns are generated according to the triangle inequality, and
+then verified. At the same time, for each significant pattern, we
+will find its associated subsequences. Due to space limitations,
+we omit the detailed description of the InfoMiner+ algorithm.

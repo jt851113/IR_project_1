@@ -1,0 +1,9 @@
+The SEF technique often relies on the engine’s
+ability to search for a phrase containing what are
+typically “stop” words. These words are almost universally
+filtered out by traditional information
+retrieval systems. Web search engines vary in their
+use of stop words, and we have found it necessary
+to filter out certain phrases on an engine-by-engine
+basis to prevent the engines from returning many
+pages that do not contain the phrases.

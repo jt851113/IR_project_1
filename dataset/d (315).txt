@@ -1,0 +1,96 @@
+Garlic’s STARs are closely based on the work of [Loh88];
+in fact, we have implemented the Garlic optimizer as an
+extension of the DB2 CS [G
+
+93] version of STARs. We
+begin this section with a review of this work, and then focus
+on how we have extended STARs to meet Garlic’s needs.
+STARs can be seen as the production rules of a grammar
+that generates plans. We call the topmost non-terminal symbols
+of the grammar roots. A STAR determines how POPs
+can be combined in a plan. A simple STAR may build only
+a single POP, by invoking its constructor. The constructor
+allocates space for the POP, initializes various fields, and
+calls the property function to compute the properties of the
+new POP (including Cardinality and Cost).
+Of course, few STARs are that simple. Most include a
+condition function; if the condition is true, then the STAR
+builds its plan, otherwise, no plan is built. Also, a single
+STAR may construct multiple POPs, and multiple plans.
+Multiple POPs are built by calling the POPs’ constructors
+in sequence. Multiple plans result when the STAR is instantiated
+with a set parameter, and creates a plan for each element
+of the set—in this case, the condition (if any) is evaluated
+for every element of the set separately. Finally, STARs
+can also invoke other STARs. Thus, STARs are rules of the
+following form (where  is the name of a STAR or a POP):
+Note that when a STAR is instantiated, all properties of
+all the resulting plans are computed automatically, as the
+various POP constructors are called.
+For example, the following STAR can be used to retrieve
+columns that are needed by some other STAR, but which
+have not yet been retrieved from the relevant wrapper.
+This STAR constructs a Fetch POP, if there are columns
+needed that are not already present in the properties of the
+input plan. It builds at most one plan, depending on the
+value of the condition function. In the following example,
+multiple plans may be returned (depending on the cardinality
+of the set of input plans), and multiple POPs are unconditionally
+constructed.
+DamStream is called when an intermediate result must be
+stored. It is given a set of plans which produce that result,
+and adds Scan and Temp POPs to each. Examples of more
+complex STARs for a single-source DBMS can be found
+in [Loh88]. We will look at some of Garlic’s more complex
+STARs in Section 3.5 below.
+Garlic defines a fixed set of roots with fixed interfaces,
+corresponding to the different language functions it supports.
+There are roots for select, group-by, insert, delete,
+and update, which are invoked by the plan enumerator depending
+on the kind of query. In this paper we focus
+on select-project-join queries. These queries involve three
+kinds of roots: AccessRoot (STARs for single-collection
+accesses), JoinRoot (for joins) and FinishRoot (for
+ensuring that the plan is complete).
+To allow the Garlic optimizer to plan queries when data
+comes from sources with differing query capabilities, Garlic
+includes several generic STARs. These STARs construct
+the generic PushDown POP described above. We will prefix
+the names of these generic STARs with Repo to remind
+us that they represent work that will take place in a data
+source (repository). There is a generic STAR corresponding
+to each root STAR (except FinishRoot, which is a
+purely Garlic function). Thus, there is a RepoAccess
+STAR and a RepoJoin STAR. When these STARs are
+instantiated, they invoke rules the wrapper may have provided,
+then use the results to build a PushDown POP and
+compute its properties. If there is no appropriate wrapper
+STAR, they simply return no plan. In many cases, Garlic
+will find other ways of accomplishing the same function.
+We illustrate this using Garlic’s RepoAccess STAR,
+shown in Figure 4. This STAR invokes the plan access
+rule, if any, defined by the wrapper of the data source that
+contains the collection to be accessed. That rule returns a
+list of zero or more “wrapper plans”. These are simply data
+structures, uninterpreted by Garlic, that provide information
+the wrapper needs to execute the access if Garlic requests
+it later. Also returned are the properties for each wrapper
+plan; these will typically be (a subset of) the properties requested
+when the STAR was instantiated. The Source property
+will be computed by the ds function provided by Garlic.
+The Garlic RepoAccess STAR uses these properties
+to set the properties of the PushDown POPs that it creates.
+For purposes of this paper, we assume that wrappers construct
+their plans using STARs. Note, however, that since
+Garlic does not interpret the wrapper plans (only their properties),
+wrappers are actually free to construct their plans
+however they wish, as long as the interface to Garlic is
+STAR-like. Interested readers may consult [RS97] for the
+wrapper’s perspective on this process. STARs provide a
+useful means of capturing the wrappers’ query capabilities,
+regardless of implementation. Thus, when we need to characterize
+the work done in a plan by a wrapper, we will use
+“wrapper STARs” and “wrapper POPs” to do so. We will
+use wrapper STAR names that start with plan and are all
+lower case in order to distinguish wrapper STARs from Garlic
+STARs.

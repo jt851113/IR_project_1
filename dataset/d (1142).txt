@@ -1,0 +1,5 @@
+Based on our incremental grouping strategy, we designed a
+scalable group optimization method using expression signatures.
+Expression signatures [HCH+99] represent the same syntax
+structure, but possibly different constant values, in different
+queries. It is a specific implementation of the signature concept.

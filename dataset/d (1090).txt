@@ -1,0 +1,26 @@
+Figure 1 presents a functional view of the system. Queries
+to some existing search engine and to the CFRS are sent in
+parallel; results are then ranked by structural information
+or user-based relevance information. Queries to the CFRS
+are accompanied by the interest profile of the user, which is
+used to customize the result list according to his interests.
+Relevance information is gathered on the user’s machine by
+observing accesses to elements returned by any of the search
+methods.
+On the user side it is necessary (1) to build appropriate
+interest profiles for improving search results relevance
+(user interest profiling); (2) to present the results returned
+by the CFRS (user interface); and (3) to provide a mechanism
+for inserting new relevance information, based on the
+user’s local accesses to elements from the results lists (relevance
+feedback tracker).
+On the collaborative retrieval service side, mechanisms are
+needed (1) to direct requests and relevance tracking information
+to the relevant node(s) in the network (routing) and
+(2) to compute lists of relevant items for queries, based
+on relevance tracking information and user interest profiles
+(storage and ranking, denoted by storage layer in the paper).
+The architecture of the system and the main interactions
+between its elements are depicted in Figure 2. The next
+sections describe its major components (shown in grey in
+the figure).

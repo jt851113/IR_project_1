@@ -1,0 +1,40 @@
+DEFINITION 2.8. For any two patterns 	        
+and 	   
+ 
+     
+ of the same period , 	 and 	  are
+complementary if either    or 
+   for all     .
+A set of patterns of the same period are said to be complementary
+if every pair of patterns in the set are complementary.
+DEFINITION 2.9. Given a set  of complementary patterns
+of the same period , the minimum common superpattern
+(MCSP) of  is the pattern 	 of period , which satisfies the
+following two conditions.
+	 Each pattern in  is a subpattern of 	.
+	 There does not exist a subpattern 	  of 	 	  	 such
+that each pattern in  is also a subpattern of 	 .
+It follows from the definition that the information of the
+MCSP of a set, , of complementary patterns is the summation
+of the information of each pattern in . For example,
+    ,     , and      are complementary
+and their MCSP is     . The information
+of      is        which
+is exactly the summation of the informations of     ,
+    , and     . For a given event segment
+         and a set, , of complementary patterns,
+the information loss of  with respect to the MCSP of  satisfies
+the following equality
+
+where 	 is the information loss of  with respect to 	.
+The rationale is that if  is not in compliance with a pattern
+in  on position , then the th position must be instantiated and
+ must not be in compliance with the MCSP of  on position
+ either. For instance, the information loss of the segment
+     with respect to      is  
+, which is equal to the aggregate of information loss of
+that segment with respect to     ,     , and
+    . In general, for any event sequence, the overall
+information loss of  with respect to the MCSP of a set of
+complementary patterns  is equal to the summation of the
+information loss of  with respect to each pattern in .

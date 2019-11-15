@@ -1,0 +1,56 @@
+Partly for ease of analysis, we have described and modelled a very basic version of the
+ACQUIRE mechanism in this paper. One of our major next steps is to convert ACQUIRE
+into a functional protocol that can be validated on an experimental sensor network testbed.
+There are a number of ways in which our analysis can be improved, and a number of
+additional design issues need to be considered in our future work, some of which we outline
+here.
+Our analytical model of ACQUIRE assumes that the query packet is always of a fixed size
+consisting of all the individual sub-queries and their responses. The entire packet circulates
+in the network till the answer to the last query is obtained. The packet is then sent back to
+the querier. This simplifies the analysis as we need to only count the number of transmissions
+in order to quantify Eavg. However, it may be more efficient to send the answers to subqueries
+to the querier node as and when they are obtained. Our analysis could be tightened
+to take this into consideration.
+The efficiency of ACQUIRE can also be improved if the neighborhoods of the successive
+active nodes in the query trajectory have minimal overlap. This may potentially be best
+accomplished by using some deterministic trajectory as opposed to random walks, possibly
+making use of additional topological or geographical information. These would also aid in
+minimizing inefficiency due to the walk revisiting nodes (looping). Guided trajectories may
+also be helpful in dealing with non-uniform data distributions, ensuring that active queries
+spend most time in regions of the network where the relevant data are likely to be. In
+the analysis, we ignored the issue of overlap (although this was taken into account in the
+simulations we presented).
+One interesting result of our analysis is that the performance of ACQUIRE and the optimal
+choice of the look-ahead parameter d are functions of the amortization factor c and (somewhat
+surprisingly) independent of M, N, and the total number of nodes X. This lends itself
+to the possibility of using distributed algorithms in which localized estimates of c are used to
+determine the value of d at each step without global knowledge of system parameters. This
+would significantly improve the scalability of ACQUIRE.
+As presented here, ACQUIRE is meant to be used in situations where there is replicated
+data. At the very least there should be one node in the network that can resolve each
+component sub-query. One way to deal with other situations might be to equip the active
+queries with a time-to-live (TTL) field which is decremented at each hop. This would permit
+ACQUIRE to gracefully terminate with a negative response if a solution is not found within
+a reasonable period of time, to be followed up (for example) by a flooding-based query.
+Our analysis has assumed a regular grid topology. This helped us in gaining considerable
+insight into the performance of ACQUIRE, ERS and FBQ. In reality the topology of a
+sensor network might not only be irregular but also dynamic, due to failures and mobility.
+Exploring the behavior of ACQUIRE on such topologies is a focus of our ongoing effort. We
+should mention, however, that our results do already have some generality in this regard: so
+long as a reasonable model for f(d) can be developed for the network topology, the analysis
+presented here can be extended in a straightforward manner.
+In our modelling we have only counted the number of transmissions for energy costs, although
+it is true that receptions can also influence energy consumption. This is the case especially
+for broadcast messages, where there’s no channel reservation and all the direct neighbors
+receive the message. We believe that some of the alternatives to active querying, such
+as FBQ and ERS will in fact incur even more energy consumption under an energy model
+that incorporates receptions because all their query messages are broadcast. Moreover, these
+broadcasts would also lead to an increased latency in FBQ and ERS due to higher contention.
+We would like to examine such richer energy cost models in the future.
+In our analysis of delay, we looked only at response latency at the network layer (by examining
+the number of maximum sequential transmissions required). These results must be taken
+with a grain of salt, because they do take into account MAC-layer delay. For broadcast-based
+querying techniques such as FBQ and ERS, there could be far greater MAC layer contention
+than in ACQUIRE. This deserves worth further investigation.
+We have also ignored the possibility of aggregate queries in this paper. Our assumption has
+been that each sub-query is independent. This would be another direction for future work.

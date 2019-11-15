@@ -1,0 +1,30 @@
+We also evaluate the impact of parameters on the movielens
+data set with equal weights in Figs. 12(a) and 12(b).
+Although TSA and SRA are much faster than OSA on kdominant
+skyline query, they cannot beat OSA on top-δ
+dominant skyline query because of the large dimensionality
+of the data set. For TSA, the binary search on large k
+consumes too much time to locate the best level of k. For
+SRA, too many different top rated movies by different users
+reduces its pruning efficiency.
+On the movie-lens data set, we also try two different weight
+assignments. With the equal weight assignment to every
+user, five top movies are found and listed in the first column
+of Table 4. When the weights for every user is set proportional
+to the number of movies he or she rated, we see some
+different results in the second column. The difference comes
+about because, in the movie-lens data set, most users have
+rated only a small fraction of the movies. If we give equal
+weights to all users, a movie A has advantage over another
+movie B only if more users rated A, no matter how many
+users like B more than A. Since the data set was collected
+from 1997 to 1998, 4 out of 5 top dominant skyline points
+of equal weight are movies from 1996 to 1997, which had
+been just watched by the users. From the result in second
+column, we believe this problem is alleviated in the biased
+weight assignment.
+With heavier weights on the users with more ratings, the
+computation times of TSA and SRA increase in Fig. 12(c),
+since the data set is so sparse that those heavily weighted
+users can have very few common movies rated, which makes
+it even harder to find dominant skyline points.

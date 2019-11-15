@@ -1,0 +1,177 @@
+Recent developments in hardware have enabled the
+widespread deployment of sensor networks consisting
+of small sensor nodes with sensing, computation, and
+communication capabilities. Already today networked
+sensors measuring only a few cubic inches can be purchased
+commercially, and Moore’s law tells us that
+we will soon see components that measure 1/4 of a
+cubic inch, running an embedded version of a standard
+operating system, such as an embedded version
+Permission to copy without fee all or part of this material is
+granted provided that the copies are not made or distributed for
+direct commercial advantage, the VLDB copyright notice and
+the title of the publication and its date appear, and notice is
+given that copying is by permission of the Very Large Data Base
+Endowment. To copy otherwise, or to republish, requires a fee
+and/or special permission from the Endowment.
+Proceedings of the 2003 CIDR Conference
+of Linux or Windows CE .NET [2, 1]. Figure 1 shows
+a Berkeley MICA Mote[13], one of the platforms available
+commercially today, and Figure 2 shows its hardware
+characteristics.1 Sensor nodes come in a variety
+of hardware configurations, from nodes connected to
+the local LAN attached to permanent power sources to
+nodes communicating via wireless multi-hop RF radio
+powered by small batteries, the types of sensor nodes
+considered in this paper. Such sensor nodes have the
+following resource constraints:
+‧ Communication. The wireless network connecting
+the sensor nodes provides usually only a
+very limited quality of service, has latency with
+high variance, limited bandwidth, and frequently
+drops packets. [28].
+‧ Power consumption. Sensor nodes have limited
+supply of energy, and thus energy conservation
+needs to be of the main system design considerations
+of any sensor network application. For
+example, the MICA motes are powered by two AA
+batteries, that provide about 2000mAh [13], powering
+the mote for approximately one year in the
+idle state and for one week under full load.
+‧ Computation. Sensor nodes have limited computing
+power and memory sizes. This restricts
+the types of data processing algorithms on a sensor
+node, and it restricts the sizes of intermediate
+results that can be stored on the sensor nodes.
+‧ Uncertainty in sensor readings. Signals detected
+at physical sensors have inherent uncertainty,
+and they may contain noise from the environment.
+Sensor malfunction might generate inaccurate
+data, and unfortunate sensor placement
+(such as a temperature sensor directly next to the
+air conditioner) might bias individual readings.
+Future applications of sensor networks are plentiful.
+In the intelligent building of the future, sensors are deployed
+in offices and hallways to measure temperature,
+1MICA motes are available from www.xbow.com.
+
+Figure 1: A Berkeley MICA Mote
+Figure 2: Hardware Characteristics of a MICA Mote
+
+noise, light, and interact with the building control system.
+People can pose queries that are answered by
+the sensor network, such as “Is Yong in his office”, or
+“Is there an empty seat in the meeting room?” Another
+application is scientific research. As an example,
+consider a biologist who may want to know of the existence
+of a specific species of birds, and once such a
+bird is detected, the bird’s trail should be mapped as
+accurately as possible. In this case, the sensor network
+is used for automatic object recognition and tracking.
+More specific applications in different fields will arise,
+and instead of deploying preprogrammed sensor networks
+only for specific applications, future networks
+will have sensor nodes with different physical sensors
+for a wide variety of application scenarios and different
+user groups.2
+In this paper, we develop a query layer for wireless
+sensor networks. Our approach is motivated by the following
+three design goals. First, we believe that declarative
+queries are especially suitable for sensor network
+interaction: Clients issue queries without knowing how
+the results are generated, processed, and returned to
+the client. Sophisticated catalog management, query
+optimization, and query processing techniques will abstract
+the user from the physical details of contacting
+the relevant sensors, processing the sensor data,
+and sending the results to the user. Thus one of the
+main roles of the query layer is to process declarative
+queries.
+Our second design goal is motivated by the importance
+of preserving limited resources, such as energy
+2The MICA motes already support temperature sensors,
+light sensors, magnetometers, accelerometers, and microphones.
+and bandwidth in battery-powered wireless sensor networks.
+Data transmission back to a central node for
+offline storage, querying, and data analysis is very expensive
+for sensor networks of non-trivial size since
+communication using the wireless medium consumes a
+lot of energy. Since sensor nodes have the ability to
+perform local computation, part of the computation
+can be moved from the clients and pushed into the
+sensor network, aggregating records, or eliminating irrelevant
+records. Compared to traditional centralized
+data extraction and analysis, In-network processing
+can reduce energy consumption and reduce bandwidth
+usage by replacing more expensive communication operations
+with relatively cheaper computation operations,
+extending the lifetime of the sensor network significantly.
+For example, the ratio of energy spent in
+sending one bit versus executing one instruction ranges
+from 220 to 2900 in different architectures [29].3 Thus
+the second main role of the query layer is to perform
+in-network processing.
+Different applications usually have different requirements,
+from accuracy, energy consumption to delay.
+For example, a sensor network deployed in a battlefield
+or rescue region may only have a short life time
+but a high degree of dynamics. On the other had, for a
+long-term scientific research project that monitors an
+environment, power-efficient execution of long-running
+queries might be the main concern. More expensive
+query processing techniques may shorten processing
+time and improve result accuracy, but might use a lot
+of power. The query layer can generate query plans
+with different tradeoffs for different users.
+In this paper, we propose and evaluate a database
+layer for sensor networks; we call the component of
+the system that is located on each sensor node the
+query proxy. Architecturally, on the sensor node, the
+query proxy lies between the network layer and the
+application layer, and the query proxy provides higherlevel
+services through queries.
+Given the view of a sensor network as a huge distributed
+database system, we would like to adapt existing
+techniques from distributed and heterogeneous
+database systems for a sensor network environment.
+However, there are major differences between sensor
+networks and traditional distributed and heterogeneous
+database systems.
+First, sensor networks have communication and
+computation constraints that are very different from
+regular desktop computers or dedicated equipment in
+data centers, and query processing has to be aware of
+these constraints. One way of thinking about such constraints
+is the analogous interaction with the file systems
+in traditional database systems [37]. Database
+systems bypass the file system buffer to have direct
+3This is only a rule of thumb, since transmission range, bit
+error rates, and instruction width influence this parameter significantly
+control over the disk. For a sensor network database
+system, the analogous counterpart is the networking
+layer, and for intelligent resource management we have
+to ensure that the query processing layer is tightly integrated
+with the networking layer. Second, the notion
+of the cost of a query plan has changed, as the critical
+resource in a sensor network is power, and query optimization
+and query processing have to be adapted to
+take this optimization criterion into account.
+While developing techniques that address these issues,
+we must not forget that scalability of our techniques
+with the size of the network, the data volume,
+and the query workload is an intrinsic consideration to
+any design decision.
+Overview of the paper. The remainder of the
+paper is structured as follows. In the next section,
+we introduce our model of a sensor network, sensor
+data, and the class of queries that we consider in this
+paper. We then demonstrate our algorithms to process
+simple aggregate queries with in-network aggregation
+(Section 3), and investigate the interaction between
+the routing layer and the query layer (Section 4). We
+discuss how to create query plans to evaluate more
+complicated queries, and discuss query optimization
+for specific types of queries (Section 5). In a thorough
+simulation study, we examine the performance of our
+approach, and compare and analyze the performance
+of different query plans (Section 6).

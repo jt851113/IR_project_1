@@ -1,0 +1,19 @@
+2.1.1. Traffic Sensor Testbed. We have recently begun
+working with the Berkeley Highway Lab (BHL), which, in
+conjunction with the California Department of Transportation
+(CalTrans), is deploying a sensor infrastructure on Bay
+Area freeways to monitor traffic conditions. The query processing
+system we present is being built to support this infrastructure.
+Thus, in this paper, we will use traffic scenarios
+to motivate many of our examples and design decisions.
+CalTrans has embedded thousands primitive sensors on
+Bay Area highways over the past few decades. These sensors
+consist of inductive loops that register whenever a vehicle
+passes over them, and can be used to determine aggregate
+flow and volume information on a stretch of road as
+well as provide gross estimates of vehicle speed and length.
+Typically these loops are used to monitor specific portions
+of the highway by placing data collection hardware at sites
+of interest. With several thousand sensors streaming data,
+efficient techniques for executing queries over those streams
+are crucial.

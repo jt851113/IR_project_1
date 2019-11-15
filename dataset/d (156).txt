@@ -1,0 +1,59 @@
+In the One-Scan algorithm, free skyline points (i.e., T)
+need to be maintained to compute the k-dominant skyline
+points. Since the set of free skyline points could be much
+larger than the set of k-dominant skyline points, maintaining
+T can incur large space and computation overhead. To
+overcome this limitation, we present our second approach
+(shown in Algorithm 2) which avoids the need to maintain
+T by scanning D twice.
+In the first scan of D (steps 1 to 10), a set of candidate
+k-dominant skyline points, R, is computed progressively by
+comparing each point  against the computed points in
+R. If a point  is k-dominated by p, then p
+
+is removed
+from R. At the end of the comparison against R, p is added
+into R if it is not k-dominated by any point in R. After
+the first scan of D, R contains the candidate k-dominant
+skyline points. Recall that false positives can exist in R due
+to property P2 in Lemma 4.1.
+To eliminate the false positives produced by the first scan,
+a second scan of D (steps 11 to 14) is necessary. To determine
+whether a point  is indeed k-dominant, it is
+sufficient to compare p
+against each point  that
+occurs earlier than p
+in D, since those points that occur
+later than p
+in D have been already compared against p
+in the first scan. Note that this optimization can be implemented
+by associating each point with its position in D, and
+using this information to avoid unnecessary comparisons.
+The efficiency of the Two-Scan approach is dependent on
+how effective are the k-dominant points in pruning non-
+dominant skyline points during the first scan. If the number
+of false positives produced by the first scan is small, then
+the performance of the second scan and hence the overall approach
+will be good. The following result gives an indication
+of the pruning ability of dominant skyline points.
+Theorem 4.2. Consider a d-dimensional data set D with
+more than 2d points such that the dimensions are pairwise
+independent, and no two points in D have the same value
+for the same dimension. If a data point  can not kdominate
+any point in D, then p is a k-dominant skyline
+point with probability less than.
+The above theorem shows that when k is small enough, it
+is very unlikely that a dominant skyline point does not kdominate
+some other point. Thus, this indicates that each
+k-dominant skyline is likely to prune off many false positives
+during the first scan of D. For example, when k , the
+above probability is smaller than . For d = 20, this
+probability works out to be , which is a very
+small number.
+Example 4.2 Applying the Two-Scan algorithm (with k =
+4) on the data set D in Fig. 1, we note that both p1 and p2
+(which are indeed 4-dominant skyline points) will be inserted
+into R at the end of the first scan regardless of the order
+of the points in D. This example demonstrates the effective
+pruning ability of the dominant skyline points in eliminating
+non-dominant skyline points.

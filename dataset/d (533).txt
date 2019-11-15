@@ -1,0 +1,13 @@
+In this section, we present experimental results on fulltext
+search in a P2P network. Our goal is to increase the
+quality of the answers in a manner that reduces the overall
+cost in comparison to existing methods. The collection we
+use comprises blog data crawled from BlogSpot.4 Altogether
+we have 10, 000 blogs with a total of 1, 014, 356 posts (documents).
+We divided the data between 1, 000 logical peers,
+resulting in about 1, 000 documents per peer. The peers use
+the Lucene5 open-source system for retrieving and ranking
+their documents.
+We have experimented with 75 queries taken from the blog
+track6 of TREC 2008. The number of terms in the queries
+ranges from two to seven.

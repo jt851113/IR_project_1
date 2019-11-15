@@ -1,0 +1,82 @@
+Almost all DHT-based P2P networks employ document-level
+indexing. Associated with each term is a posting list, which is a
+list of the IDs of all the documents that contain that term and all
+the peers that share the document. Each posting list is assigned to
+a peer using a well-known (hash) function. Processing a query
+requires retrieving all relevant posting lists, computing their
+intersection, and then issuing the query to the peers identified in
+the intersection.
+The problem with this type of indexing is that many potentially
+long posting lists have to be transferred among peers during index
+building, node joining/leaving, and query processing, resulting in
+the consumption of a significant amount of network bandwidth.
+Approaches for handling long posting lists include: (i) compressing
+the posting lists [7][12]; (ii) truncating the posting lists
+[10][11]; (iii) pre-computing (materializing) the posting list
+intersections of popular term combinations [11][12][13]; and (iv)
+pruning the documents before building the index [14]. To the best
+of our knowledge, none of the above techniques consider the
+interdependence among the costs involved in query processing.
+Michel et al. proposed the sk-STAT technique [12] that attaches a
+hash sketch with each term to compactly represent its documentlevel
+posting list. A Bloom filter [9] can also be used instead of a
+hash sketch [7]. These approaches ignore the effect of the size of
+Bloom filters or hash sketches to the cost of index building and
+posting list retrieval (obviously, the larger the Bloom filters/hash
+sketches, the lower the cost of query issuing, but the higher the
+cost of index-building and posting list retrieval).
+Podna et al. [10] and Skobeltsyn et al. [11] propose to truncate
+the posting lists, keeping only the IDs of the most relevant
+documents. To avoid the deterioration of the quality of results due
+to posting list truncation, the posting lists of popular term
+combinations must be included in the index (as done in [13]).
+Unfortunately, this increases the cost of index building, as there
+are significantly more posting lists to be built.
+The mk-STAT technique in [12] tries to identify the most frequent
+term combinations in the user query log, and pre-computes their
+posting list intersections, thus avoiding posting list retrieval cost
+for those term combinations. However, this technique might not
+work well with the heavy tailed query work load (which is likely
+the case in practice), wherein a significantly large portion of
+queries is seldom repeated.
+The technique proposed in [14] removes unimportant terms from
+documents before building the index, reducing the number of
+posting lists, and therefore, the index-building cost. However, it
+makes full-text search impossible.
+In unstructured P2P networks, each peer builds a summary of its
+shared contents and disseminates it to other peers [27]. Upon
+receiving a query, a peer will make a decision of to whom among
+its neighbors to forward the query based on the neighbors’
+summaries. This is similar to the source selection problem of a
+meta-search engine [26]. The CORI Net approach [22] represents
+a text collection as a “super document” (i.e., the document that
+results from combining all documents in the collection). The
+GlOSS approach [23] represents a text collection as a set of terms,
+each of which is associated with its document frequency and its
+average term frequency over all documents. In general, these
+“language model”-based approaches [16][17][24][25] summarize
+shared contents at a peer level - they estimate the overall term
+distribution of the local collection, not the term distribution of
+each document or groups of documents. Real-world P2P file
+sharing networks, such as the Gnutella network, also use peerlevel
+summaries: a peer’s content is represented by a term set,
+defined as the union of all its shared file’s descriptors, and a query
+is forwarded to a peer whose term set contains all query terms
+[21].
+For XML path query routing, the “Breadth Bloom Filter” and the
+“Depth Bloom Filter” were proposed to summarize the structure
+of XML documents [18]. It is unclear if it is possible to adapt
+these approaches to collections of unstructured, pure text
+documents.
+In [31], we propose to summarize a peer’s content by partitioning
+its local shared documents to a number of groups and representing
+each group by a Bloom filter. Our technique improves query
+routing efficiency up to 60% with virtually no cost. In [30], we
+further improve our partitioning technique by exploiting not only
+term distributions of local documents, but also ones of user
+queries. Exploiting term distributions of user queries can further
+improve query routing performance by 30%.
+We adapt our previous works to structured P2P networks. The
+differences between structured and unstructured networks require
+us to reconsider both our grouping technique and our way of
+identifying the optimal number of groups.

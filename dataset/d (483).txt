@@ -1,0 +1,28 @@
+4.1 Synthetic Sequence Generation For the purpose of evaluation
+of the performance of STAMP, we use four synthetically
+generated sequences. Each sequence consists of 1024 distinct
+events and 20M occurrences of events. The synthetic sequence
+is generated as follows. First, at the beginning of the
+sequence, the period length  of the next pattern is determined,
+which is geometrical distributed with mean %. The number of
+events involved in a pattern is randomly chosen between 1 and
+. The number of repetitions  of this pattern is geometrical
+distributed with mean %
+. The events that are involved in the
+pattern are chosen according to a normal distribution with mean
+
+ (there are total 1024 distinct events) and standard deviation
+2. However, the pattern may not perfectly repeat itself for
+ times. To simulate the imperfectness of the subsequence, we
+employ a parameter A to control the noise. A is uniformly distributed
+between 0.5 and 1. With probability A, the next  events
+match the pattern. Otherwise, the next  events do not support
+the pattern. The replacement events are chosen from the event
+set with the same normal distribution (mean and standard deviation
+equal to 
+ and 2, respectively). This subsequence ends
+when there are  matches, and a new subsequence for a new
+pattern starts. This process repeats until it reaches the end of the
+sequence. Four sequences are generated based on values of %
+and %
+ in Table 1.

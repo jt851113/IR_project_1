@@ -1,0 +1,24 @@
+We analyzed the response time of the following six
+search engines: AltaVista, Excite, HotBot, Infoseek,
+Lycos, and Northern Light. The median response
+time from 3,000 queries to these engines during
+November-December 1997 was 1.9 seconds. However,
+if queries are made to all of the engines simultaneously,
+then the median time for the first engine
+to respond was 0.7 seconds. A similar advantage is
+gained by downloading the Web pages corresponding
+to the hits in parallel, resulting in a median time
+for the NECI engine to receive the first page being
+1.3 seconds. On average, the parallel architecture of
+the NECI engine allows it to find, download, and
+analyze the first page faster than the standard search
+engines can respond, even though the standard
+engines do not download and analyze the current
+contents of the pages.
+In May 1998 we analyzed the time for the
+engine to display the first five and first 10 relevant
+results from 200 queries. The median time for the
+first five relevant results was 2.7 seconds, and the
+median time for the first 10 relevant results was 3.2
+seconds (these figures do not include queries that
+did not return the target number of results).

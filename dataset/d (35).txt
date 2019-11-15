@@ -1,0 +1,28 @@
+In distributed broadcast (Figure 4), the EBS consists of M
+Event Brokers, each responsible for a portion of the N total
+subscriptions. The EBs are connected to each other by the
+network and form a general connected graph.2 An Event
+Source publishes a new event to any one of the M EBs. (In
+reality, the ES probably connects to the nearest EB in the
+network.) That EB is then responsible for forwarding the
+event to all other EBs in the system (hence the name \dis-
+tributed broadcast"). The forwarding \broadcast" can be
+implemented with network layer multicasting ([10]). Alter-
+natively, the event could be sent along a \forwarding tree"
+rooted at the originating EB, using unicast at each leg of
+the trip.
+When a new event arrives, each EB matches the new event
+against all subscriptions it is responsible for, and delivers the
+event as necessary. Note that the matching and delivering
+workload at each EB is reduced compared to a centralized
+approach because, although each EB still processes all the
+events generated in the system, it only has to match them
+against a fraction of the total subscriptions. The dotted
+lines in Figure 4 give an example of the path traversed by an
+event which matches c1 and c2. An example of a distributed
+publish/subscribe system using broadcast is the SIFT Grid
+([21]).
+2Actual systems may connect the EBs in other typologies
+such as a hierarchical tree instead of a peer-to-peer graph.
+To be most general, our paper assumes a graph structure,
+although our discussion is equally valid for other structures.

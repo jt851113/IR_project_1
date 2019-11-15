@@ -1,0 +1,145 @@
+Finding periodic patterns in time series databases is an
+important data mining task with many applications. Many
+methods have been developed for searching periodicity patterns
+in large data sets [8]. However, most previous methods
+on periodicity search are on mining full periodic patterns,
+Research was supported in part by research grants from the Natural
+Sciences and Engineering Research Council of Canada and the Networks
+of Centres of Excellence Program of Canada
+Part of this work was done while visiting Simon Fraser University
+during his sabbatical from University of Melbourne, Australia.
+where every point in time contributes (precisely or approximately)
+to the cyclic behavior of the time series. For example,
+all the days in the year approximately contribute to the
+season cycle of the year. A useful related type of periodic
+patterns, called partial periodic patterns, which specify the
+behavior of the time series at some but not all points in time,
+have not received enough attention. An example partial periodic
+pattern may state that Jim reads the Vancouver Sun
+newspaper from 7:00 to 7:30 every weekday morning but
+his activities at other times do not have much regularity.
+Thus, partial periodicity is a looser kind of periodicity than
+full periodicity, and it exists ubiquitously in the real world.
+The purpose of the current paper is to fill the gap by considering
+the efficient mining of partial periodic patterns.
+Most methods for finding full periodic patterns are either
+inapplicable to or prohibitively expensive for the mining
+of partial periodic patterns, because of the mixture of
+periodic events and non-periodic events in the same period.
+For example, FFT (Fast Fourier Transformation) cannot be
+applied to mining partial periodicity because it treats the
+time-series as an inseparable flow of values. Some periodicity
+detection methods can detect some partial periodic
+patterns, but only if the period, and the length and timing
+of the segment in the partial patterns with specific behavior
+are explicitly specified. For the newspaper reading example,
+we need to explicitly specify details such as “find the regular
+activities of Jim during the half-hour after 7:00 for the
+period of
+
+hours.” A naive adaptation of such methods to
+our partial periodic pattern mining problem would be prohibitively
+expensive, requiring their application to a huge
+number of possible combinations of the three parameters of
+length, timing, and period.
+Besides full periodicity search, there are many recent
+studies on time series data mining: Most concentrate on
+symbolic patterns, although some consider numerical curve
+patterns in time series. Agrawal and Srikant [3] developed
+an Apriori-like technique [2] for mining sequential
+patterns. Mannila et al. [10] consider frequent episodes in
+sequences, where episodes are essentially acyclic graphs
+of events whose edges specify the temporal before-andafter
+relationalship but without timing-interval restrictions.
+Inter-transaction association rules proposed by Lu et al. [9]
+are implication rules whose two sides are totally-ordered
+episodes with timing-interval restrictions (on the events in
+the episodes and on the two sides). Bettini et al. [5] consider
+a generalization of inter-transaction association rules:
+these are essentially rules whose left-hand and right-hand
+sides are episodes with time-interval restrictions. However,
+unlike ours, periodicity is not considered in these studies.
+Similar to our problem, the mining of cyclic association
+rules by O‥ zden, et al. [12]
+
+also considers the mining of
+some patterns of a range of possible periods. Observe that
+cyclic association rules are partial periodic patterns with
+perfect periodicity in the sense that each pattern reoccurs in
+every cycle, with
+
+		
+confidence. The perfectness in periodicity
+leads to a key idea used in designing efficient cyclic
+association rule mining algorithms: As soon as it is known
+that an association rule
+
+does not hold at a particular instant
+of time, we can infer that
+
+cannot have periods which
+include this time instant. For example, if the maximum period
+of interest is
+
+and it is discovered that
+
+does not
+hold in the first
+
+time instants, then
+
+cannot have any
+periods. This idea leads to the useful “cycle-elimination”
+strategy explored in that paper. Since real life patterns are
+usually imperfect, our goal is not to mine perfect periodicity
+and thus “cycle-elimination” based optimization will not be
+considered here.
+ An Apriori-like algorithm has been proposed for mining
+imperfect partial periodic patterns with a given (single) period
+in a recent study by two of the current authors [7]. It
+is an interesting algorithm for mining imperfect partial periodicity.
+However, with a detailed examination of the data
+characteristics of partial periodicity, we found that Apriori
+pruning in mining partial periodicity may not be as effective
+as in mining association rules.
+Our study has revealed the following new characteristics
+of partial periodic patterns in time series: The Apriori-like
+property among partial periodic patterns still holds for any
+fixed period, but it does not hold for patterns between different
+periods. Furthermore, there is a strong correlation
+among frequencies of partial patterns.
+The main contributions of this paper are as follows. We
+consider the efficient mining of partial periodic patterns, for
+a single period as well as for a set of periods. We propose
+several mining algorithms, by exploring some interesting
+properties related to partial periodicity such as the Apri-
+It is important to point out that [12] concentrates on the elimination of
+candidate itemsets for the association rule mining algorithm, although the
+cycle-elimination strategy does lead to a small reduction on the number of
+patterns when we process the time series from left to right.
+Note that a modified strategy, where we stop considering certain patterns
+as soon as the length of the time series to be processed is not enough
+to make the confidence higher than the threshold, can be used.
+ori property and the max-subpattern hit set property, and by
+shared mining of multiple periods. The max-subpattern hit
+set property is a vital new property which allows to derive
+the counts of all frequent patterns from a relatively small
+subset of patterns mined from the time series. We show
+that mining partial periodicity needs only two scans over the
+time series database, even for mining multiple periods. The
+performance study shows our proposed methods are very
+efficient. The proposed methods are also robust that can
+be applied in a variety of cases including mining multiplelevel
+partial periodicity and mining partial periodicity with
+perturbation and evolution.
+The remaining of the paper is organized as follows. In
+Section 2, concepts related to partial periodicity are introduced.
+In Section 3, methods for mining partial periodicity
+in regard to both single and multiple periods are studied.
+In Section 4, the implementation of a novel data structure,
+namely the max-subpattern tree, for facilitating the counting
+of the hit maximal patterns, and the derivation of the set
+of frequent patterns from the hit maximal patterns, are presented.
+In Section 5, a comparison of the performance of
+the proposed algorithms is reported. We conclude our study
+in Section 6.

@@ -1,0 +1,12 @@
+
+A detailed study of network layouts can be found in [8]. The
+specifications and topology of our network is defined by the
+following:
+Dimension - (X, Y)
+Number of nodes - M
+Actual node positions -Ai, ? i=1:M. These are the actual
+physical location of the nodes. The nodes are normally
+distributed around grid points with a variance of σpos.
+Known node positions - Ki, ? i=1:M. The known node
+positions are each normally distributed around the actual
+positions with a variance of σk.

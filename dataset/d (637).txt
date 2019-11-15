@@ -1,0 +1,13 @@
+Propagation can also be conducted based on the update
+frequencies. This process will also try to balance
+sensor node workloads using the least possible messages.
+Let ns be the number of nodes whose update frequency
+is below average. We can choose the first 1
+2ns children
+with lowest update frequencies, and reduce their bounds
+evenly. For example, as shown in figure 2(a), suppose error
+bound for c1 is reduced from 20 to 15 by the AP.
+If f1 < f2, A1 will be changed from 10 to 5.
+We summarize the A3 protocol in figure 4. Note that
+since a physical sensor node can host multiple logical
+nodes in cluster architecture, multiple copies of th

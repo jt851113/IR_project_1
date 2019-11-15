@@ -1,0 +1,40 @@
+1. INTRODUCTION
+Ranking queries, also known as top-k queries, produce results that
+are ordered on some computed score. A top-k query over defined
+subsystems returns the objects with the k-highest aggregated
+scores under a monotonic function. Rank-aware query processing
+has become a vital need for many applications, especially in
+modern large-scale distributed applications as top-k queries
+enable fast, reliable and ad-hoc filtering of results. In this work,
+we study the problem of answering top-k queries over p2p
+networks under the general assumption that each peer maintains
+its own ranked data. The naive solution to process a top-k query is
+to ask all peers to send their scores to the query originator, which
+merges all the results and returns the top-k ones. However, an
+efficient top-k algorithm should return the highest k results by
+limiting the messages transferred across peers, without examining
+all scores in a fixed number of rounds.
+Taking into account the p2p context and these characteristics we
+seek efficient ways to answer global top-k queries that are issued
+in the underlying network. We focus mainly on the promising
+threshold-based techniques in order to retrieve the highest ranked
+results. This family of algorithms promises standard phases of
+termination which means limited transferred bytes and fast query
+answering, exact matching of results, easy setup and use as soon
+as peers have their data ranked according to the specified criteria.
+However, to the best of our knowledge, these algorithms have not
+been evaluated yet in p2p networks and it is not obvious whether
+they can be effectively used. From this family of algorithms, we
+take as a base a most promising algorithm called Hybrid
+Threshold (HT) [1] and adapt it to a p2p network structured
+according to a super-peer topology. The contributions of this
+paper are threefold. First, it presents the evaluation of exact
+threshold algorithms in large scale p2p networks with different
+data distributions across nodes. Second, it presents two extended
+versions of the HT algorithm which could be applied for peers
+that host various kinds of data in any p2p network supporting a
+super-peer topology for top-k query answering. Finally, the
+results of this study provide useful conclusions regarding the
+applicability of threshold techniques for current or future p2p data
+management applications. More details about this work can be
+found in [2]

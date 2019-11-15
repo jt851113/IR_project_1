@@ -1,0 +1,75 @@
+Recent advances in wireless communications and
+microelectro-mechanical systems have motivated the
+development of extremely small, low-cost sensors that possess
+sensing, signal processing and wireless communication
+capabilities. These sensors can be deployed at a cost much
+lower than traditional wired sensor systems. The Smart Dust
+Project at University of California, Berkeley [14, 15, 16] and
+WINS Project at UCLA [1, 17], are two of the research projects
+attempting to build such low-cost and extremely small
+(approximately 1 cubic millimeter) sensors. An ad-hoc wireless
+network of large numbers of such inexpensive but less reliable
+and accurate sensors can be used in a wide variety of
+commercial and military applications. These include target
+tracking, security, environmental monitoring, system control,
+etc.
+To keep the cost and size of these sensors small, they are
+equipped with small batteries that can store at most 1 Joule
+[12]. This puts significant constraints on the power available
+for communications, thus limiting both the transmission range
+and the data rate. A sensor in such a network can therefore
+communicate directly only with other sensors that are within a
+small distance. To enable communication between sensors not
+within each other’s communication range, the sensors form a
+multi-hop communication network.
+Sensors in these multi-hop networks detect events and then
+communicate the collected information to a central location
+where parameters characterizing these events are estimated.
+The cost of transmitting a bit is higher than a computation [1]
+and hence it may be advantageous to organize the sensors into
+clusters. In the clustered environment, the data gathered by the
+sensors is communicated to the data processing center through
+a hierarchy of clusterheads. The processing center determines
+the final estimates of the parameters in question using the
+information communicated by the clusterheads. The data
+processing center can be a specialized device or just one of
+these sensors itself. Since the sensors are now communicating
+data over smaller distances in the clustered environment, the
+energy spent in the network will be much lower than the energy
+spent when every sensor communicates directly to the
+information processing center.
+Many clustering algorithms in various contexts have been
+proposed [2-7, 23-28]. These algorithms are mostly heuristic in
+nature and aim at generating the minimum number of clusters
+such that any node in any cluster is at most d hops away from
+the clusterhead. Most of these algorithms have a time
+complexity of O(n) , where n is the total number of nodes.
+Many of them also demand time synchronization among the
+nodes, which makes them suitable only for networks with a
+small number of sensors.
+The Max-Min d-Cluster Algorithm [5] generates d-hop
+clusters with a run-time of O(d) rounds. But this algorithm
+does not ensure that the energy used in communicating
+information to the information center is minimized. The
+clustering algorithm proposed in [7] aims at maximizing the
+network lifetime, but it assumes that each node is aware of the
+whole network topology, which is usually impossible for
+wireless sensor networks which have a large number of nodes.
+Many of these clustering algorithms [23, 26, 27, 28] are
+specifically designed with an objective of generating stable
+clusters in environments with mobile nodes. But in a typical
+wireless sensor network, the sensors’ locations are fixed and
+the instability of clusters due to mobility of sensors is not an
+issue.
+For wireless sensor networks with a large number of
+energy-constrained sensors, it is very important to design a fast
+algorithm to organize sensors in clusters to minimize the
+energy used to communicate information from all nodes to the
+processing center. In this paper, we propose a fast, randomized,
+distributed algorithm for organizing the sensors in a wireless
+sensor network in a hierarchy of clusters with an objective of
+minimizing the energy spent in communicating the information
+to the information processing center. We have used results in
+stochastic geometry to derive values of parameters for the
+algorithm that minimize the energy spent in the network of
+sensors.

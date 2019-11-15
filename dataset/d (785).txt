@@ -1,0 +1,96 @@
+The major portion of the running time of the sequential
+algorithm is spent to calculate the support for itemsets.
+We now present three techniques—cycle-pruning, cycleskipping,
+and cycle-elimination to prune the number of
+itemsets for which the support must be calculated. These
+techniques rely on the following fact:
+“A cycle of the rule s a multiple of a cycle of itemset  ”
+Therefore, eliminating cycles as early as possible can
+substantially reduce the running time of cyclic association
+rule detection. Cycle-skipping is a technique for avoiding
+counting the support of an itemset in time units, which we
+know, cannot be part of a cycle of the itemset. Cycleskipping
+is based on the following property:
+“ If time unit 	
+is not part of a cycle of an itemset
+then there is no need to calculate the support for   in time segment”
+However, cycle skipping is useful only if we have information
+about the cycles of an itemset. But the cycles of an
+itemset can be computed exactly only after we compute
+the support of in all the time segments! In order to avoid
+this self-dependency, we try to approximate the cycles of
+itemsets. To do this, we will use a technique we call cycle
+pruning. It is based on the following property:
+“If an itemset has a cycle, then any of the subsets of has the cycle !  ”
+The above property implies that any cycle of itemset
+must be a multiple of a cycle of an itemset that is a subs et
+of This also implies that the number of cycles of an
+itemset is less than or equal to the number of cycles of
+any of’s subset.
+Therefore, one can arrive at an upper bound on the cycles
+that an itemset
+
+can have by looking at all the cycles of
+the subsets of
+
+. By doing so, we can reduce the number
+of potential cycles of itemset
+
+, which, in turn (due to
+cycle-skipping), reduces the number of time units in which
+we need to calculate support for
+ 
+Thus, cycle-pruning is a
+technique for computing the candidate cycles of an itemset
+by merging the cycles of the itemset’s subsets.
+However, it is possible in some cases that we cannot
+compute the candidate cycles of an itemset. For example,
+when we are dealing with singleton itemsets. In these
+cases, we need to assume that an itemset
+
+has every
+possible cycle and therefore, calculate the support for
+
+in
+each time segment
+ (except the time units eliminated
+via support-pruning). This is, in fact, what the sequential
+algorithm does.
+Example 1: If we know that 010 is the only large cycle
+of item
+and 010 is also the only large cycle of item
+then cycle-pruning implies that the itemset consisting  of
+items
+and
+can have only the cycle 010 or its multiples.
+Cycle-skipping suggests that we do not need to calculate
+the support for 
+in every time segment but only in
+every third one starting with
+Example 2: If we know that 010 is the only large cycle of item
+and 001 is the only large cycle of item then
+cycle-pruning implies that the itemset cannot have
+any cycles. Cycle-skipping suggests that we do not need to
+calculate the support for in any of the time segment.
+We now introduce one more optimization technique we
+call cycle-elimination that can be used to further reduce
+the number of potential cycles of an itemset Cycleelimination
+is used to eliminate certain cycles from further
+consideration once we have determined they cannot exist.
+Cycle-elimination relies on the following property:
+“If the support for an itemset is below the minimum
+support threshold in time segment then
+cannot have any of the cycles   mod    	 
+  
+”
+Cycle-elimination enables us to discard cycles that an itemset
+cannot have as soon as possible as demonstrated in
+the following example.
+Example 3: If the maximum cycle length we are interested
+isand the support for itemset
+is below the threshold	  	
+in the first
+time units, then cycle-elimination
+implies that cannot have any cycles. Cycle-skipping
+suggests that there is no need to calculate the support for
+in time units greater than

@@ -1,0 +1,63 @@
+Let us consider an example query that we will use to illustrate
+the components of a query plan. Consider the
+query “What is the quietest open classroom in Upson
+Hall?”.5 Assume that the computation plan for this
+query is to first compute the average acoustic value of
+each open classroom and then to select the room with
+the smallest number. There are two levels of aggregation
+in this plan: (1) to compute the average value
+of each qualified classroom, and (2) to select the minimum
+average over all classrooms. The output of the
+first level aggregation is the input to the second level
+aggregation.
+Users may pose even more complicated queries with
+more levels of aggregations, and more complex interactions.
+A query plan decides how much computation
+is pushed into the network and it specifies the role and
+responsibility of each sensor node, how to execute the
+query, and how to coordinate the relevant sensors. A
+query plan is constructed by flow blocks, where each
+flow block consists of a coordinated collection of data
+from a set of sensors at the leader node of the flow
+block. The task of a flow block is to collect data from
+the relevant sensor nodes and to perform some computation
+at the destination or internal nodes. A flow
+block is specified by different parameters such as the
+set of source sensor nodes, a leader selection policy,
+the routing structure used to connect the nodes to the
+leader (such as a DAG or tree), and the computation
+that the block should perform.
+5Upson Hall is a building with several classrooms located on
+the Cornell Campus.
+A query plan consists of several flow blocks. Creating
+a flow block and its associated communication and
+computation structure (which we also call a cluster)
+uses resources in the sensor network. We need to expend
+messages to maintain the cluster through a periodical
+heart beat message in which the leader indicates
+that it is still alive; in case the cluster leader fails, a
+costly leader election process is required. In addition,
+a cluster might also induce some delay, as it coordinates
+computation among the sensors in the cluster.
+Thus if we need to aggregate sensor data in a region,
+we should reuse existing clusters instead of creating a
+new cluster, especially if the data sources are loosely
+distributed over a larger area, in which case the maintenance
+cost increases. On the other hand, we should
+create a flow block if it significantly reduces the data
+size at the leader node and saves costly transmission
+of many individual records.
+It is the optimizer’s responsibility to determine the
+exact number of flow blocks and the interaction between
+them. Compared to a traditional optimizer, we
+would like to emphasize two main differences. First,
+the optimizer should try to reduce communication
+cost, while satisfying various user constraints such as
+accuracy of the query, or a user-imposed maximum
+delay of receiving the query answers. The second difference
+lies in the building blocks of the optimizer.
+Whereas in traditional database systems a building
+block is an operator in the physical algebra, our basic
+building block in a sensor database system is a flow
+block, which specifies both computation and communication
+within the block.

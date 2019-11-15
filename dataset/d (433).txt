@@ -1,0 +1,91 @@
+Let = = fd1; d2; g be a set of literals and D be a sequence
+of literals in =. A pattern with period l is a sequence of
+l symbols (p1; p2; : : : ; pl), where p1 2 = and the others are
+either a symbol in = or *, i.e., pj 2 =[ (2  j  l). Since
+a pattern can start anywhere in a sequence, we only need to
+consider patterns that start with a non \*" symbol. Here,
+ is introduced to allow partial periodicy. In particular, we
+use  to denote the \don't care" position(s) in a pattern [1].
+A pattern P is called a i-pattern if exactly i positions in P
+are symbols from =. (The rest of the positions are lled by
+*.) For example, (d1; d2; ) is a 2-pattern of period 3.
+
+For two patterns P
+with the same period l, P0 is a specialization of P (or
+P is a generalization of P0) i, for each position j(1 
+j  l), either pj = p0
+j or pj =  is true. For exam-
+ple, pattern (d1; d2; ) is considered as a specialization of
+(d1; ; ) and a generalization of (d1; d2; d3). Given a pat-
+tern P = (p1; p2; : : : ; pl) with period l and a sequence of l
+literals D0 = d1; d2; : : : ; dl, we say that P matches D0 (or
+D0 supports P) i, for each position j(1  j  l), either
+pj =  or pj = dj is true. D0 is also called a match of P.
+In general, given a sequence of symbols and a pattern P,
+multiple matches of P may exist. In Figure 1(a), D1, D2,
+: : : , D19 are 19 matches of (d1; ; ).
+
+Given a pattern P with period l and a sequence of symbols
+D, a list of k (k > 0) disjoint matches of P in D is called a
+segment with respect to P i they form a contiguous subse-
+quence of D. k is referred to as the number of repetitions
+of this segment. D1, D2, D4, D6, and D8 form a contigu-
+ous portion as shown in Figure 1(b). Therefore, the subse-
+quence d1; d2; d4, d1; d3; d1, d1; d3; d1, d1; d2; d1, d1; d3; d1 is
+a segment with respect to the pattern (d1; ; ). By deni-
+tion, each match of a pattern P itself is also a segment with
+respect to P. A segment S with respect to a pattern P is
+a valid segment i the number of repetitions of S (with
+respect to P) is at least the required minimum repetitions
+(i.e., min rep). If min rep = 5, then segments S1; S3 and
+S4 qualify as valid segments in Figure 1(b). S2 is not a
+valid segment since it only contains 4 matches of (d1; ; ).
+In general, given a pattern P, any sequence of symbol can
+be viewed as a list of disjoint valid segments (with respect
+to P) interleaved by disturbances.
+
+Given a sequence D and a pattern P, a valid subsequence
+in D is a set of non-overlapping valid segments, where the
+distance between any two successive valid segments does not
+exceed the parameter max dis. The overall number of
+repetitions of a valid subsequence is equal to the sum of
+the repetitions of its valid segments. A valid subsequence
+with the most overall repetitions of P is called its longest
+valid subsequence. For a sequence of symbols D, if there
+exists some valid subsequence with respect to a pattern, then
+this pattern is called a valid pattern. It follows from the
+denition that any valid segment itself is also a valid subse-
+quence. If we set max dis = 6, even though S1 and S4 in
+Figure 1(b) are individually valid subsequences, there does
+not exist a valid subsequence containing both of them due to
+the violation of the maximum allowed disturbance between
+them. In contrast, S2 and S4 can be included in one valid
+subsequence (Figure 1(c)) whose overall number of repeti-
+tions is 10.
+
+For a given sequence of literals D, the parameters min rep
+and max dis, and the maximum period length Lmax, we
+want to nd the valid subsequence that has the most overall
+repetitions for each valid pattern whose period length does
+not exceed Lmax. A threefold algorithm is devised.
+
+1. Distance-based Pruning. For each symbol d, we ex-
+amine the distance between any two occurrences of d.
+Let Cd;l be the number of times when such distance is
+exactly l. For each period l, the set of symbols whose
+Cd;l counters are at least min rep are retained.
+
+2. Single Pattern Verication. For each potential period
+l and each symbol d that passed the previous step, a
+candidate 1-pattern (d1; : : : ; dl) is formed by assigning
+d1 = d and d2 =    = dl = . A segment-based
+approach is used to validate all candidate patterns
+(d; ; : : : ; ) via a single scan of the sequence. (Any
+single pattern of format (; : : : ; d; : : : ; ) is essentially
+equivalent to the pattern (d; ; : : : ; ) of the same pe-
+riod with a shifted starting position in the sequence.)
+
+3. Complex Pattern Verication. An iterative process is
+carried out where at the ith iteration, the candidate i-
+patterns are rst generated from the set of valid (i??1)-
+patterns, and

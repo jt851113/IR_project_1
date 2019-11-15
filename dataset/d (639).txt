@@ -1,0 +1,38 @@
+In the preliminary experimental study, we try to simulate
+a real sensor network application scenario. The
+experimental topology consists of a connected random
+graph on a 50  50 two-dimensional space. 120 sensor
+nodes are placed uniformly randomly on the space.
+We choose a radio coverage limit for all sensor nodes so
+that all neighbors within the range can be connected by
+an edge. This range is chosen so that the network is connected
+and the edges are not too dense. We then select
+36 nodes from three corner areas as the relevant nodes
+for a sample query. Choosing this topology over a gridbased
+topology enables us capture the randomness of sensor
+placement which is often governed by factors other
+than geographic information. Cluster-heads in the three
+groups are chosen by using a modified version of smallsize
+weakly-connected dominating set algorithm (see [4])
+so that the total distance to the heads in each group is
+minimal. The lengths (number of hops in shortest path)
+of the edges within a cluster vary between 1 and 3. Distances
+from the selected cluster-heads to the AP are 6, 14,
+and 9 hops.
+Note that this type of randomly generated network is
+a conservative choice for testing A3 protocol. When a
+network exhibits certain patterns, such as dense implementation
+in some areas, cluster structure will allow the
+A3 protocol to perform more efficiently. An immediate
+observation after having an AT is that precise data aggregation
+using AT is much cheaper than a direct end-to-end
+approach for each round (399 vs 81 message-hops) .
+Sensor Data: In the experiments, we simulate monitoring
+of a set of sensors that measure some physical
+world values (e.g. radiation level) that increase linearly.
+We model the sensor measurements as uniformly distributed
+random values within interval [v?? A; v+ A].
+v is the ideal value for time instance obtained from a linear
+function. We initialize A = f0; 5; 10g for each source
+sensor and  = 1:2 in our experimental setup, these factors
+are further manipulated in specific experiments.

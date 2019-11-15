@@ -1,0 +1,66 @@
+Researchers in sensor networks have looked at various ways
+of saving energy of sensors. In particular, [12, 8, 7] have
+proposed exploiting redundancy in sensed readings of sen-
+sors that are in close proximity. However, the approaches
+proposed in [12] rely on sensors to gure out among them-
+selves the redundant part in their sensed information and
+suppress it from transmission.
+We see three problems in this approach. Firstly, it will take
+N transmissions for a group of N sensors to gure out all
+the redundant information, which is costly and may out-
+weigh the advantage of removing redundancy. Secondly, the
+approach works well when the sensed readings are simple
+(like temperature, pressure, etc.). In cases when the sensed
+readings are complex (like image from a camera, assum-
+ing a network of cameras [1]), it is not clear how one may
+determine the redundant part given the limited computa-
+tional power at the sensors. Thirdly, at the very best, this
+approach only minimizes the redundancy in information be-
+ing sent. It may work well in sensor networks like network
+of temperature sensors where the sensed reading is not ex-
+pected to vary much in a small spatial region. However, the
+assumption of redundancy is not true in general. Consider
+a network of motion sensors. Assume that the reading at
+a sensor (for example, magnetometer sensor) is a function
+of its distance from a moving object. In such a case, the
+readings of sensors in close proximity will not be that same
+but will be correlated. We distinguish between redundancy
+and correlation. We say that readings at two sensors have
+redundancy if there is a part that is common to both. For ex-
+ample, if two temperature sensors in close proximity sense
+65F as the temperature, we say that there is redundancy
+in their information. Although the word \correlation" has
+many connotations, for the purpose of this paper, we say
+that the readings at two sensors are correlated if given the
+reading of one sensor one may derive the reading at another
+
+sensor with reasonable accuracy. In other words, whenever
+the reading at one sensor is a function of the readings at
+the other sensor we say that two sensors have correlated
+readings. One may think of redundancy as a special case
+of correlation where one may derive reading at a sensor by
+employing an identity function (i.e., f(x) = x). Returning
+back to our example of sensor network of motion sensors, if
+the reading at a motion sensor is a deterministic function of
+its distance from the closest moving object, then readings
+at two sensors A and B are correlated (not redundant). The
+reading at A may be derived given the reading at B, the lo-
+cation of two sensors, and the location of the object. Lastly,
+this approach only talk about eliminating redundancy in
+readings sensed in the same time frame. In our proposed
+scheme, we specify mechanisms for identifying correlation
+in readings across time frames and try to eliminate the need
+for transmitting these if they can be derived from older read-
+ings. We expect this to translate into signicant savings in
+energy.
+In [8], authors deal with the problem of how to self-organize
+sensors that are thrown together, so that a meaningful sens-
+ing task can be accomplished. The paper prescribes com-
+pressing information at the nodes acting as cluster-head, be-
+fore sending to a central station. However, the paper does
+not specify any mechanism for performing this compression
+operation. Also, this approach does not prevent sensors from
+sending redundant information.
+In [11] the emphasis is on being able to \route" data sensed
+at sensors to where the interest is. It does not deal with
+cutting down the information being relayed.

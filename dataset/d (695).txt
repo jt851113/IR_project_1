@@ -1,0 +1,108 @@
+We now describe our query-evaluate-gather technique for detecting
+(1) which data in a local database fragment is part of the
+query result, and (2) how to gather the missing parts. As noted
+above, our invariants guarantee that the site has all the information
+required to answer a query (including whether it is required to contact
+other sites). Handling arbitrary XPATH queries turns out to be
+quite challenging though, because of the richness of the language.
+AsM an example, consider the following (only moderately complex)
+query:
+/usRegion[@id=’NE’]/state[@id=’NY’]/city[@id=’New
+York’]
+/neighborhood[@id=’Soho’]/block[@id=’1’]
+/parkingSpace[not(price > ../parkingSpace/price)]
+This query requests the least pricey parking spot in a particular
+block in Soho (XPATH 1.0 does not have a min operator). Consider
+a scenario where the individual parkingSpaces are owned by different
+sites and moreover, each site only stores the local information
+for the parkingSpace it owns (this is a permissible configuration).
+Such a configuration is problematic for this query, because none of
+the sites have sufficient information to evaluate the predicate. This
+motivates the following definition.
+DEFINITION 3.3. The nesting depth of an XPATH query is defined
+to be the maximum depth at which a location path that traverses
+over IDable nodes occurs in the query.
+We will illustrate this definition through a few examples:
+/a[@id=x]/b[@id=y]/c N nesting depth = 0
+/a[@id=x]//c N nesting depth = 0
+/a[./b/c]/b N nesting depth = 1 (if O is IDable) or 0
+(otherwise)
+/a[count(./b/c) = 5]/b N nesting depth = 1 (if O is
+IDable) or 0 (otherwise)
+/a[count(./b[./c[@id=1]])] N nesting depth = 2 (if
+P is IDable) or 1 (if P is not IDable, but O is) or 0 (otherwise)
+The complexity of evaluating a query increases with the nesting
+depth of the query. Queries with nesting depth 0 are the easiest
+to solve, because the predicates can always be evaluated using the
+local information (which is always present at the site that owns
+the node). However, as the examples in Section 2 showed, even
+this case is challenging, and there were no good previously known
+solutions.
+The basic QEG scheme. In the remainder of this section, we describe
+our approach, assuming nesting depth 0 (Extensions to larger
+nesting depths are discussed in Section 4.) Because XPATH is insufficiently
+powerful, we use XSLT to query the database, evaluate
+what is there, and send subqueries to gather the missing parts of
+the answer. We show how the XSLT programs used by our scheme
+can be generated directly from the XPATH query.
+Given an XPATH query Q , let LOCAL-INFO-REQUIRED be the
+set of element names (tags) such that the final answer should include
+the entire local information for any IDable node with one of
+these tags, if the node satisfies Q . As an example, for the following
+query on the database shown in Figure 4,
+... /neighborhood[@id=’Soho’]/block
+LOCAL-INFO-REQUIRED = Rblock, parkingSpaceS The query
+... /neighborhood[@id=’Soho’]/block/parkingSpace
+on the other hand, only requires local information about parkingSpace.
+Note that, this is consistent with the semantics of XPATH,
+because XPATH returns entire subtrees in the document rooted at
+the nodes selected by the query.
+When a site manager receives a query Q , it generates an XSLT
+program from that query that executes the following algorithm:
+1. Let be the node in the document under consideration at
+any time, 
+be the element name (tag) of PT"V , and let be the set of predicates onin the query.
+2. Set PUT"V to be the root of the document at the site.
+3. Depending on the status of PUT^V in the document, there are
+four possibilities :
+(a) status = incomplete: In this case, see if ] can be divided
+into two predicates ]'ba and ]c[d)e9f, such that contains only predicates on the id attribute, and ]'ba ]hg
+]'ba$ijij]'[kd9e)f. If this is possible, evaluate ]'ba against
+the current node. If it evaluates to true, then form a
+subquery for evaluating the rest of the query and note
+this by adding an asksubquery tag to the answer being
+formed. A post-processing step will then send this subquery
+to its LCA, in order to gather missing parts of the
+answer. If ]cla evaluates to false, it is also noted in the
+answer being formed, so that the post-processor knows
+that a subquery does not need to be asked.
+If the division of ] into two such predicates is not
+straightforward, we assume that the node may be part
+of the answer and form a subquery for evaluating the
+rest of the query as above (i.e., we were unable to avoid
+this subquery).
+(b) status = id-complete: The actions performed in this
+case are similar to the above case, except that if is not in LOCAL-INFO-REQUIRED and '):XW Y)Z\[ ]mgn]'ba, then
+we can recurse on the children nodes without having
+to form any subquery. On the other hand, if '9:XW Y9Z,[ is
+in LOCAL-INFO-REQUIRED, then the local information
+for this node is required in the answer, and as such, we
+must ask a subquery to gather that information.
+(c) status = owned: In this case, we have complete information
+to evaluate the predicate ] . If ] is satisfied,
+then recurse on the IDable children of PT"V , and
+also copy the local information into the answer being
+formed depending on whether '9:XW Y9Z,[ is in LOCAL-INFOREQUIRED.
+Only local ID information needs to be copied
+if '9:XW Y9Z,[ is not in LOCAL-INFO-REQUIRED.
+(d) status = complete: The actions performed in this case
+are similar to that for the above case, except for any
+predicates that specify consistency requirements. We
+will discuss this case in the next section.
+This XSLT program is compiled and then executed on the site
+document, with the result being an annotated document that contains
+a subset of the answer plus placeholders for where subqueries
+need to be asked (if any). When the subqueries return, the returned
+answers are spliced in, replacing the placeholders. When all the
+subqueries have returned, the resulting answer is returned to the
+site that sent Q .

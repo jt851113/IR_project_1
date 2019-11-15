@@ -1,0 +1,47 @@
+In structured P2P networks, document-level indexing has a high
+cost of index-building and posting list retrieval, while peer-level
+indexing has a high cost of query issuing. These costs are
+interdependent, thus it is difficult to minimize all of them
+simultaneously. To the best of our knowledge, there is no prior
+work that considers this interdependency.
+To address this issue, we propose an adaptive indexing technique
+for search systems built on structured P2P networks. We propose
+grouping the documents, considering each group as a “superdocument,”
+and building the distributed index based on these
+resulting super-documents. The correct grouping design
+effectively trades-off index-building and posting list retrieval cost
+for query issuing cost, resulting in a reduction in total cost.
+Our contribution is twofold. First, we develop a probabilistic cost
+model based on the term distributions of local shared documents
+and user queries. Our model allows us to estimate quickly the
+total cost of the group-level indexing technique for a given
+number of groups. Based on this model, we identify the best
+number of groups for each peer. Second, we develop a cost-based
+distance function to guide document grouping process, which is
+also based on the term distributions of local documents and user
+queries.
+Our experimental results reveal that neither extreme solutions of
+document-level indexing or peer-level indexing is good for all
+situations. In general, given particular system conditions –
+particularly message size – one extreme solution will be more
+cost-effective than the other while the best solution is somewhere
+in between. Our adaptive indexing technique identifies the best of
+these solutions. The adaptive solution reduces cost by up to 46%
+peer-level indexing and by 73% compared with document-level
+indexing. Our experiments also show that cost-based distance
+function is better than similarity-based distance functions,
+reducing cost by up to 25%.
+We are working on techniques that build semantic indices over
+the peers’ contents, which help reduce the number of posting lists
+in the network (dimension reduction), and also support semantic
+searching. Indexing peers’ contents using each term as one
+dimension is unscalable approach. For example, a peer sharing
+thousands terms needs to contact this number of peers when
+joining the network to index its content. This is clearly a very
+costly activity. Semantic indexing, such as the Latent Semantic
+Indexing technique, can relieve this problem by significantly
+reducing the number of dimensions (i.e., identifying a small
+number of concepts, and use each concept as a dimension).
+Unfortunately, current P2P information retrieval systems either do
+not support semantic search, or require global knowledge to build
+the semantic index.

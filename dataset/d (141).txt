@@ -1,0 +1,34 @@
+The Echo protocol requires that all the veriers must be
+inside the region of interest, R. Furthermore, the region
+of acceptance is a subset of the region of interest and is
+determined by the placement of the veriers within R. Thus,
+a natural question to ask is how well the veriers \cover" a
+given region R. We dene coverage to be the fraction of the
+region in which successful location claims can be validated.
+Obviously, the ideal scenario would allow full coverage with
+only a few veriers. In that case, the veriers would be
+complete, according to our denition in Section 2.1. Recall
+that the completeness condition requires that the veriers
+accept if the prover has a presence inside R. When the
+coverage is less than 100%, completeness is only partial.
+To measure this eect, we ran simulations to measure the
+coverage in two scenarios with only a few nodes. In Fig-
+ure 8(a), we placed 10 nodes in a 100m by 100m room.
+The nodes were randomly placed with the constraint that
+each node had to be 20m away from every other node; the
+approach is called \constrained random" since it allows im-
+precise deployment based on a rough model of the area. In
+the pictured trial, the placement achieved 81% coverage; av-
+eraging 5 trials yielded a mean coverage of 78%.
+By manually placing 5 nodes, we were able to achieve a
+coverage of 93% in a similar room (see Figure 8(b)). Thus,
+with very few verier nodes, the ROA covers a signicant
+fraction of the region that we are interested in. The regions
+with the least amount of coverage are as expected: at the
+edges and corners of the region.
+Although there are a number of possible policies that
+might be employed to get good coverage, we feel that using
+a simple model of the site along with the \constrained ran-
+dom" approach will yield good results with little eort. Of
+course, coverage can always be further increased by adding
+more verier nodes.

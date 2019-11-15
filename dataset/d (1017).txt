@@ -1,0 +1,101 @@
+Peer-to-Peer (P2P) technologies have been deployed to locate
+content in many applications. In particular, structured P2P overlays
+such as Chord[34], CAN[30], Pastry[31], PGrid[6] and BATON[
+21]) have been developed to guarantee a bound on search performance.
+However, the “success” stories remain restricted largely
+to file-sharing based systems.
+Consider an enterprise business application such as the supply
+chain management (SCM) system in Figure 1. This application
+needs to handle a large amount of data distributed over many companies
+(peers) participating in the corporate network. Each organization
+presumably has its own enterprise resource planning (ERP)
+or database system managing its own data. The traditional SCM
+cannot effectively handle a large number of participants, and in fact
+slows down information dissemination by creating a long chain (the
+bullwhip effect). The implication of this is that the corporation may
+not have all the necessary information in time for sound decision
+making.
+As a remedy to the bottleneck of large-scale systems, P2P technology
+offers a promising platform for business applications. To
+effectively share information, organizations can participate in an
+SCM P2P network, where each organization has an application
+server acting as a peer node. In such applications, each node manages
+its local data and exchanges information in the form of tables
+and tuples. The data can thus be shared in a large-scale network
+more efficiently.
+We note that existing P2P systems for database applications (e.g.,
+Mercury [10] and PIER [19]) have not been designed to support the
+above applications. These systems adopt a full indexing strategy
+where all database tuples are indexed in the network. This is clearly
+not practical in our case as the amount of information to be shared
+is massive in volume, and the number of tables and attributes is
+huge. To index all tuples, the indexing process will consume too
+much network bandwidth and take hours to complete. Also, as
+nodes join or leave the network, the corresponding index needs to
+be reconstructed or removed, which incurs considerable overhead.
+As cycle time is a major metric of a supply chain [20], the realtime
+supply chain, which provides up-to-second information, becomes
+the next-generation supply chain [12]. In this new type
+of supply chains, data are updated in high and unpredictable frequency.
+For illustration, FedEx receives about 2.5 million packages
+daily, and Sun Microsystems gets 480% spikes for a product
+in demand. Hence, the update overhead to keep indexes up-to-date
+and/or monitor the peers becomes impractical. The full indexing
+strategy also cannot cope with the case where each peer wants to
+share huge amounts of data and the network suffers high update and
+churn rates.
+Fortunately, we observe that, in practice, only a small portion of
+data is actually frequently accessed, and most of the data receive
+few or no accesses at all.
+Example 1.1. As shown in [22], both offline and online sales
+(from EBay) of Sotheby’s (http://www.sothebys.com/) commodities
+follow a highly skewed distribution in prices. In online sales, most
+transactions focus on the items with price from $ 200 to $ 400. In
+such a case, Sotheby’s should monitor the sales of items in a specific
+range more frequently to adjust its storage. As a result, the
+following query becomes popular:
+SELECT count(sale)
+FROM sale
+WHERE price>x and price<y
+As illustrated in Example 1.1, the focus is about goods in a price
+range. Retailers should not bother to index information of goods
+in other price ranges: The best strategy is to index what the user
+requires.
+In this paper, we examine the ambitious goal of designing practical
+peer-based data management systems (PDMS) to support enterprisequality
+business processing that involves a large amount of data
+and peers. In particular, we propose PISCES, a Peer-based system
+that Indexes Selected Content for Efficient Search. PISCES
+selectively picks a subset of tuples based on some criteria, such
+as query frequency, update frequency and index cost, to build a
+partial index. This reduces both the cost to insert tuples into the
+network, and the maintenance overhead. To handle queries that
+cannot be fully facilitated by the tuple-level index, we employ a
+coarse-grained range index to direct the queries to candidate nodes.
+The coarse-grained range index is light-weight and its maintenance
+cost is low. In addition, PISCES can adaptively tune itself to optimize
+the subset of tuples to be indexed based on the query access
+patterns. The tuples are indexed Just-In-Time (JIT): An index is
+built for a query set whenever it is necessary. We also introduce a
+light-weight monitoring scheme for structured networks to collect
+the necessary statistics. We have conducted an extensive experimental
+study on PlanetLab to illustrate the feasibility, practicality
+and efficiency of PISCES.
+The contributions of the paper are summarized as follows:
+1. We propose a partial indexing strategy to selectively index
+the tuples of databases based on the cost model of structured
+overlays.
+2. To handle the case of missing indexes in the partial indexing
+strategy and to pull data for constructing new tuple-level indexes,
+a new kind of index, the approximate range index, is
+proposed.
+3. A light-weight sampling scheme is applied to monitor query
+distribution in the network.
+4. Experiments in PlanetLab illustrate the effectiveness and scalability
+of our scheme in different network configurations.
+The rest of this paper is organized as follows. Section 2 reviews
+related work and Section 3 gives an overview of our system. In
+Section 4, we introduce our partial indexing strategy. To collect approximate
+network statistics, a new monitoring scheme is proposed
+in Section 5. We test the effectiveness of our system by a series of
+experiments in Section 6. Section 7 concludes the paper.

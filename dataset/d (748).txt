@@ -1,0 +1,32 @@
+At every recursive call, any element in V can be enumerated (function Choose in
+Fig. 10). Cerf et al. (2009a) empirically showed that the choice of this element, in
+particular the choice of the attribute domain it belongs to, is fundamental. Different
+sensible strategies produce different enumeration trees whose sizes (hence, the time
+required to traverse them) varies between several orders of magnitude. Compared
+to this previous work, Fenster profits from more information at its disposal when
+it comes to choose an element to enumerate. The counters allow a finer choice and
+smaller enumeration trees are built. Fenster chooses the enumerated element in two
+stages:
+1. The attribute domain, in which the element will be enumerated, is chosen.
+2. The element itself is chosen.
+The chosen attribute domain Dd maximizes the following expression:
+This expression actually counts the n-tuples that are accessed to update the counters
+0(UL , f ) and 0(UL , f, u), where f ? Vk=d and u ? Ul /?{d,k}. These counters are
+those involved in the enforcement of C-connected, i. e., in the removal of elements from
+V \ {e} to VL . As a consequence, the larger the expression above, the greater the
+expected reduction of the search space in the left child.
+Then, Fenster takes advantage of the counters 0(UL , f ). It chooses the element
+f ? Vd providing the greatest 0(UL , f ). The justification is simple: themore n-tuples
+inU1×· · ·×Un that are absent fromR, the less room for others, hence the smaller the
+search space of the left child. For the same reason applied to the left grandchild (and
+beyond), when Vd maximizes 0(U, f ), an element leading to a greater 0(U  V, f )
+is preferred.
+Example 10 In the Example 6, illustrated by Fig. 5, the choice of enumerating A ? V3
+actually follows the heuristics stated above:
+Choice of V3: k=d
+|Vk| ×l /?{d,k} |Ul | is maximized for d = 3:
+d = 1: |V2| × |U3| + |V3| × |U2| = (4 × 1) + (1 × 0) = 4;
+d = 2: |V1| × |U3| + |V3| × |U1| = (0 × 1) + (1 × 2) = 2;
+d = 3: |V1| × |U2| + |V2| × |U1| = (0 × 0) + (4 × 2) = 8.
+Choice of A: Among the elements in V3, e = A maximizes 0(({α, γ }, ?, {B}), e)
+(this value is 0 but V3 only contains A).

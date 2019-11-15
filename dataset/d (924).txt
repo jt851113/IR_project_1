@@ -1,0 +1,35 @@
+Figure 2 shows there is a significant efficiency gain by
+max-subpattern hit-set over Apriori. In this figure, the
+maximal pattern length (the maximal length of frequent
+partial periodic patterns) grows from to. The other
+parameters are kept constant:	
+and.We run two sets of tests, one with the length of the 
+time series being and the other being. As we can see, the 
+running time of max-subpattern hit-set is almost constant 
+for both cases, while Apriori is almost linear. When MAX-
+PAT-LENGTH is, the gain by
+max-subpattern hit-set over Apriori is about double. We
+expect this gain will increase for larger MAX-PAT-LENGTH.
+It is important to note that, the gain shown in Figure 2 is
+done by keeping everything in memory, and by considering
+only one period. In general, this will be unlikely the case,
+and max-subpattern hit-set will perform even better than
+Apriori for the following reasons:
+In general, the time series of features may need to be
+stored on disk, due to factors such as each may contain
+thousands of features and the length of the time series
+can be longer. When the time series is stored on disk,
+there would be a large amount of extra disk-IO associated
+with Apriori, but not with max-subpattern hit-set
+since it only requires two scans. Even when the
+time series is not stored on disk, Apriori will need
+to go over this huge sequence many more times than
+max-subpattern hit-set. Thus max-subpattern hit-set
+will be far better than Apriori.
+When there are a range of periods to consider,
+max-subpattern hit-set can find all frequent patterns
+in two scans but Apriori will require many more
+scans, depending on the number of periods and the
+-length of the maximal frequent patterns. Hence
+max-subpattern hit-set will be again far better than
+Apriori.

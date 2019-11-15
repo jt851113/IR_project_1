@@ -1,0 +1,23 @@
+The role assignment algorithm has to be aware of the following
+aspects of a WASN:
+Node Heterogeneity: A given node may take on multiple
+roles. Some nodes may be resource rich compared to others.
+For example, a particular node may be connected to a permanent
+power supply. Clearly, such nodes should be given more
+priority for taking on transmission-intensive roles compared to
+others.
+Power Constraint: A role assignment algorithm should minimize
+data communication since data transmission and reception
+expend more power than computation activities in wireless
+sensor networks [7]. Intuitively, since the overall communication
+cost is impacted by the location of data aggregators, the
+role assignment algorithm should seek to find a suitable placement
+for the fusion points that minimizes data communication.
+Dynamic Behavior: There are two sources of dynamism in
+a WASN. First, the application may exhibit dynamism due to
+the physical movement of end points or change in the transmission
+profile. Second, there could be node failures due to
+environmental conditions or battery drain. So far as the placement
+module is concerned, these two conditions are equivalent.
+In either case, the algorithm needs to find a new mapping of the
+task graph onto the available network nodes.

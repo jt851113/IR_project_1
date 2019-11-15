@@ -1,0 +1,16 @@
+Before a new node starts sharing its data, it asks a mapping server
+to obtain the uniform mediated schema. Mapping servers are classified
+by the type of the schemas they can handle. The node selects
+a corresponding mapping server and sends its database schema and
+necessary meta-data. The server invokes a local schema mapping
+algorithm, such as those proposed by Doan et al. [17, 16], and returns
+a mediated schema to the node.
+Schema mapping is a challenging task. Since the focus of our
+work is developing a partial indexing strategy for P2P systems rather
+than addressing schema matching problems, we assume that the
+mediated schemas of all domains have already been defined. The
+node only needs to perform the mapping process when it joins the
+network. Even if the node leaves and rejoins the network, it does
+not need to recreate the mapping relations if the local schema has
+not been changed. Thus, the schema mapping servers are only
+lightly loaded.

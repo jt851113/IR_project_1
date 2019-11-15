@@ -1,0 +1,19 @@
+SON creation is a multi-phase distributed process that runs recursively
+on specific sets of peers. Having as a starting point the initial
+unstructured P2P network, some initiator peers are selected in
+a pseudo-random way (initiator selection phase). Initiators create
+local topological zones over their neighboring peers (zone creation
+phase). Then each initiator collects the cluster descriptions of all
+peers in its zone, and executes a clustering algorithm in order to create
+new clusters that span the entire zone (zone clustering phase).
+Since the clusters of two (or more) peers may be merged into a new
+cluster, this implies that these peers become members of a SON,
+and the SON’s contents are now represented by a new cluster description.
+In the subsequent steps, the initiators form the current
+(unstructured) P2P network, thus playing the role of peers in the
+initial setup. Therefore, the process described above runs on the initiators,
+thus new initiators are selected, that create zones and cluster
+zone contents in a completely similar way as shown above. Hence,
+zones and clusters are merged recursively until global clusters are
+obtained. Conceptually, the overlay creation steps are shown in
+Figure 1.

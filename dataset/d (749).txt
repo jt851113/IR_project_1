@@ -1,0 +1,23 @@
+The n-sets U, V and S and all the counters associated with the elements they gather
+need to be copied whenever a left child enumeration node is built. When n ? {2, 3},
+the counters occupy most of the memory. In this case, and since the depth of the
+recursion reaches, in the worst case, n
+i=1|Di |, the space complexity of Fenster is 
+O((ni=1|Di |)×(2ni=1|Di|+2i =j |Di × Dj |)) = O(|Di |2 ×|Dj |), where Di
+is the largest dimension and Dj the second largest. When n ? 4, the space to store
+the relation, O(n i=1|Di |), usually dominates that of the counters, which remains
+unchanged.
+Because the second recursive call of Fenster (construction of a right child) is a
+tail call, the variables (U, V, S and the counters) of the parent node can be safely
+reused. Not copying these variables reduces both the time and space requirements in
+a significant way. Overwriting the parent enumeration nodes with their left children
+(i. e., inverting the two recursive calls) would not provide as much gain. Indeed, in a
+right child enumeration node, the search space V is only reduced by one element and
+U stays unchanged. Because of that, the enumeration sub-tree rooted by a right child
+node is far less often pruned (by C-closed or C) than that of a left child (where the search
+space V may be greatly reduced). As a consequence, the recursive calls of Fenster
+(see Fig. 10), down to a leaf, usually involve far more right children than left ones
+and, in practical settings, overwriting the parent enumeration nodes with their right
+children significantly decreases the average number of nodes to be kept in memory.
+It even provides substantial gains in terms of average extraction time because the cost
+of copying all counters is taken off.

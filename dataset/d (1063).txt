@@ -1,0 +1,15 @@
+Skyline queries have attracted considerable attention due to its importance in
+many applications such as multi-criteria decision making, data mining, and user
+preference queries [1]. Given a database X, an object p is said to be in skyline of
+X if there is no other object q in X such that q is better than p in all dimensions.
+If there exist such a q, then we say that p is dominated by q, or q dominates
+p. A number of efficient algorithms for computing all skyline objects have been
+reported in the literature [1,2,3,4,5].
+There are two problems in conventional skyline queries: (i) As the number
+of dimensions increases, the number of skyline objects increases substantially
+because it becomes difficult to dominate other objects. (ii) Usually, users have
+to select some noteworthy objects from skyline objects. Sometimes, the users
+may have to select many objects. Sometimes, they have to select a few objects.
+Conventional skyline query cannot control such selectivity.
+In this paper, we consider k-dominant skyline queries [6], which are considered
+to overcome the above problems.

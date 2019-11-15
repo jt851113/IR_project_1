@@ -1,0 +1,10 @@
+The energy spent in updating the information at each active node that is processing the
+active query Eupdate can be calculated as follows:
+Assume that the query Q is at the active node x. Given a look-ahead value d, x can
+request information from sensors within d hops away. This request will be forwarded by all
+sensors within d hops except those that are exactly d hops away from x. Thus the number
+of transmissions needed to forward this request is the number of nodes within d ? 1 hops
+which is f(d?1). The requested sensors will then forward their information to x. Now, the
+information of sensors 1 hop away will be transmitted once, 2 hops away will be transmitted
+twice,... d hops away will be transmitted d times. Thus,
+where N(i) is the number of nodes at hop i. N(i) will be determined later in section 4.4.

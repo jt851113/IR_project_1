@@ -1,0 +1,44 @@
+For the class of applications and environments that the role
+assignment algorithm is targeted, the health of the overall mapping
+can be thought of as the sum of the health of individual
+nodes hosting the roles. The heuristic triggers a role transfer
+only if there is a relative health improvement. Thus, it is safe
+to say that the dynamic adaptations that take place improve the
+life of the network with respect to the cost function.
+The heuristic could occasionally result in the role assignment
+getting caught in a local minima. However, due to the dynamic
+nature ofWASN and the re-evaluation of the health of the nodes
+at regular intervals, such occurrences will be short lived. For
+example, if ‘minimize transmission cost (MT1 or MT2)’ is chosen
+as the cost function, and if the network is caught in a local
+minima, that would imply that some node is losing energy faster
+than an optimal node. Thus, one or more of the suboptimal
+nodes will die causing the algorithm to adapt the assignment.
+This behavior is observed in real life as well and we show it in
+the evaluation section.
+The choice of cost function has a direct effect on the behavior
+of the heuristic. We examine the behavior of the heuristic
+for a cost function that uses two simple metrics: (a) simple hopcount
+distance, and (b) fusion data expansion or contraction information.
+The heuristic leads mainly to two types of role transfers:
+Linear Optimization: If all the inputs to a fusion node are
+coming via a relay node (Figure 3A), and there is data contraction
+at the fusion point, then the relay node will become the
+new fusion node, and the old fusion node will transfer its responsibility
+to the new one (Figure 3B.) In this case, the fusion
+point is moving away from the sink, and coming closer to the
+data source points. Similarly, if the output of the fusion node is
+going to a relay node, and there is data expansion, then again
+the relay node will act as the new fusion node. In this case, the
+fusion point is coming closer to the sink and moving away from
+the data source points.
+Triangular Optimization: If there are multiple paths for inputs
+to reach a fusion point (Figure 4A), and if there is data
+contraction at the fusion node, then a triangular optimization
+can be effected (Figure 4B) to bring the fusion point closer to
+the data source points. The fusion point will move along the
+input path that maximizes the savings. In the event of data expansion
+at the fusion point, the next downstream node from the
+fusion point in the path towards the sinks will become the new
+fusion node. The original fusion point will simply act as a relay
+node.

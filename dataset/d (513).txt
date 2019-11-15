@@ -1,0 +1,26 @@
+In our approach, the maximum branching algorithm is used
+to transform an access graph to an access forest. The time
+complexity of the maximum branching algorithm is .
+ Therefore, the transformation process
+can be done in polynomial time. An example is shown in
+Fig. 6. In the example, the sizes of the vertices in the access
+graph are all set to 1.
+After the access forest is produced, we determine the
+OLO of each tree (named access tree) in the access forest and
+concatenate the OLOs to form the result. However, the
+information loss induced by the removed edges in the
+transformation process has to be considered to get the final
+broadcast order. There are three cases to consider. For the
+first case, the information loss can be avoided by refining
+the access graph. The details will be discussed in Section 4.1.
+In the second case, the starting and ending vertices of the
+removed edges are in the same access tree (named intraedge)
+such as a->d in Fig. 6. We consider how to reorder the
+vertices to get a smaller average access time. The reordering
+method will be discussed in Section 4.2. For the third case,
+the starting and ending vertices of the removed edges are in
+different access trees (named interedge) such as m->i. We
+consider how to merge the OLOs of the access trees to get a
+smaller average access time. The merging method will be
+discussed in Section 4.3. The flow of our approach is shown
+in Fig. 7.

@@ -1,0 +1,42 @@
+[1] R. Agrawal and E. L. Wimmers. A framework for
+expressing and combining preferences. In SIGMOD,
+2000.
+[2] S. B‥orzs‥onyi, D. Kossmann, and K. Stocker. The
+skyline operator. In ICDE, 2001.
+[3] C.-Y. Chan, H. V. Jagadish, K.-L. Tan, A. K. H.
+Tung, and Z. Zhang. On high dimensional skylines. In
+EDBT, 2006.
+[4] J. Chomicki, P. Godfrey, J. Gryz, and D. Liang.
+Skyline with presorting. In ICDE, 2003.
+[5] R. Fagin, A. Lotem, and M. Naor. Optimal
+aggregation algorithms for middleware. In PODS,
+2001.
+[6] P. Godfrey, R. Shipley, and J. Gryz. Maximal vector
+computation in large data sets. In VLDB, 2005.
+[7] G. R. Hjaltason and H. Samet. Distance browsing in
+spatial databases. TODS, 24(2), 1999.
+[8] W. Kiesling. Foundations of preferences in database
+systems. In VLDB, 2002.
+[9] D. Kossmann, F. Ramsak, and S. Rost. Shooting stars
+in the sky: an online algorithm for skyline queries. In
+VLDB, 2002.
+[10] H. Kung, F. Luccio, and F. Preparata. On finding the
+maxima of a set of vectors. JACM, 22(4), 1975.
+[11] C. Li, B. C. Ooi, A. K. H. Tung, and S.Wang. Dada:
+A data cube for dominant relationship analysis. In
+SIGMOD, 2006.
+[12] D. H. McLain. Drawing contours from arbitrary data
+points. The Computer Journal, 17(4), November 1974.
+[13] D. Papadias, Y. Tao, G. Fu, and B. Seeger. An
+optimal and progressive algorithm for skyline queries.
+In SIGMOD, 2003.
+[14] D. Papadias, Y. Tao, G. Fu, and B. Seeger.
+Progressive skyline computation in database systems.
+TODS, 30(1), 2005.
+[15] F. P. Preparata and M. I. Shamos. Computational
+Geometry: An Introduction. Springer-Verlag, 1985.
+[16] K. L. Tan, P. K. Eng, and B. C. Ooi. Efficient
+progressive skyline computation. In VLDB, 2001.
+[17] Y. Yuan, X. Lin, Q. Liu, W. Wang, J. X. Yu, and
+Q. Zhang. Efficient computation of skyline cube. In
+VLDB, 2005.

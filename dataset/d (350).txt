@@ -1,0 +1,35 @@
+A similarity query originates from a querying peer QP . In an unstructured
+P2P system, querying is performed by routing the query
+to appropriate peers and performing the query on each of these
+peers, and then returning matching results. In our context, processing
+the query is performed by first determining which SONs
+(or super-peers) may contain relevant data, followed by searching
+one or more of these SONs, as described above.
+SON-based query routing refers to query routing at SON level,
+which aims to identify similar SONs to the query. In order to limit
+the number of SONs that will be searched, SON-based routing is
+performed in two steps.
+In the first step, a search for appropriate SONs is performed. A
+number of techniques can be used to find these SONs. Potential
+solutions include routing indices or some gossiping approach [25]
+that allow peers to become familiar with a small set of peers outside
+their cluster. However, such techniques and their variants impose
+a query horizon, i.e., they cannot guarantee that remote peers will
+be reached in very large networks. In order to overcome such limitations,
+we use the super-peer network to route queries. In the absence
+of more sophisticated mechanisms (such as hypercubes [16]),
+this routing can take the form of flooding. In this way, we can guarantee
+that the query will contact all SONs (or at least one of their
+super-peers), thus enabling access even to the most distant peers.
+Those super-peers that are sufficiently similar to the query, return
+their CD to the querying peer QP .
+In the second step, QP determines the top-N most similar SONs
+(based on the results of step 1), and forwards the query to these
+super-peers for intra-SON query processing. The number of SONs
+to search is determined by the number of results returned (as for
+example for k-nearest neighbor queries), so that the number of
+SONs searched can be limited. Essentially, N is used to restrict
+the searching cost that would be induced by having to contact all
+SONs that were returned from the first step. In the experimental
+part, we demonstrate that even a small number of the most relevant
+SONs to the query is enough to return results of high quality.

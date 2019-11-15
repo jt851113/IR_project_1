@@ -1,0 +1,49 @@
+3.1 MIG Counting We first consider the issue of how to generate
+the MIG for a singular pattern,            , where
+the MIG serves as an estimate of the maximum achievable generalized
+information gain based on the maximum repetition of
+the singular pattern in a given sequence. We find that the problem
+of evaluating the MIG for a singular pattern on an event sequence
+      , is equivalent to discover the maximum
+summation of any subsequence of a sequence of real numbers
+derived from the event sequence based on the singular pattern.
+The generalized information gain of an event sequence  with
+respect to a pattern 	 is 	    	  	. If
+	 is a singular pattern             of period , then
+	  . We can partition  into segments of length .
+The information loss on a segment that does not support 	 is
+. Let  be the number of segments that do not support 	.
+The generalized information gain of  with respect to 	 can be
+rewritten as 	      . More specifically, each
+segment is associated with  if it supports 	 and  otherwise.
+Therefore, we can map the event sequence  (with 
+
+events) into a sequence of  
+  real numbers       
+ .
+As shown in Figure 2, the sequence of real numbers with respect
+to    is 1.33, -1.33, 1.33, 1.33, -1.33, 1.33, and
+1.33. Now the problem becomes finding the maximum summation
+of any subsequence of       
+ . The maximum
+information gain problem can be then formulated as follows [2].
+where  and  are the maximum value of the summation of
+any subsequence ending exactly at  and the maximum value
+of the summation of any subsequence ending either before or
+at  , respectively. By choosing 	  	 and 	  	, the
+MIG of             is equal to 
+  	.
+This forward recurrence can be easily solved by making one
+scan through the event sequence and maintaining two counters
+for each singular pattern to capture  and  at the current
+scanning position. The starting position and ending position
+of the corresponding subsequences can also be maintained
+simultaneously [2]. Since the number of MIG counters is
+  
+
+, and the main memory of a common computer
+is limited to a few hundred MBytes which could be far less than
+  
+
+, we need a mechanism to limit the number of
+MIG counters considered before the MIG counting procedure.

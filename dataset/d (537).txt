@@ -1,0 +1,18 @@
+[1] M. Bender, S. Michel, J. X. Parreira, and T. Crecelius. P2P
+search: Make it light, make it fly. In CIDR, 2007.
+[2] D. M. Blei, A. Y. Ng, and M. I. Jordan. Latent dirichlet
+allocation. J. of Machine Learning Research, 3:993–1022, 2003.
+[3] J. Callan. Distributed information retrieval. In Advances in
+information retrieval, pages 127–150, 2000.
+[4] S. Michel, M. Bender, N. Ntarmos, P. Triantafillou, G. Weikum,
+and C. Zimmer. Discovering and exploiting keyword and
+attribute-value co-occurrences to improve p2p routing indices. In
+CIKM, pages 172–181, 2006.
+[5] L. T. Nguyen, W. G. Yee, and O. Frieder. Query workload driven
+summarization for p2p query routing. In P2P, pages 63–72, 2008.
+[6] I. Podnar, M. Rajman, T. Luu, F. Klemm, and K. Aberer.
+Scalable peer-to-peer web retrieval with highly discriminative
+keys. In ICDE, pages 1096–1105, 2007.
+[7] G. Skobeltsyn, T. Luu, I. P. Zarko, M. Rajman, and K. Aberer.
+Web text retrieval with a p2p query-driven index. In SIGIR,
+pages 679–686, 2007.

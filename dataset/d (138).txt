@@ -1,0 +1,169 @@
+In this section, we present a slightly more advanced proto-
+col that addresses three additional issues: the fact that the
+prover has a non-zero processing delay, the fact that packets
+take nonzero time to transmit, and the fact that R might
+not be a circle. We base this protocol on the simple protocol
+presented in the previous section.
+Processing delay.. Let us rst address the prover's packet
+processing delay. We will start with the conguration men-
+tioned in Section 3.1: We have a single verier located at the
+center of a circular region R. In the ideal case, the prover
+can receive the RF packet from the verier node and send
+out the response over ultrasound instantly; in practice, this
+is not possible, as the prover will require some time to pro-
+cess the incoming packet. Suppose the prover can bound its
+processing delay to be at most p seconds and can make
+the verier node aware of this maximum delay. Then, if the
+prover claims to be at `, the verier node can compute the
+time for a prover actually at ` to get the packet back: the
+time for the RF signal to travel from v to `, a processing
+delay of at most p, and nally the time for the sound to
+travel from ` back to v.
+Now we have a problem: A malicious prover could submit
+a location claim ` at the border of R and grossly overstate
+its true processing delay to be some very large m. If, how-
+ever, the prover's true processing delay were zero, then it
+could fool the verier node into thinking that it was inside
+R when in fact it wasn't. Since the verier allows up to m
+processing delay while the adversary has no delay, the ad-
+versary could be   meters outside
+of R and the verier would still accept the claimed location,
+violating our security condition.
+The solution to such a problem is for the verier node
+to shrink the allowable region in which location claims are
+accepted. If the prover claims a maximum processing delay
+of 0, then the protocol presented earlier in Section 3.1 is
+sucient. If, however, the prover claims a processing delay
+of p > 0, the verier should not engage in the protocol if
+the claimed location ` is within p  s of the outside border.
+Thus, we dene the term Region of Acceptance (ROA) to
+be the area in which the verier node v is sure that it can
+correctly verify claims for a prover. Note that this region
+depends on p. We write ROA(v,p) to indicate the region
+where location claims are permitted by v, if the claimed
+processing delay is p. See Figure 3 for an illustration.
+As stated above, ROA(v;p) is a circle centered at v and
+fully contained within R. Its radius is p  s less than R's
+radius (since R was assumed to be a circle). Amending our
+prior protocol, the verier should engage in the protocol only
+if the location claim ` is within ROA(v;p). For p = 0, we
+have ROA(v; 0) = R, and so the simple protocol presented
+earlier is a special case of the amended protocol.
+We note at this point that if the prover has a processing
+delay of p, the protocol is not complete. Recall that the
+completeness condition from Section 2.1 requires that the
+verier always accept if the prover is inside R and behaving
+properly. Yet, for a processing delay of p, our verier
+will not accept location claims that are in the annulus R n
+ROA(v;P ), so our protocol cannot be fully complete.
+This suggests an alternate way to view ROA(v;p): it
+is the region for which the protocol is complete. In other
+words, ROA(v;p) is the region where a verier will accept
+location claims from a correctly functioning prover with pro-
+cessing delay less than p. We will dene the coverage of
+the ROA as the ratio between the area of the ROA and the
+area of R. A coverage of 100% indicates that the protocol is
+complete; a coverage of less than 100% indicates only partial
+completeness.
+Packet transmission time. There is another source of un-
+certainty: the time it takes to actually transmit packets.
+Each link, radio and ultrasound, has some nite transmis-
+sion bandwidth. If we are not careful about when we start
+and stop timing, an attacker could exploit the transmission
+time to launch an attack. The key is that if the bandwidths
+in each direction are not the same, the attacker could simply
+guess the rst (or last) few bits of the nonce and send them
+preemptively.
+The attacks in question depend on how timing is per-
+formed. We can start timing either before the rst bit or
+after the last bit of the outgoing nonce from the verier
+to the prover, and likewise stop timing before the rst bit
+or after the last bit of the incoming nonce. We shall show
+that in a given situation only some choices are secure; which
+choices those are depends on the bitrates of the radio and
+Figure 4: A single verier v, inside a irregular re-
+gion R. We are interested in proving that the prover
+is within R. The larger circle represents ROA(v; 0),
+the area in which v is useful for location verication
+proofs. This is the largest circle centered at v and
+wholly contained within R. The inner circle repre-
+sents ROA(v; ), the region in which v will accept
+location claims from a device that is able to bound
+its processing delay by .
+ultrasound links. An important note is that the bitrate, i.e.,
+the bandwidth, of each link is distinct from the propagation
+speed of waves in the relevant medium, which determines the
+latency of the link. Even though radio waves travel orders
+of magnitude faster than ultrasound waves, in practice the
+bitrates of each may often be comparable. For the sake of
+the following discussion, let us call the outgoing bandwidth
+bo and the incoming bandwidth bi.
+Suppose the verier stops its timer upon receiving the rst
+bit of the nonce, and suppose bo > bi. Then the attacker
+could start sending a few randomly guessed bits of the nonce
+slightly before actually receiving it. The verier would then
+infer the prover to be closer than it actually is. Although the
+attack approach would only work probabilistically, it would
+only take a few tries to succeed on a few bits. Therefore if
+bo > bi, the verier must stop its timer only after receiving
+the last bit of the nonce.
+Analogously, if the verier starts timing after the entire
+nonce has been sent and bi > bo, then the attacker could
+guess and then send the last few bits without having received
+them.
+To be safe from such attacks, then, the verier should start
+timing before sending the rst bit of the nonce, and stop
+timing after receiving the entire nonce. Unfortunately, this
+increases the overall uncertainty, so that p  n
+bo
++ n
+bi
+where
+p is any prover and n is the nonce length. If we know in a
+particular deployment that one or the other bandwidth is
+higher we need not be conservative on both ends, since they
+are mutually exclusive. We assume that the prover takes this
+contribution to the delay into account when calculating p;
+the constraint will be checked by the verier, so the prover
+needs to add this lower bound to any processing time.
+Noncircular
+regions.. Up until now, we have been as-
+suming that R is a circle centered at v. However, that is not
+always a realistic assumption: perhaps we are interested in
+verifying location claims in a square room, for instance. We
+will now relax that assumption and assume that the verier
+node is contained somewhere within an arbitrarily shaped
+region R. This causes a larger area to be incomplete, or
+non-veriable, as shown in Figure 4. We will address in-
+completeness in the next section with our nal iteration of
+the protocol.
+Previously, ROA(v; 0) had been equivalent to R. But this
+will not work when R is not a circle centered at v. Since we
+are assuming that our communications equipment is omni-
+directional and that signals travel at the same speed in all
+directions, the ROA must be a circle. Furthermore, the ROA
+must be wholly contained within R. By denition, the ROA
+is the region where the verier will accept a correctly func-
+tioning prover; if the ROA were not fully contained within
+R, the prover could accept a location claim for a prover out-
+side of R, which would be unacceptable. Furthermore, we
+would like to maximize the area of the ROA since a larger
+ROA leads to a larger coverage. Thus, ROA(v; 0) should be
+the largest circle that ts within R; in other words, it should
+be the largest circle that is tangent to R and still contained
+within it.
+We now extend the protocol to handle non-circular regions
+R where the verier can bound its processing delay to be at
+most p. Recall that both the prover node and verier node
+know R a priori. Using this, the verier node can compute
+ahead of time the region ROA(v; 0).
+The protocol then proceeds as follows: the prover rst
+broadcasts its claimed location ` and processing delay p
+to the verier. If ` 62 ROA(v;p), the verier should im-
+mediately reject the location claim since it will not be able
+to denitively validate the claim. Otherwise, the verier
+node broadcasts a nonce to the prover; the prover echoes
+the nonce back over ultrasound. The verier can again time
+the communication: if it is no greater than the time for the
+signal to travel out and back and allowing for processing
+delay, the verier accepts the location claim.

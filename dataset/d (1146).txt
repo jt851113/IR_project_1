@@ -1,0 +1,93 @@
+The destination buffer for the split operator can be implemented
+either in a pipelined scheme or as an intermediate file. Our
+initial design of the split operator used a pipeline scheme in
+which tuples are pipelined from the output of one operator into
+the input of the next operator. However, such a pipeline scheme
+does not work for grouping timer-based continuous queries.
+Since timer-based queries will only be fired at specified time,
+output tuples must be retained until the next firing time. It is
+difficult for a split operator to determine which tuples should be
+stored and how long they should be stored for.
+In addition, in the pipelined approach, the ungrouped parts of all
+query plans in a group are combined with the group plan,
+resulting in a single execution plan for all queries in the group.
+This single plan has several disadvantages. First, its structure is
+a directed graph, and not a tree. Thus, the plan may be too
+complicated for a general-purpose XML-QL query engine to
+execute. Second, the combined plan may be very large and
+require resources beyond the limits of some systems. Finally, a
+large portion of the query plan may not need to be executed at
+each query invocation. For example, in Figure 3.5, suppose only
+the price of Intel stock changes. Although the destination buffer
+for Microsoft is empty, the upper part of the Microsoft query
+(Trigger Action J) is also executed. This problem can be avoided
+only if the execution engine has the ability to selectively
+load part of a query plan in a bottom-up manner. Such a
+capability would require a special implementation of the XMLQL
+query engine
+Since a split operator has one input stream and multiple
+(possibly tens of thousands) output streams, split operators may
+become a bottleneck when the ungrouped parts of queries
+consume output tuples from the split stream at widely varying
+rates. For example, suppose 100 queries are grouped together,
+99 of which are very simple selection queries, and one is a very
+expensive query involving multiple joins. Since this expensive
+query may process the input from the split operator very slowly,
+it may block all the other simple queries.
+The pipeline scheme can be used in systems that support only a
+small number of change-based continuous queries. Since our
+goal is to support millions of both change-based and timer-based
+continuous queries, we adopt an approach that is more scalable
+and easier to implement. We also try to use a general query
+engine to the maximal extent possible.
+In our new design (Figure 3.8), the split operator writes each
+output stream into an intermediate file. A query plan is cut into
+two parts at the split operator and a file scan operator is added to
+the upper part of plan to read the intermediate file. NiagaraCQ
+treats the two new queries like normal user queries. In
+particular, changes to the intermediate files are monitored in the
+same way as those to ordinary data sources! Since a new
+continuous query may overlap with multiple query groups, one
+query may be split into several queries. However, the total
+number of queries in the system will not exceed the number of
+groups plus the number of original user queries. Since we
+assume that no more than thousands of groups will be generated
+for millions of user queries, the overall number of queries in the
+system will increase only slightly. Intermediate file names are
+stored in the constant table and grouped continuous queries with
+the same constant share the same intermediate file.
+The advantages of this new design include:
+1. Each query is scheduled independently, thus only the
+necessary queries are executed. For example, in Figure 3.8, if
+only the price of Intel stock changes, queries on intermediate
+files other than “file_i” will not be scheduled. Since usually
+only a small amount of data is changed, only a few of the
+installed continuous queries will be fired. Thus, computation
+time and system resource usage is significantly reduced.
+2. Queries after a split operator will be in a standard, treestructured
+query format and thus can be scheduled and executed
+by a general query engine.
+3. Each query in the system is about the size of a common
+user query, so that it can be executed without consuming an
+unusual amount of system resources.
+4. This approach handles intermediate files and original data
+source files uniformly. Changes to materialized intermediate
+files will be processed and monitored just like changes to the
+original data files.
+5. The potential bottleneck problem of the pipelined approach
+is avoided.
+There are some potential disadvantages. First, the split operator
+becomes a blocking operator since the execution of the upper
+part of the query must wait for the intermediate files to be
+completely materialized. Since continuous queries run over data
+changes that are usually not very large, we do not believe that
+the impact of this blocking will be significant. Second, reading
+and writing the intermediate files incurs extra disk I/Os. Since
+most data changes will be relatively small, we anticipate that
+they will be buffered in memory before the upper part queries
+consume them. There will be disk I/Os in the case of timerbased
+queries that have long time intervals because data changes
+may be accumulated. In this situation, data changes need to be
+written to disk no matter what strategy is used. As discussed in
+Section 3.7, NiagaraCQ uses special caching mechanisms to
+reduce this cost.

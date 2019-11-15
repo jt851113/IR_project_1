@@ -1,0 +1,47 @@
+In the previous section, we discussed how to calculate the
+temporal velocity profiles which illustrate the rate of change
+of density at each fixed spatial location. Even better insight
+can be obtained by examining the nature of the spatial
+velocity profiles, which provide an insight into how the
+data is shifting. For each spatial point, we would like to
+compute the directions of movements of the data at a given
+instant. The motivation in developing a spatial velocity
+profile is to give a user a spatial overview of the
+reorganizations in relative data density at different points.
+This brings to us the following interesting problem: Given
+the temporal velocity profile, how do we calculate the
+directions in which the data is shifting? In order to
+understand this, we observe that when data is shifting
+from one point to another, the source of the shift shows a
+reduction in the density, whereas the destination of the shift
+shows an increase in the density. Therefore, there is an
+increasing density gradient from the source to the destination.
+The exact direction of the (aggregate) shift is
+determined by finding the direction in which the gradient
+is the largest.
+Let us define an -pertubation along the ith dimension by
+is the unit vector along the ith
+dimension. For a given spatial location X, we first compute
+the velocity gradient along each of the i dimensions. We
+denote the velocity gradient along the ith dimension by
+for spatial location X and time t. This value is
+computed by subtracting the density at spatial location X
+from the density at pertubation along the ith
+dimension) and dividing the result by . The smaller the
+value of , the better the approximation. Therefore, we have:
+The value of ; tT is negative when the velocity density
+decreases with increasing value of the ith coordinate of
+spatial location X. The gradient ; is given by. This vector 
+gives the spatial gradient at a given grid point both in terms 
+of direction and magnitude. The spatial velocity profile is 
+illustrated by creating a spatial plot which illustrates the 
+directions of the
+data shifts at different grid points by directed markers
+which mirror these gradients both in terms of directions
+and magnitude. An example of a spatial velocity profile is
+illustrated in Fig. 4. We note that the temporal and spatial
+velocity profiles convey essentially the same information,
+but with different visualizations. The first is a threedimensional
+density change plot, whereas the second is a
+two-dimensional contour plot which provides a better
+understanding of the direction of data shift.

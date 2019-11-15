@@ -1,0 +1,65 @@
+Elastic burst detection is the problem of finding all windows wi
+of arbitrary length jwij at time t, such that for a monotonic aggregation
+function A the aggregate A(wi) exceeds a window specific
+threshold f(wi). For convenience, we will refer to A(wi) using
+A(ws
+i ;we
+i ), where ws
+i is the first element contained in wi and we
+i is
+the last one. In the following section we describe the burst detection
+approach proposed by Zhang and Shasha and our implementation
+of their work.
+In [13] Zhang and Shasha introduced the aggregation pyramid,
+a triangular data structure over N stream elements having N levels.
+N is the maximum window size over which a burst can be detected,
+and in each level, the level index h corresponds to the length of the
+analyzed sequence, i.e., the size of the regarding window. Level
+0 has N cells containing the original data elements y1; : : : ; yN.
+Level 1 has N  1 cells and stores aggregates over two-element
+sets from the original data stream. The construction of the aggregation
+pyramid is recursive: Level h has N  h cells, and each
+cell c(h; t) contains the aggregates from a window of length h + 1
+starting at element yt. The aggregate of cell c(h; t) is computed by
+c(h; t) = A(c(h  1; t); c(0; t + h)). Consequently, level N  1
+stores the aggregate over the complete sequence. Figure 1 shows
+an aggregation pyramid over a window of size N = 6.
+The aggregation pyramid has some interesting properties. For instance,
+each of its cells c(h; t) spans to a sub pyramid. The window
+starting at time t, which is composed of the following h + 1 cells
+on level 0, is called the shadow of cell c(h; t). Now it is straightforward
+to identify a burst. If a cell c(h; t) exceeds the threshold
+for its shadow, a burst starting at time t is discovered.
+In order to efficiently identify the exact length and time of the
+burst, Zhang et. al additionally introduce a hierarchical tree structure
+called shifted aggregation tree. The nodes of this tree are a
+proper subset of the cells in the aggregation pyramid. There are at
+least two nodes at each level of the tree, except for the root level.
+The leaf nodes of the shifted aggregation tree correspond to the
+nodes at level 0 of the aggregation pyramid. A node on level i of
+the aggregation tree represents the aggregate of its child nodes on
+levels  i  1. A three level aggregation tree is depicted in Figure
+1 (shaded cells). Each node of the aggregation tree corresponds
+to one node of the aggregation pyramid.
+A central property of burst detection using aggregation trees is
+that the aggregate of each subsequence of length l, with l  hi 
+si + 1, is covered by the shadow of a node at level i. hi denotes
+the size of the window at level i and si is the shift at level i. That
+means, each window having size  hi  si is covered by at least
+one node on level i, and consequently each burst occurring in a
+window of length hi  si can be discovered.
+For the detection of a burst within the aggregation tree it is sufficient
+to check if the aggregate in a node of level i exceeds any
+of the thresholds for window sizes between hi1  si1 + 2 and
+hisi+1. If a burst is discovered, a detailed search on the shadow
+of the node that exceeds the threshold is necessary.
+Using the above method, we implemented a burst detection operator
+as part of our DSMS StreamDB. For efficiency, we only store
+the rightmost branch of the aggregation tree as a list. This is sufficient,
+as the nodes of the aggregation tree contain the aggregates
+for all possible subsequences of the sliding window over time as
+the stream progresses and the sliding window moves. The N most
+recent stream elements, which are contained in the current sliding
+window, are maintained in a ring buffer. The height of the aggregation
+tree is N=minSize, where N is the maximum window size
+and minSize is the minimum length of a burst that can be detected.

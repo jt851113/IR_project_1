@@ -1,0 +1,167 @@
+The named task description of Section 3.1 constitutes an
+interest. An interest is usually injected into the network at
+some (possibly arbitrary) node in the network. We use the
+term sink to denote this node.
+Given our choice of naming scheme, we now describe how
+interests are diffused through the sensor network. Suppose
+that a task, with a specified type and rect, a duration
+of 10 minutes and an interval of 10ms, is instantiated at
+a particular node in the network. The interval parameter
+specifies an event data rate; thus, in our example, the
+specified data rate is 100 events per second. This sink node
+records the task; the task state is purged from the node after
+the time indicated by the duration attribute.
+For each active task, the sink periodically broadcasts an interest
+message to each of its neighbors. This initial interest
+contains the specified rect and duration attributes, but
+contains a much larger interval attribute. Intuitively, this
+initial interest may be thought of as exploratory; it tries
+to determine if there indeed are any sensor nodes that detect
+the four-legged animal. To do this, the initial interest
+specifies a low data rate (in our example, 1 event per sec-
+ond) a. In Section 3.4, we describe how the desired data rate
+is achieved by reinforcement. Then, the initial interest takes
+the following form:
+type = four-legged animal
+interval = is
+rect = [-i00, 200, 200, 400]
+timestamp = 01:20:40
+expiresAt = 01:30:40
+// hh:n:sg
+Before we describe how interests are processed, we emphasize
+that the interest is periodically refreshed by the sink.
+To do this, the sink simply re-sends the same interest with
+a monotonically increasing timestamp attribute. This is necessary
+because interests are not reliably transmitted throughout
+the network. The refresh rate is a protocol design parameter
+that trades off overhead for increased robustness to
+lost interests.
+Every node maintains an interest cache. Each item in the
+cache corresponds to a distinct interest. Two interests are
+distinct, in our example, if their type attribute differs, their
+interval attribute differs, or their rect attributes are (possibly
+partially) disjoint. Interest entries in the cache do
+not contain information about the sink. Thus, interest state
+scales with the number of distinct active interests. Our definition
+of distinct interests also allows interest aggregation.
+Two interests 11 and /2, with identical types, completely
+overlapping rect attributes, can, in some situations, be represented
+with a single interest entry.
+An entry in the interest cache has several fields. A timestamp
+field indicates the timestamp of the last received matching
+interest. The interest entry also contains several gradient
+fields, up to one per neighbor. Each gradient contains a data
+rate field requested by the specified neighbor, derived from
+the interval attribute of the interest. It also contains a
+duration field, derived from the timestamp and expiresht
+attributes of the interest, and indicating the approximate
+lifetime of the interest.
+3
+This is not the only choice, but represents a performance tradeoff. Since the
+location of the sources is not precisely known, i n t e r e s t s must necessarily be diffused
+over a broader section of the sensor network than that covered by the
+potential 8ources. As a r e s u l t , if the sink had chosen a higher i n i t i a l data rate, a
+higher energy consumption might have resulted from the wider dissemination of
+sensor data. However, with a higher i n i t i a l data rate, the time to achieve high
+f i d e l i t y tracking is reduced.
+When a node receives an interest, it checks to see if the interest
+exists in the cache. If no matching entry exists (where
+a match is determined by the definition of distinct interests
+specified above), the node creates an interest entry. The
+parameters of the interest entry are instantiated from the
+received interest. This entry has a single gradient towards
+the neighbor from which the interest was received, with the
+specified event data rate. In our example, a neighbor of the
+sink will set up an interest entry with a gradient of 1 event
+per second towards the sink. For this, it must be possible to
+distinguish individual neighbors. Any locally unique neighbor
+identifier may be used for this purpose. Examples of
+such identifiers include 802.11 MAC addresses [7], or Bluetooth
+[10] cluster addresses. If there exists an interest entry,
+but no gradient for the sender of the interest, the node adds
+a gradient with the specified value. It also updates the entry's
+timestamp and duration fields appropriately. Finally,
+if there exists both an entry and a gradient, the node simply
+updates the timestamp and duration fields.
+In Section 3.3, we describe how gradients are used. When a
+gradient expires, it is removed from its interest entry. Not
+all gradients will expire at the same time. For example, if
+two different sinks express indistinct interests with different
+expiration times, some node in the network may have an interest
+entry with different gradient expiration times. When
+all gradients for an interest entry have expired, the interest
+entry itself is removed from a cache.
+After receiving an interest, a node may decide to re-send the
+interest to some subset of its neighbors. To its neighbors,
+this interest appears to originate from the sending node, although
+it might have come from a distant sink. This is
+an example of a local interaction. In this manner, interests
+diffuse throughout the network. Not all received interests
+are re-sent. A node may suppress a received interest if it
+recently re-sent a matching interest.
+Generally speaking, there are several possible choices for
+neighbors (Figure 3). The simplest alternative is to rebroadcast
+the interest to all neighbors. This is equivalent
+to flooding the interest throughout the network; in the absence
+of information about which sensor nodes are likely to
+be able to satisfy the interest, this is the only choice. This
+is also the alternative that we simulate in Section 4. In our
+example sensor network, it may also be possible to perform
+geographic routing, using some of the techniques described
+in the literature [14]. This can limit the topological scope
+for interest diffusion, thereby resulting in energy savings.
+Finally, in an immobile sensor network, a node might use
+cached data (see Section 3.3) to direct interests. For example,
+if in response to an earlier interest, a node heard from
+some neighbor A data sent by some sensor within the region
+specified by the rect attribute, it can direct this interest to
+,4, rather than broadcasting to all neighbors.
+Figure 2(a) shows the gradients established in the case where
+interests are flooded through a sensor field. Unlike the simplified
+description in Figure l(b), notice that every pair of
+neighboring nodes establishes a gradient towards each other.
+This is a crucial consequence of local interactions. When a
+node receives an interest from its neighbor, it has no way of
+knowing whether that interest was in response to one it sent
+out earlier, or is an identical interest from another sink on
+the "other side" of that neighbor. Such two-way gradients
+can cause a node to receive one copy of low data rate events
+from each of its neighbors. However, as we show later, this
+technique can enable fast recovery from failed paths or reinforcement
+of empirically better paths (Section 3.4), and
+does not incur persistent loops (Section 3.3).
+Note that for our sensor network, a gradient specifies both
+a data rate and a direction in which to send events. More
+generally, a gradient specifies a value and a direction. The
+directed diffusion paradigm gives the designer the freedom
+to attach different semantics to gradient values. We have
+shown two examples of gradient usage. Figure 1 (c) implicitly
+depicts binary valued gradients. In our sensor networks,
+gradients have two values that determine event reporting
+rate. In other sensor networks, gradient values might be
+used to, for example, probabilistically forward data along
+different paths, achieving some measure of load balancing
+(Figure 3).
+In summary, interest propagation sets up state in the network
+(or parts thereof) to facilitate "pulling down" data
+towards the sink. The interest propagation rules are local,
+and bear some resemblance to join propagation in some Internet
+multicast routing protocols [9]. One crucial difference
+is that join propagation can leverage unicast routing tables
+to direct joins towards sources, whereas interest propagation
+cannot.
+In this section, we have described interest propagation rules
+for a particular type of task. More generally, a sensor network
+may support many different task types. Interest propagation
+rules may be different for different task types. For
+example, a task type of the form "Count the number of distinct
+four-legged animals in rectangle R seen over the next T
+seconds" cannot leverage the event data rate as our example
+does. However, some elements of interest propagation are
+similar to both: the form of the cache entries, the interest
+re-distribution rules etc.. As part of our future research, we
+hope to cull these similarities into a diffusion substrate at
+each node, so that sensor network designers can use a library
+of interest propagation techniques (or, for that matter, rules
+discussed in the subsequent sections for data processing and
+reinforcement) for different task types.

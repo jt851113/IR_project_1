@@ -1,0 +1,14 @@
+Note that an event can appear at multiple positions in a pattern.
+For example,
+ is a pattern of period 5 and
+its first, second and fifth positions are instantiated. It is also a
+superpattern of
+We found that the information measure [1] which is widely
+studied and used in information theory field fulfills the first
+two properties. It is hence used to measure the amount of positive/
+negative influence to the overall significance of a pattern
+caused by each occurrence/absence. Based on it, we devise a
+novel measurement, generalized information gain, to quantify
+the significance of a pattern within a subsequence of events.
+The following is the definition of the information and the generalized
+information gain.

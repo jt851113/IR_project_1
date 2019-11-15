@@ -1,0 +1,15 @@
+We now analyze the methods discussed so far for a
+restricted class of regular topologies. We compare the
+resilience of a single spanning tree against using mul-
+tiple parents, but only one broadcast per node, as de-
+scribed in the previous section. For simplicity, we only
+consider exact COUNT aggregate under independent
+link failures; more elaborate analysis for other aggre-
+gates and failure models is possible. These calculations
+tend to be \back of the envelope" in nature; they illus-
+trate the advantages of multipath routing over span-
+ning trees for resilience. For more detailed analysis, we
+refer the reader to work such as [22].
+In the following, we use p as the probability of (in-
+dependent) link loss, and h as the maximum number
+of hops from the sink.

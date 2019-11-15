@@ -1,0 +1,53 @@
+In our vision, large-scale P2P text retrieval starts to rep-
+resent an interesting alternative to existing centralized Web
+search engines. Many research results are now available in
+the literature, and operational systems are being deployed
+(e.g., Faroo[1] or YaCy[10]). In our approach to P2P re-
+trieval we focus on distributing the indexing/retrieval load
+among a large number of interconnected nodes and sup-
+port interesting novel usage scenarios. In such scenarios,
+the peers decide themselves which documents they want to
+make globally searchable and, more importantly, how these
+documents should be indexed and accessed. Thus, the ef-
+fort of handling heterogenous data is distributed over the
+network and can be made more manageable. For instance,
+a specialized digital library might use sophisticated means
+for processing their local documents and use the P2P IR
+infrastructure to make their content searchable within the
+whole P2P network, possibly with speci¯c access rights.
+However, using a structured P2P network for distribut-
+ing the load raises serious challenges for the design of the
+distributed indexing/retrieval mechanisms, especially when
+scalability with respect to bandwidth consumption, storage
+requirements, and load balancing is required. It has been
+shown, for example, that distributed algorithms using tra-
+ditional single-term indexes in structured P2P networks gen-
+erate unscalable network tra±c during retrieval [11], mainly
+because of the bandwidth consumption resulting from the
+large posting list intersections required to process queries
+containing several frequent terms.
+Our indexing strategy [6] relies on a novel approach based
+on two important properties:
+2 the generated distributed index stores posting lists for
+carefully chosen indexing term combinations (hereafter
+called keys), and
+2 the posting lists containing too many document refer-
+ences are truncated to a bounded number of their top-
+ranked elements.
+We showed, both theoretically and experimentally, that
+these two properties guarantee acceptable storage and band-
+width requirements, essentially because the number of in-
+dexing term combinations remains scalable and the trans-
+mitted posting lists never exceed a constant size. In ad-
+dition, our experimental results indicate that the retrieval
+quality remains comparable to state-of-the-art centralized
+search engines.
+We have investigated two key generation techniques that
+are implemented in our prototype:
+2 indexing with Highly Discriminative Keys (HDKs) [7],
+which relies on global document frequencies to populate
+the index, and
+2 Query-Driven Indexing (QDI) [8, 9], which uses query
+popularity statistics to index only frequently queried term
+combinations.
+We describe both techniques in more detail in Section 2.

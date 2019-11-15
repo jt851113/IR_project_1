@@ -1,0 +1,28 @@
+We evaluated the computational cost of our Sort-Filtering method and compared
+the result with all three algorithms proposed by Chan et al. with similar parameter
+setting. The proposed method is implemented in Java. All experiments were
+conducted on a PC with an Intel Pentium 3GHz CPU and 2G main memory,
+which is running on Microsoft Windows XP operating systems. Figure 1, 2, and
+3 are the time to compute k-dominant skyline for synthetic datasets.
+Figure 1 examines the effect of the k value. We observe that our method is
+more efficient than other three methods on all distributions when k varies from 8
+to 14. Because, maintaining the set of skyline objects for OSA incurs large space
+and computation overhead. To compute k-dominant skyline, TSA suffered for
+false candidates elimination. Again, the performance of SRA is not better than
+Sort-Filtering because this approach crucially depends on the choice of proper
+dimension.
+Figure 2 examines the effect of the dimension value. When k is small, TSA,
+RSA and Sort-Filtering are much faster than OSA on all three distributions.
+With increasing dimensionality TSA is several times slower than the other three
+algorithms. As shown in the figure, our Sort-Filtering is more scalable on high
+dimensional data sets.
+In order to evaluate the effect of cardinality on the performance of the four
+algorithms, we use datasets with cardinality 50k, 100k, 150k and 200k. In this
+experiment, we fixed the size of n to 15 and k to 11. Figure 3 shows that when
+the size of the data set increases from 50k to 200k, the computation time of the
+four algorithms maintain a positive correlation. Notice that our Sort-Filtering
+performs best while OSA is the most worst.
+In Figure 4, we show the experimental result on the NBA data set. When
+varying the constraint parameter k, TSA and our Sort-Filtering are the efficient
+algorithm when k < 14, but RSA is worst among the four algorithms when
+k > 15. Sort-Filtering and SRA are faster than other two when k is large.

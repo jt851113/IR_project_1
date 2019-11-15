@@ -1,0 +1,89 @@
+Wireless sensor networks are envisioned to consist of large numbers of devices, each capable
+of some limited computation, communication and sensing, operating in an unattended mode.
+These networks are intended for a broad range of environmental sensing applications from
+weather data-collection to vehicle tracking and habitat monitoring [2, 3, 4]. The key challenge
+in these unattended networks is dealing with the limited energy resources on the nodes.
+With a small set of independent sensors it is possible to collect all measurements from each
+device to a central warehouse and perform data-processing centrally. However, with largescale
+networks of energy-constrained sensors this is not a scalable approach. It has been
+argued that it is best to view such sensor networks as distributed databases [9, 10, 11, 16].
+There may be a central querier/data sink (or a collection of queriers/sinks) which issues
+queries that the network can respond to. Due to energy constraints it is desirable for much
+of the data processing to be done in-network. This has led to the concept of data-centric
+information routing, in which the queries and responses are for named data as opposed to
+the end-to-end address-centric routing performed in traditional networks.
+Depending on the applications, there are likely to be different kinds of queries in these sensor
+networks. The types of queries can be categorized in many ways, for example:
+‧ Continuous queries, which result in extended data flows (e.g. “Report the measured
+temperature for the next 7 days with a frequency of 1 measurement per hour”) versus
+One-shot queries, which have a simple response (e.g. “Is the current temperature
+higher than 70 degrees?”)
+‧ Aggregate queries, which require the aggregation of information from several sources
+(e.g. “Report the calculated average temperature of all nodes in region X”) versus
+Non-aggregate queries which can be responded to by a single node (e.g. “What is the
+temperature measured by node x?”)
+‧ Complex queries, which consist of several sub-queries that are combined by conjunctions
+or disjunctions in an arbitrary manner (e.g. “What are the values of the following
+variables: X, Y, Z?” or “What is the value of (X AND Y) OR (Z)” versus simple queries,
+which have no sub-queries (e.g. “What is the value of the variable X?”) 1
+‧ Queries for replicated data, in which the response to a given query can be provided by
+many nodes (e.g. “Has a target been observed anywhere in the area?”) and queries for
+unique data, in which the response to a given query can be provided only by one node.
+Flooding-based query mechanisms such as the Directed Diffusion data-centric routing scheme
+[5] are well-suited for continuous, aggregate queries. This is because the cost of the initial
+flooding of the interest can be amortized over the duration of the continuous flow from
+the source(s) to sink(s). However, keeping in mind the severe energy constraints in sensor
+networks, a one-size-fits-all approach is unlikely to provide efficient solutions for other types
+of queries.
+In this paper we propose a new data-centric querying mechanism, ACtive QUery forwarding
+In sensoR nEtworks (ACQUIRE). Figure 1 shows the different categories of queries and the
+kinds of queries in sensor networks that ACQUIRE is well-suited for: one-shot, complex
+queries for replicated data. As a motivation for ACQUIRE, we describe two scenarios which
+involve such queries:
+‧ Bird Habitat Monitoring Scenario: Imagine a network of acoustic sensors deployed
+in a wildlife reserve. The processor associated with each node is capable of analyzing
+and identifying bird-calls. Assume each node stores any bird-calls heard previously.
+The task “obtain sample calls for the following birds in the reserve: Blue Jay, Nightingale,
+Cardinal, Warbler” is a good example of a complex (because information is being
+requested about four birds), one-shot (because each sub-query can be answered based
+on stored and current data) query, and is for replicated data (since many nodes in the
+network are expected to have information on such birds). Another example of a complex,
+one-shot query in this network might be “return 5 locations where a Warbler’s
+call has been recorded” (the request for each location is a sub-query).
+‧ Micro-Climate Data Collection Scenario: Imagine a heterogeneous network consisting
+of temperature sensors, humidity sensors, wind sensors, rain sensors, vibration
+sensors etc. monitoring the micro-climate in some deployed area. It is possible to
+put together a number of separate basic queries such as “Give one location where the
+temperature is greater than 80 degrees?”, “Give one location where there is rain at the
+moment in the area?”, and “Give one location where the wind conditions are currently
+greater than 20 mph?” can be combined together into a single batched query. This
+complex query is one-shot (as it asks only for current data) and is also for replicated
+data (since several nodes in the network may be able to answer the queries2).
+The principle behind ACQUIRE is to inject an active query packet into the network that
+follows a random (possibly even pre-determined or guided) trajectory through the network.
+At each step, the node which receives the active query performs a triggered, on-demand,
+update to obtain information from all neighbors within a look-ahead of d hops. As this
+active query progresses through the network it gets progressively resolved into smaller and
+smaller components until it is completely solved and is returned back to the querying node
+as a completed response.
+While most prior work in this area has relied on simulations in order to test and validate dataquerying
+techniques, we have taken here a mathematical modelling approach that allows us
+Figure 1: A categorization of queries in sensor networks: the shaded boxes represent the query
+categories for which the ACQUIRE mechanism is well-suited.
+to derive analytical expressions for the energy costs associated with ACQUIRE and compare
+it with other mechanisms, and to study rigorously the impact of various parameters such
+as the value of the look-ahead parameter and the ratio of update rate to query rate. Our
+mathematical analysis is validated through simulations.
+The rest of the paper is organized as follows: in section 2 we describe some of the related
+work in the literature. We provide a basic description of the ACQUIRE mechanism in section
+3. In section 4 we develop our mathematical model for ACQUIRE and derive expressions
+for the energy cost involved as a function of the number of queried variables, the look-ahead
+parameter, and the ratio of the refresh rate to the query rate. We develop similar models and
+energy cost expressions for two alternative mechanisms: flooding based queries (FBQ) and
+expanding ring search (ERS) in section 5. We first examine the impact of critical parameters
+on the energy cost of ACQUIRE and then compare it to the alternative approaches in section
+6. Our analytical models are validated by simulations in section 7. The average response
+latency incurred by ACQUIRE, ERS and FBQ is analytically modelled in section 8, while
+the caching storage requirements are discussed in section 9. We discuss these results and
+describe the future work suggested we are planning to undertake in section 10. Finally, we
+present our concluding comments in section 11.

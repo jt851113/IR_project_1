@@ -1,0 +1,79 @@
+In many applications, data typically present in the form
+of sequence(s). This may be either a consequence of employing
+a natural temporal ordering among individual data
+(e.g., financial market data) or a result of complying to some
+inherent physical structure (e.g., protein sequences in chromosomes).
+The input sequence is usually very long, which
+demands high scalability of the pattern discovery process.
+As an important research direction of the data mining field,
+mining patterns in long sequential data has been widely
+studied during recent years, which includes but is not limited
+to the following application domains.
+‧ Bio-Medical Study. Each human gene consists a sequence
+of (usually over a half million) amino acids.
+A certain combination of amino acids may uniquely
+define a specific aspect of the biological function or
+appearance of a cell. Identifying such kind of meaningful
+combinations plays a crucial role in understanding
+the fundamental of life towards a deeper level, which
+has been the goal of many biologists for many years.
+By viewing the chromosomes as sequences of amino
+acids, the above task can be transformed into mining
+sequential patterns that satisfying some user-specified
+criteria.
+Performance Analysis. Many system-monitoring applications
+involve collecting and anal~/zing attributes
+whose values evolve over time. Patterns of system
+state transition has been proved to be very useful in
+predicting system behavior from a recent state history
+and in preventing disastrous circumstances from occurring.
+‧ Client Profile. User profiles can be built based on the
+discovered pattern on trace logs. Such knowledge can
+either be utilized to develop an optimal proxy caching
+scheme or be used to provide better market targeting
+tools.
+As a matter of fact, noises exist in most applications, which
+adds considerable challenges to the pattern mining process
+simply because many important patterns may be concealed
+if the model employed fails to accommodate noises properly.
+Depending on the type of application and the user's interests,
+tolerable noises may present in different formats and
+hence require different models accordingly.
+1. Injection off noise. A typical example of noise injection
+is that, a client may accidentally access some irrelevant
+web page by mistake when he/she surfs on the Internet.
+Such access entries may be regarded as random
+noises inserted in the long traces during the process of
+mining meaningful patterns from the collected trace
+logs.
+2. Over-population of uninteresting patterns. Different
+symbols (or events) may occur at vastly different frequencies
+by nature. For example, the sales of lamps
+is typically much higher than that of big furniture.
+However, even though patterns involving less expansive
+goods (such as lamps) occur more frequently, they
+may be considered not very interesting if the occurrences
+of such patterns are within people's expectation.
+In contrast, unexpected patterns involving furniture, if
+any, may be of great interests (probably because of a
+considerably high profit margin) even though such patterns
+may have relatively small number of occurrences
+in the data. Unfortunately, the significance of an infrequent
+but interesting pattern can be easily diluted by
+the "over-populated" unwanted patterns. These unwanted
+patterns can be viewed as "noise" in a broad
+sense because their presence obstructs (to some extent)
+the discovery of interesting infrequent patterns.
+To address above issues, powerful model(s) that suits each
+specific purpose is demanded to provide clear separation between
+useful patterns and noises, and efficient mining algorithms
+are also needed to make these new models applicable
+to long data sequences. As mentioned before, the sequence
+can be very long and can easily range to more than hundreds
+of millions of symbols. This may result in very long
+patterns that may contain thousands of symbols. Therefore,
+any pattern discovery algorithm has to scale well with
+respect to both the length of the input sequence and the
+length of potential patterns. In this paper, we will focus on
+each type of noise in a separate section and present some
+recent advances to meet the challenge.

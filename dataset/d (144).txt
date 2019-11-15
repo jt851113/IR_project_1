@@ -1,0 +1,26 @@
+One area for future work is performing more precise region
+verication using intersection (e.g., triangulation or trilater-
+ation). The idea is that if verier v1 can verify ROA(v1; )
+and v2 can verify ROA(v2; ), then together they should be
+able to verify ROA(v1; ) \ ROA(v2; ). The intuition is
+simple: if a prover is veried to be present in both regions,
+then it must be in their intersection. The allure of this ap-
+proach is considerable: under our current scheme, a verier
+node is required inside R, whereas in an intersection-based
+scheme, in principle nodes at the edges of, or even outside,
+R might suce.
+There are signicant challenges to be surmounted before
+such an approach can be made compatible with security,
+though. First, the verications would have to be done si-
+multaneously; if not, the prover could move from location
+to another between the two runs. One way to do this is to
+have the prover receive both nonces and return a hash of
+their concatenation to both veriers, who would have ex-
+changed nonce information in advance. Another problem
+is that intersection-based protocols are not robust against
+collusion attacks by attackers with multiple nodes: such an
+adversary may legitimately have one node in ROA(v1; )
+and one node in ROA(v2; ) independently without having
+any presence in ROA(v1; )\ROA(v2; ). It seems there re-
+mains considerable work to be done before intersection can
+be applied in a full protocol.

@@ -1,0 +1,32 @@
+A sensor network consists of a large number of sensor
+nodes [27]. Individual sensor nodes (or short, nodes)
+are connected to other nodes in their vicinity through
+a wireless network, and they use a multihop routing
+protocol to communicate with nodes that are spatially
+distant. Sensor nodes also have limited computation
+and storage capabilities: a node has a general-purpose
+CPU to perform computation and a small amount of
+storage space to save program code and data.
+We will distinguish a special type of node called a
+gateway node. Gateway nodes are connected to components
+outside of the sensor network through longrange
+communication (such as cables or satellite links),
+and all communication with users of the sensor network
+goes through the gateway node.4
+Since sensors are usually not connected to a fixed
+infrastructure, they use batteries as their main power
+supply, and preservation of power is one of the main
+design considerations of a sensor network [34]. This
+makes reduction of message traffic between sensors
+very important.
+4Relaxations of this requirement, such as communication
+with the network via UAVs or via an arbitrary node are left
+for future work.
+SELECT {attributes, aggregates}
+FROM {Sensordata S}
+WHERE {predicate}
+GROUP BY {attributes}
+HAVING {predicate}
+DURATION time interval
+EVERY time span e
+Figure 3: Query Template

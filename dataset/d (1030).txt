@@ -1,0 +1,28 @@
+Load balancing is a well studied topic in P2P system. In this paper,
+load balancing is accomplished mainly via BATON’s protocol,
+which has been shown to be effective for data indexes. However,
+indexing range intervals incurs new load balancing problem. As
+discussed in [23], arbitrarily small ranges may be mapped to arbitrarily
+large interval. For example, range [70, 80) is mapped to
+interval [0, 180)(node G) in Figure 5. To solve this problem, we
+adopt a partitioning strategy.
+Definition 4.6. Range Index Entry Partitioning
+Suppose node n’s minimal value and maximal value for tuple-level
+index are Tmin and Tmax respectively, and its subtree’s range is [L,
+U). A range entry R=[l, u) at node n should be partitioned i.f.f.
+With this definition, range [70, 80) will be partitioned into subranges
+[70,72) and [72,80), which are indexed at nodes F and G
+respectively.
+Theorem 4.4. A range entry is partitioned at most once according
+to the Definition 4.6.
+Proof. (sketch) After one partition, suppose the subrange r’ is
+routed to node m’, it can no longer be partitioned. Otherwise, we
+can find a child of m’ whose subtree range also contains r’. This
+conflicts with Algorithm 3, which returns the first node that contains
+the range.
+As BATON is a balanced tree, in most cases, search space is partitioned
+evenly. Range partition defined in Definition 4.6 is effective
+to balance the load. In addition, the partial indexing strategy
+also lightens the load of large range interval. As the index is designed
+to answer the hot queries, the approximate range index is
+therefore seldom used.

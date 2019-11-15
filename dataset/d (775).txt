@@ -1,0 +1,145 @@
+In the previous section, we studied the problem of selecting
+views and view locations in a given aggregation tree, such
+that the total communication needed for processing a set of
+given aggregate queries is minimized. The effectiveness of the
+solution depends not only on the particular view selection, but
+also on the choice of the aggregation tree. In this section, we
+study tree selection, the problem of computing an optimal tree
+in the underlying sensor network that connects the root with
+the set of active sensors.
+We consider two performance criteria for determining the
+quality of an aggregation tree, both based on the measure
+of energy consumed. One criterion is to minimize the total
+energy consumed for processing the given query set. Another
+criterion is to minimize the maximum energy consumed at a
+node, aimed at maximizing the network lifetime (where the
+lifetime is defined as the time until the first node dies).
+Before we discuss the challenges in tree selection, we
+present our model for energy consumption. We assume that
+the energy consumed in communicating bits on a link is
+of the form is a fixed cost associated
+with every message exchange and
+is the per-bit transmission
+and reception cost. Both the parameters and
+are sumsof two components each, 
+and
+, respectively,
+where is the part of the fixed cost (resp., perbit
+cost) associated with the sender and is
+the part associated with the receiver. In the following, we
+make the simplifying (if somewhat unrealistic) assumption that
+; that is, the energy consumed in the transmission and
+reception of
+bits on a link is proportional to
+, thus implying
+that minimizing the total communication cost is equivalent to
+minimizing the total energy consumed.
+As discussed in Section II, we assume that the nodes of
+the sensor network are organized in a grid. We first note
+that the general problem of tree selection in such a network
+for minimizing total energy consumed is intractable: an easy
+reduction from the NP-complete rectilinear Steiner tree problem
+[10] shows that tree selection is NP-hard even for the
+case of a single query. In the remainder of this section, we
+present a series of examples that indicate how the effectiveness
+of aggregation trees varies with problem instances and the
+performance criteria.
+A given instance specifies an underlying sensor network
+with a designated root 
+and a set  of queries covering a set
+ of sensors. For a given tree  that connects every sensor
+node included in a query in  to the root, the total cost (or
+the maximum cost) depends on the particular view selection
+algorithm used over  since different solutions may differ in
+the amount of communication along the tree links. Here we
+assume that the total cost (resp., maximum cost) is that of an
+optimal view selection algorithm3.
+Example: Consider a sensor network consisting of a grid with   sensor nodes. We let
+denote the node in row
+, column 	 ,. Suppose the root server is
+the center
+. We consider different query set instances, in
+each of which all the sensor nodes are active; thus the desired
+tree is, in fact, a spanning tree. We assume that all the update
+probabilities and the query probabilities are 1.
+1)  contains the single set of all nodes. That is, the only
+query of interest is an aggregate of all the nodes. In this
+case, every spanning tree has the same total cost and is
+hence optimal. In particular, the tree   consisting of all
+the vertical edges together with the horizontal edges on
+row
+<
+is an optimal tree (see Figure 2(a)).
+2)  is the same as  , but the performance criterion is
+different; it is network lifetime. Tree   is no longer
+optimal. In a “snakelike” tree   (see Figure 2(b)),
+each node sends and receives at most one message and
+the root receives two messages, while in   , certain
+intermediate nodes receive two messages and send one
+message and the root receives four messages. The exact
+benefit of   over   depends on the ratio of
+.
+3)  contains all the singleton sets. That is, every query
+seeks the data on a single node. In this case, a tree with
+optimal total cost is a shortest path tree. Thus, tree  
+has optimal total cost. The same can be said for tree
+  consisting of all the horizontal edges together with
+the vertical edges on column
+<
+(see Figure 2(c)). Both
+the trees have a cost equal to the sum of distances from
+each node to the center. In the given network, it is 12;
+for a general
+, 
+grid the cost is
+. Clearly,
+the snakelike tree   is very poor, incurring a total cost
+. equals
+. That is,
+every query is an aggregate on a column. In this case,
+one can see that tree  2 (same as   ) is a tree with
+optimal total cost < (see Figure 2(d)) while tree   has
+total cost
+< 
+and is suboptimal.
+5) In all the above instances, a tree with optimal total cost
+is a shortest path tree. However, this is not necessary.
+Suppose the root is at node
+and the query set >=
+contains the query
+and a set
+consisting of each of the other nodes (see Figure 2(e)).
+For this instance, in a tree  = with optimal total cost,
+the node
+is connected to the root
+via the
+long path
+6) As a final example, we consider a query set >A with
+root
+in which the queries are not disjoint (see
+Figure 2(f)). For this instance, the tree   has total cost
+. This is because the bases of the projection of the
+queries on to columns 0 and 2 are both of size two;
+consequently, the two horizontal edges on row
+<
+have
+to carry
+information units, one corresponding to a
+column and the other corresponding to a node in row
+. In contrast, tree  A has a cost of  only because only
+one subtree rooted at a child of the root has a basis of
+size more than one; in particular, only the vertical edge
+carries two units of information, while
+every other edge carries one.
+The above examples indicate that the optimal trees have
+diverse characteristics, depending on the particular query in
+stance and the performance criterion being considered, even
+for the special case when the set of active sensors includes all
+the nodes.
+To close this section, we note that it is not necessary to
+restrict our attention to trees; indeed, when queries are not
+disjoint the generalization to DAGs can be beneficial. It is
+not difficult to generalize the example of  A above so that a
+DAG in which the shared sensor value is sent to two neighbors
+yields a lower cost solution than any tree. Aggregation DAGs
+are the subject of future research.

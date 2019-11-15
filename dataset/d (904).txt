@@ -1,0 +1,3 @@
+In this section we describe a method for constructing desirable
+message-pruning hierarchy trees, that is, trees for which
+both the communication cost and the query delay are low.

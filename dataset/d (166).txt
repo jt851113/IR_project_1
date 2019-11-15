@@ -1,0 +1,32 @@
+We evaluate the computational costs of the algorithms on
+three different distributions with respect to the constraint
+parameter k. From the results in Fig. 4, we observe that
+TSA is more efficient than the other two methods on all
+distributions when k < 12. This is because the dominant
+skyline points can prune almost all other points in the first
+scan (as implied in Theorem 4.2). However, as k increases,
+TSA becomes slower than SRA since there are too many
+false candidates left after the first scan. It is even worse
+than OSA on anti-correlated data set when k = 14. The
+performance of OSA is stable in all cases because the computation
+of free skyline cannot be reduced with small k, and
+this computation dominates the computation time.
+In Fig. 5, we show the influence of dimensionality on the
+efficiencies of the three algorithms. When k is small, both
+TSA and SRA are much faster than OSA on all three distributions.
+When k is close to the dimensionality d, TSA is less
+efficient than OSA. With increasing dimensionality, this disadvantage
+grows so great that TSA is several times slower
+than the other two algorithms on 20-dimensional data set
+with k = 19. As shown in the figure, SRA is more scalable
+on high dimensional data sets.
+We also study the effect of the size of the datasets on the
+performances of the three algorithms. The results, depicted
+in Fig. 6, show that when the size of the data set grows from
+50K to 200K, the computation time of the three algorithms
+all increase by about one order of magnitude. Moreover,
+the relative performance of the schemes remain largely the
+4http://www.basketballreference.com/
+5http://movielens.umn.edu/
+same as that in earlier experiments: TSA performs best
+while OSA is the most inferior.

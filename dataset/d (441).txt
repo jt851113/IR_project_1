@@ -1,0 +1,98 @@
+Periodic pattern discovery is an important problem in mining
+time series data and has wide applications. A periodic pattern
+is a list of ordered events, which repeat itself in the event sequence.
+It is useful in characterizing the cyclic behavior of the
+time series. In practice, not every portion in the time series
+may contribute to the periodicity. For example, a company’s
+stock may often gain a couple of points at the beginning of
+each trading session but it may not have much regularity at
+later time. This kind of looser periodicity is often referred to
+as partial periodicity. Moreover, due to some random noise,
+a pattern may not always be repeated perfectly. In turn, the
+event sequence can be viewed as a series of perfect pattern
+repetitions with a few random replacements
+of “replacement” is below some reasonable threshold, we may
+regard that the pattern still exhibits in the event sequence.
+As a newly developed research area, most previous work
+on mining time series data addresses the issue by creating a
+mapping to the association rule mining technique and therefore
+uses the support and confidence as the metrics to identify the
+Or equivalently, the event sequence would become a series of perfect repetitions
+of some pattern after a few replacements (of events).
+significant patterns from the rest. Most association rule mining
+algorithms favor frequently occurred event(s) due to the nature
+of the problem. However, patterns involving infrequent events
+may also be as significant as (or even more significant than)
+frequent events in an event sequence. This issue becomes more
+critical when different events occur at divergent frequencies.
+Information gain is introduced in [3, 4, 5, 6] to measure
+the importance/significance of the occurrence of a pattern.
+The information gain of an occurrence of a rare
+event is high while the information gain of the occurrence
+of a frequent event is low. Thus, we are able to find
+the statistically significant patterns with the information gain
+threshold. However, the major limitation of this model is
+that it does not take into account where the occurrences
+are in the sequence. Let’s take a look at two sequences:
+The elements in
+the two sequences are identical. The only difference is the order
+of the events. The pattern
+repeats perfectly in the
+first half ofwhile it scatters in 
+. The two patterns have
+the same information gain in the two sequences. In some applications
+(e.g., repeats discovery in bio-informatics domain),
+a series of consecutive repeats are considered more significant
+than the scattered ones. That is, there is some “penalty” associated
+with the gap between pattern repeats [2]. As a result,
+we need a measurement that can make such a distinction. In
+this paper, we introduce the measure of generalized information
+gain (GIG) to capture the significance of a pattern in a sequence/
+subsequence. The occurrence of a pattern will be given
+a position GIG while a mis-occurrence (or a gap) will generate
+a negative GIG. The overall generalized information gain will
+be the aggregate of all occurrences and mis-occurrences of the
+pattern in a sequence/subsequence.
+
+  Since the characteristics of a sequence may change over
+time, many patterns may only be valid for a period of time.
+The degree of significance (i.e., generalized information gain)
+of a pattern may be diluted if we only consider the entire event
+sequence. In addition, a user may be interested not only in a
+significant pattern, but also where/when the pattern is significant
+as well. In a DNA sequence, researchers are also interested
+in which region a pattern is significant. The identification
+of significant pattern in a subsequence is of great importance
+in many applications. However, most previous research
+
+focused on discovering patterns that are significant over the
+entire data sequence[6]. In this paper, we relax the model by
+allowing a pattern to be significant during a contiguous portion
+of the entire sequence. A user is asked to specify the minimum
+GIG a significant pattern must carry over a subsequence
+of data. Upon satisfying this requirement, the subsequence(s)
+that maximizes the GIG of a pattern will be identified. In the
+previous example, the pattern is very significant in the
+first half of, but may not be significant over the entire sequence.
+Although the generalized information gain is a more meaningful
+metric for the problems addressed previously, it does
+not preserve the downward closure property (as the support
+does).
+take advantages of the standard pruning technique developed
+for mining association rules. The observation that the triangle
+inequality is still preserved by the generalized information
+gain motivates us to devise a threefold algorithm as the core of
+our pattern discovery tool, InfoMiner+.
+
+1. First, the significant patterns involving one event are discovered.
+
+2. Next, candidate patterns involving multiple events are
+generated based on the triangle inequality.
+
+3. All candidate patterns are validated and for each pattern
+which is significant, the corresponding subsequence containing
+the pattern is also identified.
+
+The remainder of this paper is organized as follows. The
+problem is formulated in Section 2 while our approach is presented
+in Section 3. We conclude this paper in Section 4.

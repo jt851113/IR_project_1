@@ -1,0 +1,58 @@
+Results for this case appear in table 2. We assume that the
+energy consumed in computing each movement prediction
+at the base-station mote is given by Cm.
+TES4 = [1800-(972+595)]  Tu + 81  Rcp + 60  Rmp
+= 24.04 mJ
+TES8 = [1800-(924+645)]  Tu + 77  Rcp + 66  Rmp
+= 23.98 mJ
+TES12 = [1800-(1020+525)]  Tu + 86  Rcp + 54  Rmp
+= 25.88 mJ
+TES14 = [1800-(864+720)]  Tu + 72  Rp + 58  Rmp
+= 22.30 mJ
+
+The total energy consumed at base-station mote is the sum
+of the energy consumed in receiving updates, generating pre-
+dictions, and sending predictions. For the sake of simplic-
+ity, we assume for all updates, except ones that result in
+constant-value predictions, the amount of processing per-
+formed by the block-matching code is the same. This is
+clearly the worst-case assumption. The total energy con-
+sumed at the base station is given by:
+TEb = (233 + 231 + 255 + 216)  Ru +
+(81 + 77 + 86 + 72)  Tcp +
+(60 + 66 + 54 + 58)  Tmp +
+(233 + 231 + 255 + 216 - 81 - 77 - 86 - 72)  Cm
+= 935  Ru + 316  Tcp + 238  Tmp + 619  Cm
+= 69012 + 619  Cm
+
+We can determine the value of Cm to a good approxima-
+tion as follows: The tools provided with the Motes allow
+one to generate a map of the Mote's memory. Using this
+memory map, one can determine the size of any function
+that is part of the program. We determined that the block-
+matching function (for computing movement prediction) oc-
+cupied approximately 1,200 bytes of program memory. In
+the worst case, every byte will be a separate machine in-
+struction. Thus, the function has 1,200 machine instruc-
+tions. Since we consider only two motion-vectors (<dx=1,
+dy=0> and <dx=-1, dy=0>), at worse, all the instructions
+in the block-matching code will be executed twice for ev-
+
+ery update received. Thus, the worst-case cost of Cm is the
+energy consumed in executing 2x1200 instructions. This is
+given by:
+
+With this worst-case computational cost, we can compute
+the energy consumed at the base-station mote. This is given
+by:
+
+This represents an upper bound on the energy consumed at
+the base-station mote. The total energy consumed in the
+system is given by:
+
+
+Thus, the total energy consumption in this case is approxi-
+mately 5.3 times lesser than one in case#1, and 30% lesser
+than one in case#2. We expect case#3 to perform signif-
+icantly better than the other cases when more sensors are
+involved.

@@ -1,0 +1,27 @@
+We characterized and measured various privacy aspects
+across eleven OSNs. Users willingly provide personal information
+without a clear idea of who has access to it or how
+it might be used. The range of privacy settings that OSNs
+provide were found to be permissive since default settings
+allow access to strangers in all OSNs. We studied how users
+make use of privacy controls to limit access and found that
+between 55 and 90% of users in OSNs still allow their pro-
+le information to be viewable and 80 to 97% of users allow
+their set of friends to be viewed. We found a strong negative
+correlation between regional network size in Facebook
+and the use of these privacy settings to limit access. Much
+like traditional Web sites, third-party domains track user
+activity pervasively in OSNs.
+Various extensions are now feasible. We proposed a new
+idea to better match what information a user makes available
+with what is needed by other users and applications.
+While focusing on regional Facebook networks, we also did
+preliminary investigation of a college (5900 users) and a
+high school network (2200 users) to which we had access
+and found 80% of users allowed their prole to be viewed
+for these much smaller networks. Techniques to protect privacy
+leakage to third-party domains for traditionalWeb sites
+was investigated in [10] and could be extended to OSNs.
+Finally looking at privacy implications for interactions between
+OSNs, such as between Facebook and Twitter, is another
+direction of future work.

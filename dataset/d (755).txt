@@ -1,0 +1,133 @@
+Velo’v is a bicycle rental service run by the urban community of Lyon, France. Velo’v
+stations are spread over Lyon and its environment. At any of these stations, the users
+can take a bicycle and return it to any other station. Whenever a bicycle is rented or
+returned, this event is logged. We obtained parts of these logs (e. g., no user identification
+to preserve privacy) recorded between May 27th 2005 (when the system
+was opened to the public) and December 17th 2007. They represent more than 13.1
+millions rides. The earliest records relate to the users discovering Velo’v. To study
+the network usage in “normal” conditions, these earliest records, until December 17th
+2005, were ignored. Doing so, two full years are kept and aggregations do not favor
+any part of the year (along which the network usage evolves). Many records stand for
+rides from a station to itself. These rides usually last a few seconds. Among others,
+they can be explained by users who are not satisfied by the quality of the bicycle they
+have just rent (e. g., a flat tire). Because, from a given station, the most frequent rides
+are to itself, keeping these records influence a lot any normalization procedure. That is
+why these records are removed but, after the post-processing steps, the related routes
+are all claimed frequent, i. e., appended to the relation. A few more abnormal records
+(with incoherent dates or with stations that are closed to the public) are removed as
+well. About 10.2 million records remain after these first steps.
+We arbitrarily decide to date a ride with the time when the bicycle was returned. To
+discover patterns that depend on both this time and the day of the week, the data are
+aggregatedw.r.t. these two scales.More precisely, one directed graph is built per period
+of time (a one-hour period was chosen) and per day of the week. For instance, one
+of these graphs presents the rides between nine o’clock and ten o’clock on Mondays.
+The vertices correspond to the Velo’v stations. The edges are labeled with weights: the
+total number of rides from the tail vertex (departure station) to the head vertex (arrival
+station) during the considered period of time and day of the week. The global activity
+of the Velo’v network varies a lot between the different days of the week. For instance,
+there are 51.3 more rides on Fridays than on Sundays. This difference is even greater
+between the time periods. For instance, there are about 22 times more rides between
+6 and 7 pm than between 5 and 6 am. This global behavior is known. To ignore it,
+the weights are normalized so that their sum is the same whatever the graph. In this
+way, when the data are binarized, the related Boolean predicate decides whether routes
+are frequent w.r.t. the period of time and the day of the week. The distribution of the
+rides w.r.t. the stations is far from being constant too. One reason is structural. Some
+stations can contain/receive many more bicycles than others. Because no bicycle can
+be rented from an empty station and no bicycle can be returned to a full station, the
+largest stations imply more rides. Furthermore they are better known by the users,
+who want to minimize the risk of finding an empty or a full station. Another reason
+is the progressive installation of the stations. In December 17th 2005, there were 172
+stations in activity. In December 17th 2007, they were 315. Because some stations
+were closed, there are 327 different stations in the dataset. Obviously a station that
+opened little before December 17th 2007 cannot be involved in as many records as
+another one that has been in activity since the beginning. A local binarization partially
+handles these differences. The computation of a p-value inspires the details of this
+technique. It considers the vertices one by one, computes the sum S of the weights of
+both its incoming and outgoing edges, and claims frequent the routes related to the
+edges with the greatest values and whose sum is just beyond 0.1 × S. By definition,
+this procedure keeps at least one edge involving each station. In average, 191 edges
+per station are kept (still excluding the reflexive routes). The resulting 4-ary relation,
+namelyRVelo’v, contains 117,411 4-tuples (including the reflexive routes, which were
+previously put to one side), hence a = 0.7% density. Table 3 summarizes
+some of its characteristics and lists the minimal sizes that the extracted patterns
+are constrained to have in the subsequent experiments.
+Furthermore, to focus on the most interesting closed ET-4-sets, the specificities of
+the dataset are translated to additional constraints. Indeed, RVelo’v is not only a 4-ary
+relation but a dynamic graph too. In this context, ET-4-sets which are symmetric w.r.t.
+the two vertex attributes are particularly interesting: they are quasi-cliques. ET-4-sets
+that involve contiguous (or almost-contiguous) periods of times are more relevant too.
+It turns out that these two constraints are piecewise (anti)-monotone (see Cerf et al.
+(2009c, 2010)). As a consequence, Fenster efficiently handles them, i. e., can further
+prune the search space thanks to them. In our experiments, the almost-contiguity
+constraint is parametrized with a maximal authorized gap of one hour, i. e., the time
+periods involved in a pattern can be browsed in a sequence where at most one hour
+separates a period from the next one (e. g., {3–4pm,4–5pm,6–7pm,8–9pm} is a valid
+set of time periods, whereas {3–4pm,4–5pm,8–9pm} is not).
+Tables 4 and 5 list, with and without the symmetry and/or the almost-contiguity
+constraint(s), the number of patterns in RVelo’v and the time to extract them. They satisfy
+as well the minimal size constraints indicated in Table 3. The parameters for noise
+tolerance, given in the first column, follow the order (day, time, dep, arr). Although
+it is not mandatory, it usually makes sense to toleratemore absent tuples (i. e., to choose
+a greater i parameter) in a hyperplane of the pattern that is constrained to contain
+more tuples. In these experiments, for instance, the minimal size constraints force the
+hyperplane related to a day of the week to contain at least 3 × 3 × 3 = 27 4-tuples,
+whereas any orthogonal hyperplane (i. e., related to any of the three other attributes of
+RVelo’v) of a pattern can have as few as 2 × 3 × 3 = 18 4-tuples. That explains our
+choice, for a given experiment, of a day parameter that roughly is greater
+than the other i parameters, which are all set to a same value. When much noise is tolerated,
+the symmetry constraint greatly reduces the running times. Notice also that this
+gain does not occur to the detriment of the discovery of interesting patterns. Indeed,
+the closed 4-sets, in RVelo’v, naturally are symmetric. The last column of Tables 4 and
+5 give, among the closed ET-4-sets extracted without the symmetry constraint, the
+proportion of them that actually are symmetric. This high proportion decreases when
+noise is tolerated. This actually is a good effect of the constraint. Indeed, when more
+noise is tolerated, some “naturally” symmetric patterns are extended with additional
+departure or arrival stations that noise affects (false-positive 4-tuples). The symmetry
+constraint filters out these poorly relevant patterns. The almost-contiguity constraint
+has a same effect on the number of output patterns and the time to extract them.
+The symmetry and the almost-contiguity constraints not being implemented in
+DCE, this algorithm was only run with the minimal size constraints. Unfortunately, it
+does not scale to large relations such as RVelo’v.Without any tolerance to noise, it had
+not output any pattern after 72 h of (unterminated) computation. In contrast, Fenster
+only requires 3 min 58 s to discover the 13 closed 4-sets. This shows that Fenster
+opens up applicative perspectives that are out of reach of DCE for performance reasons.
+By only looking at the number of closed ET-4-sets, that Fenster outputs, one could
+believe that a higher tolerance to noise means larger collections, hence a tougher interpretation.
+This is not really the case. First of all, and as discussed earlier, these numerous
+patterns can be agglomerated with amethod such as Cerf et al. (2009b). Then, even
+without relying on such a post-process, the analyst can focus on the largest patterns
+Fenster outputs. Indeed, the more absent 4-tuples tolerated in the cover of a pattern,
+the larger the size of the closed ones. As a consequence, greater size constraints can be
+use. E. g., with  = (4, 3, 3, 3), only 17 symmetric closed ET-4-sets hold during five
+days or more. With the same parametrization, only five patterns contain four stations
+or more. Figures 21 and 228 depict two patterns respectively corresponding to these
+two settings. Larger red dots indicate the geographic positions of the stations involved
+in the patterns.
+The pattern in Fig. 21 involves three stations. One of them (Station 7034) is at the
+east side of the Rhone river (where many floating bars can be found) and near the university.
+The two other stations are the largest ones near two places, which are famous
+for their shops and pubs: the “Opera” (Station 1002) and the “Place Bellecour” (Station
+2001). This pattern indicates that, in the evening, from Monday to Friday (i. e., every
+working day), many bicycles flow between these three stations. A probable explanation
+is that most of these rides are done by students who like having a drink after their
+courses. On the contrary, the pattern in Fig. 22 only holds during the week-ends.Again,
+the “Opera” and the “Place Bellecour” are involved. Two other famous places are part
+of the pattern: the “Saint Jean” cathedral (Station 5004), in the beautiful “Old Lyon”,
+and the main entrance of the largest park in Lyon: the “Parc de la Tete d’Or” (Station
+6002). This pattern clearly stands for pleasure trips during the week-end afternoons.
+It is interesting to study the effect of a greater tolerance to noise in the discovery of
+these two patterns. To do so, their Jaccard distances, to every extracted (symmetric)
+closed ET-4-set, are computed. Table 6 lists the closest patterns for every tested tolerance
+to noise. When several patterns are at the same Jaccard distance, every variation
+is given. With no tolerance to noise, the closest closed 4-sets are very different from
+the ones discovered with  = (4, 3, 3, 3). The pattern represented in Fig. 21 is missing
+many days of the week. More precisely, only two days are part of the closest exact
+closed 4-set. This issue is progressively diminished when more noise is tolerated (three
+days with  = (1, 1, 1, 1), four days with  = (3, 2, 2, 2) and, finally, all five working
+days with  = (4, 3, 3, 3)). With less tolerance to noise, the pattern represented in
+Fig. 22 is not only missing elements (in particular the four involved stations are only
+discovered with  = (4, 3, 3, 3)) but also includes additional elements (in bold letters
+in Table 6). With no tolerance to noise, the closest discovered pattern actually is not
+to be related to the one represented in Fig. 22. It is a fragment of another large closed
+ET-4-set, ({Sat., Sun.}, {3–4pm, 4–5pm, 5–6pm, 6–7pm, 7–8pm}, {Stations 1002,
+6002, 3044}), that is extracted with  = (4, 3, 3, 3).

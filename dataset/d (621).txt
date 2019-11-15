@@ -1,0 +1,18 @@
+In Section III, we have allowed only one level of clustering;
+we now extend the algorithm to allow more than one level of
+clustering. Assume that there are h levels in the clustering
+hierarchy with level 1 being the lowest level and level h being
+the highest. In this clustered environment, the sensors
+communicate the gathered data to level-1 clusterheads (CHs).
+The level-1 CHs aggregate this data and communicate the
+aggregated data or estimates based on the aggregated data to
+level-2 CHs and so on. Finally, the level-h CHs communicate
+the aggregated data or estimates based on this aggregated data
+to the processing center. The cost of communicating the
+information from the sensors to the processing center is the
+energy spent by the sensors to communicate the information to
+level-1 clusterheads (CHs), plus the energy spent by the level-1
+CHs to communicate the aggregated information to level-2
+CHs, …, plus the energy spent by the level-h CHs to
+communicate the aggregated information to the information
+processing center.

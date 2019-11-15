@@ -1,0 +1,67 @@
+We described TD-DES, an integrated scheduling and data
+dissemination model and protocol for multi-hop networks of
+energy-constrained devices such as sensor networks. The
+model is based on event-based communication, one that integrates
+the division of the shared wireless medium access
+based on network topology with the application specific semantics
+of the data to be disseminated.
+The network is arranged as an event dissemination tree,
+with nodes subscribing to the event types they are interested
+in. The event scheduler dynamically allocates and
+multiplexes upstream and downstream time slots for each
+event type. Power consumption among wireless nodes is reduced
+by allowing each node to listen to the wireless channel
+during the transmission times of data items which interest
+them (or their topological dependents)– at other times, they
+are allowed to save energy by powering down their radios.
+We also presented preliminary performance results, based
+on a detailed simulation model, that demonstrate significant
+potential power savings of the proposed approach. We argue
+that while TD-DES is efficient from a power consumption
+perspective, it clearly suffers generally from worse multi-hop
+dissemination latencies for generated events than does its
+non-scheduled counterpart network (which provides optimal
+latency at the expense of maximal power consumption).
+In addition to conducting a more comprehensive quantitative
+study of the proposed approaches, we plan to address
+the following issues as part of our future work:
+Implementation and Clock Synchronization. We
+are currently implementing our protocols on top of Mica
+sensors (a.k.a. motes) [1] running TinyOS [5]. A key implementation
+issue that needs be addressed is clock synchronization.
+TD-DES calls for each child to have its clock internally
+synchronized with that of its parent for the protocols
+to work correctly. The protocols require that the clock errors
+are insignificant relative to the duration of individual
+time slots. While traditional approaches designed for wired
+networks (e.g., NTP [18]) may not provide sufficiently high
+precision, recent proposals that were designed specifically
+for wireless sensor networks [9, 8] lower the error rates down
+to several microseconds. Such a precision is good enough for
+our purposes, because we expect a typical slot duration to
+be in the order of milliseconds.
+Mobility and Reliability. In this initial study, we have
+focused only on static topologies. The dissemination tree
+construction protocol allows dynamic topology changes and
+can therefore cope with node mobility. On the other hand,
+situations may arise when packets may not arrive to their
+destinations during node movements. Reliable delivery can
+be ensured by using a straightforward ack-retransmit scheme
+integrated with caching: if a node received an event with
+a sequence number, but had not received the previous sequence
+number, it might request its parent to resend the
+event. The challenge here is to ensure reliability in such a
+way that the power efficiency of the system is not compromised.
+Another related reliability concern arises due to the use of
+a tree-based dissemination topology. Even though the tree
+structure is self organizing and can adapt quickly to node
+failures and disconnections, mesh-based organizations [28]
+are inherently more reliable as they provide multiple paths
+between network nodes. Extending the protocols to mesh
+topologies is an interesting research direction.
+Caching and Aggregation. Recent work has focused
+on upstream aggregation techniques [26, 18] to reduce the
+volume of data transmission. TD-DES can support upstream
+aggregation as well as much less studied downstream
+aggregation where the key idea is to aggregate multiple events
+of the same type at the root before propagating them downstream.

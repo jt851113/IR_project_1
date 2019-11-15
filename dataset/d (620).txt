@@ -1,0 +1,54 @@
+We simulated the algorithm described in Section III for
+networks with varying sensor density ( d ) and different values
+of the parameters p and k . In all these experiments, the
+communication range of each sensor was assumed to be 1 unit.
+Fig. 1 shows the output of one of these simulations of our
+algorithm with parameters p and k set to 0.1 and 2 on a
+network of 500 sensors distributed uniformly in a square area
+of 100 square units.
+To verify that the optimal values of the parameters p and
+k of our algorithms computed according to (10) and (12) do
+minimize the energy spent in the system, we simulated our
+clustering algorithm on sensor networks with 500, 1000 and
+2000 sensors distributed uniformly in a square area of 100 sq.
+units. Without loss of generality, it is assumed that the cost of
+transmitting 1 unit of data is 1 unit of energy. The processing
+center is assumed to be located at the center of the square area.
+For the first set of simulation experiments, we considered a
+range of values for the probability ( p ) of becoming a
+clusterhead in the algorithm proposed in Section III. For each
+of these probability values, we computed the maximum number
+of hops ( k ) allowed in a cluster using (12) and used these
+values for the maximum number of hops allowed in a cluster in
+the simulations. The results of these simulations are provided in
+Fig. 2. Each data point in Fig. 2 corresponds to the average
+energy consumption over 1000 experiments. It is evident from
+Fig. 2 that the energy spent in the network is indeed minimum
+at the theoretically optimal values of the parameter p
+computed using (10) (let us call this optimal value popt ),
+which are given in Table I for 500, 1000 and 2000 sensors in
+the network.
+Most of the clustering algorithms in the literature (LCA [2],
+LCA2 [8] and the Highest Degree [9, 24] algorithms) have time
+complexity of O(n) , which makes them less suitable for
+sensor networks that have large number of sensors. The Max-
+Min d-Cluster Algorithm [5] has a time-complexity of O(d) ,
+which may be acceptable for large networks. Hence, we have
+compared the performance of our proposed algorithm (with
+optimal parameter values) and the Max-Min d-cluster
+algorithm (for d = 1,2,3,4 ) in terms of the energy spent in the
+system using simulation.
+The experiments were conducted for networks of different
+densities. For each network density we used our algorithm
+(described in Section III) to cluster the sensors, with the
+probability of becoming a clusterhead set to the optimal value
+( popt ) calculated using (10) and maximum number of hops
+( k ) allowed between any sensor and its clusterhead equal to
+the value calculated using popt in (12).
+The computed values of popt and the corresponding values
+of maximum number of hops ( k ) in a cluster for networks of
+various densities are provided in Table I. The results of the
+simulation experiments are provided in Fig. 3. We observe that
+the proposed algorithm leads to significant energy savings. The
+savings in energy increases as the density of sensors in the
+network increases.

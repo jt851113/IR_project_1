@@ -1,0 +1,23 @@
+In this mode, the energy consumption at each sensor-mote
+is easy to compute. Since the experiment runs for 30 mins,
+each sensor will send 1800 (30x60) updates (at the rate of
+once/sec) during the experiment. Therefore, the energy con-
+sumed at each sensor-mote during the entire run of the ex-
+periment is given by:
+8Table 1 also assigns a symbol for each of the basic opera-
+tion. We use these symbols in the rest of the paper.
+
+Figure 9: Performance graph showing the energy
+consumption in cases#2 and case#3 relative to that
+in case#1. The y-axis shows the times by which the
+the energy consumption is reduced in case#2 and
+case#3
+
+Es = 1800 (updates)  Tu = 158.4 mJ
+The base-station mote in this mode receives 1800 updates
+from each sensor during the entire run of the experiment.
+Therefore, the energy consumed at the base-station mote is
+given by:
+Eb = 4  1800  Ru = 316.8 mJ
+The total energy consumed in the system is given by:
+TE1 = 158.4  4 +316.8 = 950.4 mJ

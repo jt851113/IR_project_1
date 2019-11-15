@@ -1,0 +1,13 @@
+In this section, we introduce our proposed PISCES strategy, which
+constructs an index for online databases in a JIT manner. As we aim
+to reduce the maintenance overhead of a PDMS, we first analyze
+the major cost of such a system. Then a new type of index, the approximate
+range index, is introduced to facilitate tuple-level index
+building and reduce network cost. Based on the cost model and
+network statistics, our partial indexing strategy switches between
+tuple-level index and approximate range index adaptively. While
+the proposed indexing and querying strategy are independent of the
+underlying structured overlay, we use BATON [21] in our discussion.
+We have developed and implemented the proposed method
+on both BATON and CAN [30]. We note that the same idea can be
+extended to any structured overlays that support range search.

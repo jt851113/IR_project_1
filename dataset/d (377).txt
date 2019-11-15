@@ -1,0 +1,66 @@
+In an OTSN, a number of sensor nodes are deployed
+over an area, called monitored region. The approximate
+geographical boundaries of the monitored region
+are known to the applications who retrieve the information
+of interests (such as location, speed, direction,
+size, and shape) of a tracked moving object. Base
+station or gateway acts as the interface between the
+OTSN and applications by issuing the command to
+the network and collecting the information of interests
+from the distributed sensor nodes. In this paper,
+we assume that the sensor nodes are static and
+that a base station has good knowledge of the network
+topology (in terms of the location of each sensor node)
+during the operating period. The sensor nodes are enabled
+for computation, sensing and communication by
+the Micro-Controller Unit (MCU), sensor components
+and the RF radio component respectively. To facilitate
+the energy conservation, most of today’s sensor
+nodes allow these three basic components to be inactivated
+separately when they are not needed.
+These sensor nodes have the responsibility for tracking
+any moving object which intrudes the monitored
+region, and reporting the properties of the moving objects
+to the applications in a specified frequency. Deciding
+the location, speed, and direction of a moving
+object needs several sensor nodes to work together,
+which may require hierarchical technologies and overlapping
+levels of sensing (this is called sensor fusion).
+This is an important area of research in the sensor applications,
+but out of scope of our study. Thus, in this
+paper, we assume that each sensor node is a logical
+representation of a set of sensor nodes which collaboratively
+decide the properties of a moving object. In
+other words, the sensor nodes referred in this paper
+are the sensing leaders or cluster heads in a multiple
+level sensor network. We also assume that the moving
+objects are identifiable. The objects are electronically
+tagged or can be identified based on the pre-embedded
+object code table in the sensor nodes, which classifies
+all the objects such as jaguar, elephant and pedestrians.
+An unique object ID is assigned to each tracked
+object.
+The sensor nodes sample the physical world for a
+sampling duration to obtain the properties of moving
+objects. During sampling, the MCU and the sensor
+components are activated for data collecting and processing,
+but the radio components can be turned off if
+no communication is needed. The sampling happens
+with certain sampling frequency adjustable based on
+the network and application requirements. The sensor
+nodes which detect the object in their detection area
+have to report to the base station with certain reporting
+frequency which is specified as the application requirements.
+Otherwise, the sensor nodes do not need
+to turn on the radio, but keep silent. The reporting
+frequency decides the rate with which the application
+receives information regarding to the moving objects
+from the sensor networks; thus results in different levels
+of precision for the objects’ movement.
+Finally, the information exchanges between a sensor
+node and the base station are based on multi-hop
+communications. In addition, we assume that a lowenergy
+paging channel exists for a sensor node to wake
+up some other sensor nodes in sleep. Furthermore, we
+assume that all the sensor nodes in OTSN are wellsynchronized
+with the applications.

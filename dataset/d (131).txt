@@ -1,0 +1,31 @@
+It is worth considering in more detail what our particular
+protocol is and is not attempting to do. We list below some
+of our assumptions:
+ Regions, not points. We are not attempting to ver-
+ify the exact location of the prover. In other words, the
+locations claims we verify are not claims of particular
+point locations (plus or minus some error distance),
+but rather just presence in a particular region of inter-
+est R. This model accords well with our anticipated
+applications. We assume that, before the verication
+protocol begins, both the prover and verier know the
+denition of the region R.
+ Only \local" regions. It is not a requirement to
+verify all location claims; and indeed, there are some
+location claims we do not even attempt to verify. More
+specically, we only attempt to verify location claims
+for regions R that are \near" V . We will explore more
+precisely what this means in Sections 3 and 4. The
+restriction makes sense in light of the proposed ap-
+plication domains: if you have a network of devices
+scattered through a building, you are typically not in-
+terested in regions that are outside the building.
+ RF and sound capability. The verier and prover
+must both be able to communicate using both radio
+frequency (RF) and sound (typically ultrasound fre-
+quencies). We will use both transmission media in our
+protocol.
+ Bounded processing delay. The prover must be
+able to bound its processing delay. We will describe
+the eects that a loose bound will have on the protocol
+in Section 4.

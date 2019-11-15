@@ -1,0 +1,17 @@
+The goal of computing k-dominant skyline points is to reduce
+the number of interesting points returned by the skyline
+operator. However, the number of dominant skyline points
+can still be large when k is not sufficiently small. On the
+other hand, if k is too small, no (or too few) k-dominant
+skyline points may be returned. To avoid the difficulty of
+choosing the right value of k, we consider instead computing
+top-δ dominant skyline queries, which are queries to find the
+smallest k such that there are at least δ number of dominant
+skyline points .
+In this section, we describe how to extend the dominant
+skyline algorithms in the previous section to evaluate top-
+δ dominant skyline queries. The input parameters to each
+algorithm are D, S, and δ (instead of k).
+Given two points p and p, we use maxDom(p, p) to denote
+the largest value k ? [0, |S|] such that p k-dominates
+p.

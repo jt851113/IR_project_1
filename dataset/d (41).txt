@@ -1,0 +1,22 @@
+Hardware for sensor nodes that combine physical
+sensors, actuators, embedded processors,
+and communication components has advanced
+significantly over the last decade, and made
+the large-scale deployment of such sensors a
+reality. Applications range from monitoring
+applications such as inventory maintenance
+over health care to military applications.
+In this paper, we evaluate the design of a
+query layer for sensor networks. The query
+layer accepts queries in a declarative language
+that are then optimized to generate efficient
+query execution plans with in-network processing
+which can significantly reduce resource
+requirements. We examine the main architectural
+components of such a query layer, concentrating
+on in-network aggregation, interaction
+of in-network aggregation with the wireless
+routing protocol, and distributed query
+processing. Initial simulation experiments
+with the ns-2 network simulator show the
+tradeoffs of our system.

@@ -1,0 +1,73 @@
+
+Based on our analysis of the basic and ideal schemes,
+we propose a Prediction-based Energy Saving scheme
+(PES) for OTSNs. To optimize the energy consumption
+in OTSN, PES tries to approach to the ideal
+scheme by minimizing both of the sampling frequency
+and the number of nodes involved in object tracking,
+while balances off the overhead caused by missing the
+objects. PES consists of three parts: 1) a prediction
+model which anticipates the future movement of an
+object so only the sensor nodes expected to discover
+the object will be activated; 2) a wake up mechanism
+that, based on some heuristics taking both energy and
+performance into accounts, sets up which nodes and
+when they should be activated; 3) a recovery mechanism
+initiated only when the network loses the track
+of an object.
+The basic idea of PES is that a sensor node not
+performing the duty of object tracking (i.e., there is
+no object in its detection area) should stay in sleeping
+mode as long as possible. Meanwhile, a sensor node
+which has a moving object in its territory, called current
+node, should also try to turn to sleep mode as
+much as it can. Thus, based on the prediction model
+used, the current node will predict the possible location(
+s) of the moving object and determine a group
+of sensor node(s), called target nodes to help tracking
+the moving object after certain period of sleeping. The
+target nodes are chosen depending on some heuristics
+which will be discussed when we introduce the wake
+up mechanism. The current node inactivates itself after
+sending the wake up call to the target nodes.
+Based on what we described above, a current node
+performs sensing for X seconds and reports the sensed
+data to the base station. Before going back to sleep,
+however, the current node predicts the object movement
+for the next (T _ X) seconds and informs the
+target nodes. After sleeping for (T _ X) seconds, all
+the target nodes and the current node wake up together
+to track the object. The new current node will
+repeat the above described process, while the other
+nodes can go to sleep.
+The current nodes need to predict the objects future
+movement and seek help from the target nodes,
+because the objects may move out of their detection
+areas. As shown in Figure 2, the object may flee the
+detection area of a current node while it is sleeping.
+When the current node wakes up again, it can not
+detect the object anymore. Moreover, all the noncurrent
+nodes are in the sleep mode and will not turn
+themselves on until being notified. In this case, the
+application is failed to receive any report about the
+object even though the object exists inside the network.
+Therefore, two primary issues are 1) how to
+reduce the missing of objects and 2) how to re-locate
+the object if it happens.
+An intuitive solution to the first question of reducing
+missing rate is to seek helps from other nodes.
+Since the target nodes are already informed, when
+the current node goes back to active mode, the target
+nodes wake up as well to help tracking the object.
+In this way, even if the current sensor node lose track
+of the object, hopefully, one of the target nodes is able
+to find the object in its detection area. Once a target
+node finds the object, it sends an acknowledge message
+back to the current node. After receiving the acknowledge
+message from any of the target node within
+certain time, the current node becomes a non-current
+node and goes back to sleep if no other objects stay
+in its detection area. Otherwise, an object missing is
+confirmed and the recovery process has to be started.
+Therefore the question comes to which neighboring
+node should be waken up for collaborative monitoring.

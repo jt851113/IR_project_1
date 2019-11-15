@@ -1,0 +1,19 @@
+The TD-DES event schedule determines the temporal partitioning
+of the RF medium for all of the event types in
+the system. This is accomplished by allocating time slots
+(or slots for short) for each event type (subsection 3.1).
+Each time slot is assumed to be wide enough (i.e., provides
+roughly enough time) for a single event to be propagated
+one hop. Put another way, each slot should be wide enough
+to provide sufficient time to the underlying MAC layer to
+perform collision detection and retransmissions under contention.
+Time slots are allocated for each event based on the determined
+or expected bandwidth requirements needed to propagate
+all generated events reliably thoughout the network
+(subsection 3.2). Once the numbers of upstream and downstream
+time slots for each event type are determined, the
+ordering of the time slots must then be determined (subsection
+3.3). Iterations are intervals of schedule that starts
+with a control event slot. It is also possible to interleave
+downstream and upstream slots together to fit into a single
+iteration (subsection 3.4).

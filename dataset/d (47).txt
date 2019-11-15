@@ -1,0 +1,49 @@
+A query plan for a simple aggregate query can be divided
+into two components. Since queries require data
+from spatially distributed sensors, we need to deliver
+records from a set of distributed nodes to a central
+destination node for aggregation by setting up suitable
+communication structures for delivery of sensor
+records within the network. We call this part of a
+query plan its communication component, and we call
+the destination node the leader of the aggregation. In
+addition, the query plan has a computation component
+that computes the aggregate at the leader and potentially
+computes already partial aggregates at intermediate
+nodes.
+Recall that power is one of the main design desiderata
+when devising query processing strategies for sensor
+networks. If we coordinating both the computation
+and communication component of a query plan, we
+can compute partial aggregates at intermediate nodes
+as long as they are well-synchronized; this reduces the
+number of messages sent and thus saves power. We
+address synchronization in the next section, and consider
+here three different techniques on how to integrate
+computation with communication:
+Direct delivery. This is the simplest scheme.
+Each source sensor node sends a data packet consisting
+of a record towards the leader, and the multi-hop
+ad-hoc routing protocol will deliver the packet to the
+leader. Computation will only happen at the leader
+after all the records have been received.
+Packet merging. In wireless communication, it is
+much more expensive to send multiple smaller packets
+instead of one larger packet, considering the cost of reserving
+the channel and the payload of packet headers.
+Since the size of a sensor record is usually small and
+many sensor nodes in a small region may send packets
+simultaneously to process the answer for a round
+of a query, we can merge several records into a larger
+packet, and only pay the packet overhead once per
+group of records. For exact query answers with holistic
+aggregate operators like Median, packet merging is
+the only way to reduce the number of bytes transmitted
+[10].
+Partial aggregation. For distributive and algebraic
+aggregate operators [10], we can incrementally
+maintain the aggregate in constant space, and thus
+push partial computation of the aggregate from the
+leader node to intermediate nodes. Each intermediate
+sensor node will compute partial results that contain
+sufficient statistics to compute the final result.

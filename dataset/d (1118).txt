@@ -1,0 +1,42 @@
+In this paper, we consider the problem of mining proportional FTpatterns.
+Moreover, we proposed a depth-first mining approach to mine
+proportional FT-patterns efficiently in large database. Unlike PFM algorithm
+which generates candidates level by level, we propose a strategy of
+generating candidates in a depth first manner to reduce the disk I/O times
+when the bitmap of the database can not fit into the main memory. Moreover,
+a set of experiments is performed to show the advantage of the approach.
+Experimental results indicate that the DFPFM algorithm, by
+adopting a depth first mining strategy, can substantially reduce the number
+of disk I/O process when the bitmap is too big to fit into memory and
+is more scalable than PFM.
+References
+[1] J. Besson, R. Pensa, C. Robardet, J-F. Boulicaut. Constraint-based
+mining of fault-tolerant patterns from Boolean data. Knowledge Discovery
+in Inductive Databases, 2006, pp. 55-71.
+[2] G. Lee and Y.T. Lin, “A study on Proportional Fault-tolerant Data
+Mining”, In Proc. 2006 Int. Conf. Innovations in Information Technology,
+2006, Dubai, Nov. 2006, pp. 1-5.
+[3] G. Lee, S.L. Peng and Y.T. Lin, “Proportional Fault-tolerant Data
+Mining with Applications to Bioinformatics”, Journal of Information
+Systems Frontiers, 2009.
+In this paper, we consider the problem of mining proportional FTpatterns.
+Moreover, we proposed a depth-first mining approach to mine
+proportional FT-patterns efficiently in large database. Unlike PFM algorithm
+which generates candidates level by level, we propose a strategy of
+generating candidates in a depth first manner to reduce the disk I/O times
+when the bitmap of the database can not fit into the main memory. Moreover,
+a set of experiments is performed to show the advantage of the approach.
+Experimental results indicate that the DFPFM algorithm, by
+adopting a depth first mining strategy, can substantially reduce the number
+of disk I/O process when the bitmap is too big to fit into memory and
+is more scalable than PFM.
+References
+[1] J. Besson, R. Pensa, C. Robardet, J-F. Boulicaut. Constraint-based
+mining of fault-tolerant patterns from Boolean data. Knowledge Discovery
+in Inductive Databases, 2006, pp. 55-71.
+[2] G. Lee and Y.T. Lin, “A study on Proportional Fault-tolerant Data
+Mining”, In Proc. 2006 Int. Conf. Innovations in Information Technology,
+2006, Dubai, Nov. 2006, pp. 1-5.
+[3] G. Lee, S.L. Peng and Y.T. Lin, “Proportional Fault-tolerant Data
+Mining with Applications to Bioinformatics”, Journal of Information
+Systems Frontiers, 2009.

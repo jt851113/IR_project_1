@@ -1,0 +1,9 @@
+Our experimental setup consisted of four motion sensors
+placed along a busy corridor6 (g 11). Another Mote acts as
+the base station. All motion sensors report to the base sta-
+tion once every second. Following the PREMON paradigm,
+the base station analyzes the readings of the motion sen-
+sors and generates predictions about future readings of the
+motion sensors. The motion sensors store the predictions
+received and transmit their readings only when they do not
+match with the predicted values.

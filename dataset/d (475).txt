@@ -1,0 +1,5 @@
+PROPOSITION 2.2. Given an event sequence  and a set of
+complementary patterns , let  be the minimum common
+super pattern of , then the generalized information gain of
+ with respect to  is at most the summation of that of each
+pattern in .

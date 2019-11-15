@@ -1,0 +1,117 @@
+In this section, we first set the context and state the
+assumptions that are adopted in this paper. We then
+discuss the k-dominant skyline problems. Assume there
+is an n-dimensional dataset DB and D1, D2, · · ·, Dn
+be the n attributes of DB. Let O1, O2, · · ·, Or be r
+objects (tuples) of DB. We use Oi.Dj to denote the j-th
+dimension value of Oi.
+A. k-dominance
+An object Oi is said to dominate another object Oj ,
+which we denote as Oi ? Oj , if Oi:Ds ? Oj:Ds for
+all dimensions (s = 1; · · · ; n) and Oi:Dt < Oj:Dt for
+at least one dimension (1 ? t ? n). We call such Oi
+as dominant object and such Oj as dominated object
+between Oi and Oj .
+On the other hand, an object Oi is said to k-
+dominate another object Oj , denoted as Oi ?k Oj , if
+Oi:Ds ? Oj:Ds in k dimensions among n dimensions
+and Oi:Dt < Oj:Dt in one dimension among the k
+dimensions. We call such Oi as k-dominant object and
+such Oj as k-dominated object between Oi and Oj .
+An object Oi is said to have -domination power if
+there are  dimensions in which Oi is better than or equal
+to all other objects of DB.
+B. k-dominant Skyline
+An object Oi ? DB is said to be a k-dominant skyline
+object of DB if Oi is not k-dominated by any other object
+in DB. We denote a set of all k-dominant skyline objects
+in DB as Skyk(DB).
+Theorem: Every object that belongs to the k-dominant
+skyline also belongs to the skyline, i.e., Skyk(DB) ?
+Skyn(DB).
+Proof: Let O1 ? Skyk(DB) and O1 =? Skyn(DB).
+It follows that there is an another object O2 that n-
+dominates the objects O1. Based on the definition of
+skyline ?Dk(k = 1; · · · ; n): O2:Dk ? O1:Dk. Therefore,
+based on the k-dominant skyline definition we find that
+O1 =? Skyk(DB), which leads to a contradiction. ?
+IV. TWO SCAN ALGORITHM WITH DOMINATION
+POWER INDEX (TSADPI)
+We use a filter based algorithm to compute Skyk(DB)
+efficiently. It has two parts: one is sorting by domination
+power and the other is k-dominant skyline calculation.
+A. Sort by Domination Power Index
+By using ordered objects we can eliminate some of
+non-skyline objects easily. To get the benefit of ordered
+objects Chan, et al. sort the whole objects with a monotonic
+scoring function sum in their OSA algorithm for k-
+dominant query [6]. However, this sort is not effective for
+k-dominant query computation, especially, when values
+of each attribute is not normalized. For example, assume
+Oi = (1; 2; 3; 3; 3; 2) and Oj = (7; 1; 3; 2; 3; 1) are two
+objects in 6-dimensional space. Although sum of Oi’s
+values is smaller than that of Oj ’s, Oi does not 5-
+dominant of Oj . Instead, Oi is 5-dominated by Oj .
+To prune unnecessary objects efficiently in the k-
+dominant skyline computation, we compute domination
+power of each object. Algorithm 1 represents the domination
+power calculation procedure. An object is said to
+have -domination power if there are  minimal values
+in which it is better or equal to all other objects of DB.
+We sort objects in descending order by their values of
+domination power (). If more than one objects have the
+same domination power then sort those objects in ascending
+order of the sum value. This order reflects how likely
+to k-dominate other objects. Higher objects in the sorted
+sequence are likely to dominate other objects. Thus this
+preprocessing helps to reduce the computational cost of k-
+dominant skyline. Experiments show that our estimation is
+robust over various distributions. Moreover, it also works
+well when data values are correlated, independent or anticorrelated.
+Table II is the example of sorted dataset of Table I. In
+the sorted dataset, object O7 has the highest domination
+power 4. Note that object O7 dominates all objects lie
+below it in four attributes, D1;D2;D5, and D6.
+B. k-dominant Skyline Calculation
+To confirm whether an object O is k-dominant or not,
+we need to compare it against all skyline objects. This is
+because O can be k-dominated by some skyline objects
+even though O is not k-dominated by any of the k-
+dominant objects. To eliminate non-k-dominant skyline
+objects, one set of objects are maintained as Skyk(DB).
+Our algorithm needs two scans for k-dominant skyline
+computation. The dataset sorted by domination power can
+reduce the pairwise comparison between the objects of
+Skyk(DB) and DB. Algorithm 2 shows our Two Scan
+Algorithm with Domination Power Index approach.
+Table III represents the first scan comparison between
+TSA and TSADPI method to compute 5-dominant skyline.
+Columns 1, 2, and 3 represent the sorted DB,
+Sky5(DB) and no. of pairwise comparisons respectively
+during the first scan of TSA and column 4, 5, and 6 are
+those of TSADPI. Initially Sky5(DB) is empty and O5
+is added in Sky5(DB) as a 5-dominant object without
+any comparison. Since O5 and O7 fails to become 5-
+dominant of each other, after one comparison O7 is added
+in Sky5(DB). Next after two comparisons we can see
+that O2 is not in Sky5(DB). In this way objects O4, O3,
+O6, and O1 need 2, 1, 2, and 2 comparisons respectively.
+At the end of the first scan Sky5(DB) = {O5;O7}. From
+Table III we can see that TSADPI method needs only 6
+comparisons while TSA needs 10.
+To eliminate the false positives produced by the first
+scan, a second scan is necessary. To determine whether
+an object O ? Skyk(DB) is indeed k-dominant, it is
+sufficient to compare O against DB - Skyk(DB). If
+the number of false positives produced by the first scan
+is small, the performance of the second scan as well
+as the overall Two-Scan approach will be better. After
+the completion of second scan both of the methods give
+the result Sky5(DB) = {O7;O5}. Like this example the
+result of TSA and TSADPI will be the same for any
+general dataset. This is because TSADPI follows the same
+TWO-Scan procedure like TSA. The first scan is for
+candidate k-dominant skyline computation and the second
+scan is to check the false positive cases. However, it could
+avoid successfully many unnecessary comparison between
+the candidate k-dominant skyline and the dataset.

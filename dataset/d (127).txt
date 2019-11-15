@@ -1,0 +1,18 @@
+C. Lee Giles is a senior research scientist in computer science at
+NEC Research Institute, Princeton, N.J., and an adjunct
+professor at the Institute for Advanced Computer Studies at
+the University of Maryland, College Park. His research interests
+are in novel applications of neural computing, machine
+learning, agents, and AI in all areas of computing. He is on
+the editorial boards of IEEE Intelligent Systems, IEEE Transactions
+on Knowledge and Data Engineering, IEEE Transactions
+on Neural Networks, J. of Computational Intelligence in
+Finance, J. of Parallel and Distributed Computing, Neural Networks,
+Neural Computation, and Applied Optics. Giles is a
+Fellow of the IEEE and a member of AAAI, ACM, the
+International Neural Network Society, the Optical Society
+of America, and the Center for Discrete Mathematics and
+Theoretical Computer Science, Rutgers University.
+Contact Lawrence and Giles at NEC Research Institute, 4 Independence
+Way, Princeton, NJ 08540; {lawrence, giles}
+@research.nj.nec.com.

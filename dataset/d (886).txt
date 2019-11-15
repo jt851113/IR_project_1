@@ -1,0 +1,28 @@
+In the simulation, we set the scenario of a 1000m×1000m
+area. Within this area, the mobile nodes move according
+to the Random Waypoint Mobility Model [5]. In particular,
+at the beginning of the simulation Ns percentage of all N
+mobile nodes are randomly placed in this area. Each node
+has a destination which is another random point within the
+space. The node moves to its destination at a constant speed
+s along the straight line. After it arrives, it pauses at the
+destination for a period ts, then randomly chooses another
+destination, and repeats this procedure. Nd (Ns + Nd = 1)
+percentage of nodes are randomly placed outside the area.
+Each of them moves toward a random destination within
+the area at speed s and pauses at the destination for td.
+After that, it moves toward outside of the area and is removed
+from the simulation. The pause time ts is uniformly
+distributed between 120 and 240 seconds for stable nodes.
+td is uniformly distributed between 30 and 60 seconds for
+highly dynamic nodes. The motion speed s is randomly
+selected from the interval [0.5, 1.5] miles/hour for modeling
+the pedestrian scenario. This mobility model simulates,
+for example, the motion of workers and visitors at business
+district. Within the area, there are D identical data resources
+and each of them has two replicas randomly distributed
+among nodes. Every node selects a random data
+for issuing a query. The query rate is γ. All mobile nodes
+use IEEE 802.11 for connection. The bandwidth is 10 Mbps
+and the transmission range is 100 meters. The parameters
+used are listed in Table 1.

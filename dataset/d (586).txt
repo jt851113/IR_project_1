@@ -1,0 +1,15 @@
+Our analysis in this paper assumes that all the mechansims i.e. ACQUIRE, ERS and FBQ
+utilize caching to answer queries. We now attempt to quantify the storage space requirements
+for the cache across these approaches.
+In ACQUIRE, an active node requests an update from its “neighborhood” consisting of f(d)
+(with d = d). In the worst case, the each of these f(d) variables might be distinct, thus
+needing O(f(d)) storage space. For a grid and for most reasonable topologies, note that
+Figure 12: Comparison of the latency incurred by ACQUIRE, ERS and FBQ. Here, N =
+100, M = 20, X = 104, tmin = 13. The x-axis is plotted on log-scale.
+f(d) would be polynomial in d. ACQUIRE distributes the cache at nodes which handle the
+query. In the case of ACQUIRE, the storage requirements depend on the optimal lookahead
+d, which in turn is dependent on the data dynamics. Higher c, higher the data dynamics,
+lower the optimal lookahead d, smaller the cache requirements at each node.
+For ERS and FBQ, each querier (there may be only one, always located at the same node)
+requires a cache that is between O(M) and O(N) in size. This is because this querier node
+must cache all responses to all valid queries.

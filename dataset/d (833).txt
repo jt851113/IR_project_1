@@ -1,0 +1,34 @@
+In this section, we provide a back-of-the-envelope comparison
+of the benefits of performing a hierarchical wavelet decomposition
+over a centralized data collection strategy. Our description will
+only address the average and worst case communication load on the
+nodes in the network, while Table 3 provides a more complete summary
+of the communication, computation and storage complexity.
+A square grid topology with n nodes is considered (. Clusterheads at each step
+are selected to be the one closest to the lower left-corner of the tile.
+Communication is only along edges of the grid, each of which is
+of length 1 unit. The cost of transmission and reception of one unit
+of data along a link of length 1, costs 1 unit of energy. The chosen
+cost metric is communication bandwidth, and each clusterhead is
+constrained transmit at mostD0 data. While realistic topologies are
+far from as regular as the one proposed [15], and the cost model can
+be more complicated, the simple case captures essential tradeoffs
+in construction of multi-resolution hierarchies.
+Communication Overhead: The overhead for centralized decomposition
+can be computed from the total number of edges traversed
+on the grid  The worst communication overhead
+is the storage node itself, or the sensor node(s) closest to the storage
+node, if the storage node is not power constrained. Thus, the
+Worst-case communication complexity is O(n1:5D0).
+To compute the overhead of the hierarchical decomposition, we
+use the fact that at level l of the decomposition, a communication
+edge is of length , and there are  tiles (computed
+as Area of Region
+Area of Tile ), giving a communication overhead of 
+Over  levels of decomposition, the total cost is, thus,
+ Thus, the total communication cost is O(nD0)
+and the Average-case communication cost is O(D0). In the worst
+case, a node is on the forwarding path at every level of the hierarchy.
+Since there are  levels and each level forwards data
+3D0 to a clusterhead, worst case data passing through a node is
+ Thus, Worst-case Communication Complexity

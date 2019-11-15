@@ -1,0 +1,4 @@
+We now build a mathematical model to analyze the performance of ACQUIRE in terms of its
+expected completion time and associated energy costs. This will also enable us to determine
+the optimal look-ahead parameter d. There are several metrics for energy costs. In our case,
+we focus on the number of transmissions as the metric for energy cost.

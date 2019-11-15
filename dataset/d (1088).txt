@@ -1,0 +1,6 @@
+This section presents our proposed Collaborative Feedback
+based Retrieval System (CFRS). First, we present a
+view of the service as it is presented to the user. Second, we
+highlight the components required to implement the service.
+We then describe the architecture of the system and discuss
+its main components.

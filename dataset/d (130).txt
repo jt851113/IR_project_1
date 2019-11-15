@@ -1,0 +1,49 @@
+There are many natural variants of the secure location
+problem. We focus on solving the in-region verication
+problem: a set of veriers V wish to verify whether a prover
+p is in a region R of interest. R may be a room, a building,
+a stadium, or other physical area. The region typically has
+some sort of physical control to restrict people's entry into
+it; the purpose, then, is to control access to resources that
+are not intrinsically constrained by physical security, such
+as wireless networks. The verier infrastructure V may, in
+some cases, be a distributed system consisting of multiple
+nodes.
+The protocol must run correctly in the face of adversaries.
+Thus, when p does not in fact have a physical presence inside
+R, the verier must be careful not to accept p's claim to be in
+R. Furthermore, if p does have a presence in R, the verier
+should accept p's claim; otherwise the protocol would not
+be useful in practice. We therefore require the following two
+properties to ensure that the protocol is useful and secure:
+ Completeness: If p and V both behave according to
+the protocol, and p is in R, then V will accept that p
+is in R.
+ Security: If V behaves according to the protocol and
+accepts p's claim, then p, or a party colluding with p,
+has a physical presence in R.
+It is important to distinguish between the problem we
+are addressing, the in-region verication problem, and the
+secure location determination problem. In the latter prob-
+lem, V attempts to securely discover the physical location
+of p. In contrast, in the in-region verication problem, p
+claims to be in a particular region, and V accepts or rejects
+the claim. The prover's location claim serves as a hint for
+the verier to conrm or disprove. Framing the problem
+in terms of secure in-region verication, not secure location
+determination, simplies the problem and allows dierent
+location determination algorithms to be used.
+In fact, it is possible to compose an in-region verication
+protocol with any location determination algorithm, even a
+potentially insecure one, without compromising the security
+of the ultimate guarantee that a prover is in the region. The
+in-region verication algorithm veries whether the claimed
+location is in R or not; thus, p can use an insecure local-
+ization algorithm to generate a claimed location that will
+be securely tested for accuracy by V . At worst, p's claim
+will be rejected; in no case will V believe something about
+p's location that has not been securely checked. The prover
+p thus has the exibility to choose any appropriate loca-
+tion determination algorithm, even if it has not been proven
+secure. After running the determination algorithm, p will
+know which claims it can plausibly make.

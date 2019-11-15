@@ -1,0 +1,73 @@
+The sequential algorithm runs the apriori algorithm on
+each time segment. In order to determine the cycles of the
+association rules, we need to determine the binary sequence
+corresponding to each association rule. If there is space in
+memory to hold a binary sequence for each association
+rule, we can store the rules and their binary sequences in
+a hash tree. After generating all the rules over all the time
+segments, we can run cycle detection algorithms.
+However, if we do not have enough memory to store the
+rules and their binary sequences, we have to write the rules
+out to disk as we generate them in each time unit. At the end
+of finding association rules for all the time segments, we
+need to construct the binary sequences for each individual
+association rule. In order to do this,we merge the rules from
+the different time segments. One this merging is done, we
+can run the cycle detection algorithms.
+Finally, if we do not have enough memory to store all the
+data structures needed by the apriori algorithm, we have to
+use one of the overflow management techniques suggested
+in [AS94].
+Like the apriori algorithm, the interleaved algorithm has
+two distinct phases. In the first phase, all large itemsets with
+cycles have their supports counted in the appropriate time
+segments. In the second phase, rules are generated using
+the cycle and support information of the large itemsets.
+For the first phase, the interleaved algorithm proceeds
+“level-by-level” to determine itemset support. It first determines
+the itemset support for singleton candidate itemsets,
+generates cycles for them, then generates itemsets of size
+2 and their potential cycles, etc. In this phase, the interleaved
+algorithm requires enough memory to hold all large
+itemsets of a particular size and their support counts in
+memory. (In addition, it needs to store the new candidates
+and their “potential” cycles. The size of the latter is usually
+much smaller.) If there is not enough memory, the support
+counts are broken up into chunks and written to disk. After
+processing all the time segments, the support counts are
+merged in memory.
+For the cyclic rule generation phase, if there is space
+in memory to hold all the large itemsets and their support
+counts for all the time units, rule generation can run
+entirely in memory. However, if there is a shortage of
+memory and there is space to hold only a single level
+of large itemsets and their support counts, we can gen
+the level of the largest itemset. For doing this, we can
+use a modification of the ap-genrules procedure in [AS94]
+that we call Level GenRuleCycles as shown in Figure 2.
+Level GenRuleCycles is a set oriented rule generation procedure
+that creates rules such that all rules needing to look
+at the support counts of  -itemsets are generated during
+during one iteration of the outer while loop. (Note that this
+procedure can be profitably used, instead of ap-genrules,
+for generating association rules when short of memory.)
+Figure 2: Procedure used for cyclic rule generation.
+For example, suppose we have the large itemset
+with a cycle 001. Initially, ruleList is the emptyset an d
+in the first iteration gets set to
+sup-arrayABCD,In the next round,
+are generated and tested. This
+round keeps the support counts of all 3-itemsets in memory.
+Suppose only and have cycles. ruleList becomes
+. (Of course, large itemsets and
+will get added to prev, but we ignore that
+here to keep the example small.) In the next round, only the
+rule is generated. This round keeps the support
+counts of all the 2-itemsets in memory. If has a
+cycle, ruleList is transformed to and vanishes in the next round.
+This algorithm requires only one member of ruleList
+to be in memory at any time. If the support counts of a
+particular level do not fit into memory as well, one has to
+sort ruleList according to the candidate rules that it stores
+and merge the itemset support counts in order to generate
+cyclic association rules.

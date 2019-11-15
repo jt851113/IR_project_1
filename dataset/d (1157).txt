@@ -1,0 +1,4 @@
+A system unique name is generated for every user-defined
+continuous query. A user can use this name to retrieve the query
+status or to delete the query. Queries are automatically removed
+from the system when they expire

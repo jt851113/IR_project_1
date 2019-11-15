@@ -1,0 +1,27 @@
+Figure 15 shows the number of patterns Fenster and DCE + post-process extract in
+the synthetic ternary relations. In both cases, these quantities are huge in comparison
+with the actual number of hidden patterns (4). This confirms whatwaswritten to justify
+the choice of a per-tuple quality measure: numerous fragments of the hidden patterns
+are discovered. Because these fragments must be agglomerated with a method such
+as Cerf et al. (2009b) (which has a time complexity that is quadratic in the number
+of fragments to agglomerate), a smaller number of patterns is preferable so that the
+agglomeration can be achieved in a reasonable time. In this regard, Fenster (Fig. 15)
+appears far preferable to DCE (Fig. 15b) especially in the contexts where little noise
+affects the data. The reason to this difference is the use (or, forDCE, the lack thereof) of
+the closedness constraint, which condenses the collection of patterns without any loss
+of information (see Sect. 2.2). DCE cannot efficiently enforce this constraint because
+the patterns tolerating noise in a relative way do not satisfy a downward closure pro
+(stated with our terminology: DCE’s sub-patterns of a connected closed patterns are
+not necessarily connected). For instance, when no noise affects the data, DCE not only
+outputs the four hidden patterns (like Fenster does) but also all their sub-patterns as
+long as they have at least four elements per attribute (the minimal size constraints).
+Naturally, not using DCE’s filtering post-process provides even more patterns.
+The evolution of the number of closed ET-3-sets when the noise varies is explained
+by the increasing fragmentation which, at some points makes the patterns so small
+that they do not satisfy the minimal size constraints. In the very noisy relations, tolerating
+too much noise ( ? {3, 4}) leads to the extraction of patterns covering the
+false-positive 3-tuples, hence a new increase in the size of the extracted collections.
+With the 4-ary relations, the results are similar but the latter increase of the number
+of closed ET-4-sets occurs at lower levels of noise and with less tolerance to noise
+because the number of 4-tuples outside the hidden (hence, the number of false-positive
+tuples) is greater.

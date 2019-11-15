@@ -1,0 +1,16 @@
+Similar to the latency analysis for ERS, in FBQ, the request for updates has to be forwarded
+for tmin hops on an average before all the sub-queries can be answered. Thus, the latency
+for issuing the request and getting the updates is 2tmin. The updates are issued once every
+1
+c queries. For the remaining fraction, the queries are answered from the cache (incurring a
+latency of 0). Thus, the average latency incurred by FBQ is
+Figure 12 shows the analytical comparison of ACQUIRE, ERS and FBQ when N = 100,
+M = 20 and X = 104. The average latency seems to increase from FBQ to ERS to
+ACQUIRE across all values of the amortization factor c. The latency for both FBQ
+and ERS increases linearly with c as is evident from Eqn. 28 and Eqn. 27 respectively.
+Interestingly, the latency in ACQUIRE has a piece-wise linear behavior with respect to c.
+This is because the changing c alters d discontinuously which in turn alters d
+f(d) i.e. the
+slope of the line Tavg as shown by Eqn. 25. At the point where the latency is constant with
+respect to c, ACQUIRE resembles a random walk (d = 0). The difference in the latency
+is significant (around 500 transmissions), when d for ACQUIRE goes from 1 to 0.

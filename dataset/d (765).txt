@@ -1,0 +1,78 @@
+Sensor network applications such as structural
+health monitoring require information about
+the locations of sensors in order to make
+meaningful use of the collected data. In order
+to fully realize the benefits of ad hoc deployment
+and provide scalable installation of
+sensors, it is useful to have the sensor nodes
+which automatically determine their locations.
+We have developed two different localization
+algorithms, and are currently investigating a
+third approach.
+Most localization schemes are based
+on the concept of measuring distances from a
+small number of surveyed “anchor” locations
+and performing triangulation. Perhaps the
+most straightforward distance measurement
+approach is to measure the time it takes for a
+sound (or ultra-sound) wave to propagate
+from an anchor to a sensor node. We have
+developed a localization service based on this
+concept using MICA-2 Motes in conjunction
+with a custom loud speaker device for anchors.
+Given sensor nodes placed 10cm above the
+ground in an outdoor parking lot environment
+free of obstructions, sensors are able to measure
+their distance from anchors to within
+20cm at a distance of up to 28m. Using this
+acoustic ranging technique in conjunction
+with gradient descent triangulation computed
+on the sensor nodes results in a typical node
+localization error of 30-40cm.
+The primary drawback to direct acoustic
+distance measurement from anchors is that
+all sensors must be within range of at least
+three anchor nodes. In order to mitigate this
+problem, researchers have developed multihop
+localization systems. For example, the
+Ad Hoc Positioning System (APS: Niculescu
+& Nath 2001) counts the minimum number of
+radio hops required for a sensor to communicate
+with an anchor node as an estimate of the
+true distance to that anchor. Various techniques
+may be used to normalize these
+distance estimates, such as considering the
+ratio of hops to true distance between different
+anchor nodes.
+The above localization schemes require
+surveyed anchor locations in order to
+function. We have developed a proximity
+matrix technique which is able to construct a
+polar coordinate system and assign locations
+to nodes without any explicit anchor information
+(Figure 2); when anchors are available,
+they can be used to improve results. Each
+sensor examines which of its neighbors can
+communicate with each other in order to
+determine their relative positions. Starting
+from some arbitrary origin sensor node, this
+relative position information is used to assign
+the θ-coordinate angle to each sensor node.
+As in APS, the number of radio hops from a
+sensor to the origin is used as an estimate of
+the r-coordinate.
+We are now examining methods to
+take advantage of known structure to improve
+localization results. For example, if a number
+of sensors are laid out along a beam, we
+expect that the localized positions should
+form a long, rectangular shape. Thus we can
+pre-program different sets of sensors with
+different group ids, and then deploy sensors
+from the same group along a given beam, and
+from different groups along adjacent beams.
+When performing localization, initially sensors
+localize within their group, taking
+advantage of the expected shape of the region,
+and then the groups themselves are localized
+with respect to each other and anchor nodes.

@@ -1,0 +1,34 @@
+For a shared cache, there can be multiple clients (each
+with data requirements specified in a profile) competing to
+influence the contents of the cache. The profile processing
+algorithms described in the previous sections all assume a
+single profile as input, and therefore must be adapted to determine
+the contents of a shared cache. One way to accomplish
+this is to merge ? profiles into one superprofile that is
+representative of them all. This would require first normalizing
+individual profiles so that utility values are comparable
+between profiles. There are many statistical techniques
+that can be used to normalize utility values (e.g., z-scores
+[18]), and therefore we assume that profiles have already
+been normalized for the purpose of this discussion.
+In merging individual normalized profiles, we assume
+that the value of an object that is of interest to multiple
+clients is the sum of values it takes in those clients’ profiles.
+5 This means that a superprofile can be constructed
+simply by appending the domain and utility equations of
+the individual profiles that comprise it. The value of a given
+object, then, would be the sum of all values it takes from
+utility equations in the superprofiles. This approach nicely
+handles the case where two profiles define domains that are
+either equal or intersecting, but that are named or defined
+differently. For example, if a profile expresses interest in
+Truck Rental web sites, then the Hertz web page containing
+information about renting cars and trucks would have a
+utility value which is the sum of values it takes in this profile
+and the Traveler profile (according to domain, RC)
+for any superprofile that combines them. The downside to
+this approach is the size of the superprofile that results - especially
+when the number of client profiles from which it
+is built is very large. We explore how well cache prefetching
+algorithms scale to handle superprofiles (and comprably
+scaled candidate object sets and cache sizes) in Section 4.4.

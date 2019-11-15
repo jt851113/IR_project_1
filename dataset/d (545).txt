@@ -1,0 +1,30 @@
+We now present algorithms for selecting the k best auxiliary
+neighbors in Pastry. As described in Section II-A, in Pastry, a
+query for an item with id I is forwarded to a neighbor whose
+id has the longest prefix match with I. In order to compute
+the optimal set of k auxiliary neighbors that minimizes (1),
+we need to estimate the distance between any two nodes u
+and v in terms of number of hops. We use b!l as an estimate
+of this distance, where l is length of the longest prefix match.
+For example, the distance between 4-bit ids 1011 and 1111
+is 3 because l in this case is just 1. b ! l is a reasonable
+estimate in the absence of any additional information, since in
+the worst case, while routing and “fixing” each bit at a time,
+the number of hops incurred can go up to b ! l. Thus, this
+would be the upper bound in the steady state. As the source
+node does not have knowledge of the exact position of every
+node, it is reasonable to use this upper bound as a measure of
+the actual distance. We remark that the choice of k pointers
+remains the same even if the distances are scaled by a constant
+factor.
+We first present a simple O(nk2b) algorithm, based on
+dynamic programming, to obtain the optimal set of k auxiliary
+pointers. We then build upon this basic algorithm and obtain
+an optimal O(nkb) greedy algorithm. Here, n represents the
+number of distinct peers for which the source node (where
+the algorithm is executed) has seen queries. In Section IV-C,
+we present an incremental version of this greedy algorithm
+to adaptively maintain the set of auxiliary neighbors as nodes
+join and leave or as node popularities change. In Section IVD,
+we show how to adapt our algorithm to handle queries that
+must be answered within a certain number of hops.

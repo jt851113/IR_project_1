@@ -1,0 +1,4 @@
+This section presents the design and analysis of the key
+components of the system: the user interest profiler, the
+relevance feedback tracker, routing and storage layers and
+the user interface.

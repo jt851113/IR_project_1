@@ -1,0 +1,19 @@
+The NECI search engine uses roughly an order of
+magnitude more bandwidth than other search
+engines. These bandwidth requirements could limit
+the number of users that can simultaneously use a
+server-based implementation.
+However, these requirements are not as great as
+those required by other Web developments, such
+as the increasing use of audio and video, and bandwidth
+and access times on the Internet continue to
+improve.9 Also, the engine will not necessarily need
+to analyze more pages per query as the Web grows
+(though precise queries will become more
+important).
+The prototype engine runs on a Pentium Pro
+200 PC, is written in Perl, and is not optimized for
+efficiency. When only a few queries are executed at
+a time using our prototype engine, the analysis does
+not typically slow the response (network response
+time is the limiting factor).

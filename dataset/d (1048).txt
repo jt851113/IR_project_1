@@ -1,0 +1,25 @@
+This paper provides a framework for effective diagnosis of
+multidimensional data streams with the use of a concept
+called velocity density estimation. This definition is both
+intuitively appealing and can be computed efficiently for a
+fast data stream. It is also possible to derive a good visual
+perspective of the nature of data evolution with the use of
+two profiles: a spatial velocity profile and a temporal
+velocity profile. These profiles are also used in order to
+diagnose important trends in the data. For example, spatial
+reorganizations in localized regions in the data can be
+detected by the use of this method. For the case of highdimensional
+data, we propose batch-processing methods in
+order to pick projections from the data set in which the
+greatest amount of evolution has occurred. This is especially
+useful in cases when all dimensions do not show a
+similar amount of change or when the underlying correlation
+structure of the data has changed only over some
+particular subsets of dimensions. All the methods of this
+paper can be directly extended in order to diagnose changes
+between two snapshots of data (or two static data sets).
+Most of the algorithms of this paper are designed to work
+efficiently with one scan of the data so that the profiles can
+be constructed in online fashion. Thus, the technique is very
+scalable, a factor which is important for mining very highspeed
+data streams.

@@ -1,0 +1,47 @@
+Despite its importance, there is little related work on optimization
+and decomposition of queries across data sources
+with different query capabilities. Some systems use query
+rewrite rules to decompose a query, but have no cost model
+to evaluate alternative plans (e.g., [FRV95]). [CS93] uses
+rewrite rules to generate alternative versions of a query involving
+foreign tables and functions. Each version can
+then be optimized, and the least cost plan overall is chosen.
+Most work on cost-based query optimization in heterogeneous
+systems is limited to specific classes of data
+sources [DKS92, GST96]. The works most closely related
+to ours are [TRV96] (DISCO) and [PGH96]. These two approaches
+also use grammars to describe the capabilities of
+wrappers; however, the types of grammars used and how
+they are used are significantly different.
+DISCO addresses problems beyond the scope of Garlic,
+with an emphasis on operating when not all data sources
+are available. DISCO uses a wrapper grammar to match
+queries. The DISCO optimizer enumerates query plans as
+if wrappers could handle any kind of query, then uses the
+wrapper grammar to parse each plan to determine whether
+it can be handled by the wrapper. Thus, DISCO enumerates
+all plans, including many invalid ones. The Garlic optimizer,
+by contrast, constructs only valid plans, and it is
+quicker to construct a plan using STARs than to parse a plan
+using a grammar.
+[PGH96] proposes a set of algorithms that decompose
+a query based on a novel relational query description language
+that describes the capabilities of wrappers. Their algorithms
+push down as much work as possible to wrappers
+to minimize the amount of processing in the middleware
+system’s query engine. However, this work gives no guidance
+on how to execute the remaining query pieces in the
+middleware, or how to choose between alternative plans.
+Recently, other ways to describe capabilities of heterogeneous
+wrappers or data sources have been proposed.
+In [LRO96], capability records are used to describe which
+bindings can be passed to a source. However, the capability
+record mechanism is not powerful enough to describe the
+capabilities of, say, Garlic’s relational or image wrappers.
+In other work, views are used to describe which queries can
+be handled by a wrapper/data source; e.g., [Qia96, LRU96].
+While flexible, decomposing a query using views requires
+solving the query subsumption problem. Thus, these approaches
+are typically limited to simple conjunctive queries
+and cannot easily be extended to handle ordering, grouping,
+or aggregate functions.

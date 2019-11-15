@@ -1,0 +1,37 @@
+[1] M. Garofalakis, J. Gehrke and R. Rastogi. Querying and
+mining data streams: you only get one look. In the tutorial
+notes of the 28th Int'l Conference on Very Large Databases,
+Hong Kong, China, Aug. 2002.
+[2] G. S. Manku and R. Motwani. Approximate frequency
+counts over data streams. In Proc. of the 28th Int'l
+Conference on Very Large Databases, Hong Kong, China,
+Aug. 2002.
+[3] M. Charikar, K. Chen and M. Farach-Colton. Finding
+frequent items in data streams. In Proc. of the 29th Int'l
+Colloq. on Automata, Language and Programming, 2002.
+[4] C.-H. Lee, C.-R. Lin and M.-S. Chen. Sliding-window
+filtering: An efficient algorithm for incremental mining. In
+Proc. of the 10th Int’l Conference on Information and
+Knowledge Management, pages 263-270, Atlanta, GE, Nov.
+2001.
+[5] B.-K. Yi, N. D. Sidiropoulos, T. Johnson, H. V. Jagadish, C.
+Faloutsos, and A. Biliris. Online data mining for co-evolving
+time sequences. In Proc. of the 16th Int'l Conference on Data
+Engineering, pages 13-22, San Diego, CA, Feb. 2000.
+[6] H. S. Javitz and A. Valdes. The NIDES statistical component
+description and justification. Annual report, March 1994.
+[7] S. Brin, R. Motwani, J. D. Ullman, and S. Tsur. Dynamic
+itemset counting and implication rules for market basket data.
+In Proc. of the ACM SIGMOD Int'l Conference on
+Management of Data, pages 255-264, Tucson, AZ, May
+1997.
+[8] R. C. Agarwal, C. C. Aggarwal and V.V.V. Prasad. Depth
+first generation of long patterns. In Proc. of the 6th ACM
+SIGKDD Int'l Conference on Knowledge Discovery and Data
+Mining, pages 108-118, Boston, MA, Sept. 2000.
+[9] C. Hidber. Online association rule mining. In Proc. of the
+ACM SIGMOD Int'l Conference on Management of Data,
+pages 145-156, Philadelphia, PA, May 1999.
+[10] R. Agrawal, and R. Srikant. Fast algorithms for mining
+association rules. In Proc. of the 20th Int'l Conference on
+Very Large Databases, Santiago, Chile, Sept. 1994.

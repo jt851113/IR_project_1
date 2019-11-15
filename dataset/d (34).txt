@@ -1,0 +1,5 @@
+As explained in Section 3, centralized systems are limited by
+the capability of a single server, beyond which distribution
+has to be used. This section illustrates two typical ways
+that work is partitioned among multiple servers, and their
+extensions to the mobile world.

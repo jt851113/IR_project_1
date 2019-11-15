@@ -1,0 +1,37 @@
+To test the efficiency of our improved local repair algorithm,
+we ran a simple aggregate query which computes
+the average over all sensor readings every 10 seconds.
+In this experiment, 200 sensors are randomly
+distributed in a 500m*500m area. (For other experiments
+the numbers were qualitatively similar.) We
+6See the discussion of future work in Section 8 for drawbacks
+of our current experimental setup.
+introduced random link failures quantified as the percentage
+of crashed links in a round, and we tested their
+influence on the routing protocols. Figure 7 shows the
+comparison between AODV and AODV with our improved
+local repair algorithm using different link failure
+rates. As the link failure rate increases, AODV
+uses much more energy than the algorithm with improved
+local repair.
+We evaluated bunch repair experimentally using the
+Cornell campus as the query region. About 150 sensors
+are virtually distributed close to buildings or along
+main streets; see Figure 9. Figure 8 compares the improved
+version of AODV with and without bunch repair.
+The threshold to active route reinitialization is
+to 80 percent of the tuples. The two algorithms are
+very close when link failure ratio is low, but our new
+algorithm saves much energy after the failure ratio becomes
+larger. This is because bunch repair generates
+much fewer route request and reply messages, especially
+when more links fail simultaneously.
+Figure 10 shows the influence of bunch repair on the
+final result accuracy.7 If several local repairs fail a serious
+topology change happens, and thus many nodes
+are disconnected temporarily. A bunch repair will be
+automatically activated in this case, and thus the accuracy
+of AODV with bunch repair does not decrease
+compared to AODV while at the same time the average
+dissipated energy per node will be much lower
+compared to AODV.

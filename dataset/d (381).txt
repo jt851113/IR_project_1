@@ -1,0 +1,53 @@
+Based on application requirements, we first introduce
+some basic energy saving schemes for OTSNs.
+Naive: In this scheme, all the sensor nodes stays in
+active mode to monitor their detection areas all the
+time. As such, the objects in the network are always
+tracked and their locations are reported to the base
+station (every T seconds) by the nodes who have the
+objects in their detection areas. This scheme, as its
+name suggested, is not tunable to the application requirements
+for energy saving. We introduce it here
+to illustrate the principles used in other energy saving
+schemes and later use it as a baseline for comparisons
+with other schemes.
+Scheduled Monitoring (SM): This scheme addresses
+the fact that the application does not request
+the network to report the sensed data all the time.
+Assuming that all the sensor nodes and base station
+are well synchronized, all the sensor nodes can turn
+to sleep and only wake up when it’s time to monitor
+their detection areas and report sensed results. Thus,
+in this scheme, all the S nodes will be activated for
+X second then go to sleep for (T ? X) seconds. This
+scheduled monitoring process will be continued for the
+entire network operation period. The advantage of
+this scheme is that the sensor nodes spend minimal
+time in active mode and stay in sleep mode as long
+as they can. Hence, a significant amount of energy is
+saved if the applications do not need frequent reports
+from the network. However, in order to capture the
+moving objects (i.e., to ensure no missing report), the
+number of sensor nodes involved in object tracking is
+more than needed.
+Continuous Monitoring (CM): This scheme exploits
+another aspect of energy saving in OTSNs. Instead
+of having all the sensor nodes in the field wake
+up periodically to sense the whole area, only the sensor
+node who has the object in its detection area will
+be activated. An awake node actively monitors the object
+until the object enters a neighboring cell. It may
+wake up the destination node (handoff) W seconds before
+object enters. W, depending on the transmission
+rate and object moving speed, is typically very small.
+Thus, the handoff logically happens when an object
+reaches the detection area boundary. In this way, the
+sensor nodes trespassed by moving objects collaboratively
+monitor the objects, and report the location of
+the moving objects to the base station at the scheduled
+reporting time. The advantage of this scheme is
+that it involves only one sensor node to monitor each
+moving object while other sensor nodes can turn to
+sleep and save energy. However, to ensure no missing
+report, the active sensor has to stay awake while there
+exists an object in its detection area.

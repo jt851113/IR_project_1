@@ -1,0 +1,13 @@
+Besides carrying distinguishing type semantics (with which
+individual network nodes can decide whether or not to include
+them in their subscriptions), event types may also
+be associated with network-specific physical characteristics,
+such as minimum and maximum event payload sizes (in
+bytes), latency constraints (e.g., maximum allowable propagation
+delay), and relative event priorities. TD-DES allows
+such event latency and priority values to be specified by
+the overlaying applications. Such parameters affect the ordering
+policies of the event scheduling algorithm (Section
+3). However, for maximum interoperability with existing
+applications, the system also works in the absence of such
+parameters.

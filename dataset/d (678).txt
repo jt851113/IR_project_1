@@ -1,0 +1,89 @@
+We have shown so far how default values can be maintained
+in the data updating process to ensure invariance
+(1). We also fixed the error bounds for each node so
+that invariance (2) also holds. But this may not be costefficient,
+since different source sensors may exhibit different
+types of behavior. For those sensors whose values
+do not change very much, it is beneficial to assign them
+smaller error tolerances and assign the slack saved this
+way to other more active sensor nodes. We exploit this
+insight to design an approximate algorithm to adaptively
+adjust the error tolerance at each node in order to achieve
+an overall balance on communication activity by allowing
+sensor nodes update at similar frequencies.
+On the other hand, balanced workloads may also result
+in reduced overall workload, although optimality is
+not guaranteed due to the unknown nature of data behavior.
+Figure 3 shows one case that can illustrate the benefit
+of having balanced workload. Assume data readings of
+the two sensor nodes in different rounds are within some
+ranges (r1 and r2). And assume the total error tolerance
+allowed is also the same. It is obvious
+that the distribution in figure 3(a) will generate some
+messages while the distribution in figure 3(b) will not.
+The best adjustment technique could be developed if
+the data behaviors can be predicted, which is impossible
+in real applications. Learning the distributions of data by
+fitting statistical models can also be a good solution. But
+due to the limited storage and computing power of sensor
+nodes, those strategies will be too complex to implement.
+We propose a simple strategy for estimating sensor
+node workloads based on update frequencies. Other factor
+such as resource constraints (e.g. power level) can be
+assimilated into the estimation as well. In the A3 protocol,
+an adjustment is always initiated by a parent node
+who keeps in its cache default values and error bounds of
+all its children. In order to know the workloads of child
+nodes, the parent node also keeps a record of the update
+frequency, f, for all its children over certain period of
+time in history. This time period can be envisioned as
+a time-driven or round-driven sliding window. Then f is
+the number of updates a child node makes during the time
+window. In our experiments, we set all window sizes to
+32 (rounds).
+At each time an adjustment is activated at a parent
+node, our algorithm adjusts only two child nodes who
+have maximum and minimum update frequencies. An
+overall balance among sibling nodes will be achieved in
+a long run. We use the following criterion to initiate the
+adjustment:
+where fmax is the maximum frequency and fmin is
+the minimum. rth is a threshold we choose for the algorithm.
+We represent error tolerances corresponding to
+fmax and fmin by Afmax and Afmin. Then we can reset
+the error tolerances using the following formulae:
+In the formulae,  is an adjustment factor which allows
+us to keep part of the previous error tolerance and redistribute
+the other part between the two (min and max
+update frequency) nodes. The value of  should be chosen
+based on the sensitivity of the update value. Care
+should be taken to ensure that the choice of  do not
+cause any oscillation effect in which frequency of node
+with fmax becomes too small after the adjustment and
+that of node with fmin gets too large. The basic A3 protocol
+can be enhanced by selecting rth and  adaptively.
+Once an error adjustment action is taken by a tree node,
+the node waits for a fixed number of rounds before attempting
+another adjustment. This is necessary to factor
+in the time lag between the error adjustment and the actual
+impact on the update frequencies.
+For a 2-level architecture, the AP and cluster-heads
+are in charge of the error bound adjustment process. For
+a multi-level structure, similar to the resetting process of
+default values, the effect of error bounds being changed
+must be propagated to descendants. Special care needs
+to be taken in the propagation since reducing the error
+bound on a node is an unsafe operation and may cause
+the total error bound on a node’s children to be greater
+than the reduced bound on a node. This may result in
+incorrect results for monitoring queries. To handle this,
+we can introduce the notion of “safe operation” and “unsafe
+operation” similar to those used in [1]. An unsafe
+operation can only be committed after the unsafe operations
+on child nodes are committed. In another words,
+if a node has its error bound reduced, it can not perform
+approximate aggregation until all children (and thus, descendants)
+have reduced their error bounds. On the other
+hand, enlarging error bound is a safe operation that will
+not yield incorrect results. The operation can be committed
+any time.

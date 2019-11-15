@@ -1,0 +1,9 @@
+In this section, we analyze the latency incurred by ACQUIRE in answering a query.
+ACQUIRE takes SM steps to answer a query of size M, where SM is given by equation 6 in
+section 4.2.1. Each of these steps involve an update phase, where in a request is propagated
+within a neighborhood of d hops, while the responses are propagated over a maximum of
+d hops. Moreover, once the query is completely resolved, the response is sent back to the
+querier (modelled as   dSM). Also, the update phase will be done only once every 1
+c
+queries. Thus, the average latency of ACQUIRE can be given as follows:
+For the random walk,

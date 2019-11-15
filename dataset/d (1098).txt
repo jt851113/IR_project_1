@@ -1,0 +1,19 @@
+The time required for querying the CFRS needs to be
+competitive with the time required to obtain results from
+the original search engine (e.g., within a second for Web
+search, a few seconds for file sharing search). This is a low
+latency requirement: query messages need to be treated with
+a high priority. On the other hand, insertions of relevance
+tracking information do not require this soft real-time quality
+of service. Such messages can be delayed for some time
+without implying a severe loss in the quality of the service
+as experienced by the user.
+One should note that relevance-tracking messages from
+the peers sent through the KBR are of small size (the only
+space consuming element being the bloom filters used to
+encode the user interest profile). Sending each message separately
+is not cost-effective. Grouping low-priority messages
+can reduce the global overhead. This allows to use links
+more efficiently and to meet a high throughput objective. A
+similar priority-based mechanism has been successfully used
+in [10].

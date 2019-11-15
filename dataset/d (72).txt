@@ -1,0 +1,13 @@
+Having an efficient architecture for obtaining and querying sensor data is just one component of the TeleTiny
+query-processor. In order to conserve precious network bandwidth and battery life on sensors, and reduce the
+load on the central query processor, some mechanism to evaluate all or part of a query in the network itself is
+needed.
+Work on in-network query processing is being primarily conducted in the context of TinyOS[20], a UC
+Berkeley effort to develop an operating system for use on wireless sensors. The sensors which the TinyOS
+project is focused on are referred to as “motes”. Figure 6 shows an example of such a sensor. Current generation
+Mica motes have 4kB of RAM, a 50kbit radio, a 4mHz processor, and a modular connector for attaching sensor
+devices. Sensor boards which measure light, temperature, vibration, sound, and acceleration are available.
+Figure 5: Visualization of Sensor Network Aggregation Algorithm, with Aggregate Value Plot (inset) Arrows
+underneath the cursor (which is over the root of the network) indicate child nodes. As the mouse moves, arrows
+to show neighbors and parents are also drawn. The graph shows the aggregate value at various sensors - the
+stable (red) line with value around 500 is the root of the network.

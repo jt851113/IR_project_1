@@ -1,0 +1,107 @@
+The emerging technologies in low-power microsensors,
+actuators, embedded processors, and RF radios
+have facilitated the deployment of large scale sensor
+networks. Due to their low cost and capabilities
+for pervasive surveillance, sensor networks and their
+applications have tremendous potential in both commercial
+and military environments. However, in addition
+to the inherited limitations of the sensor nodes
+such as scarce power resources, highly distributed cooperations
+and unstable wireless communication, the
+specific requirements of applications may bring additional
+research challenges and issues to the design of
+sensor networks. In this paper, we consider one of the
+sensor network killer applications - object tracking.
+Among the technical issues to be addressed in developing
+sensor networks for object tracking, energy conservation
+is probably the most critical one since the
+sensor nodes are often supported by batteries which
+could be difficult to replace. A lot of existing researches
+are focussed on optimizing the communication
+cost by inactivating radios as much as possible or
+by trading off computation for communication [3, 4, 5].
+However, these studies neglected a fact that, while
+sensing and the computing components consume less
+power than the communication components, they are
+still important sources of energy dissipation in sensor
+nodes, especially after the communication cost being
+optimized. Thus, in this paper, we study the problem
+of how to reduce the energy consumption in the
+sensing and computing components of sensor nodes.
+We define the problem and the requirements of
+object tracking applications and develop some basic
+energy-saving solutions which reduce the number of
+sensor nodes needed for monitoring the moving objects
+or decrease the frequency of sampling the environment,
+respectively. Moreover, we discuss other
+possible solutions by illustrating a solution space.
+Based on our analysis and observations, we propose
+a Prediction-based Energy Saving scheme, called PES,
+that minimizes the number of nodes participating in
+the tracking activities, while inactivates other nodes
+into sleeping mode. Simulation based performance
+evaluation, in terms of total energy consumption and
+missing rate, has been conducted. The simulation result
+shows that the PES can effectively reduce the
+energy consumption on MCU and sensor components.
+Moreover, the different heuristics discussed in this paper
+can be used to balance the energy savings and
+application requirements.
+This paper makes three significant contributions.
+Firstly, we present and compare several basic energy
+saving schemes for object tracking sensor networks,
+and point out the direction for designing an
+energy-aware OTSN. Secondly, we propose and architect
+a prediction-based energy saving scheme (i.e.,
+PES) which consists of prediction models, wake up
+mechanisms and recovery mechanisms. PES activates
+only the essential sensor nodes needed to track the
+moving objects, but hibernates other nodes into lowpower
+mode. Lastly, we conducted an extensive performance
+evaluation by simulating the OTSN and various
+energy saving schemes we proposed. The study
+provides profound insights for designing an energyaware
+OTSN.
+There are many related works that address energy
+efficiency in sensor networks from various angles. In
+[6, 13, 18], the analysis of power consumption on sensor
+nodes provides an important heuristic for power
+optimization in various areas of the sensor network design.
+Energy awareness is also studied in the MAC layers,
+such as TDMA and CDMA protocols [2, 11, 17].
+Low-power paging channel, employed in this paper as
+part of the OTSN communication protocols, is widely
+discussed in [12, 13, 21]. In the network architecture
+level, the clustering based approach and localized algorithm
+have been proposed to dynamically cluster the
+sensor nodes based on their remaining battery level
+and density of the region [3, 5].
+The ideas of utilizing predictions to reduce overheads
+in mobile computing systems have appeared in
+the literature. Prediction based techniques in cellular
+network reduce the paging overhead by limiting search
+space to a set of cells that mobile users may enter
+[1, 19]. In wireless data broadcast protocol, mobile
+computers turn on the radio only during the arrival
+time of the requested data frames, which is predicted
+based on the indexing information in the broadcast
+channel [7, 9, 16]. Similarly in sensor networks, the
+future reading at a sensor is predicted, given the past
+reading history and the spatial and temporal knowledge
+of readings from surrounding sensors [4]. In our
+previous work[20], we also studied a localized network
+architecture and a dual prediction mechanism, which
+achieve power savings by allowing most of the sensor
+nodes stay in sleep mode and by reducing the amount
+of long-range transmissions.
+The rest of the paper is organized as follows: Section
+2 provides a background and the assumptions for
+this paper, and also discusses the system factors that
+are contribute to the network designs. In Section 3, we
+clearly define the requirements of OTSN applications
+and explore some basic schemes which represent the
+different philosophies for optimizing energy usage in
+OTSNs. Our prediction-based energy saving schemes
+is presented in Section 4. Section 5 provides the simulation
+results; and finally, Section 6 gives the concluding
+remarks and points out the future work.

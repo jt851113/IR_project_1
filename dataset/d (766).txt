@@ -1,0 +1,36 @@
+Given the broad, flat structure of wireless
+sensor networks, collecting information from
+the entire network at a single sink can result in
+immense network traffic near the sink. This
+characteristic is at odds with the fact that most
+current structural health monitoring algorithms
+are centralized, and even given a
+distributed algorithm, eventually data needs to
+be supplied to a human operator. Data aggre
+gation is an approach to help alleviate this
+pressure; as information flows towards the
+sink, similar data from different sources is
+aggregated into a single message, rather than
+forwarded as separate messages.
+Data aggregation has primarily been
+studied in relation to power savings (Intanagonwiwat
+et al. 2001, Krishnamachari et al.
+2002) or computing simple functions over the
+entire network's data set (Madden et al. 2002).
+We have found that aggregation can also be
+used to improve the quality of data available
+to a real-time application. In our approach to
+data aggregation, the network is structured as
+a hierarchy, with the centralized client to the
+aggregation service at the highest level. In
+addition to sampling its own data, each sensor
+node maintains a predictive model of some
+function of the readings from sensors at lower
+levels. Rather than continually transmitting
+the newest samples, messages are only sent to
+update the predictive models at higher levels.
+These messages are assigned priorities based
+on the significance of the deviation between
+the model and reality (Figure 3). Such a
+priority based communication scheme is
+explored in Karl et al. (2003).

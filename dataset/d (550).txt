@@ -1,0 +1,28 @@
+We now present the auxiliary neighbor selection algorithm
+for Chord. In Chord, all the nodes are placed in a clockwise
+fashion on a ring in increasing order of their ids. The Chord
+routing policy is as follows: for a query to node v at s, the
+next hop is the neighbor of s closest to v, and between s and
+v in the clockwise direction. (Here, we are using node ids
+to refer to the nodes.) In other words, the next hop chosen
+is arg minw2Nsf(v ! w) mod 2bg. The choice of the core
+neighbors ensures that, in the steady state, a query originating
+at node u and destined for a node v requires a maximum of
+duv hops, where duv is defined as follows.
+This distance is an upper bound in the steady state, and does
+not make any assumptions about the actual positions of the
+nodes. (duv is equivalent to the position of the leftmost ‘1’ in
+(v ! u) mod 2b, and unlike Pastry, this distance function is
+not symmetric.)
+In the rest of this section, for simplicity, we assume that
+the auxiliary neighbor computation is done at the node with
+id zero (i.e., zero in all b bits of the identifier), without loss
+of generality. We refer to this node as the zero-node. Further,
+we refer to the mth immediate successor of the zero-node in
+the clockwise direction on the ring as node m.
+We begin by presenting a simple algorithm based on
+dynamic programming to solve the above recurrence. This
+algorithm has complexity O(n2k) and hence, does not scale
+very well with the number of nodes. However, it provides
+the basis for an O(n(b + k log b) log n) algorithm, which we
+present in Section V-B.

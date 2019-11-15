@@ -1,0 +1,6 @@
+Let be a set of events and	
+be a sequence of events in .
+We now introduce some notations that we will
+use for the remainder of the paper. As mentioned previously,
+we want to discover the patterns such that there exists some
+subsequenceof, where is significant in.

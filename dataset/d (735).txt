@@ -1,0 +1,101 @@
+Closed set mining from Boolean matrices and thus binary relations has been extensively
+studied since the seminal paper (Pasquier et al. 1999). A closed itemset in a
+given Boolean matrix that encodes whether some objects (say transactions) satisfy
+or not some properties (say contain or not some items) correspond to maximal sets
+of properties that are shared by a given set of objects. For instance if, in a given
+dataset, P = {B,C, D} is a closed set associated with the supporting set of objects
+O = {1, 2, 3}, it means that we cannot add any property to P which would be true
+for all the objects in O. Notice that studying collections of such couples of sets is also
+known as Formal Concept Analysis (Ganter et al. 2005).
+The closed set mining task has been studied in depth for two main reasons. First,
+thanks to the formal properties of closedness, it enables the computation of every frequent
+itemset in many real-life dense and correlated datasets where other techniques
+fail for the selected frequency thresholds. In other terms, the availability of efficient
+closed setmining algorithms is a breakthrough with respect to frequent itemset mining
+computational feasability (see, e. g., (Bayardo et al 2004; Goethals 2010)). Next, the
+intrinsic maximality property of closed sets has been useful for deriving more relevant
+patterns. Indeed, thanks to the closedness properties, it is possible to adress important
+issues like, for instance, the non redundancy of association rules (see, e. g., (Zaki
+2004)), the computation of a priori relevant local patterns or biclusters with nice applications
+to gene expression analysis (see, e. g., (Pan et al. 2003)), or the construction of
+better features for supervized classification (see, e. g., (Garriga et al. 2008)). In fact,
+closedness provides a lossless condensation (Boulicaut and Bykowski 2000; Calders
+et al 2005) of all itemsets by only keeping the most informative ones (Gallo et al.
+2007, 2009). In other terms, we know how to compute the exhaustive collection of
+the closed sets that hold in a given dataset, possibly enforcing user-defined constraints
+(see, e. g., (Stumme et al. 2002; Bonchi and Lucchese 2004; Besson et al. 2005)), and
+this has been proved useful across many different 0/1 data mining workflows.
+The starting point of our study is that many interesting 0/1 datasets correspond
+to n-ary relations with n ? 3 and not just binary ones. For instance, we may consider
+ternary relations that encode whether some objects (first attribute) satisfy some
+properties (second attribute) at given timestamps (third attribute). Therefore, a timely
+challenge is to extend pattern discovery techniques from binary to arbitrary n-ary
+relations and thus to Boolean tensors instead of just Boolean matrices. It makes sense
+to look for closed patterns in such an extended setting. Considering that formal concepts
+correspond to the so-called closed 2-sets in binary relations, recent algorithms
+like CubeMiner (Ji et al. 2006) and Trias (Jaschke et al. 2006) extract every closed
+pattern when n = 3, i. e., closed 3-sets. Data- Peeler (Cerf et al. 2009a) efficiently
+computes closed patterns for an arbitrary arity n, i. e., closed n-sets.
+A major bottleneck for the dissemination of data mining methods based on closed
+pattern discovery is related to noise and its impact on the computed collections. Real
+n-ary relations suffer from noise that can have several causes (e. g., intrinsic noise
+in the studied system, measurement errors, chosen discretization thresholds, etc.). As
+a result, some n-tuples present in (resp. absent from) the relation should, in fact, be
+absent (resp. present). Minimal size constraints (i. e., looking for large enough patterns)
+allow to avoid the n-tuples present in the relation because of noise. On the
+contrary, when noise drops some n-tuples, not only the number of closed patterns
+increases but their relevancy is affected too. For example, assume a binary relation
+in which {B,C, D} is a closed itemset whose support (i. e., all transactions sharing
+the items B, C and D) is {1, 2, 3}. By definition, ({1, 2, 3}, {B,C, D}) is a closed
+2-set. Let us now assume that, because of noise, (2,C) is absent from the relation.
+Instead of ({1, 2, 3}, {B,C, D}), two other patterns, namely ({1, 3}, {B,C, D}) and
+({1, 2, 3}, {B, D}), are extracted. In fact, an exponential growth of the number of
+patterns occurs and the extracted closed 2-sets are less relevant since they only are
+logarithmic-size fragments of the “real” patterns (Liu et al. 2006). To extract them,
+there is a need to relax the minimal size constraints and some other patterns, that are
+really too small to be relevant (e. g., including 2-tuples that are present in the relation
+because of noise), are found as well. These phenomena are dramatically aggravated
+when mining relations of higher arities. Indeed, since the number of n-tuples inside a
+closed n-set exponentially increases with n, noise has a greater probability to damage
+one (or several) of its n-tuples. To address such problems, we generalize the definition
+of a closed n-set to let it encompass, within user-defined bounds, some absent n-tuples
+considered as noise. Different definitions were proposed for itemset mining in binary
+relations (see Gupta et al. (2008) for a survey). Such a declarative specification for a
+closed ET-n-set1 remains open.
+We present a definition of noise tolerance that is applicable to patterns in arbitrary
+n-ary relations. It relies on upper-bounded quantities of noise that are tolerated per
+element in the pattern. For instance, in our running example, ({1, 2, 3}, {B,C, D})
+would be discovered, despite the absence of (2,C) from the relation, if the analyst
+decides to tolerate one error per element (2 and C reach this bound, 1, 3, B and D
+do not encompass any noise). Unlike most of the literature on noise-tolerant mining
+in binary relations, our definition of a noise tolerant pattern includes a closedness
+constraint. In this way, redundant patterns are avoided. More precisely, the closedness
+constraint filters the most informative patterns without any loss of information w.r.t.
+the collection that would be obtained without this constraint. Designing an algorithm
+to extract every such pattern (completeness) while remaining scalable is challenging.
+This article describes such an algorithm, namely Fenster2. Part of its efficiency can
+be attributed to enumeration principles that it largely borrows from the state-of-the-art
+closed n-set extractor Data- Peeler (Cerf et al. 2009a). These same principles also
+allow the efficient enforcement of additional constraints (instances of one of the most
+expressive class defined so far) that makes Fenster able to discover specific patterns
+in large datasets. The discovery of maximal quasi-cliques in a labeled, dynamic and
+directed transportation network is a real-life example detailed in Sect. 6.
+Although the enumeration principles are essential, tolerating noise significantly
+harden the algorithmic challenge. To remain scalable, Fenster incrementally updates
+counts of absent n-tuples in various subspaces of the data. Thanks to these aggregates,
+the same regions of the relation are not browsed again and again to check whether the
+recursively refined search space still contains a pattern satisfying the definition. In fact,
+we theoretically show that Fenster’s enforcement of the definition is as fast as a naive
+one in a relation with the same number of elements per dimension but one dimension
+less. An empirical comparison with DCE, the only other algorithm able to extract
+noise tolerant patterns in arbitrary n-ary relation3, confirms the good performance of
+Fenster. Indeed, our proposal turns out to be orders of magnitude faster. This comparison
+validates empirically Fenster’s per-element tolerance to noise: the quality of
+the patterns extracted under DCE’s per-pattern tolerance to noise is both lower than
+that of Fenster and less robust, i. e., more sensitive to the chosen parametrization.
+The next section introduces the closed ET-n-set mining task. The enumeration principles
+of Fenster are sketched in Sect. 3. The crucial implementation details are given
+in Sect. 4, which discusses as well the time and space complexities. Section 5 deals
+with an empirical validation on synthetic datasets, whereas Sect. 6 presents results on
+a real graph evolving in two temporal dimensions. Section 7 is dedicated to related
+work and Sect. 8 briefly concludes.

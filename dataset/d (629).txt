@@ -1,0 +1,99 @@
+Advances in MEMS technology has enabled the development
+of small, inexpensive electronic microsensor
+devices (e.g. Berkeley Motes [11], MIT amps
+nodes [3]) that integrate radio, sensing and processing
+components. This, along with the development of
+portable operating systems that can be embedded into
+sensor devices (e.g. TinyOS [8]) has made the deployment
+of “drop and play” applications a reality. These
+developments catalyze a wide spectrum of applications
+involving large scale sensor networks, such as military
+surveillance, biological monitoring and fault detection in
+civil infrastructures. Data in such monitoring based sensor
+networks is generated continuously, often at a very
+rapid rate.
+A major constraint in the effective wide-scale deployment
+of such sensor networks is the limited battery power
+that the devices rely on for their functionality. For example,
+with no power management, the Mica motes [11]
+can last approximately 7-10 days. Since sensors are usually
+placed in environments with harsh conditions or embedded
+in remote rugged terrain (e.g. ecosystem monitoring),
+it is often difficult, if not impossible, to replenish
+or replace the batteries. Developing energy-efficient
+strategies for deploying wireless sensor network applications
+is of utmost importance. Due to the fact that communication
+cost in sensor networks is much higher than
+computation cost [20], substantial energy savings can
+be achieved by reducing the communication cost, sometimes
+even at the cost of more computation. Much of the
+prior work focuses on low duty-cycle operation for network
+related operations such as routing and media access
+with radio transmitters and receivers turned off whenever
+possible to save power [10, 9]. We consider, however, a
+technique that trades data quality for savings in communication
+cost, when approximate answers can be accepted
+by users. Another concern with wireless sensor network
+protocols is their ability to achieve uniform power consumption
+among the network components to extend the
+overall lifetime of the network without loss of connectivity.
+We show how the proposed technique can be exploited
+to achieve this goal by adjusting error tolerances
+for sensors and sensor groups.
+Error is inherent in sensor networks. Variations in the
+sensing process, environmental factors and communication
+latencies introduce noise and imprecision into the
+sensor data received at the aggregation node. Although
+sophisticated techniques have been devised to improve
+the quality of sensor generated data, such as sensor fusion
+[2], exact results are difficult to achieve. This implies
+that even if sensor readings are captured exactly, it
+is still impossible to have a precise representation of realworld
+phenomena. Fortunately, in practice, monitoring
+queries usually require information about a group of sensors
+at a specific level of accuracy. This enables that the
+error constraints be defined on groups of sensors (not on
+an individual sensor). While the basic nature of the inaccuracy
+remains unchanged, the protocol designer nowhas
+a margin of flexibility - not every violation of accuracy on
+sensor needs to be reported to the server. In-network aggregation
+can specifically help eliminate messages to the
+server if the group quality constraints are satisfied even
+though sensor error bounds may be violated. This is especially
+useful under conditions of random noise where
+early aggregation can take advantage of the fact that positive
+and negative noise factors can cancel each other out.
+Researchers are beginning to explore sensor database
+technology, from semantics, architecture, to in-network
+query processing [16, 23, 17]. In network community,
+cluster-based routing and data gathering has been identified
+to be the most efficient communication technique for
+large-scale wireless sensor networks. Several protocols
+have been proposed [7, 15, 24]. Clusters are constructed
+to gather data locally before the data is forwarded to a
+server for final processing. The clusters can form a hierarchical
+structure. In this paper, we consider aggregate
+monitoring queries over a set of sensors in a wireless
+sensor network. A large class of sensor network applications
+are primarily designed to monitor the physical
+world; continuous queries are a natural fit in this scenario.
+The goal of this paper is to devise techniques and
+protocols for adapting the processing of aggregate monitoring
+queries in a sensor network in order to (a) satisfy
+monitoring quality constraints (b)minimize cost of query
+processing and (c)maximize the lifetime of the sensor
+network by balancing the workload at the sensor nodes.
+We present an adaptive protocol for data aggregation that
+minimizes communication overhead while guaranteeing
+error-bounds. The protocol also adaptively balances the
+workload of the clusters by manipulating the associated
+sensor values and the error tolerances of individual sensors.
+The rest of the paper is organized as follows. In Section
+2, we introduce some necessary background and formulate
+the approximate monitoring problem. Section 3
+presents an adaptive approximate aggregate monitoring
+protocol(A3) to process aggregate queries in a sensor network.
+Section 4 discusses the adaptive adjustment of error
+tolerances. Section 5 evaluates the performance of
+the proposed strategies for clustering and adaptation. We
+review related works in section 6.

@@ -1,0 +1,74 @@
+The attentive reader has probably noticed that, in the reported results, DCE’s tolerance
+to noise is not “pushed” as much as Fenster’s. In fact, DCE cannot, in a reasonable
+time (timeout set to 12 h per extraction), complete those extractions. The fastness of
+Fenster is its most significant advantage over DCE. Figure 16 plots the running times
+of these two algorithms running on the synthetic ternary relations. We recall that, at
+comparable thresholds of noise tolerance, the tuples covered by the patterns are exactly
+the same when DCE’s filtering post-processing is used (see Sect. 5.2). Depending on
+the setting, Fenster is between one and four orders of magnitude faster than DCE.
+DCE’s running times without the post-process almost are identical to those with the
+post-process. They actually are slightly worse (probably because of the cost of outputting
+many more patterns on disk). The reason for Fenster being much faster than
+DCE relates to the choice of an absolute tolerance to noise. DCE’s relative tolerance
+to noise does not allow to prune the search space as much because encountering a
+pattern with a density below the required threshold does mean that none its super-patterns
+violates this constraint as well. Despite the significant improvement over DCE’s
+efficiency, it must be observed that increasing Fenster’s tolerance to noise leads to
+an exponential growth of the time it takes to achieve the extraction. This justifies what
+was previously written about the practical impossibility to tolerate, in a complete way,
+enough noise to recover the hidden patterns.
+The good efficiency of Fenster is observed in 2-dimensional contexts too.To establish
+a comparison with AC-Close, we could not consider the extraction of patterns
+with at least four elements per attribute in 32×32 datasets because AC-Close(parametrized
+with α = 0.75, i. e., the exact support of the patterns must exceed 0.75 × 4 =
+3 elements) could not terminate in a reasonable time. That is why the subsequent
+experiments deal with 16 × 16 datasets containing four overlapping 4 × 4 patterns.
+The closed patterns extracted by both Fenster and AC-Close are constrained to
+contain at least two elements per attribute7. α is set to 0.5 and various (relative)
+noise tolerance levels  are tested. Like with Fenster, such a level is applied to both
+attributes.
+Figure 17 plots the quality results of Fenster and AC-Close. Because the hidden
+patterns are small, the best results are obtained with no tolerance to noise. In this setting,
+AC-Close and Fenster compute the same collections of patterns. It is noticeable
+that a relative tolerance to noise allows more subtle variations of the returned
+collections. Figure 18 compares the time performances of Fenster (with  = 0,
+Fenster’s extractions take less than 0.01 s and are not reported) and AC-Close.
+On this small relation, Fenster already runs up to three orders of magnitude faster
+than AC-Close. As mentioned earlier, this difference increases with the size of the
+dataset (even if the same ratio size of an attribute domain / minimal
+size constraint is kept). The reason why Fenster runs significantly faster than
+AC-Close is again related to the choice for an absolute tolerance to noise. The steep
+increase of AC-Close’s running times when the noise level grows indicates a poor
+scalabilityw.r.t. the number of tuples (the hidden patterns only cover a small part of the
+16×16 = 256 tuples, therefore the noise mainly is false-positive and its level roughly
+is the density of the dataset). Interestingly, AC-Close’s performances do not seem to
+be affected by the chosen tolerance to noise (the curves for  ? {0, 0.1, 0.2, 0.3, 0.4}
+all coincide).
+To further study the scalability of Fenster, Fig. 19 shows its running times when
+one of the attribute domain grows (real datasets rarely are cubic). The considered
+datasets are 32 × 32 × 32r large and r varies from 10 to 100 by increments of 10.
+The rightmost point therefore relates to an extraction in a 32 × 32 × 3200 relation.
+There always are four patterns of size 8 × 8 × 8 affected by 10 of noise. The false-
+positive noise therefore becomes more and more problematic when r increases. Even
+like that, all the extracted closed ET-3-sets with  = 2 exactly cover the hidden patterns,
+i. e., the quality always is 1. Fenster’s running time exponentially increases
+with r . This is expected since the minimal size constraint on the growing attribute
+domain is kept constant, hence weaker and weaker (with patterns that grow in proportion
+with the dataset, one can simply rely on random sampling to decrease the
+workload).
+Fairly testing the scalability w.r.t. the arity of the relation is a hard task because
+some other characteristics of the relations cannot be kept constant. Using cubic datasets,
+we decided to fix the number of (absent and present) tuples to 4,096 and to extract,
+with  = 2, closed ET-n-sets containing at least one fourth of the number of elements
+per attribute. For instance, the 2-dimensional relations have 64 elements per attribute
+(64×64 = 4096) and the extracted closed ET-2-sets must contain at least 16 of them
+( ). The relations are only composed of false-positive noise to not introduce
+more parameters that cannot be kept constant when the arity changes. Figure 20 shows
+Fenster’s running times when the noise level (in this experiment, it is as well the density
+of the relations) varies from 0.05 to 0.45 in 2, 3, 4 and 6-ary relations. The worst
+results are obtained with the 2-dimensional and 6-dimensional datasets. However, it
+is hard to draw conclusions given the unavoidable imperfections of the setting: the
+2-dimensional case appears harder because only two minimal size constraints prune
+the search space, whereas the 6-dimensional setting leads to the extraction of tens
+of thousands of patterns that cover every present tuple (one element per attribute is
+sufficient for a pattern to be considered large enough).

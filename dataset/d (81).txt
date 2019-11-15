@@ -1,0 +1,12 @@
+Finally, there are some query-processor issues that are closely related to problems in sensor-query processing
+that I have been exploring in conjunction with the Berkeley database group:
+1. Historical Data Interface: The current Telegraph system does not provide a mechanism for logging and
+querying historical sensor data, or for combining historical data with data currently streaming into the
+system. Over this summer, I plan to work with the Telegraph research group to insure that the next
+implementation of the Telegraph system includes support for logging and querying historical sensor data.
+One possible approach for implementing such an interface is to use broadcast-disk [2] like data scheduling
+to stream historical records needed by the current query workload when queries are blocked waiting for
+additional current-time results to be delivered.
+2. Query Model and Streaming Data Semantics: Sirish Chandrasekaran and I are currently working to enumerate
+the space of query semantics over data streams. We hope to integrate this work into the Telegraph
+query engine, which will provide a richly expressive tool for querying data flowing in from sensors.

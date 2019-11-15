@@ -1,0 +1,78 @@
+We classify the related work into three categories: query
+processing, view management and routing and MAC protocols.
+Query Processing in Sensor Networks. Several research
+groups have focused on in-network query processing as a
+means of reducing energy consumption. The TinyDB Project at
+Berkeley investigates query processing techniques for sensor
+networks including an implementation of the system on the
+Berkeley motes and aggregation queries [30], [32], [33],
+[29], [21]. An acquisitional approach to query processing
+is proposed in [31], in which the frequency and timing of
+data sampling is discussed. The sensor network project at
+USC/ISI group [22], [19], [18] proposes an energy-efficient
+aggregation tree using data-centric reinforcement strategies
+(directed diffusion). A two-tier approach (TTDD) for data
+dissemination to multiple mobile sinks is discussed in [47].
+In a recent study [13], an approximation algorithm has been
+designed for finding an aggregation tree that simultaneously
+applies to a large class of aggregation functions.
+Although there has been a lot of work on query processing
+in distributed database systems, [51], [5], [34], [50], [25],
+there are major differences between sensor networks and
+traditional distributed database systems. Most related is work
+on distributed aggregation, but existing approaches do not
+consider the physical limitations of sensor networks [41],
+[46]. Aggregate operators are classified by their properties by
+Gray et al. [15], and an extended classification with properties
+relevant to sensor network aggregation has been proposed by
+Madden et al. [32].
+View Management in Sensor Networks. Our high-level
+framework for distributed storage builds on the data-centric
+storage model proposed in [39], [40] and extended in [12].
+Long-term storage in sensor networks is combined with multiresolution
+data access and spatiotemporal data mining in [9].
+There has been a lot of work on view design, maintenance
+and exploitation in centralized database systems. Chaudhuri
+et al. [7], [2] consider the automated selection of materialized
+views and indices given a query workload and discuss their
+implementation on Microsoft SQL Server. Valentin et al.
+propose the DB2 Advisor which includes an index recommendation
+module, and provides measurements on the quality
+of the recommended indexes [43]. Several variations of the
+view selection problem have been extensively studied in the
+context of data warehouses: although the general goal is to
+select views that would minimize the query response time,
+the constraints under consideration is either the materialization
+time, the storage space or both [16], [3], [17], [24]. Kotidis
+et al. propose a dynamic view management system for data
+warehouses (DynaMat [26]), which unifies the view selection
+and the view maintenance problems under a single framework.
+Algorithms for query rewriting and making efficient use of
+existing materialized views to speed up query processing are
+discussed in [27], [38], [14].
+Routing and MAC Layers in Sensor Networks. The data
+management layer should not be considered in isolation from
+the communication layers. For instance, an opportunity for
+cross-layer optimization is to design and adapt communication
+protocols to the particular communication needs of the data
+management layer. A number of protocols for ad-hoc networks
+have been proposed in the literature [35], [23], [4], [36].Recent
+work on energy-aware routing proposes the selection of routes
+on the basis of available energy in order to increase network
+lifetime[6], [52], [37]. Heinzelman et al. present the
+SPIN family of network protocols for communication of large
+messages in sensor networks [20]. The PAMAS MAC-level
+protocol turns radios off when they are not transmitting or
+receiving packets [42]. TDMA protocols reduce the duty cycle
+thus trading idle-time energy consumption for latency [37].
+Our wave scheduling approach achieves significantly greater
+energy savings by coordinating the radio usage across the
+sensor network.
+An energy-efficient MAC protocol called S-MAC has been
+proposed in [48], [49], where the nodes are locally synchronized
+to follow a periodic listen and sleep scheme. GAF (Geographical
+Adaptive Fidelity) [45], [44] is an algorithm that also
+conserves energy by identifying nodes that are equivalent from
+a routing perspective and then turning off unnecessary nodes.
+Our wave scheduling protocol is orthogonal and synergistic to
+GAF.

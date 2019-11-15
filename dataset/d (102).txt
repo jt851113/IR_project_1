@@ -1,0 +1,28 @@
+The first scenario is one in which individuals within a
+certain community share their own publications. We will use
+the CiteSeer database. Authors are identified with peers, i.e.
+a peer shares the documents that the corresponding person
+has (co-)authored. A query log is used for extracting test
+queries.
+The collection was downloaded from the CiteSeer web
+site2 on 17th November 2005 and contains – after removing
+duplicates – 441,178 abstracts from which a total of
+230,922 distinct author names was extracted and identified
+with peers.
+The distribution of the number of papers per author follows
+a power-law, which means that the majority of peers
+(149,421 = 64.7%) has only one or two documents. This distribution
+is consistent with measurements of peer size distributions
+in real P2P file-sharing networks [23].
+The queries used in the experiments are taken from a portion
+of the CiteSeer’s access logs, dating from August and
+2http://citeseer.ist.psu.edu/oai.html
+September 2005. This portion contains 712,892 successive
+queries, after deleting queries that were obviously generated
+by bots. Among these queries, there are 367,110 distinct
+ones, of which 122,082 occur more than once. Frequency of
+queries follows another power-law, i.e. there are a few very
+frequent queries and a vast majority of rare ones.
+For the experiments, the last 10,000 queries of the log were
+used to evaluate all strategies. The first 702,892 queries were
+used as a training set in the evaluation of profile adaptation.

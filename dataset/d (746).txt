@@ -1,0 +1,68 @@
+To remain tractable on large relations, Fenster relies on the following observation:
+from a parent enumeration node to its children, U and U  V do not change much. U
+only grows by one element in the left child and is left unchanged in the right child.
+U  V loses one element in the right child; potentially more in the left child. To avoid
+repetitive scans of the same parts of R, Fenster updates counters of absent n-tuples
+that are relevant to the verification of Definitions 9 and 10 on the recursively considered
+patterns. In this way, at every recursive call, Fenster only needs to access the
+parts of R related to the symmetric differences between the n-sets UP and VP of the
+parent node and the respective n-sets U and V of the child node. This means much
+better time performances (than the naive approach) to the cost of a worse memory
+consumption (to store the counters). Later, it will be formally shown that the time gain
+is huge while the space complexity usually is dominated by the dataset when n ? 4.
+Let us finally list the counters that are relevant when enforcing C-connected and
+C-closed. Keeping in mind their definitions (i. e., Definitions 9 and 10) while looking
+at Fig. 10 provides the following list:
+To check C-closed(U  V):
+- ?s ? S, 0(U  V, s);
+- ?s ? S, ?u ? U, 0(U  V ∪ {s}, u).
+Given e ? V and UL = U ∪ {e} (the elements that are present in every n-set
+descendant of the left child), to compute {v ? V \ {e} | C-connected(UL ∪ {v})}:
+- ?v ? V, 0(UL, v);
+- ?v ? V, ?u ? UL , 0(UL ∪ {v}, u).
+Given e ? V and UL = U ∪ {e} (the elements that are present in every n-set
+descendant of the left child), to compute {s ? S | C-connected(UL ∪ {s})}:
+- ?s ? S, 0(UL , s);
+- ?s ? S, ?u ? UL , 0(UL ∪ {s}, u).
+By factorizing the last two points, four families of counters are useful:
+- ? f ? S, 0(U  V, f );
+- ? f ? S, ?u ? U, 0(U  V ∪ { f }, u);
+- ? f ? V  S, 0(UL , f );
+- ? f ? V  S, ?u ? UL , 0(UL ∪ { f }, u).
+During the recursion, any element in V may, in the descendant nodes, belong to aU
+or a S n-set.By keeping updated every type of counter (0(UV, f ), 0(UV ∪{ f }, u),
+0(UL , f ) and 0(UL ∪ { f }, u)) for every ( f, u) ? (U  V  S)2 \ U2, their computation
+is always performed incrementally. In this way, some counters are only used when
+the element defining the hyperplane is in a specific set (e. g., a counter 0(U  V, f )
+is not used until f ? S). Anyway, it is advantageous to maintain them updated for
+every element that may reach a state where they would be useful (e. g., 0(U  V, f )
+is maintained updated even if f ? V). An alternative strategy would be to initialize
+a counter when required. It would be less efficient because, along the enumeration
+tree, there are exponentially many states where a given counter is useful. As a consequence,
+the cost of an on-demand initialization of the counter (scan of part of the
+dataset) multiplied by this number of states exceeds the cost of maintaining them all
+updated until used or useless. Thus, all counters are initialized while storing the dataset
+and, whenever elements are moved or removed from V, the counters are updated by
+only traversing the symmetric differences between the n-sets UP and VP of the parent
+node and the respective n-sets U and V of a child node. These updates can be further
+improved for the counters of the types 0(UL ∪ { f }, u) and 0(U  V ∪ { f }, u) (where
+( f, u) ? (U  V  S)2 \ U2). To do so, they are replaced by:
+- 0(UL , f, u) = |U1
+L
+×· · ·×{ f }×· · ·×{u}×· · ·×Un
+L  \ R|;
+- 0(U  V, f, u) = |U1 ∪ V1 ×· · ·×{ f }×· · ·×{u}×· · ·×Un ∪ Vn \ R|.
+The desired quantities 0(UL ∪ { f }, u) and 0(U  V ∪ { f }, u) can be computed, still
+without any access to the relation:
+- 0(UL ∪ { f }, u) = 0 (UL , u) + 0 (UL , f, u);
+- 0(U  V ∪ { f }, u) = 0 (U  V, u) + 0 (U  V, f, u).
+The two new types of counter involve much smaller subspaces (one dimension less)
+than the ones they replace. Thus, they do not need to be updated as often, hence the
+additional time gain.
+Example 9 Consider that Fenster, working on the relation RE , reaches the enumeration
+node where U = ({α, γ }, {1, 2}, {B}) and V = (?, {3, 4}, ?). Consider,
+moreover, that S = ({β}, ?, {A}). Although this enumeration node is rather small, it
+is associated with too many counters to list them all here. Among them, 0(U, α) = 0,
+0(U  V, α) = 1, 0(U, 3) = 1, 0(U  V, 3) = 1, 0(U, A) = 0, 0(U  V, A) = 2,
+0(U, α, 3) = 0, 0(UV, α, 3) = 0, 0(U, α, A) = 0, 0(UV, α, A) = 2, 0(U, 3, A) =
+1, 0(U  V, 3, A) = 1, etc.

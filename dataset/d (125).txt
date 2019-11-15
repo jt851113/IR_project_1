@@ -1,0 +1,33 @@
+1. E. Selberg and O. Etzioni, “Multi-Service Search and Comparison Using the
+MetaCrawler,” Proc. 1995 WWW Conf., 1995; available online at
+http://draz.cs.washington.edu/papers/www4/html/Overview.html.
+2. G.R. Notess, “Internet ‘Onesearch’ With the Mega Search Engines,” Online,
+Vol. 20, No. 6, 1996, pp. 36-39.
+3. E. Keen, “Term Position Ranking: Some New Test Results,” Proc. 15th Int’l ACM
+SIGIR Conf. Research and Development in Information Retrieval, 1992, pp. 66-
+76; available online at http://www.acm.org/pubs/citations/proceedings/
+ir/133160/p66-keen/.
+4. D. Hawking and P. Thistlewaite, “Proximity Operators—So Near and Yet So Far,”
+Proc. Fourth Text Retrieval Conf., D.K. Harman, ed., 1995; available online at
+http://web.soi.city.ac.uk/~andym/PADRE/trec4.ps.Z.
+5. J. Boyan, D. Freitag, and T. Joachims, “A Machine-Learning Architecture for
+Optimizing Web Search Engines,” Proc. AAAI Workshop Internet-Based Information
+Systems, 1996; available online at http://www.lb.cs.cmu.edu/afs/cs/
+project/reinforcement/papers/boyan.laser.ps.
+6. S. Brin and L. Page, “The Anatomy of a Large-Scale Hypertextual Web Search
+Engine,” Proc. 1998 WWW Conf., 1998; available online at
+http://google.stanford.edu/~backrub/google.html.
+6. A. Tombros, Reflecting User Information Needs Through
+Query Biased Summaries, doctoral thesis, Dept. Computer
+Science, Univ. of Glasgow, 1997.
+7. S.T. Kirsch, “Document Retrieval over Networks Wherein
+Ranking and Relevance Scores are Computed at the Client
+for Multiple Database Documents,” US Patent #5,659,732,
+US Patent Office, 1997.
+8. G. Salton, Automatic Text Processing: The Transformation,
+Analysis and Retrieval of Information by Computer, Addison
+Wesley Longman, Reading, Mass., 1989.
+9. “1997 Internet Performance Wrap-Up—How Well Did It
+Perform? Keynote Systems Shows All,” Business Wire, Jan. 9,
+1998; available at http://www.keynote.com/measures/
+business/business40.html.

@@ -1,0 +1,80 @@
+Existing wireless routing protocols are not designed
+for the communication patterns exhibited by a query
+processing layer: they are designed for point-to-point
+communication, and are usually evaluated by selecting
+two random nodes and establishing and maintaining
+a communication path between them. A sensor
+network with a query layer has a significantly different
+communication pattern: Many source nodes send
+tuples to a common node, like a leader of an aggregation,
+or a gateway node. In addition, in a regular
+ad-hoc network, a node has no knowledge about the
+communication intents of neighboring nodes, whereas
+in a sensor network, data transfer to the leader node is
+usually synchronized to perform aggregation. Thus a
+node can often estimate when neighboring nodes (such
+as children in a spanning tree) will send messages to
+it. We describe here a series of enhancements to one
+specific routing protocol, AODV [26], although we believe
+that our techniques are general enough to apply
+to any wireless routing protocol.
+Route initialization. Before sending data packets
+to the leader, each sensor has to establish a route
+to the leader, or determine who is the next hop in
+the DAG or spanning tree. Instead of initializing the
+route for each node separately from the source node
+as it would happen in AODV, we can create all the
+routes together by broadcasting a route initialization
+message originating at the leader of the aggregation.
+The message contains a hop count which is used for
+nodes to determine their depth in the tree. Using this
+initial broadcast, nodes can save the reverse path as
+the route to the leader.
+Route maintenance. Reliability plays a very important
+role in in-network aggregation. Since each
+data packet contains an aggregate result from multiple
+sensor nodes, dropping a data packet, especially
+if near the leader, will seriously decrease the accuracy
+of the final result. The problem is more serious in sensor
+networks, in which link or node failures happens
+frequently. We describe two techniques that improve
+AODV in case of failures.
+Local Repair. In AODV, when a broken link is detected,
+the source node n broadcasts a request to find
+an alternative route. An internal node n0 cannot reply
+to the request unless n0 has a “fresher route” to the
+leader than n. The efficiency of the local repair algorithm
+depends on how fast a node can find an up-todate
+route in its neighborhood, and AODV uses a sequence
+number to reflect route “freshness”. Given that
+query processing has a very regular communication
+structure, in which many of nodes want to route packets
+to the same destination, we can extend AODV’s
+idea of a sequence number to repair broken routes more
+efficiently. Since a broken link has no effect on other
+nodes which are close to the leader, we integrate the
+depth of a node into the packet sequence number to
+differentiate sequence numbers between nodes that are
+spatially close. The new algorithm does not depend
+on the exact depth of a node to compute the new sequence
+number; a rough approximation that preserves
+relative depths is sufficient. Using an approximation
+to depth prevents a node from updating the depths of
+all nodes on the path to the leader after the broken
+route is repaired, which is a very expensive operation.
+Bunch Repair. Local repair can find a new route to
+bypass a broken link or node in the neighborhood, but
+it may fail if significant topology changes happen, or a
+large number of links fail simultaneously due to a spatial
+disturbance (e.g., large noise in an area). In this
+case, it is cheaper to repair all routes directly from the
+leader (by re-broadcasting the route initialization message).
+Some feedback is required at the leader to active
+this operation to avoid unnecessary re-initialization.
+In this first version of our query layer, we re-broadcast
+a the tree initialization message whenever we receive
+less than a user-defined fraction of all tuples within an
+user-defined time interval. (We can calculate the number
+of tuples that contributed to an aggregate query
+by adding a COUNT attribute to the partial state of
+all aggregates.)

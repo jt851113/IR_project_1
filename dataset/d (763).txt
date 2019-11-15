@@ -1,0 +1,73 @@
+Sensor-actuator networks can provide the
+ability to continuously monitor the integrity of
+structures in real-time, detect damage at an
+early stage, and provide robustness in case of
+catastrophic failures. Sensor-actuator networks
+require a new paradigm of
+computing—to address less capable hardware,
+unreliable communication with limited bandwidth
+and severe energy constraints. We are
+developing algorithms and software tools that
+facilitate the monitoring and protection of
+civil infrastructure using sensor-actuator
+networks. Specifically, our research addresses
+problems of communication and
+coordination in such networks.
+A key idea in our approach is to push
+more processing onto the embedded nodes—
+thus providing greater robustness through
+decentralization: correct behavior is guaranteed
+using statistical reasoning. Another
+benefit of this approach is that the cost and
+complexity of wiring large, dense sensor
+2
+arrays may be reduced through the use of
+wireless communication if it is used as a
+primary means of communication. Alternately,
+wireless communication can be used as a
+back-up to provide fault-tolerance.
+Sensing and actuation need to be correlated
+in time and space. In order to facilitate
+such coordination, we develop the following
+facilities:
+‧ Time synchronization service: We use
+these services for temporal correlation of
+measurements between custom accelerometer
+sensors mounted on an
+experimental model structure.
+‧ Node localization service: We employ
+several techniques—including triangulation
+using distance estimates based on
+acoustic ranging, and proximity calculations
+which are based only on neighbor
+knowledge—to determine the physical location
+of sensors. Besides enabling spatial
+correlation of sensor measurements and
+actuation control, embedded node locations
+are used to direct wireless message
+traffic.
+‧ Model-based data aggregation service:
+Embedded processors may eliminate redundant
+information directly at the sensor
+node, thus reducing the amount of transmitted
+and stored data. We have applied
+this service to effectively cancel vibrations
+caused by an impulse disturbance to a
+beam in simulations.
+‧ Tracking service: we have leveraged the
+location information to develop a tracking
+service based on binary detection sensors
+and (piece-wise) linear trajectory prediction.
+In addition to the above services, we
+are implementing a scalable sensor network
+simulator to assist in the development of
+services and applications. This tool simulates
+three key aspects of a sensor network: the
+sensor nodes, the data network and the environment
+with which the sensors interact. We
+plan to interface the simulator with real sensor
+nodes, thus enabling real and simulated scenarios
+to be replayed for testing purposes.
+Our services have been prototyped in
+simulation and deployed on Crossbow MICA-
+2 Motes (Crossbow 2003).

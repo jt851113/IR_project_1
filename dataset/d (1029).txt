@@ -1,0 +1,56 @@
+In this section, we present our JIT indexing strategy: only index
+what is beneficial to the current system. If a data range becomes
+popular, the nodes responsible for the range will receive
+more queries. These nodes trigger an index requirement to data
+owners. This behavior is similar to the publish/subscribe system.
+The approximate range index can be considered as a subscription,
+registering what data the node can provide. After receiving the
+notification, the owner node publishes its tuple-level index for the
+corresponding cells. Thus the partial indexes are built in a query
+driven manner.
+For a cell c, suppose there are k nodes having data in this cell
+and node i has approximately ni tuples in the cell Let
+nq be the average number of queries per second for this cell, if
+is negative, the cell should construct tuple-level index, because
+even the smallest range index (1 cell length) will incur too much
+overhead. The integration based on query distribution can be computed
+by Monte Carlo method. S samples are taken to estimate
+the values. To emphasize the importance of recent queries, nq is
+calculated as:
+where q represents the query number in this second, n
+q is the last
+computed value of nq and f is an aging factor to degrade the effect
+of old queries. This aging scheme is also adopted in web cache
+management [29]. In our implementation, the query number is
+computed periodically and the average value is applied. To get the
+approximate values of k and ni in Formula 16, when we search the
+index of a specific range in Algorithm 5, we piggy back the number
+of tuples registered in the range indexes to the leaf node (recall the
+range index format). Then the average number of tuples in a cell
+of the node can be computed. This piggy back process is invoked
+periodically.
+The tuple-level index is constructed in three steps
+1. Node responsible for the hot range decides to index tuples
+for some cells according to Formula 16.
+2. Algorithm 5 is invoked to find all nodes overlapping with the
+cell. And a notification message is sent out to these nodes.
+3. After publishing their data, the nodes update their local maintenance
+trees of approximate range indexes.
+The first two steps of creating partial index guarantee that all
+online nodes achieve the same indexing strategy (for a tuple, it will
+be indexed by all nodes or none of them). In step 2, once a node
+m sends index notification messages, it records the indexed cell’s
+ID. For the newly joining node, when it publishes its range index to
+a node m, m will check its record for indexed cells and inform the
+joining node about the global decision.
+In step 3, the node, after sending its data for indexing, will update
+its maintenance tree to reflect the new cost. For example, in
+Figure 4, if tuple-level index is created for cell 1, the cost of node
+D, B and A need to be recomputed. The cost of indexed cells are
+removed from the range entry cost. If the estimated error exceeds
+the error bound, the indexing strategy should be modified.
+Similar to the index construction, if a node observes that an indexed
+cell is no longer beneficial (formula 16 is positive), the node
+will discard the index of the cell and inform the corresponding
+nodes. The maintenance trees of the involved nodes are updated
+as well.

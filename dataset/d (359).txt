@@ -1,0 +1,148 @@
+The confluence of ubiquitous RF-based wireless networking
+[14, 4, 3] and recent advances in low-power analog and
+digital electronics has led to the emergence of compact, inexpensive,
+battery-operated sensor units equipped with computational
+and wireless communication capabilities [22, 33].
+Due to their increasingly favorable form and cost factors, it
+is feasible to link together a large number of such sensors
+in order to support fault-tolerant, fine-grained monitoring
+and tracking applications [13, 32]. Cheap and ubiquitous
+platforms of networked sensors will be the key to real-time
+delivery of large volumes of useful information and will support
+a variety of civil and military applications (such as traf-
+* This work is partially supported by a gift from Microsoft Corporation.
+Permission to make digital or hard copies of all or part of this work
+for personal or classroom use is granted without fee provided that copies
+are not made or distributed for profit or commercial advantage and that
+copies bear this notice and the full citation on the first page. To copy
+otherwise, to republish, to post on servers or to redistribute to lists, requires
+prior specific permission and/or a fee.
+MobiDE’03, September 19, 2003, San Diego, California, USA.
+Copyright 2003 ACM 1-58113-767-2/03/0009 ...$5.00.
+fic monitoring, disaster recovery, industrial tracking, factory
+instrumentation, inventory tracking, battlefield monitoring,
+and intrusion detection).
+Many current sensor networks consist of a relatively small
+number of sensor units that are typically wired to a central
+processing system. In constrast, in many emerging and
+envisioned applications, sensor networks will be both distributed
+and wireless (in terms of communication and power)
+[10]. Distribution is necessary for improving sensing quality:
+when the precise location of a signal is unknown, then
+distributed sensors will allow sensing to take place closer to
+the event of interest than what is possible by any single sensor.
+Distribution also improves robustness to environmental
+obstacles, which is especially crucial in situations where
+sensing requires line-of-sight. Furtermore, the target environments
+typically lack already existing communications or
+energy infrastructures. The sensor units, thus, need to rely
+on finite, local energy sources and wireless communications
+channels. Finally, shorter-range communication is generally
+much cheaper than longer-range communication because the
+radio-signal power drops off with the fourth power of the distance
+[13, 25]. As a result, it is much cheaper to transmit
+information using multi-hopping among sensor units.
+Consider the following application scenarios for distributed
+wireless sensor networks. Habitat monitoring applications
+involve data collection from and modeling of complex ecosystems
+without disturbing the habitat and wildlife. Monitoring
+facilities must be deployed in remote locations that do
+not have pre-existing communication and energy resources.
+As a case in point, researchers have recently deployed wireless
+sensor networks on Great Duck Island, Maine, that monitor
+the microclimates in and around nesting burrows used
+by Leach’s Storm Petrel [2]. Secondly, consider an ad hoc
+smart space where large numbers of disposable sensors that
+are densely scattered into a building damaged by an earthquake
+[12]. The sensors can establish an ad hoc communication
+network and cooperate to divide the task of mapping
+the structural damage in an efficient manner. Finally, tactical
+operations taking place in unknown or hostile regions can
+also benefit from ad hoc wireless sensor networks. Soldiers
+can be equipped with battery-operated sensors that monitor
+critical signs such as body temperature or heart rate.
+In case of an emergency situation, the wireless network automatically
+directs the nearest emergency response team to
+wounded individuals [31].
+In these and similar sensor network applications involving
+battery-operated nodes, network longevity (i.e., total opera
+tional lifetime) is a key consideration. In many cases, replacing
+or recharging batteries may be impractical or uneconomical.
+For instance, during a tactical mission, it is clearly not
+desirable to have to be concerned about replacing batteries
+(which requires human interference and attention). Another
+example involves next-generation smart dust-style sensor
+networks [22], which are composed of densely populated
+units that are deeply embedded into the environment. The
+smart dusts are expected to be so cheap that they will be
+practically disposable: it will make more economical sense
+to incrementally deploy new nodes rather than to replace
+the batteries of the existing ones.
+Designing energy-efficient systems is a research goal of
+critical importance for a variety of networking domains, including
+sensor networks and mobile ad hoc networks [36].
+The primary consumer of energy in wireless networks is communication.
+RF communications are very costly compared
+to other electrical hardware functions including instruction
+execution. Based on this observation, many researchers have
+studied energy-minimization techniques that reduce communication
+at the expense of extra computation. Most work
+focused on developing approaches that reduce the volume
+of data that need to be transmitted, typically through intelligent
+data reduction and aggregation techniques (e.g.,
+[18, 26, 27]). Less studied are techniques that enable nodes
+to power down their antennas (i.e., go to sleep or standby
+mode) during times of inactivity. This latter set of techniques
+are particularly promising as the energy consumed by
+short-range RF communications in transmission (Tx) and
+listening (Rx) modes are quite similar for many existing
+wireless hardware and protocols (including 802.11 [3] and
+Bluetooth [14]). As a result, the only way to significantly
+save energy is to completely turn the radio off [34, 38]. This
+paper presents an integrated data scheduling and dissemination
+protocol that leverages this key fact.
+The proposed protocol, called Topology-Divided Dynamic
+Event Scheduling (TD-DES), organizes the wireless network
+into a multi-hop network tree. The root of the tree creates
+a data dissemination schedule and propagates this schedule
+throughout the tree, so that all nodes may adhere to it. The
+schedule is divided into fixed-size time slots, each indicating
+the type of data that are sent (or received), and whether
+it is for downstream (i.e., away from the root) or upstream
+(i.e., toward the root) communication. The schedule can
+be periodic or refreshed in arbitrary intervals, depending on
+the data traffic and applications. In either case, the central
+idea is that nodes can save energy by powering down their
+radios to standby mode when they have no data to send,
+and when they (and their descendants) do not wish to receive
+the data being transmitted. The system uses the publish/
+subscribe model: each node has a specific subscription
+profile that indicates which data types the node is interested
+in receiving.
+In a traditional wireless network, nodes must listen promiscuously
+to the wireless channel for all data being transmitted,
+lest they might miss something important. TD-DES
+allows each node to selectively listen for data which interests
+it, based on the its position in the network topology,
+and save energy otherwise. Because data must be scheduled
+before it is sent, the main tradeoff that we investigate is
+increased power efficiency in exchange for sub-optimal message
+dissemination latency.
+Significant work has been done in the area of wireless
+broadcast scheduling. Early work (e.g., [17, 7]) addressed
+power consumption reduction in flat broadcast environments
+and considered only asymmetric, downstream-only data dissemination.
+More recent work [38, 34] attacked the same
+problem in wireless, multi-hop network environments but
+did not address application-specific scheduling and data dissemination
+issues, which constitute the central theme of this
+paper (see Section 5 for a detailed discussion of related prior
+work).
+The rest of the paper is structured as follows. Section 2 describes
+the basic sensor network model referenced throughout
+the rest of the paper. Section 3 introduces and describes
+in detail our integrated scheduling and data dissemination
+protocols. Section 4 provides the results of a preliminary
+characterization of the performance of our protocol. Section
+5 describes related work, and Section 6 provides concluding
+remarks and outlines directions for future research.

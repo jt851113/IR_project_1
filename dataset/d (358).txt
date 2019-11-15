@@ -1,0 +1,21 @@
+This paper presents a new event-based communication model
+for wireless multi-hop networks of energy-constrained devices
+such as sensor networks. The network is arranged
+as an event dissemination tree, with nodes subscribing to
+the event types they are interested in. An event scheduler
+dynamically allocates and multiplexes upstream and downstream
+time slots for each event type. Power consumption
+among wireless nodes is reduced by allowing each node to
+power down its radio during the portions of the schedule
+that do not match its particular event subscription. The
+event dissemination schedule can be determined in both a
+centralized and distributed fashion, and is highly dynamic
+to suit the changing rates at which events are generated and
+distributed through the network. The paper also presents
+preliminary performance results that demonstrate the power
+savings achieved by the proposed protocols.
+Categories and Subject Descriptors: H.3.4 [Systems
+and Software]: Distributed Systems
+General Terms: Algorithms, Performance.
+Keywords: Wireless Networks, Sensor Networks, Scheduling,
+Topology Management, Publish/Subscribe.

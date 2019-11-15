@@ -1,0 +1,55 @@
+We believe that declarative queries are the preferred
+way of interacting with a sensor network. Rather
+than deploying application-specific procedural code
+expressed in a Turing-complete programming language,
+we believe that sensor network applications are
+naturally data-driven, and thus we can abstract the
+functionality of a large class of applications into a common
+interface of expressive queries. In this paper, we
+consider queries of the simple form shown in Figure 3,
+and we leave the design of a suitable query language
+for sensor networks to future work. We also extend
+the template to support nested queries, where the basic
+query block shown in Figure 3 can appear within
+the WHERE or HAVING clause of another query block.
+Our query template has the obvious semantics: The
+SELECT clause specifies attributes and aggregates
+from sensor records, the FROM clause specifies the
+distributed relation of sensor type, the WHERE clause
+filters sensor records by a predicate, the GROUP BY
+SELECT AVG(R.concentration)
+FROM ChemicalSensor R
+WHERE R.loc IN region
+HAVING AVG(R.concentration) > T
+DURATION (now,now+3600)
+EVERY 10
+Figure 4: Example Aggregate Query
+clause classifies sensor records into different partitions
+according to some attributes, and the HAVING clause
+eliminates groups by a predicate. Note that it is possible
+to have join queries by specifying several relations
+in the FROM clause.
+One difference between our query template and
+SQL is that our query template has additional support
+for long running, periodic queries. Since many sensor
+applications are interested in monitoring an environment
+over a longer time-period, long-running queries
+that periodically produce answers about the state of
+the network are especially important. The DURATION
+clause specifies the life time of a query and the
+EVERY clause determines the rate of query answers:
+we compute a query answer every e seconds (see Figure
+3 [21]). We call the process of computing a query
+answer a round. The focus of this paper is the computation
+of aggregate queries, in which a set of sensor
+readings is summarized into a single statistic.
+Note that our query template has only limited usage
+for event-oriented applications. For example, to monitor
+whether the average concentration of a chemical is
+above a certain threshold, we can use the long-running
+query shown in Figure 4, but there is a delay of 10
+seconds between every recomputation of the average.
+Event oriented applications are an interesting topic for
+future research, as the query processing strategies that
+we propose are optimized for long-running periodic
+queries, and not event-oriented queries and triggers

@@ -1,0 +1,56 @@
+The approach we use, called STUN, rests on the observation
+that the objects we wish to track move predictably, in a sense
+that there exists a natural limit on their speed, and thus the
+maximum distance they can travel in a given amount of time is
+bounded. The approach uses hierarchy to record information
+about presence of the objects; since their movements are limited,
+keeping this information up to date usually requires
+updating just the nodes near the bottom of the hierarchy. As a
+result, the system can track more objects than one where all
+information travels indiscriminately to the querying point.
+Our method uses a hierarchy to connect the sensors, using
+the querying point as the root. Let us call this the hierarchy
+tree. The leaves of the tree are sensors, and the other nodes are
+communication nodes, which are called intermediate nodes in
+the rest of the paper. The information about presence of the
+detected objects is stored at intermediate nodes; in particular,
+each intermediate node stores the set of objects that were
+detected jointly by its descendants. Let us call this set the
+detected set. For example, the detected set of a sensor at a leaf
+node consists of just the objects within the sensor’s detection
+range, while the root node’s detected set contains all objects
+present in the region.
+In order to keep the detected sets up to date, leaf sensors
+send detection messages toward the root. However, the messages
+do not always need to reach the root; an intermediate
+node will pass a detection message upward only if it has modified
+its detected set. Otherwise, the message is terminated,
+because it would not have modified any ancestor nodes. By
+eliminating redundant message passing, this message-pruning
+hierarchy is the key to lower communication cost.
+We provide an example in Figure 1 where a row of sensors
+covering a region is shown to be descendent from the same
+intermediate node X. When an object, which is a car, moves
+through the region, each sensor will detect its arrival and
+departure, and generate the corresponding detection messages.
+To simplify the illustration, we consider here only the messages
+that detect the arrival of the car. Note that the message
+from sensor 1 triggers Y and its ancestors to add the car to their
+detected sets. Subsequent messages from all the other sensors
+do not result in additions to X’s detected set, and thus X does
+not forward them to its ancestors. Similarly, the message from
+sensor 3 adds the car to the detected set of Z, is forwarded to X,
+but then stops at X as it leaves X’s detected set unchanged.
+Messages from sensors 2 and 4 do not change the detected sets
+of their parents, and thus do not propagate past them.
+The main purpose of maintaining the detected sets is to allow
+efficient querying. A query is routed from the top of the hierarchy,
+across a single path toward the sensor that reported the
+sought object. Without the information contained in the
+detected sets, the queries would need to be flooded to all
+leaves, and would thus be much more costly.
+This method can be viewed as a sort of publish-and-subscribe
+mechanism. The sensors publish the existence of
+detected objects in the hierarchy, while the querying points are
+subscribers who want to track current locations of the desired
+objects.

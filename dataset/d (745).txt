@@ -1,0 +1,18 @@
+Although the enumeration of Fenster is inspired by that of Data- Peeler (Cerf et al.
+2009a), Fenster is not a trivial extension of Data- Peeler. A naive enforcement of
+the new constraints C-connected and C-closed would lead to disastrous running times.
+Contrary to Data- Peeler, Fenster cannot traverse small subspaces of the dataset
+in search of one n-tuple absent from R. When an element e is chosen, the absence in
+R of one n-tuple with e (i. e., on the hyperplane related to e) is not enough to enforce
+C-connected, whereas it is when enforcing Cconnected. Searching for several n-tuples
+absent from R in this hyperplane is not enough either. Fenster needs to know the
+other n-tuples absent fromRthat were previously tolerated in every n-set represented
+by the current node, i. e., the n-tuples in (×i=1..nUi ) \ R. It needs to know where,
+i. e., on which hyperplanes, they are and how many of them are found on each of these
+hyperplanes. The enforcement of C-closed raises the same trouble: given U, V and
+S, the -closedness of some n-set represented by (U, V) cannot be proved by only
+consulting with the n-tuples in ×i=1..nUi ∪ Vi involving the elements in S. As a consequence,
+a naive enforcement of C-connected (resp. C-closed) would, at every iteration,
+count the numbers of n-tuples absent from R in every hyperplane of U (resp. U  V)
+and on each of its projections on the elements in V (resp. S). Such an implementation
+would be intractable even on rather small relations.

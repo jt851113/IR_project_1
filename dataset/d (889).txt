@@ -1,0 +1,18 @@
+Figure 6 shows the results of communication cost which
+includes query traffic, result data traffic, index dissemination
+traffic and traffic incurred by incentive mechanism. The proposed
+IA approach significantly outperforms the other two
+competitors. Both Eureka and IA approach use indexes to
+maintain some useful information. However, Eureka incurs
+much more communication traffic than IA does, because of
+its inefficient index dissemination. It delivers updated index
+values to all neighbors whenever an update happens. When
+a neighbor receives this message, it updates its corresponding
+index value and recursively delivers the new updated
+value to its neighbors. Thus, every update in Eureka may
+involve all the nodes in the network. This is the main reason
+why Eureka incurs as much as or even higher communication
+traffic than the pure flooding approach does. In the IA
+approach, the indexes can be renewed during query process.
+A node sends the updated indexes to its neighbors in a fixed
+time interval, which does not incur recursive effort.

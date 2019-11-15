@@ -1,0 +1,9 @@
+The NECI metasearch engine is currently implemented
+for server operation at NEC Research Institute,
+where it serves about 100 users. A client implementation
+could also be created, which would
+improve scalability. The disadvantages are increased
+processing and memory requirements, and the need
+to update all clients when modifications are made
+to the metasearch engine. A client implementation
+would also decrease the caching benefits

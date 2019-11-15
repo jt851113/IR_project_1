@@ -1,0 +1,66 @@
+Joining an AlvisP2P network is as simple as downloading
+and installing the peer client software. The user only has
+to specify few communication parameters, such as the IP
+address of a contact peer and the communication port.
+The user can choose to enable a Web interface mode,
+which starts a Web server that can be accessed by anyone
+through a Web browser to query the AlvisP2P network, as
+shown in Figure 4. Otherwise, the default standalone client
+software is used, which allows only the local user to access
+the AlvisP2P network from this peer.
+The Swing interface of the AlvisP2P client is shown in
+Figure 5. Once connected to the P2P network, the peer
+client software can be used to submit queries and browse
+the results. Figure 5 shows the client's \Search" tab with
+a query result. For each document in the result, the fol-
+lowing features are displayed: the URL of the hosting peer,
+the document title, a snippet and a relevance score. Addi-
+tionally, the client software provides a shared ¯le manager
+within which speci¯c document access right can be de¯ned.
+Document access. To make documents searchable by
+other peers in the network, the user simply puts them in
+the shared directory of his/her peer and uses the AlvisP2P
+software to index them. A \Drag & Drop" function is also
+supported for this task. The corresponding \Manager of
+shared documents" tab is displayed in Figure 6.
+Once a document is indexed, it becomes available at the
+URL: http://PeerIP:Port/SharedDir/DocumentName.
+The following document types are supported: text, xml,
+html, doc, pdf, word or xml-based Alvis format. The index
+of local shared document collection is implemented using the
+Terrier search engine3.
+External documents can be also integrated in the local
+document collection. To do so, the user simply needs to
+create an XML ¯le description (following the Alvis format)
+containing the original URL of the document and some tex-
+tual description of its content. The same procedure can also
+be used to publish multimedia ¯les (video, audio).
+As local documents always remain at the peer that holds
+them, the document owner can de¯ne speci¯c access rights
+for them. For example, the user can choose that a document
+can be freely accessible or has a limited access controlled by
+a username and a password.
+Heterogeneity support. As the software provides an
+interface to associate an Alvis peer with a local search en-
+gine, our framework can support heterogenous indexing mod-
+els at diRerent peers and ease their integration. The notion
+of Alvis document digest is used for this. A document digest
+is an explicit XML-based representation of the index of a
+document collection. It contains the list of the document
+URLs and, for each document, the list of its indexing terms,
+along with their positions in the document. Thus, a possibly
+sophisticated search engine (e.g., the one used by a digital
+library) can convert its local index into the Alvis digest for-
+mat, and transmit it to the peer it is associated with. The
+peer then re-generates the local index in Terrier format and
+starts the distributed indexing process, which will make the
+document collection available for the whole P2P network.
+Subsequently, if a user submits a query that retrieves one
+of the documents that have been published by an external
+search engine, he/she can click on the URL of the corre-
+sponding peer. The query is then automatically forwarded
+to the local search engine, which can generate an answer
+by the means of its local retrieval functionalities and send
+it back to the querying peer using the available API. This
+mechanism was successfully implemented in a peer-to-peer
+Service for Fedora [5].

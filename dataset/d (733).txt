@@ -1,0 +1,52 @@
+[1] Anonymizer{online privacy and security.
+http://www.anonymizer.com.
+[2] Lars Backstrom, Dan Huttenlocher, and Jon Kleinberg.
+Wherefore art thou R3579X? In Proceedings of the WWW,
+2007.
+[3] Graham Cormode and Balachander Krishnamurthy. Key
+dierences between Web1.0 and Web2.0. First Monday,
+13(6), June 2008.
+[4] Mark Crovella and Balachander Krishnamurthy. Internet
+Measurement: Infrastructure, Trac and Applications.
+John Wiley and Sons, Inc., 2006.
+[5] Scot DeDeo. Pagestats, May 2006.
+http://www.cs.wpi.edu/~cew/pagestats/.
+[6] Korolova et al. Link privacy in social networks. ICDE 2008
+Poster. http://www.stanford.edu/~korolova/link_
+privacy_ICDE08.pdf.
+[7] Ralph Gross and Alessandro Acquisi. Information
+revelation and privacy in online social networks (the
+Facebook case). In Proceedings of the ACM Workshop on
+Privacy in the Electronic Society, November 2005.
+[8] Social networking visits increase 11.5 percent from January
+to February, March 2007.
+http://www.hitwise.com/press-center/hitwiseHS2004/
+socialnetworki%ngmarch07.php.
+[9] Balachander Krishnamurthy, Phillipa Gill, and Martin
+Arlitt. A few chirps about Twitter. In ACM SIGCOMM
+Workshop on Online Social Networks, August 2008.
+[10] Balachander Krishnamurthy, Delna Malandrino, and
+Craig E. Wills. Measuring privacy loss and the impact of
+privacy protection in web browsing. In Proceedings of the
+Symposium on Usable Privacy and Security, pages 52{63,
+Pittsburgh, PA USA, July 2007.
+[11] Balachander Krishnamurthy and Craig E. Wills.
+Generating a privacy footprint on the Internet. In
+Proceedings of IMC, October 2006.
+[12] Bradley Malin. Betrayed by my shadow: Learning data
+identify via trail matching. Journal of Privacy Technology,
+June 2005.
+[13] Social network downtime in 2008, February 2008.
+http://royal.pingdom.com/?p=253.
+[14] Facebook members bare all on networks, Sophos warns of
+new privacy concerns, October 2, 2007.
+http://www.sophos.com/pressoffice/news/articles/
+2007/10/facebook%-network.html.
+[15] Brad Stone. New scrutiny for Facebook over predators,
+July 30, 2007. http://nytimes.com/2007/07/30/business/
+media/30facebook.html.
+[16] Latanya Sweeney. k-anonymity: a model for protecting
+privacy. International Journal of Uncertain. Fuzziness and
+Knowledge-Based Systems, 10(5):557{570, 2002.
+[17] Bin Zhou and Jian Pei. Preserving privacy in social
+networks against neighborhood attacks. In ICDE, 2008.

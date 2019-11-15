@@ -1,0 +1,41 @@
+We ran two experiments using the setup described in sec-
+tion 4.1.2 (g 11). The duration of each experiment was half
+an hour. During the experiments, the sensor-motes and the
+base-station mote operated in \PREMON mode" (case# 3
+below). The table 27 presents the summary of the results
+averaged over both the runs. Given the preliminary nature
+of the experiments, the results hold a qualitative signicance
+rather than a quantitative one.
+Although the motes operated in PREMON mode during the
+experiment, we collected enough data to determine their en-
+ergy consumption for each of the following three cases:
+
+1. Case#1: All sensor-motes operate in update mode: In
+this case, the sensor-motes transmit their readings pe-
+7Sensors in the experimental setup (g 11) were assigned
+addresses: 4, 8, 12, and 14, from left-to-right
+
+riodically (once every second). The base station does
+not transmit any prediction.
+2. Case#2: Base-station mote generates only constant-
+value predictions: In this case, while the sensor-motes
+operate in \PREMON mode", the base-station mote
+transmits only constant-value predictions. We con-
+sider this case in order to determine the incremental
+gain of generating movement predictions.
+3. Case#3: Base-station mote generates both constant-
+value and movement predictions: In this case, all the
+motes (sensor-motes and the base-station mote) oper-
+ate in \PREMON mode", and follow the techniques
+presented in this paper.
+The summary of results for each of the three cases appear in
+gure 9. The graph in the gure shows the ratio of energy
+consumption in case#1 to that in case#2 and case#3.
+The energy consumed in the Mote for each of the basic op-
+erations is listed in table 18. In all the calculations below,
+we assume that there are no packet losses.
+
+Table 1: The cost of basic operations in the Mote
+
+Table 2: Table summarizing the results of experi-
+ments (case#3)

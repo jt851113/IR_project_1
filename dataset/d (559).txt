@@ -1,0 +1,59 @@
+[1] K. Aberer. P-grid: A self-organizing access structure for P2P information
+systems. In CoopIS, 2001.
+[2] J. Aspnes and G. Shah. Skip graphs. In SODA, 2003.
+[3] B. Babcock, S. Babu, M. Datar, R. Motwani, and J. Widom. Models
+and issues in data stream systems. In PODS, 2002.
+[4] H. Balakrishnan, K. Lakshminarayanan, S. Ratnasamy, S. Shenker,
+I. Stoica, and M. Walfish. A Layered Naming Architecture for the
+Internet. In SIGCOMM, 2004.
+[5] A. Bejan and S. Ghosh. Self-optimizing DHTs using request profiling.
+In OPODIS, 2004.
+[6] R. Cox, A. Muthitacharoen, and R. Morris. Serving DNS using chord.
+In IPTPS, 2002.
+[7] S. Deb, P. Linga, R. Rastogi, and A. Srinivasan. Peer caching for faster
+lookups in peer-to-peer systems (full version). Bell Labs Technical
+Report, 2006.
+[8] FreePastry. http://freepastry.org.
+[9] D. Hirschberg and L. Larmore. The least weight subsequence problem.
+J. Computing, 16:628–638, 1987.
+[10] J. Jung, E. Sit, H. Balakrishnan, and R. Morris. DNS performance and
+the effectiveness of caching. In SIGCOMM IMW, 2001.
+[11] B. Leong, B. Liskov, and E. Demaine. Epichord: Parallelizing the chord
+lookup algorithm with reactive routing state management. In ICON,
+2004.
+[12] J. Li, J. Stribling, R. Morris, and M. Kaashoek. Bandwidth-efficient
+management of DHT routing tables. In NSDI, 2005.
+[13] J. Li, J. Stribling, R. Morris, M. Kaashoek, and T. Gil. A performance
+vs. cost framework for evaluating DHT design tradeoffs under churn. In
+INFOCOM, 2005.
+[14] P. Maymounkov and D. Mazieres. Kademlia: A P2P information system
+based on the XOR metric, 2002.
+[15] V. Pappas, D. Massey, A. Terzis, and L. Zhang. A comparative study
+of current DNS with DHT-based alternatives. In INFOCOM, 2006.
+[16] V. Ramasubramanian and E. G. Sirer. Beehive: Exploiting power law
+query distributions for O(1) lookup performance in P2P overlays. In
+NSDI, pages 331–342, 2004.
+[17] V. Ramasubramanian and E. G. Sirer. The design and implementation
+of a next generation name service for the internet. In SIGCOMM, 2004.
+[18] S. Ratnasamy, M. Handley P. Francis, R. Karp, and S. Shenker. A
+scalable content-addressable network. In SIGCOMM, 2001.
+[19] M. Roussopoulos and M. Baker. Cup: Controlled update propagation in
+P2P networks. In USENIX, 2003.
+[20] A. Rowstron and P. Druschel. Pastry: Scalable, decentralized object
+location, and routing for large-scale P2P systems. In Middleware, 2001.
+[21] K. Sripanidkulchai, B. Maggs, and H. Zhang. Efficient content location
+using interest-based locality in P2P systems. In INFOCOM, 2003.
+[22] I. Stoica, R. Morris, D. Karger, M. Kaashoek, and H. Balakrishnan.
+Chord: A scalable P2P lookup service for internet applications. In
+SIGCOMM, 2001.
+[23] J. Xu, A. Kumar, and X. Yu. On the fundamental tradeoffs between
+routing table size and network diameter in P2P networks. IEEE JSAC,
+22(1):151–163, 2004.
+[24] B. Yang and H. Garcia-Molina. Improving search in P2P networks. In
+ICDCS, 2002.
+[25] H. Zhang, A. Goel, and R. Govindan. Incrementally improving lookup
+latency in distributed hash table systems. In SIGMETRICS, pages 114–
+125, 2003.
+[26] B. Zhao, J. Kubiatowicz, and A. Joseph. Tapestry: an infrastructure
+for fault-tolerant wide-area location and routing. Technical Report,
+U.C.Berkeley, 2001.

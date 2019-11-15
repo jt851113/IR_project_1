@@ -1,0 +1,5 @@
+Figure 6 shows the running time of the interleaved algorithm
+as the time segment size is increased from 10?? transactions to 100?? transactions. (The database size increased
+from 155MBto 1.5 GB.) The interleaved algorithm
+shows nearly linear scaleup. This illustrates its ability to
+handle large database sizes gracefully.

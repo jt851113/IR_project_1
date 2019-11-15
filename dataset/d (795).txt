@@ -1,0 +1,35 @@
+Figure 4 shows the running times for the interleaved and
+sequential algorithms for various noise levels. (Since the
+interleaved algorithm is relatively unaffected by noise, we
+only show its running times for support 5% to keep the
+graph more readable.)
+Noise influences the data generated in two ways. One,
+the number of itemsets that do not lead to cycles goes up as
+the noise level increases. Two, as the amount of noise in the
+data increases, it leads to spurious cycles, where an itemset
+is used for data generation in a cyclic fashion accidentally
+as dictated by the noise parameter.
+As can be seen from the graph, the interleaved algorithm
+is relatively unaffected by noise. (The curves are quite horizontal
+for supports of  33% and  25% also.) However,
+the sequential algorithm shows more interesting behavior.
+The graphs of the running time increase more or less linearly
+with noise, but the slope of the graphs is different at
+different support levels. The explanation for this lies in the
+number of new itemsets added by noise. At high support
+levels, noise does not add many itemsets. (If the transaction
+size is  , large itemset size is
+
+, there can only be about
+
+	
+large itemsets with support.
+5%, there can be no more than
+400 large itemsets with support 0
+
+5% in the data.) Therefore,
+for high support levels, the slope of the sequential
+algorithm rises slowly. At low support levels, noise tends
+to have a much more dramatic impact on the amount of
+wasted work performed by the sequential algorithm and its
+running time rises with a much steeper slope.

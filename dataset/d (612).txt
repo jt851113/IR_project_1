@@ -1,0 +1,23 @@
+Our demonstration aims at showing an operational
+AlvisP2P network where each participant can publish doc-
+uments and search for some already available content. To
+do so, a large corpus of documents will be published in an
+AlvisP2P network running at a number of peers located in
+several research institutions such as EPFL and the Univer-
+sity of Zagreb. A demonstration machine will be setup to
+run one or several AlvisP2P clients, which will be able to
+join the running network through the Internet to perform
+network wide information retrieval and to index additional
+local content.
+A second demonstration machine will be setup to illus-
+trate the indexing/retrieval mechanisms implemented in our
+software. It will also report the current state of the network,
+as well as some critical statistics about bandwidth consump-
+tion, storage, etc.
+The purpose of the demonstration is to let a user interact
+with the system to get a more detailed understanding of the
+distributed retrieval mechanisms. During the demonstration
+it will be possible to switch between the HDK and QDI
+approaches at any time, index some new documents, submit
+several queries and observe the results obtained using the
+distributed index.

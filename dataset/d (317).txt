@@ -1,0 +1,24 @@
+In Garlic, the cost of a plan is the sum of local processing
+costs, communications costs, and the costs to initiate
+subqueries and methods. The communication costs and the
+costs to initiate subqueries and methods are estimated by
+Garlic functions using constants stored in Garlic’s catalog.
+The local processing costs of the operators of Garlic’s query
+engine are estimated by a cost model provided by Garlic.
+This model includes CPU and I/O costs, and models fairly
+closely the actions of the Garlic execution engine. The local
+processing costs of wrappers and their data sources, however,
+must be estimated by cost models that are defined
+for each wrapper individually because there is no universal,
+generic cost model that is valid for all wrappers and
+all data sources. We are working on a framework to help
+wrapper writers create these models. Today, they must be
+hand-written and hand-calibrated.
+An important parameter of any kind of cost model is the
+Cardinality of input and output collections. As with other
+properties, Cardinality is computed after every application
+of a STAR. Cardinality depends on logical operations of the
+query, so wrapper writers need not implement functions that
+compute this property. However, they must provide ways to
+gather statistics on the cardinality of the stored collections,
+and on values of their attributes.

@@ -1,0 +1,161 @@
+The technique we developed deals with a data stream as an unbounded,
+implicitly ordered sequence of events e1; , each of which represented by
+an array of E measurements, i.e.,  Although a stream is
+potentially unbounded, by using a sliding window we are able to estimate the
+intrinsic dimension D of a limited set of events. However, algorithms based on
+the Box-Occupancy Counting approach, conceived to measure D (or D2) from
+traditional datasets, usually present two characteristics that restrict their use
+for data streams:
+restrictions. Figure 6 illustrates a conceptual framework using our algorithm.
+The events coming to the Analyzer Process are captured by the SID-meter
+module, which evaluates and updates the current value of D. The Analyzer
+Process can read D asynchronously.
+To process a data stream, SID-meter uses an event-based (or tuple-based)
+sliding window divided into nc sequential periods that we named counting
+periods. Each period is defined by a predetermined number of events ni, such
+that whenever ni new events arrive, the ni oldest events are discarded. In
+other words, nc and ni specify the length of the window and the step by which
+the window moves, respectively. It is significant to mention that although we
+have implemented an event-based window, the proposed method can work with
+time-based sliding windows as well.
+The SID-meter works as follows. Its first step estimates an initial
+bounding hyper-cube by using the first few incoming events. The first events
+of the stream are kept in sequence in main memory until a predefined,
+parameterized number ni of events is received, such that an initial hyper-cube
+can be determined. The lowest rli and the highest rhi values for each attribute ai
+of the received events are computed. The range  maxdetermines
+the size of the side in the initial hyper-cube. Figure 7 exemplifies the initial
+hyper-cube created to bound five events in a 2-dimensional data stream. The
+side  of the bounding hyper-cube is determined by the range of
+the attribute represented in the x-axes. Although the meter cannot provide a
+value for D during this initial stage, it is in accordance with requirement R6,
+considering that a meaningful measure of D always requires a minimum number
+of events.
+The hyper-grid structure is created by generating up to R successive
+E-dimensional grids of cell side where R determines the number
+of points in the Box-Counting plot. Thus, for each cell at level j, cells
+are generated in level j + 1. Figure 7 illustrates the grid structure for the
+five 2-dimensional events. The data structure supporting the algorithm is a
+memory-based tree, named counting tree. Each level j in the tree corresponds
+to the grid of the cell side rj (with r0 corresponding to the root level) and each
+node corresponds to a cell. Every cell is part of one cell in the immediate upper
+level and is identified by identifier such that bi = 0 for cells in the
+lower half of dimension i and bi = 1 otherwise. Figure 7 illustrates the 3-level
+counting tree generated for the grid structure created with the five 2-dimensional
+events. Levels in the counting tree are colored according to the corresponding
+levels in the grid structure.
+It is relevant to point out that a tree node is created only when there is
+at least one event on the corresponding cell of the grid. Therefore, the total
+number of nodes at each level is at most the number of events inside the sliding
+window.
+The counting periods are represented at each node of the counting tree
+by an array C[] of nc positions, each one storing the event counter in the
+corresponding period. Figure 8 illustrates a data stream defined by 3 attributes
+(a1, a2 and a3), whose values are represented in the y-axes. A sliding window
+divided into nc = 5 counting periods bounds recent events over time. In the
+counting tree, C[] is used as a circular list, such that a current counter computes
+the occupancy (number of events) of the incoming events on the corresponding
+current counting period. When a period expires, the next counter is zeroed and
+used to count the events of the following period (Fig. 8a-c). Thus, when nc
+periods are over, the oldest events are discarded and the next counter is used
+to compute occupancy of new events (Fig. 8d). By using the sliding window
+divided into counting periods and the corresponding list of counters we meet
+requirement R4, since the value of D is always computed with the contribution
+of the most recent events only, following the behavior of an evolving stream.
+Moreover, by keeping the count of occupancy for each counting period, we do
+not need to materialize overlapping windows and to reprocess the events at each
+step of the sliding window, thus reducing memory usage and execution time.
+The ni first events used to define the initial bounding hyper-cube are
+considered to be in the first counting period and, once it is complete, D
+can be computed through Equation 2. The value of Crj ;i at each node i is
+calculated through Equation 3, for each counting tree level j (recall that a level
+j corresponds to a grid of cell side rj ).
+The Box-Counting plot is created by performing a full navigation through
+the counting tree and plotting for each value rj .
+Finally, the slope of the line that best fits the curve gives an estimate of D for
+the events inside the sliding window. The memory occupied by the events is
+then released to be used by the counting tree.
+In data streams of very high embedding dimension E, the first events can
+be monitored without being stored, delaying measurements of D until further
+events arrive, thus meeting requirement R5. To meet requirement R1, our
+method allows D to be calculated either when a counting period is complete or
+at any time it is needed. In the first case, D is computed always considering the
+nc ? ni last events and updated whenever ni new events arrive. In the last case,
+however, the current period may not be complete. Thus, the current counter is
+not used to compute Crj ;i, that is, only the events inside the nc ! 1 complete
+counting periods are considered. Requirement R2 is also satisfied, since not even
+the first ni events need to be stored or read twice in order to compute D.
+Finally, requirement R3 states that the address space and the bounding
+hyper-cube of windowed events may change. In fact, there are four possible
+movements of the address space over time, as shown in Fig. 9.
+2 Occupation of regions (Fig. 9a).
+2 Release of regions (Fig. 9b).
+2 Expansion of the address space (Fig. 9c).
+2 Contraction of the address space (Fig. 9d).
+The “occupation of regions” occurs whenever a new event falls in a
+previously empty cell and a new node is allocated in the corresponding level
+of the counting tree (Fig. 9a). Accordingly, when a node is created at level j,
+new nodes are recursively created at every level j+1, up to the required number
+of levels R.
+The “release of regions” occurs whenever every counter C[k] of a node i
+equals zero after a counting period expires. In other words, if every counter of
+a node is zero (i.e., Crj ;i = 0) then no event bounded by the sliding window has
+fallen in the corresponding cell. Therefore, since every node in the subtree rooted
+at i is also related to empty cells, the whole subtree can be released (Fig. 9b).
+The “expansion of the address” space can be fulfilled by Algorithm 1
+shown in Fig. 10, that implements the operations following. If a new event e
+falls outside the bounding hyper-cube, it is scaled to bound e, i.e., the lowest (rli)
+or the highest (rhi) value of every attribute i is updated accordingly, keeping
+the same range size for every dimension of the new hyper-cube. Figure 12a
+illustrates the expansion of the hyper-cube for 2-dimensional events, such that
+both attributes have their rh values doubled to bound event e. Note that by
+doubling the size of the hyper-cube side we only need to add an extra, upper
+level on the counting tree, keeping the count of occupancy of the existing cells. If
+necessary, the side of the hyper-cube is doubled more than once, until reaching
+event e. A different expansion strategy would require a complete, unfeasible
+reconstruction of the tree. Figure 9c shows the counting tree expanded by one
+level at the root. Because a new root is created, the last level of the counting
+tree must be released in order to maintain the same number of levels and the
+number R of points in the log-log plot. Finally, the event e is counted.
+The “contraction of the address space” occurs whenever every node but
+one in the first level under the root has Crj ;i = 0, i.e., there is only one
+occupied cell in the first level of the hyper-grid, as illustrated in Fig. 12b. Two
+main operations update the counting tree: firstly, empty subtrees are removed
+(“release of regions”); secondly, the root is released and the node i with Crj ;i > 0
+in the first level becomes the new root (Fig. 9d). The bounding hyper-cube
+is also reduced, according to Algorithm 2 in Fig. 11. Figure 12b illustrates
+the contraction of the hyper-cube for 2-dimensional events. Both sides of the
+hyper-cube are reduced to the half, thus leading to the release of one level in the
+counting tree. Similar to the expansion operation, the contraction of the space
+may require successive contractions of the hyper-cube until reaching a hyper-grid
+structure with more than one occupied cell in the first level. Thus, whenever
+the side of the hyper-cube is reduced by half, a root level is removed from the
+counting tree.To summarize, the three methods that comprise the SID-meter can now
+be described as follows.
+Reading a new event e - Check if event e is inside the bounding current
+hyper-cube. If it is not, perform an “expansion of the address space”. Execute
+a point-deep navigation in the counting tree guided by e, updating the current
+counter at every level. Whenever e occupies a previously empty cell at level j,
+perform an “occupation of region”. If there is no available memory to create
+new nodes, the last level of the tree is removed, so the freed memory can be
+used by new nodes. It is important to mention that, in order to reduce dynamic
+memory allocation and deallocation, the SID-meter maintains a linked list of
+free nodes, which are allocated when the module begins to work and released
+after the whole data stream is processed.Getting D - Perform a full navigation 
+through the counting tree and
+computefor every level j. Create the log-log plot and return the slope
+of the best fitting line as D.
+Signalizing a new counting period - Increment the current counter
+index k by one module the number of periods nc. Perform a full navigation
+through the counting tree zeroing the C[k] counter in every node i. At each
+node, check if there is at least one C[k] > 0; otherwise, perform a “release of
+regions”. Ensure that the first level below the root has more than one cell;
+otherwise, perform a “contraction of the address space”.
+To speedup the process, the SID-meter maintains the counting tree in
+main memory. Because the number of nodes at each level is at most the number
+of events ni ?nc in the sliding window, the memory requirement is O(ni ?nc ?R),
+where R is the number of levels in the tree. Thus, current systems can manage
+a reasonable high number of events. Moreover, the events are not stored and
+therefore the memory usage does not depend on the number of attributes E of
+the data stream. The computational complexity of the algorithm to evaluate D
+of windowed events is.

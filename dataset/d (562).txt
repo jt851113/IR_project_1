@@ -1,0 +1,70 @@
+Bonnet, Gehrke, and Seshadri [10, 11] as well as Yao and Gehrke [16] present the COUGAR
+approach which treats sensor networks as distributed databases, with users tasking the network
+with declarative queries which are then converted by a front-end query processor into
+an efficient query plan for in-network processing. Similarly Govindan, Hellerstein, Hong et
+al. also argue in [9] that sensor networks ought to be viewed primarily as virtual databases,
+with query optimization performed via data-centric routing mechanisms within the network.
+The efficient in-network computation of aggregate responses to queries is the subject of the
+paper by Madden, Szewcyk et al. [19]. The ACQUIRE mechanism we describe in this paper
+is compatible with this database perspective, and can viewed as a data-centric routing
+mechanism that provides superior query optimization for responding to particular kinds of
+queries: complex, one-shot queries for duplicated data.
+Intanagonwiwat, Govindan, Estrin and Heidemann propose and study Directed Diffusion [5,
+6], a data-centric protocol that is particularly useful for responding to long-standing/continuous
+queries. In Directed Diffusion, an interest for named data is first distributed through the network
+via flooding (although optimizations are possible for geographically localized queries),
+and the sources with relevant data respond with the appropriate information stream. The
+impact of aggregation in improving the energy costs of such data-centric protocols is examined
+by Krishnamachari, Estrin and Wicker in [7].
+Also related to our work are the Information Driven Sensor Querying (IDSQ) and Constrained
+Anisotropic Diffusion Routing (CADR) mechanisms proposed by Chu, Hausseker
+and Zhao [14]. In IDSQ, the sensors are selectively queried about correlated information
+based on a criterion that combines information gain and communication cost, while CADR
+routes a query to its optimal destination by following an information gain gradient through
+the sensor network.
+One technique that is close in spirit to ACQUIRE is the rumor-routing mechanism proposed
+recently by Braginsky and Estrin in [21]. Their approach is quite interesting - sources
+with events launch mobile agents which execute random walks in the network resulting
+in event-paths. The queries issued by the querier/sink, in a manner somewhat similar to
+ACQUIRE, are also mobile agents that follow random walks. Whenever a query agent
+intersects with an event-path, it uses that information to efficiently route itself to the location
+of the event. Rumor routing is a mechanism to lower the interest-flooding cost for Directed
+Diffusion in situations where geographical information may not be available. Rumor routing
+is not, however, geared primarily towards complex one-shot queries for replicated data (as
+ACQUIRE is) and does not incorporate any look-ahead/update parameters. Moreover, if
+data is replicated, there might be multiple sources, each of which might initiate a random
+walk in the rumour-routing case. In such cases, rumour-routing may not be energy-efficient.
+Other data-centric routing protocols proposed for sensor networks include SPIN for data
+dissemination by Heinzelman, Kulik and Balakrishnan [17], and LEACH for data collection
+by Heinzelman, Chandrakasan and Balakrishnan [18].
+The recent work by Ratnasamy, Karp et al. [13] presents the geographic hash table technique
+for data-centric storage (DCS) in sensor networks. This approach is particularly useful for
+storing information to deal with historic queries (i.e. queries for non-current data). In
+estimating the cost of local storage the authors of [13] assume the use of flooding-based
+queries, to which we provide an alternative in this paper. It is also be possible to conceive
+of using our ACQUIRE scheme in conjunction with any DCS techniques that result in
+replication (e.g. for robustness reasons).
+Our work also has some similarities to techniques proposed for searching in unstructured
+peer-to-peer (P2P) overlay networks on the Internet. In particular, [22] discusses the possibility
+of launching k-random walks through the unstructured P2P network for discovering
+required files/data. This differs from our work in three respects: one is that the cost-model
+is different in the two scenarios - in P2P networks one is primarily concerned with minimizing
+bandwidth usage and delay while we are primarily concerned with minimizing energy
+consumption; the second is that we incorporate the look-ahead parameter and allow for
+complex queries, which, as we show in this paper, significantly improves the performance of
+such a search; and finally, the trajectories followed by active queries in ACQUIRE need not
+necessarily be random walks, they could be directed and deterministically selected.
+Our ACQUIRE mechanism combines a trajectory for active queries with a localized update
+mechanism whereby each node on the path utilizes information about all the nodes within
+a look-ahead of d hops. The size of this look-ahead parameter effects a tradeoff between the
+information obtained (which helps reduce the length of the overall trajectory) and the cost for
+obtaining the information. This look-ahead region is somewhat similar in spirit to the notion
+of zones in the Zone Routing Protocol (ZRP) [15] and to the notion of neighborhoods in the
+Contact-based Architecture for Resource Discovery (CARD) [12] developed for mobile ad-hoc
+networks. One key difference is that in ACQUIRE, only nodes on the active query trajectory
+need to have this look-ahead information and the neighborhood updates are triggered ondemand,
+if current information happens to be obsolete.
+While the trajectory for the active queries is assumed to be random in our modelling in
+this paper, it is possible to envision pre-determined trajectories as well. One interesting
+new mechanism that we could combine ACQUIRE with is the idea of routing along curves,
+described by Nath and Niculescu in [20].

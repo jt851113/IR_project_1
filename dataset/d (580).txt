@@ -1,0 +1,14 @@
+For both ERS and FBQ, we use the same simulation setup as ACQUIRE. For both these
+mechanisms, we simulate 100 different runs. Each run consists of 1000 queries each containing
+20 sub-queries. In each run, we use the query-files, grid-files and same values of c described
+in section 7.2.
+Figure 10: Comparison of ACQUIRE, ERS, ACQUIRE with d = 0 and FBQ by simulations
+(N = 100, M = 20) with energy costs on a log scale (left) and on a linear scale (right).
+Compare with theoretical curves in figure 6.
+As figure 10 shows, FBQ has the worst energy consumption in comparison with the other
+approaches. This concurs with the analytical curves in figure 6. ACQUIRE with d = 0
+(random walk) incurs a greater energy consumption as compared to ACQUIRE with d = 1
+as well as ERS, while the analytical curves show that at high values of c, ACQUIRE with
+d = 0 is better than ERS.This disrepancy is because of the loops in the query trajectory
+in the case of random walk as was mentioned in section 7.1. However, the energy savings of
+ACQUIRE over ERS seem to be similar to that shown by the analytical curves in figure 6.

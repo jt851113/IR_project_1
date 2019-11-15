@@ -1,0 +1,33 @@
+The choice of the number of steps and the draining threshold
+for each step in the DAB tree construction may affect the quality
+of the constructed tree. On one extreme, if the entire tree is
+constructed in a single step, there is no distinction being made
+between high and low rate regions, and so the resulting tree
+does not take advantage of rate information. Such a tree is
+more likely to be balanced, and thus have low height, since
+there are no “gaps” in the sensors to force it to a less balanced
+shape. However, the communication cost for such a tree will
+likely be high.
+On the other extreme, if the tree is constructed using an
+excessive number of steps, there tends to be a very limited
+choice of sensors to merge during each step, and consequently
+very little opportunity to enhance tree balance. In this case, the
+resulting tree’s shape is dictated by the positions of sensors
+uncovered in each step, possibly leading to a tree with long
+links and a large height. To achieve a reasonably balanced tree,
+the number of steps for the tree construction will generally
+need to be small.
+The setting of the numbers of DAB steps and their draining
+thresholds should generally depend on the movement frequency
+as a function of locations in the region where objects
+are tracked. For example, the DAB method with uniformly
+spaced draining thresholds is expected to work well for traffic
+patterns where similar variations in movement frequency
+appear throughout the region, such as the traffic pattern
+depicted in Figure 7d.
+Note that the DAB method may not help for certain traffic
+patterns such as those exhibiting little locality. For example,
+very regular traffic patterns, such as a constant or a strictly
+increasing movement frequency over a 1D region do not offer
+opportunities for DAB to improve performance over straightforward
+traffic-oblivious methods.

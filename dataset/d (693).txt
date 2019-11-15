@@ -1,0 +1,72 @@
+Our goals are (1) to have considerable flexibility for replicating
+data at multiple sites on the fly, and (2) to enable efficient and correct
+query processing despite this dynamic caching. The key observation
+is that the scheme outlined in Section 3.2 is well-suited to
+accomplishing these goals.
+Storing additional data. A site can add to its current document
+any document fragment that satisfies: (C1) the document fragment
+is a union of local informations or local ID informations for a certain
+set of nodes, and (C2) if the document fragment contains local
+information or local ID information for a node, it also contains the
+local ID information for its parent (hence all its ancestors). Then
+by mer L ging this new document fragment with the existing document,
+we are guaranteed to maintain invariants (I1) and (I2) above.
+Moreover, updating the status attributes is straightforward.
+Caching query results. An important special case of the above
+is the caching of query results. Recall that we route a query to
+its LCA and then recursively progress down the hierarchy to pull
+together the answer. In our current prototype, whenever a (partial)
+answer is returned to a site, we cache the answer at the site. Thus
+a site manager aggressively caches any data that it sees. This has
+two benefits. First, subsequent queries on the same data can be
+answered by the site, thereby avoiding the expense of gathering up
+the answer again.6 Second, it automatically tunes the creation of
+additional copies to the query workload; such copies can distribute
+the workload over multiple sites. To make this caching possible,
+we generalize the subqueries sent to sites, making them fetch the
+smallest superset of the answer that satisfies (C1) and (C2) above.
+(This does not alter the answer returned to the user. Details are in
+Section 3.5.)
+One could choose to use our generalized subqueries and caching
+techniques only when the workload seems to dictate it. However,
+we found that the cost of initially transferring additional data was
+minimal compared to the significant gains achieved by caching (see
+Section 5).
+Partial match caching. A key feature of our caching scheme is its
+ability to support partial match caching, which ensures that even
+partial matches on cached data can be exploited and that correct
+answers are returned. Because our invariants ensure that we can
+always use whatever data we have in a site database, and fetch any
+missing parts of the answer, we can provide very flexible partial
+match caching. For example, the query in Figure 2 may use data
+for Soho cached at the New York site, even though this data is only
+a partial match for the new query. Similarly, if distinct Soho and
+Tribeca queries result in the data being cached at New York, the
+query may use the merged cached data to immediately return an
+answer. Even if the earlier queries have different predicates, our
+generalization of subqueries may enable the later queries to use the
+cached data. Note also that a site can determine when a collection
+of queries has resulted in all the IDable siblings being cached, and
+hence respond to queries over all such siblings (subsumption). For
+example, suppose there are three neighborhoods downtown, midtown,
+and uptown in a city Brooktown, all on different sites than
+the city node. Then independent queries that cause the three neighborhoods
+to be cached at the Brooktown node, would lead to the
+query
+... /city[@id=’Brooktown’]/neighborhood/block
+/parkingSpace[@available = ’yes’]
+being correctly answered from just the Brooktown site. (This query
+requests all available parking spaces in Brooktown.) This is because
+invariant (I1) above ensures that Brooktown always maintains
+the IDs of all its neighborhoods, so it can detect when it has
+all of its neighborhoods cached.
+Evicting data. Any data can be removed as long as it is always
+removed in units of local informations or local ID informations of
+IDable nodes and the conditions outlined above are still valid after
+the removal.
+In summary, our scheme makes it easy to provide flexible caching.
+The main challenge is to do the above operations efficiently, without
+having to fetch the entire document into memory and without
+touching any more of the document than necessary. As it turns out,
+this task is accomplished using the mechanism for query processing
+in general, which we discuss in Section 3.5.

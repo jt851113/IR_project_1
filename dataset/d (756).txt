@@ -1,0 +1,65 @@
+Several research groups have considered the complete extraction of ET-itemsets in
+binary relations associating items with transactions (see Gupta et al. (2008) for a
+survey). None of them is fully satisfactory. A relative tolerance to noise makes the
+extraction task very hard and a closedness constraint does not provide a lossless condensation
+of the ET-itemsets. As a consequence, the extractors tolerating proportions
+of noise, suffer from great scalability issues and they output large collections of ETitemsets
+carrying much redundant information. Furthermore, up to, but not including,
+the recent publication of Poernomo and Gopalkrishnan (2009b), every proposal was
+either relying on lossy heuristics or imposing additional constraints. Among the extractors
+relying on lossy heuristics, AFI (Liu et al. 2006) thoroughly demonstrates the
+semantic necessity to bound the noise inside a pattern with one noise tolerance threshold
+per domain of the relation (in their case, two thresholds). However, Seppanen
+and Mannila (2004) pointed earlier the problem of using only one such threshold.
+Among the approaches that impose additional constraints, AC-Close (Cheng et al.
+2008) is significant. Indeed, it is the only closed ET-itemset extractor with a relative
+tolerance to noise. Furthermore the experiments show it runs much faster than AFI.
+These results are possible thanks to a frequency constraint on an exact closed itemset
+every ET-itemset must contain. Thus, AC-Close requires an awkward minimal number
+of transactions exact closed itemsets (by opposition to ET-itemset) must involve.
+It extracts them and, in a second step, extends them in closed ET-itemsets. Despite
+the performance improvement w.r.t. AFI, Sect. 5.4 empirically shows AC-Close is
+intractable on medium-size relations.
+Other proposals tolerate, like Fenster, absolute quantities of absent tuples and, as
+a consequence, demonstrate a better scalability. FT-Apriori (Pei et al. 2001) extracts
+every frequent ET-itemset matching a definition where the noise tolerated per transaction
+item is bounded (the noise per item is not). To avoid extracting ET-itemsets
+with some items that almost every transaction (in the pattern) misses, each of these
+items is forced to hold for at least γ ? N transactions in the pattern. This frequency
+constraint, restricted to the transactions of the ET-itemset, filters out some of the
+least relevant patterns. However, because it deals with couples present in (rather than
+absent from) the relation, ET-itemsets with many transactions may still gather items
+that many transactions of the pattern do not have. Furthermore, because no closedness
+constraint is enforced, the extracted collections contain redundant information.
+VB-FT-Mine (Koh and Yo 2005) builds upon FT-Apriori and significantly improves
+both the running times (thanks to the use of bit vectors) and the space requirements
+(thanks to a depth-first enumeration).
+Poernomo and Gopalkrishnan (2007) consider different definitions of an ET-itemset.
+All of them tolerate noise in an absoluteway. To extract them, the BIAS framework
+enumerates growing subsets of items and words the noise tolerance w.r.t. every enumerated
+item as an inequality. Integer linear programming allows to derive (one of) the
+largest set of transactions that satisfies every inequality. Poernomo and Gopalkrishnan
+(2009) optimize this procedure and generalizes the definition of an ET-itemset. Its
+transactions are either those that have (or miss) at most, at least, or exactly a given
+number of items among those in the pattern. The authors propose a recursive equation
+that computes the number of transactions in an ET-itemset from those of the ET-itemsets
+with one item less. Beyond the absence of a constraint bounding the noise tolerance
+w.r.t. items and the absence of a closedness constraint, this approach requires much
+space. Indeed, it stores all subsets of items that were previously considered and the
+associated numbers of transactions. On the positive side, the approach can easily be
+implemented in any frequent itemset extractor and its running time does not increase
+much w.r.t. the extraction of exact itemsets. Importantly, these two latter contributions
+output 1-dimensional patterns, i. e., subsets of items for which there exists at least one
+support satisfying the definition. Because several 2-dimensional patterns may involve
+a same set of items, less patterns are listed and the tuples they cover are not directly
+accessible.
+DR-Miner (Besson et al 2006) extracts complete collections of closed ET-itemsets.
+Nevertheless, they are differently defined: every transaction (resp. item) “outside” a
+closed ET-itemset is forced to gather strictly more couples absent from the mined
+relation than any transaction (resp. item) “inside” it. This prevents the discovery of
+some ET-itemsets that would be extracted if some additional couples were missing
+outside the pattern. As a consequence, when a hidden pattern is affected by more
+noise than what DR-Miner can tolerate (while remaining tractable), not only the whole
+pattern is not discovered (like any other approach) but also most of (if not all) its fragments.
+Indeed the elements “inside” these fragments are not much different from those
+“outside” it but inside the hidden pattern.

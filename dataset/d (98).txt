@@ -1,0 +1,30 @@
+All query expansion methods used in experiments are based
+on local context analysis (LCA, see [30]) in a slightly modified
+version. There are two changes w.r.t. the original LCA
+formulation in [30]
+‧ The computation of idf values is done as described
+above.
+‧ In the original work on LCA, expansion concepts are
+defined as noun phrases. We relax this definition and
+allow arbitrary index terms as concepts.
+The general expansion strategy LCA is used with three
+types of expansion collections:
+‧ The web: queries are passed to the API of the Yahoo!
+web search engine and the top 10 results are retrieved.
+The “passages”, from which expansion terms are taken,
+are the snippets that the search engine returns as a
+summary of the result page.
+‧ Local pseudo feedback: As an alternative to these global
+resources, a local expansion strategy as described in [8]
+is implemented that first ranks peers using the original
+query, retrieves the 10 best results returned by the
+top-ranked peer and feeds them into LCA.
+‧ Global pseudo feedback: Instead of using documents
+only from the top-ranked peer, this strategy assumes
+knowledge of the whole distributed collection and uses
+the 10 best results that a centralised system would
+return. This strategy serves as an upper baseline for
+the other two query expansion strategies: although it
+cannot be applied in a P2P setting, it can serve to
+show how effective pseudo feedback could be if we had
+complete knowledge.

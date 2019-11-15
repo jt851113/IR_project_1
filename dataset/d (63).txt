@@ -1,0 +1,22 @@
+Over the past few years, a great deal of attention in the networking and mobile-computing communities has
+been directed toward building networks of ad-hoc collections of sensors scattered throughout the world. MIT,
+UCLA, and UC Berkeley [23, 32, 12, 38] have all embarked on projects to produce small, wireless, batterypowered
+sensors and low-level networking protocols. These projects have brought us close to the the vision of
+ubiquitous computing [49], in which computers and sensors assist in every aspect of our lives. To fully realize
+this vision, however, it will be necessary to combine and query the readings produced by these collections
+of sensors, since manually retrieving and combining data from thousands of nodes is tedious and infeasible.
+An obvious approach for doing this would be to apply traditional data-processing techniques and operators
+from the database community. Unfortunately, standard DBMS assumptions about the reliability, availability,
+interface, and requirements of data sources do not apply to sensors, so a significantly different architecture
+is needed. Understanding, designing and implementing this architecture, called TeleTiny, is the focus of my
+research. TeleTiny consists of two primary components:
+1. Server Side: Modifications to traditional query processor architectures to enable them to access and efficiently
+query streaming sensor data, without wasting limited energy reserves of the sensors.
+2. Sensor Side: Modifications to the software which runs on the sensors themselves to enable database-style
+queries involving joins, aggregates, and other operators to be partially executed within sensor networks,
+in an effort to reduce communication costs and power consumption.
+This document summarizes my progress to date in building TeleTiny, with a particular focus on these two
+components and the interfaces between them, and discusses how my Ph.D. will yield a complete architecture
+for energy-efficient query processing over streaming sensor data. The remainder of this section summarizes
+the challenges of sensor-query processing, sketches the TeleTiny architecture, and shows how it meets those
+challenges.

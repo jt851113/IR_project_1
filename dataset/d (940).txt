@@ -1,0 +1,65 @@
+Over the past few years, a great deal of attention in the
+networking and mobile-computing communities has been
+directed towards building networks of ad-hoc collections of
+sensors scattered throughout our environment. Researchers
+at UC Berkeley [15] and other universities have embarked
+on projects to produce small, wireless, battery powered sensors
+and low level networking protocols. These projects
+have brought us close to the the vision of ubiquitous computing
+in which computers and sensors assist in every aspect
+of our lives. To fully realize this vision, however, it
+will be necessary to combine and query the sensor readings
+produced by these collections of sensors. Sensor networks
+will produce very large amounts of data, which needs to be
+combined and aggregated to analyze and react to the world.
+Clearly, the ability to apply traditional data processing lan-
+guages and operators to this sensor data is highly desirable.
+Unfortunately, standard DBMS assumptions about the characteristics
+of data sources do not apply to sensors, so a significantly
+different architecture is needed.
+There are two primary differences between sensor based
+data sources and standard database sources. First, sensors
+typically deliver data in streams: they produce data continuously,
+often at well defined time intervals, without having
+been explicitly asked for that data. Queries over those
+streams need to be processed in near real time, partly because
+it is often extremely expensive to save raw sensor
+streams to disk, and partly because sensor streams represent
+real world events, like traffic accidents and attempted network
+break-ins, which need to be responded to. The second
+major challenge with processing sensor data is that sensors
+are fundamentally different from the over-engineered data
+sources typical in a business DBMS. They do not deliver
+data at reliable rates, the data is often garbled, and they have
+limited processor and battery resources which the query engine
+needs to conserve whenever possible.
+Our contribution to the problem of querying sensor data
+operates on two levels: First, we propose an enhanced query
+plan data structure called Fjords (“Framework in Java for
+Operators on Remote Data Streams”), which allows users
+to pose queries that combine streaming, push-based sensor
+sources with traditional pull-based sources. To execute
+these queries, our system provides non-blocking and windowed
+operators which are suited to streaming data. Second,
+we propose power-sensitive Fjord operators called sensor
+proxies which serve as mediators between the query processing
+environment and the physical sensors.
+Sensor data processing and the related area of query processing
+over data streams have been the subject of increasing
+attention recently. Systems groups around the country
+are providing key technology that will be necessary for
+data intensive sensor based applications. Our work differs,
+however, in that it is focused on providing the underlying
+systems architecture for sensor data management. Thus,
+our focus is on the efficient, adaptive, and power sensitive
+infrastructure upon which these new query processing approaches
+can be built. To our knowledge, this is the first
+work addressing the low level database engine support required
+for sensor centric data-intensive systems. We address
+related work in more detail in Section 6.
+We now present an overviewof the sensor query processing
+environment and discuss the sensor testbed that we are
+building. In the remaining sections, we present the specific
+requirements of sensor query processing, propose our solutions
+for satisfying those requirements, present some initial
+performance results, discuss related work, and conclude.

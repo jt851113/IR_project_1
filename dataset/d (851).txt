@@ -1,0 +1,60 @@
+Our first experiment compares diffusion to two idealized
+schemes for data dissemination in networks. In the flooding
+scheme, sources flood all events to every node in the
+network. Flooding is a watermark for directed diffusion;
+if the latter is not significantly more energy efficient than
+flooding, it cannot be considered viable for sensor networks.
+In the omniscient multicast scheme, each source transmits
+its events along a shortest-path multicast tree to all
+sinks. We do not simulate the tree construction protocols.
+Rather, we centrally compute the distribution trees and do
+not assign energy costs to this computation. Omniscient
+multicast approximately indicates the performance achievable
+in an IP-based sensor network. We use this scheme
+to give the reader some intuition for how our mechanism
+choices impact performance.
+Figure 4(a) shows the average dissipated energy per packet
+as a function of network size. Omniscient multicast dissipates
+a little less than a half as much energy perpacket
+per node than flooding. It achieves such energy efficiency
+by delivering events along a single path from each source
+to every sink. Directed diffusion has noticeably better energy
+efficiency than omniscient multicast. For some sensor
+fields, its dissipated energy is only 60% that of omniscient
+multicast. As with omniscient multicast, it also achieves
+significant energy savings by reducing the number of paths
+over which redundant data is delivered. In addition, diffusion
+benefits significantly from in-network aggregation. In
+our experiments, the sources deliver identical location estimates,
+and intermediate nodes suppress duplicate location
+estimates. This corresponds to the situation where there is,
+for example, a single four-legged animal within the specified
+sub-region.
+Why then, given that there are five sources, is diffusion not
+nearly five times more energy efficient than omniscient multicast?
+First, both schemes expend comparable--and nonnegligible---
+energy listening for transmissions. Second, our
+choice of reinforcement and negative reinforcement results
+in directed diffusion frequently drawing down high quality
+data along multiple paths, thereby expending additional energy.
+Specifically, our reinforcement rule that reinforces a
+neighbor who sends a new (i.e., previously unseen) event
+is very aggressive. Conversely, our negative reinforcement
+rule, which negatively reinforces neighbors who only consistently
+send duplicate (i.e., previously seen) events, is very
+conservative.
+Figure 4(b) plots the average delay observed as a function
+of network size. Directed diffusion has a delay comparable
+to omniscient multicast. This is encouraging. To a first approximation,
+in an uncongested sensor network and in the
+absence of obstructions, the shortest path is also the lowest
+delay path. Thus, our reinforcement rules seem to be finding
+the low delay paths. However, the delay experienced by
+flooding is almost an order of magnitude higher than other
+schemes. This is an artifact of the MAC layer: to avoid
+broadcast collisions, a randomly chosen delay is imposed on
+all MAC broadcasts. Flooding uses MAC broadcasts exclusively.
+Diffusion only uses such broadcasts to propagate the
+initial interests. On a sensor radio that employs a TDMA
+MAC-layer, we might expect flooding to exhibit a delay comparable
+to the other schemes.

@@ -1,0 +1,58 @@
+THE NECI METASEARCH
+ENGINE
+Figure 1 shows a simplified control flow diagram
+of the NECI metasearch engine, which consists of
+two main parts: the metasearch code and a parallel
+page retrieval daemon. The page retrieval engine is
+relatively simple, but does incorporate features such
+as queuing requests, load balancing from multiple
+search processes, and delaying requests to the same
+site to prevent overloading a site.
+Figure 2 shows the main search form for the
+NECI metasearch engine. Users can choose which
+search engines to run, how many hits to retrieve,
+the amount of context to display (measured in
+number of characters), and so on. The engine supports
+all common search formats, including
+Boolean syntax. As with many other metasearch
+engines, the NECI metasearch engine dynamically
+modifies queries to match each search engine’s
+query syntax.
+Users can control the amount of text the NECI
+engine displays by specifying the number of characters
+it will show on either side of the query terms.
+To improve readability, the engine omits most nonalphanumeric
+characters and partial words at the
+beginning and end of the specified character count.
+At one point, we sought to improve context display
+by extracting logical sentences rather than a fixed
+number of characters. However, in general, users did
+not find this sentence-based method superior
+because including full sentences increased the screen
+space needed by each summary without significantly
+improving users’ ability to determine relevance.
+Because the NECI engine returns results progressively
+as it downloads and analyzes each page,
+the results are not necessarily displayed in the order
+listed by the individual search engines, but the order
+is approximately the same. Perhaps because Web
+search engines are not good at relevance ranking to
+begin with, this difference in document ranking was
+not a problem for users.
+Figure 3 shows a sample response of the NECI
+metasearch engine for the query “digital watermark.”
+The bar at the top lets users switch between
+views of the search results; below it are links to the
+individual engine results. The “tip” that follows
+might be query sensitive, such as providing specific
+query format suggestions when the query looks
+like a proper name.
+The shaded bars to the left of the document titles
+indicate how close query terms are to each other in
+the document. With a single query term, the bar
+shading indicates how close the term is to the top of
+the document. The information to the right of the
+document title shows which engine found the document
+and the document’s age, for example, in the
+first listing, “A” refers to AltaVista, “n/a” indicates
+that the document’s age is not available.

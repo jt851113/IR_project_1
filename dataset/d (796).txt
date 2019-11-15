@@ -1,0 +1,19 @@
+Figure 5 compares the running time of the two algorithms
+when the maximum size of the large itemsets is
+varied from 3 to 8. For itemset sizes 3 and 4, the interleaved
+algorithm is faster, but only by about 7% and 20%
+respectively. However, as the largest itemset size increases,
+the amount of work performed by the sequential algorithm
+increases dramatically. This is because each large itemset
+of size that does not contribute to a cycle forces the
+sequential algorithm to calculate support counts for all its
+subsets without producing any useful results. Further,
+the association rules computed by the sequential algorithm
+do not fit in memory and it starts incurring significant I/O
+overhead as well contributing to the large jump in execution
+time as we go from itemset size 5 to 6. In fact, we had to
+terminate the experiments with the sequential algorithm for
+itemset sizes 7 and 8 because they ran for over a day each
+without completing. This experiment conclusively demonstrated
+the superiority of the interleaved algorithm over the
+sequential algorithm.

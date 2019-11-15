@@ -1,0 +1,51 @@
+We focus on sensor processing environments in which
+there are a large number of fairly simple sensors over which
+users want to pose queries. For our purposes, a sensor consists
+of a remote measurement device that provides data at
+regular intervals. A sensor may have some limited processing
+ability or configurability, or may simply output a raw
+stream of measurements. Because sensors have at best limited
+capabilities, we do not ask them to parse queries or
+keep track of which clients need to receive samples from
+them: they simply sample data, aggregate that data into
+larger packets, and route those packets to a data processing
+node, which is a fixed, powered, and well connected server
+or workstation with abundant disk and memory resources,
+such as would be used in any conventional database system.
+We call the node that receives sensor data the sensor’s
+proxy, since it serves as that sensor’s interface into the rest
+of the query processor. Typically, one machine is the proxy
+for many sensors. The proxy is responsible for packaging
+samples as tuples and routing those tuples to user queries as
+needed. The general query environment is shown in Figure
+1. Users issue queries to the server; the server processes the
+query, instantiates operators and locates sensor proxies, and
+starts the flow of tuples. Although sensors do not directly
+participate in query processing, their proxy can adjust their
+sample rate or ask them to perform simple aggregation before
+relaying data, which, as we will show, is an important
+aspect of efficiently running queries over many sensors.
+We are building this system as a part of the Telegraph
+data flow processing engine [23]. We have extended this
+system with our Fjords data flow architecture. In Telegraph,
+users pose queries at a workstation on which they expect
+results to appear. That workstation translates queries into
+Fjords through a process analogous to normal query optimization.
+Queries run continuously because streams never
+terminate; queries are removed from the system only when
+the user explicitly ends the query. Results are pushed from
+the sensors out toward the user, and are delivered as soon as
+they become available.
+Information about available sensors in the world is stored
+in a catalog, which is similar to a traditional database catalog.
+The data that sensors provide is assumed to be divisible
+into a typed schema, which users can query much as
+they would any other relational data source. Sensors submit
+samples, which are keyed by sample time and logically separated
+into fields; the proxy converts those fields into native
+database tuples which local database operators understand.
+In this way, sensors appear to be standard object-relational
+tables; this is a technique proposed in the Cougar project
+at Cornell[18], and is consistent with Telegraph’s view of
+other non-traditional data sources, such as web pages, as
+relational tables.

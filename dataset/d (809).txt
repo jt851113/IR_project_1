@@ -1,0 +1,68 @@
+Our heuristic is based on a simple idea: first perform a naive
+assignment of roles to the network nodes, and then allow every
+node to decide locally if it wants to transfer the role to any of
+its neighbors. Upon completion of the naive assignment phase,
+a second phase of role transfer begins. A node hosting any fusion
+point role, checks if one of its neighbor nodes can host that
+role better using a cost function to determine the “goodness” of
+hosting a particular role. If a better node is found then a role
+transfer is initiated. Since all decisions are taken locally, every
+node needs to know only as much information as is required for
+determining the goodness of hosting a given role for a given application
+task graph. For example, if the cost function is based
+upon the remaining power level at the host, every node needs to
+know only its own power level.
+Naive Tree Building: The procedure of finding a naive role
+assignment can start at any node. For simplicity, let us say it
+starts at the root node, a node where an end user interacts with
+the system. The user presents the application task graph to the
+root node. The root node decides if it wants to host the root
+fusion function of the task graph based upon its available resources.
+If the root node does host the root fusion function, it
+delegates the task of further building the sub-trees under the
+root of the task graph to its neighbors, else it delegates the
+building of complete tree to one of its neighbors. For example,
+consider the case where the root node decides to host the
+root fusion function. In this case, if the root fusion function
+has two inputs from two other fusion points, the root node delegates
+the two subtrees, one corresponding to each of the input
+fusion points, to two of its neighbors. For the delegation
+of building subtrees, the root node selects two of its “richest”
+neighbors. These neighbors are chosen based upon their reported
+resources. The chosen delegate nodes build the subtrees
+following a procedure similar to the one at the root. This recursive
+tree building ends when the input to the fusion points are
+data producer nodes (i.e. sources). The completion notification
+of the tree building phase recursively bubbles up the tree from
+the sources to the root.
+Note that, during this phase, different fusion points are assigned
+to distinct nodes whenever possible. If there are not as
+many neighbors as needed for delegation of the subtrees, the
+delegating node assumes multiple roles. Also, even the data
+producing nodes are treated similar to the non-producing nodes
+for the role assignment purpose in this phase. During later
+phases, a cost function decides if multiple fusion points should
+be assigned to the same sensor node or if data sources should
+not be allowed to host a fusion point.
+Optimization Phase: After completion of the naive tree building
+phase, the root node informs all other nodes in the network
+about the start of the optimization phase. During this phase,
+every node hosting a fusion point role is responsible for either
+continuing to play that role or transferring the role to one of
+its neighbors. The decision for role transfer is taken solely by
+the fusion node based upon local information. A fusion node
+periodically informs its neighbors about its role and its health
+– an indicator of how good the node is in hosting that role.
+Upon receiving such a message, a neighboring node computes
+its own health for hosting that role. If the receiving node determines
+that it can play the role better than the sender, then it
+informs the sender (fusion node) of its own health and its intent
+for hosting that role. If the original sender receives one or more
+intention requests from its neighbors, the role is transferred to
+the neighbor with the best health. Thus, with every role transfer,
+the overall health of the overlay network improves. Application
+data transfer starts only after the optimization phase
+to avoid possible energy wastage in an unoptimized network.
+DFuse uses a third maintenance phase that works similar to the
+optimization phase (same role transfer semantics). Details are
+presented in Section 5.

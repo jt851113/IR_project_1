@@ -1,0 +1,22 @@
+In many networked environments, caches are shared
+among multiple users and cache contents must be managed
+in a way that maximizes the benefit for the user community
+as a whole. The applications described above have shared
+cache analogs. In data recharging, we assume that users can
+PROFILE Traveler
+DOMAIN
+RC = related:www.hertz.com
+Sh = "shuttle schedules" AND "airport" AND "Boston"
+Di = "directions to downtown Boston" AND "airport"
+Ho = "Hotel" AND "downtown Boston"
+Re = "Restaurant Review" AND "downtown Boston"
+UTILITY
+
+END
+Figure 1: A Profile For Data Recharging
+connect to well-defined charging stations. These charging
+stations would maintain a shared cache that would service
+users who are likely to connect there in the future. For thin
+pipes, a shared cache is placed between the connection and
+a user community. This cache is used to mitigate the latency
+effects of the thin pipe.

@@ -1,0 +1,25 @@
+Traditional datasets in multidimensional domains are usually described
+as sets of elements (data items) with fixed numbers of attributes. Thus,  denote a dataset containing N elements composed of E attributes,
+i.e., 
+Definition 2.1 (Embedding Dimension E )
+The Embedding Dimension E 2 N of a dataset S is the number of attributes
+defining each element of S.
+Definition 2.2 (Intrinsic Dimension D)
+The Intrinsic Dimension  of a dataset S is the dimensionality of the object
+represented by the data, regardless of the dimension of the space in which S is
+embedded.
+A dataset can represent a spatial object with a dimensionality lower than
+or equal to the dimension of the space in which it is embedded. For example,
+the intrinsic dimension of a set of points distributed along a line is one, even if
+the set is embedded in a space of higher dimension. Figure 3 exemplifies a line
+segment in 2 and 3 dimensions.
+Note that, if the attributes of a dataset obey uniformity and independence
+properties, its intrinsic dimension equals the embedding dimension. On the
+other hand, whenever there is a correlation between two or more attributes, the
+intrinsic dimension of the dataset is accordingly lower. Thus, D is always smaller
+than or equal to E.
+Uniformity and independence, however, are rather uncommon properties
+in real data. Indeed, experimental evidences have shown that the distribution of
+distances between elements in the majority of real datasets is not uniform and
+does not follow any of the traditional statistical distributions, such as Gaussian
+or Poisson. Instead, most real data present “fractal behavior”.

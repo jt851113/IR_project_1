@@ -1,0 +1,24 @@
+One way in which streaming data differs from traditional
+data sources is that it is inseparably tied with the notion of
+now. Queries over streams begin looking at the tuples produced
+starting at the instant the query is posed – the history
+of the stream is not relevant. For this reason, it is possible
+to share significant amounts of computation and memory
+between several queries over the same set of data sources:
+when a tuple is allocated from a particular data source, that
+tuple can immediately be routed to all queries over that
+source – effectively, all queries are reading from the same
+location in the streaming data set. This means that streaming
+tuples need only be placed in the query processor’s
+memory once, and that selection operators over the same
+source can apply multiple predicates at once. Fjords explicitly
+enable this sharing by instantiating streaming scan operators
+with multiple outputs that allocate only a single copy
+of every streaming tuple; new queries over the same streaming
+source are folded into an existing Fjord rather than being
+placed in a separate Fjord. A complete discussion of how
+this allocation and query folding works is beyond the scope
+of this paper, but related ideas are presented in literature on
+continuous queries [5]. We will, however, show how this
+folding can be used to improve query performance in the
+results section which follows.

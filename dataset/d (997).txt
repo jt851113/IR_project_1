@@ -1,0 +1,26 @@
+As discussed in the previous section we identied three
+problems with Kleinberg's algorithm. In this section we
+address problem 1, mutually reinforcing relationships between
+hosts. The next section addresses problems 2 and
+3.
+Mutually reinforcing relationships between hosts give
+undue weight to the opinion of a single person. Ideally
+we would like all the documents on a single host to have
+the same inuence on the document they are connected
+to as a single document would. To achieve this we give
+fractional weights to edges in such cases:
+If there are k edges from documents on a rst host
+to a single document on a second host we give each edge
+an authority weight of 1=k. This weight is used when
+computing the authority score of the document on the
+second host. If there are l edges from a single document
+on a rst host to a set of documents on a second host,
+we give each edge a hub weight of 1=l. Additionally, we
+discard isolated nodes from the graph. This leads to the
+following modied algorithm:
+In the appendix we prove that the H and A vectors converge,
+i.e., that the algorithm terminates.
+This modied algorithm was eective in eliminating
+the mutually reinforcing relationship problem in all the
+cases where we had encountered it. In our evaluation we
+call this improved algorithm, imp.

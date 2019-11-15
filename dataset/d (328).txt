@@ -1,0 +1,8 @@
+In this section, a method of finding recent frequent itemsets
+adaptively over an online data stream is proposed based on the
+decay mechanism described in Section 2. The different
+combinations of items that appear in each transaction are
+maintained in a prefix-tree lattice structure [7,8] called as a
+monitoring lattice. A node in a monitoring lattice contains an item
+and it denotes an itemset composed of items that are in the nodes
+of its path from the root.

@@ -1,0 +1,18 @@
+Abstract—Skyline queries have recently attracted a lot of
+attention for its intuitive query formulation. It can act
+as a filter to discard sub-optimal objects. However, a
+major drawback of skyline is that, in datasets with many
+dimensions, the number of skyline objects becomes large
+and no longer offer any interesting insights. To solve the
+problem, recently k-dominant skyline queries have been
+introduced, which can reduce the number of skyline objects
+by relaxing the definition of the dominance. This paper
+addresses the problem of k-dominant skyline objects for
+high dimensional dataset. We propose algorithms for k-
+dominant skyline computation. Our algorithms reduce the
+pairwise comparison between the k-dominant skyline objects
+and the dataset. Through extensive experiments with real
+and synthetic datasets, we confirm that our algorithms can
+efficiently compute k-dominant skyline queries.
+Index Terms—skyline, k-dominant skyline, domination
+power, dataset

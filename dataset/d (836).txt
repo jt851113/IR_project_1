@@ -1,0 +1,14 @@
+We now look at the performance of our system on a packet throughput
+dataset from a 12x14 grid of nodes with grid spacing 2 feet
+(detailed descriptions can be obtained from [15]). Each node has
+throughput data from all other transmitters, for twenty different settings
+of transmit signal strength from each node. Two forms of correlations
+can be exploited to reduce size of data: (a) correlation in
+throughput between adjacent transmitters to a particular receiver,
+and (b) correlation in throughput from a single transmitter to adjacent
+receivers.
+Figure 5 shows the results of a query to obtain the throughput vs
+distance map from the compressed data. The error is small in the
+approximated data, and gives us large compression benefit. These
+results show that our algorithm works for a broad class of data with
+different correlation characteristics.

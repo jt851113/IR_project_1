@@ -1,0 +1,45 @@
+In the nal iteration of the protocol, we introduce multiple
+verier nodes in an attempt to increase the coverage of R.
+Recall that if R is not a circle, no single node can provide
+100% coverage. Consequently, multiple veriers are needed.
+Intuitively, we will run the protocol presented in Section 3.2
+after selecting one verier from among the set of veriers V .
+The protocol is quite simple. See Figure 6 for the com-
+plete denition. First, a verier is chosen so that the claimed
+location ` lies within that verier's ROA. If no such verier
+exists, execution is aborted, since the claim can not be ver-
+ied. After choosing a verier v to participate, v sends a
+packet to p using RF, which is echoed back to it using ultra-
+sound. v can calculate how long it should take to hear the
+echo, namely, the sum of the time it takes to reach ` using
+RF, plus p, plus the time it takes for a return packet to go
+from ` to v using ultrasound. If the measured elapsed time
+exceeds this anticipated time, v rejects the location claim.
+The nonce in the packet prevents the prover from sending a
+reply before it has received the outgoing RF packet.
+The extra verier nodes serve to expand the region of
+acceptance within R. Thus, while ROA(v;p) refers to the
+region that one particular verier node can accept, we dene
+ROA(p) to be the region where at least one verier node
+can prove location claims. It is then clear that
+Figure 6: Formal description of the Echo protocol,
+which can perform location verication in an arbi-
+trary region R with multiple verier nodes. We rep-
+resent the prover node as p and the verier node
+that runs the protocol as v.
+since the set of veriers can accept a location proof if the
+claimed location is inside at least one verier's region of
+acceptance.
+In the Echo protocol, the infrastructure chooses a single
+verier node to participate in the protocol. A verier v may
+participate if ` 2 ROA(v;p), since by denition that is the
+region that it can perform secure location verication proofs.
+Note that the claimed location ` may be inside ROA(v;p)
+for many dierent verier nodes v, hence more than one ver-
+ier node might be eligible for participation in the protocol.
+We only require one to be chosen, and we allow the ver-
+iers to use any convenient leader election mechanism for
+choosing which particular verier node will run the proto-
+col. They may have a purely deterministic mechanism for
+electing veriers, or they may use a dynamic algorithm in
+an attempt to conserve power, for example.

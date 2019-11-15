@@ -1,0 +1,5 @@
+Recall from Section IV-D that the QoS-aware routing
+problem considered is a constrained version of the original
+optimization problem in which some nodes have delay bounds
+associated with them. As described in [7], our algorithm can
+be easily adapted to handle these constraints.

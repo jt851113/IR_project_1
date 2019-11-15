@@ -1,0 +1,61 @@
+A main problem of the introduced burst detection is the determination
+of a suitable threshold. If the threshold is too high, bursts
+are potentially not detected. Conversely, a threshold that is too low
+results in a high number of (maybe wrong) alerts. In addition, this
+increases the workload, as each time an alert is triggered all cells
+within the shadow of the regarding cell have to be investigated. And
+of course, a suitable threshold depends on the user and his actual
+requirements.
+In [13] the authors suggest to use a heuristic in order to identify a
+static threshold. This method is based on the mean of the data seen
+so far. The drawback of this approach is that it is only appropriate
+for stationary data with known distribution. Consequently, an algorithm
+using the static threshold cannot react correctly to trends or
+periods. One idea is to continuously forecast the stream in order to
+adapt the threshold. A popular and easy to implement method for
+achieving this is exponential smoothing.
+In single (also called simple) exponential smoothing the forecast
+is the linear combination of the weighted average of the current
+observation and the previous smoothed observations. With
+this method, recent observations are more relevant for forecasting
+than older observations. A forecast value St is predicted using
+the elements yi; i < t; seen so far. Single smoothing is sufficient
+for short-range forecasting and static time series. For non-static
+time series showing a trend the double exponential smoothing (also
+known as Holt exponential smoothing) is appropriate. For example,
+if a room is continuously warming up due to a running radiator
+an alert is undesirable. In double smoothing, a forecast value St
+and a trend bt are estimated. The trend can be used to predict the
+kth value in the future by St+k = St + k  bt. Triple exponential
+smoothing is suited to also handle seasonalities. [2] presents more
+details of this technique used for smoothing as well as forecasting.
+A main issue with them is to choose appropriate control parameters
+( for single,  and  for double smoothing).
+The idea is to use the techniques in order to determine a forecast
+value for each time t. The current stream element yt is compared to
+this value. If it is above this threshold it is regarded as an element
+of a burst. Single exponential smoothing can be updated incrementally
+in every time step, just like the mean. The problem is that
+both methods also include elements from bursts into the calculations,
+which reflects in too high thresholds. This in turn results in
+missing (parts of) bursts as we will show in Section 4. Identifying
+these elements and exclude them is possible, but rather expensive.
+This is because at the time a burst is detected some or all of its elements
+did already pass (depending on the size of the aggregation
+tree). Thus, they are already included into the calculations.
+One approach is to use double exponential smoothing in order to
+implement a multiple step forecast. Once the smoothing variables
+are determined, they can be used for forecasting the following elements.
+This works fine for stationary data as well as data showing
+some trend.
+The introduced methods take all elements of the stream seen
+so far into consideration. We refer to this as the static approach.
+As evolving data streams may change during time, distribution and
+trends may change as well. To handle this we also implemented dynamic
+methods, which are based on jumping windows. This means,
+at regular intervals all old elements are ignored and further threshold
+prediction is based only on new arriving elements.
+Threshold determination and exponential smoothing are implemented
+as separate operators in StreamDB. These operators can be
+combined with the burst detection operator to continuously pass on
+accurate thresholds for burst detection.

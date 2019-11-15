@@ -1,0 +1,188 @@
+Although the velocity density can be calculated for arbitrary
+dimensions, the visualization of the spatial and temporal
+profiles is inherently two-dimensional. In this section, we
+discuss how to utilize the results of the velocity density
+estimation techniques in order to make significant diagnosis
+about higher-dimensional problems. An important fact to
+be noted about high-dimensional problems is that the data
+may not show change on all the sets of the dimensions, but
+on some particular combinations; therefore, a significant
+amount of useful information is hidden in finding the
+combinations of dimensions in which the greatest amount
+of change has occurred. Some examples of high-dimensional
+applications are as follows:
+. In a supermarket application, the relative frequency
+of two products may remain constant, but the
+interattribute correlation in buying behavior over
+individual customers may change over time. In such
+cases, it may be desirable to find those combinations
+of dimensions with the greatest amount of change,
+since it can be used for a reevaluation of marketing
+strategies.
+. In a network intrusion application, it may be
+desirable to find the sets of dimensions which
+illustrate the greatest change in the underlying
+system. Such a process may be useful in determining
+unknown intrusions along with the relevent attributes
+for diagnosis.
+It is clear that that if the change is measured over the
+entire set of dimensions simultaneously, its rate may be
+significantly diluted by those combinations of dimensions
+in which the evolution rate is insignificant. Furthermore,
+since high-dimensional data is sparse, it is not very
+interesting to measure evolution rates of sparse data
+concentrations. In fact, it is not even possible to estimate
+densities accurately with increasing dimensionality [19].
+Therefore, we will show how to use the concept of velocity
+density in order to pick interesting sets of features which
+show considerable evolution.
+Note that the temporal velocity profile gives the rate of
+change at a given spatial location X. Therefore, by
+integrating the value of the velocity density over the entire
+spatial area, we can obtain the total rate of change over the
+entire spatial area. In other words, if Eehs;htTetT is the total
+evolution in the period , then we have:
+We shall henceforth refer to the above value as the global
+evolution coefficient of the data set. It is important to note that
+we have to use the modulus of the velocity, since we are
+looking at the total volume of change, rather than the
+positivity or the negativity of the change. (If we did not use
+the modulus, this integral would be equal to zero.) Note that
+the evolution coefficient is equal to the (scaled) volume
+between the velocity density curve and spatial axis plane.
+Because of the way in which the forward and reverse time
+slice densities are defined, this value always lies in the range. 
+Intuitively, the evolution coefficient measures the total
+volume of the evolution in the time horizon.
+Since we have consistently computed the velocity
+densities at grid-discretized coordinate points, the corresponding
+grid-discretized approximation value of Eehs;htTetT
+is given by multiplying ht with the sum of absolute values at
+all the different grid-coordinates.
+It is also easy to see that it is possible to calculate the
+evolution coefficients of particular projections of the data by
+using only the corresponding sets of dimensions in the
+density calculations. Now, consider a d-dimensional data
+mining problem in which we wish to find visual representations
+of a small number l of two-dimensional projections in
+which the greatest change in data characteristics has
+occurred. Let 2 be the number of coordinates in each
+grid which are maintained at any given instant of time. Then,
+for each of the two-dimensional combinations of
+attributes, we maintain separate sets of 	 counters. For each
+of these sets, the velocity density is calculated by using the
+computation only in the corresponding projection of the
+data. Once the velocity density has been calculated at all the
+grid-points, we can calculate the grid-discretized approximation
+of the global evolution coefficient for a given
+projection. The l projections which have the highest
+evolution coefficient are the ones in which visual representations
+of the spatial and temporal profiles can be provided.
+It is also of value to examine the rate of change in
+projections with dimensionality larger than 2. We have
+discussed earlier that it may often not be interesting to
+measure evolution behavior on the entire set of dimensions
+at one time. The reverse is also true; even though the data
+stream may not evolve much when projected onto one or
+two dimensions, there may be significant changes in
+particular sets of k-dimensional combinations. These sets
+of k-dimensional combinations provide useful information
+in terms of how the nature of the correlations have changed
+over time. (For example, the beginning of the data stream
+could correspond to records in which older people earn
+more than younger people, whereas the end of the data
+stream could correspond to the reverse.) Such information
+about lower-dimensional projections is useful in order to
+obtain an idea of the exact nature of the trends in the data.
+In order to find the sets of k-dimensional combinations in
+which the greatest change has occurred, we set a threshold
+which we refer to as min-evol. The global evolution
+coefficient must be greater than this threshold for a
+projection to be considered significant. Such a projection is
+said to be highly evolving. From the perspective of a user, it is
+much easier to understand and assimilate the combination
+of a small number of dimensions. Therefore, we concentrate
+on finding the sets of lowest-dimensional projections in
+which are highly evolving. A projection is said to be a
+minimal evolving projection, when its global evolution coefficient
+is greater than min-evol and no lower-dimensional
+subspace of that projection is highly evolving. Although
+there may be a large number of highly evolving projections,
+the set of minimal evolving projections is likely to be small
+and easily presentable to a user. We will see that it is also
+computationally more efficient to find the set of minimal
+evolving projections by using pruning techniques. Note that
+any algorithm which tries to find all sets of projections in a
+single online scan of the data cannot prune any of the 2d
+projections a-priori, since it is not possible to make any
+evolution-coefficient estimates for any projection without
+scanning the data at least once. Such an algorithm may be
+feasible for reasonably small values of the dimensionality d,
+but becomes rapidly unwieldy with increasing dimensionality.
+Therefore, for the particular case of finding kdimensional
+projections, we deviate from our general
+emphasis on developing only online algorithms. This is the
+only feature of this paper which requires offline computation
+and is done as a necessity because the computational
+requirements in one scan are untenable for any algorithm.
+We include this offline feature, since it may still be useful for
+many spatiotemporal data sets which can be loaded onto the
+disk for more detailed examination and analysis.
+The algorithm for determination of minimum evolving
+projections derives its overall framework from the Aprior
+algorithm [7]. In Fig. 5, we have outlined the basic
+algorithm for finding all the set of minimal evolving
+projections. For a d-dimensional data set, the method
+requires at most d  1 scans over the data. The algorithm
+uses the minimality property in order to effectively prune
+many of the combinations of dimensions. The input to the
+algorithm consists of a minimum evolution threshold
+(denoted by min-evol) and the maximum dimensionality of
+the projections (denoted by maxdim). A roll-up technique is
+employed in order to generate the combination of dimensions
+in which the set Ci represents a set of i-dimensional
+nonminimal candidate projections. A projection P is said to be
+a nonminimal candidate if and only if no subspace of P is
+highly evolving. At the beginning of the ith iteration, the set
+Cit1 is defined as the set of nonminimal candidates; for
+example, it is the set of all ei t 1T-dimensional projections so
+that, for each projection in it, no proper subspace,3 of any
+projection in it has an evolution coefficient greater than minevol.
+At the end of the iteration, the set of highly evolving
+ei t 1T-dimensional projections are also removed from Cit1,
+so that Cit1 is the set of all ei t 1T-dimensional projections
+such that no subspace of any projection in it (including
+itself) is highly evolving. In each iteration, the candidate set
+Cit1 is generated using the previous set Ci and the onedimensional
+singletons S. More specifically, each element in
+Cit1 is created by concatenating a projection in Ci with a
+singleton in S. The (pairwise concatenate) symbol in Fig. 5
+denotes this operation. Note that as the value of i increases,
+a randomly chosen i-dimensional projection becomes
+increasingly unlikely to be a member of Ci, since it is quite
+likely that at least one of its lower-dimensional subspaces
+may be a highly evolving combination. How to (efficiently)
+check whether a given projection is nonminimal?
+To do so, we use the nonminimality of Ci inductively. If Ci
+contains only nonminimal projections, then a projection in
+Cit1 is nonminimal if and only if all of its i-dimensional
+subspaces are in Ci. This is because if any proper subspace of
+a projection in Ci satisfies the evolutionary threshold
+requirement, then such a projection would not itself be
+present in Ci. Thus, we only need to check whether a onedimensional
+reduction from a projection in Cit1 is present in
+Ci, but we do not need to check lower-dimensional
+subspaces. Thus, the pruning condition is similar to that
+discussed in [7] for association rule mining. The set of
+projections in Cit1 are then validated by a scan over the data in
+order to check whether the evolution coefficient of each
+projection P 2 Cit1 is higher than the threshold min-evol.
+Those projections Q with an evolution coefficient which is
+greater than min-evol are retained in each iteration and added
+to set of minimal evolving projections F. Subsequently, Q is
+removed from Cit1 in order to ensure that the set of
+candidates Cit2 generated in the next iteration do not contain
+any supersets of highly evolving projections from Cit1. The
+process is continued until either the candidate set is empty or
+projections of maximum dimensionality maxdim have been
+found. The set F is returned at termination of the algorithm.

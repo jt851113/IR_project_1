@@ -1,0 +1,85 @@
+In this paper, we discussed novel techniques for diagnosing
+different kinds of trends in evolving data streams. The
+velocity density estimation technique is used in order to
+generate two kinds of profiles: spatial velocity profiles and
+temporal velocity profiles, each of which provide a different
+kind of insight into the nature of the changes in the
+underlying data characteristics. We proposed techniques
+for finding useful trends in higher-dimensional problems
+by finding specific combinations of dimensions in which the
+greatest change has occurred. Finally, the techniques are
+used in order to provide an effective diagnosis of the
+regions of coagulations, dissolutions, and shifts in the data.
+With a few exceptions, most of the results of this paper can
+be computed in a single online scan of the data. The results
+of this paper have considerable implications for the
+increasingly important problem of detecting trends in data
+streams and spatiotemporal data.
+REFERENCES
+[1] C.C. Aggarwal, “A Framework for Diagnosing Changes in
+Evolving Data Streams,” Proc. ACM SIGMOD Conf., 2003.
+[2] C.C. Aggarwal, J. Han, J. Wang, and P.S. Yu, “A Framework for
+Clustering Evolving Data Streams,” Proc. Very Large Data Bases
+Conf., 2003.
+[3] C.C. Aggarwal, J. Han, J. Wang, and P.S. Yu, “A Framework for
+Projected Clustering of High Dimensional Data Streams,” Proc.
+Very Large Data Bases Conf., 2004.
+[4] C.C. Aggarwal, J. Han, J. Wang, and P. Yu, “On Demand
+Classification of Data Streams,” Proc. ACM Int’l Conf. Knowledge
+Discovery and Data Mining (KDD), 2004.
+[5] N. Andrienko, G. Andrienko, and P. Gatalsky, “Towards
+Exploratory Visualization of Spatio-Temporal Data,” Proc. Third
+AGILE Conf. Geographical Information Science, pp. 137-142, 2000.
+[6] D. Bonachea, K. Fisher, A. Rogers, and F. Smith, “Hancock: A
+Language for Processing Very Large Data,” Proc. USENIX Second
+Conf. Domain-Specific Languages, pp. 163-176, Oct. 1999.
+[7] R. Agrawal and R. Srikant, “Fast Algorithms for Mining
+Association Rules in Large Databases,” Proc. Very Large Data Bases
+Conf., 1994.
+[8] B. Brodsky and B. Darkovsky, Non-Parametric Methods in Change
+Point Problems. Netherlands: Kluwer Academic, 1993.
+[9] S. Chawathe and H. Garcia-Molina, “Meaningful Change Detection
+in Structured Data,” Proc. ACM SIGMOD Conf., 1997.
+[10] D. Cheung, J. Han, V. Ng, and C.Y. Wong, “Maintenance of
+Discovered Association Rules in Large Databases: An Incremental
+Updating Technique,” Proc. IEEE Int’l Conf. Data Eng., 1996.
+[11] C. Cortes, K. Fisher, D. Pregibon, A. Rogers, and F. Smith,
+“Hancock: A Language for Extracting Signatures from Data
+Streams,” Proc. ACM Int’l Conf. Knowledge Discovery and Data
+Mining (KDD), 2000.
+[12] P. Domingos and G. Hulten, “Mining High-Speed Data Streams,”
+Proc. ACM Int’l Conf. Knowledge Discovery and Data Mining (KDD),
+2000.
+[13] D. Donjerkovic, Y.E. Ioannidis, and R. Ramakrishnan, “Dynamic
+Histograms: Capturing Evolving Data Sets,” Proc. IEEE Int’l Conf.
+Data Eng., 2000.
+[14] V. Ganti, J. Gehrke, and R. Ramakrishnan, “Mining Data Streams
+under Block Evolution,” ACM SIGKDD Explorations, vol. 3, no. 2,
+2002.
+[15] V. Ganti, J. Gehrke, R. Ramakrishnan, and W.-Y. Loh, “A
+Framework for Measuring Differences in Data Characteristics,”
+Proc. ACM Symp. Principles of Database Systems, 1999.
+[16] L. Golab and M. Ozsu, “Issues in Data Stream Management,”
+ACM SIGMOD Record, vol. 32, no. 2, pp. 5-14, 2003.
+[17] G. Hulten, L. Spencer, and P. Domingos, “Mining Time Changing
+Data Streams,” Proc. ACM Int’l Conf. Knowledge Discovery and Data
+Mining (KDD), 2001.
+[18] J.M. Kleinberg, “Bursty and Hierarchical Structure in Data
+Streams,” Proc. ACM Int’l Conf. Knowledge Discovery and Data
+Mining (KDD), 2002.
+[19] B.W. Silverman, Density Estimation for Statistics and Data Analysis.
+Chapman and Hall, 1986.
+[20] L. O’Callaghan, N. Mishra, A. Meyerson, S. Guha, and R.
+Motwani, “Streaming-Data Algorithms For High-Quality Clustering,”
+Proc. Int’l Conf. Data Eng., 2002.
+[21] J.F. Roddick et al., “Evolution and Change in Data Management:
+Issues and Directions,” ACM SIGMOD Record, vol. 29, no. 1,
+pp. 21-25, 2000.
+[22] T. Sellis, “Research Issues in Spatio-Temporal Database Systems,”
+Proc. Symp. Spatial Databases, 1999.
+[23] B.-K. Yi, N. Sidiropoulos, T. Johnson, H.V. Jagadish, C. Faloutsos,
+and A. Bilris, “Online Data Mining for Co-Evolving Time
+Sequences,” Proc. IEEE Int’l Conf. Data Eng., 2000.
+[24] Y. Zhu and D. Shasha, “Efficient Elastic Burst Detection in Data
+Streams,” Proc. ACM Int’l Conf. Knowledge Discovery and Data
+Mining (KDD), 2003.

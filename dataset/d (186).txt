@@ -1,0 +1,24 @@
+Given our goal of allowing users to pose declarative queries over sensor networks, we needed a language for expressing such queries. Rather than inventing our own, we chose to adopt a SQL-style query syntax. We support SQL-style queries (without joins) over a single table called sensors, whose schema is known at the base station. As is the case in Cougar [23], this table can be thought of as an append-only relational table with one attribute per input of the motes (e.g., temperature, light.) In TAG, we focus on the problem of aggregate sensor readings, though facilities for collecting individual sensor readings also exist.
+Before describing the semantics of queries in general, we begin with an example query. Consider a user who wishes to monitor the occupancy of the conference rooms on a particular ?oor of a building, which she chooses to do by using microphone sensors attached to motes, and looking for rooms where the average volume is over some threshold (assuming that rooms can have multiple sensors). Her query could be expressed as:
+SELECT AVG(volume),room FROM sensors WHERE floor = 6 GROUP BY room HAVING AVG(volume) > threshold EPOCH DURATION 30s This query partitions motes on the 6th ?oor according to the room in which they are located (which may be a hard-codedconstant in each device, or may be determined via some localization componentavailable to the devices.) The query then reports all rooms where the average volume is over a speci?ed threshold. Updates are delivered every 30 seconds, although the user may deregister her query at any time.
+In general, queries in TAG have the form:
+SELECT
+
+(
+
+	
+), attrsFROM sensors
+WHERE
+
+selPredsGROUP BY
+
+attrsHAVING
+
+havingPredsEPOCH DURATION
+
+With the exception of the EPOCH DURATION clause, the semantics of this statement are similar to SQL aggregate
+queries. The SELECT clause speci?es an arbitrary arithmetic expression over one or more aggregation attributes. We expect that the common case here is that
+
+will simply be the name of a single attribute. Attrs (optionally) selects the attributes by which the sensor readings are partitioned ; these can be any subset of attrs that appear in the GROUP BY clause. The syntax of the 	 clause is discussed below; note that multiple aggreggates may be computed in a single query. The WHERE clause ?lters out individual sensor readings before they are aggregated. Such predicates can typically be executed locally at the mote before readings are communicated, as in [23, 18]. The GROUP BY clause speci?es an attribute based partitioning of sensor readings. Logically, each reading belongs to exactly one group, and the evaluationof the query is a table of group identi?ers and aggregate values. The HAVING clause ?lters that table by suppressing groups that do not satisfy the havingPreds predicates.
+The primary semantic difference between TAG queries and SQL queries is that the output of a TAG query is a stream of values, rather than a single aggregate value (or batched result). In monitoring applications, such continuous results are often more useful than a single, isolated aggregate, as they allow users to understand how the network is behaving over time and observe transient effects (such as message losses) that make individual results, taken in isolation, hard to interpret. In these stream semantics, each record consists of one
+group id,aggregate value  pair per group. Each group is time-stamped and the readings used to compute an aggregate record all belong to the same time interval, or epoch. The duration of each epoch is the argument of the EPOCH DURATION clause, which speci?es the amount of time (in seconds) devices wait before acquiring and transmitting each successive sample. This value may be as large as the user desires; it must be at least as long as the time it takes for a mote to process and transmit a single radio message and do some local processing – about 30 ms (including average MAC backoff in a low-contention environment) for current generation motes (yielding a maximum sample rate of about 33 samples per second.) In section 4.1, we discuss situations that require longer lower bounds on epoch duration.

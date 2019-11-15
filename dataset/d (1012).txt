@@ -1,0 +1,104 @@
+Previous studies about skyline query processing are reviewed
+in this section. The related work on skyline query
+processing and k-dominant skyline query processing are
+discussed in Section II-A and II-B, respectively.
+A. Skyline Query Processing
+Borzsonyi, et al. first introduced the skyline operator
+over large datasets and proposed three algorithms:
+Block-Nested-Loops(BNL), Divide-and-
+Conquer(D&C), and B-tree-based schemes [2]. BNL
+compares each object of the dataset with every other
+object, and reports it as a result only if any other object
+does not dominate it. A window W is allocated in main
+memory, and the input relation is sequentially scanned.
+In this way, a block of skyline objects is produced in
+every iteration. In case the window saturates, a temporary
+file is used to store objects that cannot be placed in W.
+This file is used as the input to the next pass. D&C
+divides the dataset into several partitions such that each
+partition can fit into memory. Skyline objects for each
+individual partition are then computed by a main-memory
+skyline algorithm. The final skyline is obtained by merging
+the skyline objects for each partition. Chomicki, et al.
+improved BNL by presorting and they proposed Sort-
+Filter-Skyline(SFS) as a variant of BNL [4]. SFS
+requires the dataset to be pre-sorted according to some
+monotone scoring function. Since the order of the objects
+can guarantee that no object can dominate objects before
+it in the order, the comparisons of tuples are simplified.
+Among index-based methods, Tan, et al. proposed
+two progressive skyline computing methods Bitmap and
+Index [7]. Both of them require preprocessing. In the
+Bitmap approach, every dimension value of an object
+is represented by a few bits. By applying bit-wise and
+operation on these vectors, a given object can be checked
+if it is in the skyline without referring to other objects. The
+index method organizes a set of n-dimensional objects
+into n lists such that an object O is assigned to list i
+if and only if its value at attribute i is the best among
+all attributes of O. Each list is indexed by a B-tree,
+and the skyline is computed by scanning the B-tree until
+an object that dominates the remaining entries in the
+B-trees is found. Kossmann, et al. observed that the
+skyline problem is closely related to the nearest neighbor
+(NN) search problem [3]. They proposed an algorithm
+that returns skyline objects progressively by applying
+nearest neighbor search on an R*-tree indexed dataset
+recursively. The current most efficient method is Branch-
+and-Bound Skyline(BBS), proposed by Papadias, et
+al., which is a progressive algorithm based on the bestfirst
+nearest neighbor (BF-NN) algorithm [5]. Instead
+of searching for nearest neighbor repeatedly, it directly
+prunes using the R*-tree structure. Balke, et al. show
+how to efficiently perform distributed skyline queries and
+thus essentially extend the expressiveness of querying
+current Web information systems [15]. Kapoor studies
+the problem of dynamically maintaining an effective data
+structure for an incremental skyline computation in a 2-
+dimensional space [16].
+B. k-dominant Skyline Query Processing
+Chan, et al. introduce k-dominant skyline query [6].
+They proposed three algorithms, namely, One-Scan Al-
+gorithm (OSA), Two-Scan Algorithm (TSA), and Sorted
+Retrieval Algorithm (SRA). OSA uses the property that
+a k-dominant skyline object cannot be worse than any
+skyline object on more than k dimensions. This algorithm
+maintains the skyline objects in a buffer during the scan
+of the dataset and uses them to prune away objects
+that are k-dominated. TSA retrieves a candidate set of
+dominant skyline objects in the first scan by comparing
+every object with a set of candidates. The second scan
+verifies whether these objects are truly dominant skyline
+objects or not. This method turns out to be much more
+efficient than the one-scan method. A theoretical analysis
+is provided to show the reason for its superiority. The
+third algorithm, SRA is motivated by the rank aggregation
+algorithm proposed by Fagin, et al., which pre-sorts data
+objects separately according to each dimension and then
+merges these ranked lists [8].
+Based on transitivity property of skyline objects most of
+the above algorithms sort the whole tuples (objects) with
+a monotonic scoring function sum. However, this assumption
+is not true for k-dominant skyline computation due to
+the well-known intransitivity of the k-dominance relation.
+Moreover, there is an open issue that the efficiency of
+the most efficient k-dominant skyline search algorithm
+TSA proposed in [6] crucially depends on the pruning
+capability of non-dominant skyline objects during the first
+scan. If the number of false positives produced by the first
+scan is small, then the performance of TSA will be good.
+Recently, more aspects of skyline computation have
+been explored. Vlachou, et al. introduce the concept of
+extended skyline set, which contains all data elements
+that are necessary to answer a skyline query in any
+arbitrary subspace [9]. Fotiadou, et al. mention about the
+efficient computation of extended skylines using bitmaps
+in [10]. Chan, et al. introduce the concept of skyline frequency
+to facilitate skyline retrieval in high-dimensional
+spaces [11]. Tao, et al. discuss skyline queries in arbitrary
+subspaces [12]. There exist more work addressing
+spatial skyline [17], [18], skylines on partially-ordered
+attributes [13], dada cube for analysis of dominance relationships
+[19], probabilistic skyline [20], skyline search
+over small domains [14], reverse skyline [21], and extended
+k-dominant skyline [22].

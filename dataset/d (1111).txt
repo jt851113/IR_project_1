@@ -1,0 +1,7 @@
+In this paper, we discuss several recent research advances
+for mining patterns in time series data given the presence of
+noise. They not only provide more suitable models to measure
+interesting patterns but also enable scalable solutions
+to mine patterns under the proposed models with respect
+to the size of input data. Interested readers are welcome to
+refer to the individual papers for further information.

@@ -1,0 +1,8 @@
+In this section, we focus on the properties of sensors and
+streaming data that must be taken into account when designing
+the low level infrastructure needed to efficiently integrate
+streaming sensor data into a query processor. There
+are other important issues in sensor stream processing, such
+as query language and algebra design and the detailed semantics
+of stream operators, which are not the focus of this
+work. We discuss these in more detail in Section 6.

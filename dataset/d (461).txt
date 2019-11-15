@@ -1,0 +1,10 @@
+In this paper, we propose a new mining problem of partial periodic
+pattern with random replacement. To qualify significant
+patterns in a sequence, we introduce a new measurement:
+generalized information gain. This new metric can seamlessly
+accommodate the different frequency of event occurrences
+in an event sequence and the gap penalties and provides
+us with solid theoretical foundations. The triangle inequality
+preserved by the generalized information gain enables us to
+devise a linear algorithm to mine the significant pattern in any
+subsequence combinations.

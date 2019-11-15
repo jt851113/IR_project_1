@@ -1,0 +1,23 @@
+Every n-set X represented by a node N = (U, V) is such that U  X. By Property
+2, if an element s ? S is such that ?C-connected(U ∪ {s}), then ?X  U ∪ {s},
+?C-connected(X). As a consequence, s cannot prevent any n-set represented by N
+from being -closed. All such elements (i. e., {s ? S | ?C-connected(U ∪ {s})}) are
+safely removed from S, whose only purpose precisely is the enforcement of C-closed.
+The involved process is similar to the enforcement of C-connected (see Sect. 3.2) but
+applied on S instead of V (the fundamental implementation details are described in
+Sect. 4.1). This optimization speeds up the enforcement of C-closed for all the nodes
+deriving from N. This slight modification of enumeration is reported in Fig. 8.
+In general, and contrary to the extraction of exact patterns, several closed ET-n-sets
+can be made by moving some elements from V to U. However, when U  V satisfies
+C-connected then it is, by Definition 6, the only closed ET-n-set with U “included”
+(w.r.t. Definition 2). That is why C-connected(U  V) is tested. If it is satisfied, a direct
+jump to the leftmost leaf of the enumeration sub-tree (rooted by the current node) is
+performed. This jump is safe,
+Because most of the nodes are at the bottom of the enumeration tree (in a complete
+binary tree, half of the nodes are leaves), this improvement significantly reduces the
+extraction times.
+Example 8 In the enumeration node NL of Example 6,UV = ({α, γ }, {1, 2}, {B, A})
+and C-connected({α, γ }, {1, 2}, {B, A}) is true. The improvement is applied (see Fig. 9)
+before the actual enforcement of C-closed. Of course, the obtained node is not -
+closed for the same reason as the intermediary node (see Example 6): β ? S1 can
+extend it.

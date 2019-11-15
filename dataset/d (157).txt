@@ -1,0 +1,117 @@
+Our third approach is inspired by the ideas in [5]. The
+data points in D are first sorted (in non-ascending order)
+for each dimension , and each sorted set of points
+is stored in an array Di[1 · · · |D|] (steps 1 to 3)3. Thus,
+ Each sorted array Di is associated with a cursor, denoted by ci,
+which is initialized to point to the first array entry (step
+3). The algorithm maintains two sets: (1) R, the set of kdominant
+skyline points (which is initialized to empty); and
+(2) T, the set of candidate k-dominant skyline points (which
+is initialized to D). Non-k-dominant skyline points in T are
+progressively eliminated from T, while k-dominant skyline
+points in T are progressively moved to R.
+3For space efficiency, instead of storing data points in Di,
+the array entries can simply store pointers to the points in
+D.
+Unlike the first two approaches, which sequentially scans
+D to compute dominant skyline points, the Sorted Retrieval
+approach iteratively chooses one of the dimensions si (using
+a function FindNextDimensions in step 9), and processes
+the batch of data points in Di, denoted by D
+
+, that have
+the same si value as Di[ci] (steps 10 to 20). The iterative
+processing terminates once T becomes empty. Since each
+data point p ? D is stored a total of |S| times in the sorted
+arrays, each point can potentially be processed in |S| different
+iterations. We use a counter, denoted by count(p), to
+keep track of the number of times that a point p has been
+processed. The counter values are initialized to 0 (steps 4
+and 5). In each iteration, the selected batch of points D
+
+is processed in two phases. The first phase (steps 11 to 16)
+uses D
+
+to eliminate points in T that are determined to be
+non-dominnant. Specifically, if p
+ ? D
+
+is being processed
+for the first time (step 12), then p
+
+is used to eliminate the
+points in T that are k-dominated by p
+
+(steps 13 to 15). The
+counter for each p
+ ? D
+
+is updated at the end of the first
+phase (step 16).
+The second phase (steps 17 to 19) moves the points in
+T that are determined to be k-dominant skyline points to
+R. Specifically, a point p
+ ? D
+
+is determined to be a kdominant
+skyline point if it satisfies two conditions: (C1) p
+
+has not yet been k-dominated by any processed point (i.e.,
+p
+
+is still in T); and (C2) p
+
+has been processed d ? k + 1
+times (i.e., counter(p
+
+) = d?k+1). The correctness of these
+conditions is based on the following observation: if a point
+p
+
+is k-dominated by some other point p, then p
+
+can be processed
+in an earlier batch of points than p in at most d ? k
+iterations. This is because the definition of k-dominance implies
+that p must be processed in an earlier batch than p
+
+or
+in the same batch as p
+
+in at least k iterations. Therefore,
+condition (C2) implies that any point p that could possibly
+k-dominate p
+
+would have been processed at least once, and
+together with condition (C1), it means that p
+
+is guaranteed
+to be a k-dominant skyline point. At the end of each iteration,
+the cursor ci is updated accordingly to beyond the last
+processed point in Di (step 20).
+The performance of this approach depends crucially on the
+choice of the heuristic function FindNextDimension which
+selects the next dimension and hence sorted array to be
+processed. There are several straightforward options for this
+function, such as round-robin iteration and one-dimensional
+iteration. In Algorithm 3, we use the round-robin iteration
+heuristic which chooses the dimension that has been selected
+the least often; ties are broken by selecting the dimension
+with the smallest dimension index number.
+Example 4.3 Applying the Sorted Retrieval approach (with
+k = 4) on D in Fig. 1, we first sort D to obtain D1, · · · ,D6 as
+shown in Fig. 3, where for clarity, points having the same si
+values are enclosed within braces. The first three iterations
+all select dimension s1. At the end of the first iteration, the
+points p3 and p4 (which are 4-dominated by p1) are removed
+from T, count(p1) = 1, and c1 = 2. At the end of the second
+iteration, we have count(p1) = 2, and c2 = 2. At the end of
+the third iteration, we have count(p1) = 3; since count(p1)
+= d ? k + 1 = 3, the algorithm concludes that p1 is a 4-
+dominant point and p1 is moved from T to R. The point
+p5 is eliminated from T (as it is 4-dominated by p2) at the
+end of the fifth iteration. Finally, at the end of the tenth
+iteration, count(p2) = 3 and p2 is moved from T to R as a
+4-dominant point. Since T becomes empty, the processing
+terminates and the algorithm returns R = {p1, p2} as the
+answer.

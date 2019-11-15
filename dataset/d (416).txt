@@ -1,0 +1,30 @@
+4in active mode, processor, sensors, and radio are ON
+5in inactive mode, processor and radio are ON, and radio is
+listening but not transmitting
+
+Figure 7: A motion-sensor assembly
+
+We create a motion-sensor for our experiments by using a
+Mote tted with a light sensor (we refer to this assembly as
+sensor-mote) and a focused light source. The sensor-mote is
+placed in a small box in such a manner that light from the
+pin-hole falls directly on the light sensor. The light source
+is placed at a distance from the box, with its light falling on
+the pin-hole (Fig 7).
+
+In order to be able to detect rapid events, the sensor-mote
+samples the light sensor 8 times per second. However, in
+order to make efficient use of the channel bandwidth, the
+sensor-mote transmits the light sensor readings only once
+per second. Each transmission contains the eight most re-
+cent readings of the light sensor.
+
+When no activity occurs, the light sensor reads the maxi-
+mum value. When an object passes between the light source
+and the box containing sensor-mote, thereby obstructing the
+light path, the readings of the light sensor changes. Fig 8
+shows the typical uctuation in light sensor readings as an
+object crosses the light path. These uctuations are re-
+ported the next time the Mote transmits. The next set of
+readings transmitted by the Mote will report these changes
+in the light readings.

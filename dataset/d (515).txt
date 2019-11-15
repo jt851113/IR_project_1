@@ -1,0 +1,156 @@
+4.2 Scheduling Access Tree
+Our scheduling algorithm is based on the optimal linear
+ordering algorithm with a consideration of the edges in
+REintra.We use a step-by-step method to solve the scheduling
+problem by considering each removed edge in REintra.
+Referring to Fig. 11, if we apply the optimal linear
+ordering algorithm on the access tree , the order of
+nodes a, b, and c will be determined. According to the order
+given by the optimal linear ordering algorithm and the
+direction indicated by the removed edge between node c
+and node b, two cases should be considered.
+Case I: The order of the nodes indicated by the removed
+edge is the same as the order given by the optimal linear
+ordering algorithm.
+For example, if the OLO of the access tree shown in
+Fig. 11 is a . . . c . . . b or c . . . a . . . b, then the order of c, b is the
+same as the removed edge ecb. This case can be further
+divided into two subcases:
+Case I.a: According to the OLO of the access tree, the
+starting node (c) of the removed edge is between the ending
+node (b) and its parent node (a). For example, if the OLO of
+the access tree is a . . . c . . . b, then it is in Case I.a.
+In this case, if there is no node between c and b, then we
+do nothing. The reason is that the removed edge is ecb and,
+no matter what effort we make, we cannot make c and b get
+closer. If there exist some nodes between c and b, the access
+tree will be modified as follows:feabg [ fecbg,
+weecbT ? weecbT t weeabT. According to the original access
+tree (before considering the removed edge), we know b
+appears after c. Therefore, if we make b closer to c
+(considering the removed edge), the average access time
+may be reduced. Therefore, we reconnect the removed edge
+ecb, remove the edge eab, and add the weight of eab to the
+weight of ecb. Notice that the access time will be underestimated
+because ra!b > rc!b and rc!b is used to approximate
+ra!b. After modifying the access tree, the optimal
+linear ordering algorithm is applied on the subtree rooted at
+node c to reschedule the subtree. If the average access time
+of the current broadcast program is smaller than that of the
+previous broadcast program, we use the modified access
+tree as the access tree to be further considered; otherwise,
+we use the previous access tree as the access tree for further
+consideration.
+Case I.b: According to the OLO of the access tree, the
+starting node of the removed edge (c) appears before the
+parent node (a) of the ending node (b). For example, if the
+OLO of the access tree is c . . . a . . . b, then it is in Case I.b.
+In this case, if there is no node between a and b, then we do
+nothing. The reason is that if the removed edge is ecb, we
+cannotmakecand b get closer without changing the order of a
+and b. If there exist some nodes between a and b, the access
+tree will be updated as follows:
+According to the original access tree before considering the
+removed edge, we know a and b both appear after c.
+Therefore, if we make b closer to c without changing the
+order of a and b (i.e., making b closer to a), the average
+access time may be reduced. Therefore, we add the weight
+of ecb to the weight of eab. Notice that the access time will be
+under estimated (because rc!b > ra!b, and ra!b is used to
+approximate rc!b). After updating the access tree, the
+optimal linear ordering algorithm is applied on the subtree
+rooted at node a to reschedule the subtree. If the average
+access time of the current broadcast program is smaller than
+that of the previous broadcast program, we use the
+modified access tree as the access tree to be further
+considered; otherwise, we use the previous access tree as
+the access tree for further consideration. For example (refer
+to Fig. 10b), the OLO of tree Y is “gkhml,” where the order
+of node k and node l is the same as the removed edge ekl. It
+is in Case I.b. Moreover, there are nodes between node h
+and node l in the OLO. Tree Y is modified by updating
+weehlT to 3 + 2. We apply the optimal linear ordering
+algorithm on the subtree rooted at node h. Fig. 12 shows the
+modified trees and the corresponding broadcast programs
+for the trees in Fig. 10b.
+Case II: The order given by the optimal linear ordering
+algorithm is different from the direction indicated by the
+removed edge. For example, if the OLO of the access tree is
+a . . . b . . . c, then the order of b, c is different from the
+removed edge ecb, it is in case II.
+In this case, if there is no node between a and b, then we
+do nothing. The reason is that if the removed edge is ecb, we
+cannot reduce rc!b without changing the order of a and b. If
+there exist some nodes between a and b, the access tree will
+be updated as follows: weeabT ? weecbT t weeabT. According
+to the original access tree (before considering the removed
+edge), we know a and b both appear before c. Therefore, if
+we reduce rc!b without changing the order of a and b (i.e.,
+making b closer to a), the average access time may be
+reduced. Therefore, we add the weight of ecb to the weight
+of eab. After updating the access tree, the optimal linear
+ordering algorithm is applied on the subtree rooted at
+node a to reschedule theo subtree. If the average access time
+of the current broadcast program is smaller than that of the
+previous broadcast program, we use the modified access
+tree as the access tree to be further considered; otherwise,
+we use the previous access tree as the access tree for further
+consideration. Referring to Fig. 10b, the OLO of tree X is
+“edfabc,” where the order of node d and node a is different
+from the removed edge ead. It is in Case II. However, there
+is no node between node e and node d in the OLO;
+therefore, we do nothing.
+As mentioned above, we use a step-by-step method.
+Therefore, the execution order of the removed edges will
+affect the result of the broadcast program. We sort the
+removed edges in a decreasing order according to their
+weights to guarantee that the edges with larger weights will
+be considered first.
+The scheduling algorithm is as follows:
+
+Scheduling Algorithm
+1. Apply the optimal linear ordering algorithm to the
+given access tree (V, E) and the output broadcast
+program is stored in list
+2. Previous_average_access_time= average access time
+of the output broadcast program
+3. While REintra not empty
+4. Remove the edge with the largest weight, say ecb,
+from REintra
+5. Consider the order of c, b and b’s parent node,
+say a, in the list
+6. If it falls in Case I.a and there exist some nodes
+between c and b in the list
+7. 
+8. apply the optimal linear ordering algorithm on
+the subtree rooted at node c
+9. Current_average_access_time= average access
+time of the output broadcast program from
+Step 8
+10. If (Current_average_access_time <
+Previous_average_access_time)
+11. replace the corresponding broadcast
+program in list by the output broadcast
+program from Step 8
+12. Previous_average_access_time =
+Current_average_access_time
+13. Else
+14. 
+15. 
+exist some nodes between a and b
+16. 
+17. apply the optimal linear ordering algorithm on
+the subtree rooted at node a
+18. Current_average_access_time=average access
+time of the output broadcast program from
+Step 17
+19. If (Current_average_access_time <
+Previous_average_access_time)
+20. replace the corresponding broadcast
+program in list by the output broadcast
+program from Step 17
+21. Previous_average_access_time =
+22. Else
+23. 
+24. output list
+

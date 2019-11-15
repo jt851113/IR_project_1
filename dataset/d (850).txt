@@ -1,0 +1,84 @@
+We implemented our animal tracking instance of directed
+diffusion in the ns-2 [2] simulator. Our goals in conducting
+this evaluation study were four-fold: First, place the performance
+of diffusion in the context of idealized schemes,
+such as flooding and omniscient multicast (described below).
+This serves as a sanity check for the intuition behind
+directed diffusion. Second, understand the impact of
+dynamics--such as node failures-~n diffusion. Third, explore
+the influence of the radio MAC layer on diffusion performance.
+Finally, study the sensitivity of directed diffusion
+performance to the choice of parameters.
+We choose two metrics to analyze the performance of directed
+diffusion and to compare it to other schemes: Average
+dissipated energy measures the ratio of total dissipated
+energy per node in the network to the number of
+distinct events seen by sinks. This metric computes the
+average work done by a node in delivering useful tracking
+information to the sinks. The metric also indicates the overall
+lifetime of sensor nodes. Average delay measures the
+average one-way latency observed between transmitting an
+event and receiving it at each sink. This metric defines the
+temporal accuracy of the location estimates delivered by the
+sensor network. We study these metrics as a function of sensor
+network size.
+In all our experiments, we operate the sensor network in a
+regime far from overload. Thus, our sensor nodes do not
+experience congestion. We do this to simplify our understanding
+of the results. Exploring the behavior of diffusion
+under congestion is the subject of future research. In
+passing, we note that there exist plausible approaches (such
+as in-network data rate downconversion or aggressive data
+quality reduction through aggregation) for dealing with congestion
+in diffusion-based sensor networks.
+Despite this focus on uncongested operating regimes, directed
+diffusion can incur event losses, particularly under
+dynamics. In these situations, another metric for the performance
+of diffusion, is the event delivery ratio. This is the
+ratio of the number of distinct events received to the number
+originally sent. A similar metric was used in earlier work to
+compare ad-hoc routing schemes [4].
+To completely specify our experimental methodology, we
+need to describe the sensor network generation procedure~
+our choice of radio parameters, and our workload. The fol-
+:[owing paragraphs do this.
+:In order to study the performance of diffusion as a function
+of network size, we generate a variety of sensor fields
+of different sizes. In each of our experiments, we study five
+different sensor fields, ranging from 50 to 250 nodes in increments
+of 50 nodes. Our 50 node sensor field generated
+by randomly placing the nodes in a 160m by 160m square.
+Each node has a radio range of 40m. Other sizes are generated
+by scaling the square and keeping the radio range
+constant in order to approximately keep the average density
+of sensor nodes constant. For each network size, our results
+are averaged over three different generated fields.
+The ns-P simulator implements a 1.6 Mbps 802.11 MAC
+layer. Our simulations use this MAC layer. This is not a
+completely satisfactory choice of MAC layer, since there are
+compelling energy efficiency reasons for selecting a TDMAstyle
+MAC for sensor networks rather than one based on
+channel acquisition using RTS/CTS [21]. Briefly, these reasons
+have to do with energy consumed by the radio during
+idle intervals; with a TDMA-style MAC, it is possible to
+put the radio in standby mode during such intervals. By
+contrast, an 802.11 radio consumes as much power when it
+is idle as when it receives transmissions. To more closely
+mimic realistic sensor network radios [13], we altered the
+ns-2 radio energy model such that the idle time power dissipation
+was about 35mW, or nearly 10% of its receive power
+dissipation (395mW), and about 5% of its transmit power
+dissipation (660mW). In Section 4.4, we analyze the impact
+of a MAC energy model in which listening for transmissions
+dissipates as much energy as receiving them.
+Finally, in most of our simulations, we use a fixed workload
+which consists of five sources and five sinks. All sources
+are randomly selected from nodes in a 70m by 70m square
+within the sensor field. Sinks are uniformly scattered across
+the sensor field. Each source generates two events per second.
+The low data rate for directed diffusion was chosen
+to be one event in 50 seconds. Events were modeled as 64
+byte packets, interests as 36 byte packets. Interests were
+periodically generated every 5 seconds, and the interest duration
+was 15 seconds. We chose the window for negative
+reinforcement to be 2 seconds.

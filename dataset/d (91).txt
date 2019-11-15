@@ -1,0 +1,17 @@
+The first of the two problems introduced above – namely
+the question of how strongly we can compress peer profiles
+and still have acceptable recall – has received relatively little
+attention in both the DIR and the P2PIR community.
+In P2PIR, this may be because many approaches do not use
+unigram language models for representing peers. One exception
+is [3] where various pruning algorithms are presented.
+However, the work in [3] does not consider absolute thresholds
+for profile sizes as we do here, but varies parameters
+of pruning algorithms, leading to varying, but unpredictible
+profile sizes.
+In DIR, on the other hand, resource descriptions are usually
+stored on large broker servers where space constraints
+are not a major problem. However, some work has been
+done on that topic [18], pruning index terms from long documents.
+However, the trade-off between profile size and retrieval
+effectiveness is not evaluated systematically.

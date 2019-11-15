@@ -1,0 +1,32 @@
+To execute simple aggregate queries, sensor nodes have
+to send their records to a leader, aggregate them into a
+final result, and then deliver the final result to the gateway
+node. Note that a sensor node can only communicate
+directly with other nodes in its vicinity, limited by
+the transmission power of the wireless radio. To send
+messages to a distant node, a multi-hop route connecting
+the node to the destination has to be established
+in advance. A packet is forwarded by internal nodes
+along the route until the packet reaches its destination.
+Note that this structure is similar in both wired
+and wireless networks, but there are major differences.
+In a wired network, the network structure is almost
+fixed and most routing problems are handled at a few
+backbone routers. In a wireless network, such as a
+sensor network, limited connectivity requires all nodes
+to participate in routing. In addition, the low quality
+of the communication channel and frequent topology
+changes make the network quite unstable. Thus more
+complicated routing protocols are required for wireless
+networks.
+The networking community has developed many
+different ad-hoc network routing algorithms. A separate
+routing layer in the protocol stack provides a send
+and receive interface to the upper layer and hides the
+internals of the wireless routing protocol. In this section,
+we show that a routing layer for a query processing
+workload has slightly different requirements than
+a traditional ad-hoc routing layer, and then we outline
+some initial thoughts on how to adapt AODV [26], a
+popular wireless routing protocol, to a query processing
+workload.

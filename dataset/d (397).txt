@@ -1,0 +1,40 @@
+A fundamental challenge for sensor networks comes
+from the fact that sensor nodes are supported by
+scarce battery resources. Most of the existing work
+reaches energy saving by optimizing the communication
+cost of radio components. However, MCU
+and sensor components also play critical roles in sensor
+nodes energy consumption. In this paper, a
+prediction-based energy saving (PES) scheme is proposed
+to exploit the energy management issues in object
+tracking sensor networks. Energy awareness is incorporated
+into computing and sensing operations by
+inactivating the sensing and MCU components whenever
+possible.
+A prediction model in PES predicts the future
+movement of the tracked objects, which provides the
+knowledge for a wake up mechanism to decide which
+nodes need to be activated for object tracking. Different
+heuristics are discussed for both prediction and
+wakeup mechanisms. An extensive simulation study
+has been conducted to evaluate the performance (in
+terms of total energy consumption and missing rates)
+of the proposed PES scheme and other basic energy
+saving schemes for object tracking sensor networks.
+The experimental result confirms that PES can effectively
+reduce the energy consumption on MCU and
+sensor components. The different heuristics discussed
+in this paper provide a space for object tracking applications
+to balance between the energy consumption of
+the entire network and required data quality (in terms
+of missing rate).
+As for the future work, we plan to incorporate the
+energy saving techniques in radio communication into
+the current work. Based on PES, we are building a
+prediction-based, energy-aware communication protocol
+for sensors to adapt their communications with
+the base station. As such, we can employ the same
+prediction-based approach in different layers of the object
+tracking sensor networks to optimize the energy
+consumption and increase the lifetime of the entire
+network.

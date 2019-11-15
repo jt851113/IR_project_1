@@ -1,0 +1,99 @@
+Efficient search mechanisms are unanimously recognized
+as crucial components of massively distributed information
+systems such as the Web or file-sharing networks. In this
+context, the last few years have seen the emergence of an
+intense research activity in the area of peer-to-peer (P2P)
+based search, with the objective of replacing centralized
+search services such as Google, Yahoo!, or Live Search by
+large-scale P2P search engines.
+The work presented in this paper is carried out in the
+framework of a collaboration between EPFL and UNINE
+funded by the EPFL Center for Global Computing.
+?This work was carried out during the tenure of an ERCIM
+“Alain Bensoussan” Fellowship Programme.
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+LSDS-IR’08, October 30, 2008, Napa Valley, California, USA.
+Copyright 2008 ACM 978-1-60558-254-2/08/10 ...$5.00.
+However, despite the many research efforts invested so far,
+none of the currently released P2P Web search engines (e.g.,
+Faroo or YaCy1) has been able to reach a level of quality and
+efficiency that would allow them to truly compete with their
+centralized counterparts.
+We believe that the lack of widespread adoption of P2P
+Web search engines is a direct consequence of the so-called
+“bootstrap problem” [7]: the added value of a distributed
+search engine becomes only perceivable when the system has
+attracted enough users to fully sustain its specific functionalities.
+As long as such a critical mass of users is not reached,
+the distributed system’s performance is noticeably inferior
+to that of the centralized engine, which in turn prevents attracting
+the necessary number of users. Given the nature
+and objectives of search engines, the major potential advantages
+of distributed approaches over centralized ones (better
+scalability, better privacy enforcement, better resistance to
+censorship) cannot make up for the subpar quality of the
+search results.
+As a consequence, we concur with the authors of [7] that
+the most promising approach for distributed search engines
+is not to launch them as autonomous systems aiming at replacing
+their centralized counterparts, but rather to couple
+a distributed engine with one (or several) centralized engine(
+s), as a companion system providing additional functionalities
+that are impossible—or difficult—to implement
+with a centralized approach. Such a companion system can
+later run autonomously when the users recognize its performance
+and functionalities as good enough.
+In this position paper, we present an example of what
+such a coupled set up might be, in the specific case where
+the targeted added value functionality is the collaborative
+exploitation of the feedback information provided by topical
+communities of users. This information is used to construct
+a search mechanism that leverages (1) community-based information,
+reducing the risks of manipulation and fragility
+that are potentially faced by centralized search engines, and
+(2) user-specific information that helps targeting the results
+to some specific user’s interests. This latter objective is further
+coupled with the goal of maximizing the so-called infodiversity,
+that is, to allow specifically tailored results for the
+largest possible set of users with distinct interest profiles.
+Our system has similarities with meta-search engines [14],
+which send queries to several search engines and allow users
+to search more of the information system. Nonetheless, these
+systems compile results using merging and ranking functions
+that, without knowledge of the ranking methods internally
+used by the search engines, are known to produce dimly rel-
+evant and fairly polluted results. Our approach is not to
+combine results from search mechanisms based on similar
+metrics (data popularity, structural information, etc.) but
+to present on one side the results obtained by such metrics
+and, on the other side, the results obtained from the collaborative
+construction of user-based relevance metrics and
+document/user interest profiling.
+While we do not specifically focus in this paper on other
+aspects of distributed search systems, we expect them to
+provide perceivable benefits once the system has reached a
+critical mass of users. Examples of such features are scalability
+and privacy enforcement. Scalability comes from the
+aggregation of resources: the more users participate, the
+more resources are available for providing the service, i.e.,
+the architecture scales gracefully with this number of resources.
+Privacy is another important concern for users, as a
+considerable portion of them care that search engines collect
+certain non-personally identifiable data about their queries.2
+All search engines (e.g., Yahoo, Google or Live Search) can
+use search data of their users to keep track of their interests
+and online activities. We propose a fully distributed
+architecture with an appropriate privacy-preserving design,
+which we consider as a sound approach for avoiding tracking
+and censorship.
+The rest of the paper is organized as follows. Section 2
+presents the targeted system and its architecture, and discusses
+its key components. Section 3 highlights the most
+important research challenges raised by the design and implementation
+of this architecture. Related work is discussed
+in section 4. Section 5 concludes our paper.

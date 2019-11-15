@@ -1,0 +1,91 @@
+This paper addresses the challenging problem of similarity search
+over widely distributed ultra-high dimensional data. Such an application
+is retrieval of the top-k most similar documents in a widely
+distributed document collection. Themassive amounts of distributed
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+LSDS-IR’08, October 30, 2008, Napa Valley, California, USA
+Copyright 2008 ACM 978-1-60558-254-2/08/10 ...$5.00.
+high-dimensional data, such as digital libraries and web accessible
+text databases, motivate our work towards an infrastructure for efficient
+similarity search in peer-to-peer (P2P) environments. The
+overall goal is for a set of cooperative computers to support advanced
+search mechanisms that go beyond exact matching and involve
+ranking.
+P2P systems emerge as a promising solution to delve with data
+management in cases of high degree of distribution. Contrary to
+centralized systems or traditional client-server architectures, nodes
+participating in a large P2P network, store and share data in an autonomous
+manner. Such nodes can be information providers, which
+do not wish to expose their full data to a server or be part of a centralized
+index. Therefore, a grand challenge is to provide efficient
+and scalable searching, in a context of highly distributed content,
+without necessarily moving the actual contents away from the information
+providers. Then the problem of lack of global knowledge
+– in the sense that each peer is aware of only a small portion of the
+network topology and content – needs to be dealt with. The solutions
+proposed in such an unstructured P2P environment usually
+lead to approaches that incur high costs, and thus deter the design
+of efficient searching over P2P content.
+In this context, the first challenge is to organize content in an
+unsupervised, decentralized and distributed way. Unstructured P2P
+systems in their basic form suffer from high search costs in terms
+of both consumed bandwidth and latency, so in order to be useful
+for real applications, more sophisticated search mechanisms are required.
+An approach that has been proposed recently is the use of
+Semantic Overlay Networks (SONs) [3, 6], where peers containing
+relevant information are grouped together in overlay networks.
+Once SONs have been created, queries can be forwarded only to
+the most similar SONs to the given query, thus reducing the query
+cost and, at the same time, increasing the quality of results (mainly
+in terms of precision). More advanced search mechanisms, that
+go beyond exact matching, such as similarity search, can then be
+deployed on top of the newly generated SONs.
+In this paper, we propose a novel approach for constructing SONs
+in an unstructured P2P network, aiming to use SONs as the underlying
+infrastructure for efficient similarity search. A main objective
+of our work is the distributed and decentralized generation
+of SONs. Peers with similar content eventually become part of a
+logical cluster, resulting in a super-peer architecture, where each
+super-peer becomes responsible for a thematically focused group
+of peers, namely a SON. In this way, a similarity query can be
+guided to the N most similar - to the query - overlays, thus achieving
+quality of results comparable to centralized search and at the
+same time avoiding the excessive cost of exhaustive search.
+The main contribution of this work is a scalable approach for
+distributed SON creation in unstructured P2P networks, and al-
+gorithms for recursively merging clusters of peer data and creating
+links between peer groups, in order to generate well-connected
+SONs with similar content that span the entire P2P network. The
+innovation of this paper relative to previous related work on organizing
+content in large P2P networks and P2P similarity search
+lies in: 1) our approach to P2P clustering is completely unsupervised
+(we make no assumptions of common ontology or common
+knowledge among peers) and contrary to other approaches, such as
+gossiping [25], random meetings [2, 18], assumptions on peer contents’
+probability distributions [11], it guarantees that the resulting
+clusters span the entire network, and 2) while most P2P similarity
+search approaches rely on moving content or detailed indexes to
+remote peers usually employing a DHT infrastructure [17, 20], our
+approach relies on an unstructured P2P network that evolves into
+a super-peer architecture, hence the peer’s actual data do not need
+to be stored at remote peers arbitrarily defined by a hash function.
+The merits of our approach are evaluated on two large document
+datasets (GOV2 and Reuters), thus proving the applicability of our
+ideas and demonstrating both the result quality and the performance
+gains experimentally. In particular, by contacting the best 3 superpeers
+(SONs), we manage to achieve 85-96% of the recall1 that
+would be achieved if all data were available in a central location.
+The organization of the rest of this paper is as follows: In Section
+2, we give an overview of related work. In Section 3, we describe
+in detail the process of distributed semantic overlay network
+generation and how the unstructured P2P network evolves into a
+clustered super-peer network. Section 4 describes how similarity
+search can be efficiently performed using the SONs. In Section 5,
+we present experimental results, acquired through simulations. Finally,
+in Section 6, we conclude the paper and outline future research
+directions.

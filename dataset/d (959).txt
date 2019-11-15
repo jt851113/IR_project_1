@@ -1,0 +1,39 @@
+In this section, we show two alternative Fjords which
+correspond to Query 1 above. Space limitations preclude us
+from including similar diagrams for Query 2; we will discuss
+the performance of Query 2 briefly at the end of this
+section. Figure 4 shows a Fjord that corresponds to Query
+1. Like the query, it is quite simple: tuples are routed first
+from the BHL server to a sensor proxy operator, which uses
+a JDBC input queue to accept incoming tuples. This proxy
+collects streaming data from various sensors, averages the
+speeds over some time interval, and then routes those aggregates
+to the multiplex operator, which forwards tuples to
+both a save-to-disk operator and a filter operator. The saveto-
+disk operator acts as a logging mechanism: users may
+later wish to recall historical information over which they
+previously posed queries. The filter operator selects tuples
+based on the user query, and delivers to the user a stream of
+current speeds for the relevant road segment.
+Notice that the data flow in this query is completely push
+driven: as data arrives from the sensors, it flows through the
+system. Also note that user queries are continuous: data is
+delivered periodically until the user aborts the query. The
+fact that data is pushed from sensors eliminates problems
+that such a system could experience as a result of delayed
+or missing sensor data: since the sensor is driving the flow
+of tuples, no data will be output for offline sensors, but data
+from other sensors flowing through the same Fjord will not
+be blocked while the query processor waits for those offline
+sources.
+Figure 4 works well for a single query, but what about
+the case where multiple users pose queries of the same type
+as Query 1, but with different filter predicates for the segments
+of interest? The naive approach would be to generate
+multiple Fjords, one per query, each of which aggregates
+and filters the data independently. This is clearly a bad idea,
+as the allocation and aggregation of tuples performed in the
+query is identical in each case. The ability to dynamically
+combine such queries is a key aspect of the Fjords architecture.
+A Fjord which corresponds to the combination of
+three queries similar to Query 1 is illustrated in Figure 5.

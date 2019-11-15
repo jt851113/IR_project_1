@@ -1,0 +1,147 @@
+WITH the large number of transactions which are
+recorded and stored by many organizations, the
+importance of being able to analyze trends in fast data
+streams has become very important in recent years.
+Typically, such databases are created by continuous activity
+over long periods of time, and are therefore databases
+which grow without limit. For example, even simple
+transactions of everyday life, such as paying by credit card
+or using the telephone, are recorded in an automated way
+using current hardware technology. The volume of such
+transactions may easily range in the millions on a daily
+basis. Often, the data may show important changes in the
+trends over time because of fundamental changes in the
+underlying phenomena. This process is referred to as data
+evolution. By understanding the nature of such changes, a
+user may be able to glean valuable insights into emerging
+trends in the underlying transactional or spatial activity.
+Therefore, it is useful to develop tools and techniques which
+would provide a visual and diagnostic overview of the key
+characteristics in the data which have changed over time in
+a fast and user-friendly way.
+The problem of mining high-speed data streams has
+been recognized to be an important one in recent years [5],
+[6], [11], [12], [23]. There is a considerable amount of work
+in the literature with a focus on incremental maintenance of
+models in the context of evolving data [2], [4], [12], [10],
+[13], [17], [20]. Some recent work has discussed new
+methods for data mining problems such as clustering and
+classification [2], [3], [4], [16], [20], [24] in the context of
+evolving data streams. There has also been considerable
+work on evolving data in the field of statistics and control
+theory [8]. Some recent work [14], [15] has also discussed a
+general framework for quantifying the changes in evolving
+data characteristics in the context of several data mining
+problems and algorithms. The focus of our paper is
+different from and orthogonal to the work in [14], [15].
+Specifically, the work in [14], [15] is focused on the effects of
+evolution on data mining models and algorithms. This
+paper studies the problem of evolution in terms of understanding
+the nature of the data changes as opposed to finding
+whether a particular data mining model has become stale or
+not because of the underlying change. As we shall see, such
+a study of evolution provides the user with a considerable
+understanding of the changes more directly in terms of the
+data attributes. Other recent work [5], [9] discusses the
+problem of change detection and visualization for particular
+domains of data.
+Since a data stream typically contains a large volume of
+high-dimensional information, it is useful to characterize
+the underlying changes in a fast and user-friendly way. For
+example, what are the locations in the stream which show
+the greatest amount of change? How can the change be
+characterized in a way which is intuitively appealing to a
+user? This paper provides the user a generic tool to
+understand, visualize, and diagnose the summary changes
+in data characteristics. This includes methods to visualize
+how the pattern of the data in various spatial locations has
+changed over time, or which combinations of dimensions
+show the greatest amount of change. We also discuss ways
+of providing specific diagnosis of localized phenomena in
+different spatial regions of the data. A concrete quantification
+of the change at a given location is suggested, and this
+quantification is used in order to determine which
+combinations of dimensions illustrate the greatest amount
+of evolution.
+There are several interesting applications of change
+diagnosis in evolving data streams. For example, in a
+supermarket or electronic commerce application, a stream
+of customer requests may consist of demographic or
+customer buying behavior attributes. It may often be
+desirable to pick those combinations of attributes in which
+there is large change in the level of transactional activity.
+For example, when a particular group of products shows a
+large change in the level of transactional activity, it may be
+desirable to use this fact for sales promotions. The ability to
+track such information is a clear competitive advantage for
+a business, which can use it in order to anticipate and adapt
+to potential customers in the near future. For instance, if
+recent data shows an increasing trend in the number of
+customers with a certain combination of demographic
+characteristics, then the supermarket can anticipate the
+increased demands of the items usually bought by this
+group. Another example is a network application in which
+the packets over a large network may be be monitored for
+sudden changes in patterns. Such changes could correspond
+to significant events on the network, such as the
+activities or presence of a new group of users. The process
+of detecting change in data streams can thus be useful in a
+number of surveillance applications.
+When the data stream shows a high level of evolution, it
+is expected that the relative data concentrations at various
+spatial locations may change over time. We will capture
+such changes with the concept of velocity density, which
+measures the rate of change of data concentration at a given
+spatial location over a user-defined time horizon. This
+density can be used in order to create two kinds of visual
+profiles of data evolution: the temporal velocity profiles and
+spatial velocity profiles. These profiles provide different
+perspectives on the nature of the underlying change. Since
+the results of this paper are relevant to high-dimensional
+data mining problems as well, it is important to provide
+diagnosis capability for such cases. In order to deal with this
+class of problems effectively, we use velocity density
+estimation in order to pick the projections from highdimensional
+data in which the greatest changes in data
+characteristics have occurred. Such combinations of dimensions
+are very interesting, because it may often happen that
+there may be very little evolution in terms of either the
+entire set of dimensions or individual dimensions; yet some
+particular combinations of dimensions may show huge
+levels of evolution because of changes in the correlation
+structure of the data. A closely related problem is that of
+mining spatiotemporal or mobile data [21], [22], for which it
+is useful to have the ability to diagnose aggregate changes
+in spatial characteristics over time. The results of this paper
+are equally valuable for providing such understanding.
+Since data streams are fast and continuous over long
+periods of time, the data may quickly become stale for timesensitive
+applications. In such cases, the usefulness of the
+evolution monitoring process also becomes time-critical. In
+order to achieve this goal, we mine the data streams in an
+online fashion; therefore, most techniques discussed in the
+paper need to examine a data point only once throughout
+the entire computation. To this effect, we discuss algorithms
+for change detection in data streams, whose computational
+requirement per record in the stream are constant.
+Furthermore, these algorithms do not require any rescanning
+of the data. This is the most optimistic case that can be
+achieved by any algorithm for mining data streams.
+This paper is organized as follows: In the remainder of
+this section, we formalize the contributions of this paper
+and provide a brief overview of some concepts from kernel
+density estimation which we will need in this paper. In
+Section 2, we will introduce the velocity density estimation
+technique and show how to use it in order to construct the
+temporal velocity profile. We will also discuss how the
+temporal velocity profiles can be used in order to generate
+the spatial velocity profiles. These profiles can be used in
+order to provide a visual understanding of the spatial reorganization
+of the data. Extensions to high-dimensional
+data are discussed in Section 3. In Section 4, we discuss how
+the temporal and spatial profiles may be used to provide a
+more concrete diagnosis of the emerging trends in localized
+regions. In Section 5, we present the empirical results which
+show interesting evolution behavior for different data sets.
+We also show the performance efficiency of the technique.
+The conclusion and summary are presented in Section 6.

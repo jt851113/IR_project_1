@@ -1,0 +1,40 @@
+The rst generation of publish/subscribe systems use either
+group-based (also known as channel-based) or subject-based
+(also known as topic-based) addressing. In the former ([4,
+10, 14, 18]), a set of \groups" (or \channels") are desig-
+nated by the system. Each event is published to one of
+these groups by its publisher. A user subscribes to one or
+more groups, and will receive all events published to the
+subscribed groups. For example, in IP multicast ([10]), each
+group is identied by a class D IP address. Subject-based
+systems ([15, 13, 19, 20]) are slightly more flexible. Each
+event is tagged with a short \subject" (or \topic") that de-
+scribes its content. The subject is either an arbitrary string
+or a string taken from an agreed-upon domain. The sub-
+scriber denes its subscription in terms of this subject line.
+In addition to an exact match, the subscriber can also ask
+for all subjects beginning with the word \jobs", for example.
+In recent years a more flexible paradigm called content-based
+addressing has emerged. A content-based system gives more
+flexibility and control to the subscriber by allowing him/her
+to express his/her interest as an \arbitrary" query over the
+contents of the events. Therefore, instead of relying on the
+publisher to classify the events into groups or subjects, the
+subscriber is now able to dene sophisticated subscriptions
+such as \give me all stock quotes for stock X issued between
+time A and time B if the price is larger than 35." A content-
+based publish/subscribe system has also been called condi-
+tion monitoring systems or event notication/distribution/-
+delivery systems in various contexts.
+However, the flexibility of content-based systems comes at
+the expense of added challenges in design and implementa-
+tion ([5]). Intuitively, because the subscriptions can be com-
+plex, guring out matches between events and subscriptions
+is a lot harder than in traditional group- or subject-based
+systems, where usually a simple table lookup is sucient.
+In this paper, we will assume a content-based system in
+our discussions, because it is the more general and powerful
+model. For instance, group- and subject- based systems can
+be regarded as special cases of content-based systems where
+the subscription syntax is restricted to simple tests on a
+specic eld of the event.

@@ -1,0 +1,41 @@
+The existing algorithms for discovering association rules
+cannot be applied directly for discovering cyclic association
+rules. In order to use the existing algorithms for detecting
+cyclic association rules, one may consider extending the
+set of items with time attributes, and generate rules. For
+example, one such rule could be
+This approach segments the database in a manner
+transactions that have the same time attribute value are
+within the same segment. For example, if the time attribute
+is day, then all the transactions that occurred on Mondays
+will be within one segment. In this case, the support of the
+rule  
+is the ratio of the fraction
+of all transactions that occurred on Mondays and containand
+to all transactions. Similarly, the confidence of
+this rule is the ratio of the fraction of all transactions that
+occurred on Mondays and contain and
+to the fractionof all transactions that occurred on Mondays and contain
+However, there are a number of reasons why such an
+approach will not solve our problem, as we show below.
+First, it is possible that this approach will detect nonexisting
+cycles. For example, this approach may detect that
+every Monday holds, although
+holds only every second Monday, or only on some Mondays but not
+on all. This may occur, for example, when the support of  	
+, but the ratio of
+the fraction of all transactions that occurred on some Mondays that contain both
+and to all transactions is below	  	 
+That is, the ratio of the fraction of all transactions
+that occurred on the remaining Mondays that contain both and 
+to all transactions is high enough to compensate
+for the other Mondays. In this case, this approach assumes
+that the support for
+exceeds the
+minimum support threshold, although, in fact, the support
+is above
+the minimum threshold. Therefore, a non-existing cycle—
+every Monday can be detected. Another problem with this
+approach is that it cannot detect cycles of arbitrary lengths.
+For example, it cannot detect an association rule that holds
+every 10 days.

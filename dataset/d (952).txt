@@ -1,0 +1,51 @@
+The programming
+model for operators is based upon state machines: each operator
+in the query plan represents a state in a transition diagram,
+and as such, an operator is required to implement
+only a single method:which, given a current state and some set 
+of inputs causes the operator to transition to a new state (or 
+remain in the same state) and possibly produce some set of output 
+tuples. Implicit in this model of state programming is that 
+operators do not block: when an operator needs to poll for data, 
+it checks its input queue once percall, and simply transitions
+back tountil data becomes available. Alternatively,
+some operators, such as Eddy [3] and XJoin [26] are designed
+to pursue other computation (e.g. transition to states
+other than when no data is available on a particular input;
+the Fjords programming model is naturally suited to such
+adaptive query processing techniques.
+Formulating query plan operators as a state machine
+presents several interesting issues. It leads to operators
+which are neither “push” nor “pull”: they simply look for
+input and operate on that input when it is available. Traditional
+pull-based database semantics are implemented via
+the queue between two operators: when an operator looks
+for data on a pull-based input queue, that queue issues a
+procedure call to the child operator asking it to produce data
+and forces the caller to block until the child produces data.
+This allows operators to be combined in arbitrary arrangements
+of push and pull.
+Figure 3 shows pseudocode for an example selection operator
+(Figure 3a) and pull queue (Figure 3b.) The selection
+operator simply checks its queue to see if there is data
+available; the queue may or may not actually return a tuple.
+If that queue is an instance of a pull queue, the
+method of the operator below will be called until
+it prouces
+a tuple or an error.
+One important advantage of a state machine model is that
+it reduces the number of threads. Traditional push based
+schemes place each pushing operator in its own thread; that
+operator produces data as fast as possible and enqueues it.
+The problem with this approach is that operating system
+threads packages often allow only very coarse control over
+thread scheduling, and database systems may want to prioritize
+particular operators at a fine granularity rather than devoting
+nearly equal time slices to all operators. Our scheduler
+mechanism enables this kind of fine grain prioritization
+by allowing Fjord builders to specify their own scheduler
+which some modules more frequently than,others. Furthermore, on 
+some operating systems, threads are quite heavyweight: they have 
+a high memory and context switch overhead [27]. Since all state 
+machine operators can run in a single thread, we never pay these 
+penalties, regardless of the operating system

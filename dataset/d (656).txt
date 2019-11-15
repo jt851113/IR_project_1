@@ -1,0 +1,13 @@
+So far, we have only discussed two aggregates,
+COUNT and SUM. These techniques can also be ex-
+tended to other aggregate functions beyond summation
+and counting. For example, AVG can also be com-
+puted directly from COUNT and SUM sketches.
+The second moment can be computed as an aver-
+age of the squares of the items, and then combined
+with the average of the items, to compute the vari-
+ance and standard deviation. Finally, we note that
+the sketches themselves are easily generalized to han-
+dle other data types such as xed point and signed
+numbers, and to a certain extent, products (sum-
+ming logarithms) and oating point.

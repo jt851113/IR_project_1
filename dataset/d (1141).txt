@@ -1,0 +1,28 @@
+Previous group optimization strategies [CM86] [RC88] [Sel86]
+focused on finding an optimal global plan for a small number of
+queries. These techniques are useful in a query environment
+where a small number of similar queries either enter the system
+within a short time interval or are given in advance. A naive
+approach for grouping continuous queries would be to apply
+these methods directly by reoptimizing all queries whenever a
+new query is added. We contend that such an approach is not
+acceptable for large dynamic environments because of the
+associated performance overhead.
+We propose an incremental group optimization strategy for
+continuous queries in this paper. Groups are created for existing
+queries according to their signatures, which represent similar
+structures among the queries. Groups allow the common parts of
+two or more queries to be shared. Each individual query in a
+query group shares the results from the execution of the group
+plan. When a new query is submitted, the group optimizer
+considers existing groups as potential optimization choices. The
+new query is merged into those existing groups that match its
+signatures. Existing queries are not, however, re-grouped in our
+approach. While this strategy is likely to result in sub-optimal
+groups, it reduces the cost of group optimization significantly.
+More importantly it is very scalable in a dynamic environment.
+Since continuous queries are frequently added and removed, it is
+possible that current groups may become inefficient. “Dynamic
+re-grouping” would be helpful to re-group part or all of the
+queries either periodically or when the system performance
+degrades below some threshold. This is left as future work.

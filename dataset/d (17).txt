@@ -1,0 +1,52 @@
+B. Challenges
+Although privacy preservation in data publishing has been
+studied extensively and several important models such as k-
+anonymity [5] and l-diversity [6] as well as many efficient
+algorithms have been proposed, most of the existing studies
+can deal with relational data only. Those methods cannot be
+applied to social network data straightforwardly.
+As elaborated in Section I-A, privacy may be leaked if a
+social network is released improperly to public. In practice, we
+need a systematic method to anonymize social network data
+before it is released. However, anonymizing social network
+data is much more challenging than anonymizing relational
+data on which most of the previous work focuses.
+First, it is much more challenging to model the background
+knowledge of adversaries and attacks about social network
+data than that about relational data. On relational data, it is often
+assumed that a set of attributes serving a quasi-identifier is
+used to associate data from multiple tables, and attacks mainly
+come from identifying individuals from the quasi-identifier.
+However, in a social network many pieces of information
+can be used to identify individuals, such as labels of vertices
+and edges, neighborhood graphs, induced subgraphs, and their
+combinations. It is much more complicated and much more
+difficult than the relational case.
+Second, it is much more challenging to measure the information
+loss in anonymizing social network data than that in
+anonymizing relational data. Typically, the information loss
+in an anonymized table can be measured using the sum of
+information loss in individual tuples. Given one tuple in the
+original table and the corresponding anonymized tuple in the
+released table, we can calculate the distance between the two
+tuples to measure the information loss at the tuple level.
+However, a social network consists of a set of vertices and a set
+of edges. It is hard to compare two social networks by comparing
+the vertices and edges individually. Two social networks
+having the same number of vertices and the same number of
+edges may have very different network-wise properties such
+as connectivity, betweenness, and diameter. Thus, there can
+be many different ways to define the measures of information
+loss and anonymization quality.
+Last but not least, it is much more challenging to devise
+anonymization methods for social network data than for
+relational data. Divide-and-conquer methods are extensively
+applied to anonymization of relational data due to the fact
+that tuples in a relational table are separable in anonymization.
+In other words, anonymizing a group of tuples does not
+affect other tuples in the table. However, anonymizing a
+social network is much more difficult since changing labels
+of vertices and edges may affect the neighborhoods of other
+vertices, and removing or adding vertices and edges may
+affect other vertices and edges as well as the properties of
+the network.

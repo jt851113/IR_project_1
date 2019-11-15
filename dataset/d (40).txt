@@ -1,0 +1,78 @@
+[1] M. K. Aguilera, R. E. Strom, D. C. Sturman,
+M. Astley, and T. D. Chandra. Matching events in a
+content-based subscription system. In Proceedings of
+the 18th Annual ACM Symposium on Principles of
+Distributed Computing, pages 53{61, 1999.
+[2] G. Banavar, T. Chandra, B. Mukherjee,
+J. Nagarajarao, R. E. Strom, and D. C. Sturman. An
+ecient multicast protocol for content-based
+publish-subscribe systems. In Proceedings of the 19th
+International Conference on Distributed Computing
+Systems, pages 262{272, 1999.
+[3] G. Banavar, M. Kaplan, K. Shaw, R. E. Strom, D. C.
+Sturman, and W. Tao. Information flow based event
+distribution middleware. In Proceedings of the 1999
+ICDCS Workshop on Electronic Commerce and
+Web-Based Applications, 1999.
+[4] K. Birman. The process group approach to reliable
+distributed computing. Communications of the ACM,
+36.12:36{53, 1993.
+[5] A. Carzaniga, E. Nitto, D. Rosenblum, and A. Wolf.
+Issues in supporting event-based architectural styles.
+In 3rd International Software Architecture Workshop,
+1998.
+[6] A. Carzaniga, D. S. Rosenblum, and A. L. Wolf.
+Achieving scalability and expressiveness in an
+Internet-scale event notication service. In Proceedings
+of the 19th Annual ACM Symposium on Principles of
+Distributed Computing, pages 219{227, 2000.
+[7] S. Ceri and J. Widow. Active Database Systems:
+Triggers and Rules for Advanced Database Processing.
+Morgan Kaufmann, 1996.
+[8] G. Cugola, E. D. Nitto, and A. Fuggetta. The JEDI
+event-based infrastructure and its application to the
+development of the OPSS WFMS. IEEE Transactions
+on Software Engineering, to appear.
+[9] G. Cugola, E. D. Nitto, and G. P. Picco.
+Content-based dispatching in a mobile environment.
+In Workshop su Sistemi Distribuiti: Algoritmi,
+Architetture e Linguaggi, 2000.
+[10] S. E. Deering. Multicast Routing in a Datagram
+Internetwork. PhD thesis, Stanford University, 1991.
+[11] Y. Huang and H. Garcia-Molina. Exactly-once
+semantics in a replicated messaging system. In
+Proceedings of the 17th International Conference on
+Data Engineering, 2001.
+[12] Y. Huang and H. Garcia-Molina. Replicated condition
+monitoring. In Proceedings of the 20th ACM
+Symposium on Principles of Distributed Computing,
+2001. To appear.
+[13] B. Kantor and P. Lapsley. Network News Transfer
+Protocol: A proposed standard for the stream-based
+transmission of news. Request for Comments: 977,
+1986.
+[14] Object Management Group. CORBAservices - event
+service specication. Technical report, Object
+Management Group, 1997.
+ftp://ftp.omg.org/pub/docs/formal/97-12-11.pdf.
+[15] B. Oki, M. Pfluegl, A. Siegel, and D. Skeen. The
+Information Bus - an architecture for extensible
+distributed systems. Operating Systems Review,
+27.5:58{68, 1993.
+[16] C. Perkins. IP mobility support. Request for
+Comments: 2002, 1996.
+[17] B. Segall and D. Arnold. Elvin has left the building: A
+publish/subscribe notication service with quenching.
+In Proceedings of the 1997 Australian UNIX Users
+Group Technical Conference, pages 243{255, 1997.
+[18] Sun Microsystems, Inc. Jini(TM) technology core
+platform spec - distributed events. Technical report,
+Sun Microsystems, Inc., 2000. http://www.sun.com/
+jini/specs/jini1.1html/event-spec.html.
+[19] TIBCO Inc. TIB/Rendezvous.
+http://www.tibco.com/products/rv/index.html.
+[20] Vitria BusinessWare. http:
+//www.vitria.com/products/businessware.html.
+[21] T. W. Yan and H. Garcia-Molina. The SIFT
+information dissemination system. ACM Transactions
+on Database Systems, 24.4:529{565, 1999.

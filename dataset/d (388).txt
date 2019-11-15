@@ -1,0 +1,11 @@
+In this section we evaluate the performance of PES
+scheme with various heuristics through simulation.
+We first describe the parameter settings and performance
+metrics used in the simulation; then test the
+sensitivity of PES scheme to three sets of parameters,
+including workload, moving behavior, and sensing operations.
+To better understand the timing of using
+PES and the obtainable energy savings, we also implement
+and compare the three basic schemes, i.e., naive,
+scheduled monitoring (SM), and continuous monitoring
+(CM).

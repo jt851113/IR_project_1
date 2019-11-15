@@ -1,0 +1,149 @@
+In the scheme we have described so far, the sink initially
+diffuses an interest for a low event-rate notification (1 event
+per second). Once sources detect a matching target, they
+send low-rate events, possibly along multiple paths, towards
+the sink. After the sink starts receiving these low data
+rate events, it reinforces one particular neighbor in order
+to "draw down" higher quality (higher data rate) events. In
+general, this novel feature of directed diffusion is achieved by
+data driven local rules. One example of such a rule is to reinforce
+any neighbor from which a node receives a previously
+unseen event. To reinforce this neighbor, the sink re-sends
+the original interest message but with a smaller interval
+(higher data rate):
+type = four-legged animal
+interval = lOms
+rect= [-100, 200, 200, 400]
+timestamp = 01:22:35
+expiresAt = 01:30:40
+When the neighboring node receives this interest, it notices
+that it already has a gradient towards this neighbor.
+Furthermore, it notices that the sender's interest specifies
+a higher data rate than before. If this new data rate is
+also higher than that of any existing gradient (intuitively, if
+the "outflow" from this node has increased), the node must
+also reinforce at least one neighbor. How does it do this?
+The node uses its data cache for this purpose. Again, the
+same local rule choices apply. For example, this node might
+choose that neighbor from whom it first received the latest
+event matching the interest. Alternatively, it might choose
+all neighbors from which new events 6 were recently received
+(this is the alternative we evaluate in Section 4). Through
+this sequence of local interactions, a path is established from
+source to sink transmission for high data rate events.
+The local rule we described above, then, selects an empirically
+low delay path (Figure 2(b) shows the path that can
+result when the sink reinforces the path). It is very reactive
+to changes in path quality; whenever one path delivers
+an event faster than others, the sink attempts to use
+this path to draw down high quality data. However, because
+it is triggered by receiving one new event, this could
+be wasteful of resources. More sophisticated local rules are
+possible (Figure 3), including choosing that neighbor from
+which the most events have been received, or that neighbor
+which consistently sends events before other neighbors.
+These choices trade off reactivity for increased stability; exploring
+this tradeoff requires significant experimentation and
+is the subject of future work.
+The algorithm described above can result in more than one
+path being reinforced. For example, if the sink reinforces
+neighbor A, but then receives a new event from neighbor B,
+it will reinforce the path through B 7. If the path through B
+is consistently better (i. e., B sends events before A does), we
+need a mechanism to negatively reinforce the path through
+A.
+One mechanism for negative reinforcement is to time out all
+high data rate gradients in the network unless they are explicitly
+reinforced. With this approach, the sink would periodically
+reinforce neighbor B, and cease reinforcing neighbor
+A. The path through A would eventually degrade to the low
+data rate. Another approach, and one that we evaluate in
+this paper, is to explicitly degrade the path through A by
+re-sending the interest with the lower data rate. When A receives
+this interest, it degrades its gradient towards the sink.
+Furthermore, if all its gradients are now low data rate, A
+6
+The statement "reinforce a neighbor from which new events are received" implies
+that we reinforce that neighbor only if it is sending low data rate events.
+Obviously, we do not need to reinforce neighbors that are already sending traffic
+at the higher data rate.
+7
+This path may or may not be completely disjoint from the path through neighbor
+A.
+negatively reinforces those neighbors that have been sending
+data to it at a high data rate. This sequence of local
+interactions ensures that the path through A is degraded
+rapidly, but at the cost of increased resource utilization.
+To complete our description of negative reinforcement, we
+need to specify what local rule a node uses in order to decide
+whether to negatively reinforce a neighbor or not. Note
+that this rule is orthogonal to the choice of mechanism for
+negative reinforcement. One plausible choice for such a rule
+is to negatively reinforce that neighbor from which no new
+events have been received (i.e., other neighbors have consistently
+sent events before this neighbor) within a window of
+N events or time T. The local rule we evaluate in Section 4
+is based on a time window of T, chosen to be 2 seconds in
+our simulations. Such a rule is a bit conservative and energy
+inefficient. For example, even if one event in ten was
+received first from neighbor A, the sink will not negatively
+:reinforce that neighbor. Other variants include negatively
+reinforcing that neighbor from which fewer new events have
+been received. Significant experimentation is required before
+deciding which local rule achieves an energy efficient
+global behavior.
+In describing reinforcement so far, we may have appeared
+to implicitly describe a single-source scenario. In fact, the
+rules we have described work with multiple sources. To see
+this, consider Figure 2(c). Assume initially that all initial
+gradients are low data rate. According to this topology, data
+from both sources reaches the sink via both of its neighbors
+C and D. If one of the neighbors, say C has consistently
+lower delay, our rules will only reinforce the path through
+C (this is depicted in the figure). However, if the sink hears
+B's events earlier via D, but A's events s earlier via C, the
+sink will attempt to draw down high quality data streams
+from both neighbors (not shown). In this case, the sink gets
+both sources' data from both neighbors, a potential source
+of energy inefficiency. Reinforcement rules that avoid this is
+the subject of future work.
+Similarly, if two sinks express identical interests, our interest
+propagation, gradient establishment and reinforcement rules
+work correctly. Without loss of generality, assume that sink
+Y in Figure 2(d) has already reinforced a high quality path
+SNote that in directed diffusion, the 8ink would not be able to a~sociate a source
+with an event. Thus, the phrase "A's events" is somewhat misleading. What we
+really mean is that data generated by A that iv distinguishable in content from
+data generated by B.
+to the source. Note however, that other nodes continue to
+receive low data rate events. When a human operator tasks
+the network at sink X with an identical interest, X can
+use the reinforcement rules to achieve the path shown. To
+determine the empirically best path, X need not wait for
+data--rather, it can use its data cache to immediately draw
+down high quality data towards itself.
+So far, we have described situations in which reinforcement
+is triggered by a sink. However, in directed diffusion, intermediate
+nodes on a previously reinforced path can apply the
+reinforcement rules. This is useful to enable local repair of
+failed or degraded paths. Causes for failure or degradation
+include node energy depletion, and environmental factors affecting
+communication (e.g., obstacles, rain fade). Consider
+Figure 2(e), in which the quality of the link between the
+source and node C degrades and events are frequently corrupted.
+When C detects this degradation--either by noticing
+that the event reporting rate from its upstream neighbor
+(the source) is now lower, or by realizing that other
+neighbors have been transmitting previously unseen location
+estimates--it can apply the reinforcement rules to discover
+the path shown in the figure. Eventually, C negatively
+reinforces the direct link to the source (not shown in the figure).
+Our description so far has glossed over the fact that a
+straightforward application of reinforcement rules will cause
+all nodes downstream of the lossy link to also initiate reinforcement
+procedures. This will eventually lead to the
+discovery of one empirically good path, but may result in
+wasted resources. One way to avoid this is for C to interpolate
+location estimates from the events that it receives so
+that downstream nodes still perceive high quality tracking.
+We are currently investigating other approaches.

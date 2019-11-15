@@ -1,0 +1,80 @@
+In the past few years, the emerging variety of applications generating
+continuous sequences of data over long periods of time has increased the
+research interest in data streams. Examples of such applications include
+telecommunication networks, financial transactions, stock quotes, on-line
+auctions, tollbooth observations, manufacturing, security, medical data,
+telemetry data collection (environmental readings and sensor networks in
+general), to name just a few.
+Formally, a data stream is a real-time, continuous, potentially unbounded
+sequence of events e1; e2; :::; where each event ei is represented by a set of E
+measured attributes ei = (a1; a2; :::aE).
+Data streams often exhibit changes over time, which is referred to as data
+evolution. By understanding the behavior of the data, the analyst is able to
+make decisions in many enterprises. Therefore, it is useful to develop techniques
+to obtain a summarization of the key characteristics of the evolving data in a
+fast and effective way.
+In traditional database applications, an important characteristic of a
+dataset is its embedding dimension, which has a large impact on indexing and
+querying operations. However, the behavior of a persistent dataset can be better
+described through its intrinsic dimension D. Whereas the number of attributes
+in a dimensional dataset determines its embedding dimension E, D is a measure
+of the amount of information the dataset represents. Thus, D is an indication
+of the existence of correlated attributes.51) Moreover, algorithms developed to
+analyze large high dimensional datasets with low D can be configured to expect
+lower data complexity and, in consequence, to operate with better performance.
+The concept of intrinsic dimension has been applied to several activities, as
+discussed in Section 3.2.
+Similarly to traditional database systems, data streams can also benefit
+from the knowledge of the intrinsic dimension D, which can be explored to
+examine the behavior of the events over time. In particular, measurements of D
+can indicate general changes and correlations among attributes. The following
+examples illustrate how the intrinsic dimension is related to the changing
+behavior of evolving data streams.
+Example 1: a sensor network measuring air flow in a wind tunnel. If the
+air flows slowly, its movement tends to be linear, generating a data stream
+with low D. On the other hand, if the air flow increases, its movement
+becomes turbulent and the value of D is expected to be higher. Figure 1
+shows an evolving data stream whose behavior changes from a uniform
+to an irregular pattern, illustrating measures of one sensor in slow and
+turbulent air flows, respectively.
+Example 2: a data stream defined by spot-prices of currencies (based
+on American dollar) over a certain period of time. Changes in local
+and international financial markets or in exchange policies may modify
+the correlations among the currencies, either increasing/decreasing the
+number of correlated currencies or altering the specific currencies involved
+in correlations. This idea is illustrated in Fig. 2, which shows the evolving
+behavior of a synthetic data stream composed of 3 attributes. In the 1st
+period of time, the attributes x, y and z are linearly correlated and D
+is close to 1.0; in the 2nd period, the attribute z is no longer correlated
+to the others, increasing the value of D to 2.0; finally, in the last period
+of time the attributes are completely independent and D is expected to
+be closer to 3.0. Note that, by analyzing each attribute individually, it is
+impossible to tell that the evolving behavior of the stream is related to
+changes in the correlations between the attributes. On the other hand,
+the value of D measured over time suggests correlation changes.
+The intrinsic dimension D can also be valuable, for example, in cost
+and selectivity estimation of continuous queries performed over persistent
+and transient streams, query optimization, feature selection and time series
+forecasting.
+This paper offers the following contributions.
+A new and efficient method to obtain a dynamic value of the intrinsic
+dimension D, according to the behavior of changing data.
+An algorithm with linear computational cost that:
+– processes each incoming event only once;
+– answer the value of D for recent events at any time, as soon as a
+reasonable number of initial events are provided.
+A set of experiments both validating the new method and demonstrating
+the practical use of D in real data streams.
+We consider every event ei to be defined by a fixed number of attributes,
+such that ei is an element from a multidimensional domain. Therefore, the value
+of D for recent (windowed) events can be estimated by the Correlation Fractal
+Dimension D2, computed through the “Box-Occupancy Counting” approach.45)
+A preliminary version of our work was presented in Reference46). Here, we also
+discuss the use of the intrinsic dimension to analyze the stream behavior in terms
+of attribute correlations.
+The remainder of the paper is organized as follows. Section 2 defines
+background concepts underpinning the method we propose. Section 3 presents
+previous work on data streams and on intrinsic dimension. Section 4
+discusses the main properties of data streams and the algorithm we developed
+to continuously measure D. Section 5 discusses experimental studies that
+corroborates the method proposed herein. Section 6 concludes the paper.

@@ -1,0 +1,5 @@
+We implemented the STAMP in C programming language on
+an IBM RS-6000 (300 MHz CPU) with 128MB running AIX
+operating system. In the following experiments, we set 
+ 
+			.

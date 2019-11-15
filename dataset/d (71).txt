@@ -1,0 +1,22 @@
+Given the Fjord and CACQ environments for accessing and efficiently processing sensor data, applications
+demonstrating their usefulness are needed. As an example of such an application, I built a visualization of
+traffic in the Bay area. This visualization shows data from eight traffic sensors deployed on the freeway near UC
+Berkeley and visually correlates that data with reports of traffic accidents from the California Highway Patrol
+(CHP), web-cams available from news sites, and road locations and maps available from the US Census Bureau.
+As another example of a visualization environment, Figure 4 shows a screenshot of the user interface for
+querying this small subset of traffic data. The leftmost panel contains a map of the Bay Area, with the East Bay,
+near Berkeley, on the right side of the bay. Squares up and down the freeway near Berkeley – which are not
+visible in a grayscale reproduction so they are labeled with arrows – represent the current state of traffic sensors
+for which we have data. Police-car icons represent traffic incidents the CHP has reported. On the right hand side
+are graphs of speed and flow which display historical trends in traffic conditions. The slider along the top shows
+the current time range which is being queried. A write-up on the traffic visualization system is available on-line
+[26].
+Figure 5 shows a simulation of a sensor network built to model the behavior of a network of sensors arranged
+in a multi-hop topology for computing aggregate queries (see Section 3) below. This visualization facilitates
+rapid prototyping and debugging of networking algorithms by showing connectivity, data flow, and various
+network parameters, either as a color-coded “intensity” overlaid on the topology, or as a scatter plot (or both).
+Figure 5 color codes sensors with their distance from the root (middle) of the network, with lighter nodes being
+closer. Arrows underneath the cursor, which is currently at the center of the graph, show children, neighbors, and
+parents (all nodes adjacent to the root are children.) The textual status at the bottom gives numeric information
+about the sensor under the cursor. The line plot shows the historical average aggregates as computed at several
+nodes in the network.

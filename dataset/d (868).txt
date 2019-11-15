@@ -1,0 +1,12 @@
+A distributed detection algorithm is proposed that operates as follows. Whenever an event occurs at a node in the network, it carries out the following algorithm:
+1. Check if the event occurs within the prediction gates of any previous ‘time-updated’ hypotheses received from the surrounding nodes. If so, ‘measurement update’ these hypotheses using (5).
+2. Check if the convergence criterion is met. If so, report the confirmed object to the central node. A distributed tracking algorithm takes over at this point.
+3. Initiate a new hypothesis starting at this event
+4. Broadcast the hypotheses to the surrounding nodes
+In the proposed algorithm, the processing that occurs at each node in the sequence when an event occurs is outlined in Figure 5 below.
+Figure 6 below displays how the hypotheses propagate through a network where four detections have occurred. The detections are labeled in the order in which they occurred. All the hypotheses generated at each node by this sequence of detections are displayed, without any pruning.
+Given a set of D events occurring over a certain time period, there are exactly 2D-1 possible ways of associating the detections together into causal sequences. Clearly this is an enormous search-space that increases exponentially with the number of events. A single object on a restricted trajectory cannot cause the majority of
+these sequences, whereas others are redundant (caused by the same object). Processing, broadcasting and storing excess hypotheses is costly. The gating region governed by ?-sigma discards many of these hypotheses, as does the fact that each node can only broadcast hypotheses to others nodes within a distance R. Some additional criteria for eliminating these excess hypotheses need to be developed. Two additional steps are added to the algorithm to prune the non-promising hypotheses from being propagated when an event occurs at a node:
+1. Hypotheses are not updated if their last update was more than τ seconds previous. The expired hypotheses are discarded.
+2. For updated hypotheses that have similar state estimates (i.e. Euclidean distance between them < δ), only the hypothesis with the lowest variance is broadcast. The redundant hypotheses are then discarded.
+In applications where events are caused by many different phenomena, this algorithm will allow the network to detect moving objects in an energy efficient, accurate and decentralized manner. Extending the convergence criterion will delay the detection, but will provide a more accurate decision.

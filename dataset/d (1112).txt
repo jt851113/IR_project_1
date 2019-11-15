@@ -1,0 +1,55 @@
+[1] R. Agrawal and R. Srikant. Fast algorithms for mining
+association rules. Proc. $Oth Int. Conf. on Very Large
+Data Bases, 487-499, 1994.
+[2] R. Agrawal and It. Srikant. Mining Sequential Patterns.
+Proc. Int. Conf. on Data Engineerin 9 (ICDE), Taipei,
+Taiwan, 3-14, March 1995.
+[3] R. J. Bayardo ,Jr. Efficiently mining long patterns from
+databases. Proc. ACM SIGMOD Conf. on Management
+of Data, 85-93, 1998.
+[4] R. Blahut. Principles and Practice of Information Theory,
+Addison-Wesley Publishing Company, 1987.
+[5] A. Califano, G. Stolovitzky, and Y. Tu. Analysis of gene
+expression microarrays: a combinatorial multivariate approach,
+IBM T. J. Watson Research Report, 1999.
+[6] R. Durbin, S. Eddy, A. Krough, and G. Mitchison. Biological
+Sequence Analysis: Probabilistic Models of Proteins
+and Nucleic Acids. Cambridge University Press, 1998.
+[7] M. Garofalakis, R. Rastogi, and K. Shim. SPIRIT:
+sequential pattern mining with regular expression constraints.
+Proe. Int. Conf. on Very Large Data Bases
+(VLDB), 223-234, 1999.
+[8] National Center for Biotechnology Information. Available
+at "http:/]www.ncbi.nlm.nih.gov".
+[9] J. Has, W. Gong, and Y. Yin. Mining segment-wise periodic
+patterns in time-related databases. Proe. Int. Conf.
+on Knowledge Discovery and Data Mining, 214-218, 1998.
+[10] J. Hun, G. Dong, and Y. Yin. Efficient mining partial
+periodic patterns in time series database. Proc. Int. Conf.
+on Data Engineering, 106-115, 1999.
+[11] J. Han, J. Pei, and Y. Yin. Mining frequent patterns
+without candidate generation. Proe. ACM SIGMOD Int.
+Conf. on Management of Data (SIGMOD), 1-12, 2000.
+[12] W. Hoeffding. Probability inequalities for sums of
+bounded random variables. Journal of the American Statistical
+Association, vol 58, 13-30, 1963.
+[13] H. Mannila, H. Toivonen, and A. I. Verkamo. Discovery
+of frequent episodes in event sequences. Data Mining and
+Knowledge Discovery, vol. 1, no. 3, 259-289, 1997.
+[14] B. Ozden, S. Ramaswamy, and A. Silberschatz. Cyclic
+association rules. Proc. 14th Int. Conf. on Data Engineering,
+412-421, 1998.
+[15] S. Ramaswamy, S. Mahajan, and A. Silberschatz. On
+the discovery of interesting patterns in association rules.
+Proc. 2~th Intl. Conf. on Very Large Data Bases (VLDB),
+368-379, 1998.
+[16] J. Yang, W. Wang, and P. Yu. Mining asynchronous periodic
+patterns in time series data. Proc. ACM SIGKDD
+Int. Conf. on Knowledge Discovery and Data Mining
+(SIGKDD), pp. 275-279, 2000.
+[17] J. Yang, W. Yang, and P. Yu. Meta-patterns: revealing
+hierarchy of periodic patterns. IBM Research Report,
+2001.
+[18] J. Yang, W. Yaug, and P. Yu. InfoMiner: mining significant
+periodic patterns with rare events in time series
+data. IBM Research Report, 2001.

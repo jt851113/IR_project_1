@@ -1,0 +1,106 @@
+For the base-station mote, all four sensors reside in the same
+cluster. It divides the cluster into four macro-blocks such
+that there is one sensor per macro-block. It makes predic-
+tions based on the last two frames received.
+The base station generates two types of predictions: con-
+stant value prediction and movement prediction. We briey
+describe each type of prediction and the specic technique
+used to compute them.
+6in our case we had placed them on the third oor of our
+department's building
+
+Figure 8: Typical variation in readings of a light
+
+sensor when an object passes by
+Constant value predictions
+These predict that the reading of a sensor-mote is not going
+to change over time. The base-station mote generates this
+type of prediction when the readings in a macro-block do
+not change for two consecutive frames. It always associates a
+TTL of innity with this type of prediction. A sensor-mote's
+reading changes only when an object blocks the light path
+as it passes by. In our experiments, the periods of activity
+(from the perspective of a sensor-mote) were very short (a
+person passing by) compared to the periods of inactivity.
+This prediction prevents the sensor from transmitting during
+periods of inactivity.
+
+The packet carrying constant prediction carries two elds:
+type of prediction and the stable value of the sensor. It is 5
+bytes in length (including 3 bytes of header).
+
+Movement prediction
+These predict that a sensor is about to see a pattern in
+its reading. It is computed as follows: The block-matching
+algorithm used by the base-station considers two motion-
+vectors <dx=1, dy=0> and <dx=-1, dy=0> corresponding
+to two possibilities: motion from left-to-right and motion
+from right-to-left, respectively. For each macro-block in a
+frame, it looks for a match in the next consecutive frame
+by applying these motion-vectors. As soon as a match is
+found, a movement prediction is generated and sent to the
+next sensor along the direction of motion.
+
+Note that sensor-motes transmit their readings to the base
+station at a maximum rate of once per second resulting in
+a frame rate of 1 frame/sec. However, it is possible that
+an object takes more than one second to cover the distance
+between two consecutive sensors. As a result, the base sta-
+tion will see a sequence of zero or more frames reporting
+no activity (no-activiy frame) in between two frames with
+a macro-block reporting (activiy frame). In order to han-
+dle this, the block-matching algorithm considers only the
+most recently received activity frames, discarding any in-
+tervening no-activity frames. However, the time dierence
+between two consecutive activity frames used for generating
+a movement prediction is not allowed to exceed a pre-dened
+constant value.
+
+Determining the degree of match
+In order to determine if two macro-blocks match (appendix
+A.2), it is important to specify the method for determining
+the degree of match between readings of two sensor-motes.
+Since each transmission of sensor-mote consists of 8 read-
+ings, the naive approach of subtracting the two readings
+cannot be applied here. We observe that as a person crosses
+the light path, the readings of the light sensor are going to
+drop from its stable value, stay at a lower value, and nally,
+return back to the original stable value (see g 8). We refer
+to the string of values between the two stable readings as
+pattern-string (for example, the readings shown in g 8 con-
+tains the pattern string: 3,0,0,0,3). We compute the degree
+of match between readings of two sensor-mote by computing
+the dierence in the lengths of their pattern-string.
+
+Movement prediction packet
+In the movement prediction packet, the base-station mote
+species the interval in which the next sensor (along the
+direction of motion) is most likely to see the pattern, and the
+expected length of the pattern-string. The time interval is
+determined based on the assumption that the person moves
+at a constant speed. The expected length of the pattern-
+string is set to the average of the length of the two pattern-
+strings.
+
+A movement-prediction is said to hold at a sensor if it sees
+a pattern-string during the specied time interval , and
+the length of the pattern-string is within A specied length.
+Thus, if the specied time interval is [t1, t2], then we allow
+the pattern to occur in the interval  . Also, if
+the expected length of the pattern-string is  , then
+all pattern-strings with length in the interval ,
+ match with the prediction.
+
+A movement prediction not only species the pattern that
+a sensor-mote is about to see, but it also species the stable
+value that the sensor-mote is expected to read once it has
+seen the pattern. This exploits the observation that sensor-
+motes typically see a constant reading after an object has
+passed by.
+
+The packet carrying movement prediction contains 5 elds:
+type of prediction, the lower and higher time interval, the
+predicted length of the pattern, and the expected stable
+reading of the sensor once the event has occurred. The size
+of the prediction packet is 8 bytes (including the 3 bytes of
+header).

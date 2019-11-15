@@ -1,0 +1,118 @@
+As we mentioned earlier, due to the changes of system behavior,
+some pattern may be only notable within a portion
+of the entire data sequence and different patterns may
+present at different places. The evolution among patterns
+may also follow some regularity. Such regularity, if any,
+would be of great value in understanding the nature of the
+system and building prediction models. Consider the application
+of Internet user profile. The sequence of web pages
+that a user accesses is often used to construct the user profile.
+An accurate profile is significant in many application
+domains including personalization and recommendation systems.
+During a period of time, a user may access some web
+sites repetitively. Such a behavior may be represented by a
+periodic pattern that can be put into user's profile. Moreover,
+a user's Internet access pattern may change over time.
+For instance, during a normal business day, one may surf
+financial web sites mostly when the stock market is open
+and may switch to sports oriented web sites for the rest
+of the day. At a coarser level, we may also find that such a
+pattern holds during weekdays whereas a total different pattern
+presents during weekends. Such a weekly pattern can
+be represented in the form of rneta-pa$tern [17] which may
+take occurrences of patterns/meta-patterns (of lower granularity)
+as components. Because of the hierarchical nature of
+the meta-pattern, the concept of level is introduced to represent
+the "depth" of a meta-pattern. In contrast, we refer
+to the patterns that contain only raw event(s) is referred to
+as the basic pa~erns (or patterns of level 1), Which may be
+viewed as special cases of meta-patterns.
+However, most previous research in this area focused on mining
+patterns that only take basic events as their components
+and did not address the above issue. The meta-pattern proposed
+in [17] is a more general model for periodicity than
+any previous model. The recursive nature of meta-pattern
+not only can provide a more compact representation of complicated
+patterns but also can capture the hierarchies of
+pattern evolutions, which may not be expressible by previous
+models. As some tolerable noise is usually allowed
+within a series of pattern repetitions [16] to accommodate a
+certain degree of imperfectness, two portions (of a data sequence)
+where a pattern is notable may have different layout
+of pattern occurrences. As a result, there may not exist any
+common representation in terms of raw events. For example,
+two patterns (a, b, *) and (b, c) appear in the sequence
+alternately in Figure 2(a). (Here, a pattern may be only
+partially filled and "*" is used to substitute the "don't care"
+position(s).) The length of each portion where (a, b, *) is notable
+is 19 and each portion where (b, c) is notable contains
+6 symbols. In addition, each gap between notable portions
+of (a, b, *) and (b, c) consists of 2 positions while a threeposition
+gap presents after each notable portion of (b, c).
+All of these can be represented by a meta-pattern of four
+components ((a,b, *) : [1, 19], * : [20, 21], (b, c) : [22, 27], * :
+[28, 30]). The numbers in the brackets indicate the offset
+of the component within the meta-pattern. Let's take a
+closer look at those two portions where the pattern (a, b, .)
+is notable: one is from position 1 to 19 and the other is
+from position 31 to 49. Note that both portions contain
+some noise that impairs the perfectness on repetition of
+(a, b, *). Neither of them can match a single basic pattern
+format (i.e., (a, b, *, a, b, *, a, b, *, a, b, *, a, b, *, a, b, *)). Since
+the locations and durations of the noise are different in these
+two portions, (a, b, *, a, b, *, a, b, *, *, *, *,., a, b, *, a, b, *) and
+(a, b, *, a, b, *, a, b, *, ,, a, b, *, a, b, *, a, b, *) do not match with
+each other. In general, the noise could occur anywhere, be
+of various duration, and even occur multiple times within
+the portion where a pattern is notable as long as the noise
+is below some threshold. Even though the allowance of noise
+plays a positive role in characterizing system behavior in a
+noisy environment, it prevents such a meta-pattern from being
+represented in the form of an (equivalent) basic pattern.
+The model of meta-pattern is therefore proposed [17] to provide
+a more powerful means to periodicity representation.
+However, the flexibility of meta-pattern poses serious challenges
+in the discovery process, which may not be encountered
+in mining basic patterns.
+‧ While a basic pattern has two degrees of freedom: the
+period (i.e., the number of components in the pattern)
+and the choice of symbol/event for each component, a
+meta-pattern has an additional degree of freedom: the
+length of each component in the pattern. It is incurred
+by the fact that a component may occupy multiple positions.
+This extra degree of freedom would increase
+the number of potential meta-pattern candidates dramatically.
+‧ Many patterns/meta-patterns may collocate or overlap
+for any given portion of a sequence. For example,
+both of (a, b, a, *) and (a, *) are valid within the subsequence
+shown in Figure 2(b). As a result, during the
+meta-pattern mining process, there could be a large
+number of candidates for each component of a (higher
+level) meta.patteru. This also aggravates the mining
+complexities.
+Therefore, how to identify the "proper" candidate metapatterns
+is very crucial to the overall efficiency of the mining
+process. To tackle this problem, a so called component
+property is identified and, in addition to the traditionally
+used Apriori property, to prune the search space. This is inspired
+by the observation that a pattern may participate in
+a meta-patteru only if its notable portions exhibit a certain
+cyclic behavior. A segment based algorithm is devised to
+identify the potential period of a meta-pattern and for each
+component of a possible period, the potential pattern candidate(
+s) and its length within the meta-pattern. The set
+of all meta-patterns can be categorized according to their
+structures and are evaluated in a designed order illustrated
+in Figure 3. For example, the candidate patterns at level 1
+with 1 non-eternal component is examined first. Based on
+these patterns, the candidate patterns at level 1 with two
+non-eternal components are generated and examined. This
+procedure continues until all candidate patterns at level 1
+are examined. After that, the patterns at the second level is
+generated and examined in the same manner as the patterns
+in level 1. Next, the candidate patterns at level 3, 4, and
+so on are generated and examined successively. As a result,
+the pruning power provided by both properties can be fully
+utilized. The pruning effects of the Apriori property and
+the component property are indicated by solid arrows and
+dashed arrows, respectively.

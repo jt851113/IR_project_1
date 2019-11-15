@@ -1,0 +1,63 @@
+We now present a more efficient algorithm that exploits the
+following property.
+(P) At any vertex of the trie, the optimal set of j ! 1
+auxiliary neighbor pointers must be a subset of the
+optimal set of j auxiliary neighbors.
+Before proving (P), we show how to use it to simplify (3).
+Let l denote the number of neighbor pointers chosen from La
+in the optimal set of j ! 1 auxiliary neighbors at a. Then,
+This can be explained as follows. Suppose we know that the
+optimal set of j ! 1 pointers is split between La and Ra as
+(l; j ! l ! 1), i.e., there are l pointers in La and j ! l ! 1
+pointers in Ra. Then, because the optimal set of j pointers is
+a superset of the optimal set of j !1 pointers, the optimal set
+of j pointers is split between La and Ra as either (l; j !l) or
+(l + 1; j ! l ! 1).
+Note that, given the optimal sets at La and Ra, relation (4)
+allows us to compute the optimal set of k auxiliary neighbors
+at Ta using only O(k) computations. Thus, the overall
+complexity of this new algorithm is O(nkb). Further, the total
+storage requirement is also O(nkb), because each vertex needs
+to store only k pointers.
+Proof of (P): Let P(Ta; j) denote the j optimal pointers
+within subtree Ta, i.e., pointers for whom the optimal cost
+C(Ta; j) is attained. Then, (P) states that P(Ta; j ! 1) μ
+P(Ta; j). We use the following lemma (proved in [7]) in
+our proof. The lemma essentially states that the reduction in
+cost due to adding a neighbor x cannot increase as the number
+of selected neighbors increases.
+Suppose is not true. Then, we
+show that we can obtain another set of j !1 pointers that is a
+subset of and has the same cost as
+Let X = 
+Clearly, Y 6= ; and X 6= ;. Now, it is easy to see that there
+exists a vertex e in Ta such that Te \X 6= ;, Te \Y 6= ;, and
+one of its (two) subtrees contains no vertices from X while
+the other contains no vertices from Y . Wlog, let Le \ Y = ;
+and Re \ X = ;. Figure 2 illustrates this scenario. Also, let
+Let x 2 (Le \ X) be the leaf in Le for which is minimum. Similarly, 
+let be the leaf in Re for which is minimum. We now show that
+holds. Intuitively, this means that y in can be
+replaced with x without any increase in cost. Repeating this
+procedure for all nodes in Y , we can transform P(Ta; j ! 1)
+into a subset of P(Ta; j) without hurting its optimality.
+We prove by showing that an assumption to the
+contrary leads to a contradiction. Suppose . Note
+that. Also,
+The first inequality follows from Lemma 4.1 since x is in Le
+and  . Again using Lemma 4.1, we have
+Thus, we have.
+Since x and y are both in subtree Te, the cost of nodes
+outside Te do not change as a result of swapping y with
+x. Thus, it follows that C(Ta; P(Ta; j ! 1) ! fyg [ fxg) <
+C(Ta; P(Ta; j ! 1)). However, this contradicts the optimality
+of P(Ta; j ! 1). Similarly, we can show that ￠x < ￠y also
+leads to a contradiction.
+Thus, it follows that ￠x = ￠y, and we can show that
+C, using
+similar arguments as above. This implies that we can replace
+y in P(Ta; j ! 1) with x without hurting its optimality. This
+increases the overlap between P(Ta; j) and P(Ta; j ! 1) by
+1. Repeating this argument, we can replace all the nodes in Y
+with nodes in X without increasing the cost of P(Ta; j ! 1).
+This proves that property (P) is true.

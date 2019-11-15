@@ -1,0 +1,1 @@
+In this section, we provide a brief overview of the mote hardware architecture, the TinyOS system, and an ad hoc routing algorithm for mote-based sensor networks.

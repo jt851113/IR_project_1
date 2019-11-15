@@ -1,0 +1,25 @@
+Given a d-dimensional data set, a point p dominates another
+point q if it is better than or equal to q in all dimensions and
+better than q in at least one dimension. A point is a skyline
+point if there does not exists any point that can dominate
+it. Skyline queries, which return skyline points, are useful
+in many decision making applications.
+Unfortunately, as the number of dimensions increases, the
+chance of one point dominating another point is very low.
+As such, the number of skyline points become too numerous
+to offer any interesting insights. To find more important
+and meaningful skyline points in high dimensional space,
+we propose a new concept, called k-dominant skyline which
+relaxes the idea of dominance to k-dominance. A point p
+is said to k-dominate another point q if there are 
+dimensions in which p is better than or equal to q and is
+better in at least one of these k dimensions. A point that is
+not k-dominated by any other points is in the k-dominant
+skyline.
+We prove various properties of k-dominant skyline. In
+particular, because k-dominant skyline points are not transitive,
+existing skyline algorithms cannot be adapted for kdominant
+skyline. We then present several new algorithms
+for finding k-dominant skyline and its variants. Extensive
+experiments show that our methods can answer different
+queries on both synthetic and real data sets efficiently

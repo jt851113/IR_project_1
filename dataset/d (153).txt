@@ -1,0 +1,38 @@
+In this section, we illustrate several important properties
+of dominant skyline points. We first formally show that
+lowering k will always result in smaller or equal number of
+k-dominant skyline points.
+Lemma 3.5. If pi k + 1-dominates pj, then pi must kdominate
+pj .
+From the last corollary, we can see that the set of dominant
+skyline points decreases monotonically with the decrease
+of the parameter k and thus we are sure that a sufficiently
+small k can reduce the number of k-dominant skyline
+to a manageable size for presentation to users. However,
+one worries that too small a k value might find points which
+do not make sense semantically to users. For example, if
+k < d/2, this will mean that a point p can k-dominate another
+point q even if it is only better in fewer than half
+the dimensions. We alleviate this worry by showing that kdominant
+skyline points for k < (d+2)/2 are in fact rather
+easy to interpret.
+Theorem 3.8. If k < (d + 2)/2, any pair of k-dominant
+skyline points must have the same values on at least 
+dimensions.
+The last theorem tells us that when k is too small, either
+1) there is only one k-dominant skyline point which has very
+strong dominant power in that it dominates all the points on
+many dimensions or 2) there are multiple k-dominant skyline
+points which are equal on a number of dimensions and have
+different relative ordering on the remaining dimensions.
+We will next motivate the need to look for a top-δ dominant
+skyline points. The following theorem shows that there
+may not be any k-dominant skyline point in a data set for
+any k < d.
+Theorem 3.9. For any k < d (d > 2) and a d-dimensional
+space S, there exists a data set D with size |D| > d such that
+DSP(k, D, S) = ?.
+Example 3.2 Fig. 2 shows an example data set that exhibits
+the cyclic dominance relationship when k = 3. Specifically,
+we have pi 3-dominates , and p4 in turn
+3-dominates p1.

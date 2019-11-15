@@ -1,0 +1,57 @@
+[1] D. Estrin, L. Girod, G. Pottie, and M. Srivastava, “Instrumenting the World with Wireless Sensor
+Networks,” International Conference on Acoustics, Speech and Signal Processing (ICASSP
+2001), Salt Lake City, Utah, May 2001.
+[2] J. Warrior, “Smart Sensor Networks of the Future,” Sensors Magazine, March 1997.
+[3] G.J. Pottie, W.J. Kaiser, “Wireless Integrated Network Sensors,” Communications of the ACM,
+vol. 43, no. 5, pp. 551-8, May 2000.
+[4] A. Cerpa et al., “Habitat Monitoring: Application Driver for Wireless Communications Technology,”
+2001 ACM SIGCOMM Workshop on Data Communications in Latin America and the
+Caribbean, Costa Rica, April 2001.
+[5] C. Intanagonwiwat, R. Govindan and D. Estrin, “Directed Diffusion: A Scalable and Robust
+Communication Paradigm for Sensor Networks,” ACM/IEEE International Conference on Mobile
+Computing and Networks (MobiCom 2000),August 2000, Boston, Massachusetts
+[6] C. Intanagonwiwat, D. Estrin, R. Govindan, and J. Heidemann, “Impact of Network Density
+on Data Aggregation in Wireless Sensor Networks” , In Proceedings of the 22nd International
+Conference on Distributed Computing Systems (ICDCS’02), Vienna, Austria. July, 2002.
+[7] B. Krishnamachari, D. Estrin, and S. B. Wicker, “”The Impact of Data Aggregation in Wireless
+Sensor Networks,” International Workshop on Distributed Event-Based Systems, (DEBS ’02),
+Vienna, Austria, July 2002.
+[8] D. Estrin, R. Govindan, J. Heidemann and S. Kumar, “Next Century Challenges: Scalable
+Coordination in Sensor Networks,” ACM/IEEE International Conference on Mobile Computing
+and Networks (MobiCom ’99), Seattle, Washington, August 1999.
+[9] R. Govindan, J. Hellerstein, W. Hong, S. Madden, M. Franklin, S. Shenker, The Sensor Network
+as a Database, Technical Report 02-771, Computer Science Department, University of Southern
+California, September 2002.
+[10] P. Bonnet, J. E. Gehrke, and P. Seshadri, “Querying the Physical World, ” IEEE Personal
+Communications, Vol. 7, No. 5, October 2000.
+[11] P. Bonnet, J. Gehrke, P. Seshadri, “Towards Sensor Database Systems,” Mobile Data Management,
+2001.
+[12] S. Garg, P. Pamu, N. Nahata, A. Helmy, “Contact Based Architecture for Resource Discovery
+(CARD) in Large Scale MANets”, USC-TR, July 2002. (Submitted for Review).
+[13] S. Ratnasamy, B. Karp, L. Yin, F. Yu, D. Estrin, R. Govindan, S. Shenker, “GHT – A Geographic
+Hash-Table for Data-Centric Storage,” First ACM International Workshop on Wireless
+Sensor Networks and their Applications, 2002.
+[14] M. Chu, H. Haussecker, F. Zhao, “Scalable information-driven sensor querying and routing
+for ad hoc heterogeneous sensor networks.” Int’l J. High Performance Computing Applications,
+to appear, 2002. Also, Xerox Palo Alto Research Center Technical Report P2001-10113, May
+2001.
+[15] Zygmunt J. Haas, Marc R. Pearlman, and Prince Samar, “The Zone Routing Protocol (ZRP)
+for Ad Hoc Networks,” IETF MANET Internet Draft, July 2002.
+[16] Y. Yao and J. Gehrke, “The Cougar Approach to In-Network Query Processing in Sensor
+Networks,” SIGMOD, 2002.
+[17] W.R. Heinzelman, J. Kulik, and H. Balakrishnan “Adaptive protocols for information dissemination
+in wireless sensor networks,” Proceedings of the Fifth Annual ACM/IEEE International
+Conference on Mobile Computing and Networking (MobiCom ’99), pp. 174-185, Seattle, WA,
+August 1999.
+[18] W.R. Heinzelman, A. Chandrakasan, and H. Balakrishnan “Energy-efficient communication
+protocol for wireless microsensor networks,” 33rd International Conference on System Sciences
+(HICSS ’00), January 2000.
+[19] S. Madden, M. J. Franklin, J. M. Hellerstein and W. Hong, “TAG: a Tiny AGgregation
+Service for Ad-Hoc Sensor Networks”, Proceedings of the Fifth Annual Symposium on Operating
+Systems Design and Implementation (OSDI), to appear, December 2002.
+[20] Badri Nath and Dragos Niculescu, “Routing on a curve,” HotNets-I, Princeton, NJ, October,
+2002.
+[21] David Braginsky and Deborah Estrin, “Rumor Routing Algorithm For Sensor Networks,” First
+Workshop on Sensor Networks and Applications (WSNA), September 2002.
+[22] Q. Lv, P. Cao, E. Cohen, K. Li, and S. Shenker “Search and replication in unstructured
+peer-to-peer networks,” In ICS’02, New York, USA, June 2002.

@@ -1,0 +1,47 @@
+The mobile P2P network is such a dynamic network that
+mobile devices can join or leave freely. Nodes in this network
+can move from one place to another, and can add, delete or
+modify data arbitrarily. As we know, communication cost
+and maintenance cost can be extremely high in this kind of
+volatile environment. We show that our IA approach does
+not need any additional accesses to deal with the volatility.
+We introduce how our IA approach tackles the network
+dynamic and data update as follows:
+‧ Node joining or leaving. If a new node joins the
+network, it connects to neighbor nodes in its reachable
+range by sending its IA value of all self-contained data.
+The neighbor nodes receive the message and treat it
+as a normal NI table updating process. When a node
+leaves the network, it can either get away without doing
+anything or notify all its neighbors. Even though a
+node leaves in silence, all intelligence information from
+it will die out soon or later by the actions of query forwarding
+and NI updating.
+‧ Data insertion or deletion. For data items of a
+node, if a data is deleted, it sets the data’s I and t
+to 0 in SCI table and notifies its neighbors. If a new
+data is added, it adds a new entry into SCI table, sets
+the value of that data to be I0 and t0, and notifies
+its neighbors. The notification uses NI update process
+and is sent in the periodical update time slot. The
+neighbor nodes who receive that kind of notification
+can just execute a normal NI table updating process.
+‧ Data modification. If the data is modified, it is
+practically difficult to update it in-place throughout
+the network because of the high network volatility and
+widespread replicas. As an alternative, we install new
+versions of the data. Thus, the modified data is inserted
+into the network as new data. Query nodes can
+distinguish new data from old ones according to their
+version number. A query node always prefers a newest
+version of the data among all ones it can find. Even
+though this found version may not be the newest one
+in the network, we consider it to be valid before newer
+once can be found. If a node discovers a newer version
+of data, it will discard the index value and cache
+replica of the old one and only change its index value
+to the new one.
+It is clear that no additional process is needed to deal with
+the network volatility and data update, besides NI updates.
+In other words, our model is a self-adaptive model who can
+be well fitted to highly dynamic networks.

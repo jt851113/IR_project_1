@@ -1,0 +1,13 @@
+This paper introduces monitoring applications, 
+which we will show differ substantially from 
+conventional business data processing. The fact 
+that a software system must process and react to 
+continual inputs from many sources (e.g., sensors) 
+rather than from human operators requires one to 
+rethink the fundamental architecture of a DBMS 
+for this application area. In this paper, we present 
+Aurora, a new DBMS that is currently under construction 
+at Brandeis University, Brown University, and M.I.T. 
+We describe the basic system architecture, a stream-
+oriented set of operators, optimization tactics, and 
+support for real-time operation.

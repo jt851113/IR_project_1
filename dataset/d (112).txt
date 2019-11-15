@@ -1,0 +1,43 @@
+Several popular and useful search engines—such as AltaVista, Excite,
+HotBot, Infoseek, Lycos, and Northern Light—attempt to maintain
+full-text indexes of the World Wide Web. However, relying on
+a single standard search engine has limitations. The standard search engines
+have limited coverage,1,2 outdated databases, and are sometimes unavailable
+due to problems with the network or the engine itself. The precision
+of standard engine results can also vary because they generally focus on
+handling queries quickly and use relatively simple ranking schemes.3 Rankings
+can be further muddled by keyword “spamming” to increase a page’s
+rank order. Often, the relevance of a particular page is obvious only after
+loading it and finding the query terms.
+Metasearch engines, such as MetaCrawler and SavvySearch, attempt
+to contend with the problem of limited coverage by submitting queries
+to several standard search engines at once.4,5 The primary advantages of
+metasearch engines are that they combine the results of several search
+engines and present a consistent user interface.5 However, most
+metasearch engines rely on the documents and summaries returned by
+standard search engines and so inherit their limited precision and vulnerability
+to keyword spamming.
+We developed the NEC Research Institute (NECI) metasearch engine to
+improve the efficiency and precision of Web search by downloading and
+analyzing each document and then displaying results that show the query
+terms in context. This helps users more readily determine if the document is
+relevant without having to download each page. This technique is simple,
+yet it can be very effective, particularly when dealing with the Web’s large,
+diverse, and poorly organized database. Results from the NECI engine are
+returned progressively after each page is downloaded and analyzed, rather
+than after all pages are downloaded. Pages are downloaded in parallel and
+the first result is typically displayed in less time than
+a standard search engine takes to display its response.
+The NECI metasearch engine is currently in use
+by employees of the NEC Research Institute. This
+article describes its features, implementation, and
+performance.
+A recent study by Anastasios Tombros verified the
+advantages of summaries incorporating query term
+context.6 His study found that users working with
+query-sensitive summaries found relevant documents
+faster and performed relevance judgments more accurately
+and rapidly than users working with an abstract
+or query-insensitive document summary. Querysensitive
+summaries also greatly reduced the need for
+users to access the full text of documents.

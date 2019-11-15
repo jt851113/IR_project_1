@@ -1,0 +1,14 @@
+Online social networks (OSNs) with half a billion users have
+dramatically raised concerns on privacy leakage. Users, often
+willingly, share personal identifying information about
+themselves, but do not have a clear idea of who accesses their
+private information or what portion of it really needs to be
+accessed. In this study we examine popular OSNs from a
+viewpoint of characterizing potential privacy leakage. Our
+study identies what bits of information are currently being
+shared, how widely, and what users can do to prevent such
+sharing. We also examine the role of third-party sites that
+track OSN users and compare with privacy leakage on popular
+traditional Web sites. Our long term goal is to identify
+the narrow set of private information that users really need
+to share to accomplish specic interactions on OSNs.

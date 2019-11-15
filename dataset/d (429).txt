@@ -1,0 +1,12 @@
+In this paper, we study the problem of surprising periodic
+pattern discovery in a data sequence that consists of events
+with vastly different occurrence frequencies. Our goal is not
+to find the patterns that occur often, but rather to discover
+patterns that are surprising. Instead of using the support metric,
+we propose a new metric: information gain. Although the
+new metric does not possess the Apriori property as the support
+metric does, we identify the bounded information gain
+property in the information model. Based on the bounded information
+gain property, we devise a recursive algorithm for
+mining surprising periodic patterns by only exploring extensible
+prefixes.

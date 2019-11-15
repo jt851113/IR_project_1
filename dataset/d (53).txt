@@ -1,0 +1,3 @@
+In this section, we outline the structure of a query
+plan and discuss general techniques to process sensor
+network queries.

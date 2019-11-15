@@ -1,0 +1,16 @@
+At first, we study the clustering results, which are important for
+searching. Clustering statistics from our experiments are summarized
+in Table 1. Each pair of columns present results without and
+with adaptive clustering respectively. The first two columns are for
+the GOV2 collection for 5000 peers, the last two are for 1000 peers.
+The table shows for a specific network size and number of features
+kept in cluster descriptions, the number of global clusters (SONs)
+generated and the average pairwise similarity of clusters.
+The most important message is that adaptive clustering decreases
+the average pairwise similarity of global cluster descriptions, in
+other words the clusters become well-separated. This is shown
+in the last line of the table, for each pair of columns. Moreover,
+though not shown in this table, adaptive clustering also increases
+the average pairwise similarity of documents in clusters. So overall
+it manages to increase clustering quality, therefore we employ
+adaptive clustering in all subsequent searching experiments.

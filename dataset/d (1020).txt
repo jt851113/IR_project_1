@@ -1,0 +1,9 @@
+PISCES distinguishes itself from traditional P2P networks in
+three ways. First, nodes employ database systems to organize their
+data. Nodes can adopt different DBMS and customize their database
+designs. Data sharing amongst nodes is also via tuples of databases.
+Second, PISCES establishes some mapping servers outside P2P
+networks. These mapping servers translate various users’ schemas
+into a uniform mediated one. Third, in PISCES, nodes apply a partial
+indexing strategy to disseminate their data, and hence greatly
+reduce the overhead of disseminating data.

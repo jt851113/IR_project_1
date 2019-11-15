@@ -1,0 +1,62 @@
+There have been other schemes proposed in the literature for
+improving the lookup times in P2P systems [24], [14], [25],
+[19], [21], [16], [11], [5]. We briefly discuss some of them
+here, and point out the similarities and differences from our
+work.
+[16] proposes a “structured” item replication scheme called
+Beehive to provide O(1) lookup times for items following a
+zipfian distribution. The basic intuition is to have more replicas
+of popular items, thus driving down the average lookup time
+for a query to O(1) hops. (The authors have also shown that
+significant improvements in DNS lookup times can be obtained
+by implementing DNS on top of Beehive [17].) One of the
+issues with this approach is the overhead of maintaining the
+replicas. Since popular items are replicated more, the overhead
+of keeping those replicas updated is also larger. Thus, in a
+scenario where items are frequently changing, replication can
+result in significant overhead. Our work addresses this issue
+by storing pointers to nodes rather than items. Further, the
+Beehive replication scheme requires the query pattern to be
+zipfian across all the nodes, whereas our scheme computes the
+optimal set of auxiliary neighbors locally, and hence, simply
+depends on the local query access pattern. Nevertheless, as we
+remarked in Section I, our approach can be used in conjunction
+with replication for additional benefit.
+In [11], Leong et al. proposed another variant of Chord
+called EpiChord. There are two significant differences from
+Chord. First, they remove the O(log n) state-per-node restriction.
+In particular, instead of maintaining the regular O(log n)
+Chord neighbors, they maintain a cache of all the known
+nodes, and classify them into different slices depending on
+their distance. The slices are similar to the slices obtained
+in Chord by partitioning the node space using the neighbors.
+Additionally, in EpiChord, several lookups are initiated in
+parallel for each query. This greatly reduces the chances of a
+failed query and also significantly improves the lookup time.
+Though the idea of caching known peers is similar to our
+approach, there is a basic difference: EpiChord places no
+restriction on the number of node pointers that can be cached,
+and hence, does not provide an algorithm for caching a fixed
+number of pointers. In order to circumvent the maintenance
+cost of storing a large number of pointers, they assign an adhoc
+“lifetime” to each cache entry, in very much the same way
+as TTLs are assigned to cache entries in today’s DNS.
+There has also been some prior work on caching of node
+pointers based on peer access history [24], [21], [5]. In [24]
+and [21], the authors focus on unstructured P2P systems and
+present simple algorithms for caching node pointers based
+on access frequencies. These algorithms are primarily used
+to substitute flooding techniques for answering queries with
+more structured forwarding techniques. Ghosh et al. [5] focus
+on Chord and base their work on the assumption that nodes
+can be clustered into disjoint groups that primarily contact
+each other. They view these clusters as mini-Chord rings and
+select logW neighbors from these clusters (where W is the
+cluster size). This allows them to ensure logW latency for a
+query within the cluster and W log(n=W) for outside queries.
+However, their approach is more restrictive than ours because
+they assume that nodes can be clustered into disjoint groups,
+which is stronger than assuming a zipfian distribution for
+queries. In fact, if nodes can indeed be clustered in such a
+manner, then we believe that our approach will be significantly
+beneficial as well.

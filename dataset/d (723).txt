@@ -1,0 +1,24 @@
+We propose a simple profile language that permits highlevel
+expression of a user’s data needs for the purpose of
+expressing desirable contents of a cache. We consider techniques
+for cache prefetching on the basis of profiles expressed
+in our framework, both for basic and preemptive
+prefetching, the latter referring to the case where staging a
+cache can be interrupted at any point without prior warning.
+We examine the effectiveness of three techniques in particular:
+a greedy approach, a randomized approach (simulated
+annealing), and branch-and-bound, and show that the
+greedy approach is fast and effective for moderately sized
+profiles, but that the randomized approach scales better for
+shared caches with extremely large superprofiles. We view
+this work as a migration of data management ideas and
+techniques, characterized by their use of data and application
+semantics to drive the management of shared resources,
+into the wide-area network setting. We believe that profiles,
+as described in this paper, are an enabling technology that
+could spawn a rich new area of research beyond cache management
+into network data management in general. The use
+of rich, declaratively specified profiles to drive data management
+policy promises benefits similar to the profound
+effect that declarative queries had on database system technology.
+This paper is a first step in that direction.

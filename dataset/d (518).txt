@@ -1,0 +1,64 @@
+5.1 The Derivation of Lower Bounds
+5.1.1 The Lower Bound on the Average Access Time for
+a Set of Query Patterns
+The lower bound on the average access time for the optimal
+broadcast program of the query patterns is derived as
+follows:
+The notations used in the following equations are
+defined first.
+SAj: The SA set of the jth query pattern.
+JAj: The JA set of the jth query pattern.
+PAj: The PA set of the jth query pattern.
+jSAjj: The number of data objects in SAj.
+di
+SAj	JAj : The number of data buckets needed to reach the
+data objects in JAj after all the data objects in SAj are
+downloaded when the ith data object in SAj is the first
+downloaded data object. The meaning of di
+SAj	JAj is
+shown in Fig. 15.
+di
+JAj	PAj : The number of data buckets needed to reach the
+data objects in PAj after all the data objects in SAj and JAj
+are downloaded when the ith data object in SAj is the
+first downloaded data object. The meaning of di
+JAj	PAj is
+shown in Fig. 15.
+di
+SAj : The number of data buckets needed to download all
+the data objects in SAj when the ith data object in SAj is
+the first downloaded data object. The meaning of di
+SAj is
+shown in Fig. 16.
+di
+JAj : The number of data buckets needed to download all
+the data objects in JAj when the ith data object in SAj is
+the first downloaded data object. The meaning of di
+JAj is
+shown in Fig. 16.
+di
+PAj : The number of data buckets needed to download all
+the data objects in PAj when the ith data object in SAj is
+the first downloaded data object. The meaning of di
+PAj is
+shown in Fig. 16.
+wj: The access frequency of the jth query pattern.
+n: The number of query patterns.
+W: The total access frequencies of the query patterns, i.e.,
+
+For a query pattern [SA, JA, PA], data objects in SA
+should be accessed before data objects in JA and data
+objects in PA are accessed last. Among the data objects in
+SA, JA, or PA, there is no access order constraint. There are
+six steps to access the data objects in a query pattern. First, a
+client tunes in the broadcast channel and waits to access a
+data object in SA. Notice that the first data object to be
+accessed can be any data object in SA. For example,
+referring to Fig. 15, the first data object to be accessed can
+be data object a or data object b. Second, all the data objects
+in SA are downloaded. Third, it waits to access a data object
+in JA. Fourth, all the data objects in JA are downloaded.
+Fifth, it waits to access a data object in PA. Finally, all the
+data objects in PA are downloaded. According to the above
+steps, the average access time ATj for accessing all the data
+objects in query pattern j can be derived:

@@ -1,0 +1,67 @@
+n an Alvis P2P network, each peer is responsible for:
+ the generation of index entries to be stored in the global
+distributed index for its local documents, and
+2 the storage and maintenance of the fraction of the global
+index associated with the keys that have been assigned
+to the peer by the hashing mechanism used in the un-
+derlying Distributed Hash Table (DHT).
+Initially, the peers collaboratively build a distributed
+single-term index associating all single-term keys from the
+global collection with their top-k global document refer-
+ences. As the resulting retrieval quality might not be suf-
+¯cient due to posting list truncation, the index is then ad-
+ditionally populated with carefully selected multi-term keys
+(indexing term combinations).
+As already mentioned in Section 1, two indexing strate-
+gies can be used to populate the distributed index. The ¯rst
+one, hereafter called the HDK approach [7], generates new
+keys during the indexing phase based on observed document
+frequencies: each time a posting list for some key k exceeds
+a prede¯ned size, new indexing keys (called expansions of k)
+with more terms (and thus associated with a smaller number
+of documents) are generated. Alternatively, in the Query-
+Driven approach [9], the index is populated only with fre-
+quently queried and non-redundant term combinations, and
+indexing is performed in parallel with retrieval. The second
+approach uses decentralized monitoring of query statistics
+to detect and index new popular keys, as well as to remove
+obsolete keys from the index.
+In both cases, retrieval is performed in the following way:
+As soon as a peer receives a new query, it starts to explore
+the lattice of query term combinations (hereafter called the
+query lattice, see Figure 1) in decreasing combination size
+order, starting with the query itself. For each node in the
+query lattice, the querying peer requests the posting list
+associated with the term combination from the peer respon-
+sible for it. If the term combination is indeed present in
+the global index, the requested posting list is sent back to
+the querying peer, and if this list is not truncated, the part
+of the query lattice dominated by the term combination is
+excluded from further lattice exploration.
+Additional approximations (e.g., pruning the part of the
+lattice dominated by a key associated with a truncated post-
+ing list) can be made to improve load balancing with an only
+marginal loss in retrieval precision. For example, assuming
+the term combination bc is indexed, while ab and ac are not,
+the result for the query abc is produced from the union of
+the truncated posting lists associated with the keys bc and a,
+as shown in Figure 1. Furthermore, during the exploration,
+each contacted peer also updates the usage statistics for the
+requested term combination.
+Once the lattice exploration process terminates and all
+available posting lists relevant to the original query have
+been retrieved, the querying peer produces their union, ranks
+all the documents w.r.t the original query, and presents the
+top-ranked results to the user.
+Finally, with the Query-Driven indexing strategy, a spe-
+ci¯c on-demand indexing mechanism is performed when a
+new popular key is detected during retrieval. The peer re-
+sponsible for this key acquires a new posting list containing
+a bounded number of top-ranked document references [8].
+The key is then considered as indexed and can thus be used
+for subsequent query processing. In general, the process-
+ing of new queries triggers the indexing of popular term
+combinations, which, in turn, increases the overall retrieval
+quality. At the same time, obsolete keys can be removed,
+resulting in an e±cient indexing structure adaptive to the
+current query popularity distribution.

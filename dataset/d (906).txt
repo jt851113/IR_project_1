@@ -1,0 +1,51 @@
+1) An Example Run
+Figure 5 illustrates a 3-step DAB tree construction for a 1D
+sensor graph. Figure 5a describes the 1D sensor graph, with the
+weights depicted using vertical bars, and the draining thresholds
+indicated on the side. Figure 5b-d shows
+the forest at the end of the first, second and third DAB step,
+respectively. The final tree in Figure 5d is the resulting message-
+pruning hierarchy tree.
+As we can see, processing the sensors with high cost edges
+earlier lets us place their connecting nodes near the leaves of
+the hierarchy, as desired. Similarly, the least expensive sensors
+are processed last, and thus their connecting nodes end up scattered
+between large regions derived in previous steps, again as
+desired.
+Each step in the DAB tree construction can be viewed as a
+process of draining water in a region to reveal high peaks and
+then grouping these revealed high peaks which are adjacent
+into clusters in a balanced manner. Consider the vertical bars in
+Figure 5a as peaks. Assume that initially all the peaks are
+under the water. In step 1, the draining lowers the water down
+to height , revealing the peak corresponding to (G, H).
+In step 2, the draining lowers the water further down to height
+, revealing additional peaks corresponding to (B, C)
+and (D, E). Finally, in step 3, when the draining lowers the
+water level to height , all the remaining peaks emerge.
+This is the reason why we have called the method “drain-andbalance
+(DAB).”
+2) Comparison to Huffman Trees
+It is instructive to compare the DAB tree construction with
+the well-known Huffman tree construction [3, pg. 337], which
+is also a greedy method. We will do the comparison by way of
+the example in Figure 6.
+First we note that the Huffman tree construction assumes a
+scenario which is equivalent to the case of distributed tracking
+where all event updates would travel from leaf nodes to the
+root without message pruning at intermediate nodes. Under
+this scenario, the Huffman tree achieves the minimal cost for a
+given set of event rates associated with sensors. In contrast, the
+DAB tree construction assumes message pruning at intermediate
+tree nodes
+Second, as we can see in the figure, the Huffman tree construction,
+by definition, merges the least expensive nodes first.
+The more expensive nodes, e.g., D and E, end up being connected
+at intermediate nodes close to the root. This is undesirable
+for the message-pruning purpose. In contrast, the DAB
+construction merges the most expensive nodes first, so that
+heavy traffic can be pruned at intermediate nodes near leaves.
+Third, the Huffman tree construction does not concern with
+tree balancing, unlike the DAB construction. As shown in
+Figure 6, the tree resulting from the Huffman construction can
+be relatively imbalanced with relatively long links

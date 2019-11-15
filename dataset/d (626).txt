@@ -1,0 +1,16 @@
+We have proposed a distributed algorithm for organizing
+sensors into a hierarchy of clusters with an objective of
+minimizing the total energy spent in the system to
+communicate the information gathered by these sensors to the
+information-processing center. We have found the optimal
+parameter values for these algorithms that minimize the energy
+spent in the network. In a contention-free environment, the
+algorithm has a time complexity of O(k1 + k2 + ... + kh ) , a
+significant improvement over the many O(n) clustering
+algorithms in the literature [2,3,4,8,9]. This makes the new
+algorithm suitable for networks of large number of nodes.
+In this paper, we have assumed that the communication
+environment is contention and error free; in future we intend to
+consider an underlying medium access protocol and investigate
+how that would affect the optimal probabilities of becoming a
+clusterhead and the run-time of the algorithm.

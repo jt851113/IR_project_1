@@ -1,0 +1,20 @@
+Recent years have seen signicant work on best-
+eort routing routing in sensor and other wireless net-
+works. Due to high loss rates and power constraints, a
+common approach is to use multi-path routing, where
+more than one copy of a packet is sent to the desti-
+nation over dierent paths. For example, directed dif-
+fusion [13] uses a ood to discover short paths which
+sensors would use to send back responses. Various pos-
+itive and negative reinforment mechanisms are used to
+improve path quality. Braided diusion [8] builds on di-
+rected diusion to use a set of intertwined paths for in-
+creased resilience. A slightly dierent approach is used
+by GRAB [22], where paths are not explicitly chosen,
+but the width of the upstream broadcast is controlled.
+Our techniques are meant to complement and lever-
+age any of these routing techniques. We note that
+combining these methods with duplicate-insensitive in-
+network aggregation will allow some of the overhead of
+these techniques to be amortized and shared amongst
+data items from many dierent sensors.

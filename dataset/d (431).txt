@@ -1,0 +1,17 @@
+Most previous work on periodicy detection has focused on
+mining synchronous periodic patterns and does not recog-
+nize misaligned presence of a pattern due to the interven-
+tion of random noise. In this paper, we propose a more
+exible model of asynchronous periodic patterns that may
+be present only within a subsequence and whose occurrences
+may be shifted due to disturbance. Two parameters min rep
+and max dis are employed to specify the minimum num-
+ber of repetitions that is required within each segment of
+non-disrupted pattern occurrences and the maximum al-
+lowed disturbance between any two successive valid seg-
+ments. Upon satisfying these two requirements, the longest
+valid subsequence of a pattern is returned. A two-phase
+algorithm is devised to rst generate potential periods by
+distance-based pruning, followed by an iterative procedure
+to derive and validate candidate patterns and locate the
+longest valid subsequence.

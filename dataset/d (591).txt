@@ -1,0 +1,43 @@
+Let K (with a slight abuse of notation) be the event of getting answers to K distinct subqueries
+from f(d) sensors. We now determine P(K).
+The answers obtained from these f(d) sensors can be considered as strings of length f(d),
+where each character is a variable Vi, 1  i  N. Let A(K) be the number of strings of length
+f(d) which contain each of the variables Vl1, Vl2, ...VlK i.e. the number of strings consisting
+of the given set of K distinct variables. Now,
+A(0) = 0
+A(1) = 1
+i.e. the number of strings of length f(d) that contain each of the j variables can be computed
+as follows:
+First compute the number of all possible strings of length f(d) which contain some or all of
+variables Vl1, Vl2, ...Vlj . Then subtract the number of strings containing less than j distinct
+variables. The number of strings containing j0 < j distinct variables is
+A(j0). Each such
+string of length f(d) has a probability of 1
+Nf(d) . Thus, the probability that a string of length
+f(d) consists of each of the variables Vl1, Vl2, ...VlK can be given by:
+
+There are
+ways of choosing K distinct variables. Thus,
+Using the recurrence for A(j), 1  j  N from Eqn. 29, P(K) can be computed.
+Next, we evaluate the probability that K0 sub-queries are resolved given
+1. answers to K distinct values are gained from the f(d) sensors (let us call this the event
+K as before)
+2. I sub-queries are currently unresolved (again, let us call this the event I)
+We denote this probability by P(K0|I,K). Let K0|I = A, and K = B. Now, B = [
+where Bj is the event of getting a certain set of K (out of N) distinct values from the f(d)
+sensors such that:
+Now, P(A|Bj) i.e. P(K0|I,Bj) is the probability that K0 sub-queries (out of the I) are
+resolved given a particular set Bj of K distinct values obtained from the f(d) sensors.
+i.e. given K distinct answers from the f(d) sensors, K0 (out of the I) sub-queries can be
+resolved iff the current query consists of some K0 variables chosen from the K variables and
+I ? K0 variables chosen from the remaining ?? N ? K variables. The former can be chosen in K
+ways and the latter in
+ways. However, the total number of ways of choosing I
+variables from N is, thus giving the required probability. Thus,
+P(K0|I) gives the transition probability from state I to state I ? K0. Using the above
+expression, the state transition matrix Q for the Markov Chain can be calculated. Let
+be the mean number of steps to absorption from state i. Then the Sis can be
+calculated as follows:
+where I is an M ×M Identity matrix, S is a M ×1 column matrix and E is a M ×1 column
+matrix of ones. SM will give the mean number of steps to absorption from state M i.e. the
+mean number of steps to answer a query consisting of M sub-queries.

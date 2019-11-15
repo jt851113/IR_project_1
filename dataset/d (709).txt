@@ -1,0 +1,3 @@
+Two applications of profile-driven cache prefetching are
+data recharging and thin pipe environments. Both applications
+need to allocate limited cache space to data objects.

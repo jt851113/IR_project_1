@@ -1,0 +1,63 @@
+To analyze the performance of the InfoMiner algorithm, four
+sequences are synthetically generated. Each sequence consists
+of 1024 distinct events and 20M occurrences of events. The
+synthetic sequence is generated as follows. First, at the beginning
+of the sequence, the period length 1 of the next pattern
+is determined, which is geometrical distributed with mean #l.
+The number of events involved in a pattern is randomly chosen
+between 1 and l. The number of repetitions m of this pattern
+is geometrical distributed with mean pm. The events that
+are involved in the pattern are chosen according to a normal
+distribution. (This means that some events occurs more frequently
+than other.) However, the pattern may not perfectly
+repeat itself for m times. To simulate the imperfectness of the
+subsequence, we employ a parameter 8 to control the noise. 8
+is uniformly distributed between 0.5 and 1. With probability
+8, the next l events match the pattern. Otherwise, the next 
+l events do not support the pattern. The replacement events
+are chosen from the event set with the same normal distribution.
+This subsequence ends when there are m matches, and a
+new subsequence for a new pattern starts. This process repeats
+until it reaches the end of the sequence. Four sequences
+are generated based on values of #l and ttm in Table 2.
+The main pruning power of the InfoMiner algorithm is provided
+by the bounded information gain pruning technique. In
+our InfoMiner algorithm, for each prefix, we prune the candidate
+events on each remaining open position. Although the
+number of candidate events on each open position can be tEl
+theoretically, in practice the average number of candidates in
+each open position decreases dramatically with the increase of
+the number of specified positions (i.e., the length of the prefix).
+This is due to the fact that the value of max_info is estimated
+from the candidate event with the highest information
+on each open position. Thus, with more positions specified,
+the max_info value decreases. In turn, the min_rep threshold
+~min re~ = [ ~ ] ) increases and more candidate events
+re pruned' Vv'econnc~uct experiments with our InfoMiner algorithm
+on the four synthetic sequences. Figure 4(a) shows t:he
+average number of remaining candidate events on each open
+position as a function of the number of specified positions (i.e.,
+the length of the prefix)- The number of candidate events decreases
+dramatically with the number of specified positions.
+With data set/3m20 and/3m1000, since the average pattern
+length is 3, there is no candidate after 5 or 6 positions are specified.
+In addition, with all four data sets, when the number
+of specified positions is greater than 3, the average number of
+events on each open position is very small (i.e., less than 0.4).
+This leads to the overall efficiency of the InfoMiner algorithm.
+The overall response time of the InfoMiner algorithm largely
+depends on the rain_gain threshold. We ran several tests
+on the above data sets with different rain_gain thresholds.
+Figure 4(b) shows the response time for each data set. Our
+bounded information gain pruning can reduce a large amount
+of patterns since more than 99% of the patterns are pruned.
+With the increase of the rain_gain threshold, the pruning effects
+become more dominant because more patterns can be
+eliminated by the bounded information gain pruning. Thus,
+the response time improves with increasing rain_gain threshold
+on all four data sets. (Note that the Y-axis is in log scale
+in Figure 4(a) and (b).) To explore the scalability of the InfoMiner
+algorithm, we also experiment with event sequences
+of different lengths, from 1 million to 100 million. We found
+that the response time of the InfoMiner is linear with respect
+to both the length of the event sequence and the period length.

@@ -1,0 +1,58 @@
+Preemptive Cache Prefetching (PCP) resembles NCP,
+but adds the possibility that cache prefetching can be preempted
+prior to filling the cache. For example, for data
+recharging to truly resemble battery recharging, it must be
+possible to “unplug” a device prior to its being fully charged
+(i.e., before its cache is full) and still end up with useful data
+in the cache. This implies that not only is the set of objects
+chosen to fill a cache important, but so too is the sequence
+in which these objects are put in the cache given that this
+determines what are the potential partially-filled caches resulting
+from premature disconnection.
+To evaluate PCP strategies, we defined a “goodness”
+function (?.&3?&Y? ) that scores the sequence of objects chosen
+by any algorithm for placement in a cache. This function is
+defined in terms of a profile, $, and a preemption probability,
+$g^ , which is the probability that cache prefetching will
+be interrupted prior to completion. If $c^ is 0, then prefetching
+always results in a full cache and PCP reduces to NCP
+(i.e., only the utility value of the final contents of the cache
+matters in measuring the goodness of the result). On the
+other hand, if , then goodness measures must also
+consider the utility value for partially filled caches.
+Definition 3.2 [Sequence Goodness] Given a profile,
+preemption probability, and some ordering of objects,
+the goodness of ? wrt $ and  is:
+Intuitively, is the value of a full cache times
+the probability that cache prefetching is not preempted
+and . is the probabilistically weighted average
+of values for all non-full caches, assuming that preemption
+is equally likely to occur after any number of bytes have
+been transmitted. Figure 4 illustrates how . is calculated
+given the sequence of objects  .The graph
+shown plots the value of the cache after each byte of an
+object is sent. Note that the curve shown in Figure 4 is
+stepwise linear, and further, every line has either 0 or infinite
+slope. This is because the value of a cache does not
+change while a given object is in the process of being delivered
+to the cache, but increases by the added value of
+the object once the entire object is contained in the cache.
+Thus, the value of the cache will be 0 until the 1st object is
+delivered (for bytes until the 2nd object
+is delivered (for bytes     ),
+until the 3rd object is delivered (for bytes
+(), and so
+on. Generalized over all objects that can appear in a non-
+full cache (), and weighted by the probability
+that prefetching will be preempted, we get.
+Definition 3.3 (PCP) Given a finite set of objects , such
+that for any object is its size, a profile , a cache
+capacity : , and a preemption probability  , determine the
+sequence, ? , (that is a permutation of
+any subset of ) that satisfies the constraint,
+and that maximizes the value of
+In Section 4.3, we compare 3 heuristic algorithms that
+approximate solutions to PCP. These algorithms are ordered
+versions of the algorithms used for NCP, in that they simply
+take the results that the algorithms produce for NCP and
+order them according to the GREEDY algorithm.4

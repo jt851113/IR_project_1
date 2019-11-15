@@ -1,0 +1,17 @@
+NiagaraCQ defines a simple command language for creating and
+dropping continuous queries. The command to create a
+continuous query has the following form:
+To delete a continuous query, the following command is used:
+Users can write continuous queries in NiagaraCQ by combining
+an ordinary XML-QL query with additional time information.
+The query will become effective at the start_time. The
+Time_interval indicates how often the query is to be executed. A
+query is timer-based if its time_interval is not zero; otherwise, it
+is change-based. Continuous queries will be deleted from the
+system automatically after their expiration_time. If not provided,
+default values for the time are used. (These values can be set by
+the database administrator.) Action is performed upon the
+XML-QL query results. For example, it could be ``MailTo
+dewitt@cs.wisc.edu'' or a complex stored procedure to further
+processing the results of the query. Users can delete installed
+queries explicitly using the delete command.

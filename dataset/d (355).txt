@@ -1,0 +1,30 @@
+Next, we measured recall and precision values at K returned documents.
+The results, depicted in Figures 5 and- 6, show that a small
+number of K returned documents suffices to achieve acceptable precision
+values. Further, precision at 5 or 10 documents is around
+70% when searching the 3 most similar SONs. Recall is much
+lower, but it increases with K and with the number of SONs examined,
+almost reaching 35%. We emphasize that these results prove
+the merit of forming SONs for increasing the precision of similarity
+searching.
+Finally, the associated search cost is considered. We focus on the
+number of contacted peers within SONs, which practically reflects
+the intra-SON search cost. This number shows the average number
+of peers that need to be contacted by a query. We do not measure
+the cost for super-peer communication, since this is dependent on
+1) the number of generated SONs, and 2) on the topology formed
+Figure 5: Recall@K for GOV2/P1000 (left) and GOV2/P5000
+(right).
+Figure 6: Precision@K for GOV2/P1000 (left) and
+GOV2/P5000 (right).
+Figure 7: Number of contacted peers for GOV2/P1000 (left)
+and GOV2/P5000 (right).
+by the super-peers (which is essentially decided by the top-level
+initiator). In any case, since the number of SONs and hence superpeers
+is limited, this cost can be tolerated, so it not very interesting
+for our study.
+In Figure 7 we see that the number of contacted peers for different
+values of K is quite low compared to the network size (1000
+and 5000 peers). This is also reflected in Table 3, where the average
+number of contacted peers is depicted, irrespective of K. These
+values correspond to the recall values of Table 2.

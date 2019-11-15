@@ -1,0 +1,17 @@
+Figure 9 shows the average battery energy consumption
+of each node in the network. We use the average energy
+consumption of the flooding approach as the baseline. The
+IA approach is much more efficient in energy saving than
+the other two approaches. Energy consumption is highly related
+to the total number of communication messages shown
+in Figure 6. More message transfer in the network consumes
+more energies. Eureka incurs more energy consumption than
+the flooding approach, because of its index dissemination
+and query propagation. In every single query step of Eureka,
+it floods the query to all neighbors. Although only
+one or a few neighbors with higher index values will further
+flood the query, many neighbors just do nothing but drop
+the messages, and hence the energies are wasted on these
+nodes. Additionally, the index update in Eureka involves
+the majority of nodes in the network, which introduces high
+energy cost.

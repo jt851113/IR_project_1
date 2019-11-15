@@ -1,0 +1,29 @@
+In order to explain ACQUIRE, it is best to begin first with an overview of traditional
+flooding-based query techniques. In these techniques, there is a clear distinction between
+the query dissemination and response gathering stages. The querier/sink first floods several
+copies of the query (which is an interest for named data). Nodes with the relevant data
+then respond. If it is not a continuous/persistent query (i.e. one that calls for data from
+sensors for an extended period of time as opposed to a single value), then the flooding can
+dominate the costs associated with querying. In the same way, even when data aggregation
+is employed, duplicate responses can result in suboptimal data collection in terms of energy
+costs.
+By contrast, in ACQUIRE there are no distinct query/response stages. The querier issues
+an active query which can be a complex query, i.e. can consist of several sub-queries, each
+corresponding to a different variable/interest. The active query is forwarded step by step
+through a sequence of nodes. At each intermediate step, the node which is currently carrying
+the active query (the active node) utilizes updates received from all nodes within a lookahead
+of d hops in order to resolve the query partially. New updates are triggered reactively by
+the active node upon reception of the active query only if the current information it has is
+obsolete (i.e. if the last update occurred too long ago). After the active node has resolved
+the active query partially, i.e. after it has utilized its local knowledge to answer as much
+of the complex query as possible, it chooses a next node to forward this active query to.
+This choice may be done in a random manner (i.e. the active query executes a random
+walk) or directed intelligently based on other information, for example in such a way as to
+guarantee the maximum possible further resolution of the query. Thus as the active query
+proceeds through the network, it keeps getting “smaller” as pieces of it become resolved,
+until eventually it reaches an active node which is able to completely resolve the query,
+i.e. answer the last remaining piece of the original query. At this point, the active query
+becomes a completed response and is routed back directly (along either the reverse path or
+the shortest path) to the originating querier.
+The difference between traditional querying techniques and ACQUIRE, and the lookahead
+scheme of ACQUIRE are illustrated in figures 2 and 3 respectively.

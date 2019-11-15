@@ -1,0 +1,5 @@
+We implemented InfoMiner in C programming language on
+an IBM RS-6000 (300 MHz CPU) with 128MB running AIX
+operating system. To analyze the benefits of the information
+model and the performance of the InfoMiner algorithm, we
+employ one real trace and four synthetic traces.

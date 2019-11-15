@@ -1,0 +1,103 @@
+We illustrate how to adapt default values for a 2-level
+cluster structure as the one shown in figure 1. We consider
+the monitoring of summation of a set of sensor
+readings. With the SUM query, one simple way to distribute
+overall error tolerance among all nodes in the tree
+is to evenly distribute tolerance of a parent node to each
+child node. (An alternative, which we are not considering,
+could be to keep some slack for a parent node and
+distribute the other part to children. We haven’t found in
+our experiments any evidence to show that this method
+would reduce the number of necessary messages.)
+In figure 1, a new data value is generated at
+a leaf node (source sensor, e.g. n1). n1 will first check
+the value against its default value (v1) and error bound. If jv
+0, nothing needs to be done. The
+lack of a message from n1 will tell the parent node ( c1)
+that the value of n1 in this round is within the interval. When a violation of error bounds at
+the sensor node occurs, there are 2 cases that must be
+considered separately. In the first case, one or more child
+nodes violate their error bounds, and the bound on parent
+node is also violated. (As a special case, if only one child
+has its bound violated, the bound of parent node must be
+violated.) The bound on a parent node is violated when
+where Nv is the total number of child nodes that have
+violated their bounds and reported to their cluster-head.
+The implicit assumption that has to be made here is that
+those children who didn’t violate their bounds may be
+very close to violating the bounds in the worst case.
+Assume n1 and n2 violate their bounds and report new
+ after waiting for a predefined
+time period without hearing from c1. (This delay is important
+for maintaining cache consistency with c1 due to
+the presence of the second case described below.) c1 will
+also report its new value to its parent (the AP in our example),
+since with the worst case assumption on other
+non-reporting child nodes, the error bound on c1 will be
+violated.3 The new value in this case is not a single value,
+result of updates from child nodes, the width of the range
+is smaller than that given by the error bound at c1, which
+indicates that c1 updates a more accurate value interval to
+the AP. After reporting the new value, c1 resets its default
+The second case is that more than one child node reports
+new values to c1, but the bound on c1 is not violated.
+In this case, c1 will not report to its parent node because
+the group quality constraint is still satisfied. However,
+since invariance (1) may be violated between c1
+and its child nodes, reported values from child nodes
+can not serve as default values for future operations directly(
+without adjusting error tolerances). Thus, c1 needs
+to compute desired new default values for each child who
+reported in the round and inform them to reset their default
+values. When computing the new default values,
+we try to keep the new values close to the updated values
+from children. This can be achieved by solving the
+following equations.
+Here we assume the first Nv (Nv < Nc1) child nodes
+reported their new values. CONST is a constant and vi
+is the desired new default value for the ith
+child node. Solving the equations, we get
+The fact that c1 does not report to the AP in this case
+yields some savings on communication cost. Although
+additional computation and control messages within the
+cluster may be initiated, they are usually not as expensive
+since computation and local communication within
+clusters are cheaper. Our protocol also benefits from the
+fact that there is one child node whose value is always
+available, which is the sensor node that the cluster-head
+(AT node) resides on. There is no communication cost
+between these two nodes. So we always have the information
+from the sensor node available to help make better
+decisions on whether to report or not.
+A simple example, as shown in figure 2, illustrates the
+updating process. Assume that c1 has only two children
+n1 and n2, and we have the following values initially:
+. Suppose now error bound violation
+occurs at node n1 with v, and there is no report
+from node n2. n1 will set its default value to v1 = 112.
+c1 will set its default value to vc1 = 212 and report 
+. Note that we haven’t
+discussed adjustment of error tolerance. The error bound
+is still 20. So the default interval for c1 is now
+ If in the same round, the bound on n2 is
+also violated by a new value v
+set to 112. And c1 will report 224 to the AP and reset its
+default value to vc1 = 224 and default interval to
+Let us consider another case where in the same round,
+the bound on n2 is also violated, but now by a new value
+
+112 + 85 < 200 + 20. Thus c1 will not propagate an
+update to the AP, neither will its default value be changed.
+However, the default values for n1 and n2 will have to be
+re-evaluated by c1 using formula 6. The results, v1 =
+113:7 and v2 = 86:3, will be sent to the corresponding
+child node.
+In our 2-level architecture, there are no further actions
+after resetting of default values since n1 and n2 are at the
+lowest level of the AT tree. However, in the case of a
+multi-level tree, there may be other levels of nodes below
+n1 and n2, the default values at those levels also need
+to be reset so that the effect can be “propagated” to all
+descendants of c1. This, however should be performed
+only when reporting a new value from c1 to AP is more
+expensive than the cost of resetting descendants of c1.

@@ -1,0 +1,17 @@
+5.2.2 Multiple Supports Scheme Multiple supports scheme
+was introduced by Liu et. al. [13] and later extended by Wang
+et al. [25] to find itemsets which do not occur frequently overall,
+but have high correlation to occur with some other items.
+The support threshold to qualify a frequent itemset can be specified
+as a fraction of the minimum support of all items [13] or
+subsets of items [25] in the itemset. This variable support has
+similar effect as the generalized information gain introduced in
+this paper. However, there exists some fundamental difference
+between these two concepts. For example, if the support of item
+A, B, and C is 0.01, 0.02, 0.8, respectively, then the support
+threshold to qualify itemset AB and AC is the same. Nevertheless,
+the itemset AC is expected to occur more frequently than
+AB because the support of C is much larger than that of B. This
+aspect was not fully taken into account by the multiple support
+model12. In contrast, the generalized information gain metric
+would capture the difference of occurrences between B and C.

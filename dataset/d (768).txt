@@ -1,0 +1,49 @@
+Due to time and cost factors, simulation is an
+attractive alternative to experimental deployment
+of wireless sensor network applications
+in development. While several sensor network
+simulators are currently available, they
+tend to emphasize one or the other specific
+aspect while neglecting others. SensorSim
+(Park et al. 2000) and SensorSimII (Ulmer
+2000) are predominantly network simulators;
+TOSSIM (Levis et al. 2003) and TOSSF (Perrone
+& Nicol 2002) simulate MICA sensor
+nodes; Siesta (Ledeczi et al. 2001) and Em-
+Star (Elson et al. 2003) focus on applications.
+To overcome limitations of the above
+simulators and aid in prototyping and assessing
+services such as those discussed above,
+we are developing a flexible sensor network
+simulator. Our simulator contains a suite of
+interchangeable and customizable components
+which model applications, network
+communication, and the physical environment
+(Figure 4). Simulated sensor nodes run the
+same source code as is deployed on actual
+sensor nodes, and include diagnostic facilities
+such as power utilization analysis. Different
+network components offer varying degrees of
+realism, ranging from immediate guaranteed
+delivery to lossy wireless channels with bitlevel
+collision calculation. Users can assemble
+application-specific environments from
+interchangeable tiles representing regions of
+concrete, grass and walls, which have different
+signal propagation characteristics. Note
+that simulation is very fast: e.g., we have
+simulated an 8192-node acoustic localization
+scenario at a rate of only 12 real seconds for
+1000 simulated seconds on an ordinary PC.
+We are now looking into integrating
+structural simulation as an environment component
+into our sensor network simulator.
+This feature will allow structural health monitoring
+applications to be simulated on a
+realistic model of a large-scale sensor network.
+Since it is much easier to change the capabilities
+of simulated sensor nodes than real ones,
+researchers will be able to determine what
+capabilities are necessary for distributed
+structural health monitoring rather than being
+restricted to the platforms available today.

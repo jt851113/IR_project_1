@@ -1,0 +1,14 @@
+In this experiment, we measure the average time for building
+indexes. When a node joins the network, its index is constructed
+to allow its content to be searched. Full indexing strategy requires
+the node to publish all the local sharable data, which may last for
+hours. Instead, PISCES can significantly reduce the joining time.
+We do note that peers are likely to be more stable in a corporate
+network compared to a social network, and this is even more so,
+when the collaboration affects the companies’ profits and losses
+(P&L). However, being a peer-to-peer network, we do not discount
+node churning and respect the autonomy of peers.
+As shown in Figure 12, setup time in both strategies increases as
+we increase the data size(the time is shown in log scale). However,
+data size has less effect on PISCES and it has a setup process with
+less than 10 seconds in most cases.

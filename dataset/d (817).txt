@@ -1,0 +1,84 @@
+To verify the design of the fusion module and placement
+algorithm, we have implemented the tracker application (Figure
+1) using the fusion API and deployed it on the iPAQ farm.
+Figure 7 shows the topological view of the iPAQ farm used
+for the tracker application deployment. It consists of twelve
+iPAQ 3870s configured identically to those in the measurements
+above. Node 0, where node i is the iPAQ corresponding to ith
+node of the grid, acts as the sink node. Nodes 9, 10, and 11 are
+the iPAQs acting as the data sources. The location of filter and
+collage fusion points are guided by the placement module.
+The placement module simulator runs on a separate desktop
+in synchrony with the fusion module. At regular intervals, it
+collects the transmission details (number of bytes exchanged
+between different nodes) from the farm. It uses a simple power
+model (discussed later) to account for the communication cost
+and to monitor the power level of different nodes. If the placement
+module decides to transfer a fusion point to another node,
+it invokes the moveFC API to effect the role transfer.
+For transmission rates, we have tuned the tracker application
+to generate data at consistent rates as shown in Figure 1, with
+x equal to 6KBytes per minute. This is equivalent to a scenario
+where cameras scan the environment once every minute, and
+produce images ranging in size from 6 to 12KBytes after compression.
+The network is organized as the grid shown in Figure 7. For
+any two nodes, the routing module returns the path with a min
+imum number of hops across powered nodes. To account for
+power usage at different nodes, the placement module uses a
+simple approach. It models the power level at every node, adjusting
+them based upon the amount of data a node transmits or
+receives. The power consumption corresponds to ORiNOCO
+802.11b PC card specification [1]. Our current power model
+only includes network communication costs. After finding a
+naive tree, the placement algorithm runs in optimization phase
+for two seconds. The length of this period is tunable and it influences
+the quality of mapping at the end of the optimization
+phase. During this phase, fusion nodes wake up every 100ms to
+determine if role transfer is indicated by the cost function. After
+optimization, the algorithm runs in maintenance phase until
+the network becomes fragmented (some consumer cannot reach
+one of its inputs). During the maintenance phase, role transfer
+decisions are evaluated every 50 seconds. The role transfers are
+invoked only when the health improves by a threshold of 5%.
+Figure 6 shows the network traffic per unit time (sum of the
+transmission rate of every network node) for the cost functions
+discussed in Section 4.3. It compares the network traffic for the
+actual placement with respect to the best possible placement of
+the fusion points (best possible placement is found by comparing
+the transmission cost for all possible placements). Note that
+the application runtime can be increased by simply increasing
+the initial power level of the network nodes.
+In MT1, the algorithm finds a locally best placement by the
+end of optimization phase itself. The optimized placement is
+only 10% worse than the best placement. The same placement
+continues to run the application until one of the fusion points
+(one with the highest transmission rate) dies, i.e. the remaining
+capacity becomes less than 5% of the initial capacity. If we do
+not allow role migration, the application will stop at this time.
+But allowing role migration, as in MT2, enables the migrating
+fusion point to keep utilizing the power of the available network
+nodes in the locally best possible way. Results show that
+MT2 provides maximum application runtime that is more than
+twice as long as that for MT1. The observed network traffic is
+at most 12% worse than the best possible for the first half of the
+run, and it is same as the best possible rate for the latter half
+of the run. MPV performs worst, while MTP has comparable
+network lifetime as MT2. Figure 6 also shows that running
+the optimization phase before instantiating the application improves
+the total transmission rate by 34% compared to the naive
+placement.
+Though MPV does not provide comparably good network
+lifetime (Figure 6B), it provides the best (least) power variance
+compared to other cost functions (Figure 8A). Since MT1 and
+MT2 drain the power of fusion nodes completely before role
+migration, they show worst power variance. Also, the number
+of role migrations is minimum compared to other cost functions
+(Figure 8B). These results show that the choice of cost function
+should be dependent upon application context and network condition.
+If, for an application, role transfer is complex and expensive,
+but network power variance is not an issue, then MT2
+should be preferred. However, if network power variance needs
+to be minimized and role transfer is inexpensive, MTP should
+be preferred. Simulation results for other task graph configurations
+have been found to provide similar insight into the cost
+functions’ behavior.

@@ -1,0 +1,26 @@
+For iterative pruning we use connectivity analysis itself
+(specically the imp algorithm) to select nodes to prune.
+Pruning happens over a sequence of rounds. In each
+round imp is run for 10 iterations to get a listing of the
+(currently) best hubs and authorities. The top documents
+by these rankings are examined in decreasing order
+of rank, alternating between the hub and the authority
+ranking. When examining a document, we fetch it and
+compute its relevance (if it is not already fetched) until
+either 5 documents have been fetched in the round
+or enough top ranked documents have been found to
+be relevant (15 in our experiments). In the latter case
+the algorithm terminates. In the former case the algorithm
+terminates the round and starts a new round on
+the pruned graph, until an allotted quota of documents
+has been fetched (100 in our implementation). The rankings
+computed in the last round are returned as the best
+hubs and authorities overall.
+The motivation for stopping each round when 5 documents
+have been fetched is that when combating topic
+drift by pruning, it is usually sucient if the top ranked
+documents are pruned, since they tend to be high degree
+nodes that support others in the ranking. After this
+point we think it is more protable to execute another
+round than to continue with the pruning.
+This algorithm is called pca1.

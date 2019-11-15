@@ -1,0 +1,96 @@
+[1] G. J. Pottie and W. J. Kaiser, “Wireless Integrated Network Sensors”,
+Communications of the ACM, Vol. 43, No. 5, pp 51-58, May 2000.
+[2] D. J. Baker and A. Ephremides, “The Architectural Organization of a
+Mobile Radio Network via a Distributed Algorithm”, IEEE
+Transactions on Communications, Vol. 29, No. 11, pp. 1694-1701,
+November 1981.
+[3] B. Das and V. Bharghavan, “Routing in Ad-Hoc Networks Using
+Minimum Connected Dominating Sets”, in Proceedings of ICC, 1997.
+[4] C. R. Lin and M. Gerla, “Adaptive Clustering for Mobile Wireless
+Networks”, Journal on Selected Areas in Communication, Vol. 15 pp.
+1265-1275, September 1997.
+[5] A. D. Amis, R. Prakash, T. H. P. Vuong and D. T. Huynh, “ Max-Min
+D-Cluster Formation in Wireless Ad Hoc Networks”, in Proceedings
+of IEEE INFOCOM, March 2000.
+[6] W. R. Heinzelman, A. Chandrakasan and H. Balakrishnan, “Energy-
+Efficient Communication Protocol for Wireless Microsensor
+Networks”, in Proceedings of IEEE HICSS, January 2000.
+[7] C.F. Chiasserini, I. Chlamtac, P. Monti and A. Nucci, “Energy
+Efficient design of Wireless Ad Hoc Networks”, in Proceedings of
+European Wireless, February 2002.
+[8] A. Ephremides, J.E. Wieselthier and D. J. Baker, “A Design concept
+for Reliable Mobile Radio Networks with Frequency Hopping
+Signaling”, Proceeding of IEEE, Vol. 75, No. 1, pp. 56-73, 1987.
+[9] A. K. Parekh, “Selecting Routers in Ad-Hoc Wireless Networks”, in
+Proceedings of ITS, 1994.
+[10] A. Okabe, B. Boots, K. Sugihara and S. N. Chiu, Spatial
+Tessellations: Concepts and Applications of Voronoi Diagrams, 2nd
+edition, John Wiley and Sons Ltd.
+[11] S.G.Foss and S.A. Zuyev, “On a Voronoi Aggregative Process
+Related to a Bivariate Poisson Process”, Advances in Applied
+Probability, Vol. 28, no. 4, pp. 965-981,1996.
+[12] J. M. Kahn, R. H. Katz and K. S. J. Pister, “Next Century Challenges:
+Mobile Networking for Smart Dust”, in the Proceedings of 5th
+Annual ACM/IEEE International Conference on Mobile Computing
+and Networking (MobiCom 99), Aug. 1999, pp. 271-278.
+[13] F. Baccelli and S. Zuyev, “Poisson Voronoi Spanning Trees with
+Applications to the Optimization of Communication Networks”,
+Operations Research, vol. 47, no. 4, pp. 619-631, 1999.
+[14] B. Warneke, M. Last, B. Liebowitz, Kristofer and S. J. Pister,
+“Smart Dust: Communicating with a Cubic-Millimeter Computer”,
+Computer Magazine, Vol. 34, No. 1, pp 44-51, Jan. 2001.
+[15] J. M. Kahn, R. H. Katz and K. S. J. Pister, “Next Century Challenges:
+Mobile Networking for Smart Dust”, in the 5th Annual ACM/IEEE
+International Conference on Mobile Computing and Networking
+(MobiCom 99), Aug. 1999, pp. 271-278.
+[16] V. Hsu, J. M. Kahn, and K. S. J. Pister, "Wireless Communications
+for Smart Dust", Electronics Research Laboratory Technical
+Memorandum M98/2, Feb. 1998.
+[17] http://www.janet.ucla.edu/WINS/wins_intro.htm.
+[18] P. Gupta and P. R. Kumar, “The Capacity of Wireless Networks,”,
+IEEE Transactions on Information Theory, vol. IT-46, no. 2, pp. 388-
+404, March 2000.
+[19] P. Gupta and P. R. Kumar, “Critical Power for Asymptotic
+Connectivity in Wireless Networks”, pp. 547-566, in Stochastic
+Analysis, Control, Optimization and Applications: A Volume in
+Honor of W.H. Fleming. Edited by W.M. McEneany, G. Yin, and Q.
+Zhang, Birkhauser, Boston, 1998. ISBN 0-8176-4078-9.
+[20] W. Ye, J. Heidemann, and D. Estrin, “An Energy-Efficient MAC
+Protocol for Wireless Sensor Networks”, In Proceedings of the 21st
+International Annual Joint Conference of the IEEE Computer and
+Communications Societies (INFOCOM 2002), New York, NY, USA,
+June, 2002.
+[21] N. Bulusu, D. Estrin, L. Girod, and J. Heidemann, “Scalable
+Coordination for Wireless Sensor Networks: Self-Configuring
+Localization Systems”, In Proceedings of the Sixth International
+Symposium on Communication Theory and Applications (ISCTA
+2001), Ambleside, Lake District, UK, July 2001.
+[22] N. Bulusu, J. Heidemann, and D. Estrin, “Adaptive beacon
+Placement”, Proceedings of the Twenty First International Conference
+on Distributed Computing Systems (ICDCS-21), Phoenix, Arizona,
+April 2001.
+[23] A. B. McDonald, and T. Znati, “A Mobility Based Framework for
+Adaptive Clustering in Wireless Ad-Hoc Networks”, IEEE Journal on
+Selected Areas in Communications, Vol. 17, No. 8, pp. 1466-1487,
+Aug. 1999.
+[24] M. Gerla, and J. T. C. Tsai, “Multicluster, Mobile, Multimedia Radio
+Networks”, Wireless Networks, Vol. 1, No. 3, pp. 255-265, 1995.
+[25] S. Basagni, “Distributed Clustering for Ad Hoc Networks”, in
+Proceedings of International Symposium on Parallel Architectures,
+Algorithms and Networks, pp. 310-315, June 1999.
+[26] S. Basagni, “Distributed and Mobility-Adaptive Clustering for
+Multinedia Support in Multi-Hop Wireless Networks”, in Proceedings
+of Vehicular Technology Conference, Vol. 2, pp. 889-893, 1999.
+[27] M. Chatterjee, S. K. Das, and D. Turgut, “WCA: A Weighted
+Clustering Algorithm for Mobile Ad hoc Networks”, Journal of
+Cluster Computing, Special issue on Mobile Ad hoc Networking, No.
+5, 2002, pp. 193-204.
+[28] A.D. Amis, and R. Prakash, “Load-Balancing Clusters in Wireless Ad
+Hoc Networks”, in Proceedings of ASSET 2000 , Richardson, Texas,
+March 2000.
+[29] A. Perrig, R. Szewczyk, V. Wen and J. D. Tygar, “SPINS: Security
+protocols for Sensor Networks”, in 7th Annual International
+Conference on Mobile computing and Networking, 2001, pp. 189-
+199.
+[30] D. W. Carman, P. S. Kruus, and B. J. Matt, “Constraints and
+approaches for distributed sensor network

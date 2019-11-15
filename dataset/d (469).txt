@@ -1,0 +1,26 @@
+DEFINITION 2.4. Given a pattern 	 with period  and a
+sequence  of 
+
+ 
+  events:       , the
+support of 	 within  is the number of subsequences
+	 	     	 that match 	.
+Intuitively, the event sequence can be viewed as a list of
+segments, each of which consists of  contiguous events. There
+would be 
+ full segments, among which the segment that
+	 matches will count for the support of 	. The “*” symbol is a
+wild card which matches any symbol.
+Consider two subsequences        
+and           for the pattern 	 
+ . The support of 	 in  is the same as that in ,
+which is 3. However, the generalized information gain of 	
+with respect to  should be higher than that of  because
+there is no noise in  but some noise in . Therefore,
+ should “pay some penalty” for its noise, i.e., taking away
+some generalized information gain from . The amount of
+generalized information gain taken away depends on how 
+can be repaired to perfection. In this case, if we replace an event
+ with , then  would be perfect for 	. Thus, we decide to
+take away the information of  (i.e., the information loss of 	
+for the mismatched period in ) from .

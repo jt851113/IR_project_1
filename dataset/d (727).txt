@@ -1,0 +1,114 @@
+Figure 1 shows dierent bits of privacy information of
+varying types associated with user accounts. While terminology
+varies across OSN sites, such privacy bits are generally
+grouped to set privacy controls as follows:
+Thumbnail A brief prole containing privacy bits with at
+least a user name (rst and at times last name), and photo.
+A thumbnail is often the least private user information in
+an OSN.
+Greater Prole This group has additional information: interests,
+relationships and other bits that a user is willing to
+provide. Protection settings for these additional bits of a
+user prole typically are through a separate privacy setting.
+List of Friends The list of friends of a user where friendship
+requires agreement by the befriended user. Although
+a specic piece of information, this is often its own group
+with its own privacy setting.
+User Generated Content Content added by the user such
+as photos, videos, comments and links. Not all OSNs provide
+separate privacy settings for controlling this group.
+Comments Status updates, comments, testimonials and
+tags about the user or user content.
+Although we have enumerated ve groups above, it is
+conceivable that these may be teased apart into additional
+groups or merged into fewer groups. Coarser the granularity
+the harder it is to provide tailored privacy control.
+OSN sites typically grant privileges to view these groups of
+information to three entities: the user, the user's friends or
+to all users. For example, for User 1 in Figure 1 the privacy
+groups from left to right could correspond to a group of bits
+only viewable by the user, followed by three groups viewable
+to the user's friends and a group viewable by all users.
+Some sites dene an additional access level that includes
+more users than friends, but not all users of the site. For
+example, Facebook allows viewing privileges to be granted to
+the members of a user's networks, which include geographic
+regions, schools, and work. MySpace allows viewing to be
+granted for users 18 years or older. Bebo allows viewing of
+information for a user-dened age range. Orkut, Friendster
+and Facebook (recently added) allow viewing privileges to
+be assigned to friends of friends. Separate from these privileges
+assigned to a party of users, many OSNs also allow
+them to be denied to specic users.
+As an example, Table 1 shows the allowable privacy settings
+for viewing dierent privacy bit groups in Facebook
+and MySpace. We study how these settings are used in
+practice in Section 3. A \" indicates that it is possible to
+allow the given party to view the information in the privacy
+bit group while a \-" is used to indicate that it is not possible.
+So Table 1 shows the additional privacy bits that are
+part of a Facebook user's Greater Prole (referred to simply
+as Prole in Facebook) can be set to be viewable by the
+user's friends, friends of friends, or set to the user's friends
+and users in the same network. Note that user generated
+content is also included in this group for Facebook. It is not
+possible to grant this privilege to all users nor restrict it to
+only oneself. A box around an option
+indicates the
+default value for a setting. Thus, \friends+networks" is the
+default Facebook setting for viewing a user's greater profile.
+The privacy settings in Table 1 show that the networks
+concept is important to privacy control for Facebook. By
+default, information in a user's prole/content, and comments
+(as on a user's \Wall") are viewable by any other
+user in the user's networks. Facebook also allows a user to
+designate a primary network and limit access to information
+for friends and users in the primary network. Facebook provides
+some controls on who can join a school network (via
+age claims and needing to be befriended by someone in that
+school network), college and work networks (via email address
+in those domains), but there is no control on who may
+join a regional network. In addition, the thumbnail prole
+and list of friends for all Facebook users is publicly available
+to all other Facebook users. As shown in Table 1 all of these
+settings can be changed via the Facebook interface, but the
+default settings allow any user to gain access to all information
+about another user on Facebook. Columns to the right
+of the double vertical line are particularly problematic for
+privacy as these are situations where a user is not able to
+control which users are able to view the given information.
+The only exception is that Facebook imposes age restrictions
+that are not explicitly documented on their Web site, but
+we have observed it and it has been reported [15]. These
+restrictions prohibit users over 18 years of age from viewing
+proles of users under age 18 and vice-versa, unless the users
+are friends. However, these restrictions do not hide a user's
+list of friends from other users across this age divide.
+Table 1 shows that MySpace uses similar permissive defaults
+in terms of access to a user's information|all users
+have access to all other user's information. There is no
+way to even limit the visibility of a user's thumbnail pro-
+le. MySpace uses coarse-grained privacy controls where a
+single setting controls access rights for all other rows in Table
+1|in terms of Figure 1 all privacy bits other than the
+thumbnail are combined in the same privacy bit group. The
+range and coarseness of privacy controls for Bebo are the
+same as MySpace except that instead of xing the age limit
+of 18, Bebo users can specify an age range to use as a level
+for granting access. In addition, Friendster, Hi5, and Xanga
+are similar except they do not have an extra access level.
+Imeem and LiveJournal allow a user's prole to always be
+viewable by all users. Twitter has a single privacy setting
+to control which decides who can see their status updates,
+location, or biographical information. Digg allows viewing
+of some bits in the prole and comments to a user to be controlled.
+Orkut actually restricts the default settings for some
+parts of the greater prole to be only viewable by friends.
+In summary, the privacy groups for OSNs are large with
+many bits controlled with a single setting, OSNs do not
+provide any range of privacy settings for some of the privacy
+groups, and all OSNs have permissive default settings that
+allow viewing privileges to more users than just friends. The
+end result is that by default a user does not control who
+has access to their information on these sites unless they
+explicitly control their privacy settings.

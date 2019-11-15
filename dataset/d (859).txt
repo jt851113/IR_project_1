@@ -1,0 +1,39 @@
+The sensor network consists of a sparse set of sensing nodes of one modality that have a finite sensing radius due to signal attenuation. Objects and other phenomena may pass through the sensor field. The objects affect the signals received by the nodes.
+Figure 2 below displays the signal received by three types of sensor at a node in the SensIT experiment [7] as three vehicles pass by in succession. Each of the three modalities displays very
+different properties. The seismic modality provides the largest
+sensing range, whereas the IR modality has a limited one. The
+seismic and acoustic modalities have a greater range of amplitude
+in their peaks, which could be used to estimate the distances of the
+various objects from the node, whereas in the IR case, the response
+is more binary in nature. Additionally, the acoustic and seismic
+signals might also allow an estimate of velocity based on the rate of
+change of frequency and amplitude, but the IR sensor does not
+allow this.
+The one property that can be extracted from all three is the time
+that the discrete ‘event’ occurs. The resulting event implicitly
+provides an estimate for the position of the object, based on the
+position of the node. The event could be detected using a simple
+peak detector with a suitable energy threshold, as described in [3].
+This type of detector assumes little about the modality or
+characteristics of the source, although it can be prone to both false
+and missed detections.
+As objects move through the sensor field, they produce a set of
+events. While the SensIT experiment was conducted under very
+controlled circumstances, in a real application many detected
+events unrelated to moving objects might occur. These false events
+might be due to background phenomena, other types of objects not
+of interest or perhaps faulty sensors. Figure 2 shows the detections
+two objects cause as they move through a fairly dense network
+along with some unrelated events.
+In such a scenario, a stand alone detector at an individual sensor is
+not that useful. Given an event, it is not possible to infer that an
+object caused it. Rather than report back each event to a distant
+central node, it would be logical to share the evidence among
+neighboring nodes and then report any useful results with the
+central node. If several correlated events are associated together, a
+more accurate hypothesis as to whether the object is present can be
+formed, along with an increasingly accurate estimate of its position
+and velocity. This idea implicitly performs distributed tracking and
+can be extended to that application. In addition, it has been shown
+in [4] that several associated classification experiments can
+improve classification of the object.

@@ -1,0 +1,6 @@
+In ERS, on an average the ring has to expand till tmin hops to get updates, where tmin is
+given by Eqn. 16. The latency in executing a ring of size x is 2x, x for the request and x for
+the reply. Moreover, these updates are sought once every 1
+c queries. The remaining fraction
+of the queries are answered from the cached responses (which has a latency of 0). Thus, the
+average latency in ERS is given as follows:

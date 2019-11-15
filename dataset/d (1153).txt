@@ -1,0 +1,6 @@
+NiagaraCQ is being developed as a sub-system of Niagara
+project. The initial version of the system was implemented in
+Java (JDK1.2). A validating XML parser (IBM XML4J) from
+IBM is used to parse XML documents. We describe the system
+architecture of NiagaraCQ in Section 4.1 and how continuous
+queries are processed in Section 4.2.

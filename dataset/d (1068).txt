@@ -1,0 +1,42 @@
+other objects, while objects whose sum is small are likely to be dominated.
+Therefore, we sort the whole tuples in X in descending order of the sum of all
+their dimension values. This preprocess, sorting by sum, has been proposed by
+Chomicki et al. [4]. By this preprocessing, we can eliminate some of non-skyline
+objects easily. Chan et al. used the popular preprocessing in their OSA algorithm
+for k-dominant query [6]. But this preprocess is not effective for k-dominant
+query computation especially when values of each attribute is not normalized.
+For example, assume p(9,1,2) and q(3,2,3) are two objects in 3D space. Although
+the object p has greater sum than object q but p fails to become 2-dominant of
+q. Here, object p is 2-dominated by object q.
+Therefore, in order to prune unnecessary objects efficiently in the k-dominant
+skyline computation, we compute domination power of each object, i.e., how
+many maximal values it has within all of dimensions. Then, we sort objects
+in descending order by domination power. If more than one objects have same
+domination power then we sort those objects in descending order of the sum
+value.
+Without apply any sorting Table 2 represent the domination power and sum
+of the each Notebook PC’s of Table 1. Table 3 is the example of sorted database
+(sort Notebook PC’s in descending order by corresponding domination power
+and for same domination power sort in descending order of the sum value) of
+the Notebook PC’s database of Table 1. In the sorted table, N2 has the highest
+dominant power 4 and N8, N1 and N6 have no dominant power. Note that N2
+dominates all notebooks lie below it in four attributes, CPU, HDD, Quality, and
+VRAM.
+Let X be the sorted database of X. X has the following property.
+Theorem 3. Let pi be the i-th object in the ordered object sequence of X. If pi
+has δ-domination power, it δ-dominates pj for j such that j > i in the sequence
+of X.
+Proof. An object pi with δ-domination power is δ-dominant object to any other
+object in X. Since X is sorted by domination power in descending order, an
+object with δ-domination power always comes before objects whose domination
+power is less than δ. Therefore, from the definition we can say pi is a δ-dominant
+for any other object pj since j > i.
+By using this property, an object with k-domination power k-dominates all other
+following less domination power objects. Moreover, when more than one object
+has same domination power then our proposed method sort those objects in descending
+order of the sum values. Therefore higher objects in the sorted sequence
+are likely to dominate other objects. This sort filtering preprocessing helps to
+reduce the computational cost of k-dominant skyline.
+The sorted sequence roughly reflects the importance of objects and our
+method can progressively output the k-dominant objects based on the sequence.
+It helps users’ to make their decision more practical.

@@ -1,0 +1,5 @@
+This section presents the DFuse architecture. First, we explore
+target applications and execution environments to identify
+the architectural requirements. We then describe the architecture
+and discuss how it is to be used in developing fusion
+applications.

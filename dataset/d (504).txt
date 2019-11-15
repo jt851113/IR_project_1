@@ -1,0 +1,114 @@
+The primary purpose of the following evaluation is to show the
+applicability of the different forecasting techniques in different situations.
+In addition, we measured the performance of the method
+running in our DSMS StreamDB. In the following figures, we plot
+the values of an input stream referred to by Y . The streams of real
+and synthetic data have an incoming rate of one element per second.
+To evaluate the different methods introduced before, we plot
+the thresholds detected by each of them. To identify the applied
+methods, we abbreviate single exponential smoothing by ses; 
+and double exponential smoothing by des; ; ; cnt. Determining
+the applied threshold on the basis of the simple mean, as proposed
+by [9], is identified by . If we apply a dynamic method based on
+jumping windows we write dyn and indicate the used window size
+by a succeeding number. The issued queries are of the form
+select * from Y
+[ burst-detection( wlen => 512,
+threshold => ’Holt Winters’) ]
+while altering the used method for threshold computation and window
+length (and optionally providing further method-specific parameters,
+where needed). The tests were run on a AMD Athlon
+2 GHz PC with 512 MB main memory running a Linux operating
+system. In each figure all elements from the signal Y positioned
+above the plotted threshold are detected as elements of a burst.
+In Figures 2(a) and 2(b) we present results on real data from a
+heat sensor in our institute. To create two bursts, we placed a cup
+of hot water on top of the sensor. The first time, we removed the
+cup, causing a rapid cooling. The second time, we did not remove
+the cup und thus caused a rather moderate cooling.
+First, we compare the mean method with single exponential smoothing,
+both run in static mode (Figure 2(a)). As expected, the determined
+threshold follows the development of Y . Nevertheless,
+the bursts are identified correctly. Using static double exponential
+smoothing we can detect the length of each burst more accurately,
+see Figure 2(b). This is due to determining the smoothing variables
+S and b in a period of the regular signal and not changing it later
+on. Using the mean and single smoothing methods the burst periods
+influence the determined threshold accordingly. Figure 2(b)
+additionally highlights the issues of choosing appropriate parameter
+values: whereas the static smoothing with  = 0:16 fits very
+well, using  = 0:01 is a very bad choice. The threshold of the dynamic
+double smoothing with a window size of 1000 illustrates the
+problem of choosing a suitable window size and shows what can
+happen if smoothing is initialized during a period of burst. Then,
+the predicted trend results in totally wrong forecast values. On the
+heat sensor data, the static double smoothing with a suitable  is
+the best choice. This is expected, as the signal is rather stationary
+in regular times.
+In Figure 2(c) the behavior of the mean and single smoothing
+methods on stationary data is illustrated again. The figure shows
+that bursts may be detected incorrectly in their length and that the
+thresholds need some time to decrease to the constant level again.
+Here, double smoothing would again fit perfectly, because the stationary
+character of the data is considered when determining the
+smoothing variables. Another possible solution is to exclude elements
+that belong to a burst from the computation of mean and
+forecast – with the problems of identifying these elements as discussed
+before.
+  The input data from Figure 3 represents the Swiss Franc-U.S.
+Dollar tickwise exchange rate data from the years 1985-19911. The
+three figures perfectly show the suitability of the different methods
+for different needs, depending on the kind of bursts that shall be
+detected. Using static methods (Figure 3(a)) we get a rather high
+threshold, identifying only a subset of all peaks as bursts. This
+is suited to get a more coarse view on the data. Using dynamic
+methods (Figure 3(b)) results in a threshold that follows the original
+signal more closely. Like this, we detect more bursts and thus
+get a finer granulated view. This can even be more precise: in Figure
+3(c) we zoom into a part of the stream and additionally plot
+the threshold determined with single smoothing and a very small
+window size of 1000. As illustrated, the threshold plot follows the
+Y plot almost identically, which results in a lot of smaller bursts
+– providing a very detailed view on the input data. Using double
+exponential smoothing is unsuited on the tickwise data. The problem
+is that this data is neither stationary nor shows a clear trend.
+Here, it might help to incrementally update the smoothing parameters
+with each input element – which is exactly the same as using
+single exponential smoothing.
+  In Figure 4 we analyze the suitability of the double smoothing
+method in the presence of trends. We generated some synthetic
+data with a trend and some normally distributed bursts. Figure 4(a)
+shows that the mean method is absolutely unqualified for this, because
+we would detect the whole stream as one big burst. The single
+smoothing method fits better, because it follows the trend. But,
+in a burst the forecast values are influenced by that burst – resulting
+in detecting a wrong length of a burst. Here, static double smoothing
+helps. Due to the initial determination of the smoothing variables
+the threshold exactly follows the trend, resulting in detecting
+all bursts with their correct lengths. Of course this cannot work if
+the trend changes over time. In this case, the smoothing should be
+reinitialized when such a change occurs, which is another challenging
+problem. In Figure 4(b) we illustrate the suitability of different
+window sizes in combination with dynamic double smoothing for
+this task. This prevents from detecting the actual point of change,
+but results in the problem of choosing an appropriate window size.
+Both plotted methods are able to identify the current trend – but for
+each of them there are times where the threshold is rather inaccurate
+due to the inclusion of burst elements into its computation. In
+Figure 4(c) we illustrate the times of burst detection for different
+sizes of the aggregation pyramid. We used N = 256, 512, and
+1024 as the size of the window comprising the level 0 of this pyramid.
+The points show only the time of notification, their value is
+chosen only conforming to the needs of clarity. As expected, with
+a size of 1024 we detect only one big burst a short time after it
+occurred. With 512 we have two notification times and with 256
+there are four, each time signalizing only a fraction of the whole
+burst. Summarizing the detected elements, the whole burst is detected
+completely by all three methods.
+  Our tests showed that the approach scales linearly in time and
+space with respect to the number of processed data streams. As
+expected, the used main memory scales absolutely linear. The used
+cpu time scales even less than linearly. The actual time needed for
+burst detection is negligible as well: we processed up to 10000 data
+streams with an incoming rate of two elements per second and did
+not experience any slow downs or delays.

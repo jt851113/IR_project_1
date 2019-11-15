@@ -1,0 +1,73 @@
+We can see that, Intelligence Accuracy is a value reflecting
+the distance from a node to the demanded resource. For an
+item j, a node whose IA value is nearer to I0
+j is closer to one
+of item j’s providers in the network. Therefore, the node forwards
+the query to one of its neighbors who has the highest
+value of Ij . However, if we take the time factor into consideration,
+the IA value updated more recently is expected to
+be more precise. Integrating the above considerations, we
+design our query forwarding strategy as follows:
+‧ Given a query request, if node i itself has the result, it
+forwards the result back to the requested neighbor.
+‧ If the result is not found in node i, it forwards the request
+to one of its neighbors Nk who has the maximum
+forwarding weight Fj of item j, which is recorded in
+its NI table according to Formula (2) and (3):
+where ni is the number of neighbors of node i, I(N
+i,k),j
+is the item provided by neighbor Ni,k and NIi is the
+NI table of node i.
+‧ If the values of Ij in all neighbors are 0, i.e., no neighbor
+has intelligence about the query item j, node i
+forwards the query to the neighbor according to following
+formula:
+where SCIk denotes the SCI table of the kth neighbor
+out of its ni neighbors and |SCIk| is the number
+of entries of SCIk. Vmax denotes the neighbor who
+has most accurate intelligence information. node i forwards
+the query to the neighbor with Vmax, which is
+like people asking questions to an acquaintance with a
+wide knowledge. The node with more accurate intelligence
+information indicates that more query requests
+can find their results through it. Therefore, the probability
+of finding a query result through this node is
+higher. The Vmax is calculated by the neighbors themselves
+and exchanged along with update messages.
+Intuitively, in order to satisfy the forwarding strategy, a
+node must store the indexes of every item from every neighbor,
+which is infeasible in reality. Therefore, in our implementation,
+we simplify the indexes by exploiting the strategy
+on NI table’s updating phase. As shown in Figure 2,
+we manage the indexes in NI table based on items. For one
+item j, we store one entry which has the highest forwarding
+weight Fj (Formula (2) and (3)). When a new updated
+value from a neighbor comes, we compare it with the stored
+value. If the new F is higher, we update the entry. Otherwise,
+we drop the update message. Nevertheless, we still
+have to keep the indexes of all items in our index tables.
+However, we discover that if an IA value is so small as that
+its evaluating distance from the resource is longer than the
+TTL, this IA value becomes useless. Thus, we can remove
+it from our index tables. For the sake of index optimum, we
+set a threshold δ:
+The IA values in both SCI and NI tables which are smaller
+than δ can be safely removed.
+One problem of the approach we presented above is that
+the query forwarding may get locked into a cycle. For instance,
+node i forwards the query to node j, j then forwards
+it to node k. And the IA value in node k’s NI table points
+to node i, so k forwards it to i. This cycle will recur until
+the TTL is reached. The query forwarding fails to explore
+other parts of the network where the results may reside. To
+solve this problem, we enhance the strategy with an additional
+rule that a new IA value is recorded in a node’s NI
+table only if this new value is larger than the node’s own
+IA value in SCI table. With this rule, we guarantee that a
+node always forwards a query to a neighbor with a larger IA
+value. In case that such a neighbor does not exist, it randomly
+selects a neighbor to forward. Furthermore, in order
+to improve the robustness of our algorithm, we can store entries
+with top-k F of one item in our NI table by any chance
+the best candidate neighbor is disconnected at the moment
+we need it.

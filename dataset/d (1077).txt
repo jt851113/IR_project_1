@@ -1,0 +1,25 @@
+We consider a sensor network, which consists of a set of sensor nodes placed in a 2D plane. Sensors
+may be arranged as a regular or irregular network, as shown in Fig. 1. However, unless otherwise
+stated, throughout the discussion we will assume a triangular network as illustrated in Fig. 1(a), our
+framework should be easily extended to other regular, or even irregular, networks (this will be commented
+in Section 3-3). In order to track objects’ routes, each sensor is aware of its physical location
+as well as the physical locations of its neighboring sensors. Each sensor has sensing capability as well
+as computing and communication capabilities, so as to execute protocols and exchange messages.
+Each sensor is able to detect the existence of nearby moving objects. We assume that the sensing
+scope is r, which is equal to the side length of the triangles 1. Within the detectable distance, a sensor
+is able to determine its distance to an object. This can be achieved either by the fly time or signal
+strength that are transmitted by the object, or of the signals that are transmitted by the sensor and
+reflected by the object.
+We assume that three sensors are sufficient to determine the location of an object. Specifically,
+suppose that an object resides within a triangle formed by three neighboring sensors S1, S2, and S3
+and that the distances to the object detected by these sensors are r1, r2, and r3, respectively. As
+shown in Fig. 2(a), by the intersections of the circles centered at S1 and S2, two possible positions of
+the object can be determined. With the assistance of S3, the precise position can be determined. (It
+should be noted that in practice errors may exist, and thus more sensors will be needed to to improve
+the accuracy.)
+The goal of this work is to determine the roaming path of a moving object in the sensor network.
+The trace of the object should be reported to a location server from time to time, depending on whether
+this is a real-time application or not. The intersection of the sensing scopes of three neighboring
+sensors is as shown in Fig. 2(b). We further divide the area into one working area A0 and three
+backup areas A1,A2, and A3. Intuitively, the working area defines the scope where these three
+sensors work normally, while the backup areas specify when “handover” should be taken.

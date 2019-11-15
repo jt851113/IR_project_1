@@ -1,0 +1,11 @@
+Given an n-ary relation, a subspace cluster is a local pattern (rather than cluster) of the
+form (Xi )i=1..m where every Xi is a subset of a different attribute domain and m ? n.
+It constrains the data restricted to every pair of elements to be strongly connected,
+whereas an ET-n-set imposes one test per element (see Definition 5). Furthermore, in a
+subspace cluster, every pair of elements (whatever the attribute domain(s) they belong
+to) must frequently appear together in the relation and this frequency is defined w.r.t.
+the whole relation. More precisely, a subspace cluster is claimed frequent if it exceeds
+α times its expected value, which assumes a uniform distribution of the n-tuples in
+the relation. CACTUS (Ganti et al. 1999) and Clicks (Zaki et al. 2007) extract maximal
+(closedness constraint) subspace clusters from arbitrary n-ary relations. The latter
+generalizes the former that only mines a restricted class of subspace clusters.

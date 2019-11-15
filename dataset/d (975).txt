@@ -1,0 +1,74 @@
+[ 1 ] Experiments on NEMMCO
+The experiments to be discussed in this section were performed on real
+data collected from the Australian National Electricity Market Management
+Company (NEMMCO).) Historical data available in NEMMCO site include 30
+minute average price and demand of electricity, from 07/DEC/98 to 28/FEB/06,
+in five regions of Australia: NSW, QLD, SA, SNOWY and VIC. The prices
+are determined according to the demand and supply of the market. Figure 15
+illustrates demand and price collected in July 2005 (winter) and January 2006
+(summer) for region NSW (New SouthWales), where Sydney is located. Demand
+measures are depicted at the top of each graph and price measures are shown at
+the bottom.
+From the historical data in NEMMCO, we created two datasets: Nemmco
+Demand and Nemmco Price, respectively containing demand and price of
+the five regions. Each data stream is thus composed of 126,751 events with
+5 attributes each (one attribute for each region). The main goal of this
+experimental study was to analyze the behavior of the data over time, focusing
+on potential correlations among the regions for demand and price of electricity.
+We sized a sliding window to compute D over the last 3 months and
+update it every month, approximately. Demand and price are set every 30
+minutes, leading to 48 events per day. With no significant impact on the results,
+we considered 1,464 events per month (around 30 and a half days) a reasonable
+mean to deal simply with months of different lengths. Thus, we set 3 counting
+periods (nc = 3) with 1,464 events each (ni = 1; 464). Figure 16 shows how
+the intrinsic dimension varies over time for demand and price data. The dashed
+lines indicate the values of D measured after the events of January of each year.
+From Fig. 16a-b we can state that:
+2 in general, the intrinsic dimension is higher for Nemmco Demand data
+stream than for Nemmco Price, indicating that, among regions, there is
+more variation of the electricity demand than variation of the electricity
+price;
+ the overall behavior of the intrinsic dimension is similar for every year in
+both data streams. Higher values of D around winter months and lower
+values around summer months show that the correlations among distinct
+regions someway differ according to the season of the year.
+In fact, by analyzing the measurements of D in Fig. 16a, we can observe
+that D is around 3.2 in the summer, indicating that, in general, only 3 of the
+regions dictate the electricity demand during this season, while the other 2 are
+somehow correlated to the formers. On the other hand, in the winter D is around
+3.8, indicating that only one of the regions is correlated to some others. To put
+it simply, the variation of electricity demand in different regions is higher during
+the winter. A similar behavior can be observed in Nemmco Price.
+It is relevant to point out that whereas the values of D can distinguish
+different correlations at different seasons, an analysis of the raw data (in
+Figure 15, for example) does not enable one to perceive this difference.
+[ 2 ] Experiments on SPOTEXRATES
+The SpotExrates dataset32) contains work-daily spot prices (foreign
+currency in American dollars) of 12 currencies over the period of 10/SEP/86
+to 8/SEP/96. In our experiments, each currency is an attribute (E = 12) and
+the daily prices of the 12 currencies are events (N = 2; 567). We chose to use
+the events of (approximately) a year to define each counting period (ni = 257),
+thus allowing further analyzes on the behavior of the stream from year to year.
+The intrinsic dimension is measured over the past 5 years (nc = 5).
+Figure 17 shows that the variation of D is more significant during the
+first 4 years, indicating that the fluctuation of the spot prices in this period was
+higher than that in the next years. From the 6th period on, the events of the
+first years are discarded, reducing the fluctuation of D. Furthermore, D is much
+lower than the embedding dimension E over time, suggesting the existence of
+many correlated currencies. Recall from Section 2 that if the attributes of a
+dataset are completely uncorrelated then D closely approaches E; otherwise, if
+there are correlated attributes, D is lower than E accordingly.
+[ 3 ] Experiments on WIND
+The Wind dataset32) contains daily average wind speeds at 12 synoptic
+meteorological stations in the Republic of Ireland, from year 1961 to 1978.
+The original data is composed of 15 attributes: year, month and day of the
+measurements, and average wind speed at each of the 12 stations. We used only
+the 12 values of wind speed, and defined each period based on the events of a
+year.
+In Fig. 18, the increase in D during the first 10 years indicates a meaningful
+variation on the behavior of the data, that is, the values of wind speed measured
+at the stations varied, such that the correlations between the attributes also
+changed, increasing the value of D from 5.6 to 6.9. Higher values of D indicate
+less correlations among the stations. In other words, this experiment suggests
+that the wind behavior is more chaotic, considering different stations, after the
+10th counting period.

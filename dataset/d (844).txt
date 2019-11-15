@@ -1,0 +1,50 @@
+In directed diffusion, task descriptions are named by, for
+example, a list of attribute-value pairs that describe a task.
+The animal tracking task described in Section 2 might be
+described as (this is a simplified description, see Section 3.2
+for more details):
+type = four-legged animal // detect animal location
+interval = 20 ms // send back events every 20 ms
+duration = I0 seconds II .. for the next 10 seconds
+rect = [-100, i00, 200, 400] // from sensors within rectangle
+For ease of exposition, we choose the subregion representation
+to be a rectangle defined on some coordinate system;
+in practice, this might be based on GPS coordinates.
+Intuitively, the task description specifies an interest for data
+matching the attributes. For this reason, such a task description
+is called an interest. The data sent in response
+to interests are also named using a similar naming scheme.
+Thus, for example, a sensor that detects an animal might
+generate the following data (see Section 3.3 for an explanation
+of some of these attributes):
+type = four-legged animal //
+instance = elephant //
+location = [125, 220] //
+intensity = 0.6 //
+confidence = 0.85 //
+timestamp = 01:20:40 //
+type of animal seen
+instance of this type
+node location
+signal amplitude measure
+confidence in the match
+event generation time
+Given a set of tasks supported by a sensor network, then,
+selecting a naming scheme is the first step in designing directed
+diffusion for the network. For our sensor network, we
+have chosen a simple attribute-value based interest and data
+naming scheme. In general, each attribute has an associated
+value range. For example, the range of the type attribute is
+the set of codebook values representing mobile objects (vehicles,
+animal, humans). The value of an attribute can be any
+subset of its range. In our example, the value of the type
+attribute in the interest is that corresponding to four-legged
+animals.
+There are other choices for attribute value ranges (e.g., hierarchical)
+and other naming schemes (such as intentional
+names [1]). To some extent, the choice of naming scheme
+can affect the expressivity of tasks, and may impact performance
+of a diffusion algorithm. In this paper, our goal is
+to gain an initial understanding of the diffusion paradigm.
+For this reason, we defer the exploration of possible naming
+schemes to future work.

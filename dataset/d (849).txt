@@ -1,0 +1,7 @@
+In this section, we report on some results from a preliminary
+performance evaluation of our location tracking sensor
+network. We use packet-level simulation to explore, in
+some detail, the implications of some of our design choices.
+This section describes our methodology, compares the performance
+of diffusion against some idealized schemes, then
+explores impact of network dynamics on simulation.

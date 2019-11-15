@@ -1,0 +1,23 @@
+PFM algorithm can mine proportional FT-patterns efficiently in the case
+of bitmap can fit into memory. However, in large database mining problem,
+the bitmap of the database are often too big to fit into memory. Because
+PFM generates candidates level by level, the bitvectors associated
+with each candidate should be loaded into memory again and again for
+further checking. Memory swapping is performed when the bitvectors can
+not fit into memory, and it makes the cost of I/O operations high. Therefore,
+in this paper, a Depth-First Proportional FT-pattern Mining algorithm
+(DFPFM) is proposed to reduce the number of disk I/O operations.
+In DFPFM, while generating candidates for item x, only the bitvectors of
+x and all y where d(x, y) ? 2 (Lemma 2.1) are needed to be loaded into
+memory. The complete set of candidates of x is generated, rather than
+generating candidates with same length first. For each candidate P, extract
+bitmap(P) from the loaded bitmap. Check P by using the bitmap(P).
+The detail algorithm is listed in Fig.1. Ci,x denotes the set of candidates
+generated for x and with length-I, and Fi,x denotes the set of frequent
+FT-patterns checked from the candidates in Ci,x. Lines 1-4 are precessing
+steps. After constructing bitmap and FT-association graph, for each frequent
+1 itemset x (line 5), we load the bitvectors from the bitmap of the
+database for those items which may form a FT-pattern with x (line 6).
+After that, we generate all possible FT-pattern candiates associated with x
+(lines 7-10), and check the associated bitmap to determine whether it is a
+frequent proposional FT-pattern (lines 11-24).

@@ -1,0 +1,17 @@
+There are many approaches one can take to use the relevance
+weight of a node to decide if it should be eliminated
+from the graph. We investigated approaches based
+on thresholding the relevance weight. All nodes whose
+weights are below a threshold are pruned. Thresholds
+are picked in one of three ways:
+1. Median Weight: The threshold is the median of all
+the relevance weights.
+2. Start Set Median Weight: The threshold is the median
+of the relevance weights of the nodes in the
+start set.
+3. Fraction of Maximum Weight: The threshold is a
+xed fraction of the maximum weight. We used
+max=10 in our experiments.
+On the pruned graph we run the imp algorithm. We
+call the corresponding algorithms: med, startmed, and
+maxby10.

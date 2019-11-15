@@ -1,0 +1,3 @@
+Related work can be grouped into two main categories: 1) data stream
+management and mining; 2) application of the intrinsic dimension and fractal
+concepts in database and data mining fields

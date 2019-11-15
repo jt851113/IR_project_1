@@ -1,0 +1,29 @@
+Operators form the core
+computational unit of Fjords. Each operator
+has a set of input queues,and a set of output queues. 
+These outputs route results of a single select or join, 
+or an entire query, to multiple upstream operators or 
+end users.reads tuples in any order it chooses from and 
+outputs any number of tuples to some or all of the queues
+in. This definition of operators is intentionally extremely 
+general: Fjords are a dataflow architecture that is suitable 
+for building more than just traditional query plans. For 
+instance, in Section 4 we discuss folding multiple queries 
+into a single Fjord; this is accomplished by creating operators 
+with multiple outputs.
+Queues are responsible for routing data from one operator
+(the input operator) to another (the output operator.)
+Queues have only one input and one output and perform
+no transformation on the data they carry. Like operators,
+queues are a general structure. Specific instances of queues
+can connect local operators or remote operators, behave in a
+push or pull fashion, or offer transactional properties which
+allow them to guarantee exactly once delivery.
+Naturally, it is possible for a queue to fill. When this
+happens, one has no choice but to discard some data: as
+is the case with network routers and multimedia streams,
+it is not possible to pause a stream of real-world data. The
+choice of which data to discard is handled via an application
+specific callback from the queue. For many sensors, the
+correct scheme is to discard the oldest samples first, as they
+are least relevant to the current state of the sensor.

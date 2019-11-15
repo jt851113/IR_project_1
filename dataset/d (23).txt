@@ -1,0 +1,33 @@
+B. Social Network Anonymization
+  One major challenge in anonymizing a social network is that
+changing labels of vertices and adding edges may affect the
+neighborhoods of some other vertices as well as the properties
+of the network. It has been well recognized that the following
+two properties often hold in practical social networks. The
+properties help us in designing anonymization methods.
+Property 1: vertex degree in power law distribution. The
+degrees of vertices in a large social network often follow the
+power law distribution [20]. Such degree distributions have
+been identified in various social networks including Internet,
+biological networks, and co-authorship networks.
+Property 2: the “small-world phenomenon” [11]. It is also
+popularly known as “six degrees of separation”, which states
+that large social networks in practice often have surprisingly
+small average diameters.
+  Our social network anonymization method processes vertices
+in the degree descending order, and utilizes the above
+two properties of large social networks in practice.
+The k-anonymity requires that each vertex  is
+grouped with at least (k - 1) other vertices such that their
+anonymized neighborhoods are isomorphic. For a group S of
+vertices having the isomorphic anonymized neighborhoods,
+all vertices in S have the same degree. Since the degrees
+of vertices in a large social network follow a power law
+distribution, only a small number of vertices have a high
+degree. Processing those vertices of high degrees first can
+keep the information loss about those vertices low. There are
+often many vertices of a low degree. It is relatively easy to
+anonymize those low degree vertices and retain high quality.
+Moreover, as will be shown soon, low degree vertices can be
+used to anonymize those high degree vertices and do not affect
+the diameters of the network too much.

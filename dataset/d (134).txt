@@ -1,0 +1,24 @@
+We initiated this work primarily in the context of nodes
+such as those found in sensor networks. This choice imposes
+certain design constraints. Briey, sensor networks are com-
+posed of many small, cheap nodes equipped with a variety
+of environmental sensors. Examples include accelerometers,
+microphones, and thermometers. The nodes contain a gen-
+eral purpose CPU, though it is often useful only for mini-
+mal computation. Finally, the nodes communicate using a
+wireless network over distances of tens to hundreds of me-
+ters. Thus, the sensing capabilities of sensor networks can
+be used to help bridge the physical-computational gap.
+One consequence of considering this domain is that many
+techniques, such as public-key cryptography, are infeasible.
+The Berkeley Mica sensor nodes, for example, have 4MHz 8-
+bit processors with 4KB of RAM [11]. What we need, then,
+is a lightweight way to perform location verication given
+many sensor-class nodes. The principal trying to prove its
+location need not be a sensor-class node, though we do not
+assume that it is more powerful. The fact that our protocol
+can work within these tight constraints makes our results
+are all the more meaningful, and we expect that the Echo
+protocol will be broadly applicable to sensor networks, net-
+worked embedded systems, ubiquitous computing, wireless
+networks, and many other similar application settings.

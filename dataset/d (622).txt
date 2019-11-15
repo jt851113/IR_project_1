@@ -1,0 +1,19 @@
+The algorithm works in a bottom-up fashion. The algorithm
+first elects the level-1 clusterheads, then level-2 clusterheads,
+and so on. The level-1 clusterheads are chosen as follows. Each
+sensor decides to become a level-1 CH with certain probability
+p1 and advertises itself as a clusterhead to the sensors within
+its radio range. This advertisement is forwarded to all the
+sensors within k1 hops of the advertising CH. Each sensor that
+receives an advertisement joins the cluster of the closest level-1
+CH; the remaining sensors become forced level-1 CHs.
+Level-1 CHs then elect themselves as level-2 CHs with a
+certain probability p2 and broadcast their decision of
+becoming a level-2 CH. This decision is forwarded to all the
+sensors within k2 hops. The level-1 CHs that receive the
+advertisements from level-2 CHs joins the cluster of the closest
+level-2 CH. All other level-1 CHs become forced level-2 CHs.
+Clusterheads at level 3, 4,..., h are chosen in similar fashion,
+with probabilities p3 , p4 ,..., ph respectively, to generate a
+hierarchy of CHs, in which any level-i CH is also a CH of level
+(i-1), (i-2),…, 1.

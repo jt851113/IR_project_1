@@ -1,0 +1,47 @@
+Here, I will introduce a few choices of parameters that
+were fixed in the experiments.
+First, we assume that each peer truthfully creates and
+manages its own profile, i.e. profiles are accessible at one
+point (namely their source) and not shared throughout the
+community.
+This assumption allows for the most important simplification
+that is being made in this work: in an attempt to
+study the query routing problem in isolation – independent
+of overlay topology – we only evaluate a DIR scenario, no
+real P2PIR simulation is performed. Equivalently, we could
+say that we assume the overlay network to be a complete
+graph, i.e. each peer has complete knowledge of all other
+peers’ addresses and profiles (as in [9]).
+Apart from the wish to decouple neighbour selection and
+query routing, this decision is expected to help reduce the
+number of free parameters considerably: when trying to simulate
+a P2P community, we need to make assumptions regarding
+not only the topology of the overlay network, but
+also the distribution of queries among peers, whether or not
+forwarding to more than one peer is allowed, churn (i.e.
+whether or not a contacted peer is on-line or not) etc.
+However, the claim is made that the results obtained in
+the experiments below are valid not only for DIR, but also
+(and even more so) for P2PIR. In fact, by not committing to
+particular settings of P2PIR parameters, we can expect the
+results obtained to be valid across a large number of P2PIR
+systems with very different settings of these parameters.
+On the one hand, the above claim is based on the assumption
+that a query routing algorithm that performs well in a
+situation where all peers’ profiles are known – i.e. in DIR
+– will also do so when applied to only a subset of these –
+as is typically the case in P2PIR. On the other hand, care
+is taken to design characteristics of the DIR simulation in a
+way that is typical for P2PIR scenarios – as opposed to DIR
+scenarios:
+‧ Profiles are pruned (with varying sizes). This is untypical
+in DIR because there are normally no size restrictions
+for resource descriptions.
+‧ In DIR, evaluations usually use at most a few hundred
+information resources, in P2PIR we want to use far
+more peers, at least a few thousand.
+‧ While information resources in DIR are normally large
+and semantically heterogenous, peers can be expected
+to share a smaller amount of documents belonging only
+to a few selected topics (where the exception of a few
+very large and heterogeneous peers proves the rule).

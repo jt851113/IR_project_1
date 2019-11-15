@@ -1,0 +1,32 @@
+DEFINITION 2.6. Given a pattern 	 with period  and a sequence
+ of 
+
+ 
+  events:       , the information
+loss of  with respect to 	 is the summation of the information
+loss of each segment 	 	     	 with
+respect to 	. The generalized information gain of  with respect
+to 	 is defined as 	  	    	 where
+	, 	, and 	 are the information of 	, the support
+of 	 within , and the information loss of  with respect to 	,
+respectively.
+In a subsequence, the first match of a pattern is viewed
+as an example, and only subsequent matches contribute to the
+generalized information gain7. With the generalized information
+gain concept, let’s consider the event sequence  
+                 .
+In this sequence, the information of the occurrence of   is
+	  	 while the information of the occurrence
+of  is 	  . The generalized information
+gain of    in subsequence          is
+3.46 while the generalized information gain of    in subsequence
+            is 1.38. This is
+due to the fact that event  occurs much more frequent than ,
+and hence it is likely that    also occurs frequently in the
+event sequence. On the other hand, event  occurs relatively
+scarce, thus the occurrence of    carries more information.
+Therefore, if    is specified as the generalized information
+gain threshold, then pattern    would satisfy the
+threshold, but not   . However, with the traditional support
+confidence thresholds,    always has higher support
+value than   .

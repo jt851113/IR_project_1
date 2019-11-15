@@ -1,0 +1,14 @@
+In this paper, we have presented the AlvisP2P proto-
+type for scalable full-text P2P-IR that uses carefully selected
+indexing term combinations associated with possibly trun-
+cated posting lists. The two presented indexing approaches
+(HDK and QDI) overcome the scalability problem of single-
+term retrieval in structured P2P networks, while preserving
+a retrieval quality fully comparable to state-of-the-art cen-
+tralized search engine. The developed AlvisP2P prototype
+implements modules for distributed indexing, retrieval, and
+content-based ranking. This demonstration software repre-
+sents a contribution to the design, development and research
+of realistic P2P search engine systems.
+The most recent version of the prototype is available at
+http://globalcomputing.ep°.ch/alvis.

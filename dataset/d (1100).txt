@@ -1,0 +1,13 @@
+Constructing ranking information is a time-consuming process.
+As the system runs on a large-scale distributed system,
+it is likely to face a high level of churn. One needs to ensure
+that information about queries is not lost when a peer
+fails or leaves the network. We use a replication mechanism
+but count delegates as copies: if the replication factor is 3,
+and a query Q is already delegated twice, only one replica
+is needed. Replicas are loosely synchronized on a periodic
+basis. Nodes hosting replicas, as well as delegates, periodically
+ping the master peer. If the master copy of Q fails,
+the new peer responsible for the query receives the latest
+information pertaining to Q from the replicas. We use the
+leaf set for storing replicas as in Pastry [17] and PAST [18].

@@ -1,0 +1,120 @@
+A data stream is a massive unbounded sequence of data elements
+continuously generated at a rapid rate. Due to this reason, it is
+impossible to maintain all elements of a data stream. As a result,
+data stream processing should satisfy the following requirements
+[1].
+First, each data element should be examined at most once to
+analyze a data stream. Second, memory usage for data stream
+analysis should be restricted finitely although new data elements
+are continuously generated in a data stream. Third, newly
+generated data elements should be processed as fast as possible.
+Finally, the up-to-date analysis result of a data stream should be
+instantly available when requested. In order to satisfy these
+requirements, data stream processing sacrifices the correctness of
+its analysis result by allowing some error.
+The target application domains of a data stream are either a bulk
+addition of new transactions as in a data warehouse system or an
+individual addition of a continuously generated transaction as in a
+network monitoring system. The former is called as an offline data
+stream while the latter is called as an online data stream [2]. For
+an offline data stream, it is possible to enhance the performance of
+data mining through a batch operation by processing a
+considerable number of newly generated transactions together [2].
+Due to this reason, the up-to-date mining result of an offline data
+stream is available only after a batch operation is finished.
+Therefore, the granularity of generating the most up-to-date result
+depends on the number of new transactions batch-processed
+together. However, data mining over an online data stream should
+support flexible trade-off between processing time and mining
+accuracy without any fixed granule of data mining in order to
+catch the sensitive change of its mining result as quickly as
+possible.
+Among the frequency counting algorithms [2,3] of data elements
+over a data stream, the Lossy Counting algorithm [2] is the most
+representative method. In the Lossy Counting algorithm, the set of
+frequent itemsets in a data stream is found when a maximum
+allowable error ε as well as a minimum support is given. A set of
+newly generated transactions in a data stream is loaded together
+into a fixed-sized buffer in main memory and they are batchprocessed.
+The information about the previous mining result up to
+the latest batch operation is maintained in a data structure called D
+containing a set of entries of a form (e, f, Δ) where e is an itemset,
+f is the count of the itemset e, and Δ is the maximum possible
+error count of the itemset e. In order to update the information of
+the data structure D, all of its entries are looked up in sequence.
+For the entry (e, f, Δ) of an itemset e in D, if the itemset e is one of
+the itemsets identified by the new transactions in the buffer, its
+previous count f is incremented by its count in the new
+transactions. Subsequently, if its estimated count i.e., f+Δ is less
+than ε×N, it is pruned from D. On the other hand, when there is no
+entry in D for a new itemset e identified by the new transactions
+in the buffer, a new entry (e, f, Δ) is inserted to D. Its maximum
+possible error Δ is set to ?ε × N′? where N’ denotes the number
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that
+copies bear this notice and the full citation on the first page. To copy
+otherwise, or republish, to post on servers or to redistribute to lists,
+requires prior specific permission and/or a fee.
+SIGKDD ’03, August 24-27, 2003, Washington, DC, USA.
+Copyright 2003 ACM 1-58113-737-0/03/0008…$5.00.
+of transactions that were processed up to the latest batch operation.
+Generally, knowledge embedded in a data stream is more likely to
+be changed as time goes by. Identifying the recent change of a
+data stream quickly, specially for an online data stream, can
+provide valuable information for the analysis of the data stream.
+In addition, monitoring the continuous variation of a data stream
+enables to find the gradual change of embedded knowledge, so
+that it can be timely utilized. In order to achieve this, the effect of
+obsolete information in old transactions on the current mining
+result of a data stream should be eliminated effectively. As a
+simple solution, it is possible to consider a sliding window
+approach. It restricts the target transactions of data mining to those
+transactions that are generated within the most recent period of a
+fixed-sized window. However, its current mining result totally
+depends on recently generated transactions in the range of the
+window. Due to this reason, this approach is a primitive way of
+disregarding obsolete information. In addition, all the transactions
+in the window need to be maintained in order to remove their
+effects on the current mining result when they are out of the range
+of a sliding window.
+In terms of information differentiation, the SWF algorithm [4]
+uses a sliding window to find frequent itemsets in the fixed
+number of recent transactions. The sliding window is composed of
+a sequence of partitions. Each partition maintains a number of
+transactions. The candidate 2-itemsets of all transactions in the
+window are maintained separately. When the window is advanced,
+the oldest partition is disregarded and a new partition containing
+newly generated transactions is appended to the window. At the
+same time, the candidate 2-itemsets of the advanced window are
+adjusted. Subsequently, all possible candidate itemsets are
+generated by these candidate 2-itemsets. The new set of frequent
+itemsets is identified by scanning the transactions of the slid
+window. A more flexible way of information differentiation is
+presented in [5] where correlations among co-evolving time
+sequences are analyzed. The missing values of the sequences are
+estimated and their future values are predicted. In order to identify
+the recent change of correlations adaptively, a forgetting factor is
+used to diminish the effect of old correlations among sequences. A
+forgetting factor determines how fast the effect of old information
+is faded away. This type of an information decay model is also
+introduced in NIDES [6] for anomaly intrusion detection. NIDES
+models the historical behavior of a user’s activities in terms of
+various measures and generates a long-term profile containing a
+statistical summary for each measure. In order to concentrate on
+the recent behavior of the user, the statistics of old activities in the
+long-term profile are decayed as new activities are performed by
+the user.
+This paper proposes a method of finding recent frequent itemsets
+adaptively over an online data stream. It examines each
+transaction in a data stream one-by-one without any candidate
+generation. The occurrence count of a significant itemset that
+appears in each transaction is maintained by a prefix-tree lattice
+structure in main memory. The effect of old transactions on the
+current mining result is diminished by decaying the old
+occurrence count of each itemset as time goes by. In addition, the
+rate of decay old information is flexibly defined as needed. The
+total number of significant itemsets in main memory is minimized
+by delayed-insertion and pruning operations of an itemset. As a
+result, its processing time is flexibly controlled while sacrificing
+its accuracy.

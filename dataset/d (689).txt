@@ -1,0 +1,60 @@
+In this section, we consider a core problem in query processing
+in wide area sensor databases, and demonstrate the challenges in
+solving this problem.
+We would like to evaluate an XPATH query on a single XML
+document that has been fragmented across multiple sites. Consider
+the example query in Figure 2 and the document fragment (at the
+New York site) in Figure 3. The query asks for all available parking
+spaces in two adjacent blocks of Soho and Tribeca. If this query is
+posed to the New York site, parking space 1 in Soho block 1 will be
+returned. The challenge is in determining whether this is the entire
+answer. In particular, are there other parking spaces in block 1 of
+Soho? Moreover, no parking spaces were returned from Tribeca:
+was that because they are all taken or the site database was missing
+Tribeca? This information cannot be determined solely from the
+query answer.
+How might we try to solve this problem? First, we might try
+splitting the XPATH query into two queries, one for Soho and one
+for Tribeca, but we would not learn anything more. Second, we
+might try augmenting the database with place holders (e.g., for
+Tribeca) that tag missing data. However, unless the site database
+contains placeholders for all data in New York, which is not a scalable
+solution, the XPATH query would not return all the needed
+placeholders. E.g., adding
+<neighborhood @id=’Tribeca’ @tag=’placeholder’>
+to the New York site would not change the answer, because the
+query calls for specific data within the Tribeca neighborhood. Finally,
+we might try maintaining meta information about what fragment
+of the XML document is in the site database. There is a tradeoff
+between how much meta data we would need and how flexible
+the partitioning is — this approach may require significant restrictions
+on the fragmentation, otherwise the meta data may be as large
+as the database itself! Moreover, given an XPATH query, it is not
+clear how to combine this meta data outside the database with what
+is inside the database. For example, suppose that neighborhoods
+had a numberOfFreeSpots attribute and parking spaces had a price
+attribute, and the query asks for available no cost spots in block 1
+of Soho and Tribeca:
+/usRegion[@id=’NE’]/state[@id=’NY’]/city[@id=’New York’]
+/neighborhood[@id=’Soho’ OR @id=’Tribeca’]
+[@numberOfFreeSpots > 0]
+/block[@id=’1’]/parkingSpace[available=’yes’][@price=’0’]
+If the site database contained this attribute for both neighborhoods,
+and the meta data reflected this, then whether or not we need to
+visit the site(s) containing Tribeca block data depends on the value
+of this attribute. In order to make this decision, we would need
+to determine that a specific subquery requesting just this attribute
+should be posed to the site database, and then combine its answer
+with the meta data – clearly this would not be easy. Given the generality
+of XPATH queries, this type of scenario may arise frequently
+and in more complicated contexts.
+A better approach is to include inside the database any meta information
+on what fragment of the XML document is present at
+the site, as tag attributes associated with the relevant portions of
+the database. These attributes must indicate not only what data
+is present or missing, but which sites to visit to find the missing
+data. As illustrated above, XPATH is insufficiently powerful to effectively
+use these tags. In the next section, we present our novel
+solution to these challenges, based on the more powerful XSLT language.
+Our technique solves these fragmentation challenges, and
+moreover, it enables very flexible query result caching at the sites.

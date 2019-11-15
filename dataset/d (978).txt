@@ -1,0 +1,35 @@
+Advances in radio, sensor, and VLSI technology will enable small and inexpensive sensor nodes capable of wireless
+communication and significant computation. Large-scale networks of such sensors may require novel data dissemination
+paradigms which are scalable, robust, and energy-efficient [7]. One such paradigm is directed diffusion [12]
+which incorporates data-centric routing and application-specific processing inside the network (e.g., data aggregation).
+Given that the communication cost is several orders of magnitude higher than the computation cost [16],
+directed diffusion can achieve significant energy savings with in-network data aggregation. This benefit of data
+aggregation has been confirmed theoretically [14] and experimentally [10].
+The instantiation of directed diffusion described in the earlier work establishes low-latency paths between
+sources (sensor nodes that detect phenomena) and sinks (user nodes) using only localized algorithms. Data from different
+sources can be opportunistically aggregated at intermediate nodes along the established paths. Energy-wise,such path selection with opportunistic aggregation is not optimal because paths from different sources to a sink may
+not be early shared or merged. Thus, data may not be aggregated (or reduced) near the sources (Figure 1). To achieve
+more energy savings, one could design another diffusion instantiation which favors path selection to increase early
+sharing of paths and reduce energy consumpition.
+However, there are drawbacks for early path sharing: higher latency and less robustness. Some paths will
+be longer to trade off for early aggregation. Given that an aggregate generally contains more information than a
+non-aggregated message, a loss of an aggregate adversely impacts the quality of the result more than a loss of a
+non-aggregated message. Conversely, there are practical constraints that favor early path sharing. For example, the
+early aggregation reduces overall traffic which is preferable, given the limited bandwidth (Section 5).
+Nevertheless, it is not obvious that such path optimization will practically lead to significant energy savings.
+Specifically, the additional cost of establishing the optimal aggregation tree could be dramatically high. Assuming
+perfect aggregation (i.e., the data size of an aggregate is equal to the data size of an individual event), the cost of the
+tree is the number of links on the tree. Therefore, finding the optimal aggregation tree is computationally infeasible
+because it is equivalent to finding the Steiner tree that is known to be NP-hard [23]. Thus, we do not expect to get
+an optimal tree. Imperfect aggregation and a sub-optimal aggregation tree can further limit the energy savings.
+One promising heuristic is a greedy incremental tree (GIT) [18]. To construct a greedy incremental tree, a
+shortest path is established for only the first source to the sink whereas each of the other sources is incrementally
+connected at the closest point on the existing tree. In this paper, we propose a new instantiation of directed diffusion
+that uses a GIT-like algorithm (Section 4) to improve path sharing. We have implemented this greedy-tree approach
+in ns-2 and we compare it to our prior opportunistic approach (Section 5). Our preliminary result suggests that
+although the two are roughly equivalent at low-density networks, the greedy-tree can achieve signficant energy
+savings at higher densities. Recent work has compared the greedy incremental tree with the shortest path tree
+(SPT) using abstract simulations [14]. Based on the event-radius model and the random sources model, their results
+indicate that the transmission savings by the GIT over the SPT do not exceed 20%. However, the energy savings
+of our greedy aggregation can definitely be much higher than 20%, given our source placement schemes and highdensity
+networks (Section 5.4).

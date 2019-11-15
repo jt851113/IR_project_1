@@ -1,0 +1,19 @@
+4.3.2. Sketch Sizes and Compression As men-
+tioned earlier, the other main limitation of sensor net-
+works is their limited bandwidth. This limitation is
+a cause for concern when comparing sketching based
+techniques against the spanning tree strategies of TAG.
+While 2 bytes of data per packet will generally suAce
+for TAG, a single 16 bit sketch takes the same amount
+of space and our later experiments will actually be us-
+ing 20 sketches per packet for a single aggregate. How-
+ever, as one might guess from Lemma 1, these sketches
+are quite compressible. To leverage this, our experi-
+ments will use the compression techniques of [18]. In
+brief, the sketches are rst \attened", enumerating
+the rst bit of each sketch, then the second bit of each
+sketch, and so on, and then the result sequence of bits
+is run-length encoded. This reduces the space require-
+ments to about 30% of uncompressed versions. This is
+suAcient for two aggregates to be sketched within one
+TinyDB packet (up to 48 bytes).

@@ -1,0 +1,110 @@
+In this paper, we adopt the general model for periodic patterns
+proposed in [4] with one exception: Instead of finding
+frequent patterns 4, our goal is to discover surprising patterns
+in an event sequence. Let E = { a l , a 2 , . . . } be a set
+of distinct events. The event sequence is a sequence of events
+in E. A periodic pattern is a list of l events that may occur
+recurrently in the sequence with period length I. The
+information carried by an event ai (al E E) is defined to
+be I(ai) = -lOglE I Prob(ai) where [ E [ and Prob(a~) are
+the number of events in E and the probability that al occurs,
+respectively. The probability Prob(ai) can be assessed
+in many ways. Without loss of generality, we adopt the following
+way to assess the information carried by an event.
+Prob(a~) = lv~"~D(~) for all ai C E where NumD(ai) and N
+N are the number of occurrences of the event al in an event
+sequence D and the length of D, respectively. This means
+that an occurrence of a frequent event carries less information/
+surprise than a rare event. Note that this also coincides
+with the original intention of information in the data communication
+community. We shall show later that this gives us
+the opportunity to handle patterns with divergent probabilities
+seamlessly. Theoretically speaking, the base of the logarithm
+function can be any real number that is greater than 1. Typically,
+I E [ is chosen to be the base to play a normalization
+role in the comput a t ion (i.e., I(a~) = 1 if Prob(ai) = U1E -T). For
+example, the sequence in Figure 2 contains 6 different events
+al, a2, a3, a4, as, and a6. Their probabilities of occurrence
+and information are shown in Table 1.
+A pattern of length l is a tuple of l events, each of which
+is either an event in E, or the eternal event (represented by
+symbol *). An eternal event is a virtual event that matches
+any event in E and is used to represent the "don't care" position
+in a pattern. By definition, the information of the eternal
+event * is I ( , ) -- -lOglziProb(* ) = 0 since Prob(*) = 1. An
+intuitive interpretation is that the occurrence of an event that
+is known to be always true does not provide any "new information"
+or "surprise". A pattern P with length l is in the form
+4For a pattern s in a sequence dl,d2,... ,dN, the frequency
+count is defined as [ {i I 0 < i < ]~-~, and the string s is true in
+d~l,l+~,..., d~j~l+l,I}of (Pl,p2 . . . . ,Pl) where pi E E U {*} (1 < i < l) and at least
+one position has to be filled by an event in E 5. P is called
+a singular pattern if only one position in P is filled by an
+event in E and the rest positions are filled by *. Otherwise, P
+is referred to as a complex pattern. For example, (*, a3,*)
+is a singular pattern of length 3 and (a2, a6, *, a2) is a complex
+pattern of length 4. Note that an event may have multiple
+occurrences in a pattern. As a permutation of a list of events,
+a pattern P = (pl,p2,...,pl) will occur with a probability
+Prob(P) = Prob(pl) x Prob(p2) x ... x Prob(pt) in a random
+event sequence if no advanced knowledge on correlation among
+these events is assumed. Then the information carried by P is
+I(P) = - 1ogle , Prob(P) = I(pl) + I(p2) +... + I(pt). It follows
+directly that the information of a singular pattern always
+equals to the information of the event specified in the pattern.
+This property provides a natural bridge between events
+and patterns. For example, I ( ( . , a6, *, *)) = I(a6) = 1.45 and
+I((a2, a6, *, *)) m I(a2) + I(aa) = 0.90 + 1.45 = 2.35 according
+to Table 1.
+Given a pattern P = (pl,p2,...,pt) and a segment S of l
+events sa,sz,... ,st, we say that S supports P if, for each
+event pi (1 < i < I) specified in P, either pi = * or pi =
+s~ is true. The segment a2,a6,a3,a2 supports the pattern
+(a2, a6, *, *) while the segment al, a6, a4, a5 does not. To assess
+whether a pattern of length 1 is surprising in an event
+sequence D, D is viewed as a list of disjoint contiguous segments,
+each of which consists of 1 events. The number of segments
+that support P is also called the support of P (denoted
+by Support(P)). The event subsequence 6 consisting of the list
+of segments that support P is called the projected subsequence
+of D on P. In Figure 2, the event sequence consists of
+40 events. When mining periodic patterns with I = 4, it can be
+viewed as a list of 10 segments, each of which contains 4 events.
+The support of (a2, a6, *, *) is 3 in the sequence and the projected
+subsequence on (a2, a6, *, *) is a2, a6, a3, a2 a2, a~, as, a2,
+a2, a6, a2, a2. As a measurement of the degree of surprise of a
+pattern P in an event sequence D, the information gain of
+P in D is defined as G(P) = I(P) x (Support(P) - 1). Since
+our objective is to mine surprising periodic patterns, an event
+combination appearing in the event sequence which never recurs
+is of little value in this problem domain. Therefore, in
+the proposed model, only recurrences of a pattern will have
+positive contribution to the information gain. Support(P) - 1
+is indeed the number of recurrences of P. In the rest of the
+paper, we will use Repetition(P) to denote it. For example,
+Repetition((a2, a6, *, *)) = 3 - 1 = 2 and G((a2, a6, *, *)) =
+2.35 x 2 = 4.70 in Figure 2.
+Similar to the support model, an information gain thresh-
+5This requirement is employed to exclude the trivial pattern
+(% * , . . . , *) from being considered.
+6Given two sequences D and D/, D is a subsequence of D /
+if D can be obtained by removing some events in D ~ .
+old, rain_gain, is specified by the user to define the minimum
+information gain to qualify a surprising pattern. Given an
+event sequence and an information gain threshold, the goal is
+to discover all patterns whose information gains in the event
+sequence exceed the threshold. Obviously, the proper value of
+this threshold is application dependent and may be specified
+by a domain expert. A user may use the following heuristic to
+choose the value of min_gain. If a pattern with probability p
+is regarded as a surprising pattern when it repeats itself by at
+least n times in the sequence. Then the rain_gain can be set
+to (-1oglE[p ) x n where -1OglE [ p is the information of the
+pattern.
+To facilitate the explanation in the rest of the paper, we
+refer to a pattern, say P, as a subpattern of another pattern,
+say P', if P can be generated by replacing some event(s) in
+P' by the eternal event *. P' is called a superpattern of P.
+For example, (a2, a6, *, *) and (*, a6, *, *) are subpatterns of
+(a2, a6, *, a~). The pattern-subpattern relationship essentially
+defines a partial order among patterns of the same length

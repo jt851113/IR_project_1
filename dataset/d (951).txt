@@ -1,0 +1,18 @@
+The key advantage of Fjords
+is that they allow distributed query plans to use a mixture
+of push and pull connections between operators. Push or
+pull is implemented by the queue: a push queue relies on its
+input operator to	
+
+data into it which the output operator
+can later. A pull queue actively requests that the input
+operator produce data (by calling itsmethod) in response to
+acall on the part of the output operator.
+Push queues make sensor streams feasible. When a sensor
+tuple arrives at a sensor proxy, that proxy pushes those
+tuples onto the input queues of the queries which use it as a
+source. The operators draining those queues never actively
+call the sensor proxy; they merely operate on sensor data as
+it is pushed into them. With this high level view of Fjords
+in mind, We now present a detailed view of the internals of
+a Fjord operator.

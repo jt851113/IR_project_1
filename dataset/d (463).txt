@@ -1,0 +1,12 @@
+In this paper, we focus on mining periodic patterns allowing
+some degree of imperfection in the form of random replacement
+from a perfect periodic pattern. In InfoMiner+, we proposed a
+new metric, namely generalized information gain, to identify
+patterns with events of vastly different occurrence frequencies
+and to adjust for the deviation from a pattern. In particular, a
+penalty is allowed to be associated with gaps between pattern
+occurrences. This is particularly useful in locating repeats in
+DNA sequences. In this paper, we present an effective mining
+algorithm, STAMP, to simultaneously mine significant patterns
+and the associated subsequences under the model of generalized
+information gain.

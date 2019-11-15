@@ -1,0 +1,3 @@
+In this section, we describe our solution to the challenges outlined
+in the previous section. We begin with an overview of the
+system before describing the various components in detail.

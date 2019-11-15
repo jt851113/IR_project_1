@@ -1,0 +1,79 @@
+Existing sensor motes have a small word size (8 or
+16 bits), lack oating point hardware and have little
+available memory for pre-computed tables. For these
+reasons, standard methods for drawing from the bino-
+mial distribution are unsuitable. Here, we outline a ran-
+domized algorithm which draws from B(n; p) in O(np)
+expected running time using O(1=p) space in a pre-
+computed table and without use of oating point oper-
+ations. We rst note the following relationship between
+drawing from the binomial distribution and drawing
+Fact 1 Suppose we have a method to repeatedly draw at
+random from the geometric distribution G(1 ?? p). Let d
+be the random variable that records the number of draws
+from G(1 ?? p) until the sum of the draws exceeds n. The
+value d ?? 1 is then equivalent to a random draw from
+B(n; p).
+The expected number of draws d from the geomet-
+ric distribution using this method is np, so to bound the
+expected running time to draw from B(n; p), we simply
+need to bound the running time to draw from G(1??p).
+We will make use of the elegant alias method of [19] to
+do so in O(1) expected time. In [19] Walker demon-
+strates the following (which has a simple and beautiful
+implementation):
+Theorem 7 (Walker) For any discrete probabil-
+ity density function D over a sample space of size k, a
+table of size O(k) can be constructed inO(k) time that en-
+ables random variables to be drawn from D using two
+table lookups.
+We can apply this method directly to construct a ta-
+ble of size n+1 in which the rst n elements of the pdf D 
+respectively correspond to the probabilities pi of draw-
+ing from the geometric distribution G(),
+and the nal element corresponds to the tail probabil-
+ity of drawing any value strictly larger than n from
+G(). Note that for simulating a draw from B(n; p)
+using the method implicitly dened by Fact 1, we never
+care about the exact value of a draw from G() that
+is larger than n. This direct application enables O(1)
+draws from G() in O(n) space, thus yields O(np)
+expected running time to draw from B(n; p).
+To achieve O(1=p) space, we make use of the memo-
+ryless property of the geometric distribution (which the
+binomial distribution does not have). Instead of stor-
+ing the rst n probabilities pi for the geometric distri-
+bution, we store only the rst d1=pe such probabilities,
+and a nal element corresponding to the tail probabil-
+ity of drawing any value strictly larger than d1=pe from
+G(). By the memorylessness property, if we select
+the event corresponding to the tail probability, we can
+recursively draw again from the table, setting our out-
+come to d1=pe + x, where x is the result of the recur-
+sive draw. The recursion terminates whenever one of
+the rst d1=pe events in the table is selected, or when-
+ever the accumulated result exceeds n. Since 1=p is the
+expectation of G(), this recursion terminates with
+constant probability at each round, and thus the ex-
+pected number of table lookups is O(1). Further re-
+duction in space is possible, but at the cost of incur-
+ring a commensurate increase in the expected number
+of recursive calls.
+Using table sizes of d1=pe and assuming a maxi-
+mum sensor value of ci  216 (from a 16 bit word
+size), the lowest value of p used in summation sketches
+will be 162=216 = 1=28. Therefore, we will have ta-
+bles for p = 1=21; : : : ; 1=28, with 2; : : : ; 28 entries each,
+respectively. Walker's method utilizes two values for
+each entry - the rst is an index into the table and
+the second is a real value used for comparison. The in-
+dex value only requires one byte since the largest ta-
+ble size is 28, and a 64 bit xed-point real value (8
+bytes) should more than suAce. This gives a total ta-
+ble size of P8
+i=1(2i)  (1 + 8) = 4590 bytes. This can
+be improved further by reducing the number of entries
+in each table as mentioned before. The smaller tables
+(e.g. for p = 1=2 and p = 1=4) can also be removed in
+favor of directly simulating the \coin ips" of the geo-
+metric distribution, but with negligible space savings.

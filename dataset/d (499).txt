@@ -1,0 +1,7 @@
+Burst detection is an important component of data stream processing.
+Apart from monitoring applications where the identification
+of bursts is the primary task, burst detection is also a useful
+task for data cleaning. Thus, the goal of our work is a tight integration
+of burst detection operators into a stream processing engine.
+In the following, we describe this approach as part of our DSMS
+StreamDB.

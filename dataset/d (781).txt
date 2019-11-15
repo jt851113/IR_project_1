@@ -1,0 +1,128 @@
+Introduction
+Recent advances in data collection and storage technology
+have made it possible for many companies to keep large
+amounts of data relating to their business online. At the
+same time, cheap computing power has also made some
+automatic analysis of this data feasible. This activity is
+commonly referred to as data mining.
+One major application domain of data mining is
+in the analysis of transactional data. It is assumed
+that the database system records information about user
+transactions, where each transaction is a collection of
+items. In this setting, association rules capture interrelationships
+between various items. An association
+rule captures the notion of a set of items occurring together
+in transactions. For example, in a database maintained
+by a supermarket, an association rule might be of
+the form “beer
+
+chips (support: 3%, confidence: 87%)”,
+which means that 3% of all database transactions contain
+the items beer and chips, and 87% of the transactions that
+have the item “beer” also have the item “chips” in them.
+The two percentage parameters above are commonly referred
+to as “support” and “confidence” respectively.
+Typically, the data mining process is controlled by a
+user who sets minimum thresholds for the support and confidence
+parameters. The user might also impose other restrictions,
+like restricting the search space of items, in order
+to guide the data mining process.
+Following the pioneering work of [AIS93], discovery
+of association rules has been extensively studied in [AS94,
+SA95, HF95, SON95, PCY95, SA96, FMMT96, Toi96].
+However, all the above work treat all the data as one large
+segment, with no attention paid to segmenting the data over
+different time intervals. To illustrate, let us return to our
+previous example. It may be the case that beer and chips are
+sold together primarily between 6PM and 9PM. Therefore,
+if we segment the data over the intervals 7AM–6PM and
+6PM–9PM, we may find that the support for the beer and
+chips rule jumps to 50%.
+From the above example we can conclude that although
+an association rule may have the user specified minimum
+confidence and support within the entire time spectrum,
+analysis of the data in finer time granularity may reveal that
+the association rule exists only in certain time intervals,
+and does not occur in the remaining time intervals. Even
+casual observation of many association rules over monthly
+data may disclose seasonal variation where peaks occur at
+approximately the same month in each year. Association
+rules could also display regular hourly, daily, weekly, etc.,
+variation that has the appearance of cycles. It is also possible
+that an association rule does not have the user specified
+minimum confidence and/or support over the entire
+time spectrum, but its confidence and support are above the
+minimum threshold within certain time intervals. If these
+time intervals display a periodicity, discovering these rules
+and their periodicities may reveal interesting information
+that can be used for prediction and decision making.
+Let us nowexamine another supermarket example where
+we are analyzing sales data over several months. Assume
+that we are interested in the selling patterns of the items coffee
+and doughnuts. If we were to look at the overall support
+for coffee and doughnuts occurring together in transactions,
+we might discover that the two items do not have enough
+support (i.e., these items do not meet the minimum thresh-
+old for support specified by the user). However, if we look
+into hourly sales figures, we might discover that coffee and
+doughnuts have a strong tendency to occur together with
+high support during the time interval 7AM–9AM! That is,
+“coffee
+
+doughnuts” during the interval 7AM–9AM every
+day. Further analysis might also reveal a larger weekly
+tendency wherein coffee and doughnut sales dip during
+weekends.
+Discovering such regularities in the behavior of association
+rules over time are the subject of this paper. We
+believe that our techniques will enable marketers to better
+identify trends in sales and allow for better forecasting of
+future demand.
+We assume in this paper that the transactional data to be
+analyzed is time-stamped and that time intervals are specified
+by the user to divide the data into disjoint segments.
+We believe that users will typically opt for “natural” segmentations
+of the data based on months, weeks, days, etc.,
+and that users are best qualified to make this decision based
+on their understanding of the underlying data. Addressing
+issues like overlapping and/or hierarchical segmentations,
+and automatically determining a good segmentation are
+outside the scope of this paper.
+We refer to an association rule as cyclic if the rule has
+the minimum confidence and support at regular time intervals.
+Such a rule need not hold for the entire transactional
+database, but rather only for transactional data in a particular
+periodic time interval. That is, each cyclic rule
+must have the user specified minimum support and confidence
+over a specific periodic time interval. Upper and
+lower bounds for the periods of such time intervals will be
+specified by the user. We define the problem of mining
+cyclic association rules as the generation of all the cycles
+of association rules. Given a large database consisting of
+transactional information, where each transaction consists
+of a transaction-id, a set of items and a time-stamp, our
+goal is to provide efficient algorithms to discover cyclic
+association rules.
+We first consider a relatively straightforward extension
+of existing association rule mining techniques for solving
+this problem. This extension treats association rules and
+cycles independently. It applies one of the existing methods
+for discovering association rules to each segment of
+data and then applies pattern matching algorithms to detect
+cycles in association rules. By studying the interaction between
+cycles and association rule mining more closely, we
+identify techniques called cycle pruning and cycle skipping
+which allowus to significantly reduce the amount of wasted
+work performed during the data mining process. We then
+show the effectiveness of these techniques by presenting
+the results of a series of experiments.
+The remainder of this paper is organized as follows.
+In the next section, we define the problem of discovering
+cyclic association rules formally. In Section 3, we discuss
+the shortcomings of the existing techniques to discover
+cyclic association rules and present two new techniques to
+solve this problem. Implementation details of our prototype
+are described in Section 4. The experimental evaluation of
+the two techniques is presented in Section 5. Finally, we
+present our conclusions in Section 6 and identify directions
+for future research.

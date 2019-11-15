@@ -1,0 +1,30 @@
+When the information of a transaction is rapidly decayed, the
+resulting set of recently frequent itemsets may be too sensitively
+varied since it is dominated by the itemsets of newly generated
+transactions. This type of fluctuation in the set of frequent
+itemsets is meaningless. In order to avoid this, a safety factor γ is
+introduced. It is defined by the maximum number of most recently
+generated consecutive transactions that contains a new itemset
+while the itemset remains as an infrequent itemset. The resulting
+set of recently frequent itemsets in a data stream Dk becomes
+stable when the decay-base-life h of a decay rate  is
+set to be greater than or equal to its lower bound   defined in
+Theorem 2. If a decay-base-life h is less than its lower bound hLB,
+an itemset whose current count is less than the safety factor γ may
+become a frequent itemset.
+Theorem 2. Given a minimum support Smin, a safety factor γ and a
+decay-base b, the decay-base-life h of a decay rate 
+should be greater than or equal to its lower bound  defined as
+follows:
+(Proof)
+When a new itemset e appears in most recently generated γ
+consecutive transactions in a data stream Dk, its
+. Consequently, its support Sk(e) is always
+greater than 
+since the maximum value
+of . The itemset should not be a frequent itemset
+for the given safety factor γ, so that its support should be always
+less than the minimum support Smin. Therefore, 
+should be satisfied.  , the lower bound of a
+decay-base-life hLB is found as follows:
+ .

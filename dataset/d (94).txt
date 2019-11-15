@@ -1,0 +1,15 @@
+The contribution made by this work is twofold:
+‧ So far, the trade-off between absolute profile size and
+retrieval effectiveness has not been evaluated thoroughly
+for P2PIR. The studies in DIR [18, 6] explore just one
+or two values for profile size and the only study in
+P2PIR [3] does not use absolute profile sizes.
+‧ So far, many advanced solutions to collection selection
+and query routing have been proposed and most
+of them have been evaluated in isolation. There have
+been comparative evaluations in DIR [10], but, to the
+best of my knowledge, this is the first evaluation that
+compares a selection of approaches against each other
+in a unified P2PIR evaluation setting, including methods
+for profile adaptation that have not been explored
+in DIR.

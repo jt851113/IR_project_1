@@ -1,0 +1,38 @@
+Our first approach to compute k-dominant skyline points
+from an input data set D (over a set of dimensions S) is
+similar in spirit to the nested-loop approach [2] in that it
+makes one sequential scan of the data set. The algorithm
+(shown in Algorithm 1) is based on the following two key
+properties.
+To determine if a point p is k-dominant, property P2 implies
+that it is not sufficient to use only k-dominant skyline
+points to compare against p since it is possible for p to be
+not k-dominant even though it is not k-dominated by any
+of the k-dominant points. On the other hand, property P1
+implies that it is sufficient to compare p against the set of
+free skyline points (instead of all the points in D) to detect
+if a point p is k-dominant. Thus, based on Lemma 4.1, our
+algorithm computes k-dominant skyline points by actually
+computing the free skyline points in D and using them to
+eliminate non-k-dominate skyline points. Specifically, two
+sets of intermediate points are maintained as D is being
+processed: (1) R stores the set of intermediate k-dominant
+skyline points in D, and (2) T stores the set of intermediate
+skyline points in D that are not k-dominant (i.e., not in R).
+Together, R ∪ T gives the set of skyline points in D. Since
+T is used only for pruning purpose, we can minimize the
+size of T by storing only the unique skyline points; i.e., a
+new (non-k-dominant) skyline p is added to T only if .
+As an additional preprocessing optimization, the points in
+D can be first sorted in non-ascending order of the sum of all
+their dimension values (step 1). The purpose of this heuristic,
+which was first proposed in [4], is to try to maximize the
+number of skyline points that occur before the non-skyline
+points in D so that the non-skyline points are eliminated as
+early as possible thereby reducing the overhead of maintaining
+them before they are pruned.
+Example 4.1 Applying the One-Scan algorithm (with k =
+5) on the data set D in Fig. 1, points p1, p2, and p3 will
+each be inserted into R. However, p4 will be inserted into T
+since it is 5-dominated by p1. Thus, the algorithm returns
+{p1, p2, p3} as the set of 5-dominant skyline points.

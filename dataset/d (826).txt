@@ -1,0 +1,23 @@
+The key components of our design are (a) temporal filtering (b)
+wavRoute, our routing protocol for spatial wavelet subband decomposition
+(c) distributed long-term storage through adaptive wavelet
+thresholding. We outline key features of the system, and discuss
+cost metrics that tradeoff communication, computation, storage complexity,
+and system performance. A few usage models of the storage
+system are described, including multi-resolution data extraction,
+spatio-temporal data mining, and feature routing. To facilitate
+the description, we use a simplified grid topology model, whose parameters
+are defined in Table 2. We expect to relax this assumption
+in future work (Section 8).
+The approach to DIMENSIONS is based on wavelet subband
+coding, a popular signal processing technique for multiresolution
+analysis and compression [5, 6]. Wavelets offer numerous advantages
+over other signal processing techniques for viewing a spatiotemporal
+dataset (a) ability to view the data at multiple spatial and
+temporal scales (b) ability to extract important features in the data
+such as abrupt changes at various scales thereby obtaining good
+compression (c) easy distributed implementation and (d) low computation
+and memory overhead. The crucial observation behind
+wavelet thresholding when applied to compression is that for typical
+time-series signals, a few coefficients suffice for reasonably
+accurate signal reconstruction.

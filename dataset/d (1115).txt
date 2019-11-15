@@ -1,0 +1,34 @@
+A transaction T = (tid, X) is a 2-tuple, where tid indicates the transactionid
+and X is a pattern. Transaction T = (tid, X) is said to contain pattern Y
+iff Y ? X. A transaction database TDB is a set of transactions. Extending
+the problem of mining frequent patterns, the frequent FT-pattern mining
+problem relaxes the definition of containing to FT-containing. The definition
+of proportional frequent FT-patterns is given as follows.
+Definition 2.1 (Proportional frequent FT-pattern) [7]
+Let P be a pattern. A transaction T = (tid, X) is said to FT-contain
+pattern P with respect to a given FT parameter δ (0.5 < δ < 1) iff there
+exists P' ? P such that P' ? X and P'    P  . The number of transactions
+in a database FT-containing pattern P is called the FT-support of
+P, denoted as supFT(P).
+Let B(P) be the set of transactions FT-containing pattern P. Given a
+frequent item-support threshold min_supitem
+and an FT-support threshold
+min_supFT, a pattern P is called a frequent FT-pattern iff
+In [7], a graph structure called FT-association graph is proposed to
+present the original database. With this structure, PFM algorithm is proposed
+to mine proportional FT-pattern. In the following, we show the
+most important lemma proposed in [7] which was used to prune candidates
+once the FT-association graph is constructed.
+Lemma 2.1. If an item y is away from x for the distance greater than 2 in
+the FT-association graph, then a pattern P containing both x and y cannot
+be a frequent FT-pattern.
+The whole process of PFM can be decomposed into three parts. The
+first part is data preprocessing. In this step, the original database is trans
+formed into a bitmap and FT-association graph is constructed. The second
+part is candidate generation and pruning. Instead of scanning the entire
+database, PFM only loads part of the bitmap according to the items of
+each candidate in the candidates checking phase. That is, when generating
+candidates containing item x, by Lemma 2.1, only item y such that d(x, y)
+? 2 is considered to compose to a candidate with x. The last part is to
+check the loaded bitmap to determine whether the candidates generated in
+the second part are frequent FT-patterns.

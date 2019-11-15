@@ -1,0 +1,61 @@
+Crossbow Technology, Inc. 2003. "MICA: Wireless
+Measurement System." <http://www.xbow.com/Prod
+ucts/Product_pdf_files/Wireless_pdf/MICA.pdf>
+Elson, J., Bien, S., Busek, N., Bychkovskiy V., Cerpa,
+A., Ganesan, D., Girod, L., Greenstein, B., Schoellhammer,
+T., Stathopoulos, T., Estrin, D. 2003.
+"EmStar: An Environment for Developing Wireless
+Embedded Systems Software." Center for Embedded
+Networked Sensing Technical Report 009, University
+of California, Los Angeles.
+Elson, J. & Estrin, D. "Time Synchronization for
+Wireless Sensor Networks." In 2001 International
+Parallel and Distributed Processing Symposium
+(IPDPS), Workshop on Parallel and Distributed Computing
+Issues in Wireless Networks and Mobile
+Computing, San Francisco, USA, April 2001.
+Intanagonwiwat, C., Estrin, D., Govindan, R., &
+Heidemann, J. 2001 "Impact of network density on data
+aggregation in wireless sensor networks." Technical
+Report 01-750, University of Southern California.
+Karl, H., Lobbers, M. & Nieberg, T. 2003. "A Data
+Aggregation Framework for Wireless Sensor Networks."
+Technical University Berlin Telecommunication
+Networks Group Technical Reports Series.
+Krishnamachari, B., Estrin D. & Wicker, S. 2002.
+"Impact of Data Aggregation in Wireless Sensor
+Networks." In Proc. of the IEEE International Workshop
+on Distributed Event-Based Systems (DEBS), pp
+575–578, Vienna, Austria.
+Ledeczi, A., Maroti, M. & Bartok, I. 2001. "Simple
+NEST Application Simulator (Siesta 02-05-02)." (part
+of the latest Siesta distribution). <http://www.isis.
+vanderbilt.edu/projects/nest/downloads.asp>
+Levis, P., Lee, N., Welsh, M. & Culler, D. 2003.
+"TOSSIM: Accurate and Scalable Simulation of Entire
+TinyOS Applications." In Proc. of the First ACM
+Conference on Embedded Networked Sensor Systems
+(SenSys) (to appear).
+Madden, S., Szewczyk, R., Franklin, M., & Culler, D.
+2002. "Supporting Aggregate Queries Over Ad-Hoc
+Wireless Sensor Networks." In Proc. of 4th IEEE
+Workshop on Mobile Computing and Systems Applications.
+Mechitov, K., Sundresh, S., Kwon, Y., & Agha, G.
+2003. “Cooperative Tracking with Binary-Detection
+Sensor Networks.” Technical Report UIUCDCS-R-
+2003-2379, Department of Computer Science, University
+of Illinois at Urbana-Champaign.
+Niculescu, D. & Nath, B. 2001. "Ad Hoc Positioning
+System (APS)." In Proc. of the 2001 IEEE Global
+Communications Conference.
+Park, S., Savvides, A. & Srivastava, M.B. 2000. "SensorSim:
+A Simulation Framework for Sensor Networks."
+In Proc. of the 3rd ACM International Workshop
+on Modeling, Analysis and Simulation of Wireless
+and Mobile Systems (MSWiM 2000), pp 104–111.
+Perrone, L.F. & Nicol, D.M., 2002. "A Scalable Simulator
+For TinyOS Applications." In Proc. of the 2002
+Winter Simulation Conference.
+Ulmer, C. 2000. "Wireless Sensor Probe Networks -
+SensorSimII." <http://users.ece.gatech.edu/~grimace/
+research/sensorsimii/>

@@ -1,0 +1,26 @@
+We use the apriori algorithm from [AS94] as our basic
+data mining algorithm. The sequential algorithm is
+based directly on apriori, with optimizations to speed up
+the counting of support of itemsets of size 2. We use an
+array for this instead of a hash-tree when memory permits.
+We found the array to be a much faster technique for discovering
+2-itemsets.
+The interleaved algorithm uses a hash-tree, described
+in [AS94], to store the large itemsets, their patterns and
+support counts. In addition, during the processing of an
+individual time segment, the interleaved algorithm uses a
+temporary hash-tree as well. Candidate generation (generation
+of itemsets of size   1 and their candidate cycles
+from itemsets of size  ) is based on cycle pruning. Figure
+1 outlines the first phase of the interleaved algorithm
+(cyclic large itemset detection) in psuedo-code. After that,
+we apply a generalization of the rule generation procedure
+in [AS94] for cyclic association rule generation.
+We conducted our experiments on a lightly loaded Sun
+Sparc 20 machine with 64 MB of memory running Solaris
+2.5.1. A Seagate 9 GB SCSI disk was used for our experiments.
+The hard disk had a streaming read throughput
+of about 5 megabytes/sec (MBps) and a streaming write
+throughput of about 4 MBps. Since our experiments were
+CPU bound most of the time, we only report wall clock
+times for the various experiments.

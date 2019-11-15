@@ -1,0 +1,22 @@
+PISCES requires approximate global statistics, e.g. total number
+of nodes N, total query number Nq, query distribution Pq and average
+number of nodes joining/leaving Nu. However, in P2P systems,
+it is not only costly to collect these statistics, the dynamism of the
+system will render any accurate statistics obsolete very quickly.
+Sampling techniques have been applied to unstructured P2P networks
+in [8, 36]. The sampling algorithm in unstructured P2P networks
+try to sample each peer in the same probability. In DHT
+network, this issue is no longer a problem for the use of consistent
+hashing. By sampling the nodes through randomly generated
+IDs, we will sample each node in the same probability. As
+shown in Manku’s scheme [27, 26], the estimation error can be
+bounded by a constant factor. However, for the overlays supporting
+range queries [21, 6, 7], hash function is not adopted and the
+above schemes cannot be applied in our case. Thus, in this paper,
+we introduce a new sampling scheme to address this problem.
+Previous sampling schemes periodically send sampling messages
+to the nodes in a random manner. This strategy introduces additional
+cost to P2P network. Instead, we decide to exploit the overlay’s
+protocol to do the sampling. Our scheme can be applied to
+any overlays. For simplicity in description, we again use BATON
+as an example.

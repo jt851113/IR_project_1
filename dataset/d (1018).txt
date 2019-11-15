@@ -1,0 +1,29 @@
+A partial index entails only marginal extra complexity and can
+help solve a collection of problems that a database management
+system (DBMS) faces. It was first adopted in PostgreSQL. Stonebraker
+[35] listed possible applications of the partial index. Seshadri
+and Swami [33] proposed the scheme of building a partial
+index based on statistics collected in various granularity . Through
+analysis of statistics, partial indexes are constructed for frequently
+accessed data. Experiments show that the partial index is a promising
+way to improve query efficiency. Our scheme extends the idea
+of [33] to a distributed and dynamic environment.
+The database community has proposed a series of PDMS to enhance
+the usability of P2P networks, such as Piazza [37] in unstructured
+networks and PIER [19] and Mercury [10] in structured
+networks. Compared to unstructured networks, structured ones
+provide better search efficiency but incur more maintenance overheads.
+In the case of business applications, where data are in high
+volume, maintenance messages dominate network cost in structured
+networks. [38] and [24] proposed a kind of partial indexing
+strategy by combining structured networks and unstructured networks.
+Specifically, only rare items are indexed in structured networks
+whereas the popular ones are searched via flooding in unstructured
+networks. In [25], a similar scheme is proposed to speed
+up data dissemination in structured MANETs and support approximate
+similarity search for images. The above schemes are aimed at
+improving search latency and reducing maintenance overheads. In
+this paper, we start from a different motivation. Our scheme is inspired
+by the query patterns while the others focus on data patterns.
+Our partial index is built in a JIT manner and popular queries are
+expected to be answered by the index directly.

@@ -1,0 +1,39 @@
+When it comes to n-ary relations, Data- Peeler (Cerf et al. 2009a) extracts every
+exact closed n-set whatever the arity n ? 2. Fenster reuses some of Data- Peeler’s
+enumeration principles. However, the fundamental implementation issues pertaining
+to the enforcement of the newly defined constraints C-connected and C-closed and the
+wiser choice of the element to enumerate at every recursive call make Fenster differ
+a lot from Data- Peeler. The other proposals for exact closed set discovery in
+the specific and simpler cases of binary and ternary relations are not discussed here
+(see Cerf et al. (2009a) for such a discussion). Sim et al. (2011) have recently proposed
+CGQBminer to completely list noise tolerant closed sets in ternary relations
+seen as collections of bi-partite graphs. These patterns were baptized maximal crossgraph
+quasi-bicliques by analogy with maximal cross-graph quasi-cliques. Indeed, the
+underlying noise tolerance is similar (see Sect. 7.4): in every bi-partite graph involved
+in the pattern, every vertex of a quasi-biclique is mostly connected with the others
+vertices. The dimension gathering graph labels plays a particular role in this definition
+of noise tolerance. Furthermore, the constraints it imposes on the patterns are quite
+numerous (one per couple (vertex,bi-partite graph) in the pattern).
+DCE (Georgii et al. 2009, 2011) extracts, from real-valued tensors, every dense
+n-set. The constraint “having a density greater than α ? R” relies on the mean of
+the values covered by a pattern. Such a definition suffers from a relevance problem,
+which is empirically pointed out in Sect. 5.2: an element can be part of a pattern but
+disconnected or very weakly connected with the other attributes of the pattern. That is
+why the authors also define balanced clusters in a way that is similar to ET-n-set (balanced
+clusters tolerate noise in a relative way though) but show that their framework
+cannot prune the search space with such a definition (DCE’s per-element tolerance
+to noise is enforced in a post-process). Indeed, DCE exploits the (generalized) loose
+anti-monotonicity (Bonchi and Lucchese 2005) of the density constraint and a reverse
+search paradigm (Avis and Fukuda 1996): given a dense n-set, there exists a “subpattern”
+with one element less that is dense. This element, from any attribute domain
+(hence, the “generalization”), relates to the hyperplane of the pattern with the smallest
+sum of the real values it contains. Thus, DCE is depth-first and, at every recursive
+call, enumerates n-sets with such an additional element. In this way, every candidate
+pattern is traversed once, the minimal density constraint becomes anti-monotone on
+any enumeration branch and prunes the search space. In this respect, it is alike what
+Uno (2007) does to list quasi-cliques. These enumerations principles, originating from
+the choice of a relative tolerance to noise, do not allow the same efficiency results as
+Fenster, which ends up running orders of magnitude faster (see Sect. 5.4).Moreover,
+this same choice of a relative tolerance to noise makes a closedness constraint not
+provide a lossless condensation of the dense n-sets. Without it, the size of the output
+collections is problematic (see Sect. 5.3).

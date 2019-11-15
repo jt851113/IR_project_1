@@ -1,0 +1,32 @@
+Properties and analytical models of the basic schemes
+are presented in Table 1. Based on the description of
+the basic schemes and later experiments, we find that
+the basic schemes vary on different ways of monitoring
+the physical world, but not on how they communicate
+with the base station. Thus, to manifest the differences
+of the schemes, in the analytical models we only
+take into account the energy cost for MCU and sensor
+components but not the communication cost. In the
+model, Ewake denotes the energy consumption rate
+(per second) at a sensor node by having both MCU
+and sensor components stay in active mode and ESleep
+denotes the energy consumption rate in sleeping mode.
+We assume that the OTSN has operated continuously
+for TS seconds. In all those basic schemes, the missing
+rate is 0%.
+The minimum and maximum sampling frequencies for every
+T seconds are 1 and T/X , respectively. Maximum sampling
+implies that a sensor node is awake to watch its detection area
+all the time.
+The readers should note that the solution space is a logical
+one. The visually observed distances from two different schemes
+to the ideal scheme may not accurately reflect their performance
+closeness to the ideal scheme.
+The analysis suggests that naive is the most expensive
+scheme in terms of energy consumption, since
+all the senor nodes keep awake all the time even
+though transmission only happens TS/T times. The
+ideal scheme is the most preferred one since the energy
+consumption in sleep mode for MCU and sensor
+components is much smaller than when they are in
+active mode.

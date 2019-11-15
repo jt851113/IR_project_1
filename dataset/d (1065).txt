@@ -1,0 +1,16 @@
+Assume there is an n-dimensional databaseX containingmtuples. Let d1,d2,...,dn
+be n attributes of X and let p1,p2,...,pm be m tuples of X. We use pi.dj to denote
+the j-th dimension value of pi.
+An object pi is said to dominate another object qj , denoted as pi ? qj, if
+pi.dk ? qj .dk for all attributes dk (k = 1, · · · , n) and pi.dt > qj.dt for at least
+one dimension dt (1 ? t ? n). We call such pi a dominant object and such qj
+a dominated object between pi and qj . An object pi ? X is said to be a skyline
+object of X if pi is not dominated by any other object in X.
+An object pi is said to k-dominate another object qj , denoted as pi ?k qj, if
+pi.dk ? qj.dk in k attributes among n attributes and pi.dt > qj.dt in an attribute
+dt among the k attributes. We call such pi as k-dominant object and such qj as
+k-dominated object between pi and qj . An object pi is said to be a k-dominant
+skyline object of X, if and only if there does not exist any object pj (j = i) in
+X that k-dominates pi.
+An object pi is said to have δ-domination power if there are δ attributes in
+which pi is better than or equal to all other objects of X.

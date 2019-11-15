@@ -1,0 +1,32 @@
+Pastry [20] is a self-organizing P2P system where each node
+in the Pastry overlay is assigned a b-bit identifier. The node
+id is used to indicate the location of the node in a circular
+id space ranging from 0 to 2b ! 1. The node id is assigned
+randomly when a node joins. As a result each node becomes
+responsible for a chunk of the id space. Each item, which can
+be a file for example, is also associated with a unique id by
+hashing the file content into the id space. We refer to the id
+associated with an item as a key. The Pastry routing problem
+is the following: given a query at a node for an item with a
+given id, locate the node in the system that is responsible for
+the queried item. For the purpose of routing the queries, node
+ids and keys are viewed as a sequence of digits with base 2d
+for some d. To simplify explanation, we assume d = 1 in the
+following paragraph.
+To efficiently locate queried items, each node in Pastry
+stores a few pointers to other nodes in its routing table.
+The table has a maximum of b rows, where the ith (i =
+0; 1; : : : ; b ! 1) row contains the IP address of some node
+that matches with the given node in the first i bits but differs
+in the (i+1)th bit. As noted in [20], the uniform distribution
+of the node ids ensures that, with n nodes in the system, on
+average, only log n rows of the routing table have entries.
+Given such a routing table, the routing works as follows.
+Queries are routed to the node that is numerically closest to
+the queried key. At each step, a node forwards the query to
+a node whose id shares with the key a prefix that is at least
+one digit longer than the prefix that the key shares with the
+present node’s id. This procedure ensures that, in the steady
+state, queries are routed in log n hops. The Pastry protocol has
+several additional features to efficiently handle node joins and
+leaves. The interested reader can refer to [20] for more details.

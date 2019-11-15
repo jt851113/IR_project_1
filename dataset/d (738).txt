@@ -1,0 +1,78 @@
+The definition of a closed n-set is too strict to enable the discovery of relevant patterns
+in noisy n-ary relations. The definition of a closed ET-n-set relaxes that of a closed
+n-set. It is based on absolute noise-tolerance parameters  = (i )i=1..n ? Nn. Given
+, the type of pattern that is to be mined is defined by a conjunction of two constraints,
+namely C-connected and C-closed.
+Definition 5 (C-connected) Given an n-set X, C-connected(X) ≡ ?i = 1..n, ?e ? Xi ,
+|(X1 ×· · ·×{e}×· · ·× Xn) \ R| ? i .
+Definition 6 (C-closed) Given an n-set X, C-closed(X) ≡ ?X ? ×j=1..n2Dj ,
+X  X ? C-connected(X
+) ? X = X.
+Definition 7 (ClosedET-n-set) Given an n-set X, X is a closedET-n-set iff C-connected
+(X) ? C-closed(X).
+Let us discuss the meaning of the noise-tolerance parameters on a closed ET-n-set
+(X1, . . . , Xn). The parameter i quantifies, on any element in Xi , the maximal number
+of n-tuples that are allowed to be absent fromR. In other terms, with a spatial vision of
+a pattern (an n-dimensional rectangle in R modulo permutations of the hyperplanes),
+i is the maximal number of ‘0’s on any hyperplane of the ith dimension. Furthermore
+C-closed forces (X1, . . . , Xn) to be closed, i. e., any extension of it violates C-connected.
+If ?i = 1..n, i = 0 then C-connected ≡ Cconnected and C-closed ≡ Cclosed. The closed
+ET-n-set is a generalization of the closed n-set.
+It is said that the definition of a closed ET-n-set uses an absolute noise-tolerance
+because it considers numbers rather than proportions of ‘0’s. The following function
+helps in referring to counts of n-tuples absent from R on any element of an n-set.
+Definition 8 (Function 0) Given an n-set X, ?i = 1..n, ?e ? Di, 0(X, e) = |(X1 ×
+· · ·×{e}×· · ·× Xn) \ R|.
+Example 2 Table 2 shows the hyperplane of the 3-set X = ({α, γ }, {1, 2, 3}, {B})
+related to the element B in the third attribute domain of RE (Table 1). It contains only
+one absent 3-tuple, (γ, 3, B), i.e., 0(X, B) = 1.
+The following property states that the function 0(., e) is increasing w.r.t.  and its
+proof is straightforward.
+Property 1 (0(., e) is increasing) ?i = 1..n, ?e ? Di , ?(X, X
+) ? (×j=1..n2Dj)2,
+Let us use the 0 function to rewrite Definitions 5 and 6:
+Definition 9 (C-connected) Given an n-set X, C-connected(X) ≡ ?i = 1..n, ?e ? Xi ,
+0(X, e) ? i .
+Definition 10 (C-closed) Given an n-set X, C-closed(X) ≡ ?i = 1..n, ?e ? Di \ Xi ,
+0(X, e) > i
+or
+? j = i , ? f ? X j s.t. 0((X1, . . . , Xi ∪ {e}, . . . , Xn), f ) > j.
+Definition 9 is a direct rewriting of Definition 5. Definition 10 is more than that. It
+is equivalent to Definition 6 because if a pattern can be extended without violating
+C-connected, then there is such an extensionwith one element only (and the reverse obviously
+is true too). Furthermore, Definition 10 details the twoways to break C-connected.
+Either the element to extend the closed ET-n-set gathers, when projected on the pattern,
+too many n-tuples absent from R or this additional element makes the number of ‘0’s
+on an orthogonal element (an element from another domain of the relation) exceed
+the related noise-tolerance parameter.
+Example 3 Let  = (1, 1, 1). X = ({α, γ }, {1, 2, 3}, {B}) is a closed ET-3-set in RE .
+X satisfies C-connected since each of its hyperplanes contains, at most, one 3-tuple
+absent from RE: 0(X, α) = 0, 0(X, γ ) = 1, 0(X, 1) = 0, 0(X, 2) = 0, 0(X, 3) = 1
+and 0(X, B) = 1. X satisfies C-closed because extending it with any additional element
+either means that the hyperplane of X on this element contains strictly more than
+one 3-tuple absent from RE (e. g., 0(X, β) = 2) or at least one of the hyperplanes
+on an orthogonal element in X would contain strictly more than one 3-tuple absent
+from RE (e. g., 4 cannot extend X because 0(({α, γ }, {1, 2, 3, 4}, {B}), B) = 2).
+(α, β, γ }, {1, 2}, {A, B}) is another closed ET-3-set in RE .
+If a pattern is not -connected then none of its super-patterns (w.r.t. ) is:
+Property 2 (Anti-monotonicity of C-connected) ?(X, X
+) ? (×j=1..n2Dj)2,
+X  X ??C-connected(X)??C-connected(X).
+Proof By Definition 9, ?C-connected(X) means that ?i = 1..n, ?e ? Xi s.t. 0(X, e) >
+i . By Definition 2, (e ? Xi ? X  X
+) ? e ? Xi . Finally, by Property 1, 0(X, e) ?
+0(X, e) > i, i.e., ?C-connected(X). 
+If a pattern is not -closed then none of its sub-patterns (w.r.t. ) is:
+Property 3 (Monotonicity of C-closed) ?(X, X
+) ? (×j=1..n2Dj
+)2,
+X  X ??C-closed(X
+)??C-closed(X).
+Proof By Definition 10, ?C-closed(X
+) means that ?i = 1..n, ?e ? Di \ Xi such that
+0(X, e) ? i ? ?j = i , ? f ? X j , 0((X1, . . . , Xi ∪ {e}, . . . , Xn), f ) ?  j. By
+Definition 2, (e ? Di \ Xi ? X  X
+) ? e ? Di \ Xi . By Property 1, 0(X, e) ?0(X
+, e) ? i (1). By Definition 2, ? j = i , ? f ? X j , ( f ? X j ? X  X) ?
+f ? X j and, by Property 1, 0((X1, . . . , Xi ∪ {e}, . . . , Xn), f ) ? 0((X1, . . . , Xi ∪
+{e}, . . . , Xn), f ) ?  j (2). Together, (1) and (2) mean ?C-closed(X). 

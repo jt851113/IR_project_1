@@ -1,0 +1,30 @@
+The Echo protocol is explicitly designed to make few de-
+mands on the prover and verier.
+First, we do not use cryptography. By avoiding the use of
+both public- and private-key cryptography, we achieve two
+goals. We lower the CPU and memory requirements on both
+the prover and verier, and perhaps more signicantly, we
+remove the need for any prior agreement between the prover
+and verier with respect to keys or certicates. This means
+that if R is, say, a baseball stadium, then any fan attending
+the game with a suitable small device can act as a prover.
+Several authors have proposed schemes that rely on time-
+of-ight measurements of radio signals. However, such ap-
+proaches require processing speeds fast enough that distance
+errors are small even with speed-of-light communication. In
+contrast, error in our scheme is correlated to the speed of
+sound, which is roughly 106 times slower than radio com-
+munications. That means that a correspondingly greater
+processing delay can be tolerated, which is crucial, if low-
+cost devices are to participate.
+Lastly, our protocol does not require time synchronization
+between any two nodes. It only requires that each node have
+a clock that can measure real time with some precision. For
+example, taking the speed of sound to be 331 m/s, each 1ms
+of timing inaccuracy in the receiver would increase uncer-
+tainty by about 1/3 of a meter. If the prover and verier
+are 50m apart, the protocol runtime is about 150ms; clock
+skew is unlikely to be more than a few microseconds during
+this interval [8], so the uncertainty added would be on the
+order of millimeters, which is acceptable for our application
+domain.

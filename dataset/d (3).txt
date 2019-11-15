@@ -1,0 +1,75 @@
+In this section, we establish conditions under which a scheme
+generating motion-prediction and constant-value prediction
+(case#3) will perform better than the one generating only
+constant-value prediction (case#2).
+Let us assume that the average success rate for movement
+predictions is s (expressed as percent of the total number
+of movement predictions), and let the cost of computing a
+movement prediction be Cm.
+Assume that a motion-sensor is in steady state (i.e., the
+light sensor reading is constant over time). When an object
+passes by, the motion-sensor will see a pattern and report
+this to the base-station. Assuming that the object took less
+than one second to pass by, the reading of this motion-sensor
+in the next frame would be its constant stable value. It will
+report this constant value for two consecutive frames be-
+fore the base station generates a constant-value prediction.
+Thus, whenever an object passes by a motion-sensor, it re-
+sults in three updates being sent to the base station. If the
+base-station is able to correctly predict the movement of an
+object, it can save these three transmissions. But in order
+to predict correctly, it needs to process the readings of two
+motion-sensors that this object triggered before passing the
+current motion-sensor. Thus, the total energy consumed in
+this case is given by:
+
+TE3 = s x energy consumed when the prediction succeeds
++ (1-s) x energy consumed when the prediction fails
+= s x (energy consumed in sending, receiving, and
+processing updates sent by the two motion
+sensors
++ energy consumed in sending constant value
+predictions to the two sensors
++ energy consumed sending and receiving a
+movement prediction)
++ (1-s) x (energy consumed in sending, receiving,
+and processing updates sent by the two
+motion sensors
++ energy consumed in sending constant value
+predictions to the two sensors
++ energy consumed in sending and receiving a
+movement prediction
++ energy consumed in sending and receiving
+update due to failed prediction
++ energy consumed in sending constant value
+predictions to the sensor)
+
+In case#2, the total energy consumed would be:
+TE2 = energy consumed in sending and receiving updates
+from the three motion-sensors
++ energy consumed in sending constant value
+predictions to the three sensors
+= 3  (132  3 + (40+20))
+
+In order for case#3 to perform better than case#2, the fol-
+lowing condition must be satised:
+
+From equations 2 and 3, we get,
+
+Simplifying, we get,
+
+Thus, even if the base station predicts successfully 30% of
+the time, the scheme with movement prediction (case#3)
+will perform better than the scheme with just constant-value
+prediction (case#2).
+Solving equation 4 for Cm, we get,
+
+Thus, as long as we consume less than 123 J of energy
+in processing an update, the scheme with movement pre-
+diction (case#3) will perform better than the scheme with
+just constant-value prediction (case#2). Given that 100 in-
+structions consume 0.8 J of energy in the Mote, 94.5 J
+is enough to perform 15,375 instructions. This, we believe,
+
+is more than enough to generate movement predictions to a
+good accuracy.

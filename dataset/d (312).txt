@@ -1,0 +1,75 @@
+Figure 1 shows the architecture of Garlic [C
+
+95]. The architecture
+is typical of many heterogeneous database systems,
+e.g., [Day83, PGMW95, TRV96]. At the bottom
+are data sources, which store, access and manipulate data.
+Above every data source is a wrapper. A wrapper hides the
+details of the data source’s interface and enables access to
+the data source using Garlic’s internal protocols. The wrapper
+describes the data stored in the source using Garlic’s
+data model, an object-oriented model based on the ODMG
+standard [Cat96, C
+
+95]. Data in the source are viewed as
+objects, and Garlic refers to these objects using an OID it
+manufactures based on the source, the object’s type, and a
+unique key determined by the wrapper. This OID allows
+Garlic to apply methods on objects; from the OID, Garlic
+can determine the appropriate wrapper, and the wrapper can
+locate the necessary data and apply the method. Wrappers
+provide methods to get the value of each attribute of an object,
+and to encapsulate any specialized search capabilities
+of the source. (These methods are typically implemented as
+commands in the native language or programming interface
+of the underlying source.) The wrapper also defines object
+collections which are the targets of queries in Garlic.
+The wrapper further provides a description of its query
+processing capabilities in the form of a set of rules (encapsulated
+as planning methods [RS97]). Different sources
+may vary greatly in their query processing capabilities, and
+thus will provide different rules. A wrapper does not have to
+reflect the full query functionality of its data sources. However,
+in order for the data in that data source to be accessible
+through queries, some minimum functionality must be provided,
+i.e., at least one access rule. We will discuss wrapper
+rules in Section 4.
+A system catalog records the global schema. When a
+new data source is added to a Garlic system, it is associated
+with a wrapper. This association, as well as the data
+source’s local schema and any available statistics for its
+data, is recorded in the catalog as part of the registration
+process for a data source. The catalog also contains information
+such as view definitions and information about the
+system configuration needed as input to the cost model during
+query optimization.
+At the heart of Garlic are its query services, which play
+the same role as a mediator in the architecture of other
+systems [Wie93]. Garlic’s query services have two major
+components: a query language processor, and a distributed
+query execution engine. The query language processor
+takes a query as input and obtains an execution plan
+for the query through parsing, semantic checking, query
+rewrite, and query optimization (as in Starburst [H
+
+89]).
+The job of the optimizer is to construct and select an “optimal”
+plan for a given query, based on a cost model. Traditional
+query optimizers build plans based on detailed, builtin
+knowledge of the full set of execution strategies available
+and their costs. This is true even in distributed systems;
+the optimizer must know the capabilities and costs for each
+remote data source to decide which operations to execute
+at a source and which at the query site [FJK96]. Garlic,
+however, must be able to find good plans without built-in
+knowledge of data sources’ capabilities and costs; how it
+accomplishes this is the subject of this paper.
+Once the plan has been determined by the optimizer, its
+execution is coordinated by Garlic’s query execution engine,
+which passes subqueries to the wrappers and assembles
+the final query result. Garlic’s execution engine is a
+powerful system able to perform joins, apply predicates, invoke
+methods, sort, aggregate, and so on. This allows Garlic
+to compensate for functionality not present in the data
+sources or not reflected by their wrappers, and to execute
+itself those operations it can do more efficiently.

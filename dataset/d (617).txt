@@ -1,0 +1,142 @@
+Various issues in the design of wireless sensor networks ?
+design of low-power signal processing architectures, lowpower
+sensing interfaces, energy efficient wireless media
+access control and routing protocols [3, 6, 20], low-power
+security protocols and key management architectures [29-30],
+localization systems [21, 22], etc. ? have been areas of
+extensive research in recent years. Gupta and Kumar have
+analyzed the capacity of wireless ad hoc networks [18] and
+derived the critical power at which a node in a wireless ad hoc
+network should communicate to form a connected network
+with probability one [19].
+Many clustering algorithms in various contexts have also
+been proposed in the past [2-7, 23-28], but to our knowledge,
+none of these algorithms aim at minimizing the energy spent in
+the system. Most of these algorithms are heuristic in nature and
+their aim is to generate the minimum number of clusters such
+that a node in any cluster is at the most d hops away from the
+clusterhead. In our context, generating the minimum number of
+clusters might not ensure minimum energy usage.
+In the Linked Cluster Algorithm [2], a node becomes the
+clusterhead if it has the highest identity among all nodes within
+one hop of itself or among all nodes within one hop of one of
+its neighbors. This algorithm was improved by the LCA2
+algorithm [8], which generates a smaller number of clusters.
+The LCA2 algorithm elects as a clusterhead the node with the
+lowest id among all nodes that are neither a clusterhead nor are
+within 1-hop of the already chosen clusterheads. The algorithm
+proposed in [9], chooses the node with highest degree among
+its 1–hop neighbors as a clusterhead.
+In [4], the authors propose a distributed algorithm that is
+similar to the LCA2 algorithm. In [28], the authors propose two
+load balancing heuristics for mobile ad hoc networks. The first
+heuristic, when applied to a node-id based clustering algorithm
+like LCA or LCA2, leads to longer, low-variance clusterhead
+duration. The other heuristic is for degree-based clustering
+algorithms. Degree-based algorithms, in conjunction with the
+proposed load balancing heuristic, produce longer clusterhead
+duration.
+The Weighted Clustering Algorithm (WCA) elects a node
+as a clusterhead based on the number of neighbors,
+transmission power, battery-life and mobility rate of the node
+[27]. The algorithm also restricts the number of nodes in a
+cluster so that the performance of the MAC protocol is not
+degraded.
+The Distributed Clustering Algorithm (DCA) uses weights
+associated with nodes to elect clusterheads [25]. These weights
+are generic and can be defined based on the application. It
+elects the node that has the highest weight among its 1-hop
+neighbors as the clusterhead. The DCA algorithm is suitable for
+networks in which nodes are static or moving at a very low
+speed. The Distributed and Mobility-Adaptive Clustering
+Algorithm (DMAC) modifies the DCA algorithm to allow node
+mobility during or after the cluster set-up phase [26].
+All of the above algorithms generate 1-hop clusters, require
+synchronized clocks and have a complexity of O(n) . This
+makes them suitable only for networks with a small number of
+nodes.
+The Max-Min d-cluster Algorithm proposed in [5]
+generates d-hop clusters with a run-time of O(d) rounds. This
+algorithm achieves better load balancing among the
+clusterheads, generates fewer clusters [5] than the LCA and
+LCA2 algorithms and does not need clock synchronization.
+In [7], the authors have proposed a clustering algorithm that
+aims at maximizing the lifetime of the network by determining
+optimal cluster size and optimal assignment of nodes to
+clusterheads. They assume that the number of clusterheads and
+the location of the clusterheads are known a priori, which is not
+possible in all scenarios. Moreover the algorithm requires each
+node to know the complete topology of the network, which is
+generally not possible in the context of large sensor networks.
+McDonald et al. have proposed a distributed clustering
+algorithm for mobile ad hoc networks that ensures that the
+probability of mutual reachability between any two nodes in a
+cluster is bounded over time [23].
+Heinzelman et al. have proposed a distributed algorithm for
+microsensor networks in which the sensors elect themselves as
+clusterheads with some probability and broadcast their
+decisions [6]. The remaining sensors join the cluster of the
+clusterhead that requires minimum communication energy.
+This algorithm allows only 1-hop clusters to be formed, which
+might lead to a large number of clusters. They have provided
+simulation results showing how the energy spent in the system
+changes with the number of clusters formed and have observed
+that, for a given density of nodes, there is a number of clusters
+that minimizes the energy spent. But they have not discussed
+how to compute this optimal number of clusterheads. The
+algorithm is run periodically, and the probability of becoming a
+clusterhead for each period is chosen to ensure that every node
+becomes a clusterhead at least once within 1/ P rounds, where
+P is the desired percentage of clusterheads. This ensures that
+none of the sensors are overloaded because of the added
+responsibility of being a clusterhead.
+In [11], the authors have considered a 2-level hierarchical
+telecommunication network in which the nodes at each level
+are distributed according to two independent homogeneous
+Poisson point processes and the nodes of one level are
+connected to the closest node of the next higher level. They
+have then studied the moments and tail of the distributions of
+characteristics like the number of lower level nodes connected
+to a particular higher level node and the total length of
+segments connecting the lower level nodes to the higher level
+node in the hierarchy. We use the results of this paper to obtain
+the optimal parameters for our algorithm.
+Baccelli and Zuyev have extended the above study to
+hierarchical telecommunication networks with more than two
+levels in [13]. They have considered a network of subscribers
+at the lowest level connected to concentration points at the
+highest level, directly or indirectly through distribution points.
+The subscribers, distribution points and the concentrators form
+the three levels in the hierarchy and are distributed according to
+independent homogeneous Poisson processes. Assuming that a
+node is connected to the closest node of the next higher level,
+they have used point processes and stochastic geometry to
+determine the average cost of connecting nodes in the network
+as a function of the intensity of the Poisson processes
+governing the distribution of nodes at various levels in the
+network. They have then derived the intensity of the Poisson
+process of distribution points (as a function of the intensities of
+the Poisson processes of subscribers and concentration points)
+that minimizes this cost function. They have also extended the
+above results for non-purely hierarchical models and have
+derived the optimal intensity of Poisson process of distribution
+points numerically, given the intensities of other two processes.
+They have then generalized the cost function for networks with
+more than three levels.
+The algorithm proposed in this paper is similar to the
+clustering algorithm in [6]. In [6], the authors have assumed
+that the sensors are equipped with the capability of tuning the
+power at which they transmit and they communicate with
+power enough to achieve acceptable signal-to-noise ratio at the
+receiver. We, on the other hand, assume a network in which the
+sensors are very simple and all the sensors transmit at a fixed
+power level; data between two communicating sensors not
+within each other’s radio range is forwarded by other sensors in
+the network. The authors, in [6], have observed in their
+simulation experiments that in a network with one level of
+clustering, there is an optimal number of clusterheads that
+minimizes the energy used in the network. In this paper, we
+have used the results provided in [11] to obtain the optimal
+number of clusterheads at each level of clustering analytically,
+for a network clustered using our algorithm to generate one or
+more levels of clustering.

@@ -1,0 +1,59 @@
+Monitoring operations in sensor networks do not have some
+of the constraints that are present in video encoding. We
+summarize the fundamental dierences below along with
+their eect on the algorithms:
+
+ The most prominent difference is that live video en-
+coding is constrained by hard real-time requirements
+whereas monitoring in sensor networks has soft real-
+time requirements (of generating the prediction and
+transmitting it to sensor before the predicted events
+occur). The hard real-time constraint causes the MPEG
+encoder to generate motion-vectors based on a small
+number of previous image frames. Also, it uses very
+simple algorithms for the purpose. Thus, one may view
+motion-vectors in MPEG as based on patterns occur-
+ring on a very small time-scale. In sensor networks,
+since the real-time constraint is relaxed, the algorithms
+may look for patterns not only on small time-scales,
+but also on medium and large time-scales. Further-
+more, the algorithms in sensor networks may aord to
+spend more time in generating prediction-models.
+ In sensor networks, energy of the sensors is the most
+precious resource. This is not so in video encoding. As
+a result, the PREMON paradigm attempts to save en-
+ergy by generating prediction-models at base station.
+While in MPEG, motion-vectors are a bandwidth-eAcient
+way of encoding the current picture based on the pre-
+vious picture. Although MPEG tries to be as band-
+width eAcient as possible, this requirement is only soft.
+Whereas, in sensor networks, better bandwidth utiliza-
+tion and extreme energy-eAciency is a requirement.
+
+Thus, there is a need for improving the accuracy of
+predictions and the frequency with which such predic-
+tions are made.
+
+ The resolution of the image that MPEG works on is
+very high compared to that of the image that PRE-
+MON works on. Given the small radio-range of a sen-
+sor (approximately 100 feet in outdoor environment),
+and that all the sensors in a cluster need to be in the
+radio-range of the base station, we expect that the
+number of sensors (sensing a moving phenomenon) will
+be very small compared to the number of pixels in an
+image frame of a video. This small size signicantly re-
+duces the computation involved in performing motion-
+estimation.
+ The frame rate in MPEG is an order of magnitude
+higher compared to the expected frame rate in PRE-
+MON. This allows techniques in PREMON to do mo-
+tion estimation/compensation based on a set of previ-
+ous frames.
+ Since sensors are rarely hand-placed in the target en-
+vironment, the arrangement of sensors in the eld is
+going to be random. Thus the image visualization of
+the sensor network will have non-uniform placement of
+pixels in the image. On the other hand, the pixels in
+a video have a very uniform pattern. In section 3.2.6,
+we discuss techniques to handle this.

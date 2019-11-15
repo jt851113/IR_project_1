@@ -1,0 +1,13 @@
+Figure 17(a) shows how many iterations are required for the sampling
+matrix to converge. Figure 17(b) illustrates the effect of approximate
+statistics. In the experiment, each node only performs
+4 iterations of sampling (about 12 iterations are required for convergence)
+and then a range index strategy is computed based on
+inaccurate statistics. The query cost ratio of the approximate index
+strategy to that of the optimal index strategy is computed as
+RangeIndexCost
+OptimalCost1. The cost ratio is effected by the query distribution
+and our scheme is more robust in skewed query distribution. We
+also observe that the sampling scheme is fairly effective in mildly
+skewed distributions, because in such a case, query patterns can
+still be detected

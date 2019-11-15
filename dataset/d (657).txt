@@ -1,0 +1,9 @@
+In this section, we show how to use duplicate insensi-
+tive sketches to build a robust, loss-resilient framework
+for aggregation. First, our algorithm for leveraging the
+broadcast nature of wireless communication in combi-
+nation with sketching techniques is described in Sec-
+tion 4.1. A simple analytic evaluation of the proposed
+methods is given in Section 4.2. Finally, practical de-
+tails of implementations on sensor motes are given in
+Section 4.3.

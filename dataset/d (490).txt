@@ -1,0 +1,7 @@
+5.2 Models of Interestingness Despite the difference in
+problem formulation, most work surveyed in the previous subsection
+adopted the support as the measure of interestingness/
+significance and aimed at discovering frequent patterns.
+Recently, many efforts have been carried out to address the potential
+disadvantages associated with the support model and to
+propose alternative solutions.

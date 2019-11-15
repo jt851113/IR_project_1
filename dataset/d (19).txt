@@ -1,0 +1,35 @@
+A. Preliminaries
+In this paper, we model a social network as a simple graph
+G = (V;E; L;L), where V is a set of vertices, 
+is a set of edges, L is a set of labels, and a labeling function
+  assigns each vertex a label. For a graph G, V (G),
+E(G), LG, and LG are the set of vertices, the set of edges,
+the set of labels, and the labeling function in G, respectively.
+To keep our discussion simple, we assume that edges do not
+carry labels. However, our methods can be straightforwardly
+extended to remove this assumption.
+The items in the label set L form a hierarchy. For example,
+if occupations are used as labels of vertices in a social
+network, L contains not only the specific occupations such as
+dentist, general physician, optometrist, high
+school teacher, and primary school teacher,
+but also general categories like medical doctor,
+teacher, and professional. We assume that there
+exists a meta symbol  which is the most general
+category generalizing all labels. For two labels , if
+l1 is more general than l2, we write  . For example,
+medical doctor optometrist. Moreover,   if
+and only if  is a partial order on L.
+  For a graph G and a set of vertices  , the induced
+subgraph of G on S is   where  
+In a social network G, the neighborhood of 
+is the induced subgraph of the neighbors of u, denoted by
+NeighborG(u) = G(Nu) where  .
+Given a graph  and a social network
+G = (V;E; L,L), an instance of H in G is a tuple 
+where H0 = (VH0 ;EH0 ; L;L) is a subgraph in G and f :
+  is a bijection function such that (1) for any 
+, and  if and only if
+ . Literally, the first condition states that
+the corresponding labels in H' can be more general than those
+in H.

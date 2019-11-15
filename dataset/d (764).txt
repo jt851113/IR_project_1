@@ -1,0 +1,85 @@
+In structural health monitoring applications, it
+is essential to correlate the times at which
+measurements are made by different, physically
+distributed sensors. For example, given
+measurements from two different accelerometer
+devices, we need to know the phase
+relationships between these data sets. Although
+time synchronization is required in
+many types of networks, wireless sensor
+networks require new solutions due to the
+constraints of low power, high precision, and
+a flat, rather than hierarchical, network structure.
+Elson & Estrin (2001) introduce an
+approach called post-facto synchronization, in
+which a designated sensor broadcasts a clock
+pulse message shortly after an event is detected;
+other sensors use their local clocks to
+measure the time difference between when
+they sense the event and when the pulse is
+received.
+Unfortunately, the post-facto synchronization
+approach is not directly applicable to
+structural health monitoring applications,
+where the sample rate measures typically on
+the order of hundreds of Hz. Typical wireless
+sensor nodes, however, can only send or
+receive tens of messages per second.
+We have constructed a simple time
+synchronization service, which calibrates the
+clocks of adjacent sensor nodes to be within at
+most 7ms (milliseconds) of each other. With
+additional refinement, time synchronization
+better than 1ms can be achieved. The general
+strategy employed is to exchange clock synchronization
+messages between sensor nodes.
+As we have measurements of the delay between
+the sending and the receipt of the
+message, we add this as an offset onto the
+time provided by the sender of the message.
+Receiving sensors then adjust their clocks
+accordingly.
+In addition to synchronizing adjacent
+sensor nodes, we build a spanning tree of all
+the nodes, rooted at the gateway to the sensor
+network. Nodes throughout the network are
+synchronized through this tree. This allows us
+to ensure that even sensors which cannot
+directly communicate with one another are
+synchronized. After the synchronization,
+sensors collect data for a pre-determined
+duration. In order to save power and improve
+performance during data collection, the radio
+is turned off at this time. Upon completion of
+the data collection phase, the radio is reenabled,
+and data is routed to the gateway
+along the spanning tree. If desired, the system
+can repeat the form-tree/synchronize/collectdata/
+route-data cycle indefinitely. Since the
+time synchronization and spanning tree are reinitialized,
+our service is able to recover from
+network and sensor node failures.
+Figure 1 depicts accelerometer readings
+made by M. Ruiz-Sandoval and T.
+Nagayama in B.F. Spencer’s group at the
+University of Illinois at Urbana-Champaign
+using this time synchronization and routing
+framework. Note that the synchronization is
+not perfect between the two sensor nodes. It is
+close enough for a human to see that they are
+from the same situation, but it does help to
+improve the synchronization for the benefit of
+SHM algorithms.
+synchronized sensor nodes (256Hz sample rate).
+In certain cases, we are able to attain
+better time synchronization, but only for a
+short period of time. While a node is sending
+a message on the radio, its neighbors’ CPUs
+receive periodic events for each bit of data
+transmitted. On MICA-2 nodes, this allows
+us to create a 2400Hz clock, however nodes
+only remain synchronized for a small amount
+of time after the last bit of the message is sent
+over the radio. This approach is used to measure
+the travel time of sounds for one of our
+localization services.

@@ -1,0 +1,192 @@
+As in a centralized database system, the contents of a view
+are defined through a user-defined query. It is our goal to
+automatically select the best views (and view nodes) in the
+sensor network in order to optimize the overall cost of a
+query workload. Our use of views in sensor networks follows
+a hybrid pull-push model in which the sensor data is processed
+inside the network and pushed to view nodes where the data is
+stored. Queries are routed to relevant view nodes from which
+the requested data is pulled to assemble the query answer.
+While automated view and index selection algorithms have
+been proposed for relational databases [7], the view selection
+problem for sensor networks is much more complex: in
+addition to deciding what view to materialize, we also need to
+decide where the view should be stored. As we will discuss
+below, view content and location have complex interactions.
+We consider a set of sensor nodes
+
+	
+	
+spread in
+a plane. We assume that time is divided into periods, that
+queries can be executed only at the end of a period, that
+queries refer to readings generated during that period, and that
+a sensor node generates one reading within that period. Let
+be the probability that node
+  generates a
+reading within a period2. A query workload
+is a set of tuples, where is the probability
+that query
+   is asked during a period. Each query
+   returns
+the aggregate value of an attribute
+over a subset of the
+sensor nodes
++  for the preceding period. We assume that the
+aggregate function used is the same for all queries.
+We consider a tree having as leaves the data sources
+,	
+	
+and as root the server where users present their
+queries. It is possible to forward data up the tree proactively
+and materialize partial aggregate results in selected intermediate
+tree nodes called view nodes; we refer to such messages as
+view update messages. During each period, a set of queries is
+posed. Query evaluation happens at the end of the period, and
+proceeds in two phases. First, request messages characterizing
+the set of queries posed in the period are forwarded down the
+tree until they reach all the view and sensor nodes required
+to answer the queries. Then, partial query results are sent
+upward. The results may be combined at intermediate nodes,
+and eventually reach the root. The cost of computing partial
+aggregates is negligible compared to the cost of sending
+messages along the edges of the tree, so the total cost of the
+tree is the sum of the message costs along all edges. Our
+objective is to minimize this expected cost.
+Tree edges are classified as either proactive or on-demand.
+Along a proactive edge, all new data is sent upward unconditionally
+in every period. Thus, there is no need to send request
+messages down proactive edges. In contrast, an on-demand
+edge transfers only the data required to answer the queries
+posed in the current round. Thus, an on-demand edge requires
+an explicit request message in each period. The request
+message must be sent even if no partial result is required
+in the current period. This is a consequence of a (realistic)
+energy model in which radio receivers have substantial power
+requirements. In the presence of collisions at the MAC layer
+and imperfect clock synchronization, the energy cost (at the
+listener) of determining that no message will arrive in a period
+can be substantially more than the energy cost (at sender and
+listener) of transferring a short “nothing to request” message.
+For a proactive edge, the per-period expected cost is determined
+by the probability of new sensor readings being
+generated in the subtree beneath it. For an on-demand edge, the
+expected cost is the cost of its (unconditional) request message
+plus the cost of partial result messages needed to answer the
+currently posed queries.
+Studying special instances of the view selection problem
+given a tree structure is the focus of current research. In
+particular, we consider the following design space:
+- All queries and data updates occur with probability 1.
+- Sensor updates have probability 1, but queries occur with
+arbitrary probabilities.
+- Queries occur with probability 1, but sensor updates occur
+with arbitrary probabilities.
+- Both sensor updates and queries occur with arbitrary
+probabilities.
+Different query probabilities can result in different optimal
+solutions to the view selection and placement problem.
+Example: Consider the dissemination tree shown in Figure
+1. Sensors are at the leaf nodes
+; each sensor
+generates a new data value in each period. There are two
+aggregate queries, the sums
+and
+. These queries
+are issued independently, each with probability
+be the cost of a sending query request message down a treBe
+edge, and the cost of sending a data result message.
+Two limiting cases are easy to analyze. First, if we set
+(so both queries are issued with probability 1) the op?>tima?? l
+solution is to proactively forward everything: values of sensors
+are sent from the leaves to the intermediate node
+, where the values of the queries
+computed and sent to the root. Every edge is proactive, so no
+request messages are sent at all, and the total cost is  ??
+per
+period – one data message sent from each sensor node to node
+, and two data messages from node  to the root.
+The second limiting case occurs when
+?
+is nearly 1, so
+that in most periods no query is issued at all. In this case,
+proactively transmitting data along any edge wastes energy
+with high probability, since the data is unlikely to be needed.
+Thus, the optimal solution must make every edge on-demand,
+flooding the tree with request messages and sending the
+requested data up the tree as in the previous case. The expected
+per-period cost of this solution is obtained by summing the
+costs of the edges. The expected cost of the edge between
+the root and interior node  is
+, representing
+an unconditional request message and two result messages
+(one for each query) with independent probabilities
+By symmetry, the edges entering nodes
+and
+have equal
+expected costs of
+. Finally, the edge entering
+node
+.
+, which is shared by both queries, has expected cost
+. It is clear that when
+?
+is sufficiently near 1 no
+edge can be made proactive without strictly increasing the cost
+of the solution.
+Finally we consider intermediate cases in which the tree
+is neither entirely proactive nor entirely on-demand. By comparing
+the expected per-edge costs for the two limiting-case
+solutions above, we can see that it is beneficial to send a
+request message from the root to node  (that is, to make the
+edge on-demand) when
+. Similarly, it is beneficial to
+send request messages to nodes
+0
+
+when
+; and it
+is beneficial to send a request to node
+
+For this simple example, the oprimal solutions are now
+completely determined by the relative values of
+
+(the first limiting case above), a completely
+proactive solution is best. For
+solution is to make on-demand only the edge from the root
+to node , proactively sending data from the leaves to node  and materializing the two queries there. For
+it becomes beneficial to make the edges to?
+ n?? odes B  ? ??
+on-demand as well, but still materialize the value of 3. at node 
+. And for(the second limiting case above), a
+completely on-demand solution is optimal.
+This example illustrates that query probabilities affect the
+optimal choice of views. Similar examples can be given
+to show the effect of data update probabilities. Finally, the
+behavior is affected by the choice of aggregate function: AVG
+and MIN behave quite differently. For instance, consider the
+simple scenario where queries are presented regularly at the
+root of the tree (in figure 1) at the end of each period. Since the
+query probabilities are all equal to 1, communication only consists
+of query results propagated towards the root. We would
+like to compare the cost of processing queries and
+to the cost of their AVG counterparts and .
+ For both
+MIN and AVG queries we need to send one message from each
+of the leaves
+
+to the internal node . In the case of the
+MIN queries it suffices to send two messages from  to the root
+However, at least three messages must be sent from  to in
+order to evaluate the corresponding AVG queries.
+Due to space constraints, we only summarize our results
+here:
+- We can show that the general problem is NP-complete
+through a reduction from the Set Basis Problem [11].
+- We can give dynamic programming algorithms (with at
+least exponential worst-case complexity) for the complete
+design space above.
+Because of the complexity of the dynamic programming
+algorithms, we are currently looking into approximation algorithms
+for this problem, and we are working on an implementation
+to obtain experimental results.

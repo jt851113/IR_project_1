@@ -1,0 +1,11 @@
+[1] J. Han, G. Dong, and Y. Yin. Ecient mining partial
+periodic patterns in time series database. Proc. 15th
+ICDE, 106-115, 1999.
+[2] B. Ozden, S. Ramaswamy, and A. Silberschatz. Cyclic
+association rules. Proc. 14th ICDE, 412-421, 1998.
+[3] S. Ramaswamy, S. Mahajan, and A. Silberschatz. On
+the discovery of interesting patterns in association rules.
+Proc. 24th VLDB, 368-379, 1998.
+[4] J. Yang, W. Wang, and P. S. Yu. Mining asynchronous
+periodic patterns in time series data. IBM Research
+Report, 2000.

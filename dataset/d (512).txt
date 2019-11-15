@@ -1,0 +1,62 @@
+In this step, the revised query patterns are decomposed into
+a set of ordered access pairs to construct a temporary access
+graph. The decomposition process identifies each ordered
+access pair from the set of revised query patterns. Moreover,
+the temporary access graph will be used to determine
+the access order of the data objects in the remaining {}. The
+decomposition process is illustrated as follows:
+Query Pattern Decomposition
+(input: the set of revised query patterns, output: a set of
+ordered access pairs (OAP) )
+Continuing the above example, query pattern1 is decomposed
+to {[a, b], [a, c], [f, b], [f, c], [b, d], [c, d], [d, e]}, each
+with access frequency 20, query pattern2 is decomposed to
+{[c, a], [c, d], [a, b], [d, b], [b, e]}, each with access frequency
+30, and query pattern3 is decomposed to {[e, d], [d, h]}, each
+with access frequency 10. Merging the decomposition
+results, we get [a, b], [c, d], each with access frequency
+20+30, [c, a], [d, b], each with access frequency 30-20, [d, e]
+with access frequency 20-10, [f, b], [f, c], each with access
+frequency 20, [b, e] with access frequency 30, and [d, h] with
+access frequency 10. According to the merging result, a
+temporary access graph can be constructed. Fig. 4 shows the
+temporary access graph constructed from the three query
+patterns.
+The temporary access graph will be used to determine
+the access order of the data objects in the remaining {} to
+construct the access graph. In the following, an important
+property for determining the access order is presented. As
+mentioned above, the maximum branching algorithm will
+be used to transform the access graph into an access forest.
+To produce a better access forest, we should consider the
+property of the maximum branching algorithm when
+constructing the access graph. Given a temporary access
+graph G(V, E), according to Property 2, we define MIW
+(Maximum In-edge Weight) for each x 2 V as follows:
+The following lemma is used to illustrate how MIW
+works to determine the access order of the data objects in {}
+of the revised query patterns.
+Lemma 4. Given a temporary access graph. Assume
+
+Given {x, y} in a revised query pattern, if MIW(x) >
+MIW(y), then {x, y} will be turned into [x, y]. Continuing
+the above example, the access order of the data objects in {a,
+f}, {b, c}, and {a, d} needs to be determined. To determine
+the access order, we first compute the MIW of the above
+data objects. Referring to Fig. 4, we get MIW(a) = 10,
+MIW(f) = 0, MIW(b) = 50, MIW(c) = 20, and MIW(d) = 50.
+By Lemma 4, we get [a, f], [b, c], and [d, a], and; d; h. Fig. 5 shows the access graph
+constructed for the three query patterns.
+The process of transforming the set of query patterns to
+an access graph is summarized as follows:
+1. Use known access orders to determine the order of
+the data objects in SA, JA, and PA to revise the query
+patterns.
+2. Decompose the revised query patterns into a set of
+ordered access pairs.
+3. Construct the temporary access graph from the set of
+ordered access pairs.
+4. Compute the MIW to determine the access order of
+the data objects whose access order is not yet
+determined.
+5. Construct the access graph.

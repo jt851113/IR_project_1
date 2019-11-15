@@ -1,0 +1,36 @@
+The above choice of kernel function also leads to an
+interesting physical significance of the velocity density
+computation. Let us explore a prototypical data stream in
+which the points arrive at a constant rate of  per second
+throughout the time interval Further, let the
+spatial density function of all points arriving in the time
+interval be given by Let
+us also assume that for each specific value of X,is constant 
+over the interval and
+is equal to Then, we can show that in the
+asymptotic case (when  is arbitrarily high), the velocity
+density at the spatial location X and time T
+is proportional to 
+For let us consider the small time-interval Then, the number 
+of data points which have arrived in this interval is proportional
+to dt which is constant over any interval of length dt in
+We know that the contribution of the points in
+this interval to is proportional to the difference
+between the corresponding contributions to the forward
+and reverse time slice densities. We further note that the
+spatiotemporal kernel function is a time-factored version of
+the spatial kernel function. Therefore, we can assume that if
+we used only the points in the interval to estimate the forward 
+and reverse time slice densities, then the results of [19] would 
+indicate that these contributions asymptotically converge in 
+proportionality to respectively.This means that the contribution 
+difference converges to a value which is proportional to
+Therefore, the value of when summed over all
+the contributions of length in the interval is
+given by:On expanding the value of in the above result and regrouping, 
+we get:Note that the first term of the above expression is zero,
+which means that the velocity density at spatial location X
+is proportional to the value of during the interval The above result is 
+not true when the stream rate  changes with time; this is because the 
+velocity density is supposed to measure relative changes of densities 
+over the different spatial locations.

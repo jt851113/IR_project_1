@@ -1,0 +1,50 @@
+2.1 Issues on Database Broadcasting
+In our approach, a relational database is first vertically
+partitioned into fragments based on attributes. The values
+of each attribute in a relation are sequentially allocated in
+the broadcast channel. To integrate the attribute values of a
+tuple from the broadcast channel, each attribute value is
+associated with a tuple number indicating the tuple the
+attribute value belongs to. As mentioned above, the clients
+access the attributes involved in the queries according to the
+query optimization order. In conventional query optimization,
+the selection operations are performed first to reduce
+the size of the temporary results. Therefore, for reducing the
+tuning time, the values of the select attributes should be
+retrieved to process prior to the values of the other
+attributes in the broadcast channel.
+We transform the query in SQL into a query pattern in the
+format [SA, JA, PA], where SA (select attributes) is the set of
+attributes in the where-clause by the format x  c, where x is
+an attribute,  is a comparison operator, and c is a constant,
+JA (join attributes) is the set of attributes in the where-clause
+by the format x  y, where x and y are attributes, and PA
+(project attributes) is the set of attributes in the select-clause.
+If the intersection of SA, JA, and PA is not empty, we
+remove the duplicate attributes from the sets in the order of
+PA, JA, and SA. The square bracket of the query pattern
+indicates the query processing order. That is, attributes in
+SA should be accessed before attributes in JA and attributes
+in PA should be accessed last. Among the attributes in SA,
+JA, or PA, there is no order constraint. For example, assume
+there are three relations to be broadcast. The corresponding
+attributes of each relation are listed below.
+relation A ? ea1; a2T; relation B ? eb1; b2T;
+relation C ? ec1; c2T:
+A broadcast order of the attributes is called a broadcast
+program. a1b1b2a2c1c2 or a1b1a2c2c1b2 are both possible
+broadcast programs. Consider the following query:
+Select a2; b2
+From A, B
+Where a1 < 20 and a1 ? b1
+In this query, SA ? fa1g, JA ? fb1g (because a1 2 SA, it
+is removed from JA), and PA ? fa2; b2g. The client first
+tunes in the broadcast channel to download a1 and perform
+the selection operation on the values of attribute a1. Then,
+the client downloads b1 and performs the join operation
+with the values of the selection results of attribute a1. After
+that, we get pairs of tuple numbers denoting the tuples in
+relations A and B which are joined together and satisfy the
+query conditions in the where-clause. Through these tuple
+numbers, the relevant values of attributes a2 and b2 are then
+downloaded to be the answer of the query.

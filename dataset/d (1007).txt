@@ -1,0 +1,25 @@
+In Table 2 we show precision for authority ranking by the
+new algorithms (pca0 and pca1) as well. Even though
+our main goal was to speed up the computation, pca0
+performs comparably with the best previous algorithm
+and pca1 improves precision. We believe that the pca1
+improvement comes from the fact that partial content
+analysis avoids pruning non-inuential documents that
+are below the threshold in terms of relevance but are
+connected to and support good hubs and authorities on
+the topic.
+Table 3 show precisions for hub ranked documents.
+For all topics, pca0 and pca1 perform 10% worse than
+medr, the best of the previous algorithms. For the topics
+where pca1 performs poorly we found that it uses
+up its whole quota of 100 documents, suggesting that a
+larger quota allowing for more pruning would be more
+successful. For example, in the case of \graphic design"
+pca1 used up its quota before it could eliminate a set of
+irrelevant documents containing automatically generated
+links. These links pointed to a very good authority which
+placed the irrelevant documents at the top of the hub list.
+In terms of relative recall, compared with the best
+previous algorithm, selective pruning performed comparably
+for authority documents, and about 10% worse for
+hub documents.

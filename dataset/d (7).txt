@@ -1,0 +1,17 @@
+In this paper, we have presented energy-eAcient mechanisms
+for performing monitoring operations in sensor networks.
+For energy-efficient monitoring, we have proposed a new
+paradigm called Prediction-based monitoring (PREMON).
+It exploits the spatial, temporal, and spatio-temporal corre-
+lation likely to be present in readings of spatially proximate
+sensors. We have shown that this paradigm is analogous in
+many ways to the one followed by MPEG encoder. This
+close analogy allows us to adapt the theory and algorithms
+of MPEG for use in sensor networks. We have proposed
+an algorithm for generating prediction models based on the
+block-matching algorithm in MPEG. We have implemented
+the proposed algorithm on a test bed of sensor-motes. The
+results of our experiments have shown that utilizing the
+PREMON paradigm helps in signicantly cutting down the
+number of transmissions from the sensors, thereby achieving
+substantial energy savings.

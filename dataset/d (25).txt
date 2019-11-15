@@ -1,0 +1,37 @@
+In this paper, we tackled the novel and important problem
+of preserving privacy in social network data, and took an
+initiative to combat neighborhood attacks. We modeled the
+problem systematically and developed a practically feasible
+approach. An extensive empirical study using both a real data
+set and a series of synthetic data sets strongly indicated that
+neighborhood attacks are real in practice, and our method is
+highly feasible. Moreover, anonymized social networks can
+still be used to answer aggregate queries accurately.
+As social network data is much more complicated than
+relational data, privacy preserving in social networks is much
+more challenging and needs many serious efforts in the future.
+Particularly, modeling adversarial attacks and developing
+privacy preservation strategies are critical. For future work,
+we believe that the following two types of attacks should be
+addressed systematically.
+We only handle 1-neighborhoods in this paper. It is very
+interesting and could be desirable in some applications that
+d-neighborhoods (d > 1) are protected. However, this will
+introduce a serious challenge in computation. The neighborhood
+size increases exponentially as d increases. Isomorphism
+tests and anonymization of large neighborhoods are very
+challenging.
+A k-anonymous social network still may leak privacy. If
+an adversary can identify a victim in a group of vertices
+anonymized in a group, but all are associated with some
+sensitive information, then the adversary still can know that
+sensitive attribute of the victim. Some mechanism analogous
+to l-diversity [6] should be introduced.
+ACKNOWLEDGMENT
+The research is supported in part by an NSERC Discovery
+Grant. All opinions, findings, conclusions and recommendations
+in this paper are those of the authors and do not
+necessarily reflect the views of the funding agencies.
+We are grateful to Dr. Yufei Tao and the anonymous reviewers
+for their informative comments which help to improve the
+quality of the paper.

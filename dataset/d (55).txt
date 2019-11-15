@@ -1,0 +1,63 @@
+In this section we will discuss how to create a good
+query plan for more complicated queries. Our discussion
+stays at the informal level with the goal to help
+us decide what meta-data we need for the optimizer in
+the systems catalog. We would like to emphasize that
+creation of the best query plan for an arbitrary query is
+a hard problem, and our work should be considered as
+an initial step towards the design and implementation
+of a full-fledged query optimizer. We leave experimental
+evaluations of different query plans to section 6,
+and the design and implementation of a full-fledged
+optimizer to future work.
+Extension to GROUP BY and HAVING
+Clauses. Let us consider an aggregate query with
+GROUP BY and HAVING clauses. The following query
+computes the average value for each group of sensors
+and filters out groups with average smaller than some
+threshold.
+(Q1) SELECT D.gid, AVG(D.value)
+FROM SensorData D
+GROUP BY D.gid
+HAVING AVG(D.value)>Threshold
+There are two alternative plans for this query. We
+can create a flow block for each group, or we can create
+a flow block that is shared by multiple groups.
+To create a separate flow block can aggregate sensor
+records of the same group as soon as possible,
+shorten the path length, and allow to apply the predicate
+of the HAVING clause to the aggregate results earlier,
+which saves more communication if the selectivity
+of the predicate is low. The optimizer should take several
+parameters into account to make the best plan.
+One parameter is the overlap of the distribution of the
+physical locations of the sensors that belong to the different
+groups. If sensors that below to a single group
+are physically close, it is better to create a separate
+flow block to aggregate them together, since the communication
+cost to aggregate close-by sensors is usually
+low. However, if sensors from different groups are
+spatially interspersed, it is more efficient to construct
+a single flow block shared by all groups.
+Joins. The computation part of a flow block does
+not need to be an aggregate operator. It is possible to
+add join operators to our query template and define
+flow blocks with joins. Joins will be common in applications
+for tracking or object detection. For example,
+a user may pose a query to select all objects detected
+in both regions R1 and R2. The following query has a
+join operator to connect sensor detections in the two
+regions.
+(Q2) SELECT oid
+FROM SensorData D1, SensorData D2
+WHERE D1.loc IN R1 AND D2.loc IN R2
+AND D1.oid = D2.oid
+Join operators represent a wide range of possible
+data reductions. Depending on the selectivity of the
+join, it is possible to either reduce or increase the resulting
+data size. If the join increases the result size,
+it is more expensive to compute the join result at the
+leader instead of having the leader send out the tuples
+from the base relation. Relevant catalog data to
+make an informed decision concerns the selectivity of
+the join and the location of the leader.

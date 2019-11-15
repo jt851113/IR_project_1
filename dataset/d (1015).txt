@@ -1,0 +1,116 @@
+In this paper, we consider k-dominant skyline query
+problem and present a method for computing the query result
+for a particular k at any time. By applying domination
+power strategy, we reduce huge number of comparisons
+between the k-dominant skyline objects and the dataset.
+Our comprehensive performance study using real and
+synthetic datasets demonstrate that the proposed method
+is very efficient and scalable.
+However, proposed method is efficient to compute k-
+dominant skyline only for static datasets. It may not
+be efficient for frequently updated datasets. The study
+to facilitate incremental updates dataset is let for future
+work.
+ACKNOWLEDGMENT
+This work was supported by KAKENHI (19500123)
+and Md. Anisuzzaman Siddique was supported by the
+scholarship of MEXT Japan.
+REFERENCES
+[1] T. Xia, D. Zhang, and Y. Tao, “On Skylining with
+Flexible Dominance Relation,” in Proceedings of
+ICDE. Cancun, pp. 1397-1399, April 2008.
+[2] S. Borzsonyi, D. Kossmann, and K. Stocker, “The
+skyline operator,” in Proceedings of ICDE. Germany,
+pp. 421-430, April 2001.
+[3] D. Kossmann, F. Ramsak, and S. Rost, “Shooting
+stars in the sky: An online algorithm for skyline
+queries,” in Proceedings of VLDB. China, pp. 275-
+286, August 2002.
+[4] J. Chomicki, P. Godfrey, J. Gryz, and D. Liang,
+“Skyline with Presorting,” in Proceedings of ICDE.
+India, pp. 717-719, March 2003.
+[5] D. Papadias, Y. Tao, G. Fu, and B. Seeger, “Progressive
+skyline computation in database systems,” ACM
+Transactions on Database Systems, vol. 30(1), pp. 41-
+82, March 2005.
+[6] C. Y. Chan, H. V. Jagadish, K-L. Tan, A-K. H.
+Tung, and Z. Zhang, “Finding k-Dominant Skyline
+in High Dimensional Space,” in Proceedings of ACM
+SIGMOD. USA, pp. 503-514, June 2006.
+[7] K.-L. Tan, P.-K. Eng, and B. C. Ooi, “Efficient
+Progressive Skyline Computation,” in Proceedings of
+VLDB. Italy, pp. 301-310, September 2001.
+[8] R. Fagin, A. Lotem, and M. Naor, “Optimal aggregation
+algorithms for middleware,” in Journal of
+Computer and System Sciences. USA, vol. 66, pp.
+614-656, April 2003.
+[9] A. Vlachou, C. Doulkeridis, Y. Kotidis, and M.
+Vazirgiannis, “SKYPEER: Efficient Subspace Skyline
+Computation over Distributed Data,” in Proceedings
+of ICDE. Turkey, pp. 416-425, April 2007.
+[10] K. Fotiadou, and E. Pitoura, “BITPEER: Continuous
+Subspace Skyline Computation with Distributed
+Bitmap Indexes,” in Proceedings of DaMaP. USA, pp.
+35-42, March 2008.
+[11] C. Y. Chan, H. V. Jagadish, K-L. Tan, A-K. H. Tung,
+and Z. Zhang, “On High Dimensional Skylines,” in
+Proceedings of EDBT. Germany, pp. 478-495, March
+2006.
+[12] Y. Tao, X. Xiao, and J. Pei, “Subsky: Efficient Computation
+of Skylines in Subspaces,” in Proceedings of
+ICDE. USA, pp. 65-65, April 2006.
+[13] C.-Y. Chan, P.-K. Eng, and K.-L. Tan, “Stratified
+Computation of Skylines with Partially-Ordered Domains,”
+in Proceedings of ACM SIGMOD. USA, pp.
+203-214, June 2005.
+[14] M. Morse, J. M. Patel, and H. V. Jagadish, “Efficient
+Skyline Computation over Low-Cardinality Do-
+mains,” in Proceedings of VLDB. Austria, pp. 267-
+278, September 2007.
+[15] W. T. Balke, U. Guntzer, and J. X. Zheng, “Efficient
+distributed skylining for web information systems,” in
+Proceedings of EDBT. Greece, pp. 256-273, March
+2004.
+[16] S. Kapoor, “Dynamic Maintenance of Maxima of
+2-d Point Sets”, in SIAM Journal on Computing, vol.
+29(6), pp. 1858-1877, April 2000.
+[17] K. Deng, X. Zhou, and H. T. Shen, “Multi-source
+Skyline Query Processing in Road Networks,” in
+Proceedings of ICDE. Turkey, pp. 796-805, April
+2007.
+[18] M. Sharifzadeh and C. Shahabi, “The Spatial Skyline
+Query,” in Proceedings of VLDB. Korea, pp.
+751-762, September 2006.
+[19] C. Li, B. C. Ooi, A-K. H. Tung, and S. Wang,
+“DADA: A Data Cube for Dominant Relationship
+Analysis,” in Proceedings of ACM SIGMOD. USA,
+pp. 659-670, June 2006.
+[20] J. Pei, B. Jiang, X. Lin, and Y. Yuan, “Probabilistic
+Skylines on Uncertain Data,” in Proceedings of
+VLDB. Austria, pp. 15-26, September 2007.
+[21] E. Dellis and B. Seeger, “Efficient Computation of
+Reverse Skyline Queries,” in Proceedings of VLDB.
+Austria, pp. 291-302, September 2007.
+[22] M. A. Siddique and Y. Morimoto, “Extended kdominant
+Skyline in High Dimensional Space,” in
+Proceedings of ICISA. Korea, Vol. 2, pp. 520-527,
+April 2010.
+Md. Anisuzzaman Siddique is an Associate Professor at University
+of Rajshahi (RU), Bangladesh. He received Ph.D. degree
+from Hiroshima University, Japan. He completed the B.Sc.
+and M.Sc. degrees in Computer Science and Technology from
+RU, Bangladesh in 2000 and 2002, respectively. Since 2002-
+present he is a faculty member in RU. His research interests
+include skyline evaluation, data mining, and privacy preserving
+information retrieval.
+Yasuhiko Morimoto is an Associate Professor at Hiroshima
+University, Japan. He received B.E., M.E., and Ph.D. from
+Hiroshima University in 1989, 1991, and 2002, respectively.
+From 1991 to 2002, he had been with IBM Tokyo Research
+Laboratory where he worked for data mining project and multimedia
+database project. Since 2002, he has been with Hiroshima
+University. His current research interests include data mining,
+machine learning, geographic information system, and privacy
+preserving information retrieval.
+JOURNAL OF COMPUTERS, VOL. 7, NO. 3, MARCH 2012 615
+c 2012

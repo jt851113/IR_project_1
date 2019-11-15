@@ -1,0 +1,48 @@
+There are many classes of sensor networks [18], each with its
+own characteristics. Mechanisms meant for one class may
+not be appropriate for other classes. Before we discuss the
+problem of optimizing these mechanisms, it is therefore im-
+portant that we dene the class of sensor networks under
+consideration in this paper.
+
+In this paper, we adopt as a model one of the class of sensor
+networks described in [18] that is large (in terms of number
+of sensors), and has a non-deterministic1 topology. Also,
+the sensors in this network may be multiple hops away from
+the nearest wired node. This, according to [18], is the most
+challenging class of sensor networks.
+
+We assume that the sensors organize themselves in clusters,
+1sensors are thrown randomly in the target eld
+
+and that every cluster has a cluster-head2. The specific
+mechanism for achieving this is orthogonal to our focus of
+supporting energy-effcient monitoring. A possible mecha-
+nism that may be used for this purpose has been proposed
+in [8]. We assume the existence of some such mechanism.
+
+As is typically the case in these networks, we assume that
+sensors and base stations have limited energy and commu-
+nicate sensed data over wireless link. Also, we assume that
+within a cluster, the base station and the sensors use TDMA
+at the link layer to communicate [8]. The TDMA schedule
+is decided by the base station, which gets the rst slot in the
+schedule. At the time the cluster is formed, the base station
+publishes the schedule, thereby communicating it to all the
+sensors in the cluster. They use it to appropriately switch
+between active and sleep mode.
+
+We assume that the base stations in the sensor network com-
+municate with the outside world via a few nodes on the wired
+network. We call these nodes the access points (wired base
+station in the gure) (g. 3). We assume that every base
+station is statically pre-congured to communicate via one
+access point.
+
+We assume that the sensors in a cluster know their location
+relative to one another. Determining the location of a sensor
+dynamically in a sensor network is a research area in its own
+right, and orthogonal to the problem being addressed in this
+paper. Several promising approaches ([13, 16, 4]) have been
+proposed to solve this problem. We assume the existence of
+some such mechanism.

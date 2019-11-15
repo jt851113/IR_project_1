@@ -1,0 +1,79 @@
+[1] K. Aberer, P. Cudre-Mauroux, M. Hauswirth, and T. V. Pelt.
+Gridvine: Building Internet-Scale Semantic Overlay
+Networks. In Proceedings of ISWC’2004, 2004.
+[2] V. Cholvi, P. Felber, and E. Biersack. Efficient search in
+unstructured peer-to-peer networks. Technical report, Institut
+EURECOM, 2003.
+[3] A. Crespo and H. Garcia-Molina. Semantic overlay networks
+for P2P systems. In Proceedings of AP2PC’04, 2004.
+[4] F. Cuenca-Acuna, C. Peery, R. Martin, and T. Nguyen.
+PlanetP: Using gossiping to build content addressable
+peer-to-peer information sharing communities. In
+Proceedings of HPDC’03, 2003.
+[5] I. S. Dhillon and D. S. Modha. Concept decompositions for
+large sparse text data using clustering. Machine Learning,
+42(1):143–175, Jan 2001.
+[6] C. Doulkeridis, K. Norvag, and M. Vazirgiannis. DESENT:
+Decentralized and distributed semantic overlay generation in
+P2P networks. IEEE Journal on Selected Areas in
+Communications (J-SAC), 25(1):25–34, 2007.
+[7] C. Doulkeridis, A. Vlachou, Y. Kotidis, and M. Vazirgiannis.
+Peer-to-peer similarity search in metric spaces. In
+Proceedings of VLDB’07, 2007.
+[8] P. Garbacki, D. H. J. Epema, and M. van Steen. Optimizing
+peer relationships in a super-peer network. In Proceedings of
+ICDCS’07, 2007.
+[9] C. Gennaro, M. Mordacchini, S. Orlando, and F. Rabitti.
+Processing complex similarity queries in peer-to-peer
+networks. In Proceedings of SAC ’2008, 2008.
+[10] C. Gkantsidis, M. Mihail, and A. Saberi. Hybrid search
+schemes for unstructured peer-to-peer networks. In
+Proceedings of INFOCOM’05, 2005.
+[11] A. Linari and G. Weikum. Efficient peer-to-peer semantic
+overlay networks based on statistical language models. In
+Proceedings of P2PIR’06, 2006.
+[12] F. Liu, M. Li, and L. Huang. Distributed information
+retrieval based on hierarchical semantic overlay network. In
+Proceedings of GCC’04, 2004.
+[13] J. Lu and J. Callan. Full-text federated search of text-based
+digital libraries in peer-to-peer networks. Information
+Retrieval, 9(4):477–498, 2006.
+[14] J. Lv and X. Cheng. WonGoo: A pure peer-to-peer full text
+information retrieval system based on semantic overlay
+networks. In Proceedings of NCA’04, 2004.
+[15] S. Michel, P. Triantafillou, and G. Weikum. MINERVA
+Infinity: A Scalable Efficient Peer-to-Peer Search Engine. In
+Proceedings of Middleware’05, 2005.
+[16] W. Nejdl et al. Super-Peer-based Routing and Clustering
+Strategies for RDF-based P2P Networks. In Proceedings of
+WWW’03, 2003.
+[17] D. Novak and P. Zezula. M-chord: A scalable distributed
+similarity search structure. In Proceedings of
+INFOSCALE’06, 2006.
+[18] J. X. Parreira, S. Michel, and G. Weikum. p2pDating: Real
+Life Inspired Semantic Overlay Networks for Web Search.
+In Proceedings of SIGIR’2005 HDIR Workshop, 2005.
+[19] S. Ratnasamy, P. Francis, M. Handley, R. Karp, and
+S. Schenker. A Scalable Content-addressable Network. In
+Proceedings of SIGCOMM’01, 2001.
+[20] O. D. Sahin, F. Emekci, D. Agrawal, and A. E. Abbadi.
+Content-based similarity search over peer-to-peer systems. In
+Proceedings of DBISP2P’04, 2004.
+[21] G. Skobeltsyn, T. Luu, I. P. Zarko, M. Rajman, and
+K. Aberer. Query-driven indexing for scalable peer-to-peer
+text retrieval. In Proceedings of Infoscale’2007, 2007.
+[22] T. Suel et al. ODISSEA: A Peer-to-Peer Architecture for
+Scalable Web Search and Information Retrieval. In
+Proceedings of WebDB’2003, 2003.
+[23] C. Tang and S. Dwarkadas. Hybrid global-local indexing for
+efficient peer-to-peer information retrieval. In Proceedings of
+NSDI’04, 2004.
+[24] C. Tang, Z. Xu, and S. Dwarkadas. Peer-to-Peer Information
+Retrieval Using Self-Organizing Semantic Overlay
+Networks. In Proceedings of SIGCOMM’03, 2003.
+[25] C. Tempich, S. Staab, and A. Wranik. REMINDIN’:
+Semantic Query Routing in Peer-to-Peer Networks based on
+Social Metaphors. In Proceedings of WWW’2004, 2004.
+[26] J. Zhang and T. Suel. Efficient query evaluation on large
+textual collections in a peer-to-peer environment. In
+Proceedings of IEEE P2P’05, 2005.

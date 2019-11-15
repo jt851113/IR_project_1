@@ -1,0 +1,26 @@
+These schemes were analytically compared across different values of c chosen in the range of
+[0.001, 1] as in section 4.6. The total number of nodes X was 104. For ACQUIRE, the lookahead
+parameter was set to d for a given value of c. We refer to this version of ACQUIRE
+as ACQUIRE. Eqn. 21 from section 5.1, Eqn. 24 from section 5.2 and Eqn. 13 from
+section 4.5 (with d = d) were used in the comparative analysis. For the initial comparisons,
+N = 100 and M = 20. Using these values for M and N in Eqn. (16) from section 5.1, we
+obtain tmin = 13. This value of tmin is then used in Eqn. 21.
+As figure 6 shows that ACQUIRE with look-ahead 0 (i.e. random walk) performs at least
+as worse as ACQUIRE with the optimal look-ahead (ACQUIRE). ACQUIRE seems to
+outperform ERS for higher values of the amortization factor. Moreover at c = 1, ACQUIRE
+gives about a 60% energy savings over ERS. In the case of N = 100 andM = 20, ACQUIRE
+outperforms ERS if c  0.08 (approx.). In this case, d = 1 as shown by figure 5.
+However, it is not always the case that ACQUIRE outperforms ERS only with d = 1. If
+N = 160 and M = 50, tmin = 19 (from Eqn. 16). With these values of M and N as shown
+by the figure 7, ACQUIRE outperforms ERS if c  0.06 (approx.). In this case, d = 2
+as shown by figure 5. Moreover in this case as figure 7 shows, for c > 0.2, even ACQUIRE
+with d = 0 would outperform ESR. Again, for c = 1, ACQUIRE achieves more than 75%
+energy savings over ERS.
+As figure 6 shows, FBQ, on an average, incurs the worst energy consumption which is several
+orders of magnitude higher than the other schemes. This is mainly because of a very large
+number of nodes (X = 104) used in our study.
+From, the above analysis, it seems that the relative query size (M
+N ), seems to have a significant
+impact on the performance of ACQUIRE and ERS. Hence we analyze this effect in section
+6.2. FBQ always incurs an order of magnitude worse energy consumption, and hence we do
+not study the impact of the relative query size on FBQ.

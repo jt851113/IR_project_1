@@ -1,0 +1,97 @@
+With advances in technology, it is becoming increasingly feasible
+to put a fast processor on a single small sensor along with
+a sizable memory and a radio transceiver. There is an everevolving
+continuum of sensing, computing, and communication
+capabilities from smartdust, to sensors, to mobile devices,
+to desktops, to clusters. With this evolution, capabilities are
+moving from larger footprint to smaller footprint devices. For
+example, tomorrow’s mote will be comparable in resources to
+today’s mobile devices; and tomorrow’s mobile devices will be
+comparable to current desktops. These developments suggest
+that future sensor networks may well be capable of supporting
+applications that require resource-rich support today. Examples
+of such applications include streaming media, surveillance,
+image-based tracking and interactive vision. Many of these fusion
+applications share a common requirement, namely, hierarchical
+data fusion, i.e., applying a synthesis operation on input
+streams.
+This paper focuses on challenges involved in supporting fusion
+applications in wireless ad hoc sensor networks (WASN).
+Developing fusion applications is challenging in general because
+of the time-sensitive nature of the fusion operation, and
+the need for synchronization of the data from multiple streams.
+Since the applications are inherently distributed, they are typically
+implemented via distributed threads that perform fusion in
+a hierarchical manner. Thus, the application programmer has to
+deal with thread management, data synchronization, buffer handling,
+and exceptions (such as time-outs while waiting for input
+data for a fusion function) - all in a distributed fashion. WASN
+add another level of complexity to such application development
+due to the scarcity of power in the individual nodes [5].
+In-network aggregation and power-aware routing are techniques
+to alleviate the power scarcity of WASN. While the good news
+about fusion applications is that they inherently need in-network
+aggregation, a naive placement of the fusion functions on the
+network nodes will diminish the usefulness of in-network fusion,
+and reduce the longevity of the network (and hence the
+application). Thus, managing the placement (and dynamic relocation)
+of the fusion functions on the network nodes with a
+view to saving power becomes an additional responsibility of
+the application programmer. Dynamic relocation may be required
+either because the remaining power level at the current
+node is going below threshold, or to save the power consumed
+in the network as a whole by reducing the total data transmission.
+Supporting the relocation of fusion functions at run-time
+has all the traditional challenges of process migration [15].
+We have developed DFuse, an architecture for programming
+fusion applications. It supports distributed data fusion with automatic
+management of fusion point placement and migration
+to optimize a given cost function (such as network longevity).
+Using the DFuse framework, application programmers need
+only implement the fusion functions and provide the dataflow
+graph (the relationships of fusion functions to one another, as
+shown in Figure 1). The fusion API in the DFuse architecture
+subsumes issues such as data synchronization and buffer management
+that are inherent in distributed programming.
+The main contributions of this work are summarized below:
+1. Fusion API: We design and implement a rich API that
+affords programming ease for developing complex sensor
+fusion applications. The API allows any synthesis
+operation on stream data to be specified as a fusion function,
+ranging from simple aggregation (such as min, max,
+sum, or concatenation) to more complex perception tasks
+(such as analyzing a sequence of video images). This is
+in contrast to current in-network aggregation approaches
+[11, 8, 6] that allow only limited types of aggregation
+operations as fusion functions.
+2. Distributed algorithm for fusion function placement and
+dynamic relocation: There is a combinatorially large number
+of options for placing the fusion functions in the network.
+Hence, finding an optimal placement that minimizes
+communication is difficult. Also, the placement
+needs to be re-evaluated quite frequently considering the
+dynamic nature of WASN.We develop a novel heuristicbased
+algorithm to find a good (according to some predefined
+cost function) mapping of fusion functions to the
+network nodes. The mapping is re-evaluated periodically
+to address dynamic changes in nodes’ power levels and
+network behavior.
+3. Quantitative evaluation of the DFuse framework: The
+evaluation includes micro-benchmarks of the primitives
+provided by the fusion API as well as measurement of
+the data transport in a tracker application. Using an implementation
+of the fusion API on a wireless iPAQ farm
+coupled with an event-driven engine that simulates the
+WASN, we quantify the ability of the distributed algorithm
+to increase the longevity of the network with a
+given power budget of the nodes.
+The rest of the paper is structured as follows. Section 2 analyzes
+fusion application requirements and presents the DFuse
+architecture. In Section 3, we describe how DFuse supports
+distributed data fusion. Section 4 explains a heuristic-based
+distributed algorithm for placing fusion points in the network.
+This is followed by implementation details of the framework
+in Section 5 and its evaluation in Section 6. We then compare
+our work with existing and other ongoing efforts in Section 7,
+present some directions for future work in Section 8, and conclude
+in Section 9.

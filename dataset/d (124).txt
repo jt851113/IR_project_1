@@ -1,0 +1,26 @@
+The idea of querying and collating results from multiple databases is
+not new. Companies such as PLS (http://www.pls.com), Lexis-Nexis
+(http://www.lexis-nexis.com), Dialog (http://www.dialog.com), and
+Verity (http://www.verity.com) long ago created systems that integrated
+search results from multiple heterogeneous databases.1 There
+are many existing Web metasearch services, including MetaCrawler,
+SavvySearch, Inference Find, Fusion, ProFusion, Highway 61,
+Mamma, Quarterdeck WebCompass, Metabot, Symantec Internet
+FastFind, and WebSeeker (for a quick review of metasearch engines,
+see Notess2).
+Work in the area of “collection fusion” is reported in the Text Retrieval
+Conference (TREC) and the Special Interest Group for Information
+Retrieval (SIGIR) conference proceedings. Several other researchers have
+also used relevance measures including term proximity.3,4
+Research search engines that promise improved results ranking
+include Laser5 (http://laser.cs.cmu.edu/) and Google6 (http://
+google.stanford.edu). These engines use the structure of HTML pages
+and hyperlink information to help determine page relevancy. For
+example, Google uses the text in links to a particular page as descriptors
+of that page (links often contain better descriptions of the page
+than the pages themselves). Google also uses a ranking algorithm
+called PageRank, which bases rankings on analysis of the number of
+pages pointing to each page. Although most of the benefits of
+metasearch apply to these improved search engines, displaying query
+term context may become less important for determining page relevancy
+as results rankings improve.

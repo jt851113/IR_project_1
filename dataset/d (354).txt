@@ -1,0 +1,33 @@
+Furthermore, merely as a showcase, we compare the achieved
+recall values of our SON-based approach against the recall that
+normalized flooding achieves, using the same number of contacted
+peers, for Reuters/P1000. This is clearly not comparative to our
+approach, however we include it to demonstrate the problems that
+a naive search mechanism encounters. Normalized flooding [10]
+is an improved variation of flooding, in which each peer forwards
+a query to Nn neighbors, instead of all neighbors, where Nn is
+usually the minimum connectivity degree of any peer in the network.
+The results, shown in Figure 4(a), demonstrate that in this
+experiment the SON-based approach improves the recall achieved
+by the naive approach by (at least) a factor of 7. Notice that we
+Figure 4: Comparison of SON-based recall with two baseline
+approaches for Reuters/P1000: (a) vs. normalized flooding for
+the same number of contacted peers, and (b) vs. super-peer for
+a super-peer topology of 25 super-peers.
+tried a similar experiment for GOV2/P1000, however the recall of
+the flooding variant was practically zero, demonstrating the inapplicability
+of flooding.
+We use as a baseline, the recall that a super-peer network that is
+not SON-based would achieve. Practically, assuming we have Np
+peers uniformly assigned to Nsp super-peers, we use as baseline
+the recall achieved by contacting the best N super-peers (and their
+peers) for a given query. We compare this recall, with the recall that
+the SON-based approach achieves by contacting the top-N SONs.
+This comparison aims to illustrate the performance gains – in terms
+of result quality – of our approach against a plain super-peer architecture.
+In Figure 4(b), we compare the SON-based approach to a
+super-peer topology of Nsp=25 super-peers (equal to the number of
+SONs generated for the same document collection Reuters/P1000).
+The results show that our approach significantly outperforms a similar
+plain super-peer architecture by a factor of 1.5-3.5. Concluding
+the achieved recall values demonstrate the effectiveness of our approach.

@@ -1,0 +1,13 @@
+In this section we describe how the semantic overlays are created.
+Initially, peers are connected in an unstructured P2P network,
+hence each peer is only aware of a limited number of direct
+neighbors. Peers are assumed to store documents locally, as in the
+case of a distributed digital library. First we describe the local preprocessing
+on each peer joining our system (Section 3.1), followed
+by the SON construction process (Section 3.2). Peer dynamics and
+maintenance are described in Section 3.3.
+Semantic Overlay Networks (SONs) refer to groups of peers
+with similar contents. At this point, it should be stressed that SONs
+do not necessarily imply use of semantics in the traditional sense
+(like ontologies), however this is the term first proposed in the literature
+[3] and we use it as such throughout the paper.

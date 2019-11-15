@@ -1,0 +1,62 @@
+Modern distributed information systems cope with
+disconnection and limited bandwidth by caching. In
+communication-constrained situations, traditional demanddriven
+approaches are inadequate. Instead, caches must be
+preloaded to mitigate the absence of connectivity or the
+paucity of bandwidth. In this paper, we propose to use
+application-level knowledge expressed as profiles to manage
+the contents of caches.
+User profiles are used by many applications to specify
+information to deliver to users (e.g., AvantGo). We extend
+this notion to provide data management hints for preloading
+and prestaging caches in distributed environments. For us,
+a profile is not a demand for data, but a pragma or hint of
+what might be useful to prefetch closer to the user.
+There are many scenarios in which such hints can be useful.
+If a client machine that is connected to a data source by
+a low-bandwidth link, a client-side cache could be used to
+hide access latency by using slack bandwidth to bring useful
+data closer to the point of use. Disconnected use is a more
+extreme example in which prefetching must be done while
+a device is connected to allow access at times when it’s not.
+Another example involves a cluster of users connected to a
+common node that is itself connected to one or more data
+sources across a thin pipe. The latency introduced by the
+thin pipe can be reduced by intelligent use of a cache. In all
+of the above scenarios, the system must choose subsets of
+the items of interest to prefetch. A simple listing of items,
+as provided in other profiling schemes, is insufficient since
+it provides no information about relative value and interdependencies
+among the data items.
+In this paper, we present a profile specification scheme
+that allows us to identify items of interest, but also allows
+us to express their relative importance through weighting.
+Furthermore, our scheme supports the specification of data
+dependencies (e.g., we are able to say that directions to a
+hotel from the airport are only useful in the presence of the
+corresponding airline and hotel reservations). Finally, we
+add the ability to specify thresholds, as in up to three restaurant
+recommendations are useful while any more are not.
+All three of these extensions to profile formulation reflect a
+global view of how a selected item relates to other selected
+items. Extended profiles such as these will allow us to fill
+our cache with a much more accurate set of objects. This
+paper makes three fundamental points towards this end:
+Specification: We propose a simple language that separates
+the expression of interesting objects from their utility value.
+Utilities can be expressed with primitives that handle the
+three forms of dependency given above.
+Algorithms: We present and compare some heuristic techniques
+for filling a cache based on our extended profiles.
+Profile Composition: We discuss how to combine several
+profiles into one superprofile that subsumes its constituents
+(as is required when a cache is shared by multiple users).
+This study will show that profiles with dependencies and
+thresholds are easily expressed, and that a simple greedy algorithm
+does a good job processing profiles to select items
+to prefetch into a cache. We look at basic cache prefetching,
+as well as preemptive cache prefetching, which takes
+into account the possibility that prefetching may get interrupted
+prematurely. We then show for shared caches with
+very large “superprofiles”, that a more scalable approach is
+to use a randomized algorithm (simulated annealing).

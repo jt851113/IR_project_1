@@ -1,0 +1,68 @@
+Our grouping algorithm above takes as input the number of
+groups Ki. As we stated earlier, the lower the value of Ki, the
+lower the index-building and posting list retrieval cost, but the
+higher the query issuing cost. Choosing the right value of Ki is
+therefore crucial. In this section, we propose a simple probabilistic
+cost model that allows us to identify quickly an appropriate
+value of Ki for peer Pi. Our model is based on both the term
+distributions in the query workload Q and the local shared content
+Di. Note that Ki could be any value from 1 to Ni, the number of
+documents in Di, and Ki may vary from peer to peer.
+We build a cost model to estimate quickly the total cost of a peer
+given Ki, according to (2), without actually grouping documents
+and calculating the cost. This allows us to identify a good value of
+Ki to use as an input parameter for our grouping algorithm.
+Clearly, running the grouping algorithm Ni times to pick the best
+value of Ki is inefficient.
+We first estimate how Ki affects the index-building cost and
+posting list retrieval cost in (2). We denote the document-level
+local posting list of a term t as dl_li(t), while using li(t) for the
+group-level posting list of t.
+We partition the peer’s term set Vi into Ni classes, based on the
+length of their document-level posting lists, as follows
+When Ki > j, the group-level posting lists of the terms in class Sj
+cannot contain more than j entries. When Ki ￡ j, the group-level
+posting lists of the terms in class Sj cannot contain more than Ki
+entries. To estimate the index-building and posting list retrieval
+cost of (2), we assume the worst case scenario, in which
+documents are adversarily assigned to groups. Thus if Ki > j, the
+length of group-level posting lists of terms in Sj is j, otherwise, the
+length is Ki.
+We now estimate how Ki affects the query issuing cost in (2). We
+consider failed queries of length two only (i.e. q = {t1, t2}, and
+Ri(q) = A). Denote by m and n the lengths of document-level
+posting lists of t1 and t2, respectively:
+Without loss of generality, assume that m 3 n. If m 3 Ki, according
+to our assumption that documents are adversarily assigned to
+groups, any group Gij contains at least one document that contains
+t1. Thus any group that contains document(s) from dl_li(t2) also
+contains document(s) from dl_li(t1). This means that the intersection
+of group-level posting lists li(t1) and li(t2) is not empty, or
+equivalently, q = {t1, t2} contributes to the query issuing cost of
+Ci(Q) in (2).
+Similarly, when m < Ki and (m+n) 3 Ki, there are m groups
+containing one document from dl_li(t1), and there are n groups
+containing one document from dl_li(t2). Since (m+n) 3 Ki, there
+must be at least one group that contains both documents from
+dl_li(t1) and dl_li(t2). Thus, in combination, if (m+n) 3 Ki, the
+failed query q = {t1, t2} contributes to the query issuing cost of
+Ci(Q) in (2).
+Now we consider the case (m+n) < Ki. In this case, the probability
+that a group contains one document from dl_li(t1) is m / Ki; the
+probability that a group contains one document from dl_li(t2) is
+n / Ki. Thus the probability that a group contains one document
+from dl_li(t1) and one from dl_li(t2) is mn / Ki
+2. The probability
+that there is no such group is therefore
+With the above probability, query q does not contribute to the
+query issuing cost in (2). Thus, we assume that query q
+contributes a portion of p of its query issuing cost to (2).
+To summarize, for a given value Ki, we estimate costs in (2) as
+follows.
+1. For any term t in Sj
+a. If (j < Ki) then 
+b. Otherwise 
+2. For any failed query q = {t1, t2}, with m = 
+a. If (m+n)Ki then q contributes one cost unit to (2).
+b. Otherwise, q contributes (1–mn/Ki2)Ki cost units to (2)
+

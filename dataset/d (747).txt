@@ -1,0 +1,62 @@
+Consider an enumeration node (U, V), its n-set S and the enumerated element e ? V.
+With the naive enforcement of C-connected and C-closed (verifying Definitions 9 and 10
+without the help of any counter), the n-tuples in ∪n
+i=1(Ui ∪Vi ∪Si )×(×j =iU j ∪V j )
+would be traversed at any child of (U, V ). This set of n-tuples relates to the enforcement
+of C-closed only but it includes ×i=1..nUi that is accessed to verify C-connected (at
+the left child only). Updating the counters, described in the previous section, requires
+accessing far less n-tuples. Assuming e was chosen in the dth dimension, Fenster
+traverses ∪i =d (Ui ∪ Vi ∪ Si ) × (×j /?{d,i }U j ∪ V j ) at any child of (U, V ). The enumeration
+strategy, hence the number of enumeration nodes, being the same in both
+cases, it could be written that Fenster is as fast as the naive approach running on a
+dataset with one dimension less (and the same number of elements per dimension).
+However, this statement only holds when the time spent using the counters (to
+enforce C-connected and C-closed) does not dominate the time spent accessing the
+n-tuples (to update the counters). To verify it, the number of counters accessed at every
+node must be studied. To enforce C-connected, it is, at worst (none of the elements in
+V are removed), |V| + 2i=1..n
+|Vi |j =i
+|U j |. To enforce C-closed, it is, at worst
+(none of the elements in S extends U  V), |S| + 2i=1..n
+|Si |j =i
+|U j ∪ V j |.
+In both cases, the first term relates to checking whether every hyperplane v ? V
+(resp. s ? S) contains too many (resp. enough) n-tuples absent from R to satisfy
+C-connected (resp. C-closed) and the second term relates to checking whether an hyperplane
+v ? V (resp. s ? S), if added to U (resp. U  V) would make any orthogonal
+element exceed its noise tolerance threshold. As explained at the end of the previous
+section, two counters are summed to obtain the number of absent n-tuples on an
+orthogonal hyperplane, hence the factor. Overall, the time spent using the counters is
+O(i=1..n
+|Si |j =i
+|U j ∪ V j |).
+This number is nowcompared to the time spent updating the counters, i. e., O(|∪i =d
+(Ui ∪ Vi ∪ Si ) × (×j /?{d,i }U j ∪ V j )|), which can be rewritten O(i =d
+|Ui ∪
+Vi ∪ Si |j /?{d,i } |U j ∪ V j |). When n = 2, the time spent accessing the counters,
+O(|({S1}×(U2 ∪V2))∪({S2}×(U1 ∪V1))|), is dominant. It is, however, below the
+time required by the naive enforcement of C-connected and C-closed. When n ? 3, the
+comparison depends on the actual cardinalities of the sets Ui , Vi and Si (i = 1..n).
+In the worst case scenario we consider, Cconnected never removes any element from V.
+As a consequence, every element that is not in U  V was moved to S and, carrying
+on with our pessimistic view, the first improvement presented in Sect. 3.4 has not
+removed it from there. We therefore have ?i = 1..n, Ui ∪ Vi ∪ Si = Di and:
+- O i =d |Di |j /?{d,i } |Dj \ S j | accesses to n-tuples;
+- O i=1..n|Si |j =i|Dj \ S j | accesses to counters.
+For a clearer view of how large theses quantities are, let us assume that both the dataset
+and the pattern are perfectly cubic, i. e., ?(D, S) ? N2 | ?i = 1..n, |Di| = D and
+|Si| = S. Under this assumption, we have:
+- O (n ? 1)D(D ? S)n?2 accesses to n-tuples;
+- O (nS(n ? 1)(D ? S)) accesses to counters.
+After a simplification by (n ? 1)(D ? S), we end up comparing O(D(D ? S)n?3)
+with O(nS). When n = 3, the accesses to the counters and the n-tuples are on the
+same order, whereas the cost of traversing the relation dominates when n ? 4. Here
+is a more intuitive way to understand it: at every enumeration node, the n-tuples that
+are accessed to update the counters are on an hyperplane (related to e in Fig. 10). It is
+an (n ? 1)-dimensional subspace. In contrast, the number of used counters, whatever
+the arity of R, is on the order of a 2-dimensional subspace of the dataset (the finest
+counters are numbers of n-tuples absent from R at the intersection of two orthogonal
+hyperplanes). To conclude, it can indeed be written that, searching for closed patterns
+in an n-ary relation with n ? 3, Fenster is as fast as the naive approach (with no
+counter) processing a relation on domains of the same sizes but with an arity of n ?1.
+When n = 2, a gain exists but is not as impressive.

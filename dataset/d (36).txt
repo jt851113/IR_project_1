@@ -1,0 +1,28 @@
+Distributed broadcast can create a lot of network trac be-
+cause events are flooded to all the Event Brokers. An al-
+ternative approach, called distributed multicast (Figure 5),
+prunes the forwarding tree. Specically, when an event ar-
+rives at each EB in the forwarding tree, it is forwarded onto
+one of the EB's outgoing branches only if the event might
+match a subscription at some EB leading from this branch.
+In other words, the EB selectively forwards an event based
+on the result of \partial matching." In eect, the event
+is matched against the logical OR of all the subscriptions
+stored at all the EBs downstream from a particular branch.
+If the result is false, that branch is \pruned" for this event.
+The behavior is very similar to what happens at the routers
+in IP multicast, hence the name \distributed multicast."
+The need for partial matching implies that, unlike in dis-
+tributed broadcast, it is no longer sucient for each Event
+Broker to know about only its share of the active subscrip-
+tions. In the worst case, each Event Broker may need to
+store all the currently active subscriptions in the system.
+The Siena system ([6]) proposes a solution where multiple
+subscriptions can be collapsed into one condition, at the ex-
+pense of restricted subscription syntax.
+Unlike distributed broadcast, distributed multicast can no
+longer take advantage of network layer multicast directly to
+forward events to needed EBs, because potentially complex
+partial matching needs to be performed at each step. An
+ecient implementation of the forwarding tree without using
+IP multicast is given in [2].

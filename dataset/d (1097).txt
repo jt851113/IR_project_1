@@ -1,0 +1,4 @@
+This section discusses the most important research and
+system design challenges: on the distributed system side,
+performance, load balancing and fault tolerance; then challenges
+related to ranking and user profiling.

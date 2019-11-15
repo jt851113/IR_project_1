@@ -1,0 +1,142 @@
+B. Problem Formulation
+To define the problem of privacy preservation in publishing
+social network data, we need to formulate the following
+issues. First, we need to identify the privacy information
+to be preserved. Second, we need to model the background
+knowledge that an adversary may use to attack the privacy.
+Last, we need to specify the usage of the published social
+network data so that an anonymization method can try to retain
+the utility as much as possible while the privacy information
+is fully preserved.
+Different formulations of the above issues may lead to
+different versions of privacy preservation in social networks.
+Here, we propose a version which we believe is useful in many
+applications.
+1) Privacy in Social Networks and Anonymization: In this
+paper, we are interested in preserving the privacy of individuals
+which are represented as vertices in a social network.
+Specifically, how a small subset of vertices are connected in a
+social network is considered as the privacy of those vertices.
+Consider a social network G = (V,E, L,L) and the
+anonymization G0 = (V ';E';L';L') for publishing. We assume
+that no fake vertices are added in the anonymization.
+That is, there is a bijection function . This
+assumption is often desirable in applications since introducing
+fake vertices may often change the global structure of a
+social network. Moreover, we assume that for  ,
+ . That is, the connections between vertices
+in G are retained in G'.
+For a vertex   , if an adversary can identify a vertex
+  such that how u connects to other vertices in G is
+very similar to how u' connects to other vertices in G', and
+is substantially different from how any other vertices connect
+to others, then the privacy of u is leaked.
+Therefore, privacy preservation in publishing social network
+data is to prevent any vertex  from being reidentified
+in G0 with high confidence. Technically, given a
+positive integer k, G' preserves the privacy in G if every vertex
+u 2 V (G) cannot be re-identified in G' with a confidence
+larger than 1/k .
+2) Adversary Background Knowledge: In order to attack
+the privacy of a target individual in the original network, i.e.,
+analyze the released anonymization network and re-identify
+the vertex, an adversary needs some background knowledge.
+Equipped with different background knowledge, an adversary
+may conduct different types of attacks against privacy. Therefore,
+the assumptions of adversaries’ background knowledge
+play a critical role in both modeling privacy attacks on social
+networks and developing anonymization strategies to protect
+privacy in social network data.
+In this paper, we assume that an adversary may have the
+background knowledge about the neighborhood of some target
+individuals. This assumption is realistic in many applications.
+Among many types of information about a target victim that
+an adversary may collect to attack the victim’s privacy, one
+essential piece of information easy to be collected is the
+neighborhood, i.e., what the neighbors of the victim are and
+how the neighbors are connected.
+
+Generally, we can consider the d-neighbors of the target
+vertex, i.e., the vertices within distance d to the target vertex
+in the network where d is a positive integer. However, when
+d is large, collecting information about the d-neighbors of a
+target vertex may often be impractical for an adversary since
+the adversary may often have a limited access to a large social
+network. Moreover, as found in many social networks, the
+network diameter is often small. In other words, when d >
+1, an adversary may have to collect information about many
+vertices. Therefore, we confine our discussion in this paper to
+the essential case where only the immediate neighbors, i.e.,
+vertices in NeighborG(u), are considered. The case of d > 1
+is interesting for future work.
+
+An adversary may attack the privacy using the neighborhoods.
+For a social network G, suppose an adversary knows
+NeighborG(u) for a vertex . If NeighborG(u) has
+k instances in G' where G' is an anonymization of G, then u
+can be re-identified in G0 with confidence 1/k .
+  Similar to the philosophy in the k-anonymity model [5], to
+protect the privacy of vertices sufficiently, we want to keep the
+re-identification confidence lower than a threshold. Let k be a
+positive integer. For a vertex , u is k-anonymous
+in anonymization G0 if there are at least (k _ 1) other
+vertices  such that NeighborG0 (A(u)),
+NeighborG0 (A(v1)), ..., NeighborG' (A(vk!1)) are isomorphic.
+G' is k-anonymous if every vertex in G is k-anonymous
+in G'. Analogous to the correctness of k-anonymity model [5]
+on relational data, we have the following claim.
+  Theorem 1 (K-anonymity): Let G be a social network and
+G' an anonymization of G. If G' is k-anonymous, then with the
+neighborhood background knowledge, any vertex in G cannot
+be re-identified in G' with confidence larger than 1/k .
+  An adversary knowing the neighborhood of a target vertex
+is a strong assumption. Provided privacy is preserved under
+this assumption, privacy is also preserved when an adversary
+knows only part of the neighborhood (i.e., only some
+neighbors and some connections among neighbors) of a target
+vertex.
+  3) Usage of Anonymized Social Networks: An important
+aspect of anonymizing social network data is how the
+anonymized networks are expected to be used. Different applications
+may have different expectations. In some situations,
+anonymized networks may be used to analyze the global structures.
+In some other situations, anonymized networks may be
+used to analyze the micro-structures. Clearly, different usage
+expectations may lead to different anonymization schemes.
+  In this paper, we focus on using anonymized social networks
+to answer aggregate network queries. An aggregate network
+query computes the aggregate on some paths or subgraphs
+satisfying some given conditions. As an example, suppose a
+user is interested in the average distance from a medical doctor
+vertex to a teacher vertex in a network. For each doctor vertex,
+we can find the nearest neighbor vertex that is a teacher. Then,
+the aggregate network query returns the average of the distance
+between a doctor vertex to its nearest teacher neighbor.
+  Aggregate network queries are useful in many applica-tions,
+such as customer relationship management. While many
+types of queries on social networks are interesting, we are
+particularly interested in aggregate network queries in this
+paper since typically detail data is needed to answer such
+queries accurately. Using aggregate network queries we can
+examine the effectiveness of social network anonymization in
+a meaningful way.
+  4) Problem Definition and Complexity: Given a social
+network G, we want to compute an anonymization G0 such that
+(1) G' is k-anonymous; (2) each vertex in G is anonymized
+to a vertex in G0 and G0 does not contain any fake vertex; (3)
+every edge in G is retained in G0; and (4) G0 can be used to
+answer aggregate network queries as accurately as possible.
+  To understand the difficulty of the problem, we consider a
+simple case where all vertices in G carry the same label, or
+equivalently, G is not labeled.
+  Theorem 2 (Complexity): The following k-anonymity prob-lem
+in social network is NP-hard.
+Instance: a social network G = (V,E, L,L) where L = *
+and , positive integers k and n.
+Question: is there an anonymized social network G' =
+(V,E', L,L) such that , and G' is
+k-anonymous?
+Proof sketch. The proof is constructed by reducing the NPhard
+k-DIMENSIONAL PERFECT MATCHING problem [7]
+to the k-anonymity problem in social networks. Limited by
+space, we omit the details here.

@@ -1,0 +1,5 @@
+If the look-ahead d = 0, the node x will not request for updates from other nodes. x will try
+to resolve the query with the information it has, and will forward the query to a randomly
+chosen neighbor. Thus, in this case, ACQUIRE reduces to a random walk on the network.
+On an average it would take E(M) steps to resolve the query and E(M) steps to return
+the resolved query back to the querier x. Thus,

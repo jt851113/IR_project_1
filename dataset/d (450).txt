@@ -1,0 +1,4 @@
+For instance, the sequence a1,a2,a3,a4 supports the
+pattern (a1,a4,*,*,a4) while the sequence a1,a2,a3,a4,a5,a6 
+does not support it since the sequence is not in compliance
+with the pattern on the last position.

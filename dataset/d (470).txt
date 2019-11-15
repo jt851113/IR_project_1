@@ -1,0 +1,10 @@
+DEFINITION 2.5. Given a pattern 	         with
+period  and a sequence of  events         , the
+information loss of  on position  with respect to 	 is the
+information of the event  iff  is not in compliance with
+	 at position  and there is no information loss otherwise.
+The overall information loss of  with respect to 	 is the
+summation of the information loss of each position.
+  For example, the information loss of     
+on position 2 with respect to      is 0 while the
+infomation loss on position 5 is   .

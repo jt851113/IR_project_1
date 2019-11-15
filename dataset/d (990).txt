@@ -1,0 +1,32 @@
+In this paper, we described a novel instantiation of directed diffusion (the greedy aggregation) that uses a GIT-like
+algorithm to improve path sharing with the low additional cost. Our greedy approach constructs an energy-efficient
+aggregation tree using data-centric reinforcement mechanisms (based on a greedy heuristic for weighted set-covering
+problems). We evaluated the performance of this greedy-tree approach by comparing it to our prior opportunistic
+approach. Our preliminary result suggests that although the greedy aggregation and the opportunistic aggregation
+are roughly equivalent at low-density networks, the greedy-tree approach can achieve signficant energy savings at
+higher densities. In one experiment we found that the greedy aggregation can achieve up to 45% energy savings
+over the opportunistic aggregation without an adverse impact on latency or robustness. Given that the energy is the
+scarce resource, this path optimization technique is essential for prolonging the lifetime of the highly-dense sensor
+networks.
+[1] Elan Amir, Steven McCanne, and Randy H. Katz. An active service framework and its application to real-time multimedia
+transcoding. In Proceedings of the ACM SIGCOMM, pages 178–189, Vancouver, Canada, September 1998. ACM.
+[2] B. Badrinath and P. Sudame. Gathercast: The design and implementation of a programmable aggregation mechanism for
+the internet. In IEEE International Conference on Computer Communications and Networks (ICCCN), October 2000.
+[3] Sandeep Bajaj, Lee Breslau, Deborah Estrin, Kevin Fall, Sally Floyd, Padma Haldar, Mark Handley, Ahmed Helmy,
+John Heidemann, Polly Huang, Satish Kumar, Steven McCanne, Reza Rejaie, Puneet Sharma, Kannan Varadhan, Ya Xu,
+Haobo Yu, and Daniel Zappala. Improving simulation for network research. Technical Report 99-702b, University of
+Southern California, March 1999. revised September 1999, to appear in IEEE Computer.
+[4] Thomas B‥ack, Martin Sch‥utz, and Sami Khuri. A comparative study of a penalty function, a repair heuristic, and stochastic
+operators with the set-covering problem. In Artificial Evolution, pages 3–20. Springer, Berlin, 1996.
+[5] J.E. Beasley. A lagrangian heuristic for set-covering problems. Naval Research Logistics, 37:151–164, 1990.
+[6] T.H. Cormen, C.E. Leiserson, and R.L. Rivest. Introduction to Algorithms. The MIT Press, Cambridge, MA, 1990.
+[7] Deborah Estrin, Ramesh Govindan, John Heidemann, and Satish Kumar. Next century challenges: Scalable coordination
+in sensor networks. In Proceedings of the Fifth Annual ACM/IEEE International Conference on Mobile Computing and
+Networking (Mobicom’99), Seattle, Washington, August 1999.
+[8] M. Faloustsos, A. Banerjea, and R. Pankaj. Qosmic: Quality of service multicast internet protocol. In Proceedings of the
+ACM SIGCOMM, September 1998.
+[9] T. Grossman and A.Wool. Computational experience with approximation algorithms for the set covering problem. Euro.
+J. Operational Research, 101(1):81–92, August 1997.
+[10] John Heidemann, Fabio Silva, Chalermek Intanagonwiwat, Ramesh Govindan, Deborah Estrin, and Deepak Ganesan.
+Building efficient wireless sensor networks with low-level naming. In Proceedings of the ACM Symposium on Operating
+Systems Principles, Banff, Canada, October 2001.

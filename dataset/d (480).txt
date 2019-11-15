@@ -1,0 +1,15 @@
+3.4 Pattern Verification The verification process of a candidate
+pattern 	         of period  is similar to that to
+compute the MIG counts. The event sequence      is first
+mapped to a list of real numbers as follows. Each segment of
+ events 	 	     	 is examined at a time. It is
+mapped to a positive number 	 if it supports 	. Otherwise,
+a negative number  is mapped from each violated position
+of . Then, a similar procedure to MIG computing can be
+applied to locate the subsequence that maximize the generalized
+information gain of the pattern. Figure 8 shows the validation
+of pattern   . The bracketed subsequence is the one that
+provides the maximum generalized information gain . Note
+that multiple subsequences may have the same generalized information
+gain. If that is the case, our algorithm will output the 
+first one11.

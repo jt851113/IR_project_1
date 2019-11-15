@@ -1,0 +1,35 @@
+Several factors, such as the update rate, churn rate, data size and
+network size, affect the maintenance cost of structured overlays.
+In this subsection, we evaluate the performance of our scheme in
+different network configurations. The major metric is the average
+message number of a node per minute. In Figure 13, we vary the
+update rate to test the performances of different strategies. The update
+rate is defined as the number of tuples that are deleted/inserted
+per second. In the experiment, the node uniformly picks a tuple
+to update. In PISCES, the index should be updated only if the
+updates involve the indexed data. On the contrary, in the full indexing
+strategy, all updates should be reflected. In Figure 13, as
+the update rate increases, the costs of CAN-FULL and BATONFULL
+increase linearly, whereas the update rate has minor effect on
+CAN-PISCES and BATON-PISCES. BATON based schemes perform
+better than those based on CAN because the routing costs in
+BATON and CAN are O(logN) and O
+respectively. For a 2-
+Dimensional CAN, the routing cost is much higher compared to
+other overlays. This can be solved by creating some random routing
+fingers, as in MURK [18].
+We compare the effect of churn in Figure 14. Even in a highly
+dynamic network when one peer leaves or joins in about every three
+minutes (churn rate of 0.005), PISCES remains cost effective. This
+confirms the robustness of PISCES.
+As shown in Figure 15(a), the strategies based on full indexing
+incur high overheads when publishing the node’s data, while
+PISCES generates much less cost because it only needs to publish
+the most popular data and a small range index. In Figure 15(b), we
+only show the results of PISCES to focus on their trends. The cost
+of PISCES grows slowly as the data size increases.
+From Figure 16, we observe that as network size increases (ranging
+from 32 to 256), the routing cost for all strategies (partial and
+full indexing) also increase. However, because PISCES publishes
+much fewer data than its full indexing counterpart, the cost increases
+at a much slower rate

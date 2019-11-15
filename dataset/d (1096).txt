@@ -1,0 +1,12 @@
+Gathering information about the user interest and for relevance
+feedback tracking is based on some software pieces
+at the client side. There are several ways of implementing
+such a tool. These include, but are not limited to the following.
+First, one can use an extension to some browser (e.g.,
+Firefox) that captures accesses to widely used search engines
+such as Google. This extension would be made available as
+a plugging. Second, open-source file-sharing software such
+as eMule can be used and their search mechanism instrumented
+easily. As systems such as eMule already propose a
+routing layer, this routing layer can directly be used by the
+CFRS system.

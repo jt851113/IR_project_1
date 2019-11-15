@@ -1,0 +1,71 @@
+[1] N. Alon, Y. Matias, and M. Szegedy. The space complex-
+ity of approximating the frequency moments. Journal of
+Computer and System Sciences, 58(1):137{147, 1999.
+[2] Z. Bar-Yossef, T.S. Jayram, R. Kumar, D. Sivakumar,
+and L. Trevisan. Counting distinct elements in a data
+stream. In Proc. of RANDOM, 2002.
+[3] G. Cormode, M. Datar, P. Indyk, and S. Muthukrish-
+nan. Comparing data streams using hamming norms
+(how to zero in). In VLDB, 2002.
+[4] L. Devroye. Generating the maximum of independent
+identically distributed random variables. Computers
+and Mathematics with Applications, 6:305{315, 1980.
+[5] M. Durand and P. Flajolet. Loglog counting of large car-
+dinalities. In ESA, 2003.
+[6] P. Flajolet. On adaptive sampling. COMPUTG: Com-
+puting, 43, 1990.
+[7] P. Flajolet and G. N. Martin. Probabilistic counting al-
+gorithms for data base applications. Journal of Com-
+puter and System Sciences, 31, 1985.
+[8] D. Ganesan, R. Govindan, S. Shenker, and D. Estrin.
+Highly-Resilient, Energy-EAcient Multipath Routing
+in Wireless Sensor Networks. ACM Mobile Computing
+and Communications Review, 5(4), 2001.
+[9] S. Ganguly, M. Garofalakis, and R. Rastogi. Process-
+ing set expressions over continuous update streams. In
+ACM SIGMOD, 2003.
+[10] P.B. Gibbons and S. Tirthapura. Estimating simple
+functions on the union of data streams. In ACM Sym-
+posium on Parallel Algorithms and Architectures, pages
+281{291, 2001.
+[11] J.Gray,A.Bosworth,A.Layman, andH. Pirahesh.Data
+Cube: A Relational Aggregation Operator Generalizing
+Group-By,Cross-Tab, and Sub-Totals. Data Mining and
+Knowledge Discovery, 1(1):29{53, 1997.
+[12] M. Horton, D. Culler, K. Pister, J. Hill, R. Szewczyk,
+and A.Woo. Mica, the commercialization of microsen-
+sor motes. 19(4):40{48, April 2002.
+[13] C. Intanagonwiwat, R. Govindan, and D. Estrin. Di-
+rected diusion: A scalable and robust communication
+paradigm for sensor networks. In MobiCOM, 2000.
+[14] V. Kachitvichyanukul and B.W. Schmeiser. Binomial
+random variate generation. Communications of the
+ACM, 31(2):216{222, 1988.
+[15] S. Madden, M.J. Franklin, J.M. Hellerstein, and
+W. Hong. TAG: a Tiny AGgregation Service for Ad-
+Hoc Sensor Networks. In OSDI, 2002.
+[16] S. Madden, M.J. Franklin, J.M. Hellerstein, and
+W. Hong. The design of an acquisitional query proces-
+sor for sensor networks. In ACM SIGMOD, 2003.
+[17] S. Nath and P.B. Gibbons. Synopsis Diusion for Ro-
+bust Aggregation in Sensor Networks. TechnicalReport
+ITR-03-08, Intel Research Pittsburgh, August 2003.
+[18] C. Palmer, P. Gibbons, and C. Faloutsos. ANF: A Fast
+and Scalable Tool for Data Mining in Massive Graphs.
+In SIGKDD, 2002.
+[19] A.J. Walker. An eAcient method for generating
+discrete random variables with general distributions.
+ACMTransactions on Mathematical Software (TOMS),
+3(3):253{256, 1977.
+[20] Y. Yao and J. Gehrke. The cougar approach to in-
+network query processing in sensor networks. SIGMOD
+Record 31(3), 2002.
+[21] Y. Yao and J. Gehrke. Query processing in sensor net-
+works. In CIDR, 2003.
+[22] F.Ye, G. Zhong, S. Lu, and L. Zhang. GRAdient Broad-
+cast: A Robust Data Delivery Protocol for Large Scale
+Sensor Networks. ACM Wireless Networks (WINET),
+11(2), 2005.
+[23] J. Zhao, R.Govindan, and D. Estrin. Computing aggre-
+gates for monitoring wireless sensor networks. In SNPA,
+2003.

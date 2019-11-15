@@ -1,0 +1,16 @@
+Due to space constraints, we will introduce only a flavor of techniques
+that we are exploring in this area. As discussed above,
+bounding the communication overhead at each level of the decomposition
+can reduce the uneven distribution of energy consumption.
+Additional load-balancing can be provided by periodically hashing
+to a new apex location, implicitly changing the choice of clusterheads
+at different levels.
+A strictly hierarchical configuration (as described above) is vulnerable
+to node failures, since loss of a node cuts off data from
+any of its children. We are therefore exploring decentralized, peerbased
+structures. One approach we are considering communicates
+summarized data to all members of the next higher level, rather than
+to just the clusterhead. Such an approach will have higher overall
+energy consumption and will require greater data compression, but
+it becomes immune to node failure and is naturally load balanced
+since data is replicated equally to all nodes.

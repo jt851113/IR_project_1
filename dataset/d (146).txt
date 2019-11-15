@@ -1,0 +1,71 @@
+[1] GPS Documentation. https://www.peterson.af.
+mil/GPS_Support/gps_documentation.htm.
+[2] Paramvir Bahl and Venkata N. Padmanabhan.
+RADAR: An In-Building RF-Based User Location and
+Tracking System. In INFOCOM (2), pages 775{784,
+2000.
+[3] Dirk Balfanz, D.K. Smetters, Paul Stewart, and
+H. Chi Wong. Talking to Strangers: Authentication in
+Ad-Hoc Wireless Networks. In Network and
+Distributed System Security Symposium Conference
+Proceedings, 2002.
+[4] Stefan Brands and David Chaum. Distance-Bounding
+Protocols. In EUROCRYPT '93, volume 765 of LNCS.
+[5] Deborah Caswell and Philippe Debaty. Creating Web
+Representations for Places. In 2nd International
+Symposium on Handheld and Ubiquitous Computing,
+pages 114{126, 2000.
+[6] Mark D. Corner and Brian D. Noble. Zero-Interaction
+Authentication. In MOBICOM '02. ACM Press, 2002.
+[7] Dorothy E. Denning and Peter F. MacDoran.
+Location-Based Authentication: Grounding
+Cyberspace for Better Security. In Computer Fraud &
+Security. Elsevier Science Ltd., February 1996.
+[8] Jeremy Elson, Lewis Girod, and Deborah Estrin.
+Fine-Grained Network Time Synchronization using
+Reference Broadcasts. In Proceedings of the Fifth
+Symposium on Operating Systems Design and
+Implementation (OSDI 2002), 2002.
+[9] Eran Gabber and Avishai Wool. How to Prove Where
+You Are: Tracking the Location of Customer
+Equipment. In Proceedings of the 5th ACM conference
+on Computer and Communications Security, pages
+142{149, 1998.
+[10] Lewis Girod, Vladimir Bychkovskiy, Jeremy Elson,
+and Deborah Estrin. Locating Tiny Sensors in Time
+and Space: A Case Study. In ICCD, 2002.
+[11] Jason Hill, Robert Szewczyk, Alec Woo, Seth Hollar,
+David Culler, and Kristofer Pister. System
+architecture directions for network sensors. In
+ASPLOS, 2002.
+[12] Yih-Chun Hu, Adrian Perrig, and David B. Johnson.
+Packet Leashes: A Defense against Wormhole Attacks
+in Wireless Ad Hoc Networks. In INFOCOM, 2003.
+[13] Tim Kindberg, Kan Zhang, and Narendar Shankar.
+Context Authentication Using Constrained Channels.
+In Fourth IEEE Workshop on Mobile Computing
+Systems and Applications, 2002.
+[14] A.M. Ladd, K.E. Bekris, G. Marceau, A. Rudys, D.S.
+Wallach, and L.E. Kavraki. Robotics-Based Location
+Sensing for Wireless Ethernet. In Eigth Annual
+International Conference on Mobile Computing and
+Networks (MobiCOM 2002), 2002.
+[15] Nissanka B. Priyantha, Allen K. L. Miu, Hari
+Balakrishnan, and Seth J. Teller. The cricket compass
+for context-aware mobile applications. In Mobile
+Computing and Networking, pages 1{14, 2001.
+[16] Frank Stajano and Ross Anderson. The Resurrecting
+Duckling: Security Issues for Ad-Hoc Wireless
+Networks. In 7th Security Protocols Workshop, volume
+1796 of Lecture Notes in Computer Science, pages
+172{92, 1999.
+[17] John A. Volpe. Vulnerability Assessment of the
+Transportation Infrastructure Relying on the Global
+Positioning System, August 2001.
+[18] A. Ward, A. Jones, and A. Hopper. A New Location
+Technique for the Active Oce. IEEE Personal
+Communications, 4(5):42{47, October 1997.
+[19] Brent Waters and Ed Felten. Proving the Location of
+Tamper Resistent Devices.
+http://www.cs.princeton.edu/~bwaters/research/
+location_proving.ps.

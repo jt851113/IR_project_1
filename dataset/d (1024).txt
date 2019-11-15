@@ -1,0 +1,63 @@
+Suppose node ni has a database with Nt tuples and we build an
+index for its attribute. The index maintenance cost is mainly composed
+of three parts: refresh cost, update cost and churn cost.
+Refresh messages are used to guarantee the data are consistent
+and to defend against data loss from network corruption (a node
+leaving without notifying others). On average, node ni sends refresh
+messages to the nodes responsible for its indexes every T seconds.
+In BATON and many other structured overlays, the routing
+cost of a message in an overlay of N nodes is O(log N). With a full
+indexing strategy, node A incurs approximately a cost of:
+per second. If only αNt (α < 1) tuples are indexed in a partial
+indexing strategy, the cost is reduced to αCre f resh .
+For its duration in the P2P network, node A may insert, delete
+or update tuples, which in turn affects the indexes. Once a tuple
+is inserted or deleted, the corresponding index entries should be
+updated as well. Suppose I tuples are inserted or deleted per second.
+In the full indexing case, because all data are indexed in the
+network, the index update strategy will incur a cost of:
+In the partial indexing case, whether the update affects the index
+depends on the indexing strategy. In our case, because the partial
+indexing strategy is query driven, the number of affected tuples can
+be expressed as a function of query distribution Pq, f (I, Pq), where
+Pq(v) represents the probability of value v being queried and thus
+0 ? f (I, Pq) ? I. The update cost for the partial indexing strategy
+is:
+If a node joins/leaves a P2P network, the indexes should bemoved
+accordingly. In a structured P2P network, if a node leaves, the indexes
+stored at the node should be passed to its neighbors (the adjacent
+node in BATON or CAN). If a new node joins the network,
+its neighbor splits its indexes and transfers the corresponding part
+to the new one. The new node will also publish the data in its local
+database to the network. Suppose, on average, Nu nodes join or
+leave the network per second and the total number of nodes is kept
+constant. The average cost caused by churn in the full indexing
+strategy is:
+For the partial indexing strategy, the cost is reduced to αCchurn.
+The total cost of maintaining the index for the full and partial
+indexing strategies are:
+respectively. Note that all the costs are estimated. In our case,
+accurate statistics is not necessary because the model is only used
+as a hint for building an efficient index.
+Although partial indexing reduces maintenance overhead, it also
+leads to lower query recall. Some queries cannot be answered by
+the current index as the corresponding tuples are not indexed. In
+this case, an alternative is required, where our approximate range
+index is applied. A natural question is which indexing strategy is
+better? We omit the detailed analysis here. Instead, we use an
+example to illustrate the important role of query distribution.
+Suppose no index is updated and no node joins or leaves the network.
+Under this assumption, different index entries incur the same
+maintenance cost. In uniform query distribution, each tuple has the
+same probability of being queried. The partial index can answer
+α percent of queries by indexing α percent of tuples. There is no
+benefit compared to the full indexing strategy. In Zipfian query
+distribution, the distribution function is:
+is a small constant when both K and N are large. By indexing
+the most popular
+N tuples, we can answer about half of the
+queries. Thus, the partial indexing strategy outperforms the full
+indexing one significantly. In a more general case, if the query follows
+skewed distribution, the partial indexing strategy can reduce
+maintenance cost.
+

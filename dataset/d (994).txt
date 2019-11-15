@@ -1,0 +1,39 @@
+The algorithm computes two scores for each document:
+a hub score and an authority score. Documents that have
+high authority scores are expected to have relevant content,
+whereas documents with high hub scores are expected
+to contain links to relevant content. The intuition
+is as follows. A document which points to many others
+is a good hub, and a document that many documents
+point to is a good authority. Transitively, a document
+that points to many good authorities is an even better
+hub, and similarly a document pointed to by many good
+hubs is an even better authority.
+In the context of a user query the algorithm rst
+constructs a query specic graph whose nodes are documents.
+Then it iteratively computes the hub and authority
+scores for the nodes. The graph is constructed as
+follows. A start set of documents matching the query is
+fetched from a search engine (say the top 200 matches).
+This set is augmented by its neighborhood, which is the
+set of documents that either point to or are pointed to
+by documents in the start set. In practice, since the indegree
+of nodes can be very large, Kleinberg recommends
+considering at most 50 predecessors of a document. The
+documents in the start set and its neighborhood together
+form the nodes of the neighborhood graph. Hyperlinks between
+documents not on the same host form the directed
+edges. Links within the same host1 are assumed to be by
+the same author and hence are not indicators of value.
+The computation of hub and authority scores is done as
+follows.
+Kleinberg [21] proved that the H and A vectors will eventually
+converge, i.e., that termination is guaranteed. In
+practice we found the vectors to converge in about 10
+iterations. The documents are then ranked by hub and
+authority scores respectively.
+Note that the algorithm does not claim to nd all
+relevant pages, since there may be some that have good
+content but have not been linked to by many authors. In
+our evaluation of dierent algorithms we use Kleinberg's
+algorithm [21] as our baseline, which we call base.

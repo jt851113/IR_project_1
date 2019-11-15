@@ -1,0 +1,19 @@
+A query initiated by a peer PQ eventually reaches a super-peer
+(i.e., SON). The super-peer first determines the subset of its peers
+that can provide results relevant to the query. Then the query is
+forwarded to these peers. Each peer will process the query locally
+and if it has matching results these will be returned to the super-
+peer. These results must be merged into a top-k list of documents
+that will be the result of this super-peer.
+In order to support this set of operations, a super-peer must perform
+two main tasks: peer selection and result merging. As already
+mentioned, a super-peer maintains an index over its peers’
+features. Essentially the super-peer has enough information to decide
+for each peer whether it contains relevant documents to the
+query. Therefore, when the query is processed by the super-peer,
+it is forwarded only to a selected set of peers that may contribute
+results to the final result set. Then each peer returns a list (of maximum
+length k) of documents and their scores respectively. The
+super-peer merges this information into a final top-k list of documents
+with highest scores with respect to the query. This top-k list
+is the final result of the particular SON for the given query.

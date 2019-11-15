@@ -1,0 +1,9 @@
+Given a d-dimensional space S = {s1, s2, · · · , sd}, a set
+of points D = {p1, p2, . . . , pn} is said to be a data set on
+S if every  is a d-dimensional data point on S. We
+use pi.sj to denote the jth dimension value of point pi. For
+each dimension si, we assume that there exists a total order
+relationship, denoted by i, on its domain values. Here,
+i can be ‘<’ or ‘>’ relationship according to the user’s
+preference. For simplicity and without loss of generality, we
+assume each i represents ‘>’ in the rest of this paper.

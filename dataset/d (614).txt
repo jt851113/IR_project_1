@@ -1,0 +1,29 @@
+7. REFERENCES
+[1] Faroo. http://www.faroo.com/info, 2008.
+[2] F. Klemm, J.-Y. L. Boudec, and K. Aberer.
+Congestion Control for Distributed Hash Tables. In
+NCA, 2006.
+[3] F. Klemm, S. Girdzijauskas, J.-Y. Le Boudec, and
+K. Aberer. On Routing in Distributed Hash Tables. In
+P2P, 2007.
+[4] T. Luu, F. Klemm, I. Podnar, M. Rajman, and
+K. Aberer. ALVIS Peers: A Scalable Full-text
+Peer-to-Peer Retrieval Engine. In P2PIR, 2006.
+[5] G. S. Pedersen. Considerations about a Peer-to-Peer
+Service for Fedora, 2006.
+[6] I. Podnar, M. Rajman, T. Luu, F. Klemm, and
+K. Aberer. Beyond term indexing: A P2P framework
+for Web information retrieval. Informatica, 2006.
+[7] I. Podnar, M. Rajman, T. Luu, F. Klemm, and
+K. Aberer. Scalable Peer-to-Peer Web Retrieval with
+Highly Discriminative Keys. In ICDE, 2007.
+[8] G. Skobeltsyn, T. Luu, I. Podnar ·Zarko, M. Rajman,
+and K. Aberer. Query-Driven Indexing for Scalable
+Peer-to-Peer Text Retrieval. In Infoscale, 2007.
+[9] G. Skobeltsyn, T. Luu, I. Podnar ·Zarko, M. Rajman,
+and K. Aberer. Web Text Retrieval with a P2P
+Query-Driven Index. In SIGIR, 2007.
+[10] YaCy. http://yacy.net, 2008.
+[11] J. Zhang and T. Suel. E±cient Query Evaluation on
+Large Textual Collections in a Peer-to-Peer
+Environment. In P2P, 2005.

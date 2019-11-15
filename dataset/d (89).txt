@@ -1,0 +1,27 @@
+In order to perform the selection task, each entity – be
+it a broker in DIR or a peer in P2PIR – needs to have a
+description of the content offered by each of the available
+information resources. Queries will be matched against these
+profiles in order to make a selection decision.
+In DIR, it is common to represent information resources
+by so-called unigram language models, that is, the set of
+terms (or a subset of these) that occur in the documents of
+the resource, together with their document frequencies or
+some similar statistics [7, 12]. The idea of most of these
+approaches is to treat information resources as giant documents
+and to use a retrieval function, identical or similar to
+the ones used for documents, to rank these resources and
+select the top-ranked ones.
+In P2PIR, there is no such commonly accepted peer representation.
+Although the representation of peers by unigram
+language models is also used [19, 9], a number of alternatives
+exist, including the use of categories from ontologies or
+taxonomies to represent peers (e.g. [4]) or approaches that
+have each peer record which other peers have (successfully)
+answered which queries, resulting in “distributed” profiles
+(see section 2.2 below).
+The main reason for the emergence of these alternatives is
+the need for compactness in P2PIR: peer profiles often need
+to be sent around to other peers and stored in their routing
+tables. Bandwidth and storage limitations present in P2P
+settings make it necessary for profiles to be very compact.

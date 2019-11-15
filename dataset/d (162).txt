@@ -1,0 +1,29 @@
+To extend the Sorted Retrieval approach to evaluate top-
+δ dominant queries, we need to maintain two variables for
+each point  (as defined in Section
+5.1); and (2) maxkdomBound(p), which is the upper
+bound for maxkdom(p). The values for maxkdom(p) and
+maxkdomBound(p), which are initialized to 0 and |S|, respectively,
+are updated as points in the sorted arrays are
+being processed. This information enables efficient checking
+of whether or not a point is a top-δ dominant
+skyline point and is based on the following two properties:
+(P1) A point can not be in the answer (i.e., can be
+removed from T) if maxkdom(p) is larger than the δth smallest
+maxkdomBound(.) values in R ∪ T; and (P2) A point
+ can be confirmed to be in the answer (i.e., can be
+moved from T to R) if maxkdomBound(p) is smaller than
+the δth smallest maxkdom(.) values in R ∪ T. The details
+of the algorithm are shown as Algorithm 6.
+Example 5.1 Consider finding the top-2 dominant skyline
+points in D from Fig. 1. Initially, each point in D has values
+of 0 and 6 for maxkdom(p) and maxkdomBound(p),
+respectively. After  has been processed, we have
+maxkdom(p2) = 3, maxkdom(p3) = 4, maxkdom(p4) = 5,
+and maxkdom(p5) = 3. After p1 ? D3 has been processed,
+maxkdomBound(p1) is reduced to 3. The processing of
+p4 ? D4 does not affect any variable values. But after
+p2 ? D6 has been processed, the points p3, p4 and p5 can all
+be eliminated from T because their maxkdom(.) values are
+larger maxkdomBound(p2). Thus, p1 and p2 are returned
+as the top-2 dominant skyline points.

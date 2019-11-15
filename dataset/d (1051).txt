@@ -1,0 +1,17 @@
+The spatiotemporal kernel function is a time-factored
+version of the spatial kernel. In other words, if hs is the
+spatial smoothing vector and ht is the temporal smoothing
+parameter (defined by user time-horizon), then the spatiotemporal
+kernel function is defined as follows:
+This kernel function is only defined for values of t in the
+range. The Gaussian spatial kernel function was used because of 
+its well-known effectiveness [19]. Specifically is the product of 
+d identical Gaussian kernel function, and is the
+smoothing parameter for dimension i. We note that the
+spatiotemporal kernel function weights different points
+differently based on their arrival time. This also creates
+subtle differences in the forward and reverse density
+profiles. These subtle differences can be utilized to
+determine the velocity density, which has an intuitive and
+physical significance. In the following section, we will
+expand on this significance.

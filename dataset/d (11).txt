@@ -1,0 +1,77 @@
+A.2 Blockmatching
+algorithm used in PREMON
+/* This function is a variation of the original
+* block-matching algorithm of MPEG.
+* The difference is that a macro-block in the
+* image visualization of sensor data can
+* have transparent pixels. If their number
+* exceeds a threshold
+* (TransparentPixelThreshold) then the macro-
+* block is not processed
+*/
+function newBlockMatchingAlgo(frame1, frame2,
+blockWidth) returns Motion-Vectors
+foreach mblock in frame1 do
+{
+if (getNumTransparentPixels(mblock) >
+TransparentPixelThreshold) continue;
+topLeftX1 = mblock.getTopLeftX();
+topLeftY1 = mblock.getTopLeftY();
+error = 0; minError = MAXINT;
+foreach mVector in PossibleMotionVectors do
+{
+<topLeftX2, topLeftY2> =
+applyMotionVector(topLeftX1, topLeftY1,
+mVector);
+if (isWithinFrame(topLeftX2, topleftY2,
+frame1) {
+error =
+newSubstractMacroBlocks(frame1,
+topLeftX1, topLeftY1, frame2,
+topLeftX2, topLeftY2,
+blockWidth);
+if (error < minError) {
+bestMatchingVector = index;
+minError = error;
+}
+}
+}
+if (minError < ErrorThreshold)
+addNewMotionVector(motionVectors,
+topLeftX1, topLeftY1, mVector);
+}
+return motionVectors;
+/* This function finds the degree of match between
+* the macro-block, starting at <topLeftX1,
+* topLeftY1>, of frame1, and macro-block,
+* starting at <topLeftX2, topLeftY2>, of frame2.
+* Each macro-block is assumed to be of size -
+* blockWidth x blockWidth pixels. Function
+* degreeOfMatch() gives a quantitative
+* measure of the degree to which two pixel values
+* match each other.
+
+*/
+function newSubstractMacroBlocks(frame1, topLeftX1,
+topLeftX2, frame2, topLeftY1,
+topLeftY2, blockWidth)
+returns degree-of-match
+row1=topLeftX1; col1=topLeftY1;
+row2=topLeftX2; col2=topLeftY2;
+error = 0;
+while (row1 < row1+blockWidth) {
+while (col1 < col1+blockWidth) {
+if (frame1[row1][col1].type() ==
+TRANSPARENT ||
+frame2[row2][col2].type() ==
+TRANSPARENT)
+continue;
+else
+error = error +
+degreeOfMatch(frame1[row1][col1],
+frame2[row2][col2]);
+col1++; col2++;
+}
+row1++; row2++;
+}
+return error;

@@ -1,0 +1,42 @@
+A distributed multi-resolution storage infrastructure benefits search
+and retrieval of datasets that exhibit spatial correlation, and applications
+that use such data.
+Multi-Resolution Data Extraction: Multi-resolution data extraction
+can proceed along the hierarchical organization by first extracting
+and analyzing low-resolution data from higher level clusterheads.
+This analysis can be used to obtain high-resolution data
+from sub-regions of the network if necessary.
+Querying for Spatio-Temporal features: The hierarchical organization
+of data can be used to search for spatio-temporal patterns
+efficiently by reducing the search space. For example, consider
+the search for pooling of contaminant flow. Such a feature
+has a large spatial span, and therefore significant energy benefit
+can be obtained by querying only a few clusterheads rather than
+the entire network. Temporal patterns can be efficiently queried by
+drilling down the wavelet hierarchy by eliminating branches whose
+wavelet coefficients do not partially match the pattern, thereby reducing
+the number of nodes queried. Summarized coefficients that
+result from wavelet decomposition have been found to be excellent
+for approximate querying [14, 7], and to obtain statistical estimates
+from large bodies of data (Section 6).
+Feature Routing and Edge Detection: Target tracking and
+routing along spatio-temporal patterns such as temperature contours,
+have been identified as compelling sensor network applications.
+The problem of edge detection has similar requirements, and
+is important for applications like geographic routing, localization,
+beacon placement and others, where explicit knowledge of edges
+can improve performance of the algorithm. Our architecture can
+be used to assist these applications, since it good at identifying discontinuities.
+By progressively querying for the specific features,
+communication overhead of searching for features can be restricted
+to only a few nodes in the network.
+Debugging: Debugging data is another class of datasets that exhibits
+high correlation. Consider packet throughput data: throughput
+from a specific transmitter to two receivers that are spatially
+proximate are closely correlated; similarly, throughput from two
+proximate transmitters to a specific receiver are closely correlated.
+Our system serves two purposes for these datasets: (a) they can be
+used to extract aggregate statistics (Section 6) with low communication
+cost, and (b) discontinuities represent network hotspots,
+deep fades or effects of interference, which are important protocol
+parameters, and can be easily queried.

@@ -1,0 +1,24 @@
+Modern distributed information systems cope with disconnection
+and limited bandwidth by using caches. In communicationconstrained
+situations, traditional demand-driven approaches are
+inadequate. Instead, caches must be preloaded in order to mitigate
+the absence of connectivity or the paucity of bandwidth. In this paper,
+we propose to use application-level knowledge expressed as
+profiles to manage the contents of caches. We propose a simple,
+but rich profile language that permits high-level expression of a
+user’s data needs for the purpose of expressing desirable contents
+of a cache. We consider techniques for prefetching a cache on the
+basis of profiles expressed in our framework, both for basic and
+preemptive prefetching, the latter referring to the case where staging
+a cache can be interrupted at any point without prior warning.
+We examine the effectiveness of three profile processing techniques,
+and show that the rich expressivity of our profile language
+does not prevent a fairly simple greedy algorithm from being an effective
+processing technique. We also show that for a large shared
+cache, multiple clients’ profiles can be combined into a single superprofile
+that is representative of them all, but that when the number
+of clients with profiles is significantly large, a randomized approach
+is more scalable than a greedy approach. We believe that
+profiles, as described in this paper, are an enabling technology
+that could spawn a rich new area of research beyond cache management
+into network data management in general.1

@@ -1,0 +1,75 @@
+A sensor node that is within the specified rect processes
+interests as described in the previous section. In addition,
+the node tasks its local sensors to begin collecting samples.
+In this paper, we do not discuss the details of target recognition
+algorithms. Briefly, these algorithms simply match
+sampled waveforms against a library of pre-sampled, stored
+waveforms. This is based on the observation that a fourlegged
+animal has a different acoustic or seismic footprint
+than, for example, a human being. The sampled waveform
+may match the stored waveform to varying extents; the algorithms
+usually associate a degree of confidence with the
+match. Furthermore, the intensity of the sampled waveform
+may roughly indicate distance of the signal origin, though
+perhaps not direction.
+A sensor node that detects a target searches its interest
+cache for a matching interest entry. In this case, a matching
+entry is one whose rect encompasses the sensor location,
+and the type of the entry matches the detected target type.
+When it finds one, it computes the highest requested event
+rate among all its outgoing gradients. The node tasks its
+sensor subsystem to generate event samples at this highest
+data rate. In our example, this data rate is initially 1 event
+per second (until reinforcement is applied, Section 3.4). The
+source then sends to each neighbor for whom it has a gradient,
+an event description every second of the form:
+type = four-legged animal // type of animal seen
+instance = elephant /I instance of this type
+location = [125, 220] // node location
+intensity = 0.6 // signal amplitude measure
+confidence = 0.85 // confidence in the match
+timestamp = 01:20:40 // local time when event was generated
+This data message is, in effect 4, unicast individually to the
+relevant neighbors.
+A node that receives a data message from its neighbors attempts
+to find a matching interest entry in its cache. The
+matching rule is as described in the previous paragraph. If
+no match exists, the data message is silently dropped. If
+a match exists, the node checks the data cache associated
+with the matching interest entry. This cache keeps track of
+recently seen data items. It has several potential uses, one
+of which is loop prevention. If a received data message has
+a matching data cache entry, the data message is silently
+dropped. Otherwise, the received message is added to the
+data cache and the data message is re-sent to the node's
+neighbors.
+By examining its data cache, a node can determine the data
+rate of received events s. To re-send a received data message,
+a node needs to examine the matching interest entry's
+gradient list. If all gradients have a data rate that is greater
+than or equal to the rate of incoming events, the node may
+simply send the received data message to the appropriate
+neighbors. However, if some gradients have a lower data
+rate than others (caused by selectively reinforcing paths,
+4
+The exact mechanism used ia a function of the radio's MAC layer and can have
+a s i g n i f i c a n t impact on performance (Section 4.4).
+5
+In our simulations in Section 4, as a s i m p l i f i c a t i o n , we include the data rate in
+the event d e s c r i p t i o n s .
+Section 3.4), then the node may downconvert to the appropriate
+gradient. For example, consider a node that has been
+receiving data at 100 events per second, but one of its gradients
+(e.g., set up by a second sink originating an indistinct
+task with a larger interval) is at 50 events per second. In
+this case, the node may only transmit every alternate event
+towards the corresponding neighbor. Alternately, it might
+interpolate two successive events in an application-specific
+way (in our example, it might choose the sample with the
+higher confidence match).
+Loop prevention and downconversion illustrate the power of
+embedding application semantics in all nodes (Figure 3). Although
+this design is not pertinent to traditional networks,
+it is feasible with application-specific sensor networks. Indeed,
+as we show in Section 4.4, it can significantly improve
+network performance.

@@ -1,0 +1,15 @@
+Abstract. Skyline queries are useful in many applications such as multicriteria
+decision making, data mining, and user preference queries. A
+skyline query returns a set of interesting data objects that are not dominated
+in all dimensions by any other objects. For a high-dimensional
+database, sometimes it returns too many data objects to analyze intensively.
+To reduce the number of returned objects and to find more important
+and meaningful objects, we consider a problem of k-dominant
+skyline queries. Given an n-dimensional database, an object p is said to
+k-dominates another object q if there are (k?n) dimensions in which p
+is better than or equal to q. A k-dominant skyline object is an object
+that is not k-dominated by any other objects. In contrast, conventional
+skyline objects are n-dominant objects. We propose an efficient method
+for computing k-dominant skyline queries. Intensive performance study
+using real and synthetic datasets demonstrated that our method is efficient
+and scalable.

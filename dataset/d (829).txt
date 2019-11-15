@@ -1,0 +1,11 @@
+Long term storage is provided in DIMENSIONS by exploiting
+the fact that thresholded wavelet coefficients lend themselves to
+good compression benefit [5, 6]. Our rationale in balancing the
+need to retain detailed datasets for multi-resolution data collection
+and to provide long-term storage is that if scientists were interested
+in detailed datasets, they would extract it within a reasonable interval
+(weeks). Long-term storage is primarily to enable spatiotemporal
+pattern mining, for which it is sufficient to store key features
+of data. Thus, the wavelet compression threshold is aged progressively
+as shown in Figure 3, lending older data to progressively
+better compression, but retaining key features of data.

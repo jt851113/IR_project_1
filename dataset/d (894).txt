@@ -1,0 +1,16 @@
+In this paper, we have addressed the keyword based information
+retrieval problem in a popular and realistic filesharing
+mobile peer-to-peer network. The proposed solution
+takes the advantage of the powerful mobile facilities to
+share resources and information which are of great benefit
+to people’s daily life and various business applications.
+An intelligence-based information retrieval algorithm is proposed
+to help nodes decide where to forward the query, by
+mimicking different human behaviors in social networking.
+It is a light-weight and energy efficient approach using an
+Intelligence Accuracy (IA) mechanism to evaluate the distance
+from the node to the resource. We conduct extensive
+experiments to evaluate the performance of our proposed approach.
+The results show that our approach is well adaptive
+in highly dynamic mobile P2P network, and yields superior
+efficiency and effectiveness.

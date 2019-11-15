@@ -1,0 +1,30 @@
+TD-DES also provides an integrated network construction
+layer, which organizes a wireless network into a tree
+topology. The topology is constucted by broadcasting advertisements
+from all nodes in the network. Initially the
+root node broadcasts a parent advertisement. Each node
+that hears the advertisement replies with a child message
+that indicates that the node is willing to become a child of
+the root. Whenever a node becomes a child, it broadcasts its
+own parent advertisement. The process continues until all
+the nodes get attached to the tree. A node that hears multiple
+parent advertisements chooses as its parent the node
+with the lowest hop count to the root. This style of tree
+construction is not novel and has been commonly used by
+other work [5, 16, 26].
+Figure 1: An example dissemination tree. Subscriptions
+are given at the upper left of each node, effective
+subscriptions at the upper right. Arrows indicate
+the links over which the event is broadcast.
+The tree construction layer is adaptive to changes in the
+topology that result from node failures, additions, and mobility.
+The layer does not provide point-to-point messaging
+capabilities (e.g., using globally unique id’s such as IP
+addresses) as do traditional routing protocols [21, 29, 30],
+but rather provides a means of disseminating data events
+throughout the network to all interested parties based on
+per-node event subscriptions. This publish/subscribe style of
+event-based communication is the data dissemination model
+of choice because it effectively decouples the producers and
+consumers of information, making it well-suited for dynamic,
+ad-hoc environments.

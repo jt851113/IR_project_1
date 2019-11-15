@@ -1,0 +1,124 @@
+So far, we have discussed methods for effective visualization
+of the changes occurring in the data stream. An
+additional useful ability is to be able to concisely diagnose
+specific trends in given spatial locations. For example, a
+user may wish to know particular spatial locations in the
+data at which the data is being reduced, those at which the
+data is increasing, and those from where the data is shifting
+to other locations. In order to provide further insight, we
+introduce the following definitions:
+Definition 4.1. A data coagulation for time slice t and user
+defined threshold min-coag is defined to be a connected region
+R in the data space, so that for each point X 2 R, we have
+Thus, a data coagulation is a connected region in the data
+which has velocity density larger than a user-defined noise
+threshold of min-coag. In terms of the temporal velocity
+profile, these are the connected regions in the data with
+elevations larger than min-coag. Note that there may be
+many such elevated regions in the data, each of which may
+be disconnected from one another. Each such region is a
+separate area of data coagulation, since they cannot be
+connected by a continuous path above the noise threshold.
+For each such elevated region, we would also have a local
+peak, which represents the highest density in that locality.
+Definition 4.2. The epicenter of a data coagulation R at time
+slice t is defined to be a spatial location X such that X 2 R
+and for any 
+As with the other results of this paper, we use the grid
+discretization to provide a good approximation of the
+different shift regions and epicenters. We shall call the
+smallest rectangular grid area created by the grid discretization
+to be an elementary bounding rectangle. In the first
+step, we find all the elementary bounding rectangles so that
+all four corners of this bounding rectangle have a velocity
+density which is is larger than min-coag. In the next step, we
+create connected components out of all such rectangles
+found. Two rectangles are said to be connected, if they share
+at least one common boundary. The entire region thus
+found is said to be a region of coagulation. We have
+illustrated one such region of coagulation in Fig. 6 and have,
+in fact, shaded the resulting bounded region.
+Once the regions of coagulation have been determined,
+the epicenter is found in a straightforward way by finding
+the grid point inside the coagulation region whose density
+is the highest. This is used as the approximation to the local
+peak of the temporal velocity profile within that region. The
+concept of data dissolution and its epicenter are similarly
+defined as follows:
+Definition 4.3. A data dissolution for time slice t and user
+defined threshold min-dissol is defined to be a connected region
+R in the data space, so that for each point, we have
+Just as a data coagulation refers to a connected elevation
+in the temporal velocity profile, a data dissolution refers to
+a connected valley in the temporal velocity profile.
+Correspondingly, we define the epicenter of a data
+dissolution as follows
+Definition 4.4. The epicenter of a data dissolution R at time slice
+t is defined to be a spatial location X such that X 2 R and
+for any 
+A region of data dissolution and its epicenter is
+calculated in an exactly analogous way to the epicenter of
+a data coagulation. It now remains to discuss how
+significant shifts in the data can be detected. Many of the
+epicenters of coagulation and dissolution are connected in a
+way which results in a funneling of the data from the
+epicenters of dissolution to the epicenters of coagulation.
+When this happens, it is clear that the two phenomena of
+dissolution and coagulation are connected to one another.
+We refer to such a phenomenon as a global data shift. The
+detection of such shifts can be useful in many problems
+involving mobile objects. How to find whether a pair of
+epicenters are connected in this way? In order to detect such
+a phenomenon we use the intuition derived from the use of
+the spatial velocity profiles. Let us consider a directed line
+drawn from an epicenter to data dissolution to an epicenter
+of data coagulation. In order for this directed line to be
+indicative of a global data shift, the spatial velocity profile
+should be such that the directions of a localized shifts along
+each of the points in this directed line should be in roughly
+in the same direction as the line itself. If at any point on this
+directed line, the direction of the localized shift is in an
+opposite direction, then it is clear that the these two
+epicenters are disconnected from one another. In order to
+facilitate further discussion, we will refer to the line
+connecting two epicenters as a potential shift line.
+Recall that the spatial velocity profiles provide an idea of
+the spatial movements of the data over time. In order to
+calculate the nature of the data shift, we would need to
+calculate the projection of the spatial velocity profiles along
+this potential shift line. In order to do so without scanning
+the data again, we use the grid points which are closest to
+this shift line in order to obtain an approximation of the
+shift velocities at various points along this line. The first
+step is to find all the elementary rectangles which are
+intersected by the shift line. Once these rectangles have
+been found we determine the grid points corresponding to
+the corners of these rectangles. These are the grid points at
+which the spatial velocity profiles are examined. An
+example of such a set of grid points are marked by “x” in
+the right-hand diagram of Fig. 6.
+Let the set of n grid points thus discovered be denoted by
+Y1Yn. Then, the corresponding spatial velocities at these
+grid points at time slice t are the unit vector in the direction of the shift line. We assume
+that this vector is directed from the region of dissolution to
+the area of coagulation. Then, the projections of the spatial
+velocities in the direction of the shift line are given by
+We shall refer to these values as
+p1 . . . pn, respectively. For a shift line to expose an actual
+movement of the data, the values of p1 . . . pn must all be
+substantially positive. In order to quantify this notion, we
+introduce a user-defined parameter called min-vel. A
+potential shift line is said to be a valid shift when each of
+values p1 . . . pn is larger than min-vel. The corresponding
+algorithm is illustrated in Fig. 7.
+Thus, in order to determine all of the possible data shifts,
+we first find all coagulation and dissolution epicenters for
+user-defined parameters min-coag and min-dissol, respectively.
+Then, we find all the potential shift lines by
+connecting each dissolution epicenter to a coagulation
+epicenter. For each such shift line, we find the grid points
+which are closest to it using the criteria discussed above.
+Finally, for each of these grid points, we determine the
+projection of the corresponding shift velocities along this
+line and check whether each of them is at least min-vel. If so,
+then this direction is reported as a valid shift line.

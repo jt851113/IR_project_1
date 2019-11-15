@@ -1,0 +1,7 @@
+Several experimental studies on real and synthetic data streams were
+performed to evaluate and validate the proposed method. Table 2 shows a
+summary of the datasets discussed in this work, giving their number of events
+(N) and number of attributes (E). The value of D was calculated after each
+counting period considering all the events inside the sliding window and using
+20 grid sizes (R = 20). The experiments were executed on a P4 3.0GHz, with
+0.5GB of RAM, running the MS Windows XP.

@@ -1,0 +1,43 @@
+We consider continuous Approximate Aggregation
+Queries Q() with an error bound A on
+the result of the aggregate function over a set of sensors
+S = fS1; S2; :::Sng. The error tolerance allows
+the query result to be approximate, hence the term approximate
+aggregation query. Aggregation Tree(AT)
+is an abstract tree structure constructed for approximate
+data aggregation. Leaf nodes in the tree represent sensor
+nodes and the intermediate tree nodes represent clusterheads
+that reside on some sensor nodes. Each subtree
+corresponds to a cluster at a certain level. Adaptive Approximate
+Aggregation Protocol (A3) is a protocol on
+top of AT that shows how aggregation can be performed
+to achieve energy-efficiency, as well as how to partially
+achieve uniform power consumption in sensor networks.
+The problem of approximate aggregation can be formally
+stated as following: Given a wireless sensor network
+with an abstract cluster structure and a continuous
+approximate aggregation query Q() over
+a set of sensors fS1; S2; :::Sng in the network with a specific
+quality requirement, design a data aggregation protocol
+that can answer the continuous query successfully,
+while allowing the sensor network achieve maximum lifetime.
+Thus, the ultimate goal of our techniques is to maximize
+lifetime of sensor networks while processing user
+queries successfully. Two immediate subgoals are reducing
+communication cost and balancing the workloads
+within sensor networks. We achieve these goals through
+the following steps:
+ Design an A3 protocol to minimize communication
+cost while preserving quality in answers to user
+queries.
+ Enhance A3 protocol to adjust error tolerances of
+clusters at different levels adaptively so that workload
+among clusters are balanced.
+Note that the logical AT structure and protocol proposed
+in this work are devised to facilitate processing of
+general aggregate monitoring queries (the focus of this
+paper). We use a summation query to illustrate our protocol
+in the remainder of this paper. Extensions to other aggregate
+queries, i.e. min/max are discussed in Appendix
+A. We present our proposed techniques to address the
+above issues in the next two sections.

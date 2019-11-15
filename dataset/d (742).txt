@@ -1,0 +1,25 @@
+For better performances, the closedness constraint must be handled during the enumeration
+process (safe pruning) rather than in a post-processing phase. Property 3
+supports this achievement. At any enumeration node N = (U, V), if there exists an
+element s ? (∪i=1..nDi ) \ (∪i=1..nUi ∪ Vi ) such that C-connected(U  V ∪ {s}) is
+satisfied, then, by Definition 6, U  V is not -closed and, by Property 3, neither is
+an n-set X  U  V. Because N represents n-sets that are all sub-patterns of U  V,
+the whole enumeration sub-tree rooted by N is safely pruned. Fenster does not miss
+the closed ET-n-sets “containing” U (according to ): they are found in the parts of
+the enumeration tree where s ? U.
+One of the most interesting advantages of our enumeration strategy is that there is
+actually no need to check whether every element in (∪i=1..nDi ) \ (∪i=1..nUi ∪ Vi )
+may prevent U V from being -connected. Any element that has been removed from
+V thanks to C-connected (see Sect. 3.2) cannot. Indeed, the reason of the removal of
+such an element f from V is that C-connected(U ∪{ f }) is false. In such circumstances,
+and whatever V, Property 2 guarantees that C-connected(U  V ∪ { f }) cannot be true
+either.When checking C-closed the only elements that need to be tried as extensions are
+those that were previously chosen to be enumerated but refused (right child). These
+elements are stored in an n-set that will always be denoted S. Figure 6 complements
+Fig. 4 with this n-set S.
+Example 7 Still using the running example, where  = (1, 1, 1), assume that S =
+({β}, ?, {C}) is tied to the enumeration node N. At NR, the enumerated element, A,
+is appended to its S 3-set. In this example, NL violates C-closed. Indeed, β ? S can
+extend U  V, i.e., C-connected({α, β, γ }, {1, 2}, {B, A}) is true. C-closed prunes the
+enumeration sub-tree that NL would root. In Fig. 7, illustrating this example, this node
+is framed with dots.

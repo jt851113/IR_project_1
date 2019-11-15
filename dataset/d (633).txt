@@ -1,0 +1,91 @@
+Cluster structures can be hierarchical when clusterheads
+are clustered. This corresponds to multi-level communication
+strategy when, e.g., sensor nodes talk to super
+nodes and super nodes talk to access points, both through
+wireless communication; then access points communicate
+with a server through wired links. Figure 1 shows an
+aggregation tree (AT) for a 2-level cluster architecture.
+In general, each branch of the AT may have different
+depth and that leaf nodes are source sensor nodes.
+With a tree structure, a precise data collection process
+works as follows. Each sensor node (a leaf node in the
+tree) sends data (captured values) to its parent node. As
+a special case, a node which also serves as a cluster-head
+will have its value available to the cluster-head without
+communication cost. The parent node will report an aggregate
+(over all child nodes) value upwards after it hears
+from all children. The top level cluster-head(an AP) will
+produce a value aggregated over all relevant sensor nodes
+at the last step of the round. The presence of synchronized
+clocks ensures that data at different rounds can be
+distinguished.
+When a predetermined error in the aggregation result
+can be tolerated, we observe that it is not necessary for
+a node to report every new value (new sensor reading or
+new aggregated value) if this new value is very close to a
+default value that its parent is aware of. To be more specific,
+if a parent node keeps in its cache a default value
+v and a default error bound A for each child node, each
+node reports a new value to its parent node only when the
+error bound is violated by the new value v
+When a parent node does not hear from a child node, it
+assumes the child node has a value within . In
+the more general case, the new value could be compared
+with a “predicted” value of the node to check violation,
+if a prediction model is implemented at the node and its
+parent. A prediction model[14] is a model that two nodes
+agree on and is used to generate a new value at the parent
+if the child node does not report an updated value. In
+this paper, we discuss a process by which a parent node
+assigns to each child node an artificial future value (using
+the previously reported value is one of many possible
+choices). We refer to this artificial future value as the default
+value. The setting of default values must be such
+that accuracy constraints of the final aggregation result
+are satisfied. In order to maintain correctness of the final
+result, some invariances have to be maintained on the default
+values and error bounds. More specifically, we have
+the following theorems.
+Theorem 3.1 Let vi and represent default values
+and error tolerances of member nodes in a cluster, vc
+and Ac represent the aggregate value and error tolerance
+at cluster-head, and Nc be the total number of member
+nodes of the cluster. The following inequality is a necessary
+condition for a SUM aggregation to be evaluated
+correctly: 
+Proof: To maintain answer correctness on SUM aggregation,
+has to be included in . This implies
+They can be further simplified asPNcPNc
+Theorem 3.2 : vc = PNc
+sufficient conditions to maintain answer correctness for
+SUM aggregation.
+Proof: With the first condition, the default range for This implies the summation
+value will be bounded by . 
+In addition to maintaining the answer correctness of
+aggregation queries, large error tolerances on cluster
+member nodes are desired in order to reduce communication
+cost. In fact, we want to have the maximum possible
+total error tolerance for cluster members. The following
+corollary gives us such conditions.
+Corollary 1 The necessary and sufficient condition for
+SUM aggregation to be evaluated correctly and for cluster
+members to have maximum total error tolerance is:
+Proof: Sufficiency immediately follows theorem 4.2.
+To show necessity, note that maximum total error tolerance
+implies  = PNc
+i=1 . This in turn requires
+vc = PNc
+i=1 vi to maintain aggregation correctness. 
+Equations (1) and (2) give us two invariances we want
+to maintain for SUM queries. For other type of aggregation
+functions, the invariances are similar. See Appendix
+A for detailed discussion.
+The two invariances postulated above allow for safe
+manipulation of the default values and error bounds. To
+efficiently deploy the hierarchical cluster structure for approximate
+data aggregation, we adaptively set default values
+and adjust error bounds based on the level of change
+at each sensor node while ensuring that the invariances be
+maintained. We illustrate how the updates are performed
+using a 2-level cluster structure and then generalize the
+protocol to multi-level cluster structures.

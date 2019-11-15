@@ -1,0 +1,50 @@
+Our primary focus is on predicates that are in the format of
+“Attribute op Constant.” Attribute is a path expression without
+wildcards in it. Op includes “=”, “<”, “>”. Such formats
+dominate in selection queries. Other predicate formats could
+also be handled in our approach, but we do not discuss them
+further in this paper.
+Figure 3.9 shows an example of a range selection query that
+returns every stock whose price has risen more than 5%. Figure
+3.9 also gives its expression signature. The group plan for
+queries with this signature is the same in Figure 3.5, except the
+join condition is Change_Ratio > constant.
+A general range-query has both lower_bound and upper_bound
+values. Two columns are needed to represent both bounds in the
+constant table. Thus each entry of the constant table will be
+[lower_bound, upper_bound, intermediate_file_name]. The join
+condition is Change_Ratio < upper_bound and Change_Ratio
+> lower_bound. A special index would be helpful to evaluate
+this predicate. For example, an interval skip list [HJ94] could be
+used for this purpose when all the intervals fit in memory. We
+are considering developing a new index method that handles this
+case more efficiently.
+One potential problem for range-query groups is that the
+intermediate files may contain a large number of duplicate tuples
+because range predicates of the different queries might overlap.
+“Virtual intermediate files” are used to handle this case. Each
+virtual intermediate file stores a value range instead of actual
+result tuples. All outputs from the split operator are stored in
+one real intermediate file, which has a clustered index on the
+range attribute. Modification on virtual intermediate files can
+trigger upper-level queries in the same way as ordinary
+intermediate files. The value range of a virtual intermediate file
+is used to retrieve data from the real intermediate file. Our
+query-split scheme need not be changed to handle virtual
+intermediate files.
+In general, a query may have multiple selection predicates, i.e.
+multiple expression signatures. Predicates on the same data
+source can be represented in conjunctive normal form. The
+group optimizer chooses the most selective conjunct, which
+does not contain “or”, to do incremental grouping. Other
+predicates are evaluated in the upper levels of the continuous
+query after the split operator.
+Figure 3.10 shows a query with two selection predicates, which
+retrieves Intel stock whenever its price falls below $100. This
+query has two expression signatures, one is an equal selection
+predicate on Symbol and the other is a range selection predicate
+on Current_price. The expression signature on the equal
+selection predicate (i.e. on Symbol) is used for grouping because
+it is more selective. In addition, a new select operator with the
+second selection predicate (i.e. the range select on
+Current_price) will be added above the file scan operator.

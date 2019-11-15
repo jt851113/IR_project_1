@@ -1,0 +1,20 @@
+Our DocumentGrouping algorithm in Section 4.1 is based on a
+“cost-based” distance function defined in (3). The distance
+function estimates the cost increase by assigning a document to a
+group. This cost-based distance function is different from other
+distance functions that are normally used in document clustering,
+which measure the similarity between a document and a group. As
+alternatives, we also consider these “similarity-based” distance
+functions commonly used in the field of Information Retrieval
+below.
+Cosine distance: the cosine distance of a group Gij and a
+document dik is measured based on the cosine of their angular
+separation when Gij and dik are represented as term frequency
+vectors. The cosine distance between Gij and dik is computed as
+one minus their cosine similarity:
+In this expression, V(Gij) is Gij’s representation as a term
+frequency vector, (‧) is the dot product, and ||V(Gij)|| is the length
+of V(Gij).
+We also tried other distance functions (e.g., the KL-divergence
+[28] and the squared Jensen-Shannon divergence [29]), but
+without significantly different results.

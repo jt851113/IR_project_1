@@ -1,0 +1,34 @@
+The idea in kernel density estimation [19] is to provide a
+continuous estimate of the density of the data at a given
+point. The value of the density at a given point is estimated
+as the sum of the smoothed values of kernel functions K0h
+eT
+associated with each point in the data set. Each kernel
+function is associated with a kernel width h which
+determines the level of smoothing created by the function.
+The kernel estimation fexT, based on n data points and
+kernel function , is defined as follows:
+Thus, each discrete point Xi in the data set is replaced by a
+continuous function 
+which peaks at Xi and has a
+variance which is determined by the smoothing parameter
+h. An example of such a distribution would be a Gaussian
+kernel with width h:
+The overall effect of kernel density estimation is to convert
+the (discrete) data set into a continuous density estimate by
+replacing each data point with a smoothed bump, whose
+width is determined by h. The density distribution at a
+given coordinate is equal to the sum of the contributions of
+all the bumps represented by the data points. The result is a
+continuous distribution in which the random artifacts are
+suppressed and the density behavior provides a global
+overview of the dense as well as sparsely populated regions
+of the data. The estimation error depends upon the kernel
+width h which is chosen in a data driven manner. It has
+been shown [19] that for most smooth functions, when
+the number of data points goes to infinity, the estimator
+fexT asymptotically converges to the true density function
+fexT, provided that the width h is chosen appropriately. For
+the d-dimensional case, the kernel function is chosen to be
+the product of d identical kernels KieT, each with its own
+smoothing parameter hi.

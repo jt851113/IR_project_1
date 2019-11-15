@@ -1,0 +1,90 @@
+We thank Guy Lohman, Yannis Papakonstantinou and Anthony
+Tomasic for their helpful comments, and our Garlic
+teammates for their support and assistance.
+
+References
+[C
+
+95] M. Carey et al. Towards heterogeneous multimedia information
+systems. In IEEE RIDE Workshop, Taipeh, 1995.
+[Cat96] R. G. G. Cattell. The Object Database Standard –
+ODMG-93. Morgan-Kaufmann Publishers, San Mateo, 1996.
+[CS93] S. Chaudhuri and K. Shim. Query optimization in the
+presence of foreign functions. In VLDB Conf., Dublin, 1993.
+[Day83] U. Dayal. Processing queries over generalization hierarchies
+in a multidatabase system. In VLDB Conf., Florence,
+1983.
+[DKS92] W. Du, R. Krishnamurthy, and M.-C. Shan. Query optimization
+in heterogeneous DBMS. In VLDB Conf., Vancouver,
+1992.
+[FJK96] M. Franklin, B. J’onsson, and D. Kossmann. Performance
+tradeoffs for client-server query processing. In ACM
+SIGMOD Conf., Montreal, 1996.
+[FRV95] D. Florescu, L. Raschid, and P. Valduriez. Using heterogeneous
+equivalences for query rewriting in multidatabase
+systems. In CoopIS Conf., 1995.
+[GD87] G. Graefe and D. DeWitt. The EXODUS optimizer generator.
+In ACM SIGMOD Conf., San Francisco, 1987.
+[G
+
+93] P. Gassner et al. Query optimization in the IBM DB2
+family. IEEE Data Engineering Bulletin, 16(3), 1993.
+[GST96] G. Gardarin, F. Sha, and Z.-H. Tang. Calibrating the
+query optimizer cost model of IRO-DB, an object-oriented federated
+database system. In VLDB Conf., Bombay, 1996.
+[H
+
+89] L. Haas et al. Extensible query processing in starburst.
+In ACM SIGMOD Conf., Portland, 1989.
+[K
+
+96] D. Kossmann et al. I can do that! using wrapper input
+for query optimization in heterogeneous middleware systems.
+Technical report, IBM Almaden, 1996.
+[LFL88] M. Lee, J. Freytag, and G. Lohman. Implementing an
+interpreter for functional rules in a query optimizer. In VLDB
+Conf., Los Angeles, 1988.
+[Loh88] G. Lohman. Grammar-like functional rules for representing
+query optimization alternatives. In ACM SIGMOD
+Conf., Chicago, 1988.
+[LRO96] A. Levy, A. Rajaraman, and J. Ordille. Querying heterogeneous
+information sources using source descriptions. In
+VLDB Conf., Bombay, 1996.
+[LRU96] A. Levy, A. Rajaraman, and J. Ullman. Answering
+queries using limited external query processors. In ACM PODS
+Conf., Montreal, 1996.
+[M
+
+96] W. McKenna et al. EROC: a toolkit for building NEATO
+query optimizers. In VLDB Conf., Bombay, 1996.
+[N
+
+93] W. Niblack et al. The QBIC project: Querying images by
+content using color, texture and shap. In SPIE, San Jose, 1993.
+[PGH96] Y. Papakonstantinou, A. Gupta, and L. Haas.
+Capabilities-based query rewriting in mediator systems. In
+IEEE PDIS Conf., Miami, 1996.
+[PGMW95] Y. Papakonstantinou, H. Garcia-Molina, and
+J. Widom. Object exchange across heterogeneous information
+sources. In IEEE ICDE Conf., Taipeh, 1995.
+[Qia96] X. Qian. Query folding. In IEEE ICDE Conf., New Orleans,
+1996.
+[RS97] M. Tork Roth and P. Schwarz. Don’t scrap it, wrap it! A
+wrapper architecture for legacy data sources. In VLDB Conf.,
+Athens, 1997.
+[S
+
+79] P. Selinger et al. Access path selection in a relational
+database management system. In ACM SIGMOD Conf.,
+Boston, 1979.
+[S
+
+94] M.-C. Shan et al. Pegasus: A heterogeneous information
+management system. InW. Kim, editor, Modern Database Systems,
+chapter 32. ACM Press, Reading, 1994.
+[TRV96] A. Tomasic, L. Raschid, and P. Valduriez. A data model
+and query processing techniques for scaling acccess to distributed
+heterogeneous databases in DISCO, 1996. Submitted
+for publication.
+[Wie93] G.Wiederhold. Intelligent integration of information. In
+ACM SIGMOD Conf., Washington, DC, 1993.

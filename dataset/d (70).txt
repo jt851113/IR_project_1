@@ -1,0 +1,46 @@
+Fjords and Sensor Proxies are aimed at providing the mechanism for bringing sensor data into a database and for
+isolating sensors from individual queries over the network, but do not address the issue of efficiently evaluating
+queries over that data once it has been made available. It is expected that some sensor networks will need to
+support hundreds or thousands of simultaneous queries over them, particularly ones that monitor large shared
+spaces. Imagine, for instance, a sensor network scattered over freeways in the Bay Area which could be used to
+provide instantaneous reports of traffic conditions for commuters: thousands of commuters would use this type
+of system every day. Our CACQ work is focused on adapting existing research on continuous queries to the
+sensor-network environment.
+Continuous queries (CQs) allow users to pose queries over information sources that are updated over time.
+Rather than forcing users to re-evaluate an entire query when a new value arrives or changes, continuous query
+systems maintain a set of user queries. When a new tuple arrives, apply the relevant queries to that tuple
+and ship the results, if any, to the users who posed the queries. The NiagaraCQ [6] continuous query system
+provides efficient performance by folding together similar query plans into a single, shared query plan which is
+significantly less expensive to compute than a number of separate queries.
+CACQ extends existing shared continuous query systems like NiagaraCQ by introducing two important new
+ideas: first, they are adaptive, which means that as users pose new queries, queries stop running, or sensors
+change the delivery rates of tuples to existing queries, the order in which query operators are applied also
+changes. This adaptivity is in contrast to existing CQ systems, which use a static query optimizer to fix the order
+of operator execution at the time queries are introduced. Adaptivity in CACQ is obtained via a modified Eddy
+[4] operator which makes routing decisions on a per tuple basis, altering the flow of tuples though the plan as the
+number of queries sharing a particular operator changes or the selectivity of join and selection operators shifts.
+The second major innovation introduced by the CACQ system is that it applies to streaming data. Streaming
+data complicates CQ systems by requiring all operators to be non-blocking and to operate for finite time over
+infinite inputs – sorting, for example, cannot easily be expressed as an operation over streams. Thus, the CACQ
+system has been equipped with a suite of stream-appropriate operators, such as those discussed in [41].
+A paper on the CACQ system will appear in this year’s SIGMOD conference[30]; experiment results presented
+in that paper indicate that the CACQ system is able match or exceed the performance of existing continuous
+query systems under a variety of workloads. Several experiments were run to measure the ability of CACQ
+to adapt to changes in query workload. One of them is summarized below: Table 1 shows five simple queries
+and their time of arrival in the system. All queries are over a data stream S, each tuple of which contains six
+fields: an index, and five randomly generated fields a,b,c,d,e and f, each of which is randomly and uniformly
+distributed over the range [0..100].
+Figure 3 shows the percentage of tuples routed to each filter over time for the three workloads. The percentage
+of tuples received is a measure of the routing policy’s perceived value of an operator. Highly selective
+operators are of higher value because they reduce the number of tuples in the system, as are operators which
+apply predicates for many queries, because they perform more net work. Notice how quickly the system adapts
+to newly introduced filters: in most cases, four seconds after a filter is added the percentage of tuples it receives
+has reached steady-state.
+In this particular workload, the most selective query, Query 5, receives the most tuples in steady-state,
+as expected. In the paper, we show this adaptivity working in two other, more complex query workloads.
+Such adaptivity is very important in the context of long-running sensor-network monitoring queries, where
+selectivities and query workloads may change over the lifetime of queries that are running for hours or days,
+causing good initial queries optimization decisions to be very sub-optimal by the end of the query.
+In the paper, the performance of CACQ is compared to NiagaraCQ, the previous state-of-the-art continuous
+query processor: CACQ is able to match or beat the performance of the static, non-adaptive, cost-based
+NiagaraCQ query optimizer and processor over several different query workloads.

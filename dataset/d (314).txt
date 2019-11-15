@@ -1,0 +1,69 @@
+Plans in Garlic are trees of operators, or POPs (Plan OPerators).
+Each POP works on one or more inputs, and produces
+some output (usually a stream of tuples). The input to a POP
+may include one or more streams of tuples. In a plan, these
+are produced by other POPs. Garlic’s POPs include operators
+for join, sort, filter (to apply predicates), fetch (to retrieve
+data from a data source), temp (to make a temporary
+collection) and scan (to retrieve locally stored data). Garlic
+also provides a generic POP, called PushDown, which
+encapsulates work to be done at a data source.
+Plans are characterized by a set of plan properties. Properties
+are a common way to track the work that is done in
+a plan [GD87, Loh88, M
+
+96]. It is particularly important
+to characterize plans with a fixed set of properties in Garlic,
+because Garlic plans are (in part) composed of generic
+PushDown POPs. The actual work being done by these
+POPs depends on the wrapper where the work takes place
+and the query, and is not understood by Garlic or any other
+wrapper in the system. However, the properties provide sufficient
+information about what is done to allow Garlic to
+properly incorporate the PushDown POP in a plan.
+We characterize plans and their output by the eight properties
+described in Table 2. The properties of one POP are
+typically a function of the properties of its input POP(s), if
+any. Properties are computed as the POPs are created, by
+STARs. The properties assigned to a plan are the properties
+of the topmost POP of the plan. Most of these properties
+are equivalent to those used by optimizers of traditional
+database systems. An exception is the Source property. It is
+used to record where the output stream comes from (Garlic
+or a particular data source); the Source property is comparable
+to the Site property used by R [Loh88].
+For example, Figure 3 shows one possible plan for executing
+the query “select m.Body from Inbox m, Classes c
+where m.Subject = c.Course and c.Prof = ’Aho’ ”, assuming
+Inbox is defined by a simple mail wrapper that only answers
+queries of the form “select OID from Inbox”, and
+that Classes comes from a DB2 database. The leaves of
+the plan are both PushDown POPs, but with quite different
+properties. A Fetch POP retrieves from Mail the attributes
+SELECT m.Body FROM Inbox m,Classes c
+WHERE m.Subject=c.Course AND c.Prof=’Aho’
+Subject and Body for each OID returned by the first Push-
+Down POP, compensating for the inability of Mail to return
+these values directly
+
+. Hence, Fetch’s properties include
+these two additional columns. Note that it has Source =
+’Garlic’, reflecting the fact that it will be executed by Garlic.
+The Join POP’s properties reflect the two tables of its
+input streams, the union of the columns from those streams,
+and the predicate applied by its (second) input, as well as
+the join predicate. The final Project POP ensures that only
+the Body column is returned as specified in the query.
+Once the optimizer chooses a winning plan for the query,
+the plan is translated into an executable form. Garlic POPs
+are translated into operators that can be directly executed by
+the Garlic execution engine. Typically each Garlic POP is
+translated into a single executable operator. A PushDown
+POP is usually translated into a query or set of API calls to
+This is possible because (1) the assignment (and retrieval during query
+processing) of Garlic OIDs allows Garlic to go back to the data source to
+retrieve missing information and (2) wrappers must provide “get” methods
+for any attribute they define.
+the wrapper’s underlying data source. Wrappers are, however,
+free to translate the PushDown POPs in whatever way
+is appropriate for their system.

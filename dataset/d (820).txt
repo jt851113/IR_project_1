@@ -1,0 +1,24 @@
+We plan to extend our work in two directions: extending the
+fusion API to accommodate more applications, and further exploring
+the role assignment algorithm behavior and capabilities.
+DFuse assumes that the addresses of the data sources
+are known at query time. This assumption may be a limiting
+assumption for many applications where data sources are unknown
+at query time. We are exploring different ways of extending
+DFuse to handle such data-centric queries. One possible
+approach is to have an interest-dissemination phase before
+the naive tree building phase of the role assignment algorithm.
+During this phase, the interest set of individual nodes
+(for specific data) is disseminated as is done in directed diffusion.
+When the exploratory source packets reach the sink
+(root node of the application task graph), the source addresses
+are extracted and recorded for later use in other phases of the
+role assignment algorithm. We plan to study the role assignment
+behavior in the presence of node mobility and/or failure.
+We expect future iterations of this algorithm to gracefully adapt
+fusion point placements in the presence of mobility and failures
+as is done currently to conserve power. The cost function
+may need to include parameters pertaining to mobility and node
+failures. We would also like to investigate cost functions extensions
+to include cross-layer information (such as placement of
+relay nodes) to further improve fusion point placement.

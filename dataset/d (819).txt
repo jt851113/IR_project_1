@@ -1,0 +1,37 @@
+Data fusion, or in-network aggregation, is a well-known technique
+in sensor networks. Research experiments have shown
+that it saves considerable amount of power even for simple fusion
+functions like finding min, max or average reading of sensors
+[11, 8]. While these experiments and others have motivated
+the need for a good role assignment approach, they do not use
+a dynamic heuristic for the role assignment and their static role
+assignment approach will not be applicable to streaming media
+applications.
+DFuse employs a script based interface for writing applications
+over the network similar to SensorWare [4]. SensorWare
+is a framework for programming sensor networks, but its features
+are orthogonal to what DFuse provides. Specifically, 1)
+SensorWare does not employ any strategy for assigning roles to
+minimize the transmission cost, or dynamically adapt the role
+assignment based on available resources. It leaves the onus to
+the applications. 2) Since DFuse focuses on providing support
+for fusion in the network, the interface to write fusion-based applications
+using DFuse is quite simple compared to writing such
+applications in SensorWare. 3) DFuse provides optimizations
+like prefetching and support for buffer management which are
+not yet supported by other frameworks. Other approaches, like
+TAG [11], look at a sensor network as a distributed database
+and provide a query-based interface for programming the network.
+TAG uses an SQL-like query language and provides innetwork
+aggregation support for simple classes of fusion functions.
+But TAG assumes a static mapping of roles to the network,
+i.e. a routing tree is built based on the network topology
+and the query in hand.
+Recent research in power-aware routing for mobile ad hoc
+networks [14, 9] proposes power-aware metrics for determining
+routes in wireless ad hoc networks. We use similar metrics
+to formulate different cost functions for our DFuse placement
+module. While designing a power-aware routing protocol is
+not the focus of this paper, we are looking into how the routing
+protocol information can be used to define more flexible cost
+functions.

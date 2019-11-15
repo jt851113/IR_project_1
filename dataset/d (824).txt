@@ -1,0 +1,93 @@
+Wireless Sensor Networks offer new opportunities for pervasive
+monitoring of the environment and ultimately for studying previously
+unobservable phenomena. Using traditional techniques, the
+data handling requirements of these systems will overwhelm the
+stringent resource constraints on sensor nodes [1]. In this paper, we
+describe DIMENSIONS, a system to enable scientists to observe,
+analyze and query distributed sensor data at multiple resolutions,
+while exploiting spatio-temporal correlation.
+Sensor networks place several requirements on a distributed storage
+infrastructure. These systems are highly data-driven (Table 1):
+they are deployed to observe, analyze and understand the physical
+world. A data handling architecture must, therefore, reconcile
+conflicting requirements:
+ A fully centralized data collection strategy is infeasible given
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+Copyright 2002 ACM XXXXXXXXX/
+XX/XX ...$5.00.
+the energy constraints on sensor node communication, and
+inefficient given that sensor data has significant redundancy.
+ Many queries over these systems will be spatio-temporal in
+nature. The storage system should support efficient spatiotemporal
+querying and mining for events of interest. Such
+events exist at specific spatio-temporal scales, and therefore
+in order to extract information from data, one has to perform
+interpretation over a certain region. Local processing alone
+is not sufficient. For example, identifying pooling of contaminants
+in a region.
+ Users will routinely require compressed summaries of large
+spatio-temporal sensor data. However, periodically or occasionally,
+users will require detailed datasets from a subset of
+sensors in the network.
+In addressing the storage challenges of sensor networks, one
+question immediately comes to mind: can we use existing distributed
+storage systems for our purpose?. We argue that there are
+fundamental differences in the cost models, nature of the data, and
+intended forms of use of sensor networks, that motivate new approaches
+and metrics of evaluation.
+ Hierarchical web caches [4] are designed to lower latency,
+network traffic and load. The cost models that drive their
+caching strategy is based on user web access patterns, strategically
+placing web pages that are frequently accessed. Peerto-
+peer systems are designed for efficient lookup of files in
+a massively distributed database. These systems do not capture
+key challenges of sensor networks: (a) they are designed
+for a much less resource constrained infrastructure, unlike in
+sensor networks, where communication of every bit should
+be accounted for (b) they are optimized for bandwidth which,
+while limited, is a non-depletable resource, unlike energy on
+sensor nodes (c) the atomic unit of storage is a file, and unlike
+sensor data, different files are not expected to exhibit
+significant spatio-temporal correlations.
+ Geographic Information Systems (GIS) deal with data that
+exhibit spatial correlations, but the processing is centralized,
+and algorithms are driven by the need to reduce search cost,
+typically by optimizing disk access latency.
+ Streaming media in the internet uses a centralized approaches
+to compression of spatio-temporal streams such as MPEG-2,
+and are optimized for different cost functions. Consider the
+problem of compressing a 3 dimensional datacube (dimensions:
+x,y,time) corresponding to data from a single sensor
+type on a grid of nodes on a plane, much like a movie of
+sensor data. MPEG-2 compresses first along the spatial axes
+(x,y), and uses motion vectors to compress along the temporal
+axis. The cost model driving such an approach is perceptual
+distortion and transmission latency. Communication
+constraints in sensor networks drive a time first, space next
+approach to compressing the datacube, since temporal compression
+is local and far cheaper than spatial compression.
+ Wavelets [5, 6] are a popular signal processing technique for
+lossy compression. In a centralized setting, compression using
+wavelets can use entropy-based metrics to tradeoff compression
+benefit with reconstruction error. In a sensor network
+setting, pieces of the data are distributed among nodes
+in the network, and communication constraints force local
+cost metrics that tradeoff the communication overhead with
+the compression benefit.
+Thus, large scale, untethered devices sensing the physical world
+call for building systems that incorporate their extreme resource
+constraints and spatio-temporal interpretation of the physical world
+in the design, cost model, and metrics of evaluation of a data handling
+architecture. DIMENSIONS constrains traditional distributed
+systems design with the need to make every bit of communication
+count, incorporates spatio-temporal data reduction to distributed
+storage architectures, introduces local cost functions to data compression
+techniques, and adds distributed decision making and communication
+cost to data mining paradigms. It provides unified view
+of data handling in sensor networks incorporating long-term storage,
+multi-resolution data access and spatio-temporal pattern mining.

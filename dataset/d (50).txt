@@ -1,0 +1,30 @@
+The two main tasks of a routing protocol are route discovery
+and route maintenance. Route discovery establishes
+a route connecting a pair of nodes when required
+by the upper layer, and route maintenance repairs the
+route in case of link failures. Many wireless routing
+protocols have been proposed and implemented,
+mostly aimed at ad-hoc networks. A distributed and
+adaptive routing protocol, in which nodes share the
+routing decision and nodes can change routes according
+to the network status, is more suitable to sensor
+networks. Such protocols can be further classified
+into proactive, reactive and hybrid routing protocols.
+Proactive routing protocols, like DSDV [25], may set
+up routes between any pair of nodes in advance; while
+reactive routing protocols create and repair routes only
+on demand. Hybrid routing protocols, e.g. ZRP [11],
+combine both properties of proactive and reactive protocols.
+AODV is a typical reactive routing algorithm. It
+builds routes between nodes only as desired by the application
+layer. There are several reasons why we use
+AODV as the routing protocol for our study. First,
+reactive routing protocols scale to large-size networks,
+such as sensor network with thousands of nodes. Second,
+AODV does not generate duplicate data packets,
+which is a requirement to do in-network aggregation
+for duplicate-sensitive aggregate operators. Finally,
+AODV is a popular ad-hoc network routing protocol
+and it is implemented in several simulators. Although
+our discussion is based on AODV, our observations
+apply to other routing protocols as well.

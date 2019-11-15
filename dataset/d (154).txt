@@ -1,0 +1,9 @@
+Due to the possibility of cyclic dominance relationships,
+the existing algorithms for computing free skylines can not
+be used directly for computing k-dominant skyline points.
+In this section, we present three novel algorithms, namely,
+One-Scan algorithm, Two-Scan algorithm, and Sorted Retrieval
+algorithm, to compute k-dominant skyline points.
+Each algorithm takes as input a d-dimensional data set D
+(over a set of dimensions S) and a parameter k, and outputs
+the set of k-dominant skyline points in D.

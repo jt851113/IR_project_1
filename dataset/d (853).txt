@@ -1,0 +1,56 @@
+explain what contributes to directed diffusion's energy
+efficiency, we now describe two separate experiments. In
+both of these experiments, we do not simulate node failures.
+First, we compute the energy efficiency of diffusion with and
+without aggregation. Recall from Section 4.2 that in our
+simulations, we implement a simple aggregation strategy,
+in which a node suppresses identical data sent by different
+sources. As Figure 6(b) shows, diffusion expends nearly 5
+times as much energy, in smaller sensor fields, as when it
+can suppress duplicates. In larger sensor fields, the ratio
+is 3. Our conservative negative reinforcement rule accounts
+for the difference in the performance of diffusion without
+suppression as a function of network size. With the same
+number of sources and sinks, the larger network has longer
+alternate paths. These alternate paths axe truncated by negative
+reinforcement because they consistently deliver events
+with higher latency. As a result, the larger network expends
+less energy without suppression. We believe that suppression
+also exhibits the same behavior, but the energy difference
+is relatively small.
+The second mechanism whose benefits we quantify is negative
+reinforcement. This mechanism prunes off higher la-
+tency paths, and can contribute significantly to energy savings.
+In this experiment, we selectively turn off negative reinforcement
+and compare the performance of directed diffusion
+with and without reinforcement. Intuitively, one would
+expect negative reinforcement to contribute significantly to
+energy savings. Indeed, as Figure 6(a) shows, diffusion without
+negative reinforcement expends nearly twice as much
+energy as when negative reinforcement is employed. This
+suggests that even our conservative negative reinforcement
+rules prune off paths which deliver consistently higher latency.
+In the absence of negative reinforcement or suppression, diffusion's
+delay increases by factors of three to eight (the
+graphs are not included for lack of space). This is an artifact
+of the 802.11 MAC layer. In diffusion, data traffic is
+transmitted using MAC unicast. As more paths are used
+(in the absence of negative reinforcement), or more copies
+of data axe sent (without suppression), MAC-layer channel
+contention increases, resulting in backoffs and subsequent
+delays.
+Finally, we evaluate the sensitivity of our comparisons (Section
+4.2) to our choice of energy model. Sensitivity of diffusion
+to other factors (numbers of sinks, size of source region)
+is discussed in greater detail in [11].
+In our comparisons, we selected radio power dissipation parameters
+to more closely mimic realistic sensor radios [13].
+We re-ran the comparisons of Section 4.2, but with power
+dissipation comparable to the AT~zT Wavelan: 1.6W transmission,
+1.2W reception and 1.15W idle. In this case, as
+Figure 6(c) shows, the distinction between the schemes disappears.
+In this regime, we are better off flooding all events.
+This is because idle time energy utilization completely dominates
+the performance of all schemes. This is the reason
+why sensor radios try very hard to minimize listening for
+transmissions.

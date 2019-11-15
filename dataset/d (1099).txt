@@ -1,0 +1,77 @@
+The CFRS system is created for managing thousands of
+users simultaneously, and to store the information they create
+and access in a scalable manner. The underling KBR
+protocol based on Pastry [17] is particularly scalable: the
+state kept by each peer is O(logN) and routes are also
+O(log2b N). Lists maintained by the storage layer are of
+fixed size. The real problem one can face with such a storage
+layer is that of heavily sparse loads, which are common
+in distributed accesses patterns.
+The skewness of the load. The most important challenge
+faced when designing a distributed search engine is the
+high unbalance of the load, which results from the skewness
+of users’ interests. In most distributed systems, one can observe
+that the users interests follow a Zipf-like distribution.
+An example is given by Figure 4, which plots the distribution
+of query popularity on Wikipedia in September 2004. Only
+the 20,000 most frequent requests among 2,000,000 unique
+queries are plotted. One can notice that a few queries are
+extremely popular, while infrequent queries appear on the
+long tail of the distribution. This has an immediate impact
+on our design: the peers responsible for storing the most accessed
+queries will get an unbearable amount of load, which
+calls for some load balancing mechanisms.
+Balancing by delegating. The basic idea of our load
+balancing mechanism is that of delegation. When some peer
+P(Q) gets overloaded by requests to a popular query Q, it
+replicates its responsibility for managing information and
+answering requests related to Q. A wide range of techniques
+has been proposed for balancing load in structured overlays
+(e.g., [12, 16, 18, 20]). All these proposals however target
+scenarios where the number of accesses is much greater than
+the number of updates to the data. These systems support
+accesses to non-mutable data by placing replicas on nodes
+that lie on the path towards its key.
+Our system requirements are different. First, the amount
+of writes (insertion of interest tracking information) and the
+amount of reads (queries) are of the same order. Caching
+only read accesses is thus not possible: routing every insertion
+for a query Q to the peer P(Q) would involve notifying
+all copies, resulting in a load similar to the one avoided by
+caching access requests. It is thus necessary to also cache
+insertions, that is, to allow copies of information about a
+query to be modified independently to the “master” copy.
+We call such a copy a delegate: a replica onto which modifications
+are possible with only loose synchronization to its
+master copy.
+Figure 5 presents the principle of delegations: a message
+from a peer (either a request or an insertion of relevance
+tracking information) is sent by the peer on the left side,
+and is routed towards the peer P(Q), on the right side. As
+the next to last peer on the path is a delegate of P(Q) for Q,
+it notices that a request for Q is going through its KBR layer
+and intercepts it. It replies on behalf of P(Q) or inserts the
+information in its local copy. Delegates are chosen as follows:
+when P(Q) is overloaded for a given query Q (the amount
+of received requests for Q reaches some threshold), it enters
+“pre-delegation”mode for Q and monitors incoming requests
+for Q. When enough such requests are known, the peer Pd
+that have transmitted the most requests for Q is chosen as
+a new delegate. This simple stateless model is preferred to
+a costly collection of statistics about all queries managed by
+the peer. It is based on the fact that routing paths towards
+P(Q) form a tree, and incoming links of this tree forward
+in expectation an amount of queries that is roughly proportional
+to the number of incoming requesters on its sub-tree.
+Delegations are revoked by similar mechanisms: a delegate
+revokes if the amount of requests for the corresponding Q is
+below some threshold.
+Delegates can in turn use the same mechanism for redelegating
+Q as the master copy on P(Q) and the delegates
+form a tree. Synchronization between the copies is performed
+periodically when the number of changes, denoted
+delta on Figure 5, reaches a configurable threshold. Peerwise
+synchronization is used to aggregate the two copies
+(lists of documents and associated information) in a new
+list.3 This list is then forwarded along the tree, resetting all
+deltas to 0.

@@ -1,0 +1,28 @@
+We define the communication cost C as the amount of
+messages which have been sent, including query request messages,
+result messages and update informing messages. For
+clarity of presentation, we simply denote the size of a single
+message as m. Note that, we can set different sizes for different
+types of messages. We now investigate the process of
+query routing and IA value updating to analyze the cost of
+communication.
+As mentioned before, the length of query path is l if the
+result is found. Otherwise the number of routing hops is
+equal to TTL. During the query routing, each node chooses
+one of its neighbors by checking its own index, then forwards
+the query request to that neighbor, which sends only one
+message. So does the result returning process. Therefore,
+the communication cost C is
+C = 2× (l ? 1) × m, l ? TTL
+
+The IA value updating process is one of the key processes
+in our model, because many processes are essentially
+IA value updating processes, such as node joining/leaving
+process, data adding/deleting process and data modifying
+process. For a node i, we assume that it has ni neighbors.
+In the updating process, node i sends only one message mi
+to each of ni neighbors. After receiving the message, those
+ni neighbors just update their own NI table and nothing
+more need to be done. The communication cost of node i’s
+IA value renewing is
+C = m× ni

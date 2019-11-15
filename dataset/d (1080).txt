@@ -1,0 +1,34 @@
+The above discussion has assumed a triangular sensor network topology. In the following, we briefly
+discuss how to extend our work to handle irregular deployment of sensors.
+The election process does not need to be changed because sensors can still bid for serving as a
+master/slave based on their receive signal strengths. However, the rules to migrate masters/slaves
+Figure 11: Using Voronoi graphs to find the master and slaves: (a) the Voronoi graph of all vertics,
+(b) the Voronoi graph after removing the master, and (c) the Voronoi graph after removing the master
+and first slave.
+need to be modified slightly as follows. Sensors need to know the locations of at least their two-hop
+neighbors. The working and backup areas are redefined based on the sensing scope, r, of each sensor.
+Specifically, there is a predefined value r0 < r. The working area of a sensor is the circle centered at
+itself with radius r0. The rest of the area is the backup area. As before, we still use one master and two
+slaves to track an object (although more slaves may be used). Whenever the master finds the object
+moves into the backup area of itself or any of the slaves, the corresponding agent will be revoked and
+new agent will be assigned.
+One interesting theoretical problem is how to define the master and two slaves given an object
+in an irregular network. This can be related to the classical Voronoi graph problem in geometry [2].
+Given a set of points V in a 2D plane, the Voronoi graph partitions the plane into |V | segments such
+that each segment contains all points that is closest to the (only) vertex in the segment. As a result,
+if V is the set of all sensors, the sensor of the segment containing the object will serve as its master
+agent. Fig. 11(a) shows an example. The problem can be solved by a divide-and-conquer solution in
+time complexity O(|V | log |V |) [2].
+The next two sensors that are closest to the object will serve as the slave agents. This can be
+found recursively as follows. Specifically, let m be the master sensor. We can construct the Voronoi
+graph again based on the vertex set V ? {m}. Then the sensor, say s1, of the segment containing the
+object will serve as the first slave. For example, Fig. 11(b) is the new Voronoi graph after removing
+the master sensor m. Similarly, to find the second slave, we repeat the process by constructing the
+Voronoi graph of V ? {m, s1}. Then the sensor, say s2, of the segment containing the object will
+serve as the second slave. An example is in Fig. 11(c).
+The advantage of using the Voronoi graph is as follows. For a particular location of the object,
+we can sort its distance to each sensor and pick the first three sensors closest to it. The complexity
+is O(|V | log |V |). However, whenever the object moves, the list needs to be re-sorted. The computational
+cost increases as time proceeds. If the above approach is used, we only need to pre-compute
+Voronoi graphs. So the saving of using Voronoi graphs is clear when we need
+to track the object for longer time.

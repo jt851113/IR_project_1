@@ -1,0 +1,85 @@
+[1] http://data.aolsearchlogs.com.
+[2] http://www.planet-lab.org.
+[3] http://www.sigmod.org/codearchive/sigmod2008/.
+[4] http://www.tpc.org/tpch.
+[5] S3:scalable,shareable and secure p2p based data management
+system. In http://www.comp.nus.edu.sg/ s3p2p/.
+[6] K. Aberer, P. Cudre-Mauroux, A. Datta, Z. Despotovic,
+M. Hauswirth, M. Punceva, and R. Schmidt. P-grid: a self-organizing
+structured p2p system. SIGMOD Rec., 32(3), 2003.
+[7] J. Aspnes and G. Shah. Skip graphs. In SODA, 2003.
+[8] A. Awan, R. A. Ferreira, S. Jagannathan, and A. Grama. Distributed
+uniform sampling in unstructured peer-to-peer networks. In HICSS,
+2006.
+[9] O. Axelsson. Iterative solution methods. Cambridge University
+Press, 1994.
+[10] A. Bharambe, M. Agrawal, and S. Seshan. Mercury: Supporting
+Scalable Multi-Attribute Range Queries. In SIGCOMM, Portland,
+OR, Aug. 2004.
+[11] S. Borzsonyi, D. Kossmann, and K. Stocker. The skyline operator. In
+ICDE, 2001.
+[12] S. Boyson and T. Corsi. Managing the real-time supply chain. In
+HICSS, 2002.
+[13] A. Broder and M. Mitzenmacher. Network application of bloom
+filters: A survey. In Internet Mathematics, 2004.
+[14] A. Crainiceanu, P. Linga, A. Machanavajjhala, J. Gehrke, and
+J. Shanmugasundaram. P-ring: an efficient and robust p2p range
+index structure. In SIGMOD, 2007.
+[15] A. Datta, M. Hauswirth, R. John, R. Schmidt, and K. Aberer. Range
+queries in trie-structured overlays. In P2P, 2005.
+[16] R. Dhamanka, Y. Lee, A. Doan, A. Halevy, and P. Domingos. imap:
+Discovering complex semantic matches between database schemas.
+In SIGMOD, 2004.
+[17] A. Doan, P. Domingos, and A. Halevy. Reconciling schemas of
+disparate data sources: A machine learning approach. In SIGMOD,
+2001.
+[18] P. Ganesan, B. Yang, and H. G. Molina. One Torus to Rule Them All:
+Multidimensional Queries in P2P Systems. In WebDB, 2004.
+[19] R. Huebsch, J. M. Hellerstein, N. Lanham, B. T. Loo, S. Shenker, and
+I. Stoica. Querying the internet with pier. In VLDB, Sept. 2003.
+[20] M. Hugos. Essentials of Supply Chain Management. John Wiley &
+Sons, Inc., 2006.
+[21] H. Jagadish, B. C. Ooi, and Q. Vu. Baton: A balanced tree structure
+for peer-to-peer networks. In VLDB, 2005.
+[22] E. Kazumori. Selling online versus offline: theory and evidences
+from sotheby’s. In Proceedings of the 4th ACM conference on
+Electronic commerce, 2003.
+[23] A. Kothari, D. Agrawal, A. Gupta, and S. Suri. Range addressable
+network: A p2p cache architecture for data ranges. In P2P, 2003.
+[24] B. T. Loo, J. M. Hellerstein, R. Huebsch, S. Shenker, and I. Stoica.
+Enhancing p2p file-sharing with an internet-scale query processor. In
+VLDB, 2004.
+[25] M. Lupu, J. Li, B. C. Ooi, and S. Shi. Clustering wavelets to
+speed-up data dissemination in structured manets. In ICDE, 2007.
+[26] G. S. Manku. Balanced binary trees for id management and load
+balance in distributed hash tables. In PODC, 2004.
+[27] G. S. Manku, M. Naor, and U. Wieder. Know thy neighbor’s
+neighbor: the power of lookahead in randomized p2p networks. In
+STOC, 2004.
+[28] T. Pitoura, N. Ntarmos, and P. Triantafillou. Replication, load
+balancing and efficient range query processing in dhts. In EDBT,
+2006.
+[29] S. Podlipnig and L. Boszormenyi. A survey of web cache
+replacement strategies. ACM Comput. Surv., 35(4), 2003.
+[30] S. Ratnasamy, P. Francis, M. Handley, R. Karp, and S. Shenker. A
+scalable content addressable network. In SIGCOMM, 2001.
+[31] A. Rowstron and P. Druschel. Pastry: Scalable, decentralized object
+location and routing for large-scale peer-to-peer systems. In
+Middleware, November 2001.
+[32] O. D. Sahin, A. Gupta, D. Agrawal, and A. E. Abbadi. A peer-to-peer
+framework for caching range queries. In ICDE, 2004.
+[33] P. Seshadri and A. N. Swami. Generalized partial indexes. In ICDE,
+1995.
+[34] I. Stoica, R. Morris, D. Karger, M. F. Kaashoek, and H. Balakrishnan.
+Chord: A scalable peer-to-peer lookup service for internet
+applications. In SIGCOMM, San Diego, California, Aug. 2001.
+[35] M. Stonebraker. The case for partial indexes. SIGMOD Rec., 18(4),
+1989.
+[36] D. Stutzbach, R. Rejaie, N. Duffield, S. Sen, and W. Willinger. On
+unbiased sampling for unstructured peer-to-peer networks. In IMC,
+2006.
+[37] I. Tatarinov, Z. Ives, J. Madhavan, A. Halevy, D. Suciu, N. Dalvi,
+X. Dong, Y. Kadiyska, G. Miklau, and P. Mork. The piazza peer data
+management project. In SIGMOD Record 32(3), 2003.
+[38] R. Zhang and Y. C. Hu. Assisted peer-to-peer search with partial
+indexing. In INFOCOM, Miami, USA, March 2005.

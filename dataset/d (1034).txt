@@ -1,0 +1,19 @@
+In the BATON protocol, the node periodically sends ping messages
+to one of its routing fingers to fix incorrect fingers (other
+overlays such as Chord [34] also perform this kind of stabilization).
+This stabilization process is light-weight and performed frequently
+(averagely 30 seconds in Chord protocol). Our sampling scheme
+exploits the finger ping messages to accomplish the statistics collection.
+Once the ping messages are received, the routing node will
+reply with a summary of the corresponding statistics records.
+In Algorithm 7, three versions of estimated values are maintained.
+Local records denote the query or churn footprints recorded
+by the node in the local database. It is the raw statistics observed by
+the node. The current global estimated values are used for range index
+construction. And the iterative values are used to compute the
+next global estimation values. The node collects the estimation values
+from its routing fingers, adjacent nodes, parent node and child
+nodes. And its own estimations are computed as the average values
+of the received values (lines 2-11). After sometime, the iterative
+values are used as the new global estimated values and we start the
+processing for computing new statistics. (lines 12-14).

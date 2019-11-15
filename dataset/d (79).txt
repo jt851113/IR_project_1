@@ -1,0 +1,17 @@
+Pursuing this research requires a major development effort, as neither of the above projects can be properly done
+without an actual system: simulations, though valuable to a certain extent, are simply not capable of modeling
+radio loss or interference, embedded CPU load, or power consumption accurately. As with previous efforts,
+TeleTiny development can be broadly partitioned into sensor-software tasks and query processor tasks. On the
+sensor side, this includes:
+1. On-mote software: I am currently developing a suite of software components that allow database style
+queries, consisting of grouped aggregates and selection predicates, to be pushed down into a network
+of motes running TinyOS. This software includes the infrastructure for forwarding queries and results
+between motes, scheduling and sharing the delivery of data for multiple simultaneous queries, and interfacing
+to the on-board catalog interface that allows motes to determine what data fields they can provide
+to a query.
+2. User defined functions: One of the key features of the in-mote aggregation system is the ability to support
+user-defined filters and aggregates. These take the form of virtual machine functions pushed into the sensors
+as Mat’e [25] (a TinyOS virtual machine) programs; an effort is currently underway to integrate Mat’e
+into TeleTiny. This capability is particularly important in the context of sensors, as many of the potential
+applications have a signal-processing flavor, in which unconventional (from a database standpoint) filters
+and transformations are needed.

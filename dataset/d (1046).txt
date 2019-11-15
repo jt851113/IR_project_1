@@ -1,0 +1,13 @@
+Abstract—In recent years, the progress in hardware technology has made it possible for organizations to store and record large
+streams of transactional data. This results in databases which grow without limit at a rapid rate. This data can often show important
+changes in trends over time. In such cases, it is useful to understand, visualize, and diagnose the evolution of these trends. In this
+paper, we introduce the concept of velocity density estimation, a technique used to understand, visualize, and determine trends in the
+evolution of fast data streams. We show how to use velocity density estimation in order to create both temporal velocity profiles and
+spatial velocity profiles at periodic instants in time. These profiles are then used in order to predict three kinds of data evolution:
+dissolution, coagulation, and shift. Methods are proposed to visualize the changing data trends in a single online scan of the data
+stream and a computational requirement which is linear in the number of data points. The visualization techniques can also be used to
+provide online animations which show the changes in the data characteristics while they occur. In addition, batch processing
+techniques are proposed in order to quantify the level of change across different combinations of dimensions. This quantification is
+then used in order to determine dimensional combinations with significant evolution. The techniques discussed in this paper can be
+easily extended to spatiotemporal data, changes in data snapshots at fixed instances in time, or any other data which has a temporal
+component during its evolution

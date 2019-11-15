@@ -1,0 +1,69 @@
+To our knowledge, distributed sensor networks have not been
+extensively studied in the networking literature. However,
+our work has been informed and influenced by a variety of
+other research efforts, which we now describe.
+Distributed sensor networks are a specific instance of ubiquitous
+computing as envisioned by Weiser [24]. Early ubiquitous
+computing efforts, however, did not approach the issues
+of scalable node coordination, focusing more on issues
+in the design and packaging of small, wireless devices. More
+recent efforts, such as WINS [22] and Piconet [3] have begun
+to consider networking and communication issues for
+small wireless devices. The WINS project has made significant
+progress in identifying feasible radio designs for lowpower
+environmental sensing. Their project has focused
+also on low-level network synchronization necessary for network
+self-assembly. Our directed diffusion primitives provide
+inter-node communication once network self-assembly
+is complete. Although the Piconet project is more focused
+on enabling home and office information discovery, their application
+designs have some similarity to the data caching
+and aggregation that diffusion employs.
+In addition, recent work has pointed out some of the advantages
+of diffusion-like application-specificity in the context of
+sensor networks [15]. Specifically, this work showed how embedding
+application semantics in flooding can help achieve
+energy-efficiency. Directed diffusion explores some of these
+same ideas in the context of more sophisticated distributed
+sensing algorithms.
+Some of the inspiration for directed diffusion comes from
+biological metaphors, such as reaction-diffusion models for
+morphogenesis [23], and models of ant colony behavior [5].
+Directed diffusion borrows heavily from the literature on adhoc
+unicast routing. Specifically, it is a close kin of the class
+of several reactive routing protocols proposed in the literature
+[12, 20, 19]. Of these, it is possibly closest to [19] in
+its attempt to localize repair of node failures, and its deemphasis
+of optimal routes. The differences between ad-hoc
+routing and directed diffusion have already been discussed
+in Section 3.5.
+Many of the techniques developed for improving ad hoc routing
+performance can be directly applied to directed diffusion.
+In this class, we include techniques that reduce the impact of
+broadcast storms [17], techniques that localize route queries
+based on geographical information [14] or based on route
+history [6]. Directed diffusion has the additional degree of
+freedom in being able to use application semantics to achieve
+further efficiency
+Directed diffusion is influenced by the design of multicast
+routing protocols. In particular, propagation of reinforcements
+and negative reinforcements are similar to joins and
+prunes in shared-tree construction [9]. The initial interest
+dissemination and gradient setup is similar to data-driven
+shortest-path tree setup [8]. The difference, of course, is that
+where Internet protocols rely on underlying unicast routing
+to aid tree setup, diffusion cannot. Diffusion can, however,
+do in-network processing of data (caching and aggregation)
+unlike existing multicast routing schemes.
+The in-network processing feature of directed diffusion bears
+some resemblance to router assist for localized error recovery
+in reliable multicast [16, 18]. These schemes allow minimal
+router functionality that allows specialized forwarding
+modes for certain kinds of data. Directed diffusion carries
+this idea further, leveraging the task specificity of sensor
+networks to embed application knowledge in network nodes.
+Finally, interest dissemination, data propagation and caching
+in directed diffusion are all similar to some of the ideas used
+in adaptive Web caching [25]. In these schemes, caches selforganize
+themselves into a hierarchy of cooperative caches
+through which requests for pages are effectively diffused.

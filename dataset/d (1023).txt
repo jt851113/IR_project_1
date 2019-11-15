@@ -1,0 +1,28 @@
+To index only a subset of the database, we collect the query frequency
+for each tuple to determine if it is beneficial to index it.
+Even in a traditional database, storing the precise query information
+for every tuple is impractical due to the data size. Hence, we
+adopt an approximation approach. Suppose the domain of attribute
+A is [L,U], we partition the range into m cells of equal length. The
+cell is used as a unit for index construction and query distribution
+monitoring. In index construction, once PISCES decides to index
+a cell, all tuples bounded by this cell will be indexed. To monitor
+query distribution, we build a query frequency histogram, where
+each cell acts as a bucket of the histogram. In this way, the statistics
+maintenance cost is greatly reduced.
+The granularity of cells affect the accuracy of the estimated information.
+In this paper, the length l of cells for attribute A is computed
+in the following way: Suppose initially, k nodes declare that
+they have data for attribute A after schema mapping. The schema
+mapping server requires each of the nodes to send s sampling tuples.
+Then, we have ks samples of attribute A. We sort them in
+ascending order and remove the duplicate values.
+Suppose the remaining values are {v1, ..., vn}. Let Ii and I represent
+vi+1 ?vi and ln
+respectively , we define the distribution variance
+of cell ci as:
+is a tunable parameter; currently, we set  = 0.01 and l0 is a
+threshold of maximal cell length. The intuition of the above definition
+is to guarantee that data in a cell almost follow a uniform
+distribution. In this way, the histogram method can provide good
+performance.

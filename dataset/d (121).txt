@@ -1,0 +1,28 @@
+The NECI metasearch engine demonstrates that
+real-time downloading and analysis of the pages
+that match a query is possible. In fact, by calling
+the Web search engines and downloading Web
+pages in parallel, the NECI metasearch engine can,
+on average, display the first result quicker than a
+standard search engine.
+Like other metasearch engines and various Web
+tools, the NECI metasearch engine relies on the
+underlying search engines for important and valuable
+services. Wide use of this or any metasearch
+engine requires an amiable arrangement with the
+underlying search engines; such arrangements
+might include passing through ads or micro-payment
+systems.
+There are numerous areas for future research.
+Because the NECI engine collects the full text of
+matching documents, it is a good test bed for information
+retrieval research. Areas we are working on
+include clustering, query expansion, and relevance
+feedback. Because the query-sensitive summaries let
+users better assess relevance without having to view
+pages, implicit feedback should be more successful
+and might be useful for improved relevance measures,
+automatic relevance feedback, and learning
+specific expressive forms. Other areas we are looking
+at include page classification and extending the
+specific-expressive-forms search technique.

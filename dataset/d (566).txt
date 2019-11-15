@@ -1,0 +1,3 @@
+In this section, we present a simple analysis of the average number of steps to query completion
+as a function of M, N and f(d). A more detailed analysis is in section 12 in the
+Appendix.

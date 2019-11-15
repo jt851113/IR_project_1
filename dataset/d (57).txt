@@ -1,0 +1,32 @@
+Let us first investigate experimentally the effects of innetwork
+aggregation. We run a simple aggregate query
+that computes the average sensor value over all sensor
+nodes every 10 seconds for 10 continuous rounds. Sensors
+are randomly distributed in a query region with
+different size. The gateway node, which is located in
+the left-upper corner of the query region, is the leader
+of the aggregate query. Each experiment is the average
+of ten runs with randomly generated maps.
+We first investigate the effect of in-network aggregation
+on the average dissipated energy per node assuming
+a fixed density of sensor nodes throughout the
+network (in this experiment we set the average sensor
+node density to 8 sensors in a region of 100m×100m).
+Figure 5 shows the effect of increasing the number
+of sensors on the average energy usage of each sensor.
+In the best case, every sensor only needs to send one
+merged data packet to the next hop in each round,
+no matter how many sensors are in the network. The
+packet merge curve increases slightly as intermediate
+packets get larger as the number of nodes grows. Without
+in-network aggregation, a node n has to send a
+data packet for each node whose route goes through
+n, so energy consumption increases very fast.
+We also investigated the effect of in-network aggregation
+on the delay of receiving the answer at the gateway
+node as shown in Figure 6. When the network size
+is very small, in-network aggregation introduces little
+extra delay due to synchronization, however as the network
+size increases, direct delivery induces much larger
+delay due to frequent conflicts of packets at the MAC
+layer.

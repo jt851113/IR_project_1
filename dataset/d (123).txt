@@ -1,0 +1,17 @@
+1. E. Selberg and O. Etzioni, “Multi-Service Search and Comparison
+Using the MetaCrawler,” Proc. 1995 WWW Conf.,
+1995; available online at http://draz.cs.washington.
+edu/papers/www4/html/Overview.html.
+2. S. Lawrence and C.L. Giles, “Searching the World Wide
+Web,” Science, Vol. 280, No. 5360, 1998, p. 98.
+3. D. van Eylen, “AltaVista Ranking of Query Results,” available
+at http://www.ping.be/dirk_van_eylen/avrank.html,
+1998.
+4. D. Dreilinger and A. Howe, “An Information Gathering
+Agent for Querying Web Search Engines,” Tech. Report
+CS-96-111, Computer Science Dept., Colorado State
+Univ., Fort Collins, Colo., 1996.
+5. E. Selberg and O. Etzioni, “The MetaCrawler Architecture
+for Resource Aggregation on the Web,” IEEE Expert, Jan.-
+Feb. 1997, pp. 11-14; also available at http://www.cs.washington.
+edu/homes/speed/papers/ieee/ieee-metacrawler.ps.

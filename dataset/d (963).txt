@@ -1,0 +1,71 @@
+Having presented our solutions for queries over stream
+sensor data, we now discuss related projects in the sensor
+and database domains.
+The work most closely related to ours is the Cougar
+project at Cornell [18], which is also intended for query processing
+over sensors. Their research, however, is more focused
+on modeling streams as persistent, virtual relations
+and enabling user queries over sensors via abstract data
+types. Their published work to date does not focus on the
+power or resource limitations of sensors, because it has been
+geared toward larger, powered sensors. They do not discuss
+the push based nature of sensor streams. Our work is complementary
+to theirs in the sense that they are more focused
+on modeling sensor streams, whereas we are interested in
+the practical issues involved in efficiently running queries
+over streams.
+There has been significant work in the database community
+focused on the language and operator design issues for
+querying data streams. Early work sought to design operators
+for streams in the context of functional programming
+languages like Lisp and ML [17], or for specialized
+regimes like network router log analysis [25]. Seshadri, et.
+al. [22] brought this work fully into the domain of relational
+databases by describing extensions to SQL for stream query
+processing via windowed and incremental operators.
+More recent research on streams continues to extend relational
+databases with complex operators for combining
+and mining data streams. For instance, [7] showed single
+pass algorithms to compute complex, correlated aggregates
+over sets of streams.
+The CONTROL project [11] discusses the possibility of
+user interfaces for the incrementally sorting and aggregating
+very large data sets which is also applicable to streams.
+Shanmugasundaram et. al, [24] discuss techniques for percolating
+partial aggregates to end users which also apply.
+Existing work on continuous queries provides some interesting
+techniques for simultaneously processing many
+queries over a variety of data sources. These systems provide
+an important starting point for our work but are not directly
+applicable as they are focused on continuous queries
+over traditional database sources or web sites and thus don’t
+deal with issues specific to streaming sensor data.
+The NiagaraCQ project [5] is the most recent work focused
+on providing continuous queries over changing web
+sites. Users install queries, which consist of an XMLQL
+query as well as a duration and re-evaluation interval.
+Queries are evaluated periodically based on whether the
+sites have changed since the query was last run. The system
+is geared toward running very large numbers of queries over
+diverse data sources. The system is able to perform well by
+grouping similar queries, extracting the common portion of
+those queries, and then evaluating the common portion only
+once. We expect that this technique will apply to streaming
+sensor queries as well: there will be many queries over a
+particular stream which share common subexpressions.
+The XFilter system [1] is another example of a continuous
+query system. It indexes XML queries to enable efficient
+routing of streaming XML documents to users; this
+index could form the basis of an efficient implementation
+of query processing over XML data streaming from sensor
+networks.
+In the remote sensing community, there are a number of
+systems and architecture projects focused on building sensor
+networks where data-processing is performed in a distributed
+fashion by the sensors themselves. In these scenarios,
+sensors are programmed to be application aware, and
+operate by forwarding their readings to nearby sensors and
+collecting incoming readings to produce a locally consistent
+view of what is happening around them. An example
+of such a design is Directed Diffusion from researchers at
+USC [13].

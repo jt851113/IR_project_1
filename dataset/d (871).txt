@@ -1,0 +1,10 @@
+[1] D. Estrin, L. Girod, G. Pottie, and M. Srivastava, "Instrumenting the world with wireless sensor networks", in Proc. ICASSP’2001, Salt Lake City, UT, 2001
+[2] G. Pottie and W. Kaiser, “Wireless sensor networks”, Communications of the ACM, vol. 43, pp. 51-58, May 2000
+[3] D. Li, K. D. Wong, Y. H. Hu, and A. M. Sayeed, "Detection, Classification, and Tracking of Targets", IEEE Signal Processing Magazine, vol. 19, pp. 17-29, March 2002
+[4] C. Meesookho, S. Narayanan, “"Collaborative Classification Applications in Sensor Networks"”, IEEE Sensor Array and Multi-Channel Signal Processing Workshop, Rosslyn, VA, August 2002.
+[5] F. Martinerie, “"Data Fusion and Tracking Using HMMs in a Distributed Sensor Network",” IEEE Transactions on Aerospace and Electronics System, vol. 33, no. 1, January 1997.
+[6] D. Reid, “An Algorithm for Tracking Multiple Targets”, IEEE Transactions on Automatic Control, vol. 24, no. 1, December 1979.
+[7] SensIT Project Database, http://dstl.bbn.com.
+[8] L. Doherty, “Algorithms for Position and Data Recovery in Wireless Sensor Networks”, UC Berkeley EECS Masters Report, May 2000.
+[9] K. Yao, R. Hudson, C. Reed, D. Chen, and F. Lorenzelli, “Blind beamforming on a randomly distributed sensor array system”, IEEE JSAC, vol. 16, no. 8, Oct. 1998.
+[10] R. E. Kalman, “A new approach to linear filtering and prediction problems”, J. Basic Eng., vol. 82-D, pp. 35-45, 1960.

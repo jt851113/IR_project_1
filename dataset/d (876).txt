@@ -1,0 +1,153 @@
+Recently, with the advance in mobile wireless communication
+technology and the increasing number of mobile users,
+mobile devices, such as cell phones, PDAs and pocket PCs,
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+CIKM’09, November 2–6, 2009, Hong Kong, China.
+Copyright 2009 ACM 978-1-60558-512-3/09/11 ...$10.00.
+have become more and more popular in daily life. These
+mobile devices generally have gigabytes of storage capacity
+and can connect to each other using short-range communication
+access, such as Bluetooth [1] and IEEE802.11 [2].
+With such portable devices in hand, we can bring hundreds
+of documents and multimedia files (i.e., mp3 songs or short
+movies) wherever we go. Given these facilities, we can imagine
+a scenario where different people are interconnected in
+a confined area. For example, in a business district with
+adjacent buildings, people can use their mobile devices to
+search and share information and resources (e.g., mp3 music
+files, e-books, working documents and advertisements),
+or to find a person providing a particular service. This kind
+of environment is very popular in real life, such as in schools,
+business centers, shopping malls, and airports, etc., where
+mobile nodes can interconnect with each other in a peer-topeer
+(P2P) way to form a mobile P2P network.
+In such a mobile network, all nodes are generally gathered
+together to form a P2P network and free to move, join or
+leave. Since the nodes in the network are highly dynamic
+or periodically participate, it is very expensive to maintain
+a structured network overlay. Therefore, a reasonable and
+practical solution is to construct the nodes in an arbitrary
+unstructured way [7, 9]. In this manner, nodes just dynamically
+maintain neighbors in their reachable ranges like real
+neighborhood in social networks, and no special overlay is
+needed. Specifically, mobile P2P environment differs from
+the traditional P2P systems based on static nodes. First,
+nodes in P2P networks are PCs connected through internet.
+They have powerful computing capacity, large storage
+and stable interconnection. The situation is totally different
+in mobile P2P environment, as mobile devices have
+limited resources (computing capacity, storage, bandwidth,
+battery power), which means high resource consuming algorithms
+used in P2P networks are not suitable for mobile
+P2P. Second, nodes in mobile P2P networks are connected
+via short-range communication access (e.g. IEEE802.11).
+Thus neighbors are adjacent in physical network and data
+is transferred in multi-hop manner between non-neighbor
+nodes. However, two P2P nodes can directly communicate
+via IP address. Third, mobile nodes move from time to
+time, which makes the network topology and neighbor relationship
+vary rapidly. Thus, information frequently used to
+process queries in P2P literature, e.g. profile of neighbors
+and query historical records, can not be directly applied. In
+a word, query forwarding in mobile P2P environment suffers
+from more limitation, uncertainty and complexness.
+Most previous works in mobile P2P networks [4, 8, 13, 23,
+17, 24] focus on data dissemination and resource discovery
+problems, and mainly study how to push the information
+to end users in the network. In that case, users are passive
+receivers of information. However, most of the users are
+likely active searchers of information in real-life applications,
+where the users can seek resources they want, search specific
+information for certain purposes, find discount advertisements,
+or download music or files from the network. In this
+paper, we aim at providing active search for end users. Thus,
+we tackle the problem of keyword-based query forwarding in
+file-sharing unstructured mobile P2P networks. Query forwarding
+differs from message routing in mobile P2P environment.
+In message routing, the destination of a message is
+known. Nodes have a prior knowledge of the routing paths.
+However, in query forwarding, there is no prior knowledge
+of where to send the messages. This unknown destination
+implies more uncertainty and less control in message relaying.
+Therefore, the algorithms of distance-aware routing are
+not appropriate for query forwarding problem.
+There exist some challenges for efficient search in such mobile
+P2P networks. First, the query routing strategy must be
+efficient although the global index is not available. Second,
+due to the constraint of computation capacity, battery energy
+and communication bandwidth, the query forwarding
+algorithm must be light-weight and energy-efficient. Third,
+since the network is highly vulnerable, the solution must be
+able to adapt to frequent data updates and high network
+fluctuation.
+To deal with the above challenges, we adopt the human
+strategies in social networking for mobile P2P information
+retrieval problem. Differing from previous works [18, 12] in
+social networks which utilize social-links, interesting-similarity
+or behaviors-alike properties, we exploit the human natural
+behaviors of finding answers through acquaintances, learning
+from experiences and gossiping words. Intuitively, once
+a person has a question, he would ask an acquaintance who
+has that knowledge, or who has a wide knowledge that can
+potentially answer his question. In our proposed solution for
+mobile P2P networks, we use intelligence information about
+neighbor peers instead of knowledge of acquaintance. The
+intelligence information is a piece of message about where to
+find a specific data (file). We use Intelligence Accuracy (IA)
+to evaluate the precise of all these intelligence information
+provided by its neighbors, which helps peers to find a better
+node to further pass the query to its neighbors. In our implementation,
+the Intelligence Accuracy is a convenient yet
+efficient method to evaluate the distance from a query node
+to the resource provider, with which the shortest way can be
+determined for the whole search operation in a volatile environment
+without a global view. The intelligence information
+is exchanged with neighbor peers as the way social peers gossip
+words, and spread in neighborhood. It helps peers collect
+more information from their neighbors. What’s more, the
+peers learn from their query experience, both in success and
+failure. After that, they re-adjust the Intelligence Accuracy
+(IA) value of the intelligence they used, and make it more
+precise and up-to-date. With above mimicking mechanisms
+from social networks, we propose an intelligence-based approach
+for information retrieval and demonstrate that it can
+well tackle the challenges and provide efficient and effective
+information retrieval in mobile P2P networks. We further
+discuss our proposed approaches under the circumstances of
+network fluctuation and data updates to show its scalability
+and maintainability.
+In summary, our approach is such a keyword-based information
+retrieval algorithm that is light-weight, energysaving,
+search-efficient and self-adapted, which is well-fit for
+the mobile P2P environment. Our contribution includes:
+‧ We propose a novel approach for efficient keyword search
+in file-sharing mobile P2P networks, based on the mechanisms
+mimicking natural human behaviors of finding
+answers through acquaintances, learning from experiences
+and gossiping words in social networks.
+‧ We take advantages of the Intelligence Accuracy (IA)
+mechanism, which keeps track of intelligence information
+about the timely distance of files in the network,
+to improve the performance of the queries.
+‧ We specify the processes of our proposed approach in
+the situation of network volatility and data updates,
+together with cost models to analyze the energy consumption
+and communication cost to give a deep view
+of the performance of our approach. We show that
+our approach is functionally self-adaptive in highly dynamic
+networks.
+‧ We conduct extensive experiments to evaluate the performance
+of our proposed approach. The results show
+that it is a time efficient and highly self-adaptive approach
+with balanced query load and high success rate.
+The rest of the paper is organized as follows. In the next
+section, we review the related work. We present the details
+of our intelligence-based information retrieval approach in
+Section 3. Section 4 describes a performance study and gives
+a detailed analysis of results. We finally conclude the paper
+in Section 5.

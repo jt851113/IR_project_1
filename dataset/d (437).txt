@@ -1,0 +1,42 @@
+We implement the prototype in C and execute on an IBM
+RS-6000 (300 MHz CPU) with 128MB running an AIX op-
+erating system. In the following experiments, we always set
+For the purpose of performance evaluation, we use a synthet-
+ically generated sequence consisting of 1024 distinct symbols
+and 20M occurrences of symbols. The synthetic sequence is
+generated as follows. The period length l of the next pattern
+is selected based on a geometric distribution with mean 50.
+The number of symbols involved in a pattern is randomly
+chosen between 1 and the period l. The number of valid seg-
+ments is chosen according to a geometrical distribution with
+mean 50. The number of repetitions of each valid segment
+follows a geometrical distribution with mean 1000. After
+each valid segment, the length of the disturbance is deter-
+mined based on a geometrical distribution with mean 1000.
+This process repeats until 20M symbols are generated.
+
+We rst investigate the eects of distance-based pruning.
+Without the distance-based pruning, there could be as many
+as j = j Lmax dierent single patterns (d; ; : : : ; ) (8d 2
+=). Figure 2(a) shows the fraction of patterns eliminated
+by distance-based pruning. It is evident that the number of
+pruned patterns is a monotonically increasing function of the
+min rep threshold. With a reasonable min rep threshold,
+only a small portion of potential single patterns need to be
+validated and used to generate candidate complex patterns.
+
+After the distance-based pruning, each remaining potential
+single pattern is validated through the SB algorithm. Since
+the validation process (even for a given pattern) is not a triv-
+ial task, we demonstrate the eciency of our SB algorithm
+by comparing it with a reasonable two stage (TS) algorithm.
+In the TS algorithm, for a given pattern, all valid segments
+are rst discovered, then all possible combinations of valid
+segments are tested and the one with the most repetition is
+chosen. Figure 2(b) shows the average elapse time of vali-
+dating a pattern. (Note that the Y-axis is in log scale.) It is
+evident that SB algorithm can outperform the TS algorithm
+by at least one order of magnitude regardless the min rep
+threshold. Figure 2(c) and (d) show the space utilization
+in the SB algorithm and the overall response time to nd
+all patterns, respectively. Clearly, the higher the min

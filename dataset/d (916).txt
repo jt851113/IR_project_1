@@ -1,0 +1,74 @@
+Assume that a sequence of n
+timestamped datasets have
+been collected in a database. For each time instant
+, let D
+ be a set of features derived from the dataset collected at the
+instant. Thus, the time series of features is repesented as,
+Let L be the underlying set of features. We will also use 
+the "don't care" character*, which can match any single set
+of features. We define a pattern as a non-
+empty sequence over. We will use |s| 
+to denote the length of s, and will say that |s| is the period
+of the pattem s. Let the L-length of  be the 
+number of which contains letters from L. A pattern with
+L-lenght i is also called an i-pattern. Morevoer, a subpat-
+tern of a patterm is a pattem
+such that s and s' have the same length and  for
+every position i where . For example, the pattern 
+and it is of L-length 4(i.e, it is a 
+4-pattern); and a*{a,c}**and**cde are tow of the 
+subpatterns of a*{a,c}de.
+  The frequency_count and confidence of a pattern s in a 
+time series are defined as
+where m is the maximum number of periods of length |s|
+contained in the time series(i.e., m is the positive integer
+such that m|s| ? n <(m+1)|s|). Each segment of the
+form where 0?i<m, is called a 
+period segment. We say a pattern  is true in
+the period segment or the period segment matches,if, for
+each position ,either is or all the letters in occur
+in the set of features in the segment. Thus, if is a 
+subpattern of s, then the set of sequences that can match
+is a subset of sequences that can match s'.
+Example 2.1 For example is a pattern of period 3; its
+frequency count in the featrue series is 2;
+and its confidence is , where 3 is the maximum number
+of periods of length 3. The frequency count of in
+is also.
+
+
+Similar to mining association rules [2], we say that a pattern
+is a frequent partial periodic pattern in a time series
+if its confidence is larger than or equal to a threshold,
+aCk HZS. The mining of frequent partial periodic patterns
+in a time series is to discover, possibly with some restrictions,
+all the frequent patterns of the series for one period or
+a range of specified periods. More specifically, the input to
+mining includes:
+
+?A time series .
+?A specified period; or a range of periods specified by two
+integers
+?
+.
+?An integer
+a
+indicating that the ratio of the lengths of and the patterns must be at least 
+a
+. This will ensure that
+the patterns mined would be of value to the application at
+hand.
+Remark: Sometimes the derivation of the feature series
+from the original data series is quite involved, and the interaction
+of the periodic patterns with the derivation of features
+may lead to improved performance. Hence it is worthwhile
+to combine the mining of the features from the datasets with
+the mining of the patterns, as is the case for the mining of
+cyclic association rules [12]. For our work on the mining of
+frequent partial periodic patterns though, this interaction is
+not useful for achieving computational advantage and thus
+we will assume that we are dealing with the feature time
+series in our study.
+
+
+

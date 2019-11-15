@@ -1,0 +1,96 @@
+In this subsection, we introduce the overall query processing
+algorithm of our IA approach as shown in Algorithm 1.
+When a node i receives a message M from one of its neighbors
+(line 2), it first checks the type of this message. If it
+is a query request message (line 3), it checks whether the
+query has been processed. If so, it drops the message (lines
+5-6). If query TTL is equal to zero, the query fails. A failed
+message is returned (lines 8-9). Otherwise, it searches its
+own data for the query (line 11). If the result data is found,
+node i calculates the length of query path l, and then sends
+the result data, l and its position k back to the previous hop
+neighbor (lines 12-14). On the contrary, if the result is not
+found, it calculates its own position k in the query path and
+adds the query into its query list in order to record which one
+it has already processed and where it is from. After that, it
+checks for next hop (lines 16-19). If an appropriate neighbor
+is found, node i forwards the query to it, or else forwards the
+query to the neighbor who has maximum forwarding weight
+Vmax (lines 20-23). If node i receives a result data message
+(line 28), it first checks whether this query was issued by
+itself. If so and the query is successful, it stores the data
+and updates the corresponding IA value. If the query fails,
+it re-issues the query with a pre-defined number of attempts
+(lines 30-35). Otherwise, it searches the query list to find
+the record of that query (line 37). If no record is found, the
+query has been sent to the wrong place, node i drops it (line
+44). If a record is found, node i updates the corresponding
+IA value and then sends it to the next hop. Otherwise, it
+directly forwards to the next hop (lines 38-42).
+Algorithm 1 The Query Processing Algorithm
+1: k = 0; l = 0;
+2: while recvMsg(M) do
+3: if M.type == QUERY then
+4: Q = M.query;
+5: if hasP rocessed(M.qID) then
+6: Drop(M);
+7: end if
+8: if Q.ttl == 0 then
+9: return (Data = Failed);
+10: else
+11: Data = checkData(Q.dataID);
+12: if Data! = NULL then
+13: l = TTL ? Q.ttl + 1;
+14: return (Data, l, l ? 1);
+15: else
+16: k = TTL ? Q.ttl;
+17: addQuery(Q,k, fromID);
+18: Q.ttl = Q.ttl ? 1;
+19: nextHop = searchNI(Q.dataID);
+20: if nextHop! = NULL then
+21: sendTo(nextHop,Q);
+22: else
+23: sendTo(VmaxNb,Q);
+24: end if
+25: end if
+26: end if
+27: end if
+28: if M.type == RESULT then
+29: Q = M.query;
+30: if Q.issuer == my.ID then
+31: if M.Data! = Failed then
+32: addData(M.Data);
+33: updateIA(M.dataID);
+34: end if
+35: Re ? issueQuery(Q, try ? 1);
+36: else
+37: Q = searchQueryList(M.qID);
+38: if Q! = NULL then
+39: if M.Data! = Failed then
+40: updateIA(M.dataID);
+41: end if
+42: sendTo(Q.nextHop,M.Data);
+43: else
+44: Drop(M);
+45: end if
+46: end if
+47: end if
+48: end while
+Example 1. Figure 4 shows a detailed example of how
+query processing uses intelligence-based forwarding strategy
+in the mobile P2P network. Node 0 is a query issuer. It
+issues a query Q. It then lookups its NI index table to find
+a neighbor to forward that query. It decides to send the
+query to node 1 according to the intelligence-based forwarding
+strategy. Node 1 receives the query message from node
+0. It finds out that it has no data for that query. Then it
+calculates its own position k in the query path and forwards
+the query to node 2 after searching its NI table. Node 2 conducts
+the same job as node 1 does and forwards the query to
+node 3. Node 3 checks its data and finds out it has the result
+data. It then calculates the length l of the whole query path
+and then sends the result back with the value of l. Node 2
+and node 1 receive the result data, update their corresponding
+IA value and send back to the next hop retrieved from the
+query record. Finally, node 0 receives the result, and updates
+the IA value.

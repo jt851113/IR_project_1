@@ -1,0 +1,39 @@
+Spatial data reduction involves applying a multi-level 2D wavelet
+transform on the coefficients obtained from 1D temporal data reduction
+described in Section 3.1. Our goals in designing this routing
+protocol are twofold: (a) minimize the communication overhead
+of performing a spatial wavelet decomposition (b) balance the
+communication, computation and storage load among nodes in the
+network. wavRoute uses a recursive grid decomposition of a physical
+space into tiles (such as the one proposed in [10]), in conjunction
+with geographic routing [11, 12] as shown in Algorithm 1. At
+each level of the decomposition, data from four tiles at the previous
+level are merged at a chosen node, which stores it in its local
+store. The merged streams are further subband coded, thresholded,
+and quantized to fit within specified optimization criteria (discussed
+in Section 3.4). The compressed stream is sent to the next higher
+level of the hierarchy as shown in Figure 2. The algorithm is executed
+recursively (Figure 1(a)): all nodes in the network participate
+in Step 1, in following steps, only clusterheads from the previous
+step participate. In the following sections, we elaborate on the algorithm
+used to the select clusterhead location and the geographic
+forwarding protocol used.
+Clusterhead Selection: To minimize communication cost, the
+choice of clusterhead should be tied into the routing structure. We
+use a simple clusterhead selection procedure that gives us good
+complexity properties (described in Section 5). First, the apex of
+the decomposition pyramid is first chosen by hashing into the geographic
+region, R (Figure 1(a)). Then, for each tile, the euclidean
+shortest path between the centroid of the tile and the apex location
+((Xapex; Yapex)) is computed. The point where this path intersects
+the tile boundary is chosen to be the location of the clusterhead.
+Since each node can independently calculate the location of the tile
+based on its own geographic co-ordinates, the clusterhead location
+can be independently computed by each node.
+Modified GPSR: We use a modified GPSR approach proposed
+in [11] to route packets to clusterheads. A brief review of the
+approach is described below, details can be obtained from [12] and
+[11]. GPSR is a strongly geographic routing protocol that takes a
+location rather than an address to deliver packets. [11] propose a
+modified GPSR protocol that ensures that packets are delivered to
+the node closest to the destination location.

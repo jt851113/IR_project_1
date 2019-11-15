@@ -1,0 +1,63 @@
+Terry et al. first proposed the notion of "continuous queries"
+[TGNO92] as queries that are issued once and run continuously.
+He used an incremental evaluation approach to avoid repetitive
+computation and return only new results to users. Their
+approach was restricted to append-only systems, which is not
+suitable for our target environment. NiagaraCQ uses an
+incremental query evaluation method but is not limited to
+append-only data sources. We also include action and timer
+events in Niagara continuous queries.
+Continuous queries are similar to triggers in traditional database
+systems. Triggers have been widely studied and implemented
+[WF89][MD89][SJGP90][SPAM91][SK95]. Most trigger
+systems use an Event-Condition-Action (ECA) model [MD89].
+General issues of implementing triggers can be found in
+[WF89].
+NiagaraCQ is different from traditional trigger systems in the
+following ways.
+1. The main purpose of the NiagaraCQ is to support continuous
+query processing rather than to maintain data integrity.
+2. NiagaraCQ is intended to support millions of continuous
+queries defined on large number of data sources. In a
+traditional DBMS, a very limited number of triggers can be
+installed on each table and a trigger can usually only be
+defined on a single table.
+3. NiagaraCQ needs to monitor autonomous and heterogeneous
+data sources over the Internet. Traditional trigger systems
+only handle local tables.
+4. Timer-based events are supported in NiagaraCQ.
+Open-CQ [LPT99] [LPBZ96] also supports continuous queries
+on web data sources and has functionality similar to NiagaraCQ.
+NiagaraCQ differs from Open-CQ in that we explore the
+similarity among large number of queries and use group
+optimization to achieve system scalability.
+The TriggerMan [HCH+99] project proposes a method for
+implementing a scalable trigger system based on the assumption
+that many triggers may have common structure. It uses a special
+selection predicate index and an in-memory trigger cache to
+achieve scalability. We share the same assumption in our work
+and borrow the concept of an expression signature from their
+work. We mainly focus on the incremental grouping of a subset
+of the most frequently used expression signatures, which are in
+the format “Attribute op Constant”, where op is one of “<”, “=”
+and “>”. The major differences between NiagaraCQ and
+TriggerMan are:
+1. NiagaraCQ uses an incremental group optimization strategy.
+2. NiagaraCQ uses a query-split scheme to allow the shared
+computation to become an individual query that can be
+monitored and executed using a slightly modified query
+engine. TriggerMan uses a special in-memory predicate index
+to evaluate the expression signature.
+3. NiagaraCQ supports grouping of timer-based queries, a
+capability not considered in [HCH+99].
+Sellis's work [Sel86] focused on finding an optimal plan for a
+small group of queries (usually lower than ten) by recognizing a
+containment relationship among the selection predicates of
+queries with both selection and join operators. This approach for
+group optimization was very expensive and not extendable to a
+large number of queries.
+Recent work [ZDNS98] on group optimization mainly focuses
+on applying group optimization to solve a specific problem. Our
+approach also falls into this category. Alert [SPAM91] was
+among the earliest active database systems. It tried to reuse
+most parts of a passive DBMS to implement an active database.

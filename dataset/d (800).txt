@@ -1,0 +1,49 @@
+[AIS93] Rakesh Agrawal, Tomasz Imielinski, and Arun
+Swami. “Mining Association Rules between Sets
+of Items in Large Databases”. In Proceedings of
+the 1993 ACM SIGMOD International Conference
+on Management of Data, pages 207—216,Washington,
+DC, May 1993.
+[AS94] R. Agrawal and R. Srikant. “Fast Algorithms for
+Mining Association Rules in Large Databases”. In
+Proceedings of the 20th International Conference on
+Very Large Data Bases, pages 487–499, Santiago,
+Chile, September 1994.
+[FMMT96] T. Fukuda, Y. Morimoto, S. Morishita, and
+T. Tokuyama. “Data Mining Using Two-
+Dimensional Optimized Association Rules”. In Proceedings
+of the 1996 ACM SIGMOD International
+Conference on Management of Data, pages 13–23,
+Montreal, Canada, June 1996.
+[HF95] J. Han and Y. Fu. “Discovery of Multi-level Association
+Rules From Large Databases”. In Proceedings
+of the 21st International Conference on Very Large
+Data Bases, pages 420–431, Zurich, Switzerland,
+September 1995.
+[PCY95] J. S. Park, M. Chen, and P. Yu. “An Effective Hashbased
+Algorithm for Mining Association Rules”. In
+Proceedings of the 1995 ACM SIGMOD International
+Conference on Management of Data, pages
+175–186, May 1995.
+[RMS97] S. Ramaswamy, S. Mahajan, and A. Silberschatz.
+Calendric association rules. Technical report, Bell
+Labs, 1997. Submitted for publication. Available
+upon request.
+[SA95] R. Srikant and R. Agrawal. “Mining Generalized Association
+Rules”. In Proceedingsof the 21st International
+Conference on Very Large Data Bases, pages
+407–419, Zurich, Swizerland, September 1995.
+[SA96] R. Srikant and R. Agrawal. “Mining Quantitative
+Association Rules”. In Proceedingsof the 1996ACM
+SIGMOD International Conference on Management
+of Data, pages 1–12, Montreal, Canada, June 1996.
+[SON95] A. Savasere, E. Omiecinski, and S. Navathe. “An
+Efficient Algorithm for Mining Association Rules in
+Large Databases”. In Proceedings of the 21st International
+Conference on Very Large Data Bases,
+pages 432–444, Zurich, Swizerland, September
+1995.
+[Toi96] H. Toivonen. “ Sampling Large Databases for Association
+Rules”. In Proceedings of the 22nd International
+Conference on Very Large Data Bases,
+Bombay, India, September 1996.

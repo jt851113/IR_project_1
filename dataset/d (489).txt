@@ -1,0 +1,49 @@
+5.1.1 Sequential Patterns Discovering frequent sequential
+patterns was first introduced in [1]. The input data is a set of
+sequences, called data-sequences. Each data-sequence is a list
+of transactions and each transaction consists of a set of items. A
+sequential pattern also consists of a (fully ordered) list of transactions.
+The problem is to find all frequent sequential patterns
+with a user-specified minimum support, where the support of a
+sequential pattern is the percentage of data-sequences that contain
+the pattern. Apriori-based algorithms, such as AprioriALL
+[1] and GSP [24], were proposed to mine patterns with some
+minimum supports in a level-wise manner. To further improve
+the performance, a projection-based algorithm called FreeSpan
+[11] and its successor PrefixSpan [21] were introduced to reduce
+the candidate patterns generated and hence reduce the number
+of scans through the data. Additional useful constraints (such
+as time constraint and regular expression constraint) and/or taxonomies
+were also studied extensively in [8, 24, 29] to enable
+more powerful models of sequential patterns.
+As a more generative model, the problem of discovering
+frequent episodes from a sequence of events was presented
+in [15]. An episode is defined to be a collection of events
+that occur relatively close to each other in a given partial
+order. A time window is moved across the input sequence
+and all episodes that occur in some user-specified percentage
+of windows are reported. The model was further generalized by
+Padmanabhan et al. [17] to suit temporal logic patterns.
+5.1.2 Periodic Patterns Full cyclic pattern was first studied
+in [16]. The input data to [16] is a set of transactions, each of
+which consists a set of items. In addition, each transaction is
+tagged with an execution time. The goal is to find association
+rules that repeat themselves throughout the input data. In
+[9, 10], Han et. al. presented algorithms for efficiently mining
+partial periodic patterns. In practice, not every portion in the
+time series may contribute to the periodicity. For example,
+a company’s stock may often gain a couple of points at the
+beginning of each trading session but it may not have much
+regularity at later time. This type of looser periodicity is often
+referred to as partial periodicity. The difference between our
+model and [9, 10] is that we aim at mining statistically important
+periodic patterns while Han et al. focused on frequent periodic
+patterns.
+  The most related work is the InfoMiner proposed in [27].
+The InfoMiner uses the information gain as the measure of
+the interestingness of a pattern. However, there is no penalty
+for a gap between the occurrences of the pattern. In the
+STAMP model, we allow penalty to be associated with the gap
+between pattern occurrences (which is more suitable for many
+applications such as bioinformatics) and focus on devising
+efficient algorithms to mining patterns under this new model.

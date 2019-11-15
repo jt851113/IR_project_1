@@ -1,0 +1,20 @@
+Temporal data reduction is cheap since it involves only computation
+at a single sensor, and incurs no communication overhead. The
+first step towards constructing a multi-resolution hierarchy, therefore,
+consists of each node reducing the time-series data as much as
+possible by exploiting temporal redundancy in the signal and apriori
+knowledge about signal characteristics. By reducing the temporal
+datastream to include only potentially interesting events, the
+communication overhead of spatial decomposition is reduced.
+Consider the example of a multi-resolution hierarchy for building
+health monitoring (Table 1). Such a hierarchy is constructed
+to enable querying and data extraction of time-series signals corresponding
+to interesting vibration events. The local signal processing
+involves two steps: (a) Each node performs simple realtime
+filtering to extract time-series that may represent interesting
+events. The filtering could be a simple amplitude thresholding i.e.
+events that cross a pre-determined SNR threshold. The thresholding
+yields short time-series sequences of building vibrations. (b)
+These time-series snippets are compressed using wavelet subband
+coding to yield a sequence that capture as much energy of the signal
+as possible, given communication, computation or error constraints

@@ -1,0 +1,37 @@
+We study the effectiveness of our adaptive indexing technique by
+applying it to a data set [32] of real user queries and shared data
+collected from the Gnutella file sharing network during the Spring
+of 2007. We randomly selected 650,000 queries and 2,000 peers
+from this data set, where each peer shares between 100 and 5,000
+files. We use the terms in filenames to represent each file.
+We simulate a DHT-based peer-to-peer network of 2,000 peers.
+Query issuers are randomly picked among the peers. We assume
+that the DHT-based infrastructure is stable: each peer joins the
+network once, and stays connected until all queries are processed.
+Thus, there is no cost of maintaining the network topology. Also,
+there is no cost of re-transferring global posting lists due to peer
+joining and leaving. Notice that, as we stated earlier in Section
+3.2, we can tune the parameter Ne to represent the cost of joining
+and leaving the network in our experiments. Whenever a peer
+wants to retrieve a global posting list for a term t, or wants to send
+its local posting list of t, it needs to locate the peer responsible for
+t first by issuing a message to that peer. We do not include this
+cost, which is in the order of O(logNP), in our model as it is the
+same for all indexing techniques. For the same reason, we do not
+include the cost of returning matching documents.
+For each peer, we record the number of messages required for
+sending all of its local posting lists to responsible peers (i.e., its
+index-building cost), and the number of query messages received
+(i.e., its query issuing cost). We also record, for each query, the
+number of messages required to transfer all global posting lists of
+its terms from the responsible peers to the client.
+Our main metric is the total network cost to index the contents
+and to process the query workload (posting list retrieval and query
+issuing) in terms of the total number of messages transferred
+among peers. We compare the cost of our adaptive indexing
+technique with the costs of the peer-level indexing technique and
+the document-level indexing technique. We also include the cost
+of adaptive indexing technique using cosine() as the distance
+function to reveal the impact of the choice of distance function.
+The characteristics of queries and shared contents used in our
+experiments are summarized in Table 1 and Table 2.

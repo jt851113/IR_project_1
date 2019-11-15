@@ -1,0 +1,13 @@
+To optimize a query, Garlic uses a set of STrategy Alternative
+Rules, or STARs [Loh88], which construct plans that
+can be handled by Garlic’s query engine. Garlic’s enumerator
+fires appropriate STARs, following a dynamic programming
+model, to build plans for the query bottom-up. Garlic
+differs from [Loh88] in that some of Garlic’s STARs are
+generic. These STARs are fired during enumeration when
+a piece of work is found that can or must be done by a
+wrapper. Generic STARs consult the appropriate wrapper
+to build their piece of the plan. From the resulting set of
+complete plans for the query, the optimizer selects the winning
+plan based on cost. This plan will then be translated
+into an executable (or interpretable) format.

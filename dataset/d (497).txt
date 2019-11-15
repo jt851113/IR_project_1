@@ -1,0 +1,31 @@
+Data Stream Management Systems (DSMS) are built for processing
+and reacting to continuous input data, which also involves
+certain data mining tasks. One important task is burst detection. A
+burst is defined as an abnormal aggregate in the stream. Usually,
+bursts are determined in the context of one or more time windows
+moving over the data stream.
+Burst detection is used in a lot of application scenarios, like monitoring
+facility sensor data, stock trading systems, astrophysics, and
+traffic control systems. In all cases we have to handle continuously
+streaming data, which requires incremental one-pass algorithms.
+Additionally, all the mentioned scenarios claim for detecting bursts
+over a variety of dynamically chosen window sizes, rather than over
+predefined ones. This is called elastic burst detection [9].
+To illustrate the problem of non-stationary stream data, imagine
+heat sensors, located in a single living room. A burst is detected by
+summing up the single temperatures from the time window of interest
+– any resulting sum that is above a given threshold is regarded
+as a burst and should result in according reactions. But, we will
+observe periods, because temperatures are changing with day and
+night hours. Second, especially on hot summer days, the room will
+continuously heat up, particularly in the midday hours. These facts
+should be involved in triggering actuations like lowering heating
+systems or blinds, but this should not result in an alarm just be-
+cause the system thinks it detected a burst. Thus, the threshold for
+bursts must be adapted with occurring trends and periods. As we
+will show, one approach to handle this is to apply techniques from
+time series forecasting.
+A main feature of our approach is that both, burst detection and
+time series forecasting, are implemented in two absolutely independent
+operators. Like this, they can be arbitrarily combined with
+other operators in a multi-functional DSMS.

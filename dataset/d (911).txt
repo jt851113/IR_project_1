@@ -1,0 +1,80 @@
+We show the trees constructed by three types of the DAB
+method under the city mobility model:
+‧ A single-step run, where a single DAB step is used. This
+type of run disregards the information about movement
+frequencies, and thus serves as a basis for comparison.
+‧ A coarse-resolution run, where DAB uses a small number
+of steps.
+‧ A fine-resolution run, where DAB uses a large number of
+steps. Even though this type of run utilizes movement frequencies,
+it suffers from large delays due to limited availability
+of merging choices in the balancing phase of each
+DAB step.
+In addition, we plot the communication cost and tree height
+achieved using varying numbers of DAB steps. For both 1D
+and 2D cases, we use the expected value of the average weight
+as the first threshold , and exponentially decaying thresholds
+thereafter. That is, . Each data point
+reported represents the average of 5 runs.
+The locations of intermediate nodes were placed to minimize
+the communication cost as defined in Section 2B, using an
+optimizing heuristic. However, in Figure 7, intermediate nodes
+are placed between their subtrees for easy inspection. In experiments
+where the communication cost of DAB is compared to
+that of other methods, the same layout optimizing heuristic was
+applied to all trees under comparison.
+1) Results for a 1D Sensor Graph
+Figure 7a shows the outcome of the single-step DAB run,
+where the resulting tree is almost fully balanced. However, as
+we can see, the high-level nodes in this tree sometimes cut the
+main region at busy spots, and thus a high volume of detection
+messages may travel on long paths. This results in a high communication
+cost of 1122.07.
+Figure 7b shows the outcome of the coarse resolution DAB
+run, where the resulting tree is not far from balanced while
+high level tree nodes cut the main region mainly at spots with
+small event rates. The communication cost is reduced to
+814.78, while the height is 12, just slightly larger than that of
+the fully balanced tree.
+Figure 7c shows the outcome of the fine resolution DAB run,
+where the resulting tree is both unbalanced and inefficient. The
+communication cost is 1188.96 and the height is 22.
+The plot in Figure 10 compares the communication cost of
+the DAB method with that of a fully balanced tree for a 1D
+sensor graph of 4096 sensors, with the number of DAB steps
+varying between 1 and 10. The DAB tree has lower cost, but
+the improvement in cost eventually diminishes, because introducing
+additional small draining thresholds only affects a small
+fraction of sensors.
+Figure 11 shows the average and maximum tree heights
+obtained for the same scenario. The height of DAB trees is
+larger than the minimal, as expected; however, the maximum
+height is not far from the average height, indicating a good
+worst case delay. In particular, the tree construction avoids
+building degenerate trees whose heights are proportional to the
+number of sensors.
+2) DAB Results for a 2D Sensor Graph
+We evaluate the performance of the DAB tree construction
+for 2D sensor graphs using the traffic pattern of Figure 8 generated
+by the city mobility model. The light areas in the diagram
+denote higher event rates, while darker areas denote areas of
+less activity. As we can see, this scenario exhibits locality,
+since most high activity regions are surrounded by the regions
+of low activity.
+Figure 9a shows an approximately balanced tree constructed
+by using single-step DAB. Similar to the 1D case, all the nodes
+are available for combining at once, and the combining process
+does not take into account the mobility pattern information.
+Figure 9b shows a tree constructed by four-step DAB. The
+earlier steps combine higher cost nodes first, which end up
+placed near the bottom of the tree. Similarly, the low cost
+nodes take up the upper levels of the tree. For example, we can
+see that the borders of the 2 top levels of the tree follow the
+low-cost regions in the traffic pattern. Thus, only low-rate
+detection messages end up traveling to the top 2 levels of the
+tree. As a result, the DAB tree achieves a lower total communi-
+The plots in Figures 12 and 13 compare the communication
+cost and height, respectively, of the DAB constructed trees and
+those of fully balanced trees for a 2D sensor graph with nodes
+arranged in a 64x64 grid. The results are similar to those of the
+1D case.

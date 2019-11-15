@@ -1,0 +1,75 @@
+Given a binary sequence of length
+
+and the maximum
+cycle length of interest
+ 
+the running time of detecting
+all cycles with lengths less than or equal to
+
+of the
+binary sequence has an upper bound of
+  
+operations.
+We now present a straight-forward approach to
+detecting cycles. This approach is composed of two steps.
+Initially, the set of candidate cycles contains all possible
+cycles. In the first step, the sequence is scanned, and each
+time a zero is encountered at a sequence position , candidate
+cycles   mod  
+, 1
+
+  
+  are eliminated from
+the set of candidate cycles. The first step completes whenever
+the last bit of the sequence is scanned or the set of
+candidate cycles becomes empty, which ever is first. In the
+second step, large cycles (i.e., cycles that are not multiples
+of any existing cycles are detected). A straigt-forward approach
+to eliminating cycles that are not large is as follows.
+Starting from the shortest cycle, for each cycle
+eliminate each other cycle 
+from the set of cycles,
+if is a multiple of	
+holds.
+The sequential algorithm uses this approach to detect the
+cycles.
+However, if we knew initially or at any time while we
+are scanning the sequence that some of the cycles cannot
+exist in the sequence (e.g., due to cycle-pruning or cycleelimination),
+cycle detection procedure can be optimized by
+skipping sequence positions that cannot be part of any of the
+candidate cycles. That is, instead of scanning the sequence
+sequentially, we can skip the bit positions that are not part
+of the candidate cycles (i.e., cycle-skipping). For example,
+if
+
+is three, and we know initially that 01, 010 and 001
+cannot be cycles of a given sequence (e.g., due to cyclepruning),
+then we don’t need scan bit positions 1, 5, 7, 11,
+etc. Also, while we are scanning the sequence, if we also
+eliminate candidate cycle 100 (i.e., cycle-elimination), we
+can skip scanning every second bit of the sequence starting
+at that point. The interleaved algorithm employees these
+optimization techniques (cycle-pruning, cycle-elimination
+and cycle-skipping) that reduce the overhead of cycle detection,
+but more importantly, the overhead of calculating
+support for itemsets, since the interleaved algorithm “interleaves”
+both cycle detection and support calculation for
+itemsets.
+The cycle detection process can be further optimized by
+considering a candidate cycle	
+only when there
+is no other candidate cycle 
+remaining such that
+	
+is a multiple of
+"
+(i.e.,divides and	mod).
+Further optimizations of the cycle detection is not in the
+scope of this paper. However, given a sequence of length
+#
+and the maximum cycle length of interest
+ 
+the
+complexity of finding all the cycles of the sequence is an
+open problem.

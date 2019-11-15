@@ -1,0 +1,10 @@
+In-network data aggregation is essential for wireless sensor networks where resources (e.g., bandwidth, energy)
+are limited. In a previously proposed data dissemination scheme, data is opportunistically aggregated at the
+intermediate nodes on a low-latency tree which may not necessarily be energy efficient. A more energy-efficient
+tree is a greedy tree which can be incrementally constructed by connecting each source to the closest point of the
+existing tree. In this paper, we propose a greedy approach for constructing a greedy aggregation tree to improve
+path sharing. We evaluated the performance of this greedy approach by comparing it to the prior opportunistic
+approach. Our preliminary result suggests that although the greedy aggregation and the opportunistic aggregation
+are roughly equivalent at low-density networks, the greedy aggregation can achieve signficant energy savings at
+higher densities. In one experiment we found that the greedy aggregation can achieve up to 45% energy savings
+over the opportunistic aggregation without an adverse impact on latency or robustness.

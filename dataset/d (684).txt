@@ -1,0 +1,52 @@
+Research areas related to our work include sensor
+databases, network aggregation, and quality-aware data
+collection. Recent works in sensor databases, such as
+the TinyDB project [16] and COUGAR project [23] investigate
+various issues in developing a sensor database.
+Madden et al. at UC Berkeley also investigated the implementation
+of aggregation as part of the system service
+architecture[17]. The work on quality aware sensor data
+management that we are doing in our QUASAR project
+[13] tries to trade data quality for network performance
+in an efficient way.
+In sensor network data gathering area, several approximate
+network clustering algorithms using weaklyconnected
+dominating sets were presented in [4]. [12]
+and [5] target uniform energy dissipation to achieve maximum
+lifetime for a sensor network. LEACH [7] and PEGASIS
+[15] explore cluster-based data gathering protocols
+that rotate the cluster-head randomly to evenly distribute
+workload among sensor nodes. Directed Diffusion
+[10] provides a data dissemination approach in which a
+node requests data by propagating interests, in which aggregation
+is implemented through “path sharing”. Aside
+from aggregation, power-aware routing [21] techniques
+have been recently developed to minimize the cost of intermediate
+routing nodes in ad-hoc networks.
+Research in quality-aware data collection addresses
+the relation between quality requirements of query answers
+and quality of the raw data, with the ultimate goal
+of satisfying query requirements while minimizing certain
+cost. For example, Lazaridis et al.[14] developed an
+approximate data compression algorithm for data archiving.
+Our previous work [25] interprets quality of spatial
+range query results using probabilistic uncertainty. Olston
+et al.[19] provided an adaptive data collection protocol
+to collect data with certain precision requirements
+so that the application quality requirements of continuous
+queries can be met and the total communication cost
+for collecting the data is minimized. Constrained data
+caching [18, 1] deals with how to ensure consistency constraints
+dynamically in distributed databases. Our error
+bound adjustment method bears similarity to the works
+in this area to some extent.
+Most of the previous works have ignored the underlying
+physical network that carries the data collection messages.
+Our approach takes this into consideration and exploits
+the hierarchical structure of networks to enforce
+group quality for each cluster. To the extent of authors’
+knowledge, we are not aware of any previouswork on approximate
+data aggregation based on a hierarchical structure
+which enforces group quality constraints. Given the
+importance of sensor monitoring applications, we believe
+this is a critical issue that can impact performance

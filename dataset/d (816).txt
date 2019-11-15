@@ -1,0 +1,49 @@
+Figure 5 shows the cost of the DFuse API. In part (a), each
+API cost has 3 fields - local, ideal, and API overhead. Local
+cost indicates the latency of operation execution without any
+network transmission involved, ideal cost includes messaging
+latency only, and API overhead is the subtraction of local and
+ideal costs from actual cost on the iPAQ farm. Ideally, the remote
+call is the sum of messaging latency and local cost. Fusion
+channels can be located anywhere in the sensor network. Depending
+on the location of the fusion channel’s input(s), fusion
+channel, and consumer(s), the minimum cost varies because it
+can involve network communications. getFCItem is the most
+complex case, having four different configurations and costs independent
+of the item sizes being retrieved. For part (a), we create
+fusion channels with capacity of ten items and one primitive
+Stampede channel as input. Reported latencies are the average
+of 1000 iterations.
+On our iPAQ farm, netperf [12] indicates a minimum UDP
+roundtrip latency of 4.7ms, and from 2-2.5Mbps maximum unidirectional
+streaming TCP bandwidth. Table 1 depicts how
+many round trips are required and how many bytes of overhead
+exist for DFuse operations on remote nodes. From these measurements,
+we show messaging latency values in Figure 5(a)
+for ideal case costs on the farm. We calculate these ideal costs
+by adding latency per round trip and the cost of the transmission
+of total bytes, presuming 2Mbps throughput. Comparing
+these ideal costs in Figure 5(a) with the actual total cost illustrates
+reasonable overhead for our DFuse API implementation.
+The maximum cost of operations on a local node is 5.3ms. For
+operations on remote nodes, API overhead is less than 74.5%
+of the ideal cost. For operations with more than 20ms observed
+latency, API overhead is less than 53.8% of the ideal cost. This
+figure also illustrates that messaging constitutes the majority of
+observed latency of API operations on remote nodes. Note that
+ideal costs do not include additional computation and synchronization
+latencies incurred during message handling.
+The placement module may cause a fusion point to migrate
+across nodes in the sensor fusion network. Migration latency
+depends upon many factors: the number of inputs and consumers
+attached to the fusion point, the relative locations of the
+node where moveFC is invoked to the current and resulting fusion
+channel, and amount of data to be moved. Our analysis in
+Figure 5(b) assumes a single primitive stampede channel input
+to the migrating fusion channel, with only a single consumer.
+Part (b) shares the same ideal cost calculation methodology as
+part (a). Our observations show that migration cost increases
+with number of input items and that migration from a remote to
+a remote node is more costly than local to remote or remote to
+local migration for a fixed number of items. Reported latencies
+are averages over 300 iterations for part (b).

@@ -1,0 +1,107 @@
+We conduct a series of experiments to evaluate the
+effectiveness and efficiency of the proposed method using
+both real and synthetic datasets. In this paper, we compare
+our proposed approach for k-dominant skyline against
+TSA, which is the most efficient k-dominant skyline
+search algorithm proposed in Ref. 6). The efficiency of
+the TSA approach is dependent on how effective are the
+k-dominant objects pruning non-dominant skyline points
+during the first scan. If the number of false positives
+produced by the first scan is small, then the performance
+of the second scan and hence the overall approach will
+be good.
+The proposed algorithm works particularly well if
+the k-dominant skyline is small. In the best case, the
+algorithm terminates in one iterations; thus, the best case
+complexity is of the order of O(n); n being the total
+number of objects in dataset. In the worst case, the
+complexity is of the order of O(n2). On the other hand,
+TSA takes O(n2) to compute k-dominant skyline objects.
+Though in the worst case the time complexity of our
+proposed method is substantially the same as TSA, we can
+drastically reduce comparisons for k-dominant skyline
+computation by the domination power. TSADPI has the
+tendency to fit into the best case complexity. Results of
+all experiments support our claim that we can reduce
+the number of comparisons drastically. Domination power
+computation does not incur any additional cost in compare
+with TSA. This is because TSA also sorted the whole
+dataset in ascending order. However, for all experiments
+we have included the time cost of domination power.
+A. Performance on Synthetic Datasets
+As benchmark synthetic datasets, we use the datasets
+proposed in Ref. 2). Objects are generated using one of
+the following three value distributions:
+Anti-Correlated: an anti-correlated dataset represents an
+environment in which, if an object has a small coordinate
+on some dimension, it tends to have a large coordinate on
+at least another dimension. As a result, the total number
+of non-dominating objects of an anti-correlated dataset is
+typically quite large.
+Correlated: a correlated dataset represents an environment
+in which objects with large coordinates in one
+dimension are also have large coordinates in the other
+dimensions. In a correlated dataset, few objects dominate
+many other objects.
+Independent: for this type of dataset, all attribute values
+are generated independently using uniform distribution.
+Under this distribution, the total number of nondominating
+objects is between that of the correlated and
+the anti-correlated datasets.
+Details of the three distributions can be found in Ref.
+2). To study the potential advantages of -domination
+power on sort by sum, we evaluate comparisons of
+TSADPI against TSA and compute the reduction rate.
+The reduction rate is defined as
+ReductionRate; 
+where Comp. by TSADPI and Comp. by TSA are the
+summation of all pairwise comparisons to compute k-
+dominant skyline by TSADPI and TSA respectively. We
+set n to 7, k to 6, and vary data cardinality from 100k
+to 500k. From Table IV, we notice that the number of
+comparisons of TSADPI is smaller than that of TSA and
+the reduction rate varies from 25% to 45%.
+In the following sections, we examined the effect of
+dimensionality and cardinality.
+Effect of Dimensionality. For this experiment, we vary
+dataset dimensionality n ranges from 10 to 20 and k from
+6 to 19. Figure 3(a), (b), and (c) represents the effect of
+dimensionality. For all distributions the response time of
+the proposed method is better than TSA approach and it
+increases if the data dimensionality n increases.
+Effect of Cardinality. For this experiment, we vary
+dataset cardinality ranges from 100k to 500k and set the
+values of n to 15 and k to 13. Figure 2(a), (b), and (c)
+shows that when the size of the dataset increases from
+100k to 500k, the computation time of both algorithms
+maintain a positive correlation. Notice that our TSADP
+performs better than TSA.
+B. Performance on Real Datasets
+To evaluate the performance for real dataset, we study
+two different real datasets. The first dataset is NBA statistics.
+It is extracted from “www.nba.com”. The dataset
+contains 17k 13-dimensional data objects, which correspond
+to the statistics of an NBA players’ performance
+in 13 aspects (such as points scored, rebounds, assists,
+etc.). The second dataset is FUEL dataset and extracted
+from “www.fueleconomy.gov”. FUEL dataset is 24k
+6-dimensional objects, in which each object stands for the
+performance of a vehicle (such as mileage per gallon of
+Figure 3. k-dom. skyline computation for different dimension
+gasoline in city and highway, etc.). Using both datasets
+we conduct the following experiment.
+Experiments on Real Dataset for k-dominant Skyline.
+We performed two experiments on NBA dataset. In
+the first experiment, we study the effect of dimensionality
+when n varies from 5 to 13 and k from 4 to 12.
+Figure 4(a) shows the result. NBA dataset exhibits similar
+result to synthetic dataset, if the number of dimension
+increases the performance of both algorithms becomes
+slower. Figure 4(a) represents that proposed method is
+faster than TSA.
+For FUEL dataset, we performed similar experiment
+like NBA dataset. For this experiment, n varies from 3 to
+6 and k varies from 2 to 5. Result is shown in Figure 4(b).
+For this experiment with FUEL dataset, we obtain similar
+result like NBA dataset that represents the scalability of
+the proposed method.

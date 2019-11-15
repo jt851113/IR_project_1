@@ -1,0 +1,49 @@
+Due to the SON generation process, each peer Pi belongs to a
+set of SONs, that are sufficiently connected internally. However, in
+order to support queries directed to other SONs, the resulting SONs
+also need to be sufficiently interconnected. The top-level initiator
+picks from the set of representative peers of each SON, one peer
+that will act as super-peer for the specific SON. In practice more
+than one super-peers are chosen for each SON, in order to support
+load-balancing within each SON and ensure fault-tolerance. In addition,
+the initiator urges super-peers of the global SONs to create
+connections to other super-peers. These connections are used to
+ensure communication among SONs, in order to make any SON
+reachable from any other SON, and at the same time avoid its potential
+isolation from the rest of the network. In this way, the toplevel
+initiator can essentially define the topological parameters of
+the super-peer network, such as number of super-peers per SON,
+super-peer connectivity degree, etc. For instance, if the super-peer
+topology is a hypercube [16], then each super-peer creates log2Nsp
+links, where Nsp denotes the number of super-peers.
+Then, each super-peer creates and maintains information about
+its peers, in order to be able to determine which peers are relevant
+to a query, without having to contact all peers. This is typically
+an index of peers’ features. The final organization of the peers is
+depicted in Figure 3.
+Furthermore, as an extra, optional step to the SON generation
+algorithm, we propose an adaptive strategy for document (and subsequently
+peer) membership in a cluster (SON). After the global
+SONs and their CDs have been determined, this information is
+broadcast to all peers in an efficient way using the zone hierarchy.
+Then each peer can recompute for each of its local documents,
+the most similar CD, and thus: 1) make this document become
+member of the associated cluster, and 2) the peer itself joins the
+respective SON. Thus the final organization of documents to global
+clusters (peers to SONs) is the result of this adaptive strategy, which
+can also be considered as a feedback mechanism to clustering. In
+the experimental part, we will show the advantages of the adaptive
+strategy, in terms of increased clustering quality.
+Summarizing, we emphasize the following features of SON creation:
+1) the algorithm ensures that peers within a SON remain
+well-connected and that sufficient connections exist among SONs,
+2) peers having the roles of zone initiators are chosen at random and
+perform their tasks completely independently of each other, 3) the
+whole process is performed in a distributed and decentralized manner,
+4) although SON creation resembles a hierarchical approach,
+the hierarchy is actually made obsolete and is not used anymore
+right after SON creation, avoiding excessive load on certain peers
+or single points of failure, and 5) as a final result, the peers in the
+initial unstructured P2P network have formed a super-peer network
+in a self-organizing manner, with super-peers responsible for peers
+with relevant content.

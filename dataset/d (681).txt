@@ -1,0 +1,30 @@
+Several choices exist in the process of designing a sensor
+network protocol. The AT structure and A3 protocol
+are specialized to address general monitoring tasks. Specific
+knowledge on the physical phenomena being monitored
+can enable further optimizations. For example, in
+monitoring a highly dynamic phenomenon, we may want
+to instantiate rth to be a high value. Otherwise the resetting
+of error tolerance may happen too often for adjustment
+of the error bounds to be advantageous. Another
+design parameter to be determined is the window size for
+computing update frequency. A possible approach would
+be to choose a larger window size for nodes in higher
+levels allowing these nodes to make adjustment decisions
+more conservatively.
+In our work, the estimation of workload does not consider
+energy levels of the individual sensor nodes. Further
+optimizations to the A3 protocol can be achieved by
+integrating energy consumption models for sensor nodes
+into the adaptation process.
+The cluster architecture itself may be further exploited
+to improve the performance of in-network processing.
+For instance, transmission schedules may be established
+that dictate exactly when individual cluster members can
+communicate in order to avoid collisions. Similarly, if
+packet routing functionality is limited to cluster-heads,
+other cluster members may be scheduled to sleep when
+they are not transmitting and receiving, further optimizing
+energy consumption. Implementing the above techniques
+requires closer integration with network andMAC
+layer protocols; this is a topic for future research.

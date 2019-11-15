@@ -1,0 +1,35 @@
+We show the computation of energy consumption at sensor
+with address 4. The energy consumption at other sensor-
+motes can be similarly computed.
+Total Energy consumed (TE4) = Energy consumed in trans-
+mitting updates + Energy consumed in receiving predictions
+The base-station makes 60 movement predictions. In the
+absence of these, there will roughly be 60 instances where
+an object will pass by this sensor (assuming, for simplicity,
+that predictions were correct). In each of these instances,
+the sensor will generate 3 updates { one update is gener-
+ated when it detects a change in reading. The other two are
+generated because base-station mote does not make a con-
+stant value prediction until it has seen two consecutive sets
+of constant readings. Thus, the sensor will see 141 (81+60)
+constant value predictions and it will save 415 (595 - 60x3)
+transmissions of updates.
+
+Thus,
+TES4 = [1800 - (972 + 415)]  Tu + 141  Rcp
+= 39.16 mJ
+Following similar approach, the total energy consumed at
+
+sensors with addresses 8, 12, and 14 is given by:
+TES8 = 411  Tu + 143  Rcp = 39.02 mJ
+TES12 = 435  Tu + 140  Rcp = 41.08 mJ
+TES14 = 396  Tu + 130  Rcp = 37.40 mJ
+The total energy consumed at base-station mote in receiving
+updates and sending predictions is given by:
+TEb = (413+411+435+396)  Ru +
+(141+143+140+130)  Tcp
+= 94.98 mJ
+We assume that the cost of generating each constant-value
+prediction is negligible.
+The total energy consumed in the system is given by:
+TE2 = 39.16 + 39.02 + 41.08 + 37.40 + 94.98 = 251.64 mJ

@@ -1,0 +1,41 @@
+Collections of large graphs were built to help in understanding genetics. These graphs
+commonly have tens of thousands of nodes and are noisy. For about 5 years, extracting
+knowledge by crossing such graphs has been a hot topic. For example, there is a
+need to extract patterns that remain valid across several co-expression graphs obtained
+from microarray data or to cross the data pertaining to physical interactions between
+molecules (e. g., protein-protein, protein-gene) with more conceptual data (e. g., coexpression
+of genes, co-occurrence of proteins in the literature). One of the most
+promising pattern helping in these tasks is the closed quasi-3-clique. Crochet+ (Jiang
+and Pei 2009) and Cocain* (Zeng et al. 2007) are the state-of-the-art extractors of
+closed quasi-3-cliques. They all use the same definition of noise tolerance: every node
+implied in a pattern must have, in every graph independently from the others, a degree
+exceeding a user-defined proportion of the maximal degree it would reach if the clique
+was exact. Thus, a pattern involving a subset T of the graphs and a subset N of the
+nodes needs to satisfy |T × N| constraints to be a quasi-3-clique, i. e., one constraint
+per couple (timestamp, node). This definition of noise tolerance is different from the
+one involved in the definition of the closed ET-n-sets Fenster extracts. Indeed, in
+Definition 5, an upper-bounded number of absent n-tuples (rather than a proportion)
+is tolerated per element involved in the pattern, i. e., (T, Ntail, Nhead) is, by definition,
+an ET-3-set iff:
+- ?t ? T , the dynamic graph contains all 3-tuples in {t}×Ntail×Nhead but timestamps
+or less.
+- ?ntail ? Ntail, the dynamic graph contains all 3-tuples in T × {ntail} × Nhead but
+tail or less.
+- ?nhead ? Nhead, the dynamic graph contains all 3-tuples in T × Ntail ×{nhead} but
+head or less.
+In this way, (T, Ntail, Nhead) needs to satisfy |T| + |Ntail| + |Nhead| constraints to be
+an ET-3-set. If only symmetric patterns are considered, i. e., Ntail = Nhead = N, this
+number becomes |T| + 2|N|. In the specific context of undirected graphs (contrary
+to Fenster, none of the previously cited approaches can deal with directed graphs),
+the constraints Fenster applies on the tails and on the heads are identical. As a consequence,
+only |T| + |N| constraints defines a symmetric ET-3-set. By comparing
+this number to |T × N|, it can be written that it is easier for a pattern to be an ET-
+3-set than a quasi-clique in the sense of Crochet+ or Cocain* (the patterns involving
+only one timestamp or one node are exceptions to this assertion but they are not very
+interesting). As a consequence our approach does not scale well to graphs connecting
+thousands of nodes. Nevertheless, because Fenster indifferently enumerates timestamps
+and nodes (no attribute is favored), it can extract closed symmetric ET-3-sets
+in large collections of smaller graphs, whereas the other algorithms cannot (or they
+must be used with a very strong minimal size constraint on the number of involved
+graphs). Finally, (Sim et al. 2011) is a recent proposal that is again less generic than
+Fenster (ternary relations only, one particular dimension).

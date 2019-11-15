@@ -1,0 +1,13 @@
+In this paper, we have studied the problem of resource
+selection in distributed text retrieval systems, i.e. the task
+of ranking a set of information resources w.r.t. a given user
+query and then employing the ranking for choosing a subset
+of resources to retrieve documents from. More precisely, it
+was investigated how many terms can be pruned from profiles
+without degrading performance significantly and what
+techniques can improve peer rankings.
+In summary, the results of this paper suggest that it is possible
+to prune profiles substantially without losing retrieval
+effectiveness. They also show a good potential of profile
+adaptation techniques, as opposed to query expansion that
+did not improve results.

@@ -1,0 +1,25 @@
+der to analyze the use of multiple paths we now make a
+stronger assumption about the routing topology. Start-
+ing with the leaves at level 0, we assume that each node
+at level i has exactly d neighbors within its broadcast
+radius at level i + 1, for all 0  i  h  1. From these
+neighbors, each node selects k  d of these nodes as its
+parents, where k is a fault-resilience parameter, and it
+transmits its aggregate value to all k of these nodes.We
+use the pessimistic simplication that only one copy of
+a leaf's value reaches a level; while somewhat tighter
+bounds can be obtained, it suAces to provide close
+agreement with our experimental results. Let Ei de-
+note the event that a copy of the leaf's value reached
+level i conditioned on the value having reached level
+i + 1. With leaves at level h, these events are well-
+dened for levels 1; 2 : : :. Clearly Pr[Ei]  ()
+(from the above simplication), and thus the overall
+probability of a message successfully reaching the root
+is i Pr[Ei]  ()h. Using the same argument
+for the other levels of the tree we can get the follow-
+ing: E(count) For
+k = 2, p = 0:1 and h = 10 we get E(count)  0:9n,
+where n is the total number of nodes. For k = 3 the
+bound is close to 0:99n, thus we have only a 1% degra-
+dation in the set of reporting sensors.

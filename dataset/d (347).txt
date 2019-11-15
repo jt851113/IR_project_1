@@ -1,0 +1,12 @@
+In this section, the process of similarity search is described in
+detail, first at peer level (Section 4.1), then at super-peer level (Section
+4.2), followed by a query routing technique (Section 4.3) that
+reduces the total cost.
+A similarity query originates from a querying peer QP. We assume
+that we have a super-peer network, with each super-peer responsible
+for peers that belong to a SON. Our focus is on processing
+similarity queries qk for the top-k most similar documents to
+the query. Such a query retrieves the k documents 
+from the network with highest cosine values cos(qk, di). In our
+context, qk represents a non-trivial multi-keyword query, such as
+another document.

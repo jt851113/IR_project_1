@@ -1,0 +1,3 @@
+There are various solutions available today for device tracking and location discovery. For example, active and passive electromagnetic and optical trackers are sometimes used for tracking and tagging objects. Unfortunately, these tend to be expensive, and the perfor
+mance of electromagnetic trackers is affected by the presence of metallic objects in the environment. Furthermore, these products do not usually preserve user privacy.
+The rest of this section discusses three systems that in?uenced various aspects of Cricket, and compares their relative bene?ts and limitations. Table 2 summarizes the following discussion.

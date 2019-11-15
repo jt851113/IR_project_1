@@ -1,0 +1,79 @@
+APPENDIX
+A. PSEUDOCODE
+A.1 Block matching algorithm in MPEG2
+/* Each frame can be thought of as composed of
+* macro-blocks. Size of each macro-block is
+* blockWidth x blockWidth pixels.
+* The function is passed two consecutive
+* frames: frame1 and frame2. For each
+* macro-block in frame1, this function
+* searches for the best-matching block in
+* frame2 (two macro-blocks are supposed to
+* match if the sum of the difference in
+* their corresponding pixel values is less
+* than a certain pre-specified threshold).
+* Once a matching block is found, the function
+* records the displacement (in X and Y)
+* as a motion-vector that describes the
+
+* movement of the macro-block from frame1 to
+* frame2. The set of all motion vectors
+* considered are assumed to be stored in the
+* array: PossibleMotionVectors
+*/
+function blockMatchingAlgo(frame1, frame2,
+blockWidth) returns Motion-Vectors
+foreach mblock in frame1 do
+{
+topLeftX1 = mblock.getTopLeftX();
+topLeftY1 = mblock.getTopLeftY();
+error = 0; minError = MAXINT;
+foreach mVector in PossibleMotionVectors do
+{
+<topLeftX2, topLeftY2> =
+applyMotionVector(topLeftX1, topLeftY1,
+mVector);
+if (isWithinFrame(topLeftX2, topleftY2,
+frame1) {
+error =
+substractMacroBlocks(frame1,
+topLeftX1, topLeftY1, frame2
+topLeftX2, topLeftY2, blockWidth);
+if (error < minError) {
+bestMatchingVector = index;
+minError = error;
+}
+}
+}
+if (minError < ErrorThreshold)
+addNewMotionVector(motionVectors,
+topLeftX1, topLeftY1, mVector);
+}
+return motionVectors;
+/* This function finds the degree of match
+* between the macro-block, starting at
+* <topLeftX1, topLeftY1>, of frame1, and
+* macro-block, starting at <topLeftX2,
+* topLeftY2>, of frame2. Each macro-block is
+* assumed to be of size-
+* blockWidth x blockWidth pixels. Function
+* abs() gives the absolute value.
+*/
+
+function substractMacroBlocks(frame1,
+topLeftX1, topLeftY1, frame2, topLeftX2,
+topLeftY2, blockWidth)
+returns degree-of-match
+row1=topLeftX1; col1=topLeftY1;
+row2=topLeftX2; col2=topLeftY2;
+error = 0;
+while (row1 < row1+blockWidth) {
+while (col1 < col1+blockWidth) {
+error = error + abs(frame1[row1][col1]
+- frame2[row2][col2]);
+col1++; col2++;
+}
+
+row1++; row2++;
+}
+return error;

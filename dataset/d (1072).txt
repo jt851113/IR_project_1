@@ -1,0 +1,18 @@
+We use both synthetic datasets and real datasets in the experiments. The generation
+of the synthetic datasets is controlled by three parameters, dimension
+number n, data size Size and distribution Dist. There are three optional distributions
+in the synthetic data sets: Correlated, Independent and Anti-Correlated.
+Table 4 shows the number of the k-dominant skyline objects on 15-dimensional
+data set with 100k objects on different distributions and different constraint
+parameter k.
+When k is close to the dimension size, the number of k-dominant skyline
+objects in the anti-correlated dataset becomes much larger than that of the
+independent and correlated datasets. However, when k is small, the correlated
+dataset can still have some dominant skyline objects, while no dominant skyline
+objects can be found on the other two distributions.
+We also examine the performance for a real dataset. We used the NBA statistics.
+This dataset contains 17000 players season records on 17 attributes from
+the first season of NBA in 1945. Every records contain the statistical value
+of a player’s performance in one season, such as game played(GP), field goal
+made(FGM), total assists(AST) and so on. One player may have several records
+if he played in NBA for more than one season.

@@ -1,0 +1,9 @@
+Unlike the previous implementation where it suced to
+get the graph from the Connectivity Server, in this case
+we need to fetch all the documents to do content analysis.
+To build term vectors we eliminate stop words and use
+Porter stemming [27]. For IDF weights, since we know of
+no source of IDF weights for the Web and of no ocial
+representative collection, we had to build our own collection.
+Hence we used term frequencies measured in a
+crawl of 400,000 Yahoo! [30] documents in January 1997.

@@ -1,0 +1,25 @@
+The data allocation problem on the disk storage has been
+widely studied in the past. As the application of data
+broadcast in the mobile environment becomes popular, the
+issue of data allocation on the broadcast channel for
+reducing the access latency receives much attention. In this
+paper, the database broadcast issues are discussed and the
+idea of the access graph is introduced to represent the data
+objects with a certain relationship. Moreover, heuristics are
+proposed to determine the broadcast order for data objects
+whose relationship is represented by an access graph. This
+problem can be proven to be NP-complete. We propose a
+heuristic to solve the problem based on the techniques of
+solving two well-known problems, the maximum branching
+problem and optimal linear ordering problem. We transform
+the access graph to a set of access trees, each of which can be
+arranged into an optimal broadcast order. Then, we merge
+these broadcast orders to form the final result. We take the
+effect of each removed edge from the access graph into
+consideration, which makes our approach more effective.
+Our proposed algorithm can deal with any access graph with
+different sizes of data objects. Experiments show that our
+approach has good performance. In the future, we will
+consider the data allocation problem on multiple broadcast
+channels and the issue of using data replication to increase the
+availability of popular data objects.

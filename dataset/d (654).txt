@@ -1,0 +1,30 @@
+To improve the variance and condence of the es-
+timator, FM sketches can use multiple bitmaps. That
+is, each item is inserted into each of m independent
+bitmaps to produce m R values, Rh1i; : : : ;Rhmi. The
+estimate is then calculated as follows:
+This estimate is more accurate, with standard error
+O(1=pm), but comes at the cost of increased insertion
+times (O(m)). To avoid this overhead, an algorithm
+called Probabilistic Counting with Stochastic Averaging,
+or PCSA, was proposed in [7]. Instead of inserting each
+item into each of the m bitmaps, each item is hashed
+and inserted into only one of them. Thus, each of the
+bitmaps summarizes approximately n=m items. While
+there is some variation in how many items are assigned
+to each bitmap, further analysis showed that the stan-
+dard error of PCSA is roughly 0:78=pm. Using PCSA,
+insertion takes O(1) expected time.
+PCSA can also be applied to summation sketches,
+but greater care must be applied when combining
+PCSA to summation sketches. The potential for imbal-
+ance is much larger with summation sketches - a sin-
+gle item can contribute an arbitrarily large fraction of
+the total sum. Thus, we employ the following strategy.
+Each ci value has the form ci = qim+ri for some inte-
+gers qi and ri, with 0  ri < m.We then add ri distinct
+items once as in standard PCSA, and then add qi to
+each bitmap independently. Thus, we preserve the bal-
+ance necessary for the improved accuracy and its anal-
+ysis, but at the cost of O(mlog2(ci=m)) for each inser-
+tion. We will employ PCSA in our experiments.

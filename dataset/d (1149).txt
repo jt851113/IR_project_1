@@ -1,0 +1,14 @@
+Since timer-based queries are only periodically executed their
+use can significantly reduce computation time and make the
+system more scalable. Timer-based queries are grouped in the
+same way as change-based queries except that the time
+information needs to be recorded at installation time. Grouping
+large number of timer-based queries poses two significant
+challenges. First, it is hard to monitor the timer events of those
+queries. Second, sharing the common computation becomes
+difficult due to the various time intervals. For example, two
+users may both request the query in Figure 3.1 with different
+time intervals, e.g. weekly and monthly. The query with the
+monthly interval should not repeat the weekly query’s work. In
+general, queries with various time intervals should be able to
+share the results that have already been produced.

@@ -1,0 +1,26 @@
+Figure 6 shows that the impact of moving speed on
+energy consumption for scheme CM and PES with
+INSTANT prediction heuristic. We do have the result
+for the missing rate with various moving speed as
+well but omit it due to the limited space. The figure
+shows that the energy consumption increases linearly
+as the objects’ moving speed increases. In addition,
+the missing rate also increases linearly (not shown
+here). This is because the faster an object moves, the
+more target nodes need to be waken up (for ROUTE
+and ALL NBR). In addition, the destination node is
+farer away from the current node and thus more difficult
+to predict. As shown in the figure, when the speed
+is under 25 m/second, all three of wake up heuristics
+are able to achieve energy savings compared with CM.
+Among the three PES schemes, the ALL NBR has a
+higher energy consumption but a much lower missing
+rate than the other two. ROUTE outperforms
+DESTINATION in terms of both energy consumption
+and missing rate. This is because the overhead incurred
+by waking up more (target) nodes in heuristic
+ROUTE is still less than the energy overhead for relocating
+the object in heuristic DESTINATION. This
+fact indicates that ROUTE is a good choice for monitoring
+high-speed moving objects by balancing energy
+consumption and object missing.

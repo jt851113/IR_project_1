@@ -1,0 +1,70 @@
+Below, we formally develop our tracking protocol. Since there may exist multiple objects in the
+network, we have to assume that sensors can distinguish one object from the other. This can be done
+by having each object periodically send a unique ID code. Otherwise, some mechanism is needed for
+sensors to combine proper signals from proper sensors to differentiate objects.
+We consider an environment with multiple objects. However, since the processing of each individual
+object is independent, the following discussion will focus on only one particular object. For
+each object, three or even more sensors will be able to detect its existence. Fig. 5 shows the state
+transition diagram of each sensor. (It should be noted that for different objects, a sensor may stay in
+different states.) Initially, each sensor is in the idle state and performs the Basic Protocol. Under this
+state, a sensor will continuously detect any object appearing in its sensing scope. Once detecting a
+new object, the sensor will enter the election state and perform the Election Protocol to bid for serving
+as a master. Most likely, the sensor that is closest to the object will win and become the master
+agent, which will then dispatch two slave agents to two nearby sensors. The master will go to the
+master state and perform the Master Protocol, while the slaves will go to the slave state and perform
+the Slave Protocol. To prevent too frequent moves of the agents, as long as the object remains in the
+working area, the states will not change. However, once the object enters the backup areas, the roles
+of master and slave may be changed. In this case, an idle sensor may be invited to serve as a master
+or slave. Another case that a sensor may stay in the idle state is when it detects an object in its backup
+areas and keeps on receiving inhibiting messages from neighboring sensors. This is reflected by the
+self-looped transition for the idle state.
+Fig. 6 shows six tracks that an object may leave a triangle. Suppose that the master is currently in
+S0, and the two slaves are in S1 and S2. By symmetry, these can be reduced 3 tracks (numbered by 1
+to 3). For track 1, the master discovers two slaves losing the target simultaneously. So the master will
+revoke all slaves and invite two new slaves. For track 2, only the slave agent in S1 will be revoked,
+and a new one will be invited. For track 3, the master discovers one slave as well as itself losing
+the target. In this case, the master should migrate itself to the sensor that can still detect the object
+(typically with the strongest receive signals) and revoke all current slaves. After moving to the new
+sensor, two new slaves should be invited. Finally, we comment that the object may move too fast to
+be detected. If so, sensors may suddenly lose the target. As a last resort, all agents,when losing the
+object for a timeout period, will be dissolved. Since no inhibiting message will be heard, all sensors
+must remain in the idle state for this particular object, and new election process will take place to
+choose a new master to track this object. Our protocol is thus quite fault-tolerant in this sense.
+Each sensor will keep an object list (OL) to record the status of all targets in its sensing scope.
+Each entry in OL is indexed by the object’s unique identity, denoted by ID. For each object, there
+are two sub-fields: status and time-stamp. ID.status can be one of the four values: Master, Slave,
+Standby, and Inhibited. ID.time-stamp is the time when the record is last updated.
+Seven types of control messages may be sent by our protocol.
+(1) bid master(ID, sig): This is for a sensor to compete as a master for object ID, if no inhibiting
+record has been created in OL for ID. The parameter sig reflects the receive signal strength for
+this object.
+(2) assign slave(ID, si, t): This is for a master to invite a nearby sensor si to serve as slave agent
+for object ID for an effective time interval of t.
+(3) revoke slave(si): This is for a master to revoke its slave at sensor si.
+(4) inhibit(ID): This is a broadcast message for a master/slave to inhibit neighboring irrelevant
+sensors from tracking object ID. The effective time of the inhibiting message is defined by a
+system parameter Tinh.
+(5) release(ID): This is to invalidate an earlier inhibiting message.
+(6) move master(ID, si, hist): A master uses this message to migrate itself from its current sensor
+to a nearby sensor si, where hist carries all relevant codes/data/roaming histories related to
+object ID.
+(7) data(ID, sig, ts): A slave uses this packet to report to its master the tracking results (sig =signal
+strength and ts = timestamp ) for ID.
+Below, we formally present our four protocols. The Basic Protocol is shown in Fig. 7. This is an
+endless loop containing six event-driven actions. The first one describes the reaction when detecting
+an object. If an inhibiting record exists, it will ignore the object. Otherwise, the sensor will go
+to the election state. The next four events describe the reactions when receiving a message from a
+neighboring sensor. In particular, if an inhibit(ID) message is received, a timer Tinh(ID) will be set.
+The last event describes the reaction when the above timer expires, in which case the object’s status
+will be changed to Standby and the sensor will be allowed to monitor this object.
+The Election Protocol is shown in Fig. 8. In the beginning, a bid master message will be sent and
+a timer Tbid(ID) will be set. Then the sensor will wait for three possible events to occur: receiving
+bid master, receiving inhibit, and finding timer Tbid expired. Signal strength will be used in the
+competition. Depending of different events, the sensor will go to the Master or Idle state.
+Fig. 9 shows the Master Protocol. The first event is to collect data from neighboring sensors. The
+next two events are for slave agents and the master agent when losing the target, respectively. Note
+that the areas A1, A2, and A3 refer to Fig. 2(b). The last event is to inhibit irrelevant sensors from
+monitoring the object.
+The Slave Protocol is shown in Fig. 10. The first event controls the timing, by timer Trep, to report
+data to the master. The second event is for the master to revoke the slave. The last event is to inhibit
+other irrelevant sensors.

@@ -1,0 +1,10 @@
+Exact Threshold-based top-k algorithms could be the solution for
+searching in modern p2p applications that maintain and use
+ranked data. The new extended versions HT-p2p and HT-p2p plus
+presented in this paper show promising results in terms of
+bandwidth consumption which is the most crucial parameter as
+the size of p2p networks increases. Ongoing work includes the
+precise assessment of the time performance of HT-plus in a fullydistributed
+simulation platform. ,It is also interesting to study the
+support of non-monotonic aggregation functions in order to enrich
+the query capabilities.

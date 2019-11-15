@@ -1,0 +1,174 @@
+[1] ACM SIGMOBILE. Proceedings of the 4th Annual ACM/IEEE International
+Conference on Mobile Computing and Networking (MOBICOM-
+98). ACM Press, 1998.
+[2] Sanjay Agrawal, Surajit Chaudhuri, and Vivek R. Narasayya. Automated
+selection of materialized views and indexes for SQL databases. In
+Proceedings of 26th International Conference on Very Large Data Bases,
+pages 496–505, 2000.
+[3] Elena Baralis, Stefano Paraboschi, and Ernest Teniente. Materialized
+views selection in a multidimensional database. In The VLDB Journal,
+pages 156–165, 1997.
+[4] Josh Broch, David A. Maltz, David B. Johnson, Yih-Chun Hu, and
+Jorjeta Jetcheva. A performance comparison of multi-hop wireless ad
+hoc network routing protocols. [1], pages 85–97.
+[5] S. Ceri and G. Pelagatti. Distributed Database Design: Principles and
+Systems. MacGraw-Hill (New York NY), 1984.
+[6] Jae-Hwan Chang and Leandros Tassiulas. Energy conserving routing in
+wireless ad-hoc networks. In Proceedings of the 2000 IEEE Computer
+and Communications Societies Conference on Computer Communications
+(INFOCOM-00), pages 22–31, Los Alamitos, March 26–30 2000.
+IEEE.
+[7] Surajit Chaudhuri and Vivek R. Narasayya. Autoadmin ’what-if’ index
+analysis utility. In Proceedings ACM SIGMOD International Conference
+on Management of Data, pages 367–378, 1998.
+[8] J. Elson, L. Girod, and D. Estrin. Fine-grained network time synchronization
+using reference broadcasts. In Proceedings of the 5th
+Symposium on Operating Systems Design and Implementation, pages
+147–163, December 2002.
+[9] Deepak Ganesan, Deborah Estrin, and John Heidemann. DIMENSIONS:
+Why do we need a new data handling architecture for sensor networks?
+In Proceedings of the ACM Workshop on Hot Topics in Networks,
+Princeton, NJ, USA, October 2002. ACM.
+[10] M. Garey and D. Johnson. The rectilinear Steiner tree problem is NPcomplete.
+SIAM Journal on Applied Mathematics, 32:826–834, 1977.
+[11] M. R. Garey and D. S. Johnson. Computers and Intractability: A Guide
+to the Theory of NP-Completeness. Freeman, New York, 1979.
+[12] Abhishek Ghose, Jens Grossklags, and John Chuang. Resilient datacentric
+storage in wireless ad-hoc sensor networks. In Proceedings of
+the 4th International Conference on Mobile Data Management MDM
+2003, pages 45–62, 2003.
+[13] A. Goel and D. Estrin. Simultaneous optimization for concave costs:
+Single sink aggregation or single source buy-at-bulk. In Proceedings of
+the 14th Annual ACM-SIAM Symposium on Discrete Algorithms, January
+2003.
+[14] Jonathan Goldstein and Per-?? ° ke Larson. Optimizing queries using
+materialized views: a practical, scalable solution. In Proceedings ACM
+SIGMOD International Conference on Management of Data, pages 331–
+342, 2001.
+[15] Jim Gray, Surajit Chaudhuri, Adam Bosworth, Andrew Layman, Don
+Reichart, Murali Venkatrao, Frank Pellow, and Hamid Pirahesh. Data
+cube: A relational aggregation operator generalizing group-by, cross-tab,
+and sub-totals. Data Mining and Knowledge Discovery, 1(1):29–53,
+1997.
+[16] Himanshu Gupta. Selection of views to materialize in a data warehouse.
+In ICDT, pages 98–112, 1997.
+[17] Himanshu Gupta and Inderpal Singh Mumick. Selection of views
+to materialize under a maintenance cost constraint. Lecture Notes in
+Computer Science, 1540:453–470, 1999.
+[18] John Heidemann, Fabio Silva, Yan Yu, Deborah Estrin, and Padmaparma
+Haldar. Diffusion filters as a flexible architecture for event
+notification in wireless sensor networks. Technical Report ISI-TR-556,
+USC/Information Sciences Institute, April 2002.
+[19] John S. Heidemann, Fabio Silva, Chalermek Intanagonwiwat, Ramesh
+Govindan, Deborah Estrin, and Deepak Ganesan. Building efficient
+wireless sensor networks with low-level naming. In Symposium on
+Operating Systems Principles, pages 146–159, 2001.
+[20] Wendi Rabiner Heinzelman, Joanna Kulik, and Hari Balakrishnan.
+Adaptive protocols for information dissemination in wireless sensor
+networks. pages 174–185. ACM SIGMOBILE, ACM Press, 1999.
+[21] Joseph M. Hellerstein, Wei Hong, Samuel Madden, and Kyle Stanek.
+Beyond average: Towards sophisticated sensing with queries. In 2nd
+International Workshop on Information Processing in Sensor Networks
+(IPSN ’03), page to appear, 2003.
+[22] Chalermek Intanagonwiwat, Ramesh Govindan, and Deborah Estrin.
+Directed diffusion: A scalable and robust communication paradigm for
+sensor networks. pages 56–67. ACM SIGMOBILE, ACM Press, 2000.
+[23] David B Johnson and David A Maltz. Dynamic source routing in ad hoc
+wireless networks. In Imielinski and Korth, editors, Mobile Computing,
+volume 353 of The Kluwer International Sereies in Engineering and
+Computer Science. Kluwer Academic Publishers, 1996.
+[24] Panos Kalnis, Nikos Mamoulis, and Dimitris Papadias. View selection
+using randomized search. Data Knowledge Engineering, 42(1):89–111,
+2002.
+[25] Donald Kossmann. The state of the art in distributed query processing.
+Computing Surveys, 32, 2000.
+[26] Yannis Kotidis and Nick Roussopoulos. DynaMat: a dynamic view
+management system for data warehouses. pages 371–382, 1999.
+[27] Alon Y. Levy, Alberto O. Mendelzon, Yehoshua Sagiv, and Divesh
+Srivastava. Answering queries using views. In Proceedings of the 14th
+ACM SIGACT-SIGMOD-SIGART Symposium on Principles of Database
+Systems, pages 95–104, San Jose, Calif., 1995.
+[28] C. Liao, M. Martonosi, and D. Clark. Experience with an adaptive
+globally-synchronizing clock algorithm. In Proceedings of the 11th
+Annual ACM Symposium on Parallel Algorithms and Architectures,
+pages 106–114, June 1999.
+[29] Sam Madden and Michael J. Franklin. Fjording the stream: An
+architecture for queries over streaming sensor data. In ICDE, 2002.
+[30] Sam Madden and Joseph M. Hellerstein. Distributing queries over lowpower
+wireless sensor networks. In ACM SIGMOD Conference, 2002.
+[31] Samuel Madden, Michael J. Franklin, Joseph Hellerstein, and Wei Hong.
+The design of an acquisitional query processor for sensor networks.
+In Proceedings of the ACM SIGMOD International Conference on
+Management of Data, 2003.
+[32] Samuel R. Madden, Michael J. Franklin, Joseph M. Hellerstein, and Wei
+Hong. Tag: A tiny aggregation service for ad-hoc sensor networks. In
+OSDI, 2002.
+[33] Samuel R. Madden, Robert Szewczyk, Michael J. Franklin, and David
+Culler. Supporting aggregate queries over ad-hoc sensor networks. In
+Workshop on Mobile Computing and Systems Applications (WMCSA),
+2002.
+[34] M. Tamer O‥ zsy and Patrick Valduriez. Principles of Distributed
+Database Systems. Prentice Hall, Englewood Cliffs, 1991.
+[35] Charles Perkins and Pravin Bhagwat. Highly dynamic destinationsequenced
+distance-vector routing (DSDV) for mobile computers. In
+ACM SIGCOMM’94 Conference on Communications Architectures, Protocols
+and Applications, pages 234–244, August 1994.
+[36] Charles E. Perkins. Ad hoc on demand distance vector (aodv) routing.
+Internet Draft,
+http://www.ietf.org/internet-drafts/draft-ietf-manet-aodv-04.txt, October
+1999.
+[37] G. J. Pottie and W. J. Kaiser. Embedding the Internet: wireless integrated
+network sensors. Communications of the ACM, 43(5):51–51, May 2000.
+[38] Rachel Pottinger and Alon Y. Levy. A scalable algorithm for answering
+queries using views. In The VLDB Journal, pages 484–495, 2000.
+[39] Sylvia Ratnasamy, Deborah Estrin, Ramesh Govindan, Brad Karp, Scott
+Shenker, Li Yin, and Fang Yu. Data-centric storage in sensornets. In
+First Workshop on Hot Topics in Networks (HotNets-I) 2002, 2002.
+[40] Sylvia Ratnasamy, Brad Karp, Li Yin, Fang Yu, Deborah Estrin, Ramesh
+Govindan, and Scott Shenker. Ght: A geographic hash table for datacentric
+storage. In First ACM International Workshop on Wireless Sensor
+Networks and Applications (WSNA), 2002.
+[41] Ambuj Shatdal and Jeffrey F. Naughton. Adaptive parallel aggregation
+algorithms. In Michael J. Carey and Donovan A. Schneider, editors,
+Proceedings of the 1995 ACM SIGMOD International Conference on
+Management of Data, pages 104–114, San Jose, California, 22–25 May
+1995.
+[42] Suresh Singh, Mike Woo, and C. S. Raghavendra. Power-aware routing
+in mobile ad hoc networks. [1], pages 181–190.
+[43] Gary Valentin, Michael Zuliani, Daniel C. Zilio, Guy M. Lohman, and
+Alan Skelley. Db2 advisor: An optimizer smart enough to recommend
+its own indexes. In Intl conference on Data Engineering (ICDE), pages
+101–110, 2000.
+[44] Ya Xu, Solomon Bien, Yutaka Mori, John Heidemann, and Deborah
+Estrin. Topology control protocols to conserve energy inwireless ad hoc
+networks. Technical Report 6, University of California, Los Angeles,
+Center for Embedded Networked Computing, January 2003. submitted
+for publication.
+[45] Ya Xu, John Heidemann, and Deborah Estrin. Geography-informed
+energy conservation for ad hoc routing. In Proceedings of the ACM/IEEE
+International Conference on Mobile Computing and Networking, pages
+70–84, 2001.
+[46] Weipeng P. Yan and Per-A° ke Larson. Eager aggregation and lazy
+aggregation. In Umeshwar Dayal, Peter M. D. Gray, and Shojiro
+Nishio, editors, VLDB’95, Proceedings of 21th International Conference
+on Very Large Data Bases, pages 345–357, Zurich, Switzerland, 11–
+15 September 1995. Morgan Kaufmann.
+[47] Fan Ye, Haiyun Luo, Jerry Cheng, Songwu Lu, and Lixia Zhang. A twotier
+data dissemination model for large-scale wireless sensor networks.
+In Proceedings of the Eighth Annual International Conference on Mobile
+Computing and Networking (MobiCom), 2002.
+[48] Wei Ye, John Heidemann, and Deborah Estrin. An energy-efficient
+MAC protocol for wireless sensor networks. In Proceedings of the IEEE
+Infocom, pages 1567–1576, 2002.
+[49] Wei Ye, John Heidemann, and Deborah Estrin. Medium access control
+with coordinated, adaptive sleeping for wireless sensor networks. Technical
+Report ISI-TR-567, USC/Information Sciences Institute, January
+2003.
+[50] C. Yu and W. Meng. Principles of Database Query Processing for
+Advanced Applications. Morgan Kaufmann, San Francisco, 1998.
+[51] C. T. Yu and C. C. Chang. Distributed query processing. ACM
+Computing Surveys, 16(4):399–433, December 1984.
+[52] Yan Yu, Ramesh Govindan, and Deborah Estrin. Geographical and
+energy aware routing: A recursive data dissemination protocol for
+wireless sensor networks. Technical Report UCLA/CSD-TR-01-0023,
+University of Southern California, May 2001.

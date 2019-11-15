@@ -1,0 +1,13 @@
+Definition 2.8 Given a pattern P with period and a se-
+quence D of N events: the infor-
+mation loss of D with respect to P is the summation of the
+information loss of each segment 
+with respect to P. The generalized information gain of D
+with respect to P is defined as 
+where are the information of P,
+the support of P within D, and the information loss of D with
+respect to P,respectively.
+
+In a subsequence, the first match of a pattern is viewed as an
+example, and only subsequent matches contribute to the generalized
+information gain.

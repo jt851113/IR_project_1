@@ -1,0 +1,51 @@
+Figure 5(a) plots the energy consumption as the pause
+time varies from 40 to 2000ms. The pause time in xaxis
+is logarithmical scaled for clarity. As shown in
+the figure, CM outperforms PES (with all combinations
+of different heuristics) when the moving object
+changes its speed and direction very frequently (e.g.,
+when pause time is below 200ms). Also, as shown in
+Figure 5(b), the corresponding missing rates of PES
+are high. Thus, we can easily conclude that a moving
+object should be continuously tracked using the CM
+scheme when its moving behavior is highly dynamic
+and unpredictable.
+On the other hand, observed from the above two
+figures, the energy consumptions and missing rates
+of the PES scheme dramatically decrease (which can
+be observed in regularly scaled figures) as the pause
+time increases. When the pause time equals to 200ms
+(which still represents a pretty dynamic moving behavior),
+the PES scheme employing ALL NBR heuristic
+in the wakeup mechanism outperforms the CM
+scheme while maintaining a very low missing rate (below
+2.5%). When the pause time further increases,
+the PES scheme with heuristics DESTINATION and
+ROUTE both lower their missing rates with even more
+energy savings. When the pause time is 800ms, heuristic
+ROUTE saves more than 60% energy over the CM
+scheme with less than 5% of missing rate. Thus, we
+can conclude that, a PES scheme (based on application
+requirements) can be used to replace the CM
+scheme to achieve a considerable energy saving when
+the moving behavior of a tracked object is not drastically
+dynamic.
+Figure 5(a) and Figure 5(b) also compare the PES
+schemes with both of INSTANT and EXP AVG prediction
+heuristics. Basically, the different heuristics
+for wakeup mechanism have a much higher impact on
+performance than the heuristics for prediction since we
+can see that the PES curves are paired based on the
+wakeup heuristics. Even so, we can still observe that
+the EXP AVG outperforms INSTANT. This is particularly
+visible when the moving behavior of the object
+is highly dynamic. However, the difference quickly disappears
+when the pause time increases. Since the CM
+is the scheme of choice for a highly dynamic moving
+object and there is no noticeable performance difference
+between EXP AVG and INSTANT, we will not
+show performance result of the PES scheme corresponding
+to EXP AVG model for the rest of experiments
+(where the moving behavior of object is set to
+be reasonably dynamic to explore the impacts of other
+factors).

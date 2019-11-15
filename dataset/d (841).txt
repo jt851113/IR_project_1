@@ -1,0 +1,78 @@
+In the near future, advances in processor, memory and radio
+technology will enable small and cheap nodes capable of
+wireless communication and significant computation. The
+addition of sensing capability to such devices will make distributed
+microsensing--an activity in which a collection of
+nodes coordinate to achieve a larger sensing task---possible.
+Such technology can revolutionize information gathering and
+processing in many situations. Large scale, dynamically
+changing, and robust sensor networks can be deployed in inhospitable
+physical environments such as remote geographic
+regions or toxic urban locations. They will also enable low
+maintenance sensing in more benign, but less accessible, environments:
+large industrial plants, aircraft interiors etc.
+To motivate our research, consider this simplified model of
+how such a sensor network will work (we refine this model in
+*This work was supported by the Defense Advanced Research
+Projects Agency under grant DABT63-99-1-0011.
+Any opinions, findings, and conclusions or recommendations
+expressed in this material are those of the authors and do
+not necessarily reflect the views of the Defense Advanced
+Research Projects Agency.
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies
+are not made or distributed for profit or commercial advantage and that
+copies bear this notice and the lull citation on the first page. To copy
+otherwise, to republish, to post on servers or to redistribute to lists,
+requires prior specific permission and/or a fee.
+MOBICOM 2000 Boston MA USA
+Copyright ACM 2000 1-58113-197-6/00/08...$5.00
+Section 2). One or more human operators pose, to any node
+in the network, questions of the form: "How many pedestrians
+do you observe in the geographical region X?", or "Tell
+me in what direction that vehicle in region Y is moving".
+These queries result in sensors within the specified region being
+tasked to start collecting information (Section 2). Once
+individual nodes detect pedestrians or vehicle movements,
+they might collaborate with neighboring nodes to disambiguate
+pedestrian location or vehicle movement direction.
+One of these nodes might then report the result back to the
+human operator.
+Motivated by robustness, scaling, and energy efficiency requirements,
+this paper examines a new data dissemination
+paradigm for such sensor networks. This paradigm, which
+we call directed diffusion I, is data-centric. Data generated
+by sensor nodes is named by attribute-value pairs. A node
+requests data by sending interests for named data. Data
+matching the interest is then "drawn" down towards that
+node. Intermediate nodes can cache, or transform data, and
+may direct interests based on previously cached data (Section
+3).
+Using this communication paradigm, our example might
+be implemented as follows. The human operator's query
+would be transformed into an interest that is diffused towards
+nodes in regions X or Y. When a node in that region
+receives an interest, it activates its sensors which begin collecting
+information about pedestrians. When the sensors
+report the presence of pedestrians, this information returns
+along the reverse path of interest propagation. Intermediate
+nodes might aggregate the data, e.g., more accurately pinpoint
+the pedestrian's location by combining reports from
+several sensors. An important feature of directed diffusion
+is that interest and data propagation and aggregation are
+determined by localized interactions (message exchanges between
+neighbors or nodes within some vicinity).
+Directed diffusion is significantly different from IP-style communication
+where nodes are identified by their end-points,
+and inter-node communication is layered on an end-to-end
+delivery service provided within the network. In this paper,
+we describe directed diffusion and illustrate one instantiation
+of this paradigm for sensor query dissemination and
+processing. We show that using directed diffusion one can
+1
+Van Jacobson suggested some o f t h e i n i t i a l i d e a s t h a t l a t e r l e d t o t h e design of
+directed diffusion.
+realize robust multi-path delivery, empirically adapt to a
+small subset of network paths, and achieve significant energy
+savings when intermediate nodes aggregate responses
+to queries (Section 4)

@@ -1,0 +1,4 @@
+The problemof computingaggregatequeries in large clusters of nodes has been addressed in the context of sharednothingparallel queryprocessing environments[26]. Like sensor networks, those environmentsrequirethe coordination of a large number of nodes to process aggregations. Thus, while the severe bandwidth limitations, lossy communications, and variable topology of sensor networks
+mean that the specifc implementation techniques used in the two environments must differ, it is still useful to leverage the techniques for aggregate decomposition used in database systems [2, 35].
+The approach used in such systems (and followed in TAG) is to implement 	 via three functions: a merging function  , an initializer, and an evaluator,In general, has the following structure:
+These three functions can easily be derived for the basic SQL aggregates; in general, any operation that can be expressed as commutative applications of a binary function is expressible.

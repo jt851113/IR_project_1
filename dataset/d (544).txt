@@ -1,0 +1,68 @@
+In this section, we define the exact problem of choosing
+auxiliary neighbors, and also the terminology that we use in
+the following sections.
+Let s be any P2P node, and let Ns denote the set of its
+core neighbors. Let V (jV j = n) denote the set of nodes
+for which s has seen queries (not including s) and maintains
+access frequencies. Note that access frequencies can be easily
+maintained by s based on past history of accesses within a
+time window. (We address this issue in more detail later.) For
+each node v in V , we are given binary2 ids of length b, and
+an access frequency fv.
+We use the term duv to denote the “distance” from node u
+to node v in terms of number of hops. Since the computation
+is being done at node s, this distance is only an estimate
+of the actual distance between u and v. Typically, a simple
+estimate can be computed easily at s based only on the ids
+of u and v and the underlying routing policy. We elaborate
+on this distance function later while discussing the routing
+policies of Pastry and Chord in Sections IV and V. We also
+use d(u; S) to denote the minimum distance between the node
+u and a set of nodes S, i.e., d(u; S) = minv2S duv. Similarly,
+d(S; u) = minv2S dvu. Given these definitions, our goal is
+to identify a set of auxiliary neighbors As μ V ! Ns with
+jAsj = k, such that
+is minimized. Note that d(v;Ns [ As) is an estimate of the
+minimum distance between v and the neighbors (core and
+auxiliary) of s. Thus, (1 + d(v;Ns [ As)) is the estimated
+distance of v from s taking into account the one hop from s to
+its neighbor. For simplicity, we refer to fv(1+d(v;Ns [As))
+as the weighted distance of v. Thus, the goal is to select a
+subset of V of size k as auxiliary neighbors such that the
+total weighted distance for all the nodes in V is minimized.
+1) Routing policy with auxiliary neighbors: The choice of
+the k best auxiliary neighbors clearly depends on how they will
+be used. In this paper, we assume that there is no change in
+the underlying routing policy, and the auxiliary neighbors are
+used for routing in the same manner as the core neighbors.
+This assumption allows our algorithms to be incrementally
+deployed in a large P2P system without any issues.
+2) Implementation Considerations: Before describing our
+algorithms, we discuss two important implementation issues:
+(1) maintenance of access frequencies, and (2) maintenance
+of auxiliary neighbors. Maintenance of access frequencies is
+crucial to our algorithms and can be done by noting the node
+containing the queried item for every query. If the number of
+accessed nodes is very large, then a node can simply store
+the top-n frequent nodes for a suitable n based on its storage
+limitation. Online computation of the top-n frequent nodes can
+be done using standard streaming algorithms [3]. A smaller
+n also reduces the computation overhead of our algorithms,
+which are linear in n. However, the resulting solution may be
+sub-optimal because some nodes are ignored.
+Note that the entries in the routing table of a node may
+become stale due to churn in the system. For instance, as new
+nodes join in Chord, the first node at a particular distance
+may change. Further, some entries may point to nodes that
+have already left the system. To overcome these issues, each
+node pings its core neighbors at regular intervals and also
+periodically re-initializes all the entries (see [22] for more
+details). In the presence of auxiliary neighbors, the ping
+process can be modified to check the auxiliary neighbors as
+well. The stale auxiliary entries can be marked or removed
+from the routing table. These entries will then be fixed the next
+time the auxiliary neighbor selection algorithm is executed.
+The algorithm can be invoked either periodically or based on
+some criteria that determines that the system has undergone
+a significant change since the previous computation of the
+auxiliary neighbors.

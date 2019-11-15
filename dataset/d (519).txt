@@ -1,0 +1,5 @@
+5.1.2 The Lower Bound on the Average Access Time for
+an Access Graph
+The lower bound on the average access time for an access
+graph is derived as follows:
+Referring to Section 2, the average access time is

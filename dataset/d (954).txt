@@ -1,0 +1,41 @@
+The second major component of our sensor query solution
+is the sensor proxy, which acts as an interface between
+a single sensor and the Fjords querying that sensor. The
+proxy serves a number of purposes. The most important
+of these is to shield the sensor from having to deliver data
+to hundreds of interested end-users. It accepts and services
+queries on behalf on the sensor, using the sensor’s processor
+to simplify this task when possible.One function of the sensor proxy is to adjust the sample
+rate of the sensors, based on user demand. If users are
+only interested in a few samples per second, there’s no reason
+for sensors to sample at hundreds of hertz, since lower
+sample rates are directly proportional to longer battery life.
+Similarly, if there are no user queries over a sensor, the sensor
+proxy can ask the sensor to power off for a long period,
+coming online every few seconds to see if queries have been
+issued.
+An additional role of the proxy is to direct the sensor
+to aggregate samples in predefined ways, or to download
+a completely new program into the sensor if needed. For
+instance, in our traffic scenario, the proxy can direct the
+sensor to use one of several sampling algorithms depending
+on the amount of detail required by user queries. Or,
+if the proxy observes that all of the current user queries are
+interested only in samples with values within some range,
+the proxy can instruct the sensor to not transmit samples
+outside that range.
+Also, we expect that in many cases there will be a number
+of users interested in data from a single sensor. As
+we show in Section 4.3 below, the sensor proxy can dramatically
+increase the throughput of a Fjord by limiting the
+number of copies of sensor tuples flowing through the query
+processor to just one per sample, and having the user queries
+share the same tuple data.
+Sensor proxies are long running services that exist across
+many user queries and route tuples to different query operators
+based on sample rates and filter predicates specified by
+each query. When a new user query over a sensor stream is
+created, the proxy for that sensor is located and the query
+is installed. When the user stops the query, the proxy stops
+relaying tuples for that query, but continues to monitor and
+manage the sensor, even when no queries are being run.

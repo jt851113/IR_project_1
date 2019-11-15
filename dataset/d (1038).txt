@@ -1,0 +1,28 @@
+As we discussed before, the query distribution plays an important
+role in the index selection. In this subsection, we evaluate
+PISCES by issuing queries of different distributions. Two metrics
+are defined in this experiment. In Figure 9(a), we measure the percentage
+of queries that can be directly answered by the index without
+JIT data pulling from the individual ERP or database system.
+In Figure 9(b), the delay to construct the index is computed (measured
+as the interval between the data becoming popular and the
+index for the data being constructed) When the query distribution
+is highly skewed, about 90% of queries can be directly answered
+by the index. Moreover, PISCES is also sensitive to the changing
+of query distribution. The new index entries can be incorporated
+into the existing index in less than 10 seconds. However, as the
+distribution becomes more uniform (θ close to 0), the index cannot
+answer most of the queries and it also takes a long time for PISCES
+to observe the query distribution.
+This indicates that PISCES is most efficient in skewed query distribution.
+In real cases, queries often follow some patterns. Figure
+10 shows the statistics about the search of AOL [1] from March
+2006 to May 2006. The top 5% keywords attract about 60% of total
+queries. In Figure 11, we compute the benefit of indexing data
+within a cell. The benefit is defined as:
+Number of Answered Queries / Indexing Cost
+1000k queries following Zipfian distribution with θ = 1 are injected
+to the system and we sort the cells by their benefits in descending
+order. Figure 11 shows the average benefit of indexing top 1% to
+5% cells. The average benefit decreases sharply as more cells are
+indexed, which indicates that only the top cells are worth indexing.

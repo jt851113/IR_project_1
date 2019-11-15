@@ -1,0 +1,4 @@
+In this section, we provide a brief overview of the model of
+generalized information gain [28] and discuss its properties. Let
+         be a set of events and  be a sequence of
+events in .

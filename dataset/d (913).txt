@@ -1,0 +1,23 @@
+[1] Bult, K., Burstein, A., Chang, D., Dong, M., Kaiser, W. J., et. al. “Wireless
+integrated microsensors,” Proc. of Conference on Sensors and Systems
+(Sensors Expo), April 1996
+[2] Cerpa, A., Elson, J., Estrin, D., Girod, L., Hamilton, M., and Zhao, J.,
+“Habitat Monitoring: Application Driver for wireless Communications
+Technology,” to appear in Proc. First ACM SIGCOMM Workshop on
+Data Communications in Latin America and the Caribbean, San Jose,
+Costa Rica, April 2001
+[3] Cormen, T. H., Leiserson, C. E., and Rivest, R. L., “Introduction to Algorithms,”
+McGraw-Hill, New York, 1990
+[4] Johnson, D. B., and Maltz, D. A., “Dynamic Source Routing in Ad hoc
+Wireless Networks,” in Imielinski, T., and Korth, H., editors, Mobile
+Computing, pages 153-181, Kluwer Academic Publishers, 1996
+[5] Kahn, J., Katz, R. and Pister K, “Mobile networking for smart dust,”
+Proc. Mobicom ‘99, August 1999
+[6] Pitoura, E. and Samaras, G., “Locating Objects in Mobile Computing,”
+IEEE Transactions on Knowledge and Data Engineering, Vol. 13, No.
+4, pages 571-592, July/August 2001
+[7] Perkins, C. E. and Royer, E. M., “Ad hoc On-Demand Distance Vector
+Routing,” Proc. 2nd IEEE Workshop on Mobile Computing Systems
+and Applications, New Orleans, LA, February 1999
+[8] Pottie, G. J., and Kaiser, W. J. “Wireless Integrated Network Sensors,”
+in Communications of the ACM, Vol. 43, No. 5, May 2000

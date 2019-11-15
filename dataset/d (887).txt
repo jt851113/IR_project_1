@@ -1,0 +1,32 @@
+We exploit the following performance metrics:
+‧ Query Traffic: the amount of traffic that is incurred
+by the query propagation in the whole network. It is
+clear that query traffic is affected by the query rate γ.
+But, in this experiment, we only compare the traffic
+of different approaches with the same γ, because the
+interval trends of those approaches are similar with
+different γ.
+‧ Communication Traffic: the total number of messages
+that are transferred during the whole simulation.
+In our approach, we compute this cost according to the
+model discussed in Section 3.4.1 and we count only
+the messages produced in the application layer. It reflects
+the whole network traffic. If an approach incurs
+too much communication traffic, it wastes more bandwidth.
+‧ Query Response Time: the overall duration from
+query execution, i.e., from the time that a query is
+issued until the result is received. Response time is
+one of the important criterions of query efficiency. We
+aim at shortening the response time to improve the
+performance.
+‧ Query Success Rate: the percentage of queries that
+have eventually received the required resource data. It
+is denoted as
+
+‧ Energy Consumption: we measure the energy consumption
+of a node while it participates in the whole
+query routing process. We follow the aforementioned
+model proposed in Section 3.4.2. In reality, users are
+very sensitive to the energy consumption of the battery,
+because it imposes a great impact on the using
+time of mobile devices.

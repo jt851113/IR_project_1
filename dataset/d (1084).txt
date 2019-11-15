@@ -1,0 +1,58 @@
+We have proposed a novel location-tracking protocol for regular and irregular sensor networks. A
+mobile-agent approach is adopted, which enables agents to roam around to follow the moving objects,
+hence significantly reducing the communication and sensing overheads. A data fusion model
+is proposed, and several data delivery strategies are proposed and evaluated. We have prototyped a
+system based on the idea using IEEE 802.11b NICs, where signal strengths are used as the criterion
+to measure objects’ positions. While the prototyping is proved to work correctly, the accuracy still
+has rooms to be improved further.
+References
+[1] A. Savvides, C.C. Han, M.B. Srivastava. Dynamic fine-grained localization in ad-hoc networks
+of sensors. In Procs. of MobiCOM, 2001.
+[2] F. Aurenhammer. Voronoi diagrams: a survey of a fundamental geometric data structure. pages
+345–405, 1991.
+[3] B. Horling, R. Vincent, R. Mailler, J. Shen, R. Becker, K. Rawlins, and V. Lesser. Distributed
+Sensor Network for Real Time Tracking. In Proc. of the 5th international conference on Autonomous
+agents, pages 417–424, 2001.
+[4] B. Huang, W. Zhang, and Z. Guo. A study of spatial structures of sensor networks
+and multi-agent negotiation strategies, (this is an appendix to a quarterly report.), 2001.
+http://www.cs.wustl.edu/ zhang/projects/dcmp/.
+[5] C. Intanagonwiwat, R. Govindan, and D. Estrin. Directed Diffusion: A Scalable and Robust
+Communication Paradigm for Sensor Networks. In Proc. of MobiCOM, pages 56–67, 2000.
+[6] C. Savarese, J. Rabaey, J. Beutel. Locationing in distributed ad-hoc wireless sensor networks.
+In Proc. of the ICASSP, 2001.
+[7] D. Estrin, R. Govindan, J. Heidemann, and S. Kumar. Next century challenges: scalable coordination
+in sensor networks. In Proc. of MobiCOM, pages 263–270, 1999.
+[8] G. J. Pottie andW. J. Kaiser. Wireless integrated network sensors. Communications of the ACM,
+43(5):51–58, 2000.
+[9] Hairong Qi, S.S. Iyengar, and K. Chakrabarty. Multiresolution data integration using mobile
+agents in distributed sensor networks. IEEE Tran. on Systems, Man, and Cybernetics, Part C:
+Applications and Reviews, 31(3):383–391, 2001.
+[10] J. O’Rourke. Computational geometry column 15. International Journal of Computational
+Geometry and Applications, 2(2):215–217, 1992.
+[11] J. Rabaey, J. Ammer, J.L. da Silva Jr., D. Patel. Picoradio: Ad-hoc wireless networking of ubiquitous
+low-energy sensor/monitor nodes. In VLSI, 2000. Proceedings. IEEE Computer Society
+Workshop, pages 9–12, 2000.
+[12] D. B. Johnson and D. A. Maltz. Dynamic source routing in ad hoc wireless networks. In
+Imielinski and Korth, editors, Mobile Computing, volume 353. Kluwer Academic Publishers,
+1996.
+[13] K. Chakrabarty, S.S. Iyengar, Hairong Qi, and Eungchun Cho. Coding theory framework for
+target location in distributed sensor networks. In Proc. Intl. Symposium on Information Technology:
+Coding and Computing, pages 130–134, 2001.
+[14] Nirupama Bulusu, John Heidemann, Deborah Estrin. Gps-less low-cost outdoor localization for
+very small devices. In IEEE Personal Communications, pages 28–34, 2000.
+[15] P. Enge, and P. Misra. Special issue on gps: The global positioning system. In Proc. of the
+IEEE, pages 3–15, 1999.
+[16] Paramvir Bahl, and Venkata N. Padmanabhan. Radar: an in-building rf-based user location and
+tracking system. In INFOCOM, pages 775–784, 2000.
+[17] S. Meguerdichian, F. Koushanfar, G. Qu, and M. Potkonjak. Exposure in wireless Ad-Hoc
+sensor networks. In Proc. of MobiCOM, pages 139–150, 2001.
+[18] S. Meguerdichian, F. Koushanfar, M. Potkonjak, and M. Srivastava. Coverage Problems in
+Wireless Ad-hoc Sensor Networks. In Proc. of INFOCOM, pages 1380–1387, 2001.
+[19] S. Meguerdichian, S. Slijepcevic, V. Karayan and M. Potkonjak. Localized algorithms in wireless
+ad-hoc networks: location discovery and sensor exposure. In Proc. of MobiHOC, pages
+106–116, 2001.
+[20] van Diggelen, F. Indoor gps theory & implementation. In Position Location and Navigation
+Symposium, 2002 IEEE, pages 240–247, 2002.
+[21] K. Whitehouse and D. Culler. Calibration as parameter estimation in sensor networks. In Proceedings
+of the first ACM international workshop on Wireless sensor networks and applications,
+pages 59–67, 2002.

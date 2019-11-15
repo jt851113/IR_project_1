@@ -1,0 +1,16 @@
+Limited resource availability
+is an inherent property of sensors. Scarce resources
+include battery capacity, communications bandwidth, and
+CPU cycles. Power is the defining limit: it is always possible
+to use a faster processor or a more powerful radio, but
+these require more power which often is not available. Current
+small battery technology provides about 100mAh of
+capacity. This is enough to drive a small Atmel processor,
+like the one used in several wireless sensor prototypes, at
+full speed for only 3.5 hours. Similarly, the current TRM-
+1000 radio, also used in many sensor prototypes, uses about
+4 per bit of data transmitted: enough to send just 14MB
+of data using such a battery. In practice, the power required
+for sending data over the wireless radio is the dominant cost
+[19], so it is often worth spending many CPU cycles to conserve
+just a few bytes of radio traffic

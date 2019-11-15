@@ -1,0 +1,28 @@
+Data Recharging: Data recharging [9] is best understood
+in the context of mobile computing environments. Mobile
+computers have two fundamental renewable resources:
+power and data. The goal of data recharging is to make
+recharging data from the data grid as simple and robust as
+recharging power from the power grid. Based on a user profile,
+data recharging middleware gathers data of interest to
+a user, and when the user next connects to the network, this
+data is delivered to the user’s mobile device. In this case,
+the profile would reflect some aspect of the user’s context
+(e.g., location, workflow) and data delivered would depend
+on available resources on the mobile device (e.g., memory,
+applications). The order in which items are delivered also
+matters if unplanned disconnection is possible.
+In the mobile environment, computers are often
+memory-limited. Thus, given a large amount of potentially
+interesting data, a data recharging system must make decisions
+about what subsets of this data are to be allocated to
+the limited memory resource.
+Thin-Pipe Environments: In this situation, the client is
+connected to the network through a thin pipe. A thin pipe
+can be a result of a bandwidth constrained connection or a
+heavily overloaded server. The essential characteristic here
+is that using the pipe introduces very high latency. Inserting
+a cache at the client end attempts to hide this latency. An
+item whose access is extremely likely is prefetched in order
+to eliminate the latency of its first access. Prefetching is
+inherently predictive, and profiles support our prediction.

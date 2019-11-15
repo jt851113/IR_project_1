@@ -1,0 +1,76 @@
+1] R. Akavipat, L.-S. Wu, F. Menczer, and A. Maguitman.
+Emerging semantic communities in peer web search. In Proc. of
+P2PIR’06, pages 1–8, 2006.
+[2] S. Bao, G. Xue, X. Wu, Y. Yu, B. Fei, and Z. Su. Optimizing
+web search using social annotations. In Proc. of the 16th
+WWW, pages 501–510, Banff, Alberta, Canada, 2007.
+[3] M. Bender, S. Michel, G. Weikum, and C. Zimmer. The
+Minerva project: Database selection in the context of p2p
+search. Datenbanksysteme in Business, Technologie und Web,
+65:125–144, 2005.
+[4] B. H. Bloom. Space/time trade-offs in hash coding with
+allowable errors. Commun. ACM, 13(7):422–426, 1970.
+[5] A. Broder and M. Mitzenmacher. Network applications of
+bloom filters: A survey. Internet Mathematics, 1(4):485–509,
+2003.
+[6] F. Dabek, B. Zhao, P. Druschel, J. Kubiatowicz, and I. Stoica.
+Towards a common api for structured peer-to-peer overlays. In
+Proc. of IPTPS’03, Berkeley, CA, Feb. 2003.
+[7] H. Gylfason, O. Khan, and G. Schoenebeck. Chora:
+Expert-based p2p web search. In Proc. of AAMAS’06,
+Hakodate, Japan, May 2006.
+[8] S. B. Handurukande, A.-M. Kermarrec, F. Le Fessant,
+L. Massouli’e, and S. Patarin. Peer sharing behaviour in the
+edonkey network, and implications for the design of server-less
+file sharing systems. In Proc. of Eurosys’06, Leuven, Belgium,
+Apr. 2006.
+[9] M. Henzinger. Search Technologies for the Internet. Science,
+317(5837):468–471, 2007.
+[10] F. Klemm and K. Aberer. Aggregation of a term vocabulary for
+peer-to-peer information retrieval: a dht stress test. In Proc. of
+DBISP2P’05, Trondheim, Norway, 2005.
+[11] J. Li, B. Loo, J. Hellerstein, F. Kaashoek, D. Karger, and
+R. Morris. The feasibility of peer-to-peer web indexing and
+search. In Proc. of IPTPS’03, Berkeley, CA, 2003.
+[12] N. Lopes and C. Baquero. Taming hot-spots in dht inverted
+indexes. In Proc. of LSDS-IR’07, Amsterdam, The
+Netherlands, 2007.
+[13] T. Luu, F. Klemm, I. Podnar, M. Rajman, and K. Aberer.
+Alvis peers: A scalable full-text peer-to-peer retrieval engine.
+In Proc of P2PIR’06, 2006.
+[14] W. Meng, C. T. Yu, and K.-L. Liu. Building efficient and
+effective metasearch engines. ACM Computing Surveys,
+34:48–89, 2002.
+[15] J. A. Patel and I. Gupta. Bridging the gap: augmenting
+centralized systems with p2p technologies. SIGOPS Operating
+Systems Review, 40(3):14–17, 2006.
+[16] V. Ramasubramanian and E. G. Sirer. Beehive: O(1)lookup
+performance for power-law query distributions in peer-to-peer
+overlays. In Proc of NSDI’04, Berkeley, CA, USA, 2004.
+[17] A. Rowstron and P. Druschel. Pastry: scalable, decentralized
+object location and routing for large-scale peer-to-peer systems.
+In Proc. of Middleware’01, pages 329–350, Nov. 2001.
+[18] A. Rowstron and P. Druschel. Storage management and caching
+in PAST, a large-scale, persistent peer-to-peer storage utility.
+In Proc. of SOSP’01, pages 188–201, Banff, Canada, Oct. 2001.
+[19] R. Schenkel, T. Crecelius, M. Kacimi, S. Michel, T. Neumann,
+J. X. Parreira, and G. Weikum. Efficient top-k querying over
+social-tagging networks. In Proc. of SIGIR’08, Singapore, 2008.
+[20] S. Serbu, S. Bianchi, P. Kropf, and P. Felber. Dynamic load
+sharing in peer-to-peer systems: When some peers are more
+equal than others. IEEE Internet Computing, Special Issue on
+Resource Allocation, 11(4):53–61, 2007.
+[21] G. Skobeltsyn, T. Luu, I. P. Zarko, M. Rajman, and K. Aberer.
+Query-driven indexing for scalable p2p text retrieval. Future
+Generation Computer Systems, In Press, Accepted
+Manuscript, 2008.
+[22] T. Suel, C. Mathur, J.-W. Wu, J. Zhang, A. Delis, M. Kharrazi,
+X. Long, and K. Shanmugasundaram. Odissea: A peer-to-peer
+architecture for scalable web search and information retrieval.
+In Proc. of WebDB’03, Suzhoum, China, 2003.
+[23] B. Tan, X. Shen, and C. Zhai. Mining long-term search history
+to improve search accuracy. In Proc. of SIGKDD’06, pages
+718–723, Philadelphia, PA, USA, 2006.
+[24] J. Teevan, S. T. Dumais, and E. Horvitz. Personalizing search
+via automated analysis of interests and activities. In Proc. of
+SIGIR-IR’05, pages 449–456, Salvador, Brazil, 2005.

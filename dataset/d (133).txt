@@ -1,0 +1,23 @@
+We designed our protocol according to the following de-
+sign principles:
+ Make few resource demands on the prover and
+verier. We would like to limit the computation power
+and hardware resources necessary to participate in the
+protocol to an absolute minimum. The real goal is to
+enable location proofs for a large class of devices.
+ No prearranged setup required. It should not be
+necessary for the prover to have previously engaged
+in a setup or registration step with the verier. This
+excludes many cryptographic solutions; even public-
+key cryptography requires pre-arranged trust relation-
+ships, and thus is not suitable for our purposes. By
+eliminating the setup step, we are enabling access to
+resources to be granted based on physical presence
+alone.
+In settings where keys have been previously set up, we
+can use them to complement our protocol. We will
+discuss a variant of the Echo protocol in Section 4.1
+where a challenge-response protocol can be used to ver-
+ify that a particular principal is inside a given region.
+ Quantitative guarantees. We would like to provide
+precise bounds on the uncertainty in the protocol.

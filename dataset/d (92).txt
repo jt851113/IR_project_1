@@ -1,0 +1,19 @@
+The basic idea of profile refinement is to characterise a
+peer or information resource not only by the content that
+it offers, but by the queries for which it provides relevant
+documents.
+Work on query-adapted profiles is rare in DIR, some related
+ideas can be found in early work on collection fusion
+[25] and adaptive resource selection [13].
+In P2PIR, on the other hand, many systems use what
+could be called a collective discovery approach by having
+every peer in the system store query-related information associated
+with other peers. The entirety of routing table entries
+pointing to a peer can be viewed as its profile, shared
+throughout the community.
+Collective discovery approaches either store keywords from
+queries [14, 1] or full queries [15, 16] in routing tables, together
+with the addresses of peers that provided the answer.
+Social metaphors are the basis for building profiles in [17].
+An explicit learning approach is introduced in [1] and a semisupervised
+learning approach is described in [21].

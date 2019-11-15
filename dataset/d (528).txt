@@ -1,0 +1,30 @@
+fine-grained statistics (e.g., inverted indexes) at least about
+some of the terms, and in between, statistics about groups—
+each consisting of several documents.
+In this paper, we propose a novel solution for efficiently
+handling conjunctive multi-term queries, by keeping perterm
+statistics as score distributions using two-dimensional
+histograms. One dimension of the histogram reflects a clustering
+of the documents (of the given peer), and the other dimension
+describes the score distribution (of the given term)
+in each cluster.
+Our contribution is twofold. First, we give an algorithm
+that achieves a significantly higher recall at a cost that has
+the same order of magnitude as the one incurred by the
+state-of-the-art methods. The second contribution is an
+adaptive algorithm that improves recall by using the scores
+of already available answers in order to locate peers that are
+likely to have even better answers. We verify our approach
+on a large, real-world dataset; in particular, we show that
+our algorithms achieve good recall even when the communication
+cost is low and the number of peers that are contacted
+is relatively small.
+The paper is organized as follows. In Section 2, we present
+the peer-selection strategy using the two-dimensional histograms.
+In Section 3, we develop the two-phase algorithm
+that improves the recall at a reduced cost compared to a
+more straightforward approach. In Section 4, we present
+the adaptive peer-selection strategy. Section 5 describes the
+experiments that verify the effectiveness of our algorithms
+and includes a comparison with the state of the art. Finally,
+we discuss future work and conclude in Section 6.

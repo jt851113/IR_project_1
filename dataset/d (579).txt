@@ -1,0 +1,20 @@
+In our simulations, we used 5 different values of c i.e. 0.001, 0.01, 0.05, 0.2 and 1. We
+simulated the c as follows: Each variable has a validity time of 1
+c , where time is taken
+to be the number of queries. E.g. If c = 0.001, each variable is valid for 1000 queries.
+During this validity period, all queries for that particular variable can be answered using the
+cached copies. Beyond the validity period, the active node has to “refresh” variables from its
+“neighborhood”. For each value of c, simulations were run using 100 different random seeds.
+Figure 9: Effect of c on d by simulations (N = 100 , M = 20). Compare with theoretical
+curves in figure 4
+In each run, we used 1000 queries, each consisting of 20 sub-queries (or variables). For each
+run, the generated queries were stored in a query-file. At the same time the values chosen
+by each sensor were also stored in a grid-file for each run. The number of transmissions were
+averaged across all these runs for a given c.
+As figure 9 shows, with increasing c, the optimal look-ahead d decreases. This concurs with
+our analysis in section 4.5. The simulations show that for c = 0.001, 0.01, the d = 10 (largest
+possible value used in our simulations), which is the same as shown by our analytical curves
+in figure 4. For c = 0.05, d = 5 from simulations, while the analytical d = 3. For c = 1,
+from simulations d = 1, while from the analytical d = 0. This is because in simulations, as
+mentioned in section 7.1, ACQUIRE with d = 0 has loops in its trajectory, which degrades
+its performance by around 45 ? 50%.

@@ -1,0 +1,126 @@
+Non-Preemptive Cache Prefetching (NCP) uses profiles
+to determine how to prefetch caches to achieve maximum
+utility value. Assume for any profile $, that its value function
+%'& , maps any set of objects (i.e., a cache) to its value
+according to . Then the Non-Preemptive Cache Prefetching
+problem (NCP) is defined as follows:
+Definition 3.1 (NCP) Given a finite set of objects (“candi-
+date object set”) such that is the
+size of object , a profile , and a cache capacity  , deter-
+mine subset, that satisfies the constraint,
+and that maximizes .
+NCP is a variation of the knapsack problem [20] where
+an object’s size and utility is analagous to its weight and
+value using classic terminology. Unlike the knapsack problem,
+the value function for NCP () must map sets of objects
+(rather than individual objects) to values because the
+value of an individual object can vary according to its context
+(i.e., the other objects that have been put into the cache)
+due to data dependencies and thresholds. We examined the
+effectiveness of three standard optimization heuristics: a
+greedy technique, a randomized technique (simulated annealing),
+and branch-and-bound.
+A Greedy Algorithm (GREEDY): The greedy algorithm
+for NCP (GREEDY) selects one object at a time to add to a
+cache, that adds the most value per byte to the cache of previously
+chosen objects. In the case of ties, GREEDY selects
+the smallest object. To demonstrate, consider the application
+of GREEDY to the Traveler profile in the context of
+data recharging. Suppose that the set of candidate objects,
+is the set of equally-sized objects,
+such that. are restaurant reviews,   and
+  are rental car web pages, 5.a  and 5.a  are shuttle schedules,
+d and d are directions to Downtown and a and are hotel web pages. For its first object, GREEDY wouald
+choose a shuttle schedule (e.g., 5.a	) as this object adds
+maximal value (3) to an empty cache. Then GREEDY would
+choose a hotel web page (e.g., ag-E), as this object adds maximal
+value (2) to a cache consisting only of a shuttle schedule.
+GREEDY has a choice for the third chosen object, as
+both restaurant reviews and directions add 1 to the existing
+cache. If it chooses the latter, it will finish with the optimal
+cache shown in Figure 3a. If it chooses the former, then
+it will make the same choice with the same consequences
+for its fourth object and therefore finish with a suboptimal
+cache of value 9 (Figure 3b) or 8 (Figures 3c and 3d).
+Simulated Annealing (SA): Simulated Annealing (SA) is
+a randomized algorithm that statistically simulates the slow
+cooling of a physical system [22]. The algorithm works by
+choosing an initial state (the “current state”) within a state
+space consisting of all possible solutions, and then performing
+a random walk beginning at this state. The walk consists
+of choosing a random neighbor, and proceeding to make
+this neighbor the current state if it has greater value than the
+current state, or with some non-zero probability that gradually
+decreases over time. Applied to profile-driven cache
+prefetching, states denote sets of candidate objects that together
+can fit in the given cache. The value of a state is the
+value of its associated set of objects according to the given
+profile. A move in the state space corresponds to the act
+of replacing objects in the associated set, with one or more
+drawn from the candidate object set (that fit in the cache that
+remains when the initial objects are removed).
+The key parameters that affect the results of running simulated
+annealing are the initial temperature, h , and the conditions
+for decreasing the temperature. The latter can be
+based on a timeout, or on a degree of convergence (i.e.,
+stopping when the difference in value between a state and
+its chosen neighbor is below some threshold). Because the
+difference in value between one cache state and its neighbor
+is likely to be relatively low (given that they will differ
+in just a few out of several hundred objects), we based
+changes in temperature on timeouts. We explored three different
+choices of initial temperature and timeouts, each of
+which required SA to run for roughly 5 minutes before settling
+on a cache’s contents. Of these, we found the values
+produced to be close to the same for all profiles, but that
+setting the initial temperature to be 5, and the timeout to
+be 1 minute worked best in most cases. Therefore, for our
+experiments in Section 4, we run simulated annealing with
+these temperature and timeout settings.
+Branch-and-Bound (BnB): Branch-and-bound (BnB)
+searches a tree of all possible solutions in a depth-first
+manner, but selectively pruning the search tree whenever
+it is determined that an unvisited subtree cannot possibly
+contain a solution better than the best seen thus far. Applied
+to profile-driven cache prefetching, every path from the
+root to a leaf node in the search tree represents one possible
+cache of objects chosen from the candidate object set. Each
+node denotes a (domain, count) pair, MijkS, and every path
+through that node represents a solution that includes the smallest objects in the candidate set that belong to domaink
+i (and no others from domain, i ). Each level of the tree
+contains only nodes for some given domain,
+such that is the largest number of objects from  that
+can fit in the cache. While searching this tree of solutions,
+the branch-and-bound algorithm we implemented prunes an
+unvisited subtree if all paths from the root to leaf nodes of
+the subtree specify object sets that are guaranteed not to fit
+in the cache. For example, let the set of domains defined for
+a given profile be , and let the path from the
+root to the current node in the search tree be
+If the total size ofthe set consisting of the   smallest ob-
+jects in , the smallest objects in , and so on up to the
+su smallest objects in i u is larger than the cache capacity,
+then there is no need to visit any of the nodes in any subtree
+of (i u, su). A second pruning trick is based on cache value
+bounds. Let i be any domain in the set,
+Let be the maximum number of objects
+from domain i that could fit in the cache containing the 
+smallest objects of  i , the  smallest objects of etc. If
+the value of the cache denoted by the path,
+is less than the best cache value seen thus far, then the entire
+subtree rooted at () can be pruned, as no cache
+represented by a path emanating from this node can exceed
+the value of the cache denoted by ? .
+Given the size of the search tree involved for non-trivial
+profiles (the number of nodes will be the product of the
+number of objects that can fit in a cache for each domain),
+branch-and-bound searching quickly becomes infeasible.
+To make it feasible, we terminate searching after 10 minutes.
+To increase the likelihood of an interrupted search
+finding a good solution, we use a trick from [14] whereby
+domains are sorted in the order generated by GREEDY, and
+the search tree is constructed so that the highest level of the
+tree contains nodes representing the most valuable domains.
+The search is then conducted in a postorder, rather than preorder
+traversal of the tree. This biases the search to favor
+caches with more objects from more valuable domains.3

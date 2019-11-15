@@ -1,0 +1,13 @@
+In this section, we validate our analytical models by conducting some high level simulations.
+Specifically, our objectives were the following:
+1. Validate the effect of c on ACQUIRE.
+2. Validate the comparisons between ACQUIRE, ERS and FBQ for different values of c.
+Figure 8: Comparison of ACQUIRE, and ERS (N = 100) with respect to M
+N for different
+amortization factors.
+3. Perform a relative comparison between ACQUIRE and ERS across different relative
+query sizes (M
+N ).
+As we shall show, our simulation results are more or less in line with our analysis. The minor
+differences can be ascribed to factors such as overlap in the query trajectory and boundary
+effects that are not modelled in our analysis.

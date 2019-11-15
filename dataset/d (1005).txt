@@ -1,0 +1,10 @@
+In degree based pruning, the in and out degrees of the
+nodes are used to select nodes that might be inuential.
+Specically, we use 4  in degree + out degree as
+a measure of inuence. The top 100 nodes by this measure
+are fetched, scored against Q and pruned if their
+score falls below the pruning threshold. After this, connectivity
+analysis as in imp is run for 10 iterations on
+the pruned graph. The ranking for hubs and authorities
+computed by imp is returned as the nal ranking. This
+algorithm is called pca0.

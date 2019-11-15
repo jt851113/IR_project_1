@@ -1,0 +1,47 @@
+Like other sensor network applications, OTSN has
+unattended nodes, dynamic topology, wireless transmissions
+and distributed system architecture. In addition,
+there are a lot of unique factors to be considered
+when implementing OTSNs. In this section, we examine
+those factors that impact the energy consumptions
+of the OTSNs.
+‧ Number of moving objects represents the
+workload of the networks, which directly affects
+the energy consumption of the entire network.
+The more moving objects are inside the monitored
+region, the more samplings and reporting
+are needed.
+‧ Reporting frequency is decided based on the
+application requirements. A higher reporting frequency
+is set when an application needs timely
+updates about the moving objects. Otherwise,
+keeping the reporting frequency low can reduce
+the number of transmissions, and thus increases
+the lifetime of the OTSN.
+‧ Data precision is closely related with the sampling
+frequency, the sampling duration and the
+location models (see below). Therefore, a higher
+data precision requires more data collection, more
+intricate computation and larger update packets,
+which result in more energy consumption on sensing,
+computing and communication.
+‧ Sensor sampling frequency is an important
+factor for object tracking. A OTSN with low sampling
+frequency may lose track of objects, but the
+one with high sampling frequency incurs more energy
+consumptions.
+‧ Object moving speed is relevant to the sensor
+sampling frequency. To keep track of the object,
+the OTSN needs to sample more frequently on an
+object which moves in high speed.
+‧ Location models are used to represent the location
+information, which is one of the most important
+information to be obtained at sensor nodes.
+Other movement information, such as speed and
+directions, can be derived from the changes of locations
+and elapsing time. Based on the location
+identification techniques employed in the system,
+location model can be categorized as geometric
+model and symbolic model [8]. The appropriate
+location models to be adopted depends on the application
+requirements.

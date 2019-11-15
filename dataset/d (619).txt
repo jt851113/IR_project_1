@@ -1,0 +1,121 @@
+To determine the optimal parameters for the algorithm
+described above, we make the following assumptions:
+a) The sensors in the wireless sensor network are
+distributed as per a homogeneous spatial Poisson
+process of intensity λ in 2-dimensional space.
+b) All sensors transmit at the same power level and hence
+have the same radio range r .
+c) Data exchanged between two communicating sensors
+not within each others’ radio range is forwarded by
+other sensors.
+d) A distance of d between any sensor and its
+clusterhead is equivalent to ?d / r? hops.
+e) Each sensor uses 1 unit of energy to transmit or receive
+1 unit of data.
+f) A routing infrastructure is in place; hence, when a
+sensor communicates data to another sensor, only the
+sensors on the routing path forward the data.
+g) The communication environment is contention- and
+error-free; hence, sensors do not have to retransmit any
+data.
+The basic idea of the derivation of the optimal parameter
+values is to define a function for the energy used in the network
+to communicate information to the information-processing
+center and then find the values of parameters that would
+minimize it.
+1) Computation of the optimal probability of becoming a
+clusterhead:
+As per our assumptions, the sensors are distributed
+according a homogeneous spatial Poisson process and hence,
+the number of sensors in a square area of side 2a is a Poisson
+random variable, N with mean λA , where A = 4a2 . Let us
+assume that for a particular realization of the process there are
+n sensors in this area. Also assume that the processing center
+is at the center of the square. The probability of becoming a
+clusterhead is p ; hence, on average, np sensors will become
+clusterheads. Let Di be a random variable that denotes the
+length of the segment from a sensor located at
+(xi , yi ), i = 1,2,..., n to the processing center. Without loss of
+generality, we assume that the processing center is located at
+the center of the square area. Then,
+Since there are on an average np CHs and the location of
+any CH is independent of the locations of other CHs, the total
+length of the segments from all these CHs to the processing
+center is 0.765npa .
+Now, since a sensor becomes a clusterhead with
+probability p , the clusterheads and the non-clusterheads are
+distributed as per independent homogeneous spatial Poisson
+processes PP1 and PP0 of intensity λ1 = pλ and
+λ0 = (1? p)λ respectively.
+For now, let us assume that we are not limiting the
+maximum number of hops in the clusters. Each non-clusterhead
+joins the cluster of the closest clusterhead to form a
+Voronoi tessellation [10]. The plane is thus divided into zones
+called the Voronoi cells, each cell corresponding to a PP1
+process point, called its nucleus. If Nv is the random variable
+denoting the number of PP0 process points in each Voronoi
+cell and Lv is the total length of all segments connecting the
+PP0 process points to the nucleus in a Voronoi cell, then
+according to results in [11],
+Define C1 to be the total energy used by the sensors in a
+Voronoi cell to communicate one unit of data to the
+clusterhead. Then,
+Define C2 to be the total energy spent by all the sensors
+communicating 1 unit of data to their respective clusterheads.
+Because, there are np cells, the expected value of C2
+conditioned on N , is given by
+If the total energy spent by the clusterheads to communicate
+the aggregated information to the processing center is denoted
+byC3 , then,
+Define C to be the total energy spent in the system. Then,
+Removing the conditioning on N yields:
+E[C] is minimized by a value of p that is a solution of
+The above equation has three roots, two of which are
+imaginary. The second derivative of the above function is
+positive for the only real root of (9) and hence it minimizes the
+energy spent.
+The only real root of (9) is given by
+where c = 3.06a λ .
+2) Computation of the maximum number of hops allowed
+from a sensor to its clusterhead:
+Till now we have not put any limit on the number of hops
+( k ) allowed between a sensor and its clusterhead. Our main
+reason for limiting k was to be able to fix a periodicity for the
+clusterheads at which they should communicate to the
+processing center. So, if we can find the maximum possible
+distance (call it Rmax ) at which a PP0 process point can be
+from its nucleus in a Voronoi cell, we can find the value of k
+by assuming that a distance Rmax from the nucleus is
+equivalent to Rmax / r hops. Setting k = Rmax / r will also
+ensure that there will be very few forced clusterheads in the
+network.
+Since it is not possible to get a value of Rmax such that we
+can say with certainty that any point of PP0 process will be at
+the most Rmax distance away from its nucleus in the Voronoi
+Tessellation, we take a probabilistic approach; we set Rmax to a
+value such that the probability of any point of PP0 process
+being more than Rmax distance away from all points of PP1
+process is very small. Using this value of Rmax , we can get the
+value of parameter k that would make the probability of any
+sensor being more than k hops away from all volunteer
+clusterheads very small.
+Letρ M be the radius of the minimal ball centered at the
+nucleus of a Voronoi cell, which contains the Voronoi cell. We
+define pR to be the probability that ρ M is greater than a certain
+value R , i.e. pR = P(ρ M > R) . Then, it can be proved
+that 7 exp( 1.09 2 )
+pR ? ? λ11R [11]. If Rα is the value of R
+such that pR is less than α , then,
+To ensure minimum energy consumption, we will use a
+very small value for α , which implies that the probability of
+all sensors being within k hops from at least one volunteer
+clusterhead is very high.
+For α = 0.001 and values of p and k computed according
+to (10) and (12), for a network of 1000 sensors, on an average 1
+sensor will not join any volunteer clusterheads and will become
+a forced clusterhead. The optimal value of p for a network
+with 1000 nodes in an area of 100 sq. units is 0.08, which
+means 80 nodes will become volunteer clusterheads on an
+average. Hence, for a network of 1000 nodes in an area of 100
+sq. units, only 1.23 % of all clusterheads are forced
+clusterheads.

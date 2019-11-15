@@ -1,0 +1,21 @@
+The sampling duration needed to obtain required data
+for a moving object directly decides the energy consumption
+by MCU and sensor components. As shown
+in Figure 7, the increase of sampling duration has a
+noticeable effect on PES with various wakeup heuristics,
+but not on CM. Meanwhile, the missing rates (not
+shown here) are low and decreasing linearly when the
+sampling duration increases. For PES, the longer a
+sensor node samples its detection area, the shorter it
+can turn to sleep for energy saving. On the other hand,
+this also implies a shorter period of uncertainty in estimating
+the objects’ next movement. Thus, sampling
+duration increase has an effect on raising the sensing
+operation cost and decreasing the prediction inaccuracy.
+Figure 7: Impact of the sampling duration
+The figure shows that ALL NBR heuristic, while
+maintaining a very low missing rate, is not a good
+choice for the OTSN when it takes more than 175msec
+for each sampling. It implies that the operation cost
+for the longer sampling period overwhelms the energy
+saving obtained by accurate predictions.

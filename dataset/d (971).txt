@@ -1,0 +1,31 @@
+The intrinsic dimension and concepts from the fractal theory have been
+successfully employed in indexing and analysis of spacial access methods and
+metric trees. Faloutsos et al.) use the intrinsic dimension to estimate the
+number of disk accesses of range queries (RQ) in R-Trees.) Pagel et al.) apply
+the same approach to k-nearest neighbor (k-NN) queries and query optimization.
+B‥ohm) proposes a cost model to RQ and k-NN in high-dimensional spaces
+using the intrinsic dimension to deal with attribute correlation. Traina et al.)
+also pose a cost estimate for Slim-trees54) based on the concept of intrinsic
+dimension. Selectivity estimation of spacial joins and RQ takes advantage of
+the intrinsic dimension as well.) B‥ohm et al.) propose a high-dimensional
+index structure whose page size is dynamically adapted according to the data
+distribution, which is evaluated by measuring the intrinsic dimension of the
+dataset.
+The fractal theory and the intrinsic dimension have also been explored
+in data mining. Barbar’a et al.) designed an incremental clustering algorithm
+based on fractal properties of the dataset. Jiang el at.) propose a sampling
+technique which preserves the distribution characteristics of the original dataset
+through fractal analysis. Traina et a.) developed an attribute selection
+technique based on fractal dimension. Chakrabarti et al.) propose a
+non-linear, time series forecasting method which uses the intrinsic dimension to
+automatically set forecasting parameters. In Reference), the fractal dimension
+is applied to measure time diversification of stock portfolios. A tool using
+concepts from fractal theory in spatial data mining is proposed in Reference49).
+Traina et al.) discuss the use of fractals in data mining and present fractal-based
+techniques applied to data mining process, such as dimensionality reduction,
+clustering, classification and correlation detection.
+In general, related work mentioned in Sections 3.1 and 3.2 proposes
+techniques to either process data streams or apply the intrinsic dimension to
+analyze conventional databases. However, no previous work employs the intrinsic
+dimension to improve data management over data streams. The integration of
+both concepts is the main objective of this paper.

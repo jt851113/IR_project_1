@@ -1,0 +1,24 @@
+Counting sketches were introduced by Flajolet and
+Martin in [7] for the purpose of quickly estimating the
+number of distinct items in a database (or stream) in
+one pass while using only a small amount of space.
+Since then, there has been much work developing and
+generalizing counting sketches (e.g. [1, 6, 10, 3, 9, 2]).
+It is well known that exact solutions to the distinct
+counting problem require 
+(n) space. As shown in [1],
+(log n) space is required to approximate the number
+of distinct items in a multi-set with n distinct items.
+The original FM sketches of [7] achieve this bound,
+though they assume a xed hash function that appears
+random, so they are vulnerable to adversarial choices
+of inputs. We use these sketches since they are very
+small and accurate in practice, and describe them in
+detail in Section 3.
+A dierent sketching scheme using linear hash func-
+tions was proposed in [1]. These sketches are somewhat
+larger than FM sketches in practice, although a very re-
+cent technique [5] extending these methods uses only
+O(log log n) space. We intend to investigate the eec-
+tiveness of these \loglog" sketches for sensor databases
+in future work.

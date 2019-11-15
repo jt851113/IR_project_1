@@ -1,0 +1,6 @@
+We have conducted a series of experiments to evaluate the performance of our
+Sort-Filtering method. We also compare the performance with all the algorithms
+proposed by Chan et al. which are One-Scan Algorithm (OSA), Two-Scan Algorithm
+(TSA) and Sorted Retrieval Algorithm (SRA) [6]. To make the comparison
+fair, we have include all the preprocessing cost, i.e., cost of domination power
+computation and sorting.

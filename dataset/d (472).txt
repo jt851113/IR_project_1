@@ -1,0 +1,24 @@
+DEFINITION 2.7. Given a pattern 	, a sequence  and a
+generalized information gain threshold , if there exists a
+subsequence  of  so that the generalized information gain
+of  with respect to 	 is at least , then 	 is a valid pattern.
+Theoretically, the period of a valid pattern could be arbitrary,
+i.e., as long as the event sequence. In reality, a user can
+specify an upperbound of period length according to his/her
+domain knowledge. As a result, we use 
+ to denote
+the maximum period allowed for a pattern. However, 
+
+can be arbitrarily large, e.g., ranging to several thousands.
+Now we can rephrase our problem model by employing the
+generalized information gain metric. For a sequence of events
+, a generalized information gain threshold , and a period
+bound 
+, we want to discovery all valid patterns 	 whose
+period is less than 
+.
+For each valid pattern 	, we want to find the subsequence
+which maximizes the generalized information gain of 	. In the
+remainder of this section, we give some more definitions which
+enable us to present our approach STAMP and communicate to
+readers more effectively.

@@ -1,0 +1,59 @@
+As explained in Section 3, the Echo protocol relies on tim-
+ing: the amount of time it takes to get a response from the
+prover bounds how far the prover can be from the verier.
+We will now show that it is impossible for an adversary out-
+side R to convince the verier that it is in R.
+Proof of security.. The heart of the argument is that an
+attacker would not be able to get the sound signal to the
+verier in time. In order to conrm that the prover is at
+`, all a particular verier node v must do is verify that the
+incoming sound signal, which includes the outgoing nonce,
+is received within for the attacker to hear N and get a response to v is 
+Consequently, the attacker's signal cannot reach the veri-
+er before the deadline. Note that nowhere in our analysis
+did we rely on which verier node was used. The only dif-
+ference would be in the magnitude of the error terms and,
+therefore, in the chance that the location claim would even
+be accepted for verication. The attacker does not gain
+any advantage by selecting a dierent verier from the one
+elected to participate.
+Attacks. One possible attack could exploit the dierence
+in propagation speed of sound in dierent media. If the
+verier's estimation of s is slower than the actual one, then
+the proof above does not apply. If this is a valid threat
+model|say there is a lot of metal near the verication region
+that is capable of transmitting sound from the outside|then
+the verier's estimation of s should be adjusted. This can
+be done once on a site-specic basis. An alternate defense
+would be to have other verier nodes conrm the estimate
+of s based on when the sound signals are received.
+More generally, we require that there be no way for an
+attacker to generate sound waves from afar without being
+subject to speed-of-sound delays. For instance, if a remote
+attacker could call up some person in R over the telephone,
+convince the victim to put the call on speakerphone, inter-
+cept message 2 from afar using a large antenna, and transmit
+the appropriate ultrasonic signal (i.e., message 3) over the
+telephone with suciently high delity, then the attacker
+might be spoof his location. The key is that the attacker
+has evaded the speed-of-sound limit on signal propagation
+by exploiting the ability to remotely actuate a loudspeaker
+located inside R. We expect such \remote actuation" at-
+tacks will be very dicult to mount in practice, for several
+reasons. Nonetheless, this example illustrates a crucial secu-
+rity assumption: we assume that low-delay remote actuation
+of sonic signals is infeasible.
+Variants We Rejected. One might also consider the impli-
+cations of other variants of the protocol, where the use of
+sound and radio for the outgoing and incoming signals is
+changed from (radio, sound) to (radio, radio), (sound, ra-
+dio), or (sound, sound). If radio communication is used in
+both directions, then the error term c would be very large
+(105 to 106 times as large as the sound case), and it is quite
+likely that the verier would not accept location claims at
+all, since the error might exceed the size of R itself! Thus,
+at least one of the two directions should use sound.
+Why did we reject (sound, radio)? There is a subtle at-
+tack. If sound is used in the outgoing direction, an attacker
+might be able to break security by using laser-based remote
+\bugging." The trick is to bounce a laser o a window within

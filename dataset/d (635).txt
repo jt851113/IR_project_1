@@ -1,0 +1,25 @@
+We have shown so far how default values can be maintained
+in the data updating process to ensure invariance
+(1). We also fixed the error bounds for each node so
+that invariance (2) also holds. But this may not be costefficient,
+since different source sensors may exhibit different
+types of behavior. For those sensors whose values
+do not change very much, it is beneficial to assign them
+smaller error tolerances and assign the slack saved this
+way to other more active sensor nodes. We exploit this
+insight to design an approximate algorithm to adaptively
+adjust the error tolerance at each node in order to achieve
+an overall balance on communication activity by allowing
+sensor nodes update at similar frequencies.
+On the other hand, balanced workloads may also result
+in reduced overall workload, although optimality is
+not guaranteed due to the unknown nature of data behavior.
+Figure 3 shows one case that can illustrate the benefit
+of having balanced workload. Assume data readings of
+the two sensor nodes in different rounds are within some
+ranges (r1 and r2). And assume the total error tolerance
+allowed is also the same (d1 + d2 = d0
+1 + d0
+2). It is obvious
+that the distribution in figure 3(a) will generate some
+messages while the distribution in figure 3(b) will not.

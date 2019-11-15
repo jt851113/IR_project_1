@@ -1,0 +1,113 @@
+finding frequent itemsets. An itemset which has much less support
+than a predefined minimum support is not necessarily monitored
+since it cannot be a frequent itemset in the near future. Therefore,
+the insertion of a new itemset can be delayed until it can possibly
+be a frequent itemset in the near future. When the estimated
+support of a new itemset is large enough, it is regarded as a
+significant itemset and it is inserted to a monitoring lattice. On the
+other hand, an efficient pruning technique is obviously another
+way of reducing the usage of memory space. Although an itemset
+in a monitoring lattice was significant enough to be monitored in
+the past, if its current support becomes much less than a
+predefined minimum support, it can be eliminated from the
+monitoring lattice.
+This section proposes an estDec method for finding recent
+frequent itemsets adaptively over an online data stream. Every
+node in a monitoring lattice maintains a triple (cnt, err, MRtid) for
+its corresponding itemset e. The count of the itemset e is denoted
+by cnt. The maximum error count of the itemset e is denoted by
+err. Finally, the transaction identifier of the most recent
+transaction that contains the itemset e is denoted by MRtid. The
+estDec method is composed of four phases: parameter updating
+phase (Phase Ⅰ), count updating phase (Phase Ⅱ), delayedinsertion
+phase (Phase Ⅲ) and frequent itemset selection phase
+(Phase Ⅳ). The detailed steps of these phases are illustrated in
+Figure 1.
+When a new transaction Tk is generated in a data stream, the total
+number of transactions in the current data stream |D|k is updated
+in the parameter updating phase (line 4 in Figure 1) as follows:
+|D|k = |D|k-1×d+1
+In the count updating phase (line 5-9), the counts of those itemsets
+in a monitoring lattice that appear in the new transaction are
+updated. All the paths of a monitoring lattice that are induced by
+the items of the transaction are traversed and the previous triple
+(cntpre, errpre, MRtidpre) of each node in the paths is updated to the
+current triple (cntk, errk, MRtidk) as follows:
+When the updated support i.e., cntk / | D |k of an itemset in a
+monitoring lattice becomes less than a predefined threshold, the
+itemset is regarded as an insignificant itemset, so that it is pruned
+from the monitoring lattice as in conventional lattice-based data
+mining methods [7,8]. However, if a 1-itemset is pruned from a
+monitoring lattice, it is impossible to estimate its count later.
+Therefore, it should not be pruned. This mechanism is called as a
+pruning operation of an itemset. The threshold of this operation is
+defined as a threshold for pruning Sprn which should be less than
+a minimum support Smin.
+After all of these itemsets are updated, the delayed-insertion phase
+(line 10-22) is started in order to find any new itemset that has a
+high possibility to become a frequent itemset in the near future. A
+new itemset is inserted to a monitoring lattice only in the
+following two cases. The first case is when a new 1-itemset
+appears in a newly generated transaction. In this case, the itemset
+is instantly inserted to a monitoring lattice without any estimation
+process. Consequently, the count cnt of every 1-itemset in a
+monitoring lattice is not an estimated value but an actual value.
+The second case is when the estimated support of an n-itemset
+(n?2) that is not in the monitoring lattice is large enough to be
+monitored. In this phase, among the items of the new transaction,
+the items whose supports are less than Sins are not considered.
+While navigating the lattice according to the remaining items of
+the new transaction, the count of an insignificant itemset that is
+composed of a significant itemset and one of the remaining items
+is estimated by its maximum count Cmax(e) as described in Section
+3.1. Due to the characteristics of a prefix lattice structure, there is
+no candidate itemset generation process. This is because such an
+itemset is identified systematically while navigating the lattice
+according to the remaining items in the new transaction. If any of
+its (|e|-1)-subsets in Pn-1(e) is not currently maintained in the
+monitoring lattice, the count of the itemset e is not estimated. This
+is because its Cmax(e) is always 0 in this case. Subsequently, the
+estimated support of the itemset can be found by the ratio of its
+count cnt over the current total number of transactions |D|k. If it is
+greater than or equal to a predefined threshold, the itemset is
+inserted to the monitoring lattice. This mechanism is called as a
+delayed-insertion operation and the pre-defined threshold for this
+insertion is defined as a threshold for delayed-insertion Sins
+which should be also less than a minimum support Smin.
+When an itemset e is inserted, all of its (|e|-1)-subsets should be
+significant. Due to this reason, it is possible to find the upper
+bound Cupper(e) of its actual count when it is inserted at the kth
+transaction. In other words, among the k transactions generated so
+far, at least |e|-1 transactions that contain the itemset e are
+required to insert all of its subsets to the monitoring lattice in
+advance. Therefore, its actual count is maximized when these |e|-1
+transactions are most recently generated. The similar approach is
+used in [9]. The decayed count of the itemset e for the insertion of
+its subsets by these recent |e|-1 transactions is represented by a
+term cnt_for_subsets as follows:
+In addition, the maximum possible decayed count of the itemset e
+before the recent |e|-1 transactions is denoted by
+max_cnt_before_subsets and it is represented as follows:
+An itemset pruned at present can be inserted into the monitoring
+lattice in the future by the delayed-insertion operation if it appears
+frequently in new transactions. Consequently, Sprn should be less
+than Sins. As the gap between the two thresholds Sprn and Sins is
+enlarged, the possibility of repeating the insertion and pruning of
+the same itemset frequently is reduced. Furthermore, as the gap
+between these two thresholds is enlarged, the accuracy of frequent
+itemsets is improved while the size of a monitoring lattice is
+increased.
+The frequent itemset selection phase (line 23-28) is performed
+only when the mining result of the current data set is required. It
+produces all current frequent itemsets in a monitoring lattice by
+the same way as in conventional mining methods [7,8] based on a
+prefix-tree lattice structure. When this phase is performed in the
+current data stream Dk, an itemset e is frequent if its current
+support   is greater than a predefined
+minimum support Smin. Furthermore, its current support error
+err  can be found as well.
+All insignificant itemsets in a monitoring lattice can be pruned
+together by examining the current support of every itemset in the
+monitoring lattice. This mechanism is called as a force-pruning
+operation and can be performed periodically or when the current
+size of a monitoring lattice reaches a pre-defined threshold value.

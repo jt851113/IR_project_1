@@ -1,0 +1,94 @@
+Beyond revealing private information to other users within
+an OSN, another potential source of privacy leakage is the
+tracking of user actions by third-party advertisers and data
+aggregators. In prior work, we dened and measured the
+privacy footprint for a collection of roughly 1000 popular
+traditional Web sites [11]. This privacy footprint is the set
+of interactions formed when user retrievals of rst-partyWeb
+pages cause retrievals of objects from, often hidden, thirdparty
+domains3 as shown in Figure 1. These third-party
+domains often act as aggregators of a user's traversals on
+the Web. We found a large number of associations between
+rst-party sites via shared third-party aggregation domains.
+A natural follow-on question to this previous work is to
+ask to what extent these third-party domains are used by
+OSNs. These domains are particularly troubling for privacy
+with OSNs because unlike most Web sites, users login
+to OSN sites and store personal information about themselves
+on these sites. If OSN sites are also making use of
+third-party domains that are tracking user visits to these
+and other Web sites then there is an even greater potential
+for privacy loss. Previous work does conjecture that thirdparty
+aggregation will be used less for OSNs because they
+encourage users to \live" on their site [3].
+In order to measure the use of third-party domains, we
+rst established a set of actions to take for each of the OSNs
+in our study. These actions are not exhaustive for any of
+the OSNs, but represent common actions of a user while
+interacting with each OSN site|whether they be interacting
+with friends on Facebook or viewing a comment made by a
+user on Digg. The specic set of actions used for each OSN
+site, which we refer to as a session, is:
+1. Login to site with account/password.
+2. View friends or user contributed content.
+3. Look at a friend's or contributor's prole.
+4. Send friend a message or comment on content.
+5. Return to user home.
+6. View networks/groups.
+7. Look at members in a network/group.
+8. Logout from site.
+While this session was being executed at each OSN, the set
+of retrieved objects were recorded via the \Pagestats" Firefox
+browser-extension [5], which records information about
+each HTTP request and response. A session was performed
+manually for each of the eleven OSNs with Pagestats logging
+the retrieved objects. The post-processed log yielded
+the list of third-party domains where at least one object
+was retrieved for each OSN. This session and analysis was
+repeated ve times for each OSN after observing that not
+all actions always caused the same set of third-party objects
+to be retrieved. Table 4 shows key results of our analysis
+with the third-party domains most widely used. A 'X'
+is used to indicate situations where the third-party domain
+was used in the majority of the ve sessions executed at the
+given OSN. The 9 third-party domains with at least three
+X's are shown in the table. Another 12 third-party domains
+(not shown) occur in a majority of sessions for two of the
+OSNs and another 36 third-party domains occur in a majority
+of sessions for one of the OSNs. To understand the
+sensitivity of our results to the session of actions we choose,
+we extended our session for a subset of the OSNs to include
+writing on a comment wall, using an application, joining a
+group and editing the user prole. These additional actions
+did not result in the use of additional third-party domains
+except for the applications, which caused the browser to
+go to new third-party domains used by these applications.
+We observed approximately one new third-party domain accessed
+for each new applications we used.
+Table 4 indicates much common usage across OSNs with
+doubleclick.net and 2mdn.net consistently represented across
+the 11 OSNs. Overall there is high usage of these third-party
+domains by most OSNs. The median number of unique
+third-party domains contacted at least once for an OSN was
+25 and the median number of unique third-party domains
+contacted at least once per OSN session was 12. Even Orkut,
+which is shown using none of the top third-party domains
+in Table 4 is part of the Google network of domains.
+To understand the signicance of these third-party domains
+in making associations not only between OSNs, but
+also with traditionalWeb sites, we re-ran our study of roughly
+1000 popular URLs from [11] in February 2008. We used the
+batch-mode feature of Pagestats and gathered results from
+967 URLs. The third-party domain results of this updated
+study for popular Web sites show over a 30% increase in
+the penetration of the top-10 third-party domains amongst
+popular Web sites relative to April 2006 results in [11]. Particularly
+noteworthy for this work is that the third-party
+domains listed in Table 4 are all in the top-10 third-party
+domains for popular Web sites.
+The use of third-party domains with the capability to
+track user activity is pervasive for OSNs even as it continues
+to grow for traditional Web sites. This trend is of particular
+concern as OSN users being tracked have explicitly identi-
+ed themselves by logging into the OSN and provided the
+OSN with personal information.

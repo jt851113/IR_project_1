@@ -1,0 +1,25 @@
+the number of cycles in a pattern (The number of cycles a
+pattern of length contains is equal to len on the average).
+In order to model the fact that real world data will consist
+of a mixture of cyclic rules and non-cyclic rules, we use
+the “noise” parameter, which is a real number between 0
+and 1. In a particular time unit, a large itemset is “active”
+(in the sense that transactions will contain that itemset)
+independent of cycles with a probability
+.At the beginning of each time unit, the data generation
+algorithm first determines which large itemsets should be
+used for data generation in that time unit. This is done by
+checking to see if the current time ?? participates in any of the
+cycles that the itemset is associated with. Following this,
+a determination is made as to whether the noise parameter
+dictates that the itemset be used. Once this is done, the
+weights associated with the large itemsets determine their
+occurrences in the transactions for the time unit.
+The default values we used for the parameters in our
+experiments are shown in Table 3. (We conducted individual
+sets of experiments that varied these parameters. We
+describe the variations when we describe the individual
+experiments.)
+When the parameters are set to the above default values,
+the size of the data generated is about 155 megabytes (MB)
+for all the time units combined.

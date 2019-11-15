@@ -1,0 +1,20 @@
+We have proposed PISCES (Peer-based system that Indexes Selected
+Content for Efficient Search) to reduce the maintenance cost
+of corporate networks, where an index is built JIT (Just-In-Time).
+PISCES is self-tuning to the changing of query distribution. It identifies
+a subset of tuples to index based on some criteria (such as
+query frequency, update frequency, importance of the content, etc.).
+We have also introduced the approximate range index, a new type
+of index for processing queries that cannot be fully answered by the
+current index. The approximate range index is also used for notifying
+nodes about new index construction. To support our cost estimation,
+we have proposed a light-weight iterative sampling scheme
+to collect global statistics about the whole network. It exploits common
+maintenance messages of the network to keep the overhead
+low. Experiments in PlanetLab indicate that our schemes can significantly
+reduce the cost of P2P networks and PISCES is effective
+in answering popular queries. In summary, we have proposed an efficient
+and practical indexing strategy that will make PDMS more
+acceptable as a solution for supporting enterprise-quality business
+processing and data sharing that involves a large amount of data
+and peers.

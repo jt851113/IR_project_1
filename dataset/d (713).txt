@@ -1,0 +1,16 @@
+We consider three profile-driven prefetching problems:
+Non-Preemptive Prefetching, Preemptive Prefetching, and
+Prefetching for Shared Caches. Non-preemptive prefetching
+is standard prefetching where a cache is filled with a set
+of objects that are likely to be accessed by a client. Preemptive
+prefetching allows prefetching to be interrupted prior
+to completion. This is relevant for data recharging, where
+a client can “unplug” his device from a network connection
+at any time without warning. For preemptive prefetching,
+what matters is not only the cache’s final contents but
+the order in which objects are placed in the cache, as objects
+placed into the cache early are the most likely to be
+present in a partially filled cache resulting from preemption.
+Prefetching for shared caches requires reconciling multiple
+(and potentially competing) client profiles to prefetch
+a cache that best meets the needs of all clients.

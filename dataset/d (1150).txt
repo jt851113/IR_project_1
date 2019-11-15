@@ -1,0 +1,18 @@
+Two types of events in NiagaraCQ can trigger continuous
+queries. They are data-source change events and timer events.
+Data sources can be classified into push-based and pull-based.
+Push-based data sources will inform NiagaraCQ whenever
+interesting data is changed. On the other hand, changes on pullbased
+data sources must be checked periodically by NiagaraCQ.
+Timer-based continuous queries are fired only at specified times.
+However, queries will not be executed if the corresponding
+input files have not been modified. Timer events are stored in
+an event list, which is sorted in time order. Each entry in the list
+corresponds to a time instant where there exists a continuous
+query to be scheduled. Each query in NiagaraCQ has a unique
+id. Those query ids are also stored in the entry. Whenever a
+timer event occurs, all related files will be checked. Each query
+in the entry will be fired if its data source has been modified
+since its last firing time. The next firing times for all queries in
+the entry are calculated and the queries are added into the
+corresponding entries on the list.

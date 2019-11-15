@@ -1,0 +1,21 @@
+In order to provide visualization capability, we determine
+the spatial profiles at a specific set of grid points. Let Xg be
+such a grid point. Then, the value of vieXg; tT is calculated
+using the perturbed velocity densities along the ith
+dimension. Therefore, for each grid point, we maintain an
+additional d perturbed values, one for each dimension.
+Specifically, for a grid point Xg, the ith perturbed value is
+the velocity density at the point Xg t i. Thus, during the
+online scan of the data, we need to maintain an additional
+d counters for each grid point at which these densities are
+stored. At the end of the scan, the spatial profiles can be
+computed by calculating each of the d components of the
+spatial velocity as illustrated in (8). Note that this extra
+effort at the end of the velocity density calculation is
+(asymptotically) small for a rapid data stream, since it is
+independent of the number of records in the stream. The
+actual value of the perturbation  should be chosen as small
+as possible subject to the numerical rounding errors created
+by choosing  near the computer numerical precision. For a
+practical implementation, we consistently chose  to be
+1 percent of the distance between two adjacent grid points.

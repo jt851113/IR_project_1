@@ -1,0 +1,71 @@
+A simple approach to evaluate an aggregation query
+is to route all sensed values to the base station and
+compute the aggregate there. Although this approach
+is simple, the number of messages and the power con-
+sumption can be large. A better approach is to lever-
+age the computational power of the sensor devices and
+compute aggregates in-network. Aggregates that can
+be computed in-network include all decomposable func-
+tions [15].
+Denition 1 A function f is decomposable, if it
+can be computed by another function g as follows:
+
+Using decomposable functions, the value of the ag-
+gregate function can be computed for disjoint subsets,
+and these values can be used to compute the aggre-
+gate of the whole using the merging function g. Our
+discussion is based on the Tiny Aggregation (TAG)
+framework used in TinyDB [15]. However, similar ap-
+proaches are used to compute aggregates in other sys-
+tems [20, 21, 23, 13].
+In TAG, the in-network query evaluation has two
+phases, the distribution phase and the collection phase.
+During the distribution phase, the query is ooded in
+the network and organizes the nodes into an aggrega-
+tion tree. The base station broadcasting the query is the
+root of the tree. The query message has a counter that
+is incremented with each retransmission and counts the
+hop distance from the root. In this way, each node is
+assigned to a specic level equal to the node's hop dis-
+tance from the root. Also, each sensor chooses one of
+its neighbors with a smaller hop distance from the root
+to be its parent in the aggregation tree.
+During the collection phase, each leaf node produces
+a single tuple and forwards this tuple to its parent. The
+non-leaf nodes receive the tuples of their children and
+combine these values. Then, they submit the new par-
+tial results to their own parents. This process runs con-
+tinuously and after h steps, where h is the height of
+the aggregation tree, the total result will arrive at the
+root. In order to conserve energy, sensor nodes sleep
+as much as possible during each step where the pro-
+cessor and radio are idle. When a timer expires or an
+external event occurs, the device wakes and starts the
+processing and communication phases. At this point, it
+receives the messages from its children and then sub-
+mits the new value(s) to its parent. After that, if no
+more processing is needed for that step, it enters again
+into the sleeping mode [16].
+As mentioned earlier, this approach works very well
+for ideal network conditions, but is less satisfactory un-
+der lossy conditions. To address these issues, Madden
+at al. [15] proposed various methods to improve the
+performance of their system. One solution is to cache
+previous values and reuse them if newer ones are un-
+available. Of course, these cached values may reect
+losses at lower levels of the tree.
+Another approach considered in [15] takes advan-
+tage of the fact that a node may select multiple par-
+ents from neighbors at a higher level. Using this ap-
+proach, which we refer to as \fractional parents," the
+aggregate value is decomposed into fractions equal to
+the number of parents. Each fraction is then sent to a
+distinct parent instead of sending the whole value to a
+single parent. For example, given an aggregate sum of
+15 and 2 parents, each parent would be sent the value
+7:5. It is easy to demonstrate analytically that this ap-
+proach does not improve the expected value of the es-
+timate over the single parent approach; it only helps to
+reduce the variance of the estimated value at the root.
+Therefore, the problem of losing a signicant fraction
+of the aggregate value due to network failures remains.

@@ -1,0 +1,57 @@
+Given a query log Q, denote the set of query terms in Q by VQ.
+Denote the frequency of query q I Q by qf(q), and the query term
+frequency of a term t I q by qtf(t) = ?{ q ? t I q, q I Q}?. In
+other words, qf(q) is the number of times query q appears in Q,
+and qtf(t) is the number of queries in Q that contains t. We
+disregard the frequency of each term in the query as well as the
+order of the terms since we only consider the case of conjunctive
+query matching.
+The total network cost required to index shared contents at all
+peers and to process all queries in Q is
+where Ne, a system parameter, is the maximum number of
+postings that one network message can contain.
+In the above expression, the first term is the cost of indexing local
+contents of the NP peers. The second term is the cost of retrieving
+global posting lists for all queries in Q. The third term is the cost
+of query issuing of all queries in Q to matching peers.
+In DHT-based networks, to contact resp(t), the peer responsible
+for a term t, one must look it up by a sequence of query messages
+that obey the DHT routing protocol. At most O(logNP) messages
+are needed for this purpose. “Publishing” a local posting list (i.e.,
+sending a local posting list to the peer responsible for it), and
+retrieving a global posting list (when processing a query) also
+require looking up the responsible peer. We do not include this
+look-up cost in the first and the second terms in (1). The reason
+for this is look-up cost does not depend on the indexing strategy
+(it just depends on the number of peers in the network). For the
+same reason, we do not include the cost of returning matching
+results in the third term in (1).
+Peer-level indexing minimizes the first and the second terms, as it
+minimizes the length of posting lists. Document-level indexing
+minimizes the third term, as it includes enough information in the
+posting lists to eliminate query issuing errors. However, it is not
+obvious which indexing approach is superior in general.
+The total query processing cost depends on the contents shared by
+peers and the query workload. It also depends on Ne, which
+determines the relative contributions of index-building – postinglist-
+retrieval cost and query issuing cost to total cost. Specifically,
+applications that use large messages are more efficient at
+transmitting long posting lists and therefore it is more important
+to minimize query issuing cost. The opposite is true for
+applications that use small messages, so it is important to reduce
+the length of posting lists, possibly at the expense of increased
+query issuing cost.
+More generally, Ne serves as a parameter that allows us to tune the
+relative contribution of index-building – posting list retrieval cost,
+and query issuing cost to total cost. It can also be used to model
+other P2P network performance factors. One of these factors is the
+“churn” rate, the rate at which peers join and leave the network.
+Each time a peer joins the network, it must send all of its local
+posting lists to responsible peers. In addition, a newly joined peer
+takes responsibility for some terms, which requires it to retrieve
+the posting lists of those terms from other peers. Further, each
+time a peer leaves the network, another peer has to take over its
+term responsibilities. If the churn rate is high, the index-building
+and posting list retrieval cost has more weight on the total cost,
+and vice versa. Thus, by setting a low value for Ne, we can model
+a network with high churn rate, and vice versa.

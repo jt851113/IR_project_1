@@ -1,0 +1,70 @@
+[1] The bluetooth specification.
+http://www.bluetooth.com/dev/specifications.asp.
+[2] The IEEE 802.11 standards.
+http://grouper.ieee.org/groups/802/11.
+[3] The Network Simulator-ns2.
+http://www.isi.edu/nsnam/ns/.
+[4] D. J. Abadi, S. Madden, and W. Lindner. Reed: Robust,
+efficient filtering and event detection in sensor networks. In
+VLDB, pages 769–780, 2005.
+[5] J.-Y. L. Boudec and M. Vojnovic. Perfect simulation and
+stationarity of a class of mobility models. In INFOCOM,
+pages 2743–2754, 2005.
+[6] Z. Chen, H. T. Shen, Q. Xu, and X. Zhou. Instant
+advertising in mobile peer-to-peer networks. In ICDE, 2009.
+[7] M. Conti, E. Gregori, and G. Turi. A cross-layer
+optimization of gnutella for mobile ad hoc networks. In
+MobiHoc, pages 343–354, 2005.
+[8] S. Das, A. Nandan, and G. Pau. Spawn: a swarming
+protocol for vehicular ad-hoc wireless networks. In ACM
+VANET, pages 93–94, 2004.
+[9] Y. Diao, S. Rizvi, and M. J. Franklin. Towards an
+internet-scale xml dissemination service. In VLDB, pages
+612–623, 2004.
+[10] M. Fiore, C. Casetti, and C.-F. Chiasserini. Efficient
+retrieval of user contents in manets. In INFOCOM, pages
+10–18, 2007.
+[11] A. Klemm, C. Lindemann, and O. Waldhorst. A
+special-purpose peer-to-peer file sharing system for mobile
+ad hoc networks. In IEEE VTC, pages 2758–2763, 2003.
+[12] L. Liu, N. Antonopoulos, and S. Mackin. Social
+peer-to-peer for resource discovery. In EICPDNP, 2007.
+[13] Y. Luo, O. Wolfson, and B. Xu. A spatio-temporal
+approach to selective data dissemination in mobile
+peer-to-peer networks. In ICWMC, page 50b, 2007.
+[14] M. Lupur, J. Li, B. Ooi, and S. Shi. Clustering wavelets to
+speed-up data dissemination in structured p2p manets. In
+ICDE, pages 386–395, 2007.
+[15] M. Motani, V. Srinivasan, and P. S. Nuggehalli. Peoplenet:
+engineering a wireless virtual social network. In MobiCom,
+pages 243–257, 2005.
+[16] N.Chang and M.Liu. Optimal controlled flooding search in
+a large wireless network. In WIOPT, pages 229–237, 2005.
+[17] M. Papadopouli and H. Schulzrinne. Effects of power
+conservation, wireless coverage and cooperation on data
+dissemination among mobile devices. In MobiHoc, pages
+117–127, 2001.
+[18] J. Pouwelse, P. Garbacki, J. Wang, A. Bakker, J. Yang,
+A. Iosup, D. Epema, M. Reinders, M. v. Steen, and H. Sips.
+Tribler: A social-based peer-to-peer system. In
+Concurrency and Computation: Practice and Experience,
+volume 20, pages 127 – 138, 2007.
+[19] S. Ratnasamy, P. Francis, M. Handley, R. Karp, and
+S. Schenker. A scalable content-addressable network. ACM
+SIGCOMM, 31(4):161–172, 2001.
+[20] K. G. Siddhartha, M. Singh, D. Xu, and B. Li. Efficient
+peer-to-peer data dissemination in mobile ad-hoc networks.
+In ICPPW, page 152, 2002.
+[21] J. Tchakarov and N.H.Vaidya. Efficient content location in
+wireless ad hoc networks. In MDM, pages 74–85, 2004.
+[22] O. Wolfson, B. Xu, and R. M. Tanner. Mobile peer-to-peer
+data dissemination with resource constraints. In MDM,
+pages 1–15, 2007.
+[23] B. Xu and O. Wolfson. Data management in mobile
+peer-to-peer networks. In DBISP2P, pages 1–15, 2005.
+[24] X. Yang, H. B. Lim, T. M. ‥ Ozsu, and K. L. Tan.
+In-network execution of monitoring queries in sensor
+networks. In SIGMOD, pages 521–532, 2007.
+[25] Z.Cheng and W.Heinzelman. Flooding strategy for target
+discovery in wireless networks. Wireless Networks, pages
+607–618, 2005.

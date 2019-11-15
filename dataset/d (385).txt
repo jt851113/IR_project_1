@@ -1,0 +1,42 @@
+Prediction results about the movement and destination
+of the moving objects directly affect the effectiveness
+of choosing target nodes. If the prediction is
+accurate, less target nodes need to be activated for
+collaborative tracking and less overhead is incurred.
+In this paper, we propose a simple prediction model
+based on an observation that object movement will remain
+constant for a ceratin period of time. With this
+assumption, the current node will predict the movement
+of the object in the following (T _ X) seconds
+and the sensor node where the object eventually arrives
+(called destination node), without considering
+the variance of the speed and direction during this period
+of time. Therefore the speed and direction used
+for estimation makes difference for the prediction results.
+In the following we described three heuristics
+for selecting the speed and direction used by the prediction
+models:
+‧ Heuristics INSTANT. Based on this heuristic,
+the current node assumes that moving objects will
+stay in the current speed and direction for the
+next (T _ X) seconds. It is a very simple and
+energy efficient heuristic, since the current node
+doesn’t need other objects movement history for
+the predictions.
+‧ Heuristics AVERAGE. By recording and passing
+some moving history, the current node derives
+the object’s speed and direction for the next
+(T _X) from the average of the object movement
+history. Thus, heuristics AVERAGE incurs some
+communication overhead because of the movement
+history passing among sensor nodes. And
+the overhead is controlled by the size of the history
+or the number of the past states recorded.
+‧ Heuristics EXP AVG. Instead of simply averaging
+the history, EXP AVG assigns different
+weights to the different stages of history. Compared
+to AVERAGE, EXP AVG is not only able
+to control the weights to the history which may
+reflect the objects’ future movement, but also
+compress the history information into a value,
+thus reducing the transmission overhead

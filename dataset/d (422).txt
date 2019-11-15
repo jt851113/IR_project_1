@@ -1,0 +1,122 @@
+Periodic pattern discovery is an important problem in mining
+time series data and has wide applications. A periodic
+pattern is an ordered list of events, which repeats itself in
+the event sequence. It is useful in characterizing the cyclic
+behavior of the time series. As a newly developed research
+area, most previous work on mining time series data addresses
+the issue by utilizing the support (number of occurrences) as
+the metric to identify the important patterns from the rest
+[4, 13]. A qualified pattern in the support model must occur
+sufficient number of times. In some applications, e.g., market
+basket, such a model is proved to be very meaningful and im-
+Permission to make digital or hard copies of all or' part of this work for
+personal or classroom use is granted without fee provided that copies
+are not made or distributed for profit or commercial advantage and that
+copies bear this notice and the full citation on the first page. To copy
+otherwise, to republish, to post on servers or to redistribute to lists,
+requires prior specific permission and/or a fee.
+KDD 01 San Francisco CA USA
+Copyright ACM 2001 1-58113-391-x/01/08...$5.00
+portant. However, in some other applications, the number of
+occurrences may not represent the significance of a pattern.
+Consider the following examples.
+‧ Web server load. Consider a web server cluster consisting
+of 5 servers. The workload on each server is measured
+by 4 ranks: low, relatively low, relatively high, and high.
+Then there are 45 = 1024 different events, one for each
+possible combination of server states. Some preliminary
+examination of the cluster states over time might show
+that the state fluctuation complies with some periodic
+behavior. Although the high workload on all servers may
+occur at a much lower frequency than other states, pattern(
+s) involving it may. be of more interests to some system
+administrators if the occurrence of such pattern(s)
+contradicts the prior expectation.
+‧ Earthquake. Earthquakes occur very often in California.
+It can be classified by its magnitude and type. Scientist
+may be interested in knowing whether there exists any
+inherent seismic period so that prediction can be made.
+Note that any unidentified seismic periodicity involving
+big earthquake is much more valuable even though it
+occurs at a much lower frequency than smaller ones.
+In the above examples, we can see that users may be interested
+in not only the frequently occurred patterns, but also the
+surprising patterns (i.e., beyond prior expectation) as well. A
+large number of occurrences of an "expected" frequent pattern
+sometimes may not be as interesting as a few occurrences of
+an "expected" rare pattern. The support model is not ideal
+for these applications because, in the support model, the occurrence
+of a pattern carries the same weight (i.e., 1) towards
+its significance, regardless of its likelihood of occurrence. Intuitively,
+the assessment of significance of a pattern in a sequence
+should take into account the expectation of pattern occurrence
+(according to some prior knowledge). Recently, many research
+has been proposed [1, 3, 5, 6, 8, 9, 10, 11, 12, 15] towards this
+objective. We will furnish an overview in the next section. In
+this paper, a new model is proposed to characterize the class
+of so-called surprising patterns (instead of frequent patterns).
+We will see that our model not only has a solid theoretical
+foundation but also allows an efficient mining algorithm.
+The measure of surprise should have the following properties.
+(1) The surprise of a pattern occurrence is anti-monotonic
+with respect to the likelihood that the pattern may occur by
+chance (or by prior knowledge). (2) The metric should have
+some physical meaning, i.e., not arbitrary created. It is fortunate
+that the information metric [2] which is widely studied
+and used in the communication field can fulfill both requirements.
+Intuitively, information is a measurement of how likely
+a pattern will occur or the amount of "surprise" when a pattern
+actually occurs. If a pattern is expected to occur frequently
+based on some prior knowledge or by chance, then an
+occurrence of that pattern carries less information. Thus, we
+use information to measure the surprise of an occurrence of
+a pattern. The information gain metric is introduced to represent
+the accumulated information of a pattern in an event
+sequence and is used to assess the degree of surprise of the
+pattern. In the remainder of this paper, we refer to this model
+as the information model.
+The information model is different from the support model.
+For a given minimum information gain threshold, let ‧ be the
+set of patterns that satisfy this threshold. Under the support
+model, in order to find all patterns in ‧ when event occurrence
+frequencies are vastly different, the minimum support
+threshold has to be set very low. A major problem could rise
+from this: too many patterns discovered. This means that
+the patterns with most information gain are buried in a sea
+of patterns with relatively low information gain. This could
+be a large burden for the end user to distinguish the surprising
+patterns (i.e., patterns with high information gain) from
+the rest. In addition, since a large number of patterns have
+to be discovered, the support model may yield an inefficient
+algorithm.
+Although the information gain is a more meaningful metric
+for the problems addressed previously, it does not preserve
+the downward closure property (as the support does). For example,
+the pattern (al, a2) may have enough information gain
+while both (al,*) and (*,a2) do not. The ‧ symbol represents
+the "don't care" position. We cannot take advantage of
+the standard pruning technique (e.g., Apriori algorithm) developed
+for mining association rules and temporal patterns [4].
+Fortunately, we are able to identify the bounded information
+gain property where patterns with inextensible prefixes could
+not be surprising (given some information gain threshold) and
+can be excluded from consideration at a very early stage. This
+motivates us to devise a recursive algorithm as the core of our
+pattern discovery tool, InfoMiner. In summary, this paper has
+the following contributions.
+‧ We propose a new mining problem that is to find surprising
+periodic patterns in a sequence of data.
+‧ The concepts of information and information gain are
+proposed to measure the degree of surprise of the pattern
+exhibited in a sequence of data.
+‧ Since the downward closure does not hold with information
+gain, we devise an efficient algorithm to mine the
+surprising patterns and associated subsequences based
+on the bounded information gain property that is preserved
+by the information gain metric.
+The remainder of this paper is organized as follows. Some
+related work is discussed in Section 2. We present the information
+model in Section 3. Section 4 discusses the detailed
+algorithm of finding patterns whose information gain is above
+a certain threshold. Experimental results are shown in Section
+5. Finally, we draw the conclusion in Section 6.

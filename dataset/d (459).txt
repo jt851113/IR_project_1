@@ -1,0 +1,5 @@
+Proposition 2.2 Given an event sequence D and a set of com-
+plementary patterns II, let Q be the minimum common super
+pattern of II, then the generalized information gain of D with
+respect to Q is at most the summation of that of each pattern
+in II.

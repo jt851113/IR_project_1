@@ -1,0 +1,55 @@
+Frequent pattern mining from a transactional or relational datasets with
+support greater than a certain user defined threshold plays an important
+role in many data mining application. However, real-world databases contain
+noise that can make important information ambiguous; resulting in it
+will not appear in the mining result. Therefore, we need a method that
+copes with such variations in an association pattern, which is called a
+fault-tolerant pattern (FT-pattern). For example, coughing, fever, runny
+nose, headache, and sore throat are all signs of catching a cold. But peo
+ple who catch a cold won’t always get all these symptoms at the same
+time, and the rule R: Patients who have at least three of the following
+symptoms {coughing, fever, runny nose, headache, sore throat} are catching
+a cold is more reasonable corresponding to the real-world situation. R
+is fault-tolerant in the sense that it requires matching just part of the data.
+Discovering frequent FT-patterns in muti-dimensional database is
+first proposed in [6]. However, this approach may generate sparse patterns,
+which may contain subpatterns that do not appear frequently. Another
+milestone of FT-pattern mining is [4], in which extending Apriori
+and developing FT-Apriori for frequent FT-pattern mining allows the mining
+out of a complete set of FT-patterns. However, [4] still has the drawbacks
+of Apriori-based algorithms. In response, [5] developed FTP-mine,
+which finds FT-patterns by the concept of pattern growth. [8] uses bit
+vector representation to represent data and developed a vector-based mining
+algorithm. [9] generalized the problem of mining fixed-value FTpatterns
+into relaxation criteria and constraints and proposed to mine only
+statistical information of the corresponding FT-patterns. [1] considers a
+constraint-based mining approach for relevant fault-tolerant formal concept
+mining. The main defect of previous approaches is their definition of
+the number of faults tolerable in a pattern as a fixed number. Defining the
+number of faults tolerable in the patterns as a fixed number of items is not
+objective. For example, the function of a protein is determined by its
+structure but not sequence. It is possible that two proteins of similar function
+have different sequence lengths, e.g., the family of heat shock proteins.
+In this case, it is hard to mine them together using FT pattern mining
+with fixed number of tolerable faults.
+Instead of mining patterns of different lengths while tolerating a
+fixed number of faults, [2] addressed the problem of mining proportional
+FT-patterns in which the number of faults tolerable in the pattern is proportional
+to the pattern length. Moreover, the concept and proposed methods
+are demonstrated in [3] for predicting epitopes of spike proteins of
+SARS-CoV and concludes that the patterns are more concise than that of
+fixed FT-patterns mining for this application. However, the proposed algorithms
+are too violent. Therefore, [7] presents a framework named PFM
+to mine proportional FT-patterns efficiently. The PFM algorithm for mining
+proportional FT-patterns can be regarded as a breadth-first mining
+strategy, and is efficient if the entire bitmap of the database can be loaded
+into memory. However, because PFM generates candidates level by level,
+the bitvectors associated with each candidate should be loaded into
+memory for further checking. Memory swapping is performed when the
+bitvectors can not fit into memory, and it makes the cost of I/O operations
+high. Therefore, to reduce the number of disk I/O operations, a depth-first
+mining strategy is proposed in this paper. The remainder of this paper is
+organized as follows. Section 2 introduces the problem definition and
+preliminaries. Section 3 describes the proposed algorithms in detail. Section
+4 discusses the experimental results and analysis. Conclusions are
+finally drawn in Section 5.

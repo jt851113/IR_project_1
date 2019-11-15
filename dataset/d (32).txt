@@ -1,0 +1,80 @@
+When adapting a centralized architecture to the mobile en-
+vironment, we argue that, while the Event Sources and the
+Event Displayers can reside on a mobile device, the central
+Event Broker server should be placed on a separate com-
+puter in the xed network if possible. Typically an Event
+Source resides near the real world variable it monitors, while
+an Event Displayer resides near the end user (e.g., on a
+PDA). Since in a mobile environment both the information
+providers and the consumers tend to be mobile, the ES and
+the ED are likely to be placed on a mobile device.
+The central EB, however, should reside on a computer sep-
+arate from the ESs or the EDs. There are three reasons
+why the EB should not in general be placed on the same
+device as an ES. Firstly, the EB will likely require a fair
+amount of computing resource for data logging and sub-
+scription matching, while an ES is usually a simple sensor
+device. Secondly, the Event Sources can be autonomous and
+do not allow the users to store their own subscriptions there.
+For example, the ES can be a stock trading center giving out
+stock quotes. Individual investors usually cannot ask these
+sources to monitor a stock condition for them. Finally, the
+EB may need to store a matched event and repeatedly at-
+tempt to resend it to its target as the target has gone oine.
+It is unreasonable to require a mobile Event Source to pro-
+long its connection to the xed network just because the
+event recipient is not connected for the moment.
+Likewise, the EB should be hosted on a separate device from
+an ED as well. The PDA can be powered o or disconnected
+from the network most of the time to conserve battery, mak-
+ing it unsuitable to host the EB, which needs to listen con-
+stantly for new events. Furthermore, the computer hosting
+the EB should be placed in the xed network if possible,
+because otherwise when the central EB is disconnected, the
+whole system is paralyzed.
+Once we gure out where each part of the system resides,
+it would seem that we can simply rely on previous work
+on mobile networking ([16]) to provide us with connectivity
+between the components and to hide the idiosyncrasies of
+mobile communication. However, as we will illustrate next,
+there are issues unique to publish/subscribe in a mobile en-
+vironment that we have to consider.
+Mobile/wireless devices can be frequently disconnected from
+the xed network because they are o (running out of bat-
+tery or turned o to conserve battery), or they cannot be
+contacted (transient wireless communication problems or
+wandering into an area without radio reception etc.). A
+good mobile publish/subscribe system has to deal gracefully
+with both the ES's and the ED's going oine. For example,
+when a user is out of reach, it is reasonable to expect the
+EBS to log and queue the user's events so that they can be
+delivered later when the user comes back online.
+More issues arise when an Event Source is disconnected.
+One option of course is to have the ES queue all the events
+that are generated when it is not connected. Such an op-
+tion may not be feasible, however, as the ES is often a low
+capability device without too much storage. Consequently,
+the ES may have to discard older events once the buer lls
+up.
+Ad-hoc networks pose additional challenges. An ad-hoc net-
+work is formed by wireless devices wanting to talk to each
+other without the benet of a xed network infrastructure.
+Ad-hoc networks are extremely useful in scenarios where a
+natural disaster has wiped out the infrastructure, or where
+rapid deployment is required and an infrastructure is not
+possible, for example in the battleeld.
+The lack of a xed network in ad-hoc networks implies that
+the central EB must also be mobile. Hence we can no longer
+assume that it is always connected. When an Event Source
+wants to publish, it must rst search for an existing EB. If
+one cannot be found, a new EB might have to be elected.
+Likewise, an Event Displayer must periodically poll the EB
+and refresh its subscription information. Otherwise, the old
+EB could have gone out of reach and a new EB elected with-
+out knowing about this ED's subscription. Finally, when
+one EB becomes aware of the existence of another EB (for
+example when two previously partitioned wireless subnets
+come into physical proximity), a merging protocol might
+have to be invoked to combine them into one central EB.
+Alternatively, both could operate in a coordinated fashion
+as discussed in Section 4.

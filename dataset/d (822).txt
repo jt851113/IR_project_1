@@ -1,0 +1,52 @@
+[1] ORiNOCO PC Card (Silver/Gold) Specification:
+http://www.hyperlinktech.com/web/orinoco/-
+orinoco pc card spec.html, 2003.
+[2] S. Adhikari, A. Paul, and U. Ramachandran. D-stampede:
+Distributed programming system for ubiquitous computing. In
+Proceedings of the 22nd International Conference on Distributed
+Computing Systems(ICDCS), Vienna, July 2002.
+[3] M. Bhardwaj and A. Chandrakasan. Bounding the lifetime of
+sensor networks via optimal role assignments. In IEEE
+INFOCOM, 2002.
+[4] A. Boulis, C. C. Han, and M. B. Srivastava. Design and
+implementation of a framework for programmable and efficient
+sensor networks. In The First International Conference on
+Mobile Systems, Applications, and Services(MobiSys), San
+Francisco,CA, 2003.
+[5] E. Cayirci, W. Su, and Y. Sankarasubramanian. Wireless sensor
+networks: A survey. Computer Networks (Elsevier),
+38(4):393–422, March 2002.
+[6] J. S. Heidemann, F. Silva, C. Intanagonwiwat, R. Govindan,
+D. Estrin, and D. Ganesan. Building efficient wireless sensor
+networks with low-level naming. In Symposium on Operating
+Systems Principles, pages 146–159, 2001.
+[7] J. Hill, R. Szewczyk, A.Woo, S. Hollar, D. E. Culler, and K. S. J.
+Pister. System architecture directions for networked sensors. In
+Architectural Support for Programming Languages and
+Operating Systems, pages 93–104, 2000.
+[8] C. Intanagonwiwat, R. Govindan, and D. Estrin. Directed
+diffusion: a scalable and robust communication paradigm for
+sensor networks. In Mobile Computing and Networking, pages
+56–67, 2000.
+[9] Jae-Hwan Chang and Leandros Tassiulas. Energy conserving
+routing in wireless ad-hoc networks. In IEEE INFOCOM, pages
+22–31, 2000.
+[10] D. B. Johnson and D. A. Maltz. Dynamic source routing in ad
+hoc wireless networks. In Imielinski and Korth, editors, Mobile
+Computing, volume 353. Kluwer Academic Publishers, 1996.
+[11] S. R. Madden, M. J. Franklin, J. M. Hellerstein, and W. Hong.
+Tag: a tiny aggregation service for ad-hoc sensor networks. In
+Operating System Design and Implementation(OSDI),
+Boston,MA, Dec 2002.
+[12] Netperf. The Public Netperf Homepage: http://www.netperf.org/,
+2003.
+[13] U. Ramachandran, R. S. Nikhil, N. Harel, J. M. Rehg, and
+K. Knobe. Space-time memory: A parallel programming
+abstraction for interactive multimedia applications. In Principles
+Practice of Parallel Programming, pages 183–192, 1999.
+[14] S. Singh, M. Woo, and C. S. Raghavendra. Power-aware routing
+in mobile ad hoc networks. In Mobile Computing and
+Networking, pages 181–190, 1998.
+[15] E. Zayas. Attacking the process migration bottleneck. In
+Proceedings of the eleventh ACM Symposium on Operating
+systems principles, pages 13–24. ACM Press, 1987.

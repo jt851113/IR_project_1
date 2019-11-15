@@ -1,0 +1,111 @@
+As our rst theoretical contribution, we generalize
+approximate counting sketches to handle summations.
+Given a multi-set of items M = fx1; x2; x3; : : : g where
+xi = (ki; ci) and ci is a non-negative integer, the dis-
+tinct summation problem is to calculate
+When ci is restricted to one, this is exactly the distinct
+counting problem.
+We note that for small values of ci, one might
+simply count ci dierent items based upon ki and
+ci, e.g. (ki; ci; 1); : : : ; (ki; ci; ci), which we denote sub-
+items of (ki; ci). Since this is merely ci invocations of
+the counting insertion routine, the analysis for proba-
+bilistic counting applies. Thus, this approach is equally
+accurate and takes O(ci) expected time. While very
+practical for small ci values (and trivially paralleliz-
+able in hardware), this approach does not scale well
+for large values of c. Therefore, we consider more scal-
+able alternatives for handling large ci values.
+The basic intuition beyond our more scalable ap-
+proach is as follows. We intend to set the bits in the
+summation sketch as if we had performed ci successive
+insertions to an FM sketch, but we will do so much
+more eAciently. The method proceeds in two steps:
+we rst set a prex of the summation sketch bits to
+all ones, and then set the remaining bits by randomly
+sampling from the distribution of settings that the FM
+sketch would have used to set those bits. Ultimately,
+the distribution of the settings of the bits in the sum-
+mation sketch will bear a provably close resemblance to
+the distribution of the settings of the bits in the equiv-
+alent FM sketch, and we then use the FM estimator to
+retrieve the value of the count.
+We now describe the method in more detail. First, to
+set the prex, we observe that it follows from Lemma 1,
+that the rst Ai = blog2 ci??2 log2 log cic bits of a count-
+ing sketch are set to one with high probability after ci
+insertions. So our rst step in inserting (ki; ci) into the
+summation sketch is to set the rst Ai bits to one. In the
+proof of Theorem 2 in [7], the authors prove that the
+case where the rst Ai bits are not all set to one only af-
+fects the expectation of Rn by O(n??0:49). In practice,
+we could correct for this small bias, but we disregard
+it in our subsequent aggregation experiments.
+The second step sets the remaining k ?? Ai bits by
+drawing a setting at random from the distribution in-
+duced by the FM sketch we are emulating. We do so
+by simulating the insertions of items that set bits Ai
+and higher in the counting sketch. First, we say an
+insertion xi reaches bit z of a counting sketch if and
+only if minfj j h(xi; j) = 1g  z. The distribution
+of the number of items reaching bit z is well-known
+for FM sketches. An item xi reaches bit z if and only
+if 80j<z(h(xi; j) = 0), which occurs with probabil-
+ity 2??z. So for a set of ci insertions, the number of
+insertions reaching bit Ai follows a binomial distribu-
+tion with parameters ci and 2??Ai . This leads to the
+following process for setting bits Ai; Ai + 1 : : :k (ini-
+tialized to zero). First, draw a random sample y from
+B(ci; 2??Ai ), and consider each of these y insertions as
+having reached bit Ai. Then use the FM coin-ipping
+process to explicitly set the remaining bits beyond Ai.
+The pseudo-code for this approach is shown in Al-
+gorithm 2, and the analysis of its running time is pre-
+sented next.
+Theorem 4 An element xi = (ki; ci) can be inserted
+into a sum sketch in O(log2 ci) expected time.
+Proof Sketch: Let i denote the number of items cho-
+sen to reach Ai. Setting the rst Ai bits takes O(Ai)
+time and simulating the i insertions takes expected
+O(i) time. The total expected time to insert xi is
+then O(Ai + f(i) + i), where f(i) denotes the time
+to pick i. Thus, the time depends on both i and the
+method used to pick i. By construction,
+Selecting an appropriate method for picking i re-
+quires more care. While there exist many eAcient
+methods for generating numbers from a binomial dis-
+tribution ([14] has a brief survey), these generally re-
+quire oating point operations or considerable mem-
+ory for pre-computed tables (linear in ci). Since exist-
+ing sensor motes often have neither, in Section 4.3.1
+we describe a space-eAcient method that uses no oat-
+ing point operations, uses pre-computed tables of size
+O(c= log2 c), where c is an upper bound on the ci values,
+and individual insertions take time O(log2 ci). Combin-
+ing these results give the stated time bound.
+We note that for small ci values, it may be faster to
+use a hybrid implementation combining the naive and
+scalable insertion functions. Especially for very low ci
+values, the naive insertion function will be faster.
+Theorem 5 The expected value of Rn for sum sketches
+satises E(Rn) = log2('n) + P(log2 n) + o(1); where '
+and P(u) are the same as in Theorem 2.
+Proof: The proof of this theorem follows the proof of
+Theorem 2 since the sum insertion function approxi-
+mates repeated use of the count insertion function. Let
+By the insertion method, the bottom Amax bits of
+S(M) are guaranteed to be set. By construction, the
+remaining bits are distributed identically to those of an
+FM sketch with n distinct items have inserted. Thus,
+the distribution of Rn is the same except for the cases
+when the FM sketch had one of the rst Amax bits
+not set. By Lemma 1, these cases occur with proba-
+bility O(ne??log2 n), so the dierence in the expectation
+is at most (log2 n ?? log2 log n)  O(ne??log2 n), which
+is bounded (loosely) by O(1=n). Therefore, E(Rn)
+for summation sketches is within o(1) of that of FM
+sketches.
+Theorem 6 The variance of Rn for sum sketches, also
+and Q(u) are as dened in Theorem 3.
+Proof: The proof of Theorem 3 is adapted in a similar
+fashion.

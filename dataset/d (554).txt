@@ -1,0 +1,6 @@
+The purpose of our experiments is two-fold: (1) to demonstrate
+the gains obtained by using our algorithms, and (2)
+to provide insight on how the benefit varies with different
+parameters such as number of nodes and the number of
+auxiliary neighbors. We first describe our experimental setup
+and then present the results of our experiments.

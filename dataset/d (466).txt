@@ -1,0 +1,16 @@
+DEFINITION 2.1. A pattern with period  is an array of 
+events       , each of which is either an event in 
+or *, i.e.,          . We say that the th
+position is instantiated if   . For any two patterns
+	         and 	   
+ 
+     
+ of the same
+period , 	 is a superpattern of 	  (	 is a subpattern of 	)
+if 
+   or   
+ , for all     .
+Note that an event can appear at multiple positions in a
+pattern. For example,      is a pattern of period 5
+and its first, second and fifth positions are instantiated. It is also
+a superpattern of     .

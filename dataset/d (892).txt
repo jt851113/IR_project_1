@@ -1,0 +1,13 @@
+Figure 8 shows the average query success rate for different
+methods. Clearly, the flooding approach performs best, as it
+always floods the query to all the neighbors, thus it will not
+miss any results stored in these neighbors. Compared with
+IA and Eureka, we find that IA is a little worse than Eureka
+in 100-node network, while it outperforms Eureka when the
+network size becomes larger. Although the proposed IA approach
+selects one path to forward the query, the IA value
+can effectively capture the information of data resources in
+the network, and forward the query to the most promising
+neighbor. In such a highly dynamic environment, data and
+peers are frequently updated. The higher query success rate
+indicates higher scalability of our approach over Eureka.

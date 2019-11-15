@@ -1,0 +1,70 @@
+We studied how effectively incremental group optimization
+works for each type of query. We measured and compared
+execution time for queries of each type for both the grouping
+and non-grouping approaches.
+Experiment results on type-1 queries
+Experiment 1. (Figure 5.3) C =1000 tuples.
+· Case 1: F = N, i.e. all queries are fired in both approaches.
+The execution time of the non-grouping approach grows
+dramatically as N increases. It cannot be applied to a highly
+loaded system. On the other hand, the grouping approach
+consumes significantly less execution time by sharing the
+computation of the selection operator. It also grows more slowly
+because in a single Type-1 query Tng is much smaller than Tg.
+· Case 2: F = 100, i.e., 100 queries are invoked in the
+grouping approach.
+In the grouping approach, the execution time of Case 2 is almost
+constant when F is fixed. The execution time of the grouping
+approach depends on number of fired queries F, not on the total
+number of installed queries N. The reason is that, although Tg
+increases as N grows, this shared computation is executed only
+once and is a very small portion of total execution time. The
+execution time for the upper queries, which is proportional to
+the number of fired queries F, dominates the total execution
+time. On the other hand, the execution time for the nongrouping
+approach is proportional to N because all queries are
+scheduled for execution.
+Experiment 2. (Figure 5.4) F = N = 2000 queries
+In this experiment we explore the impact of C, the number of
+modified tuples, on the performance of the two approaches. C is
+varied from 100 tuples (about 40K bytes) to 2000 tuples (about
+800K bytes). Increasing C will increase the query execution
+time. For the non-grouping approach, the total execution time is
+proportional to C because the selection operator of every
+installed query needs to be executed. For the grouping approach,
+the execution time is not sensitive to the change of C because
+the increase of Tg only counts for a small percentage of the total
+execution time and the sum of Tng of all fired queries does not
+change because of the predicate’s selectivity.
+Experiment results for Type-2, 3, 4 queries (Figure 5.5, 5.6,
+5.7) C =1000 tuples, F = N
+We discuss the influence of different expression signatures in
+this set of experiments.
+Figure 5.5 and Figure 5.6 show that our group optimization
+works well for various selection predicates. Type-2 queries are
+grouped according to their range selection signature. Type-3
+queries have two signatures. The group optimizer chooses an
+equal predicate to group queries since it is more selective.
+Figure 5.7 shows the results for Type-4 queries. Type-4 queries
+have one selection signature and one join signature. The
+selection operator is pushed below the join operator. Queries are
+first grouped by their selection signature. There are 100 different
+industries in our test data set. The output of the selection group
+is written to 100 intermediate files and one hundred join groups
+are created. Each join group consumes one of the intermediate
+files as its input. The difference between the execution time
+with and without grouping is much larger than in the previous
+experiments because a join operator is more expensive than a
+selection operator.
+5.2.2 Experiment results on mixed queries of Type-1
+and type-3 (Figure 5.8) C =1000 tuples, F = N (N/2
+Type-1 queries and N/2 Type-3 queries)
+Previous experiments studied each type of query separately for
+the purpose of showing the effectiveness of different kinds of
+expression signatures. Our incremental group optimizer is not
+limited to group only one type of queries. Different types of
+queries can also be grouped together if they have common
+signatures. In this experiment, Type-1 queries and Type-3
+queries are grouped together because they have the same
+selection signature. Figure 5.8 shows the performance
+difference between the grouped and non-grouped cases.

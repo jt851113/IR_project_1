@@ -1,0 +1,24 @@
+It has been argued in [14] that a group of sensors (possibly
+of dierent types) is more eective in performing a sens-
+ing task than one powerful sensor. This argument favors a
+sensor network with a large number of sensors. In such a
+sensor network, a group of spatially proximate sensors are
+very likely to have correlated readings. The correlation may
+be spatial, temporal, or spatio-temporal. Also, these three
+types of correlations are not mutually exclusive and they
+may be present in varying degrees in a sensor network. We
+aim to exploit this correlation. We believe that in many
+instances one can predict a sensor's reading based on the
+recent history of readings of the sensors around it and based
+on its own recent history. The sensor need not transmit
+its reading when it can be predicted by the monitoring en-
+tity. This gives us a new paradigm of operation in sensor
+networks. We call this the PREdiction-based MONitoring
+(PREMON) paradigm. The basic paradigm is as follows:
+the base station monitors the reading of sensors and gener-
+ates prediction-models3. It sends these to the appropriate
+sensors. On receiving a prediction-model sensors change
+their behavior | instead of sending an update whenever
+their reading changes, they now send an update only when
+their readings dier from the one predicted by the prediction
+model.

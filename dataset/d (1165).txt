@@ -1,0 +1,22 @@
+Our goal is to develop an Internet-scale continuous query system
+using group optimization based on the assumption that many
+continuous queries on the Internet will have some similarities.
+Previous group optimization approaches consider grouping only
+a small number of queries at the same time and are not scalable
+to millions of queries. We propose a new “incremental
+grouping” methodology that makes group optimization more
+scalable than the previous approaches. This idea can be applied
+to very general group optimization methods. We also propose a
+grouping method using a query-split scheme that requires
+minimal changes to a general purposed query engine. In our
+system, both timer-based and change-based continuous queries
+can be grouped together for event detection and group
+execution, a capability not found in other systems. Other
+techniques to make our system scalable include incremental
+evaluation of continuous queries, use of both pull and push
+models for detecting heterogeneous data source changes and a
+caching mechanism. Preliminary experiments demonstrate that
+our incremental group optimization significantly improves the
+execution time comparing to non-grouping approach. The
+results of experiments also show that the system can be scaled to
+support very large number of queries.

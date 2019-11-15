@@ -1,0 +1,31 @@
+We will concentrate on unigram language models as peer
+profiles in the experiments of this work. Starting from this
+setting, the need for compactness of peer profiles implies that
+it may not be possible to store all the index terms occurring
+in a peer’s document collection in its profile. Instead, we
+need to select a subset of all those terms, in a way that still
+allows the routing algorithm to predict which peers are most
+likely to offer the desired content w.r.t. a given query. But
+even using the most elaborate selection of profile terms, we
+will inevitably lose information as profiles get smaller.
+It is the aim of this work to explore this trade-off:
+‧ Starting from simple profiling and matching techniques,
+the first question is: how does the degradation in retrieval
+effectiveness correlate with profile compression?
+That is, how many terms can we prune from a profile
+and still have acceptable results?
+‧ In a second stage, the initial profiling and matching
+strategies will be refined: techniques for both learning
+better profiles from query streams and refining queries
+by query expansion will be compared against each other.
+When applying techniques such as query expansion, new
+challenges arise in a distributed setting: as there is no global
+view on the data, we cannot access all the documents of a
+distributed collection for performing e.g. pseudo feedback.
+The rest of this paper is organised as follows: section 2
+presents related work that has been done in the area of resource
+description and selection both in DIR and P2PIR.
+Section 3 defines the techniques that will be compared to
+each other. The experimental setting used to perform this
+comparison is described in section 4; section 5 presents the
+results of this comparison before section 6 summarises them.

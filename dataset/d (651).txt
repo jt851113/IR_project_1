@@ -1,0 +1,10 @@
+One of the core ideas behind our work is that dupli-
+cate insensitive sketches will allow us to leverage the
+robustness typically associated with multi-path rout-
+ing. We now present some of the theory behind such
+sketches and extend it to handle more interesting ag-
+gregates. First, we present details of the FM sketches
+of [7] along with necessary parts of the theory behind
+them. Then, we generalize these sketches to handle
+summations, and show that they have almost exactly
+the same accuracy as FM sketches.

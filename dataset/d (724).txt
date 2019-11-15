@@ -1,0 +1,74 @@
+[1] R. Agrawal and E. L.Wimmers. A framework for expressing
+and combining preferences. InW. Chen, J. F. Naughton, and
+P. A. Bernstein, editors, Proceedings of the 2000 ACM SIGMOD
+International Conference on Management of Data,
+May 16-18, 2000, Dallas, Texas, USA, volume 29, pages
+297–306. ACM, 2000.
+[2] R. Alonso, D. Barbar’a, and H. Garcia-Molina. Data caching
+issues in an information retrieval system. TODS, 15(3):359–
+384, 1990.
+[3] M. Altinel and M. J. Franklin. Efficient filtering of xml documents
+for selective dissemination of information. In A. E.
+Abbadi, M. L. Brodie, S. Chakravarthy, U. Dayal, N. Kamel,
+G. Schlageter, and K.-Y. Whang, editors, VLDB 2000, Proceedings
+of 26th International Conference on Very Large
+Data Bases, September 10-14, 2000, Cairo, Egypt, pages
+53–64. Morgan Kaufmann, 2000.
+[4] N. J. Belkin andW. B. Croft. Information filtering and information
+retrieval: Two sides of the same coin? Communications
+of the ACM, December 1992, 35(12):29–38, December
+1992.
+[5] L. Bright and L. Raschid. Using latency-recency profiles
+for data delivery on the web. In VLDB 2002, Proceedings of
+the 28th International Conference on Very Large Databases,
+August, 2002, Hong Kong, China, 2002.
+[6] D. Carney, S. Lee, and S. Zdonik. Scalable applicationaware
+data freshening. In Proceedings of 18th International
+Conference on Data Engineering (ICDE), 2002. To appear.
+[7] U. Cetintemel, M. J. Franklin, and C. L. Giles. Self-adaptive
+user profiles for large-scale data delivery. In Proceedings
+of the 16th International Conference on Data Engineering,
+28 February - 3 March, 2000, San Diego, California, USA,
+pages 622–633. IEEE Computer Society, 2000.
+[8] W. Chen, J. F. Naughton, and P. A. Bernstein, editors. Proceedings
+of the 2000 ACM SIGMOD International Conference
+on Management of Data, May 16-18, 2000, Dallas,
+Texas, USA, volume 29. ACM, 2000.
+[9] M. Cherniack, M. J. Franklin, and S. Zdonik. Expressing
+user profiles for data recharging. IEEE Personal Communications:
+Special Issue on Pervasive Computing, August
+2001.
+[10] M. Cherniack, M. J. Franklin, and S. Zdonik. Profile-driven
+data management. Technical report, Brandeis University
+Department of Computer Science, December 2001.
+[11] J. Cho and H. Garcia-Molina. Synchronizing a database to
+improve freshness. In Chen et al. [8], pages 117–128.
+[12] P. W. Foltz and S. T. Dumias. Personalized information delivery:
+an analysis of information filtering methods. Communications
+of the ACM, December 1992, 35(12):51–60,
+December 1992.
+[13] Isaserver faq. http://isaserver.org.
+[14] J. J.Burg, J. Ainsworth, B. Casto, and S.-D. Lang. Experiments
+with the ’oregon trail knapsack problem’.
+[15] Q. Lu, M. Eichstaedt, and D. A. Ford. Efficient profile
+matching for large scale webcasting. In 7th International
+WWW Conference, April 1998, 1998.
+[16] http://www.mapquest.com.
+[17] http://www.mediametrix.com.
+[18] D. A. Menasc and V. A. Almeida. Capacity Planning for
+Web Performance. Prentice Hall, 1998.
+[19] B. M. Oki, M. Pflgl, A. Siegel, and D. Skeen. The information
+bus - an architecture for extensible distributed systems.
+Symposium on Operating Systems Principles (SOSP), pages
+58–68, 1993.
+[20] C. Papadimitriou. Computational Complexity. Addison-
+Wesley, 1994.
+[21] S. Ramakrishnan and V. Dayal. The pointcast network. In
+L. M. Haas and A. Tiwary, editors, SIGMOD 1998, Proceedings
+ACM SIGMOD International Conference on Management
+of Data, June 2-4, 1998, Seattle, Washington, USA,
+page 520. ACM Press, 1998.
+[22] E. Rich and K. Knight. Artificial Intelligence. McGraw-Hill,
+1991.
+[23] T. W. Yan and H. Garcia-Molina. The sift information dissemination
+system. TODS, 24(4):529–565, 1999.

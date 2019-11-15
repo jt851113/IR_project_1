@@ -1,0 +1,52 @@
+REFERENCES
+[1] L. Adamic and E. Adar, “How to search a social network,” Social
+Networks, vol. 27, no. 3, pp. 187–203, July 2005.
+[2] G. Kossinets and D. J. Watts, “Empirical analysis of an evolving social
+network,” Science, vol. 311, no. 5757, pp. 88–90, January 2006.
+[3] L. Backstrom et al., “Group formation in large social networks: membership,
+growth, and evolution,” in KDD’06.
+[4] R. Kumar et al., “Structure and evolution of online social networks,” in
+KDD’06.
+[5] L. Sweeney, “K-anonymity: a model for protecting privacy,” International
+Journal on uncertainty, Fuzziness and Knowledge-based System,
+vol. 10, no. 5, pp. 557–570, 2002.
+[6] A. Machanavajjhala et al., “L-diversity: Privacy beyond k-anonymity,”
+in ICDE’06.
+[7] E. Hazan et al., “On the complexity of approximating k-dimensional
+matching,” in Approximation, Randomization, and Combinatorial Optimization.
+Algorithms and Techniques, 2003, pp. 83–97.
+[8] P. Samarati, “Protecting respondents’ identities in microdata release,”
+IEEE Transactions on Knowledge and Data Engineering, vol. 13, no. 6,
+pp. 1010–1027, 2001.
+[9] P. Samarati and L. Sweeney, “Generalizing data to provide anonymity
+when disclosing information,” in PODS’98.
+[10] X. Xiao and Y. Tao, “Personalized privacy preservation,” in SIGMOD’
+06.
+[11] S. Wasserman and K. Faust, Social Network Analysis. Cambridge
+University Press, 1994.
+[12] L. Backstrom et al., “Wherefore art thou r3579x?: anonymized social
+networks, hidden patterns, and structural steganography,” in WWW’07.
+[13] L. Getoor and C. P. Diehl, “Link mining: a survey,” ACM SIGKDD
+Explorations Newsletter, vol. 7, no. 2, pp. 3–12, 2005.
+[14] D.-W. Wang et al., “Privacy protection in social network data disclosure
+based on granular computing,” in Proceedings of the 2006 IEEE
+International Conference on Fuzzy Systems, 2006, pp. 997–1003.
+[15] M. Hay et al., “Anonymizing social networks,” University of Massachusetts
+Amherst, Tech. Rep. 07-19, 2007.
+[16] E. Zheleva and L. Getoor, “Preserving the privacy of sensitive relationships
+in graph data,” in PinKDD’07.
+[17] M. R. Garey and D. S. Johnson, Computers and Intractability: A Guide
+to the Theory of NP-Completeness. New York, NY, USA: W. H.
+Freeman & Co., 1979.
+[18] T. H. Cormen et al, Introduction to Algorithms, Second Edition. MIT
+Press and McGraw-Hill, 2002.
+[19] X. Yan and J. Han, “gspan: Graph-based substructure pattern mining,”
+in ICDM’02.
+[20] M. Faloutsos et al., “On power-law relationships of the internet topology,”
+in SIGCOMM’99.
+[21] J. Xu et al., “Utility-based anonymization using local recoding,” in
+KDD’06.
+[22] X. Yan et al., “Graph indexing: a frequent structure-based approach,” in
+SIGMOD’04.
+[23] D. Chakrabarti et al., “R-mat: A recursive model for graph mining,” in
+SDM’04.

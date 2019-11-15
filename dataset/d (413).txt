@@ -1,0 +1,26 @@
+Packet losses are quite common on wireless links. They are
+especially common in sensor networks because of the prim-
+itive channel encoding used. We briey look at their eect
+on the sensors operating in PREMON paradigm.
+When a prediction is lost on the wireless link, the sensor
+continues to operate in default mode. The only eect of this
+loss is that the sensor will end up transmitting its reading
+even though it was expected/predicted at the base station.
+A more interesting case occurs when updates are lost while a
+prediction is active at a sensor. Suppose that a prediction is
+active at a sensor and the sensor's reading does not match
+with the predicted value. This would cause the sensor to
+send an update to the base station. If this update is lost
+on the wireless link, the base station would wrongly assume
+that the sensor's reading conformed with the prediction |
+a false positive. We believe that this problem is no worse
+than the one caused by loss of updates (from sensors oper-
+ating in default mode) on the wireless link, which causes the
+base station to not know what is going on in the sensor eld.
+Since it is quite common to have group of sensors in close
+proximity in sensor networks, these problems caused by loss
+of updates will be controlled by the inherent correlation in
+their readings. As long as at least one of the updates of sen-
+sors from a group monitoring the same phenomenon reaches
+the base station, we will be able to eectively monitor the
+sensor eld despite channel errors

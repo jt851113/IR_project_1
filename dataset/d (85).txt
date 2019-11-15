@@ -1,0 +1,14 @@
+I plan address each of the above research tasks in the next 6 - 9 months, with the goal of completing my thesis
+in the Spring or Summer of 2003. The following timeline maps out the schedule of research:
+ May - June, 2002: Complete sensor-side software with User-Defined Functions, Schema API, and Catalog
+Server (with Wei Hong.)
+ June 2002: Submit ICDE paper on streaming semantics (with Sirish Chandrasekaran).
+ June - August, 2002: Integrate with Telegraph (or its successor), build sensor proxy with some initial set
+of policies, deploy lab monitoring application, and collect data on usage patterns in the network (withWei
+Hong, Intel Berkeley, and Telegraph research group.)
+ August - November, 2002: Integrate with historical data interface of Telegraph. Assuming Telegraph
+engine implementation goes as planned, this should be straightforward (with Telegraph research group.)
+ November 2002: SIGMOD paper on real-world measurements from sensor-networks.
+ August - January, 2003: Explore and implement mechanisms for handling resource constraints.
+ February, 2003: VLDB paper on resource constraints.
+ February - May 2003: Complete Dissertation.

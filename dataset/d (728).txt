@@ -1,0 +1,123 @@
+The default privacy settings for OSNs are permissive in allowing
+strangers in an OSN to access user's information. We
+now examine the extent to which users change their privacy
+to more restrictive settings. A 2005 study found that only
+1.2% of college Facebook users at CMU changed the searchability
+of their thumbnail prole (rst row in Table 1) and
+only 0.06% changed their prole visibility (second row) [7].
+More recently, it was reported that 75% of 200 users in the
+Facebook London regional network have their full prole
+viewable by other users in the network [14].
+We studied privacy settings for Facebook and MySpace,
+the two dominant OSNs, as well as Bebo and Twitter for
+which obtaining settings was available to us. A crawl carried
+out for a dierent study [9] of over 67000 Twitter users found
+that more than 99% had retained the default privacy setting
+whereupon their name, list of followers, location, Web site,
+and biographical information are visible.
+For MySpace, we examined the percentage of users that
+allowed their prole to be viewable|the default setting. A
+user in MySpace is assigned a numeric userid that is used for
+viewing their prole (both the thumbnail and greater portion).
+We generated 5000 random numeric userids in an observed
+range of valid userids and in February 2008 retrieved
+their corresponding user proles. We obtained prole information
+for 3851 valid userids, of which 79% (3046) of users
+retained their default setting that their prole, friends, comments
+and user content were viewable.
+We studied Bebo likewise, but instead of random userids
+we examined the proles of users who were members of interest
+groups within Bebo. Again in February 2008, we found
+80% of the Bebo users we examined allowed their prole,
+friends, comments and user content to be viewable.
+We took a dierent approach to study Facebook, using
+its 506 regional networks (circa April 2008) that represent
+geographical areas. We did this because Facebook restricts
+public prole viewing to users in the same network and there
+are fewer controls on who can join a regional network, although
+a user can only be a member of one regional network
+at a given time. In the U.S., the 272 regional networks
+correspond to cities but often they include users who may
+live nearby. Outside the U.S., the 234 regional networks
+correspond to cities in Canada and U.K., but to countries
+elsewhere. Table 2 shows the 20 U.S. and Table 3 the 18
+non-U.S. regional networks studied during April 2008.
+Our choice of regional networks was done to meet three
+criteria: rst we wanted both large and small regional networks
+in terms of number of users; second we sought some
+degree of geographical diversity in the U.S.; and third we
+tried for linguistic and cultural diversity in the non-U.S. regions.
+We began with a four-part size-based separation and
+then chose within each size range cities (for U.S.) and countries
+(for non-U.S) balanced by size as well as geographic
+(for U.S.) and linguistic/cultural diversity (for non-U.S.).
+Although our sample may not be truly representative of the
+global community of Facebook users, we believe it represents
+a broad cross-section of regional networks.
+We used the random network browsing feature of Facebook
+which returns thumbnails for up to ten random users
+on each retrieval. All retrievals were made by an over 18
+user who is a member of the regional network being tested.
+Along with the thumbnail for each user, the search returns
+HTML links to view the prole and view friends of the user,
+if the user's privacy setting allowed it. Based on default settings,
+viewing the prole is allowed for all users in the same
+network while viewing of friends is allowed for all Facebook
+users. We made 200 successive retrievals for each regional
+network; up to ten users are returned each time. Users who
+have changed their thumbnail privacy setting to not be viewable
+by their network will not be found by this approach,
+but [7] found only 1.2% had changed this setting. Due to
+the repeated random sampling duplicates occurred and were
+eliminated in the analysis. We also eliminated cases where
+viewing proles of users apparently under 18 (surmised if a
+high school student had not yet graduated) were disallowed
+because of Facebook's restriction.
+Our 20 U.S. regional networks and their privacy settings
+results are listed in Table 2 in decreasing order of the number
+of network users as reported by Facebook. All results
+represent at least 1600-1700 users after elimination of duplicate
+entries. This sample size results in a 2-2.5% error
+margin with a 95% condence level.
+The results in Table 2 show a negative correlation between
+network size and percentage of users with viewable proles
+ranging from 53% for Chicago to 84% for Casper with a
+strong linear correlation coecient of r = ??0:88. Similarly
+the percentage of users who allow their friends to be viewed
+is even higher and also shows a negative correlation with
+network size at r = ??0:85. We do not know the reason
+for this strong negative correlation without surveying user
+attitudes, but hypothesize that users in smaller networks are
+less concerned in making private information available.
+We used the same methodology to study results for non-
+U.S.-based regional networks. The results, shown in Table
+3, show a similar negative correlation with network size
+as found in the U.S. results, with r = ??0:80 for viewable
+proles and r = ??0:86 for viewable friends. However it is
+interesting that the correlation still holds across the many
+cultures that these networks represent. The London value
+of 51% of users with a viewable prole is lower than what
+had been reported in a smaller study last year [14].
+compared to their list of friends. We say apparently because
+these two settings are not set in the same place within
+the Facebook user interface and so dierences may be due to
+interface issues. As shown in Table 1, another privacy control
+setting in Facebook determines who is allowed to view
+a user's Wall of comments. Instead of being available as a
+separate setting, it is a subset of the View Prole setting|so
+it can only be applied as a further restriction. We examined
+this setting for a portion of the U.S.-based regional networks
+in our study. In the New York region we found 79% of those
+with a viewable prole (42% of all users) allowed their Wall
+to be viewable to anyone in the network. It was 83% (53%)
+for Seattle and 95% (73%) for theWorcester region. A user's
+Wall is thus the most protected privacy bit in Facebook, although
+this is necessarily so by its inclusion within the View
+Prole setting for a user.
+In summary our results show that while there is now some
+use of privacy settings by OSN users, there is still a signi
+cant portion of OSN users who have not changed their
+permissive settings and allow unknown users to view private
+bits of information. We did nd a consistent negative correlation
+between the use of privacy settings and network size
+across both US and non-US-based regional networks.

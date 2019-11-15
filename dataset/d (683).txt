@@ -1,0 +1,62 @@
+Update Cost with Fixed Error Tolerances: We execute
+the update protocol while fixing the error bounds
+which are initially evenly distributed among clusters and
+sensors. The aggregated result as seen at the AP is shown
+in figure 5 in which it is compared to the real aggregate
+that would result from precise data aggregation. We can
+see that the value being observed is within the specified
+error bound of the real result. An accuracy boost is observed
+periodically due to the violation of lower error
+bound, which is decided by the fact that the approximate
+aggregate tends to be smaller than the real aggregate since
+sensor values are generally increasing. Figure 6 shows
+(after a warm-up period) the update costs for each round
+with different error tolerances. We can see that the larger
+the error tolerance is, the more the savings. In our data
+setup, we achieve around 50% savings on communication
+cost with an absolute error tolerance of 10 for each
+sensor. We also observe that the cost in each round exhibits
+a pattern, with a few low costs followed by a high
+cost. This is due to the fact the protocol tends to cost less
+for a couple of rounds when the error bounds on clusterheads
+are not violated. But when the local adjustment of
+default values can not catch up with the increase of the
+aggregated sensor values, a long range communication
+to the AP is activated, which in turn results in a peak in
+communication cost.
+In addition to linearly increasing data, we also studied
+update cost for constant data with random noise. The
+results (which are not shown due to space limit) confirm
+our early observation that under random noise scenario,
+noise values tend to cancel each other out and the cost of
+updating is fairly low.
+Performance of Error Tolerance Adjustment: We
+simulate dynamic behavior in sensor values by setting
+different intervals ( = 1:2; 1:8; 2:4) when choosing
+measurements for sensors in the three clusters. This
+cause measurements of some clusters to be very active
+( = 2:4), and some to be less active ( = 1:2). We
+first choose different rth and  values used in the error
+adjustment. The resulting cost for each round is shown
+in figure 7. Our cost evaluation is conservative since
+we assume control packets, which usually are smaller,
+are of the same size as data packets. Figure 8, 9, 10,
+and 11 show the update frequencies and cluster error tolerances
+of each cluster-head(the adjustment is activated
+at round 100). Note that in the figures, the three fre-
+frequency
+() series correspond to the three clusters
+().
+As shown by the figures, the adjustment causes error
+tolerances to deviate fromthe initial uniform setting, with
+larger error bounds assigned to cluster with more active
+measurement values. And as a result, the update frequencies
+get closer to each other in the later rounds of aggregation.
+When the error tolerance is non-zero, the overall
+cost in each round as shown in figure 7 is significantly
+reduced as compared with figure 6. We can also see the
+effect of parameter values on the performance of error
+adjustment. Figure 8 and 9 show that the frequencies are
+adjusted faster with a smaller  value. Figures 10 and
+11 show that smaller rth value causes error bound adjustment
+to be more sensitive to fluctuations in data values.

@@ -1,0 +1,151 @@
+In this section, we discuss some research achievement in mining
+interesting patterns involving infrequent event(s) in long
+data sequences. As we mentioned in the previous section,
+the support (number of occurrences) has been widely used as
+the metric to identify the significant patterns from the rest
+[9; 10]. A qualified pattern in the support model must occur
+sufficient number of times. In some applications, such a
+model is proved to be very meaningful and important. However,
+in some other applications, the number of occurrences
+may not represent the significance of a pattern. Consider
+the following examples.
+‧ Computational Biology. A human being chromosome
+consists of a sequence of genes. Researchers are interested
+in gene expressions (i.e., a portion of gene sequence)
+which are statistically significant rather than
+gene expressions that occur frequently. The statistical
+significance of a gene expression is defined as how likely
+such a gene combination would occur in an equivalent
+random data set [5]. In other words, we want to find
+the gene expressions that have very low probability to
+occur by chance, but actually occur in some chromosome.
+It is obvious that a statistically significant gene
+expression may not necessarily occur frequently, thus,
+the support metric is not an appropriate measurement
+of the significance of a gene expression.
+Web server load. Consider a web server cluster consisting
+of 5 servers. The workload on each server is
+measured by 4 ranks: low, relatively low, relatively
+high, and high. Then there are 45 = 1024 different
+events, one for each possible combination of server
+states. Some preliminary examination of the cluster
+states over time might show that the state fluctuation
+complies with some periodic behavior. Obtaining such
+knowledge would be very beneficial for understanding
+cluster's behavior and improving its performance. Although
+the high workload on all servers may occur at
+a much lower frequency than other states, patterns involving
+it may be of more interests to some system
+administrators.
+Earthquake. Earthquakes occur very often in California.
+It can be classified by its magnitude and type.
+Scientist may be interested in knowing whether there
+exists any inherent seismic period so that prediction
+can be made. Note that patterns involving big earthquake
+is much more valuable even though it occurs at
+a much lower frequency than smaller ones.
+In the above examples, we can see that users may be interested
+in not only the patterns with high occurrences, but
+also the patterns that do not occur frequently by chance
+as well. A large number of occurrences of an "expected"
+frequent pattern sometimes may not be as interesting as a
+few occurrences of an "expected" rare pattern. The support
+model is not ideal for these applications because, in
+the support model, the occurrence of a pattern carries the
+same weight (i.e., 1) towards its significance, regardless of its
+likelihood of occurrences. Intuitively, in above applications,
+the occurrence of a rare pattern should accumulate more
+weights/significance than a frequent pattern. To address
+this problem, we propose a new model in [18] to characterize
+the statistically significant patterns instead of frequent
+patterns.
+The significance metric of an occurrence of a pattern should
+have the following properties. (1) The significance of an
+occurrence is anti-monotonic with respect to the likelihood
+that a pattern may occur by chance (or by prior knowledge).
+(2) The metric should have some physical meaning, i.e., not
+arbitrary created. It is fortunate that the information metric
+[4] which is widely studied and used in the communication
+field can fulfill both requirements. Intuitively, information
+is a measurement of how likely a pattern will occur or the
+amount of "surprise" when a pattern actually occurs. If
+a pattern is expected to occur frequently based on some
+prior knowledge or by chance, then an occurrence of that
+pattern carries less information. Thus, we use information
+as the measure of significance for an occurrence of a pattern.
+The information gain metric is introduced to represent the
+accumulated information of a pattern in an event sequence.
+We refer to this model as the information model in [18].
+The information model is different from the support model.
+For a given minimum information gain threshold, let ~ be
+the set of patterns that satisfy this threshold. Under the
+support model, in order to find all patterns in ‧ when
+event occurrence frequencies are vastly different, the minimum
+support threshold has to be set very low. A major
+problem could rise from this: too many patterns discovered.
+Table 1 shows a comparison between the support model and
+the information model. The example sequences are constructed
+from real traces. In Table 1, two traces (Scour and
+IBM traces) are used. Scour is a web search engine that is
+specialized for multimedia contents. The web URL of the
+Scour search engineer is "http://www.scour.net". The scour
+servers consist of a cluster of machines. Every five minutes,
+a distributed sensor records the CPU utilization of every
+node and the average is taken as the global CPU utilization
+level. We discretize the global CPU utilization level into
+events, event A stands for the utilization level between 0
+and 0.05, B stands for the utilization level between 0.05 and
+0.1, and so on. The scour trace consists of 28800 occurrences
+of 19 events (100 days). The event that corresponding to the
+utilization between 0.95 and 1 does not occur in the trace.
+The IBM Intranet traces consist of 160 critical nodes, e.g.,
+file servers, routers, etc., in the IBM T. J. Watson Intranet.
+Each node issues a message in response of certain situation,
+e.g., CPU saturation, router interface down, etc. There axe
+total 20 types of messages. We treat a certain message from
+a particular node as a distinct event, thus there are total 500
+distinct events in the trace because a certain type of node
+may only send out 4 or 5 types of messages. The IBM Intranet
+trace consists of 10,000 occurrences of the events. By
+applying Infomation model on this trace, we found some statistically
+significant patterns that are also interesting. For
+example, the pattern (nodea_fail,., nodeb_saturated, *) has
+the eighth highest information gain. This pattern means
+that a short time after a router (nodea) fails, the CPU on
+another node (nodeb) is saturated. Under a thorough investigation,
+we found that nodeb is a file server and after nodea
+fails, all requests to some files are sent to nodeb, thus causes
+the bottleneck.
+In order to find the pattern with most information gain, the
+support threshold has to be set at 0.000234 and there are
+over 16,000 satisfied patterns in one sequence. It is obvious
+that the support threshold has to be set very low to
+discover a small number of patterns with high information
+gain. This means that the patterns with most information
+gain are buried in a sea of patterns with relatively low information
+gain. This could be a large burden for the end user
+to distinguish the significant patterns (i.e., patterns with
+most information gain) from the rest. In addition, since a
+large number of patterns has to be discovered, the support
+model may yield an inefficient algorithm.
+Although the information gain is a more meaningful metric
+for the problems addressed previously, it does not preserve
+the downward closure property (as the support does).
+For example, the pattern (al, a2) may have enough information
+gain while both (at, *) and (*,a2) do not. We cannot
+take advantage of the standard pruning technique (e.g.,
+Apriori algorithm) developed for mining association rules
+[1; 3; 11] and temporal patterns [2; 7; 13]. Our observation
+that the subadditivity property (where the information
+gain of (al,a2) can not exceed the summation of that of
+(al, *) and (*, a2)) is still preserved by the information gain
+motivates us to devise a recursive algorithm as the core of
+our pattern discovery tool, InfoMiner [18]. More specifically,
+the InfoMiner uses a depth-first, projection-based approach
+that starts from the patterns with only one frilled position
+and then proceeds to more complicated patterns gradually,
+and in the mean time utilizes the subadditivity property to
+continuously refine the candidate event list associated with
+each yet-open position in the pattern. It has been demonstrated
+in [17] that the response time of InfoMiner is linearly
+proportional to the length of the input sequence.

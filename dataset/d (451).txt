@@ -1,0 +1,8 @@
+Definition 2.6 Given a pattern P with period and a se-
+quence D of N (N>=1)events: d1,d2,....,dN, the 
+support of P within D is the number of subsequences
+that support P.
+Intuitively, the event sequence can be viewed as a list of
+segments, each of which consists of  contiguous events. There
+would be full segments, among which the segment that
+matches will count for the support of P.

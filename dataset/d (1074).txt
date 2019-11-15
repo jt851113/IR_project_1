@@ -1,0 +1,32 @@
+We consider k-dominant skyline query problem and present a Sort-Filtering
+method.We demonstrate that our method is easy to compute and can be used for
+high dimensional large datasets. Performance evaluations show the superiority
+of the proposed method against the OSA, TSA and SRA algorithms.
+k-Dominant skyline reduces the number of interesting objects returned by
+skyline. But sometimes the number of k-dominant skyline objects can still be
+large when k is not sufficiently small. If k is too small, no (or few) k-dominant
+skyline objects are returned. Though our efficient computation allows us to compute
+k-dominant objects for various k, proper guide for choosing the right value
+of k is an open problem.
+Acknowledgements
+This work was supported by KAKENHI (19500123) and Md. Anisuzzaman Siddique
+was supported by the scholarship of MEXT Japan.
+References
+1. Xia, T., Zhang, D., Tao, Y.: On Skylining with Flexible Dominance Relation. In:
+Proceedings of ICDE, Mexico, pp. 1397–1399 (2008)
+2. Borzsonyi, S., Kossmann, D., Stocker, K.: The Skyline Operator. In: Proceedings of
+ICDE, Germany, pp. 421–430 (2001)
+3. Kossmann, D., Ramsak, F., Rost, S.: Shooting Stars in the Sky: An Online Algorithm
+for Skyline Queries. In: Proceedings of VLDB, China, pp. 275–286 (2002)
+4. Chomicki, J., Godfrey, P., Gryz, J., Liang, D.: Skyline with Presorting. In: Proceedings
+of ICDE, India, pp. 717–719 (2003)
+5. Papadias, D., Tao, Y., Fu, G., Seeger, B.: Progressive Skyline Computation in
+Database Systems. ACM Transactions on Database Systems 30(1), 41–82 (2005)
+6. Chan, C.Y., Jagadish, H.V., Tan, K.-L., Tung, A.K.H., Zhang, Z.: Finding k-
+Dominant Skyline in High Dimensional Space. In: Proceedings of ACM SIGMOD,
+USA, pp. 503–514 (2006)
+7. Fagin, R., Lotem, A., Naor, M.: Optimal Aggregation Algorithms for Middleware.
+In: ACM PODS, USA, pp. 102–113 (2001)
+8. Kontaki, M., Papadopoulos, A.N., Manolopoulos, Y.: Continuous k-Dominant Skyline
+Computation on Multidimensional Data Streams. In: Proceedings of ACM SAC,
+Brazil, pp. 16–20 (2008)

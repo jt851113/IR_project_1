@@ -1,0 +1,28 @@
+In this paper, we have studied the problem of discovering
+association rules that display regular cyclic variation
+over time. Information about such variations will allow
+marketers to better identify trends in association rules and
+help better forecasting. By exploiting the relationship between
+cycles and large itemsets, we identified optimization
+techniques that allow us to minimize the amount of
+wasted work performed during the data mining process.
+We demonstrate the usefulness of these techniques through
+an extensive experimental study. The study showed that
+performance benefits ranging from 5% to several hundred
+percent can be obtained through the use of the optimizations
+when compared to the more straightforward approach.
+Recently, we have explored, in [RMS97], the integration
+of calendars into an association rule mining framework.
+This lets us consider rules like, “
+
+, the first working
+day of every month.” In [RMS97], we also address the
+problem of approximate matching, which relaxes the rather
+rigid definition of when a cycle belongs to an association
+rule. Interesting open problems include the handling of
+multiple time units (like hours, weeks, days, etc.) simultaneously
+and efficiently, integrating cycles and calendars
+into the numeric, rather than the boolean domain handled
+by the association rules in this paper.
+Acknowledgements: We would like to thank the
+anonymous referees for their helpful comments on the paper

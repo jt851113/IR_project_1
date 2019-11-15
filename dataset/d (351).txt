@@ -1,0 +1,74 @@
+In order to demonstrate the feasibility and efficiency of our approach,
+we have developed a simulation environment covering all
+the intermediate phases of SON generation (Section 3) and searching
+(Section 4). The simulator is developed in Java and all experiments
+were performed on Pentium IV commodity computers. The
+cost of constructing the semantic overlay hierarchy is comparable
+to DESENT construction, which was analyzed and shown to be acceptable
+in [6], and will due to space constraints not be discussed
+further in this paper.
+The initial P2P network topology used in the experiments con
+sists
+of NP interconnected peers. We used the GT-ITM topology
+generator2 to create well-connected random graphs of peers with
+a user-specified average connectivity. We used two network setups,
+1000 (small) and 5000 (large) peers, to study the scalability
+of our approach with network size. Different topology types, such
+as power-law topologies, give similar results, due to the fact that
+the underlying topology only affects the zone creation phase.
+As for the peers’ content, we used two document collections in
+our experiments: 1) a subset of GOV23 consisting of 1,000,000
+randomly selected documents, and 2) Reuters Corpus4 (810,000
+articles of news stories). The conclusions that can be drawn from
+experimental results from using the sets are mostly similar, so due
+to space constraints we will in this paper only present results from
+GOV2 except when there is a siginificant difference. Unless stated
+explicitly, results discussed are from using GOV2.
+The experimental methodology consists of the following steps:
+1) distribution of documents to peers, 2) local feature extraction and
+clustering on each peer, 3) SON creation, as outlined in Section 3.2,
+4) adaptive clustering, and 5) query processing for P2P similarity
+search.
+Regarding document distribution to peers we performed the distribution
+according to document’s URL, so each peer is assigned
+documents from a small number of web sites. We performed local
+feature extraction using the MC toolkit, while for local clustering
+Gmeans is used [5].
+We generated a query workload by randomly choosing 100 documents
+from each collection under concern. These documents are
+equivalent to queries of the form: "given document X, find the top-k
+similar documents from the collection". We capitalize on the cosine
+similarity measure and we assume a similarity threshold Ts to
+determine which documents are considered similar to the query.
+In the absence of relevance judgments for such queries, we need
+to determine the results returned by a centralized similarity search
+mechanism that employs the same distance function as in our approach.
+Thus we first evaluate the queries in a centralized setting.
+These results are considered the correct results for each query and
+they are used as a baseline. Ideally, the aim for the SON-based approach
+is to achieve exactly the results retrieved by a centralized
+mechanism.
+We assess the clustering quality (in terms of clusters’ separation)
+by computing the average pairwise cluster similarity, i.e. for each
+pair of clusters compute the similarity and take the average of all
+values. Low values indicate that clusters are well-separated. As
+regards retrieval quality, we measure:
+‧ Recall, i.e., the fraction of the documents that are relevant to
+the query that are successfully retrieved.
+‧ Recall@K. In our context, Recall@K is the fraction of the
+totalK most relevant documents that a user found after scanning
+the best K retrieved documents.
+‧ Precision@K. Precision is the fraction of the documents retrieved
+that are relevant to the user’s information need. In
+our context, Precision@K is computed considering only of
+the best K retrieved documents.
+Obviously, searching in all SONs would give perfect recall. However,
+this would be very costly, so we only consider the N most
+2http://www.cc.gatech.edu/projects/gtitm/
+3http://ir.dcs.gla.ac.uk/test_collections/
+gov2-summary.htm
+4http://trec.nist.gov/data/reuters/reuters.
+html
+similar SONs to the query. We use the number of contacted peers
+(during query processing) as a measure of the search cost. In all
+results, we show the average values from the execution of all experiments.

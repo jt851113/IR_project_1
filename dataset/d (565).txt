@@ -1,0 +1,58 @@
+Consider the following scenario: A sensor network consists of X sensors. This network
+tracks the values of certain variables like temperature, air pressure, humidity, etc. Let
+V = {V1, V2, ...VN} be the N variables tracked by the network. Each sensor is equally likely
+to track any of these N variables. Assume that we are interested in finding the answer to a
+query Q = {Q1,Q2, ...QM} consisting of M sub-queries, 1 < M  N and 8i : i  M,Qi 2 V .
+Let SM be the average number of steps taken to resolve a query consisting of M sub-queries.
+We define the number of steps as the number of nodes to which the query is forwarded before
+being completely resolved. Define d as the look-ahead parameter. Let the neighborhood of a
+sensor consist of all sensors within d hops away from it. In general the number of sensors in
+the neighborhood is dependent on the node density, the transmission range of the sensors,
+etc. However, we make the following assumptions about the sensor placement and their
+characteristics:
+1. The sensors are laid out uniformly in a region.
+Figure 2: Illustration of traditional flooding-based queries (a), (b), (c), and ACQUIRE (d) in a
+sample sensor network.
+Figure 3: Illustration of ACQUIRE with a one-hop lookahead (d = 1). At each step of the
+active query propagation, the node carrying the active query employs knowledge gained due to
+the triggered updates from all nodes within d hops in order to partially resolve the query. As d
+becomes larger, the active query has to travel fewer steps on average, but this also raises the update
+costs. When d becomes extremely large, ACQUIRE starts to resemble traditional flooding-based
+querying.
+2. All the sensors have the same transmission range.
+3. The nodes are stationary and do not fail.
+We model the size of a sensor’s neighborhood (the number of nodes within d hops) as a
+function of d, f(d), which is assumed to be independent of the particular node in question3.
+We also assume that all possible queries Q are resolvable by this network (i.e. can be
+responded to by at least one node in the network).
+Mechanism of Query Forwarding:
+Initially, let sensor x be the querier that issues a query Q consisting of M subqueries4. Let
+d be the look-ahead parameter i.e each sensor can request information from sensors d hops
+away from it. In general when a sensor x gets a query it does the following:
+1. Local Update: If its current information is not up-to-date, x sends a request to all
+sensors within d hops away. This request is forwarded hop by hop. The sensors who
+get the request will then forward their information to x. Let the energy consumed in
+this phase be Eupdate. Detailed analysis of Eupdate will be done in section 4.3.
+2. Forward: After answering the query based on the information obtained, x then forwards
+the remaining query to a node that is chosen randomly from those d hops away.
+Since the update is only triggered when the information is not fresh, it makes sense to try to
+quantify how often such updates will be triggered. We model this update frequency by an
+average amortization factor c, such that an update is likely to occur at any given node only
+once every 1
+c queries. In other words the cost of the update at each node is amortized over
+1
+c queries, where c  1. For example, if on average an update has to be done once every 100
+queries, c = 0.015.
+After the query is completely resolved, the last node which has the query returns the completed
+response6 to the querier x along the reverse path 7. We use  to denote the expected
+number of hops from the node where the query is completely resolved to x.
+Let SM be the average number of steps to answer a query of size M. Thus, the average
+energy consumed to answer a query of size M with look-ahead d can be expressed as follows:
+Now, if d = D, where D is the diameter of the network, x can resolve the entire query
+in one step without forwarding it to any other node. However, in this case, Eavg will be
+considerably large. On the other hand, if d is too small, a larger number of steps SM will be
+required. In general, SM reduces with increasing d, while Eupdate increases with increasing d.
+It is therefore possible, depending on other parameters, that the optimal energy expenditure
+is incurred at some intermediate value of d. One of the main objectives of our analysis is to
+analyze the impact of parameters such as M, N, c, and d upon the energy consumption Eavg
+of ACQUIRE.

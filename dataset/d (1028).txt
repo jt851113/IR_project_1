@@ -1,0 +1,41 @@
+Structured P2P networks support exact key index. Given a key,
+the protocol can locate the peer responsible for the key in O(logN)
+time. For overlays that support range queries, it is easy to extend
+them to support range index. In this paper, we use BATON [21]
+as an example, and BATON and CAN [30] in our implementation;
+other overlays, such as P-ring [14], P-Grid [6] and HotRod [28],
+can also adopt the same scheme.
+Figure 5 illustrates the structure of BATON. Besides the original
+indexes, an internal node of BATON also records the range of
+its subtree. For example, node E’s own range is [50, 58) and its
+subtree’s range is [50, 72). Once a node joins the network, it gets
+a subtree range from its parent. The subtree range needs to be updated
+only when nodes leave or join or when BATON needs balance
+the system load. Moreover, even if a node drops out of the network
+without notification, the subtree range can be recovered by asking
+its parent and children.
+Algorithm 3 shows how to locate the node responsible for a specific
+range. We depend on BATON’s routing protocol to locate the
+node for a key (line 1). Here, the mid-point of the range is used
+as the key, which turns out to be more effective than the minimum
+and maximum values. The request is continuously forwarded to the
+upper level nodes until a node whose subtree range fully contains
+the range is reached. The complexity of Algorithm 3 is O(logN) (N
+is the number of nodes), for the tree height is O(logN)[21].
+The range indexing algorithm is illustrated in Algorithm 4. To
+publish one range index entry, the node invokes Algorithm 3 to find
+the candidate node for its entry. To reduce the cost of query processing,
+we keep a soft status for each node. The node is marked
+as left active, right active, left-right active or non-active (indicating
+that it indexes ranges overlapping with left subtree, right subtree,
+both subtrees or none of them). After indexing a range entry R, the
+node checks whether its status need to be changed and notifies its
+descendants. The notification processing is omitted here because
+of space constraints. In summary, the node will change its status
+and forward the notification to its children if it is in a different status.
+Otherwise, the notification process is terminated. On the other
+hand, if the last range index is removed from the node, it will invoke
+the notification process as well.
+Algorithm 5 lists the range query processing via approximate
+range index. The algorithm checks the status of the parent node to
+decide whether to forward the request or not.

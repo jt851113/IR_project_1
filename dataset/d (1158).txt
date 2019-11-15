@@ -1,0 +1,19 @@
+The invocation of a continuous query requires a series of
+interactions among the Continuous Query Manager, Event
+Detector and Data Manager.
+When a timer event happens, the Event Detector first asks the
+Data Manager if any of the relevant data sources have been
+modified (Step 3 in Figure 4.2). The Data Manager returns a list
+of names of modified source files. The Data Manager also
+notifies the Event Detector when push-based data sources have
+been changed (Step 4 in Figure 4.2). If a continuous query needs
+to be executed, its query id and the names of the modified files
+are sent to the Continuous Query Manager (Step 5 in Figure
+4.2). The Continuous Query Manager invokes the Niagara query
+engine to execute the triggered queries (Step 6 in Figure 4.2).
+At execution time, the Query Engine requests data from the Data
+Manager (Step 7. in Figure 4.2). The Data Manager recognizes
+that it is a request for a continuous query and returns only the
+delta file (Step 8 in Figure 4.2). Delta files for source files are
+computed by performing an XML-specific “diff” operation
+using the original file and the new version of the file.

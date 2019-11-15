@@ -1,0 +1,50 @@
+In this subsection, we discuss how the system can determine the
+IP address for any site needed during query processing. Recall that
+the mapping of IDable nodes to sites is arbitrary and dynamically
+changing. However, there are only two situations in which IP addresses
+are needed during query processing: (1) when the query
+initially is posed by a user somewhere in the Internet, and (2) when
+a site manager determines that it needs to pose a subquery to a specific
+IDable node. We consider each situation in turn.
+Self-starting distributed queries. Users anywhere on the Internet
+can pose queries. For scalability, we clearly do not want to send all
+queries to the site(s) hosting the root node of the hierarchy. Instead,
+our goal is to send the query directly to the lowest common ancestor
+(LCA) of the query result. But how do we find the site that owns the
+LCA node, given the large number of nodes and the dynamic mapping
+of nodes to sites? Our solution is (1) to have DNS-style names
+for nodes that can be constructed from the queries themselves, (2)
+to create a DNS server hierarchy identical to the IDable node hierarchy,
+and (3) to use DNS lookups to determine the IP addresses of
+the desired sites. Recall that each IDable node is uniquely identified
+by the sequence of IDs on the path from the root to the node.
+Thus our DNS-style names are simply the concatenation of these
+IDs. For example, for the query in Figure 2, its LCA node is New
+York. We construct the DNS-style name
+city-new york.state-ny.usregion-ne.parking.ourdomain.net
+perform a DNS lookup to get the IP address of the New York site,
+and route the query there.
+A key feature is that no global information is needed to produce
+this DNS-style name: it is extracted directly from the query! We
+have a simple parser that processes the query string from its beginning,
+and as long as the parser finds a repeated sequence of /elementname[@
+id=x], it prepends to the DNS name. The DNS lookup
+may need several hops to find the appropriate DNS entry, but then
+this entry is cached in a DNS server near to the query, so subsequent
+lookups will find the IP address in the nearby DNS server.
+Note that no information about the XML document (or its schema)
+is needed by the parser.
+Sending a subquery. When a site manager determines that a query
+requires data not in its site database, then by our invariants, it has
+the root-to-node ID path for the IDable node it needs to contact.
+To see this, observe that each piece of missing data is in the local
+information of some IDable node. Consider one such IDable node
++ . By invariant (I1), this node is owned by a different site. By
+invariant (I2), regardless of + ’s status value, we have its ID, and the
+IDs of all its ancestors. Thus we can produce the DNS-style name
+for any needed IDable node solely from the information in the site
+database, and then perform the lookup to get the IP address. A
+key feature of this design is that the mapping of IDable nodes to
+IP addresses is encapsulated entirely in the DNS entries, and not
+in any site databases. This makes it relatively easy to change the
+mapping as desired for load balancing and other purposes.

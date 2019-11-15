@@ -1,0 +1,25 @@
+We have presented new methods for approximately
+computing duplicate-sensitive aggregates across dis-
+tributed datasets. Our immediate motivation comes
+from sensor networks, where energy consumption is a
+primary concern, faults occur frequently, and exact an-
+swers are not required or expected. An elegant building
+block which enables our techniques are the duplicate-
+insensitive sketches of Flajolet and Martin, which give
+us considerable freedom in our choices of how best to
+route data and where to compute partial aggregates. In
+particular, use of this duplicate-insensitive data struc-
+ture allowed us to make use of dispersity routing meth-
+ods to provide fault tolerance that would be inappro-
+priate otherwise.
+The implications of these results reach beyond sen-
+sor networks to other unreliable systems with dis-
+tributed datasets over which best-eort aggregate
+queries are posed. Examples include estimating the
+number of subscribers participating in a multicast ses-
+sion, or counting the number of peers storing a copy
+of a given le in a peer-to-peer network. In these set-
+tings, nodes are less resource-constrained than in sen-
+sor networks, but the problems are still diAcult due
+to packet loss and frequent node arrivals and depar-
+tures.

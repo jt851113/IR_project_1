@@ -1,0 +1,59 @@
+The following experiments were conducted on a Sun Ultra 6000
+with 1GB of RAM, running JDK1.2 on Solaris 2.6.
+Data Sets
+Our experiments were run against a database of stock
+information consisting of two XML files, “quotes.xml” and
+“companies.xml”. “Quotes.xml” contains stock information on
+about 5000 NASDAQ companies. The size of “quotes.xml” is
+about 2 MB. Related company information is stored in
+“companies.xml”, whose size is about 1MB. The DTDs of these
+two XML files are given in Figure 5.1 and 5.2, respectively
+Data changes on “quotes.xml” are generated artificially to
+simulate the real stock market and continuous queries are
+triggered by these changes. The “companies.xml” file was not
+changed during our experiments.
+We give a brief description of the assumptions that we made to
+generate “quotes.xml”. Each stock has a unique Symbol value.
+The Industry attribute takes a value randomly from a set with
+about 100 values. The Change_Ratio represents the change
+percentage of the current price to the closing price for the
+previous session. It follows a normal distribution with a mean
+value of 0 and standard deviation of 1.0.
+Since time spent calculating changes in source files is the same
+for both the grouped and non-grouped approaches, we run our
+experiments directly against the data changes. Unless specified,
+the number of “tuples” modified is 1000, which is about 400K
+bytes.
+Queries
+Although users may submit many different queries, we
+hypothesize that many queries will contain similar expression
+signatures. In our experiments, we use four types of queries to
+represent the effect of grouping queries in a stock environment
+by their expression signatures.
+Query Type-1 Example: Notify me when Intel stocks change.
+Query Type-2 Example: Notify me of all stocks whose
+prices rise more than 5 percent.
+Query Type-3 Example: Notify me when Intel stock trades
+below 100 dollars.
+Query Type-4 Example: Notify me all of changes to stocks in the
+computer service industry and related company information.
+· Type-1 queries have the same expression signature on the
+equal selection predicate on Symbol.
+· Type-2 queries have the same expression signature on the
+range selection predicate on Change_ratio.
+· Type-3 queries have two common expression signatures,
+one is on the equal selection predicate on Symbol, and the
+other is on the range selection predicate on Current_price.
+The expression signature of the equal selection predicate is
+used for grouping Type-3 queries because it is more
+selective than that of the range predicate.
+· Type-4 queries contain expression signatures for both
+selection and join operators. Selection operators are pushed
+down under join operators. The incremental group
+optimizer first groups selection signatures and then join
+signatures.
+Queries of Type-3 are generated following a normal distribution
+with a mean value of 3 and a standard deviation of 1.0. Queries
+of the other types are generated using different constants
+following a uniform distribution on the range of values in the
+data unless specified.

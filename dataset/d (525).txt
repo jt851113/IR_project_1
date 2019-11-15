@@ -1,0 +1,84 @@
+[1] S. Acharya, R. Alonso, M. Franklin, and S. Zdonik, “Broadcast
+Disks: Data Management for Asymmetric Communication Environments,”
+Proc. ACM SIGMOD Conf., pp. 199-210, May 1995.
+[2] D. Aksoy and M.J. Franklin, “Scheduling for Large-Scale On-
+Demand Data Broadcasting,” Proc. IEEE INFOCOM Conf., pp. 651-
+659, 1998.
+[3] D. Adolphson and T.C. Hu, “Optimal Linear Ordering,” SIAM J.
+Applied Math., vol. 25, pp. 403-423, 1973.
+[4] A. Bar-Noy, J. Naor, and B. Schieber, “Pushing Dependent Data in
+Clients-Providers-Servers Systems,” Proc. MOBICOM Conf.,
+pp. 222-230, 2000.
+[5] A. Bar-Noy and Y. Shilo, “Optimal Broadcasting of Two Files over
+an Asymmetric Channel,” Proc. IEEE INFOCOM Conf., pp. 267-
+274, 1999.
+[6] Y.C. Chehadeh, A.R. Hurson, and M. Kavehrad, “Object Organization
+on a Single Broadcast Channel in the Mobile Computing
+Environment,” Multimedia Tools and Applications, vol. 9, no. 1,
+pp. 69-94, July 1999.
+[7] Y.D. Chung and M.-H. Kim, “QEM: A Scheduling Method for
+Wireless Broadcast Data,” Proc. Sixth Int’l Conf. Database Systems
+for Advanced Applications (DASFAA), pp. 135-142, Apr. 1999.
+[8] M.R. Garey and D.S. Johnson, Computers and Intractability: A Guide
+to the Theory of NP-Completeness. Freeman Publishing, 1976.
+[9] V. Gondhalekar, R. Jain, and J. Werth, “Scheduling on Airdisks:
+Efficient Access to Personalized Information Services via Periodic
+Wireless Data Broadcast,” Proc. Int’l Conf. Comm. (ICC), pp. 1276-
+1280, 1997.
+[10] J. Gray, P. Sundaresan, S. Englert, K. Baclawski, and P.J.
+Weinberger, “Quickly Generating Billion-Record Synthetic Databases,”
+Proc. ACM SIGMOD Conf., pp. 243-252, May 1994.
+[11] A.R. Hurson, Y.C. Chehadeh, and J. Hannan, “Object Organization
+on Parallel Broadcast Channels in a Global Information
+Sharing Environment,” Proc. IEEE Int’l Conf. Performance, Computing,
+and Comm., pp. 347-353, 2000.
+[12] G. Herman, G. Gopal, K.C. Lee, and A. Weinrib, “The Datacycle
+Architecture for Very High Throughput Database Systems,” ACM
+SIGMOD Record, pp. 97-103, 1987.
+[13] C.-H. Hsu, G. Lee, and A.L.P. Chen, “A Near Optimal Algorithm
+for Generating Broadcast Programs on Multiple Channels,” Proc.
+ACM 10th Int’l Conf. Information and Knowledge Management,
+pp. 303-309, 2001.
+[14] C.-H. Hsu, G. Lee, and A.L.P. Chen, “Index and Data Allocation
+on Multiple Broadcast Channels Considering Data Access
+Frequencies,” Proc. Int’l Conf. Mobile Data Management, pp. 87-93,
+2002.
+[15] K. Hoffman and R. Kunze, LINEAR ALGEBRA. Prentice Hall,
+1971.
+[16] T. Imielinski, S. Viswanathan, and B.R. Badrinath, “Energy
+Efficient Indexing on Air,” Proc. ACM SIGMOD Conf., pp. 25-36,
+May 1994.
+[17] T. Imielinski, S. Viswanathan, and B.R. Badrinath, “Data on Air:
+Organization and Access,” IEEE Trans. Knowledge and Data Eng.,
+vol. 9, no. 3, pp. 353-372, May/June 1997.
+[18] S.C. Lo and A.L.P. Chen, “Optimal Index and Data Allocation in
+Multiple Broadcast Channels,” Proc. 16th IEEE Int’l Conf. Data
+Eng., pp. 293-302, Feb. 2000.
+[19] S.C. Lo and A.L.P. Chen, “An Adaptive Access Method for
+Broadcast Data under an Error-Prone Mobile Environment,” IEEE
+Trans. Knowledge and Data Eng., vol. 12, no. 4, pp. 609-620, July/
+Aug. 2000.
+[20] G. Lee, S.-C. Lo, and A.L.P. Chen, “Data Allocation on Wireless
+Broadcast Channels for Efficient Query Processing,” technical
+report, http://mckm.csie.ndhu.edu.tw/lee_research.htm, 2002.
+[21] G. Lee and S.-C. Lo, “Broadcast Data Allocation for Efficient
+Access of Multiple Data Items in Mobile Environments,” ACM
+Mobile Networks and Applications (MONET), to appear.
+[22] G. Lee, M.-S. Yeh, S.-C. Lo, and A.L.P. Chen, “A Strategy for
+Efficient Access of Multiple Data Items in Mobile Environments,”
+Proc. Int’l Conf. Mobile Data Management, pp. 71-78, 2002.
+[23] W.C. Lee and D.L. Lee, “Using Signature Techniques for
+Information Filtering in Wireless and Mobile Environments,”
+Distributed and Parallel Databases, vol. 4, no. 3, pp. 205-227, July
+1996.
+[24] A. Si and H.V. Leong, “Query Optimization for Broadcast
+Database,” Data and Knowledge Eng., vol. 29, no. 3, pp. 351-380,
+Mar. 1999.
+[25] K. Thulasiraman and M.N.S. Swamy, Graphs: Theory and Algorithms.
+Wiley-Interscience, 1992.
+[26] N. Vaidya and S. Hameed, “Scheduling Data Broadcast in
+Asymmetric Communication Environments,” ACM/Baltzer Wireless
+Networks, vol. 5, no. 3, pp. 171-182, 1999.
+[27] K.H. Yeung and T.S. Yum, “Selective Broadcast Data Distribution
+Systems,” IEEE Trans. Computers, vol. 46, no. 1, pp. 100-104, Jan.
+1997.

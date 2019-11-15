@@ -1,0 +1,44 @@
+The following lemma will be used when determining the
+access order:
+Lemma 3. Given a set of ordered access pairs, assume there exist
+two pairs, say ; d and ; c with access frequencies fcd and
+fdc, respectively. If fcd > fdc, then the two pairs can be
+replaced by the ordered access pair ; d (named a replacement
+pair) with access frequency fcd 	 fdc without affecting the
+derivation of an optimal broadcast program.
+Proof. Fig. 3 shows two broadcast programs X and Y
+containing data objects c and d. For the original set of
+ordered access pairs, the difference of the average access
+times for broadcast program X and broadcast program Y is
+where x denotes rc!d in broadcast program X, y denotes
+ in broadcast program Y, and W denotes the
+summation of the access frequencies of the ordered
+access pairs in the original set of ordered access pairs.
+For the ordered access pairs containing the replacement
+pair, the difference of the average access times for
+broadcast program X and broadcast program Y is
+where W0 denotes the summation of the access frequencies
+of the ordered access pairs containing the replacement
+pair.
+Because bothWandW0 are positive numbers, the sign
+of the two differences is the same. Therefore, the optimal
+broadcast programs for the original set of ordered access
+pairs and the one containing the replacement pair are the
+same. tu
+We use an example to illustrate how Lemma 3 works.
+Example 1. Given query pattern1 query
+pattern2 ; fa; dg; fb; eg with access frequency
+f2 , and query pattern3  fdg; fhg with access
+frequency f3  10. In Step 1 of the access order
+determination process, the known access order is used
+to determine the access order of the data objects in {}.
+According to query pattern1, we know data object b
+should be accessed before data object e. Therefore, query
+pattern2 can be revised to. According to
+query pattern2, we know data object d should be
+accessed before data object e. However, according to
+query pattern3, data object e should be accessed before
+data object d. By Lemma 3, we know that data object d
+should be accessed before data object e with an access
+frequency 30-10. Therefore, query pattern1 can be
+revised to.

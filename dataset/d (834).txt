@@ -1,0 +1,4 @@
+Our system is currently under development, but following are
+some initial results from offline analysis of experimental data. We
+provide initial results from two different sensor datasets to demon
+strate the practical applicability of our system.

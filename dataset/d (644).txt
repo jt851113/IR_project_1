@@ -1,0 +1,25 @@
+In the emerging area of sensor-based systems, a sig-
+nicant challenge is to develop scalable, fault-tolerant
+methods to extract useful information from the data the
+sensors collect. An approach to this data management
+problem is the use of sensor database systems, exempli-
+ed by TinyDB and Cougar, which allow users to per-
+form aggregation queries such as MIN, COUNT and
+AVG on a sensor network. Due to power and range con-
+straints, centralized approaches are generally impracti-
+cal, so most systems use in-network aggregation to re-
+duce network traAc. However, these aggregation strate-
+gies become bandwidth-intensive when combined with the
+fault-tolerant, multi-path routing methods often used in
+these environments. For example, duplicate-sensitive ag-
+gregates such as SUM cannot be computed exactly us-
+ing substantially less bandwidth than explicit enumera-
+tion. To avoid this expense, we investigate the use of ap-
+proximate in-network aggregation using small sketches.
+Our contributions are as follows: 1) we generalize well
+known duplicate-insensitive sketches for approximating
+COUNTto handle SUM,2)we present and analyze meth-
+ods for using sketches to produce accurate results with
+low communication and computation overhead, and 3)
+we present an extensive experimental validation of our
+methods.

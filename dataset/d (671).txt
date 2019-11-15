@@ -1,0 +1,16 @@
+In this paper, we develop an energy efficient approach
+to processing continuous aggregate queries in sensor networks
+with bounded quality constraints. Specifically, we
+exploit quality-aware in-network aggregation of query information
+to reduce communication costs. Given cluster
+structures over sensor nodes, we develop an adaptive
+approximate data processing protocol to aggregate
+data and process queries given error tolerance on user
+queries. The protocol enforces group quality constraints
+on clusters and adjusts error bounds to balance workload
+of clusters and reduce communication cost. It also tries
+to initiate local communication instead of global communication
+in the effort of minimizing overall communication
+overhead. Our experimental results indicate that
+significant benefits can be achieved by using our adaptive
+protocol.

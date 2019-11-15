@@ -1,0 +1,53 @@
+Users are generally unaware of who has access to their
+private information on OSNs. Interestingly, most users may
+be able to carry out a large fraction of their actions on OSNs
+while signicantly shrinking the amount of private information
+that is made available to others. Most of the thousands
+of popular applications on OSNs like Facebook do not need
+complete access to the private information of users, yet Facebook
+gives users no choice if they want to download and use
+an externally created application. For example, it is hard to
+justify the use of information other than the list of friends
+is required to run popular applications such as Scrabulous.
+We need a way to enumerate the precise private bits of information
+that are actually needed for a user to interact with
+and make full use of the myriad features of a OSN. While the
+privacy bits may vary with a specic feature (some external
+applications may genuinely need more information than others),
+we can do much better than the current all or nothing
+approach. Limiting access to just friends or those in a network
+is not ne-grained enough. We could start bottom-up
+and hand out information to more and more users/networks
+based on need. Just as there are groups, networks, etc. as
+aggregating mechanisms there should be a way to deny private
+information at each aggregation. It should be possible
+to both deny and enable access to private information at the
+same level of granularity.
+OSNs must clearly indicate the bare minimum of private
+information needed for a particular set of interactions. If
+an external application requires access to list of friends and
+nothing else, then the default should be that bare minimum.
+If additional features of the application require access to
+other bits of private information then access to the supremum
+of the information could be enabled, and no more.
+A mechanism to identify the metrics bare minimum and
+supremum would be a useful addition to the privacy arsenal.
+Such metrics would allow us to compare various OSNs on an
+equal footing and let the users decide how comfortable they
+are with the privacy information that is being shared. Our
+enumeration of privacy groups in Section 2 and the left-toright
+ordering of privacy groups in Figure 1 is a rst step
+in this direction. A user could have a threshold mark along
+this spectrum in terms of what groups (and thus what bits)
+they are willing to share freely. For each set of interactions
+or use of an application, the OSN could indicate what bits
+are needed and if they are to the right of the user's threshold,
+access is provided transparently. If some additional bits
+to the left of the user's threshold are essential then the user
+can be prompted. The user can allow or disallow, and optionally
+set the duration (for current session, forever etc.)
+for such a grant. There are several browser extensions that
+are already capable of providing functionality similar to this
+in other, related arenas such as security and script execution
+privileges. It would be relatively easy to create an extension
+that can be used with OSNs.

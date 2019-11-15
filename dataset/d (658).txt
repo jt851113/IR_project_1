@@ -1,0 +1,65 @@
+Our methods for aggregation leverage two main ob-
+servations. First, the wireless communication of sensor
+networks gives the ability to broadcast a single mes-
+sage to multiple neighbors simultaneously. Second, the
+duplicate-insensitive sketches discussed in Section 3 al-
+low a sensor to combine all of its received sketches into
+a single message to be sent. Given proper synchroniza-
+tion, this will allow us to robustly aggregate data with
+each sensor sending just one broadcast.
+For simplicity, the remainder of this section will fo-
+cus on continuous queries (one-shot queries simply ter-
+minate earlier). Given a new continuous query, the
+computation proceeds in two phases. In the rst phase,
+the query is distributed across the sensor network, of-
+ten using some form of ooding. During this phase,
+each node also computes its level (i.e. its hop distance
+from the root), and notes the level values of its immedi-
+ate neighbors. The second phase is divided into a series
+of epochs specied by the query. The specied aggre-
+gate will be computed once for each epoch.
+At the beginning of each epoch, each node con-
+structs a sketch of its local values for the aggregate.
+The epoch is then sub-divided into a series of rounds,
+one for each level, starting with the highest (farthest)
+level. In each round, the nodes at the corresponding
+level broadcast their sketches, and the nodes at the
+next level receive these sketches and combine them
+with their sketches in progress. In the last round, the
+sink receives the sketches of its neighbors, and com-
+bines them to produce the nal aggregate.
+As an example, we step through a single epoch ag-
+gregating over the topology of Figure 1. First, each
+node creates a fresh sketch summarizing its own ob-
+served values. In the rst round of communication,
+nodes at level 3 broadcast their sketches, which are
+then received by neighboring level 2 nodes and com-
+bined with the sketches of the level 2 nodes. In the sec-
+ond round, nodes at level 2 broadcast their sketches,
+which are then received by neighboring level 1 nodes
+and combined with the sketches of the level 1 nodes.
+In the third and last round, nodes at level 1 send their
+sketches to the sink, which combines them and extracts
+the nal aggregate value. Note that each node in this
+topology except those on the diagonals has multiple
+shortest paths which are eectively used, and a value
+will be included in the nal aggregate unless all of its
+paths suer from losses.
+The tight synchronization described so far is not ac-
+tually necessary. Our methods can also be applied us-
+ing gossip-style communication - the main advantage
+of synchronization and rounds is that better schedul-
+ing is possible and power consumption can be reduced.
+However, if a node receives no acknowledgments of its
+broadcast, it may be reasonable in practice to retrans-
+mit. More generally, loosening the synchronization in-
+creases the robustness of the nal aggregate as paths
+taking more hops are used to route around failures.
+This increased robustness comes at the cost of power
+consumption, since nodes broadcast and receive more
+often (due to values arriving later than expected) and
+increased time (and variability) to compute the nal
+aggregate. As mentioned earlier, this general principle
+allows us to make use of any best-eort routing proto-
+col (e.g. [13, 8]), with the main performance metric of
+interest being the delivery ratio.

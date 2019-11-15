@@ -1,0 +1,3 @@
+Having described the difficulties of integrating sensor
+streams into a query processor, we now present our solution:
+Fjords and sensor proxies.

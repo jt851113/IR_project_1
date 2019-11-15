@@ -1,0 +1,12 @@
+By running the application and role assignment modules separately,
+we have simplified our evaluation approach. This approach
+has some disadvantages such as limited ability to communicate
+complex resource monitoring results. Transferring
+every detail of the running state from the fusion module to
+the placement module is prohibitive in our decoupled setup due
+to the resulting network perturbation. Such perturbation, even
+when minimal state is being communicated between the modules,
+prevents accurate network delay metric usage in a cost
+function. However, our simplified evaluation design has allowed
+us to rapidly build prototypes of the fusion and placement
+modules.

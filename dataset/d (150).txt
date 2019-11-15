@@ -1,0 +1,14 @@
+Our contributions in this paper are as follows:
+1. We introduce a new concept, called k-dominant skyline
+to alleviate the effect of dimensionality curse on skyline
+query in high dimensional spaces (Sec. 3).
+2. We propose three different algorithms to solve the kdominant
+skyline problem (Sec. 4).
+3. We modify the k-dominant skyline algorithm to answer
+the top-δ dominant skyline query (Sec. 5).
+4. We extend the concept of k-dominant skyline to weighted
+space and show how our algorithms work on such spaces
+(Sec. 6).
+5. We show the computational efficiency benefits of these
+new concepts through a comprehensive experimental
+study (Sec. 7).

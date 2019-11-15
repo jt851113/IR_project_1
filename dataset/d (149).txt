@@ -1,0 +1,80 @@
+The primary cause for the skyline set size blow up is the
+definition of dominance, which is rather stringent in that
+p must be better or equal to q in all dimensions before q
+can be eliminated from the skyline. Using our movie rating
+as an example, this means that movie p is only considered
+better than movie q if and only if p is rated higher or equal
+to q by all the users. While this is quite possible when
+there is a small number of users (say 5 users), this is much
+more unlikely for a larger number of users (say 100) as all it
+takes is for just one outlier opinion from among the 100 to
+invalidate the dominance relationship.
+It maybe reasonable to consider movie p better than q if
+say, 98 out of 100 users, consider it to be better. With this
+intuition, a point p is said to k-dominate another point q if
+there are  dimensions in which p is better than or
+equal to q and is better in at least one of these k dimensions.
+A point that is not k-dominated by any other points is said
+to be in the k-dominant skyline. Obviously, the conventional
+skyline is a special case of the k-dominant skyline, where k =
+d. The chance of a point being excluded from a k-dominant
+skyline is higher than the conventional skyline since more
+points will be k-dominated than d-dominated. By setting k
+to an appropriate value, we hope to find a small set of skyline
+points that are dominant in the sense that they remain in the
+skyline even with the more relaxed notion of k-dominance.
+Note that the set of k-dominant skyline points is a subset
+of the original skyline, which we will henceforth refer to as
+free skyline for clarity.
+Unfortunately, algorithms developed for finding the original
+skyline are not easily adapted for finding k-dominant
+skyline, except for the obvious case where k = d. This is
+because the transitive property of the original dominance
+relationship no longer holds, i.e., for any k < d it is possible
+to have three points p,q,r such that p k-dominates q, q kdominates
+r and r k-dominates p, forming a cyclic dominant
+relationship. Thus, we cannot ignore a point during processing
+even if it is k-dominated because that particular point
+might be needed to exclude another point from the skyline
+through another k-dominant relationship. Existing skyline
+computation algorithms do not satisfy this requirement.
+In view of this, we propose three algorithms in this paper
+for finding k-dominant skyline. The first is a one-scan algorithm
+which uses the property that a k-dominant skyline
+point cannot be worse than any free skyline on more than k
+dimensions. This algorithm maintains the free skyline points
+in a buffer during a scan of the data set and uses them to
+prune away points that are k-dominated. As the whole set
+of free skyline points can be large, we avoid keeping all of
+them in a buffer with a two-scan algorithm. In the first
+scan, a candidate set of dominant skyline points is retrieved
+by comparing every point with a set of candidates. The second
+scan verifies whether these points are truly dominant
+skyline points. This method turns out to be much more
+efficient than the one-scan method. We provide some theoretical
+analysis on the reason for its superiority. Finally, we
+propose an algorithm that is motivated by the rank aggregation
+algorithm proposed by Fagin et al.[5], which pre-sorts
+data points separately according to each dimension and then
+“merges” these ranked lists.
+A fundamental question is the choice of value for k. We
+prove in this paper that it is possible to have an empty
+k-dominant skyline even for k = d ? 1 due to the cyclic
+property. On the other hand, it is still possible to have
+too many k-dominant skyline points if k is too large. In
+order to guarantee a small but non-empty set of dominant
+skyline points, we propose a new type of query, called top-δ
+dominant skyline query. The aim is to find the smallest k
+such that there are more than δ k-dominant skyline points.
+We show that the algorithms proposed for dominant skyline
+query can be used to answer top-δ query easily.
+In some applications, some attributes are more important
+than other. When the user has an opinion on the relative
+importance of the different dimensions, we permit the user
+to express this opinion in the form of relative weights. We
+extend the k-dominant skyline to the weighted case where d
+positive weights w1,...,wd are assigned to the d dimensions
+and a point is said to be a weighted w-dominant skyline
+point if there does not exist any point that can dominate it
+on a subset of dimensions with their sum-of-weight assignment
+over w.

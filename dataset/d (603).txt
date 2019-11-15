@@ -1,0 +1,71 @@
+We first evaluate the total cost of our adaptive indexing technique,
+document-level indexing technique, and peer-level indexing
+technique for various settings, characterized by Ne, the number of
+postings a posting list can contain. With the assumption that each
+posting is 2 bytes, we choose Ne to be 500, 1000 and 2000, which
+is equivalent to a message size of 1KB, 2KB, and 4KB,
+respectively. Notice that in Section 3, we formally define a
+posting as a pair of peer ID and document ID, but actually a local
+posting list of a peer can be encoded as a list of IDs, starting with
+the peer ID, followed by document IDs. Thus using 2 bytes for
+each posting allows each peer to share a maximum of 65,536
+documents.
+In Figure 1, we show the total cost of each indexing technique
+over various message sizes. In all settings, adaptive indexing
+outperforms both peer-level indexing and document-level
+indexing. Peer-level indexing outperforms document-level
+indexing in the first two settings. In the last setting, peer-level
+indexing and document-level indexing have similar cost, with
+document indexing slightly outperforming peer-level indexing.
+For the settings in which the size of message is small, the cost of
+index-building and posting list retrieval is dominant. The
+dominance of index-building and posting list retrieval cost over
+query issuing cost is shown in Figure 2, for the setting in which
+Ne = 500. For the document-level indexing, the index-building
+and posting list retrieval cost is about 93% of the total cost, while
+for the peer-level indexing, it is only about 26%. Thus, in this
+case, it is important to keep posting lists short, and therefore,
+peer-level indexing is better than document-level indexing (as
+showed in Figure 1).
+Interestingly, for the same setting (Ne = 500), adaptive indexing
+outperforms peer-level indexing, reducing the total cost by 26%,
+even though it creates longer posting lists. It does so by trading
+index-building and posting list retrieval cost for query issuing
+cost. In comparison to peer-level indexing, by creating an average
+of 8.45 groups per peer, adaptive indexing slightly increases the
+former cost, but significantly decreases the latter cost (Figure 2).
+The consequence is a net profit of the total cost.
+Document-level indexing makes use of the settings with large
+message size, while peer-level indexing does not. In Figure 1,
+when Ne = 2000, the total costs of peer-level indexing and
+document-level indexing are very similar. Adaptive indexing
+exploits the large size messages by creating more groups. In this
+case, it creates an average of 24.78 groups per peer, and reduces
+cost by 46% in comparison to document-level and peer-level
+indexing.
+In Figure 3, we show the total cost of each indexing technique for
+two extreme settings, where we set Ne to the values of 200 and
+5,000. In the first extreme setting (Ne = 200), the cost of peer-level
+indexing is significantly lower than the cost of document-level
+indexing as expected. As the index-building and posting list
+retrieval is dominant, it is better to keep posting lists short.
+Adaptive indexing, in this case, chooses the peer-level indexing
+approach for most of the peers (there are 1,919 peers that exploit
+the advantage of peer-level indexing). The average number of
+groups that adaptive indexing creates is only 1.22. However,
+adaptive indexing still outperforms peer-level indexing by about
+2%. In the second extreme setting (Ne = 5,000), document-level
+indexing outperforms peer-level indexing by 39%. By creating an
+average of 30.63 groups for most of the peers (there are 1,631
+peers that have two or more groups), adaptive indexing “moves”
+away from peer-level indexing, and by not creating too many
+groups, it still outperforms document-level indexing by 23%.
+Our detailed experimental results, summarized in Table 3,
+demonstrate the adaptability of our adaptive indexing technique.
+In all settings, it always outperforms other indexing techniques. In
+one of the two extreme settings, it is as good as the better of peerlevel
+and document-level indexing, and in the other extreme
+setting, it outperforms the better of the two. In addition, with
+increasing message size, adaptive indexing appropriately creates
+more groups, and there are more peers that adopt group-level
+indexing over peer-level indexing.

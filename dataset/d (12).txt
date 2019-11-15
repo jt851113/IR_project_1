@@ -1,0 +1,46 @@
+A.3 Predictionmodel
+generation algorithm
+/* This function takes a set of four consecutive
+* frames and computes motion-vectors that holds
+* for all these frames. It assumes that these
+* motion-vectors will hold for next 4 frames
+* (in future), assuming constant speed of
+* movement. Based on this assumption, it
+* translates the motion-vectors into
+* prediction-models.
+*/
+function generatePredictionModels(frames[],
+blockWidth)
+returns Prediction-Models
+validMotionVectors =
+newBlockMatchingAlgo(frames[0], frames[1],
+blockWidth);
+foreach vmVector in validMotionVectors do {
+topLeftX1 = vmVector.topLeftX;
+topLeftY1 = vmVector.topLeftY;
+mVector = vmVector.mVector;
+<tempTopLeftX, tempTopLeftY> =
+applyMotionVector(topLeftX1, topLeftY1,
+mVector);
+<topLeftX2, topLeftY2> =
+applyMotionVector(tempTopLeftX, tempTopLeftY,
+mVector);
+error = newSubtractMacroBlocks(frame[0],
+topLeftX1, topLeftY1, frame[2],
+topLeftX2, topLeftY2);
+if (error < ErrorThreshold) {
+<topLeftX3, topLeftY3> =
+applyMotionVector(topLeftX2, topLeftY2,
+mVector);
+error = newSubtractMacroBlocks(frame[0],
+topLeftX1, topLeftY1, frame[3],
+topLeftX3, topLeftY3);
+if (error < ErrorThreshold) {
+newModel =
+translateVectorToModel(frame[0],
+vmVector, blockWidth);
+addNewModel(newModel, predictionModels);
+}
+}
+}
+return predictionModels;

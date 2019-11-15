@@ -1,0 +1,77 @@
+To perform packet merging or partial aggregation, we
+need to coordinate sensor nodes within the communication
+component of a query plan. A node n needs
+to decide whether other nodes n1, . . . , nk are going to
+route data packets through n; in this case n has the
+opportunity of either packet merging or partial aggregation.
+Thus a node n needs to build a list of nodes
+it is expecting messages from, and it needs to decide
+how long to wait before sending a message to the next
+hop.
+For duplicate sensitive aggregate operators, like
+SUM and AVG, one prerequisite to perform partial aggregation
+is to send each record only once, otherwise
+duplicate records might appear in partially aggregated
+results and bias the result, thus a simple spanning
+tree might be a suitable communication structure. For
+other aggregate operators, including MAX and MIN,
+it is possible to send multiple copies of a record along
+different paths without any influence on the query accuracy;
+thus a suitable communication structure might
+be a DAG rooted at the leader.
+The task of synchronization in this tree or DAG is
+then for each node in each round of the query to determine
+how many sensor readings to wait for and when
+to perform packet merging or partial aggregation.
+Incremental Time Slot Algorithm. Let us first
+discuss the following simple algorithm. At the beginning
+of a round, each sensor node sets up a timer,
+and waits for a special waiting time for data packets
+from its children in the spanning tree or DAG to arrive.
+The length of the timer at node n is set to the
+depth of the structure rooted at n times a standardized
+time slot. However, this algorithm has a large
+cost in reality. First, it is very difficult to determine in
+advance how long a node needs to collect records from
+its children. The time to process the data, schedule
+the packet, reserve the channel, and retransmit packets
+due to frequently temporary link failures can vary
+significantly. Although the expected size of a time slot
+is small, it has a heavy tail with a big variance. But
+if the time slot is too large, the accumulated delay at
+the leader could be very long if the depth of the tree
+or DAG is large.
+Second, with frequent link failures, it is expensive to
+update the time-out value every time the structure of
+the communication structure changes. Although most
+broken links can be repaired locally, repairs may effect
+the depth of a large number of nodes, and it is expensive
+to update the timer for all of these nodes. Third,
+sensor nodes are never completely time-synchronized
+unless expensive time synchronization protocols or frequent
+GPS readings are used.
+Our Approach. We take a very pragmatic approach
+to synchronization. Note that for a longrunning
+query, the communication behavior between
+two sensors n and p is consistent over short periods of
+time, so it is possible to use historical information to
+predict future behavior. Assuming that p is the parent
+of node n. After p receives a record from n, it may
+expect to receive another record from n in the next
+round, and thus p adds n to its waiting list. However,
+such prediction may fail in two cases. First, the
+parent of node n may change in the next round if n
+reroutes and has a new parent due to network topology
+changes and route updates. Second, n could perform
+a local selection on its records, and only send a record
+to p if the selection condition is satisfied. Such conditions
+are only satisfied from time to time, and make
+the prediction at p fail.
+In our approach, we use a timer to recover from false
+prediction at parent nodes. On the other hand, since
+a child node is able to determine whether its parent
+is expecting a packet from it, the child can generate a
+notification packet if its parent’s prediction is wrong.
+We found that this bi-directional prediction approach
+model the relationship between the parent and child
+nodes very well in practice, as shown in Section 6.

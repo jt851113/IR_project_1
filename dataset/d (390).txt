@@ -1,0 +1,67 @@
+Our first experiment (see Figure 4) compares PES
+scheme (with six combinations of heuristics) to the basic
+schemes (i.e., SM and CM) in the simulated OTSN
+by varying the total number of moving objects from 1
+to 10 to generate the increased workload to the network.
+While not shown in the figure, the naive scheme
+is simulated to serve as a baseline for energy savings of
+all the schemes. If a scheme does not consume significantly
+lower energy than the naive scheme, it is not
+considered as an enhancement for OTSNs. Our experiment
+result shows that all the schemes evaluated
+save at least 90% of the energy consumed by naive
+scheme when there is one object in the area. Thus,
+the curve for the naive scheme is omitted here and in
+all the other figures for the clarity of presentation. In
+addition, we use logarithmical scale for Y-axis (i.e.,
+total energy consumption) in Figure 4.
+
+Figure 4: Impact of the network workload
+CM and SM schemes are two basic schemes evaluated
+for comparisons. PES is not expected to be the
+scheme of choice under all the conditions. Thus, exploring
+the situation where the PES is more efficient
+than these basic schemes is an important exercise for
+network planning and deployment. Our simulation
+result verifies that CM, SM and PES dissipate a very
+small amount of energy. They achieve such energy saving
+over the naive scheme by not keeping all the sensor
+nodes awake all the time. The Figure 4 also indicates
+that SM consumes more energy than CM and PES
+when the number of objects is small. However, the difference
+shrinks radically when more objects are in the
+network. Since SM activates all the sensor nodes periodically,
+its energy consumption is not affected much
+by the number of moving objects. The only extra cost
+for SM to monitor more objects in the network is the
+additional transmission overhead to the base station.
+Thus, SM is the scheme of choice if there are a lot
+of moving objects in the network. For CM and PES
+schemes, increasing the number of moving objects not
+only raises communication (transmissions and receiving)
+energy but also the energy consumed in the MCU
+and sensor components. The simulation result shows
+that when the total number of objects is small, the
+total energy consumption increases linearly with the
+increasing number of objects (note that the y-axis is in
+logarithmical scale). Thus, for the rest of experiments,
+we only consider one moving object for simplicity.
+The energy consumptions of PES with various
+combinations of heuristics for two prediction models
+(i.e., INSTANT and EXP AVG) and three wakeup
+groups of nodes (i.e., DESTINATION, ROUTE, and
+ALL NBR) are illustrated. The PES curves for heuristic
+ALL NBR spend almost the same energy as CM,
+but the one with the heuristic ROUTE and DESTINATION
+dissipate approximately 45% energy of CM
+by cutting off the number of target nodes. On the
+other hand, the missing rates for ALL NBR are much
+lower than ROUTE and DESTINATION.
+The reason that there is no big difference between
+heuristic ROUTE and DESTINATION is because that
+heuristic DESTINATION incurs more recovery overhead
+due to object misses, which balances off the wake
+up overhead in the heuristic ROUTE. We also observe
+that the different prediction heuristics(i.e., INSTANT
+and EXP AVG) do not differentiate their energy consumptions
+in this experiment.

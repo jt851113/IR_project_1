@@ -1,0 +1,34 @@
+In order to aid the task of designing methods for tracking
+objects across large areas, we discuss the expected characteristics
+of large-scale traffic patterns. A popular mobility model
+used for several ad hoc network protocols [4, 7] consists of
+nodes that move uniformly across a region under study, in
+order to approximate small-scale scenarios where the movements
+are expected to be random and close to uniform. Examples
+of such scenarios are visitors at a convention, rescue teams
+at a disaster site, etc.
+We postulate that large-scale movement patterns are not
+likely to be uniform, because large-scale real-world environments
+usually have inherent structure that makes this infeasible.
+For example, a downtown area of a city may consists of a
+street grid and buildings that prevent pedestrians from moving
+around arbitrarily. Further, it is uncommon for a city-dweller to
+roam around uniformly at random; a more likely trajectory
+consists of spending time within some local region, and occasionally
+making long-range transitions.
+As a second example, consider a large-scale disaster recovery
+or battlefield scenario. It may be unusual for every participant
+to move uniformly across the entire field; rather, due to
+organizational structure, the movement may be constrained so
+that there is little traffic between different units, while movement
+within units is quite high.
+Finally, let us examine a large natural habitat, such as a
+national park, that scientists may wish to monitor [2]. Once
+more, it is unlikely to observe animals moving around uniformly.
+The animals may be living in herds; different types of
+animals may avoid trespassing upon each others’ territory; or
+there may be various natural obstacles like hills or undergrowth
+that restrict movement in certain regions, etc.
+The common characteristic of the above three examples is
+movement locality. This observation provides support for our
+design in later sections.

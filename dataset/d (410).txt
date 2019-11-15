@@ -1,0 +1,60 @@
+Let's consider a specic example of a network of motion sen-
+sors (for example, magnetometer sensors) in a eld. Assume
+that we are interested in monitoring the motion sensors lying
+in a small spatial region, <spatial-region>. Assume for the
+sake of simplicity that all the sensors within the <spatial-
+region> fall within one cluster. Also assume that all the
+sensors operate in theupdate-mode.
+
+When the monitoring operation begins, the sensors in the
+<spatial-region> transmit their current reading to the base
+station. Subsequently, they transmit updates to the base
+station as and when their readings change. Based on the
+data received by the base station, one can build an activity-
+image of the monitored region. Each pixel in this image
+represents a sensor in the monitored region, the intensity of
+the pixel indicates its reading, and its position in the im-
+age corresponds to its location in the sensor eld. When
+visualized this way, the sensors may be seen as collectively
+sending a stream of activity-maps of the monitored region,
+one frame at a time. Since sensors send updates to the base
+station only when their reading changes, sensors may be
+seen as collectively sending the full frame initially, and then
+sending only the dierences from the previous frame in sub-
+sequent frames. Given this view of the monitoring operation,
+this whole process is analogous to how video is encoded in
+MPEG [19] | the initial frame that contains data from all
+the sensors in <spatial-region> is analogous to an I-frame in
+MPEG. The subsequent frames (the dierence-frames being
+sent by base station) are analogous to P-frames in MPEG
+(more precisely, P-frames with no motion-vectors). Figure 4
+illustrates this analogy. In fact, we can improve the anal-
+ogy by performing prediction at the base stations of sensor
+networks.
+
+Thus, a base station may perform motion estimation based
+on the last couple of frames, and use the computed motion-
+vectors to predict a few frames in the future. The base sta-
+tion would then send the prediction to the sensors. Sensors
+now need to transmit only when their reading diers from
+the predicted value. This mode of operation is very similar
+to of MPEG. If a signicant fraction of the predictions are
+correct, then substantial energy savings may be achieved at
+the sensor.
+
+Although we have considered the visualization and MPEG
+analogy in the context of a network of motion sensors, the
+proposed framework is very general and it can be applied to
+a network of any type (or types) of sensors. This is because
+the algorithms used in MPEG encoding do not make any
+assumptions about the underlying data, i.e., in some sense
+they are \blind" to the specics, and can be applied to any
+form of image. It is important to note that the readings of
+sensors need not necessarily be single values like tempera-
+ture. Each reading may, in general, be a set of values (for
+example, imagine a network of tiny cameras, where each
+reading of the camera is an image) and still the same algo-
+rithms may be applied. However there are dierences be-
+tween sensor monitoring and MPEG many of which in fact
+work in the overall favor of PREMON. In the next section
+we elaborate on these dierences.

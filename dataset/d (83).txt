@@ -1,0 +1,40 @@
+As discussed above, the second additional research component of my thesis will involve characterizing the
+resource limitations of sensors and sensor-query processors and a set of techniques to deal with these limitations.
+Possible limitations include:
+1. Power: Any battery-based sensor network must strive to reduce power consumption whenever possible,
+since as soon as power is exhausted, query processing ends. Reducing communication, sample rate, and
+sleeping the processor are the primary techniques for power reduction. Such techniques must be built into
+TeleTiny from the ground up.
+2. Radio Communication: Radio bandwidth is limited. It is may not be possible to deliver data at the user
+requested rate from all sensors in the network. Techniques to aggregate and reduce communication (such
+as TAG), as well as notify the user and allow him or her to adapt his query to changing bandwidth availability
+are needed. Furthermore, radio communication is inherently lossy; some techniques to mitigate
+such losses (such as retransmission) are possible, but the query processor must also notify the user that
+loss is happening and provide information about the magnitude and location of such loss.
+3. Sensor CPU: In current research [20, 28, 29] the load on the sensor CPU is considered secondary to the
+communication costs of algorithms, since communication tends to dominate power consumption. However,
+understanding what proportion of power consumption is due to the CPU, and what tradeoffs in
+query processing can be made to reduce that consumption is important, particularly if the radio is used
+infrequently.
+4. Sensor RAM: With only 4K of RAM, Motes are very limited in what they can store. Understanding the
+memory requirements of various algorithms, such as TAG, and the places where additional memory can
+be used to reduce communication or increase performance, is an important contribution.
+5. Host CPU: Although it seems that the small quantity of data flowing in from TinyOS-style motes would
+not be enough to overwhelm a modern PC, the host PC must multiplex all user queries over the sensor
+data streaming into the system, and combine that data with other data sources users may have queried.
+If there are enough queries, the non-sensor data is large enough or the sensor communication channel is
+augmented to deliver more bandwidth, the centralized host PC could become a bottleneck.
+6. Host Storage: Streams, even low bandwidth streams from sensor networks, are infinite and will eventually
+exhaust the storage capacity of a host PC.
+Thus, there are many resources at play in TeleTiny. Part of the performance study discussed in the previous
+section will be an effort to determine which of these resources are actually limited in the building monitoring
+scenario.
+Some of the techniques for dealing with resource limitations were proposed in earlier work: for instance,
+TAG deals directly with the bandwidth and power costs of query processing, and proposes several techniques to
+increase the reliability of communications in the TeleTiny environment. Similarly, CACQ is an effort to reduce
+query processor CPU utilization and RAM requirements in streaming continuous query environments.
+It is less well understood how to handle other types of resource limitations. For example, because streams
+are effectively infinite, they can easily exhaust storage capacity of a host query processor, even one with a big
+disk. Some set of techniques for expressing to the user the subset of the data that is still in the system, as well as
+techniques for summarizing and expiring old data, are needed. The STREAM project at Stanford [5] discusses
+summarization techniques, but more work is needed before its clear how or when to apply such summaries.

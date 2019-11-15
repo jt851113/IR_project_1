@@ -1,0 +1,58 @@
+In this section, we outline the general strategy we use to
+mine patterns that meet certain generalized information gain
+threshold . There exist three challenges for mining patterns
+with information gain: (1) The number of different patterns is
+where    and 
+ are the overall number of distinct events
+and the maximum period length, respectively. Since 
+ can
+be quite large, e.g., in the thousands, it is infeasible to verify
+each pattern against the data directly. Some pruning mechanism
+has to be developed to circumscribe the search space. (2)
+By definition, the generalized information gain measure does
+not have the property of downward closure as the traditional
+support measure does. For the sequence shown in Figure 2,
+the generalized information gains8 of the pattern    and
+   are            and
+		  , respectively; while the generalized
+information gain of    is        
+	    , which is greater than that of    and
+  . If the generalized information gain threshold is set
+to   , then only    qualifies while the other two
+do not. This prevents us from borrowing existing algorithms
+developed for association rule problems to mine the qualified
+patterns. (3) The subsequence concept introduced in this paper
+poses a difficult challenge to determine when a subsequence
+should start and end. If a pattern misses some “matches”, it
+is hard to tell whether this signals the end of a subsequence or
+this merely means some noise within a subsequence.
+Fortunately, the triangle inequality holds for the generalized
+information gain. In other word, for a set of complementary
+patterns , the generalized information gain of the minimum
+common superpattern (MCSP) of  is always less than
+or equal to the sum of that of each individual pattern in  over
+the same subsequence of events. For example, the generalized
+information gain of    is less than the sum of that of
+   and    over the same subsequence as demonstrated
+in Figure 2. Inspired by this observation, we can first
+collect the generalized information gain of all singular patterns,
+and then generate candidate patterns by combining these singular
+patterns. Figure 3 outlines our approach, STAMP. In the first
+phase, the valid singular patterns are discovered. The second
+phase generates the candidates of valid complex pattern based
+on the candidates of valid singular patterns via triangle inequality.
+Finally, STAMP verifies all candidates, and finds the corresponding
+subsequence for each valid pattern so as to maximize
+its generalized information gain. The maximum information
+gain (MIG) counting is designed to determine whether an event
+ may participate in a pattern 	 of period  and can discover all
+valid singular patterns. However, the overall number of MIG
+counters could be quite large. As a result, it is beneficial if the
+number of MIG counters can be reduced to limit the number of
+scans through the event sequence. We, thus, propose a pruning
+technique, optimal information surplus (OIS), to prune
+out disqualified periods of each event before the MIG counting.
+The OIS pruning and MIG counting constitute the first phase of
+STAMP. After MIG counting, the candidate complex patterns
+are generated, and then verified. We will explain each component
+in detail in the following sections.

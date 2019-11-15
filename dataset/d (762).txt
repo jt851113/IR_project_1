@@ -1,0 +1,23 @@
+Wireless sensor-actuator networks can provide the ability to continuously monitor the integrity
+of structures in real-time, detect damage at an early stage, and provide robustness in the
+case of catastrophic failures with a fraction of cost associated with today’s wired networks.
+However, sensor-actuator networks require a new paradigm of computing—one which explicitly
+addresses less capable hardware, unreliable communication with limited bandwidth, and severe
+energy constraints. We are developing algorithms and software tools which will facilitate monitoring
+and protection of civil structures using such networks. Specifically, our research
+addresses problems of communication and coordination in this environment.
+A key idea in our approach is to push the computation to the embedded nodes—thus providing
+greater robustness through decentralization and probabilistic correctness guarantees
+through statistical reasoning. For example, a high frequency measurement in a dense sensor
+array results in an overwhelmingly large amount of data. By aggregating data in the network
+we eliminate redundant information at the sensor nodes in situ, thus reducing transmitted and
+stored data and conserving power.
+Sensor readings need to be correlated in time and space and actuation needs to be synchronized
+to provide effective monitoring and protection of civil structures. To facilitate such
+coordination through self-organizing networked sensors, we are developing a range of middleware
+services such as time synchronization and node localization. Finally, we describe a
+scalable simulator that we are developing to assist application development on sensor networks.
+The simulator models three key aspects of a sensor network: the sensor nodes, the data network,
+and the environment with which the sensors interact. In the future we plan to interface the simulator
+with actual sensor nodes so that a variety of scenarios can be easily replayed for testing
+purposes.

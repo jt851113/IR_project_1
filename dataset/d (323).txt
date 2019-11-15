@@ -1,0 +1,48 @@
+In this paper, we presented the design of a query optimizer
+for heterogeneous middleware systems designed to
+integrate data sources with different data models and query
+processing capabilities. A query optimizer is a critical
+component of any such middleware system, because differences
+in cost between alternative plans for executing a
+query can easily be several orders of magnitude, and there
+are generally many possible plans. Our optimizer is based
+on dynamic programming and Lohman’s STrategy Alternative
+Rules, or STARs. We have extended Lohman’s approach
+to encompass generic and wrapper STARs, and implemented
+this in the Garlic middleware system. Garlic
+uses STARs to construct its query execution plans, in which
+a generic PushDown POP represents work done by a data
+source. Garlic’s generic STARs construct PushDown POPs
+and invoke wrapper-provided STARs to construct the wrapper
+portion of the plan. We illustrated our approach with
+both Garlic and wrapper STARs, and described how they
+would be used to optimize a query. In a small set of experiments
+[K
+
+96], we have further shown the importance of optimization
+in this environment, and how alternative wrapper
+STARs impact query processing in Garlic.
+The advantages of our approach lie in its extensibility
+and evolvability, the expressiveness of the powerful STAR
+syntax, the simplicity of wrapper STARs, and the fact that
+it can be implemented as an extension of an existing optimizer,
+leading to high quality plans. The approach is extensible,
+as new wrappers and their STARs can be integrated
+without affecting other wrappers or Garlic’s query engine.
+The STAR syntax is powerful, as it enables wrapper writers
+to precisely model the capabilities of wrappers even for very
+unusual data sources. It is typically easy to define STARs
+because STARs simply model “what” kind of queries can
+be handled by a wrapper rather than specifying precisely
+“how” these queries are executed by the data sources. The
+approach is efficient, as it employs well-known optimization
+techniques such as dynamic programming with pruning
+to find good plans with reasonable effort.
+In the future, we want to continue to integrate and experiment
+with new kinds of data sources in order to get more
+general insight into the design tradeoffs for wrapper STARs.
+We are considering wrappers for a digital library product,
+and for OLE automation servers. We are also examining
+whether we can develop cost models for broad classes of
+data sources, so that modeling the cost of wrapper plans
+can be simplified for the wrapper writer.

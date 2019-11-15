@@ -1,0 +1,169 @@
+The architecture of the system is based on the architecture
+of MPEG encoder. In this section, we describe in detail the
+processing at the base stations and at the sensors.
+Processing at the Base Station
+The MPEG-like encoding at the base station involves the
+following processing steps:
+
+ Collect updates from the sensors. Updates received
+in the same TDMA cycle form a frame (of the sensor
+stream). They are fed into a prediction model genera-
+tion unit.
+ Prediction model generation unit looks at a set of suc-
+cessive frames and computes prediction models. A pre-
+diction model predicts the direction of motion for a
+\macro-block" in the frame for next few time units.
+This prediction model is sent to the sensors.
+ In the next TDMA cycle, the base station assumes that
+the prediction model predicted readings of all sensors
+correctly and forms the next frame. The sensors whose
+readings do not match with the prediction model will
+send an update, thereby overriding their assumed read-
+ings in the frame.
+ If sending the prediction model resulted in fewer up-
+dates, then the base station encodes the frame as a set
+of prediction models, followed by the updates neces-
+sary to override wrong predictions (prediction errors).
+It sends this to an access point.
+
+Going by the MPEG analogy, if a base station is low on
+energy, it may send out \low-quality images" in order to cut
+down the amount of data being sent. Here, by \low-quality"
+we mean less accurate information of the sensor readings. for
+example, the base station may divide its cluster in spatial
+blocks and may only send average reading of each block to
+the access point.
+
+Processing at the Sensor
+A sensor is in update mode by default - it sends an update to
+the base station whenever its reading changes. When it re-
+ceives a prediction-model from the base station, it alters its
+behavior slightly. For the duration for which the prediction-
+model is valid, it compares its sensed reading with the read-
+ing predicted by the prediction-model. It sends the former
+to the base station only when it diers from the predicted
+reading by more than some pre-congured margin of error.
+When the prediction-model expires, the sensor reverts back
+to the default update-mode.
+Computing a Prediction Model
+
+In this section we discuss the prediction-model generation
+mechanism in more detail. Although there may be many
+dierent ways of generating prediction models, our focus is
+on using mechanisms that are generally applicable to a wide
+range of sensor networks.
+
+We use the block-matching algorithm in MPEG to compute
+prediction models. Note that the position of sensors in a
+cell is not uniform, and hence, in the corresponding visual-
+ized image the pixels will not be uniformly positioned. The
+block-matching algorithm cannot be applied directly to such
+an image. In order to correct this problem, one may use the
+sensor readings to interpolate (or extrapolate) the readings
+at regular grid points in the image using one of the several
+standard techniques [6]. As a rst cut, we employ a very
+simple interpolation mechanism. This mechanism assigns
+the reading of the closest sensor to a grid point. If more than
+one sensor happen to be closest to a grid point, the mecha-
+nism assigns the average of their readings to the grid point.
+Since the sensors may potentially be unevenly distributed in
+the region, it is possible that a grid point in the visualized
+image does not have any sensor \nearby". We deal with this
+problem by labeling such a grid point as\transparent". The
+signicance of such a labeling will become clear shortly.
+
+After interpolation, the visualized image will have pixels at
+regular intervals. Some of these pixels may be \transpar-
+ent". To deal with the \transparent" pixels we modify the
+standard block-matching algorithm. As in standard block-
+matching algorithm, the image is divided into macro-blocks.
+For each macro-block in a frame, the algorithm looks for a
+match by moving it over the next consecutive frame. If a
+match is found, it computes the motion-vectors. During this
+process, we give special treatment to \transparent" pixels.
+We assume that a \transparent" pixel matches any other
+pixel. Also, we try to compute the motion vectors for a
+macro-block only when the percentage of transparent pixels
+in it is less than a certain threshold. Appendix A.2 gives
+the pseudo-code for the modied block-matching algorithm.
+When determining the degree of match between two macro-
+blocks, the original MPEG algorithm (appendix A.1) would
+simply subtract the intensity values of the corresponding
+pixels and sum these up. However, in a sensor network,
+each reading of a sensor may not be a single value but a
+set of values. In such a case, a simple subtraction will not
+work. Instead, we compute the degree of match between the
+two readings. The way this is computed is dependent on the
+type of sensor.
+
+In order to generate a prediction model, the base station
+works with the four most recent frames. It rst applies the
+above algorithm to frames 1 and 2. Let's assume that this
+gives us the set, M, of motion-vectors. Each motion-vector
+in M indicates \motion" (the case of no motion can be seen
+as a special case of \motion"). For each motion vector in M,
+the base station checks frames 2 and 3, and 3 and 4, to see if
+the motion continues and if it can be described by the same
+motion-vector. If so, we say that the motion-vector \holds".
+As an example, consider the four consecutive frames shown
+in gure 5. The motion vector <dx,dy> \holds" for these
+four frames. If a motion-vector does not hold, it is discarded.
+If a motion-vector holds, the base station assumes that the
+motion described by it will continue for the next few frames
+
+in the future, and generates an absolute prediction model
+based on it. This model contains the readings of sensors
+in the macro-block of frame 1. Depending on the type of
+sensors, this information may be encoded in a more effcient
+form. For example, in our test bed, the magnetometer sen-
+sors [2] output a binary value - LOW/HIGH. LOWindicates
+that no (metallic) object is present in the \vicinity". HIGH
+indicates that an object is in the vicinity of the sensor. A
+macro-block of readings of magnetometer sensors consists of
+0s and 1s. In this case, instead of sending the entire macro-
+block, one can nd the largest rectangular block of 1s and
+send the coordinate of this rectangle (8 bytes of informa-
+tion), thereby substantially reducing the data that needs
+to be sent. The prediction model would then be valid for
+only the sensors within the rectangle and not for the entire
+macro-block.
+
+This model is sent to the geographic area containing the
+sensors that are going to see the motion in the next four time
+frames. Note that at any time instant only a portion of the
+target area is going to see the motion. In order to indicate
+this to the sensors, we mention the target of the model as
+of type GEO TEMPORAL. This allows the sensors in the
+target region to compute their predicted value correctly.
+
+A special case occurs when a motion-vector indicates \no
+motion" (i.e., the horizontal and vertical displacement are
+both zero) and it holds for four most recent frames. This
+indicates that the readings of sensors in a macro-block are
+not changing over time. In such a case, instead of sending
+the entire macro-block, the base station simply sets a ag to
+indicate that the values are not expected to change for the
+next few frames. Appendix A.3 and A.4 give the pseudo-
+code for generating prediction models.
+
+Communicating a Prediction Model
+Any prediction model can be communicated to sensors by
+specifying four components in a message:
+ Type: Prediction models may be one of the four types:
+{ Absolute
+{ Spatial
+{ Temporal
+{ Spatio-temporal
+ Model: The representation of the model changes with
+the type. It may be represented as a list of tuples
+<time, reading>, or as a function (for example, poly-
+nomial).
+ Destination: The destination of the prediction model
+decides the sensors for which it is targeted. The des-
+tination may be specied as a broadcast address (the
+targets are all the sensors in the cell), sensor id (the
+target is a specic sensor), or a spatial polygon (the
+targets are all the sensors that are physically present
+inside the polygon).
+ TTL: This eld gives the time duration for which the
+prediction model is valid.

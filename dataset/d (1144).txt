@@ -1,0 +1,25 @@
+The group plan is the query plan shared by all queries in the
+group. It is derived from the common part of all single query
+plans in the group. Figure 3.5 shows the group plan for the
+queries in Figure 3.1.
+An expression signature allows queries in a group to have
+different constants. Since the result of the shared computation
+contains results for all the queries in the group, the results must
+be filtered and sent to the correct destination operator for further
+processing. NiagaraCQ performs filtering by combining a
+special Split operator with a Join operator based on the constant
+values stored in the constant table. Tuples from the data source
+(e.g. Quotes.xml) are joined with the constant table. The Split
+operator distributes each result tuple of the Join operator to its
+correct destination based on the destination buffer name in the
+tuple (obtained from the Constant Table). The Split operator
+removes the name of the destination buffer from the tuple before
+it is put into the output stream, so that subsequent operators in
+the query do not need to be modified. In addition, queries with
+the same constant value also share the same output stream. This
+feature can significantly reduce the number of output buffers.
+Since generally the number of active groups is likely to be on
+the order of thousands or ten of thousands, group plans can be
+stored in a memory-resident hash table (termed a group table)
+with the group signature as the hash key. Group constant tables
+are likely to be large and are stored on disk.

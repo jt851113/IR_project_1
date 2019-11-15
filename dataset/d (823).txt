@@ -1,0 +1,12 @@
+An important class of networked systems is emerging that involve
+very large numbers of small, low-power, wireless devices. These
+systems offer the ability to sense the environment densely, offering
+unprecedented opportunities for many scientific disciplines to
+observe the physical world. In this paper, we argue that a data
+handling architecture for these devices should incorporate their extreme
+resource constraints - energy, storage and processing - and
+spatio-temporal interpretation of the physical world in the design,
+cost model, and metrics of evaluation. We describe DIMENSIONS,
+a system that provides a unified view of data handling in sensor networks,
+incorporating long-term storage, multi-resolution data access
+and spatio-temporal pattern mining.

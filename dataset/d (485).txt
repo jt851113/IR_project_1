@@ -1,0 +1,14 @@
+4.3 Effects of MIG Counting The number of candidate patterns
+depends on the average number of events (with positive
+MIG values) in each position of each period. Figure 12(a) shows
+the average number of events (&) in each position for period ()
+between 5 and 100 with the generalized information gain threshold
+  . (Note that the Y-axis is in log scale.) The & value
+is similar for all four data sets and & decreases with . In Figure
+12(a), when  ! 	, & '  for all four sequences. In other
+words, many positions of a pattern with period larger than 30
+are null. The total number of candidate patterns (() for each
+period between 5 and 100 is illustrated in Figure 12(b). ( increases
+with  when  ' 	 due to the longer periods. On the
+other hand, ( decreases with  when  ! 	 due to the smaller
+number of possible events in each position.

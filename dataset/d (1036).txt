@@ -1,0 +1,12 @@
+If we piggy back the detail query distribution in each pong message,
+the network cost will increase for the large size of pong messages.
+To keep the pong message as compact as possible, we adopt
+some kind of optimization. First, we have two observations about
+query distribution in real systems. 1) Most tuples receive zero or
+few queries. 2) Queries are always focused on a hot area. In our
+scheme, a cell is used as a bucket in histogram construction. To
+further reduce the size of data to be transferred, we adopt the clustering
+strategy. Cells are clustered by their received query numbers.
+And the medians of the clusters are sent via pong messages. In addition,
+bloom filter [13] of each cluster is created and sent along to
+verify the membership of the cluster.

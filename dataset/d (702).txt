@@ -1,0 +1,32 @@
+Caching of query results has two benefits: it can be used to re-
+duce response times by bringing the data close to the queries, and
+it can be used to off-load work from the sites that own popular data
+to less loaded sites (auto-tuning). Figure 10 shows how caching
+can help in increasing overall throughput of the system by offloading
+work. We use the fourth architecture and show results without
+caching, with caching but no hits (this demonstrates the overheads
+of caching), with caching and 50% hits, and finally, with caching
+and 100% hits. As we can see, caching induces minimal overhead
+in the system. Caching does not affect the throughputs for type
+1 and type 2 in this scenario because these queries are always directed
+to the machine that has the full data. On the other hand, for
+type 3 and type 4 queries, we see that as the probability of hits increases,
+the overall throughput of the system reduces significantly.
+This happens because after the initial few queries, all the queries
+are completely answered by the top-level sites (sites that are assigned
+to the city and county nodes), and these nodes become the
+bottleneck. As we will see in Section 5.6, the time taken to forward
+a query to another node is much less than the time taken to process
+the query when the answer is present at a node. This suggests
+the need for bypassing the cache under heavy load imbalance. On
+the other hand, caching improves throughput by up to 33% for the
+more realistic mixed workload, because the otherwise idle top-level
+sites can absorb some of the load from the lower-level sites.
+The effects of caching are more pronounced in terms of latency.
+Unfortunately, because we are not using a wide area network in
+our experiments, it is hard to see these effects in our experiments.
+Figure 11 shows the average latencies for the five workloads under
+different caching scenarios as discussed above. Even in the case
+of near-zero network latencies, we can see that query latencies are
+reduced by 10–33% for type 3 and type 4 queries, and for the mixed
+workload.

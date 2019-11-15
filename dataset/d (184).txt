@@ -1,0 +1,15 @@
+Current generation TinyOS motes are equipped with a 4Mhz Atmel microprocessor with 4 kB of RAM and 128 kB of code space, a 917 MHz RFM radio running at 50 kb/s, and 512kB of EEPROM. An expansion slot accommodates a variety of sensor boards by exposing a number of analog input lines as well as popular chip-to-chip serial busses. Current sensor options include: light, temperature, magnetic ?eld, acceleration, sound, and power.
+The single-channel radio is half duplex, meaning motes cannot send and receive at the same time. Currently, the default TinyOS implementation uses a CSMA-like media access protocol with a random backoff scheme. Message delivery is unreliable by default, though applications can build up an acknowledgment layer. Often, a message acknowledgment can be obtained for free (see Section 2.2).
+Power is supplied via an AA battery pack or a coin-cell attached through the expansion slot. The effective lifetime of the device is determined by this power supply. In turn, the power consumption of each sensor node tends to be dominated by the cost of transmitting and receiving messages. In terms of power consumption, transmitting a single bit of data is equivalent to 800 instructions. This energy tradeoff between communication and computation implies that many applications will bene?t by processing the data inside the network rather than simply transmitting the sensor readings. An AA battery pack will allow a mote to send 5.52 million messages (if it does no other computation and only powers its radio up to transmit) which is equivalent to one message per second every day for about two months – not long if the goal is to deploy long lived, zero-maintenancead-hoc sensor networks. Hence, powerconserving algorithms are particularly important. 1 As we will discuss in Section 4.1 , our design is amenable to very low powermodes in which the radio is kept powereddown for long periods of time.
+To understand how data is routed in our ad-hoc aggregation network, two properties of radio communicationneed to be emphasized. First, radio is a broadcast medium so that any mote within hearing distance hears a message, irrespective of whether or not that mote is the intended recipient. Second, we only make use of symmetric links (where if mote
+
+can hear mote
+
+,
+
+can also hear
+
+.) As is common in ad-hoc protocols, asymmetric links are detected and blacklisted using a technique similar to that proposed in AODV [24].
+Messages in the current generation of TinyOS are a ?xed
+1Note that as sensor devices become more integrated, it is expected that the ratio of communication to computation costs will get more important over time as silicon ef?ciency increases while the physical costs of pushing radio waves over the air remain constant.
+size – by default, 30 bytes. Each device has a unique sensor ID that distinguishes it from others. All messages specify their recipient (or specify broadcast, meaning all available recipients), allowing motes to ignore messages not intended for them, although non-broadcast messages are received by all motes within range – unintended recipients simply drop messages not addressed to them

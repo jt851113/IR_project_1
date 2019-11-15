@@ -1,0 +1,348 @@
+1) Anonymization Quality Measure: In our social network
+anonymization model, there are two ways to anonymize the
+neighborhoods of vertices: generalizing vertex labels and
+adding edges. Each of the two methods leads to some information
+loss.
+  The information loss due to generalization of vertex labels
+can be measured by the normalized certainty penalty [21].
+Consider a vertex u of label l1, where l1 is at the leaf level
+of the label hierarchy, i.e., l1 does not have any descendant.
+Suppose l1 is generalized to l2 for u where . Let
+size(l2) be the number of descendants of l2 that are leafs in
+the label hierarchy, and size(*) be the total number of leafs
+in the label hierarchy. Then, the normalized certainty penalty
+of l2 is NCP(l2) = size(l2)/size(*) . 
+  The information loss due to adding edges can be measured
+by the total number of edges added and the number of vertices
+that are not in the neighborhood of the target vertex and are
+linked to the anonymized neighborhood for the purpose of
+anonymization.
+  Consider two vertices  (G) where G is a social
+network. Suppose NeighborG(u1) and NeighborG(u2) are
+generalized to NeighborG' (A(u1)) and NeighborG' (A(u2))
+such that NeighborG' (A(u1)) and NeighborG' (A(u2)) are
+isomorphic. Let H = NeighborG(u1) [ NeighborG(u2)
+and H0 = NeighborG' (A(u1)) [ NeighborG' (A(u2)). The
+anonymization cost is
+  where  and  are the weights specified by users. Literally,
+the cost consists of three parts. The first part is the
+normalized certainty penalty measuring the information loss
+of generalizing labels of vertices. The second part measures
+the information loss due to adding edges. The last part counts
+the number of vertices that are linked to the anonymized
+neighborhoods to achieve k-anonymity.
+  The anonymization cost of two vertices u and v measures
+the similarity between NeighborG(u) and NeighborG(v).
+The smaller the anonymization cost, the more similar the two
+neighborhoods.
+2) Anonymizing Two Neighborhoods: Now, let us consider
+a greedy method to anonymize two neighborhoods
+NeighborG(u) and NeighborG(v).
+We first find all perfect matches of neighborhood components
+in NeighborG(u) and NeighborG(v). Two components
+distance from a vertex with label l1 to its nearest vertex with
+label l2. Since labels are organized in a hierarchy structure,
+when we calculated the average distance, we also considered
+distance from vertices with labels l01
+to vertices with labels l02
+such that l1 1 l01
+and l2 1 l02
+. The error rate is d!d0
+d , where d
+and d0 are the average distances in the original network and
+in the anonymized network, respectively. We randomly picked
+10 label pairs from the label hierarchy, and calculated the
+average error rate of them. The results are shown in Figure 10.
+After the anonymization, with some edges added, the average
+distance decreases. Therefore, the error rate is always positive.
+However, the error rate is small even when k is up to 20, since
+the number of edges added is small, as shown in Figure 9.
+perfectly match each other if they have the same minimum
+DFS code. Those perfect matches are marked as “matched”
+and pass over for further consideration.
+For example, consider two vertices u and v whose neighborhoods
+are shown in Figure 4. Each vertex is shown in the
+form of (id; label). The neighborhood component C2(u) 2
+NeighborG(u) perfectly matches C3(v) 2 NeighborG(v).
+For those unmatched components, the anonymization algorithm
+tries to pair similar components and anonymize
+them. The similarity between two components is based on
+the anonymization cost. To calculate the similarity between
+two components, we try to match similar vertices in the
+two components as much as possible. This is a traditional
+substructure similarity search problem, which has been proved
+NP-hard [22]. Instead of computing the optimal matching, we
+conduct a greedy match.
+To start with, we first try to find two vertices with the
+same degree and the same label in the two components to be
+matched. If there are multiple matching vertex pairs, the pair
+with the highest vertex degree is chosen. If there is no such a
+pair of matching vertices, we relax the matching requirement
+(vertex degree and label), calculate the difference of degrees
+and the normalized certainty penalty of generalizing the labels
+in the label hierarchy, and choose the one with the minimum
+anonymization cost. Then, we conduct a breadth-first search to
+match vertices one by one, until all possible vertex matchings
+are found. The anonymization cost is calculated according to
+the matching, and is used to measure the similarity of the two
+components.
+Consider components C1(u) and C1(v) in Figure 4. Vertices
+u1 and v1 match. We start from these two vertices and conduct
+a breadth-first search. Vertex v2 partially matches vertex u2.
+Vertex v3 partially matches vertex u3. The vertex matching
+stops since all possible vertex matchings are found. However,
+vertex u4 does not find any vertex matching in C1(v). Thus
+we have to find a vertex w1 2 V (G) that is neither in C1(v)
+nor in C1(u), and add it into C1(v), so that C1(u) and C1(v)
+can be anonymized to the same.
+When a vertex has to be introduced into the neighborhood
+for the sake of anonymization, the following rules are used: we
+first consider those vertices in V (G) that are unanonymized.
+The vertex with smallest degree has the highest priority. If
+there are more than one candidate with the same smallest
+degree, we choose the one having the closest label in terms of
+normalized certainty penalty. If we cannot find any other vertex
+that is unanonymized, we select one anonymized vertex w
+with the smallest degree and satisfying the label requirement,
+and mark w and its (k _ 1) other vertices anonymized in the
+same group as “unanonymized”.
+In our example, suppose we can find an unanonymized
+vertex (w1; l4) to be added to C1(u), the anonymization cost of
+C1(u) and C1(v) is R￠
+Input: a social network G = (V;E), the anonymization requirement
+parameter k, the cost function parameters R, ¯ and °;
+Output: an anonymized graph G0;
+Method:
+1: initialize G0 = G;
+2: mark vi 2 V (G) as “unanonymized”;
+3: sort vi 2 V (G) as VertexList in neighborhood size descending
+order;
+4: WHILE (VertexList 6= ;) DO
+5: let SeedVertex = VertexList.head() and remove it
+from VertexList;
+6: FOR each vi 2 VertexList DO
+7: calculate Cost(SeedVertex; vi) using the anonymization
+method for two vertices;
+END FOR
+8: IF (VertexList.size() ﹐ 2k ! 1) DO
+let CandidateSet contain the top k ! 1 vertices with the
+smallest Cost;
+9: ELSE
+10: let CandidateSet contain the remaining unanonymized
+vertices;
+11: suppose CandidateSet= fu1; : : : ; umg, anonymize
+Neighbor(SeedVertex) and Neighbor(u1) as
+discussed in Section III-B.2;
+12: FOR j = 2 to m DO
+13: anonymize Neighbor(uj) and fNeighbor(SeedVertex),
+Neighbor(u1); : : : ;Neighbor(uj!1)g as discussed in
+Section III-B.2, mark them as “anonymized”;
+14: update VertexList;
+END FOR
+END WHILE
+Fig. 5. Anonymizing a Social Network.
+Based on the component similarity, we can pair similar
+components. We start with the component with the largest
+number of vertices. This component is paired with the most
+similar component in the other neighborhood. The two paired
+components are anonymized to the same, marked “matched”,
+and removed from consideration. The matching continues until
+all components in one neighborhood are marked “matched”.
+If there are some components left in the other neighborhood
+say NeighborG(u), we use some other vertices in V (G) that
+are not in NeighborG(u) to construct a component and add it
+to NeighborG(u) to construct the matching and anonymization.
+The vertices are selected using the same criteria as
+selecting vertices to match two components.
+We anonymize each pair of matched neighborhood components
+to the same. The two neighborhoods then are
+anonymized. For example, in Figure 4, the algorithm matches
+components C1(u) and C1(v), and C2(v) and C3(u) in turn.
+As a result, two vertices w1 and w2 from V (G) have to be
+added into components C1(v) and C3(u), respectively.
+3) Anonymizing a Social Network: We propose a greedy
+method to anonymize a social network as shown in Figure 5.
+First, we mark all vertices in the network as
+“unanonymized”. We maintain a list VertexList of
+“unanonymized” vertices in the neighborhood size descending
+order: for vertices u; v 2 V (G), if jV (NeighborG(u))j
+< jV (NeighborG(v))j, or jV (NeighborG(u))j =
+jV (NeighborG(v))j and jE(NeighborG(u))j <
+jE(NeighborG(v))j, then v precedes u in the list. If
+their neighborhoods have the same numbers of vertices and
+edges, they can be ordered arbitrarily.
+Iteratively, we pick the first vertex SeedVertex in the list
+VertexList. The anonymization cost of SeedVertex and any
+other vertices in VertexList is calculated using the anonymization
+method for two vertices discussed in Section III-B.2.
+If the number of unanonymized vertices in VertexList is at
+least 2k ! 1, we select a set CandidateSet of the top k ! 1
+vertices in VertexList with the smallest anonymization cost.
+We can easily give a lower bound of the anonymization cost
+based on the number of vertices and the number of edges
+in two neighborhoods. Since all vertices in VertexList have a
+neighborhood size smaller than or equal to that of SeedVertex,
+we scan VertexList in the neighborhood size descending order,
+and stop once the lower bound of the anonymization cost
+exceeds the cost of the current (k!1)-th most similar vertex.
+The SeedVertex and the vertices in CandidateSet=
+fu1; : : : ; umg are anonymized in turn using the anonymization
+method for two vertices discussed in Section III-B.2. The
+anonymization of SeedVertex and u1 is straightforward. After
+these two vertices are anonymized, their neighborhoods are
+identical. When we anonymize them with respect to u2, any
+change (e.g., adding an edge or a neighbor node) to the
+neighborhood of SeedVertex will be applied to u1 as well,
+so that the neighborhoods of SeedVertex, u1 and u2 are
+anonymized to the same. The process continues until the
+neighborhoods of SeedVertex and u1; : : : ; um are anonymized.
+During the anonymization of a group of vertices, some
+changes may occur to some other vertices v that have been
+marked as “anonymized” in another group (e.g., adding edges
+between an anonymized vertex and a vertex being anonymized
+based on vertex matching). In order to maintain the k-
+anonymity for those vertices, we apply the same changes to
+every other k!1 vertices having the isomorphic neighborhoods
+as v. Once those k vertices are changed, they are marked as
+“unanonymized” and inserted into the VertexList again.
+When the number of unanonymized vertices in VertexList is
+less than 2k, to satisfy the k-anonymity, the remaining vertices
+in VertexList have to be considered together in anonymization.
+They are added to CandidateSet in a batch.
+The social network anonymization algorithm continues until
+all the vertices in the graph are marked as “anonymized”.
+Theorem 4 (Termination): The algorithm in Figure 5 terminates
+for a finite social network of at least k vertices.
+Proof sketch. Clearly, a clique of n vertices where each vertex
+is labeled ? is k-anonymous provided n ﹐ k. In each iteration
+such that VertexList is not shortened, the algorithm either adds
+some edges into the network, or generalizes the labels of some
+vertices towards ?. In the worst case, the network will be
+anonymized to a clique.
+Surprisingly, as shown in our experiments, the algorithm
+can stop very quickly in practice, and the anonymization
+cost is relatively small. This is due to the two important
+properties of real social networks (vertex degree in power
+law distribution and small world phenomenon). Using different
+synthetic data sets, we find that most of the time we do not
+need to anonymize the remaining vertices that are less than
+2k, since they have the same labels, very low degree (1 in
+many sparse social networks), and isomorphic neighborhoods.
+IV. EMPIRICAL EVALUATION
+In this section, we report a systematic empirical study to
+evaluate our anonymization method using both real data sets
+and synthetic data sets. All the experiments were conducted
+on a PC computer running the Microsoft Windows XP SP2
+Professional Edition operating system, with a 3:0 GHz Pentium
+4 CPU, 1:0 GB main memory, and a 160 GB hard disk.
+The program was implemented in C/C++ and was compiled
+using Microsoft Visual Studio .NET 2005.
+A. Neighborhood Attacks in Real Data
+We used a real co-authorship data set from KDD Cup
+2003 to examine whether neighborhood attacks may happen in
+practice. The data set was from the e-print arXiv (arXiv.org),
+and contains a subset of papers in the high-energy physics
+section of the arXiv. The LATEX sources of all papers are
+provided. We extracted author names from the data sources
+and constructed a co-authorship graph. Each vertex in the
+graph represents an author, and two vertices are linked by an
+edge if the two corresponding authors co-authored at least one
+paper in the data set. There are 57; 448 vertices and 120; 640
+edges in the co-authorship graph and the average number of
+vertex degrees is about 4.
+We tested two ways to preserve the privacy of authors
+by generalizing labels. In the first method, we removed all
+labels, i.e., author names. In the second method, we use
+the author’s affiliation as the label, i.e., all authors from the
+same institution have the same label. After generalization, for
+each vertex, we extracted its neighborhood and counted the
+number of other vertices in the graph that have the isomorphic
+neighborhoods. Table I shows the percentages of vertices
+whose neighborhoods violate the k-anonymity.
+Table I clearly shows that the neighborhood attacks are a
+real issue for social network data publishing. When the value
+of k increases, the number of vertices violating k-anonymity
+increases. Moreover, the more specific are the vertex labels,
+the more vertices fail the k-anonymity. Anonymizing labels
+only cannot prevent neighborhood attacks effectively.
+B. Anonymization Performance
+We use the R-MAT graph model [23] to generate synthetic
+data sets. R-MAT can generate graphs with power law vertex
+degree distribution and small-world characteristic, which are
+the two most important properties for many real-world social
+networks.
+R-MAT takes 4 probability parameters, namely a, b, c and d.
+Consider the adjacency matrix representation A of the graph.
+Assume that each element aij in A is non-zero if there exists
+an edge between vertices i and j. Given the number of vertices
+n and the number of edges m, R-MAT starts with an empty
+n￡n adjacency matrix A. It recursively divides the adjacency
+matrix into four equal-size partitions, and distributes edges
+within these partitions with a set of unequal probabilities. Each
+edge chooses one of the four partitions with probabilities a,
+b, c and d, respectively, such that a + b + c + d = 1. The
+parameters a, b, c and d can be determined based on the
+required community structure and vertex degree distribution,
+as detailed in [23]. The study [23] conjectures that the ratios
+a=b and a=c are approximately 3=1 in many real world graphs,
+and a ﹐ d.
+We used the default values of 0:45, 0:15, 0:15 and 0:25
+for those four parameters, respectively. We generated a series
+of synthetic data sets by varying the number of vertices from
+5; 000 to 25; 000 and the average vertex degree from 3 to 7.
+Hereafter, we refer to a synthetic data set as D(n; d), where n
+and d are the number of vertices and the average vertex degree,
+respectively. The edge weight was set in the range [0; 100] by
+default. We assigned each vertex a label based on its average
+edge weight. A simple two level hierarchy structure for those
+labels was generated.
+We first examined the effect of parameters R, ¯ and ° in
+the anonymization quality measure. ¯ was set to 1 as the base.
+We changed the values of R and °, and measured the number
+of edges added and the normalized certainty penalty incurred
+in the anonymized graphs. The results for data set D(15K; 5)
+and k = 10 are shown in Figure 6. The results show that we
+can trade off between adding edges and generalizing labels by
+tuning the three parameters. Often adding less edges is more
+desirable in anonymizing a social network since the network
+structures can be preserved better. We observed that, on the
+synthetic data sets, when R = 100 and ° = 1:1, the number
+of edges added is small and the normalized certainty penalty
+is moderate. Hereafter, we use 100, 1, and 1:1 as the default
+values for R, ¯ and °.
+Figure 7 reports the anonymization quality on various
+synthetic data sets with respect to different k values, and
+shows the anonymization cost in both the number of edges
+added and the normalized certainty penalty. First, when the
+number of vertices increases, the anonymization cost increases.
+However, the increase of the number of edges added is sublinear,
+since in a larger network it is more likely to find similar
+neighborhoods. Second, when k increases, the anonymization
+cost also increases, because more neighborhoods need to be
+anonymized in a group. Last, when the average number of
+vertex degree increases, the anonymization cost increases, too.
+In a denser network, the neighborhoods are more diverse and
+more edges are needed to anonymize different neighborhoods.
+Figure 8 shows the runtime on various synthetic data sets
+with respect to different k values. The runtime increases
+when the average vertex degree increases, since the network
+becomes denser. Moreover, the larger the k, the longer the
+runtime since more neighborhoods in a group need to be
+anonymized.
+C. Anonymizing the Co-authorship Data Set
+We built a 3-level label hierarchy for the KDD cup 2003
+co-authorship data set. The leaf vertices are those labels with
+author affiliations. The middle level contains the countries
+of the authors’ affiliations. The root is the most general
+label ?. We anonymized the co-authorship data set using
+our anonymization method. The number of edges added, the
+normalized certainty penalty and the runtime with different
+values of k are shown in Figure 9. Comparing to the total
+number of edges in the data set (120; 640), the number of
+edges added is less than 6% even when k = 20. Moreover,
+the runtime is scalable with respect to k.
+D. Aggregate Query Answering
+To test the utility of the anonymized social networks, we
+conducted aggregate network queries on the KDD Cup 2003
+co-authorship data set, and the anonymized networks. For two
+labels l1 and l2 in the data set, we calculated the average

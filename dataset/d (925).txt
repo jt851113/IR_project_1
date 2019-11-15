@@ -1,0 +1,46 @@
+We have studied efficient methods for mining partial periodicity
+in time series database. Partial periodicity, which
+associates periodic behavior with only a subset of all the
+time points, is less restrictive than full periodicity and thus
+covers a broad class of applications.
+By exploring several interesting properties related to partial
+periodicity, including the Apriori property, the maxsubpattern
+hit set property, and shared mining of multiple
+periods, a set of partial periodicity mining algorithms are
+proposed, with their relative performance compared. Our
+study shows that the max-subpattern hit set method, which
+needs only two scans of the time series database, even for
+mining multiple periods, offers excellent performance.
+Our study has been confined to mining partial periodic
+patterns in one time series for categorical data with single
+level of abstraction. However the method developed
+here can be extended for mining multiple-level, multipledimensional
+partial periodicity and for mining partial periodicity
+with perturbation and evolution.
+For mining numerical data, such as stock or power consumption
+fluctuation, one can examine the distribution of
+numerical values in the time-series data and discretize them
+into single- or multiple- level categorical data. For mining
+multiple-level partial periodicity, one can explore levelshared
+mining by first mining the periodicity at a high level,
+and then progressively drilling-down with the discovered
+periodic patterns to see whether they are still periodic at a
+lower level.
+Perturbation may happen from period to period which
+may make it difficult to discover partial periodicity in many
+applications. For mining partial periodicity with perturbation,
+one method is to slightly enlarge the time slot to be
+examined. Partial periodic patterns with minor perturbation
+are likely to be caught in the generalized time slot. Another
+method is to include the features happening in the time slots
+surrounding the one being analyzed. We can further employ
+regression technique to reduce the noise of perturbation.
+There are still many issues regarding partial periodicity
+mining which deserve further study, such as further exploration
+of shared mining for mining periodicity with multiple
+periods, mining periodic association rules based on partial
+periodicity, and query- and constraint- based mining of partial
+periodicity [11]. We are studying these problems and
+implementing our algorithms for mining partial periodicity
+in a data mining system and will report our progress in the
+future.

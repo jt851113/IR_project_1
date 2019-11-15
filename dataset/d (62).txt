@@ -1,0 +1,124 @@
+[1] www.microsoft.com/windows/embedded/ce.net.
+[2] www.redhat.com/embedded.
+[3] ACM SIGMOBILE. Proceedings of MOBICOM 1998.
+ACM Press.
+[4] L. Breslau, D. Estrin, K. Fall, S. Floyd, J. Heidemann,
+A. Helmy, P. Huang, S. McCanne, K. Varadhan,
+Y. Xu, and H. Yu. Advances in network simulation.
+IEEE Computer, 33(5):59–67, May 2000.
+[5] J. Broch, D. A. Maltz, D. B. Johnson, Y.-C. Hu, and
+J. Jetcheva. A performance comparison of multi-hop
+wireless ad hoc network routing protocols. [3], pages
+85–97.
+[6] M. Calimlim, W. F. Fung, J. Gehrke, D. Sun,
+and Y. Yao. Cougar Project web page.
+www.cs.cornell.edu/database/cougar.
+[7] S. Ceri and G. Pelagatti. Distributed Database Design:
+Principles and Systems. MacGraw-Hill (New
+York NY), 1984.
+[8] S. Das, C. Perkins, and E. Royer. Performance comparison
+of two on-demand routing protocols for ad hoc
+networks. In INFOCOM 2000, pages 3–12. IEEE.
+[9] D. Estrin, R. Govindan, J. Heidemann, and S. Kumar.
+Next century challenges: Scalable coordination
+in sensor networks. In MOBICOM 1999, pages 263–
+270. ACM Press.
+[10] J. Gray, S. Chaudhuri, A. Bosworth, A. Layman,
+D. Reichart, M. Venkatrao, F. Pellow, and H. Pirahesh.
+Data cube: A relational aggregation operator
+generalizing group-by, cross-tab, and sub-totals. Data
+Mining and Knowledge Discovery, 1(1):29–53, 1997.
+[11] Z. Haas. The zone routing protocol (ZRP) for wireless
+networks. IETF MANET, Internet Draft, 1997.
+[12] D. L. Hall and J. Llinas, editors. Handbook of Multisensor
+Data Fusion. CRC Press, 2001.
+[13] J. Hill and D. Culler. A wireless embedded sensor
+architecture for system-level optimization. Submitted
+for publication, 2002.
+[14] C. Intanagonwiwat, R. Govindan, and D. Estrin. Directed
+diffusion: A scalable and robust communication
+paradigm for sensor networks. In MOBICOM
+2000, pages 56–67. ACM Press.
+[15] P. Johansson, T. Larsson, N. Hedman, B. Mielczarek,
+and M. Degermark. Scenario-based performance analysis
+of routing protocols for mobile ad-hoc networks.
+In MOBICOM 1999, pages 195–206. ACM Press.
+[16] D. B. Johnson and D. A. Maltz. Dynamic source routing
+in ad hoc wireless networks. In Mobile Computing.
+Kluwer Academic Publishers, 1996.
+[17] J. Jubin and J. D. Tornow. The DARPA packet radio
+network protocol. Proceedings of the IEEE, 75(1):21–
+32, Jan. 1987.
+[18] D. Kossmann. The state of the art in distributed query
+processing. Computing Surveys, 32, 2000.
+[19] S. Madden and M. J. Franklin. Fjording the stream:
+An architecture for queries over streaming sensor data.
+In ICDE 2002.
+[20] S. Madden and J. M. Hellerstein. Distributing queries
+over low-power wireless sensor networks. In SIGMOD
+2002.
+[21] S. R. Madden, M. J. Franklin, J. M. Hellerstein, and
+W. Hong. Tag: A tiny aggregation service for ad-hoc
+sensor networks. In OSDI 2002.
+[22] S. R. Madden, R. Szewczyk, M. J. Franklin, and
+D. Culler. Supporting aggregate queries over ad-hoc
+sensor networks. In Workshop on Mobile Computing
+and Systems Applications (WMCSA), 2002.
+[23] M. T. ‥ Ozsy and P. Valduriez. Principles of Distributed
+Database Systems. Prentice Hall, Englewood Cliffs,
+1991.
+[24] V. D. Park and M. S. Corson. A highly adaptive
+distributed routing algorithm for mobile wireless networks.
+In INFOCOM 1997. IEEE.
+[25] C. Perkins and P. Bhagwat. Highly dynamic
+destination-sequenced distance-vector routing
+(DSDV) for mobile computers. In SIGCOMM
+1994 , pages 234–244. ACM Press.
+[26] C. E. Perkins. Ad hoc on demand distance
+vector (aodv) routing. Internet Draft,
+http://www.ietf.org/internet-drafts/draft-ietf-manetaodv-
+04.txt, October 1999.
+[27] G. J. Pottie and W. J. Kaiser. Embedding the Internet:
+wireless integrated network sensors. Communications
+of the ACM, 43(5):51–51, May 2000.
+[28] G. J. Pottie and W. J. Kaiser. Wireless integrated network
+sensors. Communications of the ACM, 43(5):51–
+58, 2000.
+[29] V. Raghunathan, C. Schurgers, S. Park, and M. B. Srivastava.
+Energy-aware wireless microsensor networks.
+IEEE Signal Processing Magazine, 19(2):40–50, 2002.
+[30] N. Schacham and J. Westcott. Future directions in
+packet radio architectures and protocols. Proceedings
+of the IEEE, 75(1):83–99, January 1987.
+[31] P. Seshadri, M. Livny, and R. Ramakrishnan. Seq: A
+model for sequence databases. In ICDE 1995. IEEE
+Computer Society.
+[32] P. Seshadri, M. Livny, and R. Ramakrishnan. The design
+and implementation of a sequence database system.
+In VLDB 1996, pages 99–110. Morgan Kaufmann.
+[33] A. Shatdal and J. F. Naughton. Adaptive parallel
+aggregation algorithms. In SIGMOD 1995, pages 104–
+114.
+[34] T. Simunic, H. Vikalo, P. Glynn, and G. D. Micheli.
+Energy efficient design of portable wireless systems.
+In ISLPED 2000, pages 49–54. ACM Press.
+[35] S. Singh, M. Woo, and C. S. Raghavendra. Poweraware
+routing in mobile ad hoc networks. [3], pages
+181–190.
+[36] I. C. Society. Wireless LAN medium access control
+(mac) and physical layer specification. IEEE Std
+802.11, 1999.
+[37] M. Stonebraker. Operating system support for
+database management. CACM, 24(7):412–418, 1981.
+[38] W. P. Yan and P.-°A. Larson. Eager aggregation and
+lazy aggregation. In VLDB 1995. Morgan Kaufmann.
+[39] C. Yu and W. Meng. Principles of Database Query
+Processing for Advanced Applications. Morgan Kaufmann,
+San Francisco, 1998.
+[40] C. T. Yu and C. C. Chang. Distributed query processing.
+ACM Computing Surveys, 16(4):399–433, Dec.
+1984.
+[41] C. Zaniolo, C. S., C. Faloutsos, R. Snodgrass, V. S.
+Subrahmanian, and R. Zicari, editors. Advanced
+Database Systems. Morgan Kaufmann, San Francisco,
+1997.

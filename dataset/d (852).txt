@@ -1,0 +1,41 @@
+To study the impact of dynamics on directed diffusion, we
+simulated node failures as follows. For each sensor field,
+repeatedly turned off a fixed fraction of nodes for 30 seconds.
+These nodes were uniformly chosen from the sensor
+field, with the additional constraint that an equal fraction
+of nodes on the sources to sinks shortest path trees was
+also turned off for the same duration. The intent was to
+create node failures in the paths diffusion is most likely to
+use, and to create random failures elsewhere in the network.
+Furthermore, unlike the previous experiment, each source
+sends different location estimates (corresponding to the situation
+in which each source "sees" different animals). We
+did this because the impact of dynamics is less evident when
+diffusion suppresses identical location estimates from other
+sources. We could also have studied the impact of dynamics
+on other protocols, but, because omniscient multicast is an
+idealized scheme that doesn't factor in the cost of route recomputation,
+it is not entirely clear that such a comparison
+is meaningful.
+Our dynamics experiment imposes fairly adverse conditions
+for a data dissemination protocol. At any instant, 10 or
+20 percent of the nodes in the network are unusable. Furthermore,
+we do not permit any "settling time" between
+node failures. Even so, diffusion is able to maintain reasonable,
+if not stellar, event delivery (Figure 5(c)) while incurring
+less than 20% additional average delay (Figure 5(b)).
+Moreover, the average dissipated energy actually improves,
+in some cases, in the presence of node failures. This is a
+bit counter-intuitive, since one would expect that directed
+diffusion would expend energy to find alternative paths. As
+it turns out, however, our negative reinforcement rules axe
+conservative enough that several high-quality paths are kept
+alive in normal operation. Thus, at the levels of dynamics
+we simulate, diffusion doesn't need to do extra work.
+The lower energy dissipation results from the failure of some
+high-quality paths.
+We take these results to indicate that the mechanisms in
+diffusion are relatively stable at the levels of dynamics we
+have explored. By this we mean that diffusion does not,
+under dynamics, incur remarkably higher energy dissipation
+or event delivery delays.

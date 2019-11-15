@@ -1,0 +1,7 @@
+We now briey survey the related work of our meth-
+ods. Sensors and their limitations are described in Sec-
+tion 2.1. Previous frameworks for processing aggregates
+are covered in 2.2, and multipath routing techniques
+are covered in 2.3. Finally, the sketches which we use
+to improve upon these frameworks are introduced in
+Section 2.4.

@@ -1,0 +1,43 @@
+For finding frequent itemsets, a data stream can be defined as
+follows:
+?) Let I={i1, i2, … , in} be a set of current items that have ever
+been used as a unit information of an application domain.
+?) An itemset e is a set of items such that e?(2I-{?}) where 2I
+is the power set of I. The length |e| of an itemset e is the
+number of items that form the itemset and it is denoted by
+an |e|-itemset. An itemset {a,b,c} is denoted by abc.
+?) A transaction is a subset of I and each transaction has a
+unique transaction identifier TID. A transaction generated
+at the kth turn is denoted by Tk.
+?) When a new transaction Tk is generated, the current data
+stream Dk is composed of all transactions that have ever
+been generated so far i.e., Dk = <T1, T2, … , Tk> and the
+total number of transactions in Dk is denoted by |D|k.
+When a transactions Tk is generated currently, the current count
+Ck(e) of an itemset e is the number of transactions that contain the
+itemset among the k transactions. Likewise, the current support
+Sk(e) of an itemset e is the ratio of its current count Ck(e) over |D|k.
+A decay rate means the reducing rate of a weight for a fixed
+decay-unit. A decay-unit determines the chunk of information to
+be decayed together. A decay rate is defined by two parameters: a
+decay-base b and a decay-base-life h. A decay-base b determines
+the amount of weight reduction per a decay-unit and it is greater
+than 1. When the weight of the current information is set to 1, a
+decay-base-life h is defined by the number of decay-units that
+makes the current weight be b-1. Based on these two parameters, a
+decay rate d is defined as follows:
+Theorem 1. Given a decay rate d = b?(1/ h) (b>1, h?1, b-1? d< 1),
+the total number of transactions |D|k in the current data stream Dk
+is found as follows:
+(Proof)
+When the first transaction is looked up, the number of transactions
+|D|1 is obviously 1 since there is no previous transaction whose
+weight should be decayed. When the second transaction is looked
+up, the total number of transactions |D|2 is computed by |D|1×d+1
+since the weight of the first transaction is decayed. Subsequently,
+when a new transaction is generated at the kth (k?2) turn, the total
+number of transactions |D|k=|D|k-1×d+1. Consequently, it can be
+expressed by |D|k=dk-1+dk-2 + …+d+1= (1? d k ) /(1? d) . Since b-1?
+d<1, |D|k converges to 1/(1? d) as k increases infinitely. □
+Similarly, the count Ck(e) of an itemset e in the current data
+stream Dk is obtained as follows:

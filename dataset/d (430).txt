@@ -1,0 +1,45 @@
+[t] G. Berger and A. ~zhilin. Discovering unexpected patterns in
+temporal data using temporal logic. Temporal Databases -
+Research and Practice, Lecture Notes on Computer Sciences,
+(1399) 281-309, 1998.
+[2] R. Blahut. Principles and Practice of Information Theory,
+Addison-Wesley Publishing Company, 1987.
+[3] S. Brin, R. Motwani, C. Silverstein. Beyond market baskets:
+generalizing association rules to correlations. Proc. ACM
+SIGMOD Conf. on Management of Data, 265-276, 1997.
+[4] J. Han, G. Dong, and Y. Yin. Efficient mining partial periodic
+patterns in time series database. Proc. Int. Conf. on Data
+Engineering, 106-115, 1999.
+[5] M. Klemetinen, H. Mannila, P. Ronkainen, H. Toivonen, and
+A. Verkamo. Finding interesting rules from large sets of
+discovered association rules. Proe. CIKM, 1994.
+[6] B. Liu, W. Hsu, and Y. Ma. Mining association Rules with
+multiple minimum supports. Proc. ACM SIGKDD, 337-341,
+1999.
+[7] S. Ma and J. Hellerstein. Mining partially periodic event
+patterns with unknown periods. Proe. Int. Conf. on Data
+Engineering, 205-214, 2001.
+[8] H. Mannila, D. Pavlov, and P. Smyth. Prediction with local
+patterns using cross-entropy. Proe. ACId SIGKDD, 357-361,
+1999.
+[9] T. Oates, M. D. Schmill, P. R. Cohen. Efficient mining of
+statistical dependencies. Proc. 16th Int. Joint Conf. on
+Artificial Intelligence, 794-799, 1999.
+[10] B. Padmanabhan and A. Tuzhilin. Small is beautiful:
+discovering the minimal set of unexpected patterns. Proc. ACM
+KDD, 54-63, 2000.
+[11] A. Silberschatz and A. Tuzhilin. What makes patterns
+interesting in knowledge discover systems. IEEE Transactions
+on Knowledge and Data Engineerin 9 (TKDE) vol. 8 no. 6, pp.
+970-974, 1996.
+[12] K. Wang, Y. He, and J. Han. Mining frequent itemsets using
+support constraints. Proe. Int. Conf. on Very Large Data
+Bases, 2000.
+[13] J. Yang, W. Wang, and P. Yu. Mining asynchronous periodic
+patterns in time series data. Proe. ACM SIGKDD Int. Conf. on
+Knowled9 e Discovery and Data Mining (SIGKDD), pp.
+275-279, 2000.
+[14] J. Yang, W. Wang, and P. Yu. InfoMiner: mining surprising
+periodic patterns. IBM Research Report, 2001.
+[15] M. J. Zaki. Generating non-redundant association rules. Proe.
+ACM SIGKDD, 34-43, 2000.

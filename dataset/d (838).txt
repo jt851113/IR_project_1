@@ -1,0 +1,36 @@
+This paper made the case for DIMENSIONS, a large-scale distributed
+multi-resolution storage system that exploits spatio-temporal
+correlations in sensor data. Many important research issues still
+need to be addressed:
+What are the benefits from temporal and spatial data compression?
+To fully understand correlations in sensor data, and the
+benefits provided by temporal and spatial compression, we are deploying
+large scale measurement infrastructure, for sensor data collection
+in realistic settings,
+What processing should be placed at different levels of the hierarchy?
+The clusterheads at various levels of the hierarchy can
+interpret the data at different scales, to obtain information about
+spatio-temporal patterns. A challenging problem is the development
+of algorithms for spatio-temporal interpretation of data.
+How can we increasing compression benefit without sacrificing
+query performance? Our system can be augumented with other
+compression techniques such as delta coding, and recent work on
+blind source coding [17], to obtain better data compression. Correlation
+statistics can be learnt by clusterheads, and exploited to
+reduce data at the source.
+How can we obtain energy savings from distributed compression?
+Better compression doesn’t necessarily translate into energy
+savings in communication since the cost of passive listening is
+comparable to transmission [1]. Obtaining energy savings in communication
+of data involves (a) reducing size of data to be transmitted
+(b) scheduling communication to minimize listen time as well
+as transmit time. How do we schedule communication to translate
+compression benefit to energy benefit?
+How can this research be applied to other networked systems?
+These techniques may have relevance to other systems where data
+is correlated, and massive distributed datasets need to be queried,
+such as scientific applications of Grid Computing [21].
+Acknowledgements
+We would like to thank Stefano Soatto for very useful feedback
+on theoretical aspects of our system. We would also like to thank
+members of the LECS lab for providing feedback on the paper.

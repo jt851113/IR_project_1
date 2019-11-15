@@ -1,0 +1,7 @@
+The experiments in the previous section demonstrated
+the ability of Fjords to efficiently handle many queries over
+streaming data. We now turn our attention to another key aspect
+of sensor query processing, the impact of sample rate
+on both sensor lifetime and the ability of Fjords to process
+sensor data. We focus on sensors that are similar to the
+wireless sensors motes described in Section 2.1 above.

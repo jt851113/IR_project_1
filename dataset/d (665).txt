@@ -1,0 +1,5 @@
+In this section, we present an evaluation of our meth-
+ods using the TAG simulator of [15]. Section 5.1 de-
+scribes the various strategies employed for aggregation
+and transmission of data and Section 5.2 presents the
+experimental results for dierent scenarios.

@@ -1,0 +1,25 @@
+Before presenting the details, we introduce some notation.
+Let N0 denote the set of core neighbors of the zero-node. Also,
+let Cl(m) be the cost of optimally placing l auxiliary neighbor
+pointers when only the m immediate successors of the zeronode
+are considered. Considering the nodes in increasing order
+of node ids, we obtain the following.
+The minimum cost that can be obtained using k pointers is
+clearly Ck(n). In the above equations, s(j;m) denotes the cos
+successor when there is a pointer to the jth successor and
+no auxiliary pointers between the jth and the mth successor.
+The key intuition behind recurrence (7) is simple: if j is the
+largest id among the auxiliary neighbors of the zero-node that
+have ids smaller than that of m, then all queries to a node
+with id between that of j and m are routed through j or an
+existing neighbor from the set N0 that is closer. On the other
+hand, queries to nodes 1; 2; : : : ; j ! 1 cannot use the pointer
+at j for routing, and hence the cost contributed by such nodes
+is recursively handled by Cl!1(j ! 1). Minimizing over all
+possible j gives the cost Cl(m).
+The recurrence given by (7) can be solved in two steps.
+1) Compute s(j;m) for all pairs (j;m) such that j < m.
+2) Solve (7) using a simple dynamic programming algorithm
+consisting of two nested for loops.
+The complexity of the first step is O(n2) and that of the second
+step is O(n2k), thus giving an overall complexity of O(n2k).

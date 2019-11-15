@@ -1,0 +1,19 @@
+Intuitively, for a given N, as M is increased, ERS has to “expand” the ring more, while
+ACQUIRE will take more steps to resolve the query. In this section, we fix N at 100 and
+let M to take the values of 10, 20, 40, 60, 80 and 100. For each value of M
+N , we observe the
+performance of ACQUIRE and ERS for c = 0.05, c = 0.2 and c = 1. For ERS, the values
+of tmin for these values of M
+N are 12, 13, 15, 15, 16 and 16 respectively.
+As the figures 8 shows, the average energy consumed to resolve a complex query increases
+with increasing M for a given N. For c = 0.05, ERS performs better than ACQUIRE
+when M
+N  0.5, while in the other cases ACQUIRE outperforms ERS across all the amortization
+factors and relative query sizes in our study. In these cases, the energy savings of
+ACQUIRE over ERS are seen to range as high as 85% (e.g. when c = 1, M
+N = 1).
+Thus, both c and M
+N seem to have a significant impact on the performance of ACQUIRE and
+ERS. As c increases and M
+N increases, ACQUIRE achieves significant energy savings over
+ERS (and FBQ).

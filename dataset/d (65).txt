@@ -1,0 +1,24 @@
+My initial research focused on the architectural issues that arise in sensor query processing with respect to the
+central query processor. This research has identified a number of areas where a query processing engine can be
+modified to make it better suited to queries over sensor data:
+?? Fjords and Sensor Proxies: These two concepts form the core of the DBMS side sensor query processing
+system that is a part of the Telegraph [19] dataflow system under development at UC Berkeley. A Fjord is
+a modified query plan-like data structure which facilitates the combination of streaming data from sensors
+with traditional, disk-based data sources. Fjords allow query processors to be tolerant to intermittent and
+lossy data streams, since they compute only when sensor tuples are pushed into them, avoiding blocking
+that would arise in the traditional iterator based processing [16].
+A sensor proxy is a database operator that multiplexes multiple user queries over a collection of sensors.
+It caches sensor readings, chooses appropriate sample rates for sensors based on sample rates from all
+user queries, and attempts to shield sensors from having to serve many copies of the same data to different
+queries.
+A paper describing this work appeared in ICDE 2002 [28].
+?? Continuously Adaptive Continuous Queries: Because sensors networks will be used to monitor large,
+highly accessible spaces, there will be many simultaneous, similar queries over those networks. Traditional
+continuous query research, such as the NiagaraCQ system from Wisconsin [6] allows multiple
+related queries to share processing by identifying common portions of query plans and executing those
+common portions only once. My research on continuously adaptive continuous queries (CACQ) extends
+traditional CQ research in two directions: by enabling stream processing facilities for sensor data and
+adding adaptivity to changes in the query workload over time.
+A paper on continuously adaptive continuous queries will appear in SIGMOD 2002 [30].
+?? Visualizations for Sensor Data: A third area of research has to do with visualizations of sensor data, and
+the use of user interface to coordinate sensor readings with disk and Internet based data sources.

@@ -1,0 +1,79 @@
+In this section, we focus on how the root node decides
+on event ordering in the downstream schedule. Once the
+iteration length and slot length become fixed, a deterministic
+schedule is just an ordering of events. We consider ordering
+events according to one of (or combination of) three criteria:
+‧ priority - the relative priority of an event type over
+other event types
+‧ popularity - the number of nodes subscribing to an
+event type
+‧ latency constraint - the maximum allowable dissemination
+delay for an event type
+Priorities can be specified by the application-layer for event
+types at the root node and passed down the tree in the
+body of the downstream control event. If the priorities are
+relatively fixed, they need only be included in the control
+event on occasion (as often as new event types are added or
+the priorities change).
+We can also order events by popularity. In essence, this
+method assumes that the event types that are most subscribed
+to are considered to be most important by the system,
+and so they are scheduled first in the upcoming iteration(
+s). The tree-construction and maintanance layer of
+TD-DES gathers the popularity of each event type (and
+more generally all of the network subscription data) in a
+bottom up fashion. Assume we are looking at subscription
+to a particular type of event ei. Each node p maintains a
+local variable count(ei) indicating how many nodes in its
+subtree are interested in this event of type ei. Using subscript
+to indicate location of the variable, countp(ei) can be
+computed recursively by
+where 1 is for the case p itself is subscribed; 0 indicates
+otherwise.
+If latency constraints are specified by the application layer
+for event types, TD-DES will make use of the average- and
+worst-case latency dissemination estimates when scheduling
+events. A node can reduce the overall dissemination latency
+of an event by scheduling it as early as possible – this reduces
+the scheduling delay component of the latency. When
+latency is the primary sorting criterion, the scheduler will attempt
+to schedule events such that their average and worstcase
+latencies remain within the given maximum bounds.
+Since no real latency is available at time of scheduling, hopcount-
+based distance is used as an estimator instead. The
+number of hops from root for a node k subscribing to event
+type ei is called the distance of ei at node k. The average
+distance for all nodes subscribing to event type ei is denoted
+by distanceavg(ei). The worst-case distance is denoted by
+distancewst(ei).
+In order to determine these event type metrics, the tree
+gathers data in a bottom-up fashion by having each internal
+node maintain partial values for its own subtree and pass
+these values up to its parent node in its upstream control
+event. In particular, each node j maintains the following
+metrics in addition to count(ei), which it passes to its parent:
+‧ costj(ei) – the total number of hops that an event ei
+must be propagated to the entire subtree rooted at the
+current node j.
+‧ avg costj(ei) – the average number of hops that an
+event ei must be propagated per interested node inside
+the subtree rooted at the current node j.
+‧ max costj (ei) – the maximum number of hops that
+an event ei must be propagated to an interested node
+inside the subtree rooted at the current node j.
+Each node j passes its costj(ei), and max costj (ei) values
+for each event type ei to the parent as parameters of
+its upstream control event. For each child j of a particular
+internal node k, the parent node calculates its own values
+recursively as follows: The costk(ei) at k is calculated in
+terms of each child as follows:
+The maximum cost value is simply the maximum of the
+maxima of its children plus 1:
+Finally, the root node, denoted r, then defines, for each
+event type ei, the system-wide count and distance values in
+the following way as: count(ei) = countr(ei), distanceavg(ei) =
+avg costr(ei), and distancewst(ei) = max costr(ei).
+Because all internal nodes are interested in knowing these
+three values (for scheduling by latency or popularity), the
+root node disseminates these values in a downstream control
+event as often as they change.

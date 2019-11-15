@@ -1,0 +1,4 @@
+Definition 2.2 For an eventand a sequence D of N
+events, let be the expected probability that occurs
+at any given position in D4. Then the information of with respect to is defined as
+The information of the “eternal” event * is always 0 .

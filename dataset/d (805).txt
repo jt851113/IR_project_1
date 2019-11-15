@@ -1,0 +1,57 @@
+Figure 2(A) shows a high-level view of the DFuse architecture
+that consists of two main runtime components: fusion module
+and placement module. The fusion module implements the
+fusion API used in the development of the application. The fusion
+module interacts with the placement module to determine a
+good mapping of the fusion functions to the sensor nodes given
+the dynamic state of the network and the application behavior.
+These two components constitute the runtime support available
+in each node of the network.
+Figure 2(B) shows the internal structure of the fusion module.
+Details of the fusion module are discussed in section 3.
+The modules that implement resource monitoring and routing
+are external to the DFuse architecture. These modules help in
+the evaluation of cost functions that is used by the placement
+module in determining a good placement of fusion functions.
+Launching an Application and Network Deployment
+An application program consists of two entities: a task graph,
+and the code for the fusion functions that need to be run on the
+different nodes of the graph. DFuse automatically generates the
+glue code for instantiating the task graph on the physical nodes
+of the network. DFuse also shields the application programmer
+from deciding the placement of the task graph nodes in the
+network.
+Launching an application is accomplished by presenting the
+task graph and the fusion codes to DFuse at some designated
+node, let us call it the root node. Upon getting this launch request,
+the placement module of DFuse at the root node starts
+a distributed algorithm for determining the best placement (details
+to be presented in Section 4) of the fusion functions. The
+algorithm maps the fusion functions of the task graph onto the
+physical network subject to some cost function. In this resulting
+overlay network, each node knows the fusion function (if any)
+it has to run as well as the sources and sinks that are connected
+to it. The resulting overlay network is a directed graph with
+source, fusion, and sink nodes (there could be cycles since the
+application may have feedback control). The application starts
+up with the sink nodes running their respective codes, resulting
+in the transitive launching of the codes in the intermediate fusion
+nodes and eventually the source nodes. Cycles in the overlay
+network are handled by each node remembering if a launch
+request has already been sent to the nodes that it is connected
+to.
+The role of each node in the network can change over time
+due to both the application dynamics as well as health of the
+nodes. The placement module at each node performs periodic
+re-evaluation of its health and those of its neighbors to determine
+if there is a better choice of placement of the fusion functions.
+The placement module requests the fusion module to
+affect any needed relocation of fusion functions in the network.
+Details of the placement module are forthcoming in Section 4.
+The fusion module at each node of the network retrieves the
+fusion function(s) to be launched at this node. It is a spacetime
+trade-off to either retrieve a fusion function on-demand
+or store the code corresponding to all fusion functions at every
+node of the network. The latter design choice will enable quick
+launching of a fusion function at any node while increasing the
+space need at each node.

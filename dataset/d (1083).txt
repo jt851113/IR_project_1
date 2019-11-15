@@ -1,0 +1,30 @@
+To verify the advantage of using our agent-based approach, we have developed a simulator. Sensors
+are deployed in a 10,000m x 10,000m environment with triangular topology. The distance between
+two neighboring sensors is 80m. The gayeway is located at the center of the network. Each control
+packet is 2 bytes. Each location is represented by 2 bytes. The IP routing header is assumed, wtih
+each header equal to 2 bytes and MTU as large as 500 bytes.
+The Random Way Point Model [12] is used to simulate the mobility of objects. The initial locations
+of objects are chosen randomly. Each object alternates between moving and pausing states. On
+entering the moving state, the object’s next destination is randomly chosen from (x ± 15, y ± 15),
+where (x, y) is its current location. Note that locations outside the boundary are not considered.
+Under moving state, the object moves at a constant speed of an uniform distribution between 13
+m/sec. After arriving at its destination, the object will pause a period with an exponential distribution
+of mean = 5 sec.
+We first experiment on different threshold values of T for the TB strategy. The result is in
+Fig. 20(a). We measure the average traffic load. A T significantly less than the largest MTU is
+not good due to high packet header overheads. On the contrary, tuning T too large is also inefficient
+because the master agent will need to carry too much history while traveling. The figure suggests
+that a T equal to or slightly larger than the largest MTU would be a good choice. Fig. 20(b) further
+demonstrates the effect of the fusion factor . We compare different strategies. The DB strategy
+performs the best. The TB also performs very well, if proper T can be selected. In all cases, NAB
+performs the worst.
+In the Fig. 21(a), we change the network size to visualize the effect. It is reasonable that larger
+networks incur higher traffics due to longer delivery paths. This justifies the importance of using
+our agent-based strategies. In Fig. 21(b), we further vary the mobility ratio, which is defined to be
+the ratio of moving time to pausing time. A higher mobility ratio indicates more frequent change
+of master agents. DB and TB with lower thresholds are less sensitive to mobility. With a too large
+threshold, TB will degrade significantly because the overhead for agents to carry tracking results
+would be significant as the mobility ratio increases.
+To summarize, we conclude that DB performs well in all cases. TB is quite simple, but one needs
+to be cautious in choosing its threshold. These strategies outperform NAB by 6080% in terms of
+average traffic load.

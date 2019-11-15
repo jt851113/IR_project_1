@@ -1,0 +1,40 @@
+Tracking is a common problem in sensor
+networks when we wish to monitor discrete
+entities rather than continuous fields. For
+example, one may want to track the locations
+of personnel in a failing structure to facilitate
+evacuation. Leveraging location information,
+we have developed a tracking service based
+on binary-detection proximity sensors and
+linear trajectory prediction (Mechitov et al.
+2003). Since our service does not require
+fine-grained distance measurements between
+sensors and entities being tracked, nor a specific
+sensing modality, it can be applied to a
+wide range of problem scenarios.
+Our approach makes use of the computational
+capabilities of each sensor node to
+predict the possible locations of the target
+over time. The measurements and predictions
+from each of the sensors are combined at a
+single designated node. For example, given a
+known maximum detection radius and the
+time when a sensor first encounters the
+tracked object, it is safe to assume that the
+tracked object is at the maximum detection
+distance from the sensor. If the tracked object
+moves according to a linear trajectory, the
+longer the duration that the object spends in a
+sensor's detection region, the closer it would
+have had to pass by that sensor. We build on
+this idea to estimate the distance from a sensor
+to the object. Thus we calculate its
+approximate location with a weighted average
+of the detecting sensors' coordinates, where
+the inverses of these distance estimates are
+used as weights. This weighted average can
+be computed efficiently inside the network
+during data aggregation. In order to predict
+the movement of the subject over time, we fit
+a linear trajectory estimate to the set of most
+recent location estimates.

@@ -1,0 +1,15 @@
+The communication cost when using histograms can be
+quite high compared to methods like cdf-ctf [1], where the
+statistics per term contains only two numbers.
+Our two-phase peer-selection algorithm combines the effectiveness
+of histograms with the low cost of methods like
+cdf-ctf. It works as follows.
+In the first phase, the initiating peer pq uses a method
+(such as cdf-ctf) that has a low communication cost in order
+to select the top- ?K most promising peers, where ?K is
+larger than K but still much smaller than the number of
+peers in the network. In the second phase, pq contacts the
+peers responsible for the query terms and requests only the
+histograms of the ?K peers that were selected in the first
+phase. Next, pq uses the histograms to select the top-K
+most promising peers, and sends the query to them.

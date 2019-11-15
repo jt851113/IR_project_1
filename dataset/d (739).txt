@@ -1,0 +1,85 @@
+Intuitively, one can imagine that taking into account the sizes of the various dimensions
+of a pattern should help to identify more relevant error-tolerant ones. Yet our
+definition of a closed ET-n-set is based on absolute parameters and not relative ones.
+This section will actually conclude on the significant issues raised by a relative tolerance
+to noise, hence our choice of an absolute one. Nevertheless, let us first show that
+our closed ET-n-set extractor, named Fenster, can be adapted to enumerate patterns
+with a relative tolerance to noise. This adaptation restricts the pattern search space
+to a region where a chosen relative tolerance to noise can be converted into an absolute
+one. This restriction is possible and efficient because Fenster can enforce any
+piecewise (anti)-monotone constraint along the extraction (search space pruning). A
+constraint simply is a predicate taking in argument an n-set, i. e., every dimension of a
+pattern. That constraint complements Definition 7, i. e., it defines additional properties
+the closed ET-n-sets must have. A constraint is piecewise (anti)-monotone if fixing all
+occurrences of all variables but one (occurrence) always provides a constraint that is
+monotone (if the constraint is satisfied and the free occurrence grows, w.r.t. ?, then
+it keeps on being satisfied) or anti-monotone (if the constraint is violated and the free
+occurrence grows, w.r.t. ?, then it keeps on being violated) Cerf et al. (2009a).
+Many popular constraints deal with the “geometry” of the patterns, i. e., disregard
+the actual elements in it and only consider the cardinalities of its dimensions: the
+famous minimal size constraint forces one of the dimension to contain at least μ ? N
+elements (where μ is a parameter fixed by the analyst), the minimal area constraint
+forces the product of the dimension sizes to exceed a threshold ν ? N, etc.Ann-dimensional
+Cartesian coordinate system allows to depict the pattern selection imposed by
+such a constraint. The coordinates of a pattern are its numbers of elements in each
+attribute domain of the n-ary relation. For instance, a pattern (X1, X2) ? 2D1 × 2D2
+in a binary relationR ? D1×D2 is represented by the point (|X1|, |X2|) in the Cartesian
+plane. The patterns satisfying a minimal area constraint relate to points above the
+curve whose equation is xy = ν (ν ? N being theminimal area chosen by the analyst).
+A specific piecewise (anti)-monotone constraint allows to force the “geometry” of
+a pattern to be in a region of the n-dimensional Cartesian coordinate system where its
+absolute tolerance to noise corresponds to a relative one. In other words, instead of an
+absolute tolerance to noise, the analyst can specify a relative one (ri )i=1..n ? [0, 1]n
+and a region of interest. The relative parametrization is converted into the corresponding
+absolute one (parameters (i )i=1..n ? Nn) and Fenster extracts the desired closed
+ET-n-sets in the chosen region. Here is the constraint defining such a region:
+The proof of the piecewise (anti)-monotonicity of Cin-region-of-interest is based on, first,
+splitting the double inequalities, then, showing that the left ones are anti-monotone
+and the right ones monotone.
+The regions of interest derive from the relative parameters (ri )i=1..n and it is easy
+to compute the absolute parameters (i )i=1..n matching, in a given region, the desired
+patterns. Figure 1 depicts these regions in the case of a binary relation, i. e., it plots
+their contour lines in the Cartesian plane whose coordinate system was described earlier.
+The couple of integers inside a region are the absolute parameters Fenster uses.
+When n ? 3, analog regions can be drawn in the n-dimensional coordinate system
+(|X1|, . . . , |Xn|) but they are not rectangular anymore.
+If the analyst is interested in (relatively defined) closed ET-n-sets scattered across
+several regions, Fenster has to be run several times. Each run is performed under
+the constraint Cin-region-of-interest corresponding to the region and with the associated
+absolute tolerance to noise. The union of the closed ET-n-sets listed at each run is the
+collection the analyst queried. Because the regions do not overlap, this union actually is
+a concatenation, i. e., every desired pattern is discovered only once. Nevertheless, there
+may be patterns that are included into each other (according to ). This is expected
+with a relative tolerance to noise: there may exist a small pattern tolerating about the
+same proportion of noise as a larger one. The larger one would encompass a greater
+absolute quantity of noise on at least one of its elements. Only keeping the largest
+patterns (i. e., those that are not including in another output pattern) does not provide
+a lossless condensation of all patterns. In other terms, given an n-set tolerating proportions
+of noise, some sub-patterns of it (according to ) gather greater proportions
+of noise. That is why the closed ET-itemset miners, tolerating proportions of noise, do
+not enforce a closedness constraint and extract huge collections of redundant patterns.
+To the best of our knowledge, the only exception to this rule is AC-Close (Cheng
+et al. 2008) and the closed patterns it outputs are not a lossless condensation of all
+(closed and unclosed) patterns.
+By complementing Definition 7 with Cin-region-of-interest, Fenster discovers patterns
+that are closed in the region. However, this closedness is not lossless either. To avoid
+this issue, all ET-n-sets, tolerating noise in a relative way, could be enumerated. In
+other terms, Cin-region-of-interest would only complement Definition 9.As a consequence,
+the algorithm detailed in the next section would be simpler (no need of for the S n-set).
+Its execution would require far more time though. Indeed, no closedness constraint
+means far more patterns to list. Anyway, with or without the closedness constraint, a
+relative tolerance to noise entails significantly increased time requirements (in comparison
+with an absolute tolerance to noise). Indeed, it offers far less opportunities of
+search space pruning. When defined in an absoluteway (as inDefinition 9), C-connected
+is anti-monotone, i. e., it allows the extractor to ignore the super-patterns of any n-set
+exceeding the authorized i absent n-tuples per element. Indeed, the violated absolute
+thresholds are violated as well by the larger patterns. In the same situation (enumeration
+of a pattern violating the -connectedness) but with relative noise-tolerance
+thresholds, the extractor often has to enumerate these super-patterns. Like the state
+of the Art, it takes Fenster far more time to list patterns tolerating proportions of
+noise in a large number of regions of interest (hence, many extractions) than patterns
+tolerating a comparable amount of noise but in an absolute way.
+Both the absence of a lossless condensation of the patterns (hence, much redundant
+patterns) and the absence of an anti-monotone connectedness constraint (hence,
+the practical impossibility to mine large datasets) justify our choice to mine n-sets
+tolerating absolute quantities of noise.

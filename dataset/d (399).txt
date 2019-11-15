@@ -1,0 +1,14 @@
+In this paper we discuss the problem of monitoring data
+sensed in large sensor networks. A sensor typically runs on
+a battery having a limited lifetime. In order to increase the
+lifetime of a sensor it is important that the mechanisms used
+in monitoring them be energy-eAcient. In this paper, we
+propose a new paradigm called Prediction-based monitoring
+for energy-eAcient monitoring. We show that the paradigm
+can be visualized as a watching of a \sensor movie" and
+that concepts from MPEG may be applied to it. We have
+implemented the proposed algorithms in a test bed of Rene
+Motes [2]. Experimental results show that the proposed so-
+lutions cut down the energy consumption by more than 5
+times, considerably increasing sensor lifetimes, and thereby,
+the lifetime of the networks formed from these sensors.

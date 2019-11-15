@@ -1,0 +1,28 @@
+Implementing burst detection as a stream operator means to allow
+arbitrary data streams as input (which could be the result of
+preceding processing steps like filtering or join) and producing an
+output stream (consisting of the burst tuples) that can be further
+processed by other operators. Our StreamDB engine is a complete
+DSMS supporting CQL as the query language. As an extension to
+the “standard” CQL as described e.g. in [1], StreamDB provides
+so-called synopsis operators which can be defined on streams similar
+to sliding window operators:
+select * from stream [ synopsis(params) ]
+In this way, burst detection is implemented as a synopsis operator,
+too, as shown in the following example:
+select value, timestamp
+from s1 [ burst-detection(wlen => 100,
+threshold =>’Holt Winters’) ]
+Here, burst detection is applied to the stream s1, which could be
+either a physical stream or even a view defined on other streams.
+The parameters in this example are the length of the sliding window
+wlen used for the aggregation pyramid (see Sect. 3.2) and the
+method used for determining the threshold for bursts (see Sec. 3.3).
+The output of the synopsis is a stream that consists of all burst tuples
+– in this case the pairs of value and timestamp.
+In the internal physical query execution plans synopses are implemented
+as dedicated plan operators. In the case of burst detection
+even three operators are used: one for the actual burst detection,
+one for determining the threshold value, and the third implementing
+time series forecasting. In the following we describe their
+implementation in detail.

@@ -1,0 +1,7 @@
+We expect that for a continuous query system over the Internet,
+incremental group optimization will provide substantial
+improvement to system performance and scalability. In the
+following experiments, we compare our incremental grouping
+approach with a non-grouping approach to show benefits from
+sharing computation and avoiding unnecessary query
+invocations.

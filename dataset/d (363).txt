@@ -1,0 +1,45 @@
+Predefined event types are defined by the overlaying applications
+and are maintained in a global event schema. In
+particular, a network with n different event types may publish
+event types e1, e2, ..., en. Each node maintains its own
+event subscription, which is the set of event types that a
+node is interested in receiving. In addition, each node maintains
+its own effective subscription, which is the union of its
+own subscription and the subscriptions of all of its descendents
+[16]. Each node must effectively subscribe to any event
+type that it itself is interested in as well as any event type
+that a descendent node is interested in. This is because each
+node is responsible for forwarding all relevant events to its
+descendants in the tree topology.
+Figure 1 illustrates a dissemination tree of eight nodes and
+three event types e1, e2, and e3. N1 is the root node of the
+tree. The subscription of each node is given in parentheses
+at the upper left of the node. The effective subscription of
+each node is given at the upper right of each node in square
+brackets. The figure also shows an event of type e2 generated
+at node N5. The arrows indicate the links across which the
+event is broadcast in order to disseminate the event to all
+subscribing nodes. Note that the event is propagated both
+upstream (to the root and then downstream to the interested
+parties in the other subtree) and downstream. As a result,
+events do not necessarily always go through the root node.
+In general, an event is a particular message type with
+its own distinguishing, application-specific semantics. Consider
+a scenario where a sensor network whose purpose is
+to detect fires is deployed over a forested region. A sensor
+node might issue a fire detected event to the network if its
+thermal sensor registered a very high temperature reading.
+The event would be disseminated through the network to
+all those nodes subscribing to fire detected events. These
+could include nearby forest ranger stations, a centralized
+forest fire monitoring station, or a sink node which could
+notify the police, local fire-fighting units, and public news
+services. These would also include any intermediate nodes
+which had to forward such events to interested nodes, even if
+they themselves were not interested per se. A different type
+of event could be a low battery event, which would only
+be disseminated to a network maintenance facility, alerting
+personnel that a particular sensor node would soon fail if
+its battery was not quickly replaced. Another type of event
+could alert the same facility that the sensor equipment on a
+node was not functioning properly.

@@ -1,0 +1,66 @@
+Adapting profiles is done using a simple learning rule inspired
+by the reinforcement learning in [28, 1].
+The idea behind that approach is to boost the weight wi,p
+of a query term i in a peer p’s profile if p has high-quality results
+for the query (note that formula 4 only changes weights
+for terms that are already in p’s profile. In the future, it may
+be interesting to study a variant where new terms may be
+added to profiles). The learning rule used in this work is as
+follows:
+where RP@k stands for “relative precision” at k documents,
+a measure for the quality of a ranking as defined below. Dp
+is the result list returned by peer p, Do is the result list
+returned by all other peers the query has reached. AVGRP
+is the average over all RP values of those peers. In the
+experiments below, k = 10 was used throughout.
+For now, it is sufficient to know that RP measures how
+highly (on average) the results in Dp are ranked in Do.
+Hence, it is a measure of the quality of the results returned
+by peer p that is solely based on the ranks of those result
+documents in a reference ranking Do.
+As an example, consider the query “white house” and a
+peer p returning a ranking Dp = [d1, d2] of two documents.
+Now, p learns of the results Do of all other peers that have
+contributed to the query; based on this knowledge, p computes
+RP@k(Dp,Do) as a measure of quality of its own results,
+as well as the average RP value AV GRP taken over
+all contributing peers’ results. Now, if RP@k(Dp,Do) is
+greater than AV GRP, p will increase the weight of the terms
+“white” and“house” in its profile as prescribed by equation 4.
+In practice, the learning is performed on a query log being
+partitioned into a training and a test set. During training,
+we assume – optimistically and merely for the purpose of
+evaluation – that each training query reaches all peers and
+that hence Do consists of all documents found by a centralised
+system.
+For each peer p that possesses at least one document d ?
+Do, we compute the new weight of query terms in p’s profile
+as given in equation 4. The update of wi,p, however, is only
+executed if the ratio RP@k(Dp,Do)+1/AVGRP+1 is greater than 1, that
+is when p’s results are better than the average.
+Note that in a real P2P system, when peers manage their
+own profiles, this procedure requires either that the query
+is sent back along the path it was initially routed, with the
+result set Do attached to it, in order for each peer to be
+able to compare its own results to that of the others. Alternatively,
+the querying peer – having received the results –
+may compute scores for peers and notify those with a ratio
+of RP@k(Dp,Do)+1/AV GRP+1 greater than 1.
+For that purpose, Do should be pruned to a reasonable
+size. It is sufficient for Do to consist of document hashes –
+so that peers can identify the rank of their own documents
+within Do.
+Since the weights wi,p may grow exponentially large with
+this approach, the final weights w'i,p in peers’ profiles are obtained
+by rescaling with a logarithm: w'i,p = log(1+wi,p).
+This way of rescaling was found to work best in a preliminary
+set of experiments. Its main advantage is the fact that.
+Since this applies to most unadapted
+weights, rescaling has very little effect on these,
+while smoothing some of the adapted weights that have
+grown very large.
+After training is completed, query routing is performed
+by matching queries from the test set against the adapted
+profiles. The test set is identical to the queries used to evaluate
+all other strategies (that is, the baselines and the query
+expansion methods).

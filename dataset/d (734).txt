@@ -1,0 +1,12 @@
+Binary relation mining has been extensively studied. Nevertheless, many
+interesting 0/1 data naturally appear as n-ary relations with n ? 3. A timely challenge
+is to extend local pattern extraction, e. g., closed pattern mining, to such contexts.
+When considering higher arities, faint noise affects more and more the quality of the
+extracted patterns. We study a declarative specification of error-tolerant patterns by
+means of new primitive constraints and the design of an efficient algorithm to extract
+every solution pattern. It exploits the enumeration principles of the state-of-the-art
+Data-Peeler algorithm for n-ary relation mining. Efficiently enforcing error-tolerance
+crucially depends on innovative strategies to incrementally compute partial information
+on the data. Our prototype is tested on both synthetic and real datasets. It returns
+relevant collections of patterns even in the case of noisy ternary or 4-ary relations,
+e. g., in the context of pattern discovery from dynamic networks.

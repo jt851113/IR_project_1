@@ -1,0 +1,20 @@
+The techniques discussed in this paper are the beginnings of a full-fledged system to extract data from and
+execute queries over streams of data flowing from sensor networks. To increase their value, however, there are a
+number of future directions I plan to explore for the remainder of my Ph.D.
+The major push will be toward the construction of a real TeleTiny implementation that combines TAG and
+the schema interface running on Berkeley Mica sensor motes with an adaptive query processing system such as
+the Telegraph query processor. This construction effort will yield two significant pieces of research. The first
+will be an evaluation of the performance and common-uses of my software as deployed in a real sensor-network
+running on tens or hundreds of motes. Such a network is currently being deployed in the Intel research lab in
+downtown Berkeley, and my summer employment will involve integrating TeleTiny (with instrumentation for
+data collection) into this network and gather statistics about how it is used by lab denizens.
+The second major research effort will be a characterization of the resource constraints that arise in sensor
+query processing, and a set of techniques for limiting use of the resources and expressing constraints to users.
+There are a number of resource-constraint problems that arise in TeleTiny: power, radio-bandwidth, and memory
+are all limited resources that could easily be exhausted under heavy query workloads. Understanding how to
+conserve these resources, and what control and feedback needs to be given to the user to maximize that conservation
+is an important research area that will dramatically affect the usefulness of any sensor query processing
+system. Some of the techniques needed in this area come directly from other sensor research: entering a very
+low power state between data samples or radio-communications, for instance, is a goal of all TinyOS software.
+Other techniques, such as suppressing values that change very little or that are superseded by the values of
+neighboring sensors, are approaches unique to TeleTiny.

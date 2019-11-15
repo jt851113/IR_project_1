@@ -1,0 +1,4 @@
+In this section, we present the energy cost of expanding ring search and flooding based query
+mechanisms. While the expanding ring search is not currently implemented in any sensor
+querying protocols we are aware of, it is a better baseline for comparison than the clearly
+inefficient flooding-based querying, as far as one-shot queries are concerned.

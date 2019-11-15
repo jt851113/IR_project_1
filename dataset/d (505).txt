@@ -1,0 +1,16 @@
+In this paper, we showed how to combine threshold-based burst
+detection with time series forceasting methods in order to improve
+the accuracy of burst detection. The evaluation results presented
+above clearly show that there is no ultimate method. Rather, choosing
+the right method depends on the kind of input data and the
+bursts we want to detect (and in which granularity). In most cases,
+the mean and single smoothing techniques are appropriate. If the
+data contains a trend, the double smoothing technique should be
+used. If this trend is going to change, we have to switch to a
+window-based technique or combine it with some method for change
+detection. In any case the input data should be analyzed a priori and
+one should try to characterize it (and its potential future behavior)
+before choosing the method to apply. Open issues are the determination
+of suitable parameters for the smoothing techniques and the
+development of efficient methods for ignoring elements from bursts
+when determining forecasts.

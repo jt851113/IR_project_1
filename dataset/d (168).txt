@@ -1,0 +1,22 @@
+In this set of experiments, we examine the performance of
+the three algorithms on weighted dominant skyline queries.
+When the ratio R of the weights increases, most of the
+weight is assigned to a smaller fraction of the dimensions.
+If a point is not dominated on those dimensions with heavy
+weights, they are very likely to be dominant skyline points
+since any subspace with weight sum over w must contain
+some of these dimensions. This impact is not large but is
+still observable in Fig. 10. TSA and SRA turn out to be
+faster on independent and anti-correlated data sets when
+the weight ratio is varied from 2 to 5. This improvement in
+efficiency is not as significant in correlated data set because
+the dominant skyline does not change with the variation
+of weights on correlated distribution. Since the dominating
+set is independent of dimension weights, no matter what the
+weights are, the OSA algorithm stays at the same level in
+all three types of data sets.
+To summarize, from the experiments on synthetic data
+sets, we can conclude that when k, δ and Size are small,
+TSA is the most efficient algorithm. In other cases, SRA is
+faster than the others and has more stable performance on
+different data sets.

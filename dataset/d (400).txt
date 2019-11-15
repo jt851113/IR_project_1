@@ -1,0 +1,115 @@
+With the ever-increasing sophistication of hardware, it is
+becoming increasingly viable to deploy small units of au-
+tonomous nodes for performing various sensing tasks. Co-
+operative sensing, where a bunch of such nodes are thrown
+together to cooperate and perform a sensing task, has very
+useful applications in military and even common day-to-
+day situations. Some example applications include intru-
+sion detection, gathering ground information like presence of
+snipers, tanks, etc. in the event of a war, or peak-hour traAc
+monitoring. cooperative sensing raises several interesting re-
+search issues. A majority of these are rooted in the fact that
+sensors are typically limited by their energy reserves, com-
+munication bandwidth, and computational power. Of these,
+the energy constraint is the most crippling, because if the
+sensor runs out of battery, there can be neither communica-
+tion nor computation. Another constraining characteristic
+that is specic to sensor networks is that the cost (human
+and others) of managing the sensor nodes far exceeds the
+cost of the nodes themselves. This is a result of three factors:
+rstly, the environment in which they are deployed could
+make human maintenance diAcult (for example, consider
+the scenario where they are scattered over a high-altitude
+region). Secondly, it is expected that a reasonable-size sen-
+sor network will comprise of thousands of nodes. The sheer
+number of these nodes in a sensor network makes it diA-
+cult to manage. Lastly, increasing hardware integration and
+economy of scale are driving the prices of sensors down. All
+This research work is supported in part by DARPA un-
+der contract number N-666001-00-1-8953 and a grant from
+CISCO systems
+these factors make \use-and-throw" a very attractive option,
+where sensors that either have run out of battery or have
+failed are simply discarded and more sensors are thrown in
+to compensate for them.
+Given these characteristics, the average lifetime of a sensor
+determines the cost of \running" a sensor network. Going by
+the current technology trend, although the computational
+power in a sensor is expected to follow Moore's law, battery
+technology is only expected to improve by 2-3% per year [17,
+15]. Thus, the only possible way one can increase the lifetime
+of a sensor is by making use of mechanisms that are highly
+energy-eAcient. Every operation at the sensor, be it trans-
+mitting data, receiving data, or performing a computation,
+consumes some energy. The goal of being energy-eAcient,
+thus, translates into the problem of optimizing the number
+of these operations that need to be performed. At a sensor,
+the energy consumed in transmitting a packet is approxi-
+mately twice the energy consumed in receiving a packet [9].
+Also the energy consumed in receiving a packet is an order of
+magnitude higher than the energy consumed per instruction-
+execution [8]. Given this relative cost, one may achieve a
+reduction in total energy consumption by cutting down the
+number of high-energy operations at the cost of an increase
+in the number of low-energy operations.
+In this paper, our focus is on proposing mechanisms for
+performing monitoring in a sensor network in an energy-
+eAcient way. Clearly the mechanisms associated with a tra-
+ditional centralized database paradigm are unsuitable for
+our purposes. In such a system, a central server maintains
+a database of readings from all the sensors. Sensors up-
+date this server when their readings change. Monitoring
+operation is supported by the server, which maintains the
+current state of all the sensors involved in the operation.
+There are too many messages sent in such a system, making
+it very energy ineAcient in many cases. We make two key
+observations to signicantly improve the energy-eAciency
+of monitoring operation. Firstly, sensors in close proximity
+are likely to have correlated readings, and in a majority of
+the cases, one can predict the reading at a sensor given the
+knowledge of readings of sensors around it and their past
+history. An entity (for example, base station, cluster-head)
+may exploit this observation and predict the set of readings
+that a sensor is going to see in the near future. These pre-
+dictions are represented concisely as a \prediction-model"
+and sent to the sensor. The sensor now needs to transmit
+its sensed reading to the monitoring-entity only when it dif-
+fers from the reading given by the prediction model by more
+than a certain pre-specied threshold. This mode of work-
+ing gives us a new paradigm of operation in sensor networks.
+We call this the PREdiction-based MONitoring (PREMON)
+paradigm.
+Our second key observation is that a snapshot of the sen-
+sor network may be visualized as an (optical) image - the
+readings of individual sensors correspond to intensity values
+of pixels in the image. Since a monitoring operation can be
+thought of as receiving a sequence of these snapshots on a
+continuous basis, one may visualize monitoring as watching
+a continuous sequence of corresponding images; in eect,
+watching a \video of sensed values". Given this visualiza-
+tion, we explore if the concepts of MPEG [19] (a standard
+for video compression) may be used for compressing this
+\video". We show in section 3 that the MPEG encoder uses
+a paradigm that is an exact analogue of PREMON. This
+analogy with MPEG encoding gives us a convenient frame-
+work in which to visualize the problem. In addition, it also
+gives us a unique opportunity to adapt the well-established
+theory and algorithms of MPEG for use in sensor networks,
+and to examine the scope for cross-pollination between the
+two elds.
+The PREMON paradigm prevents a sensor from unnecessar-
+ily transmitting all the readings that can be successfully pre-
+dicted at the monitoring entity, thereby saving energy. This
+saving is obtained at the cost of extra computations at the
+monitoring-entity for generating prediction-models, and the
+extra cost of transmitting them. Given this tradeo, clearly
+the eectiveness of the proposed paradigm is dependent on
+the accuracy with which prediction models can be generated
+and the percentage of readings that can be successfully pre-
+dicted by them, without too much computational overhead.
+Based on the above observations, we propose algorithms in
+this paper and demonstrate their feasibility and eective-
+ness by implementing them on a test bed of real sensors.
+We show that it is feasible to generate prediction models
+for sensors and that signicant savings can be achieved even
+with very simple methods of generating prediction models.

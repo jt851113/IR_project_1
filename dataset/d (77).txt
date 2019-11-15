@@ -1,0 +1,18 @@
+The TAG and TeleTiny architectures combine elements of databases and networking to efficiently process
+queries in the sensor network. Literature on active networks [45] discusses the idea that the network could
+simultaneously route and transform data, rather than simply serving as an end-to-end data conduit. Within
+the sensor network community, work on networks that perform data analysis has been largely confined to the
+USC/ISI and UCLA communities. Their work on directed diffusion [21] discusses techniques for moving specific
+pieces of information from one place in a network to another, and proposes aggregation-like operations that
+nodes may perform as data flows through them. Heidemann et al. [18] propose a scheme for imposing names
+onto related groups of sensors in a network, in much the way that our scheme partitions sensor networks into
+groups. These papers recognize that aggregation dramatically reduces the amount of data routed through the
+network but are focused on application specific solutions that, unlike the approach in TAG, are not obviously
+applicable or efficient in a wide range of environments.
+Networking protocols for routing data in wireless networks are very popular within the literature [24, 1, 15],
+however, none of them address higher level issues of data processing, merely techniques for data routing. Our
+tree-based routing approach is clearly inferior to these approaches for peer to peer routing, but works well for
+the aggregation scenarios we are focusing on.
+Given this overview of related work, the remainder of this paper is devoted to a discussion of the remaining
+elements of the TeleTiny system that remain to be built and studied and a brief timeline outlining the completion
+of these projects and my dissertation.

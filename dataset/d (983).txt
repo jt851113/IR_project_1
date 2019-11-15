@@ -1,0 +1,31 @@
+To enable data aggregation, intermediate nodes will process or delay received data for a period of time  before
+sending them. This delay is crucial for data aggregation because multiple data will not be received at the same time.
+The delay should be selected based on the application or other system factors. For example, in a TDMA MAC, one
+might match the aggregation time to a multiple of the TDMA frame duration, or as a fraction of the periodicity of
+sensor data generation. Thus, unsent data can be periodically aggregated and appropriately delivered to neighbors
+using data gradients. However, intermediate nodes do not necessarily delay received data for the same period of
+time. An intermediate node that receives a sufficient amount of data for aggregation does not need to delay the
+received data any further. In addition, an intermediate node that is not an aggregation point does not need to delay
+the data at all.
+Similar to exploratory events, messages and aggregates also contain the energy cost attribute. After aggregating
+multiple messages into an aggregate, the final step before sending the aggregate is to compute the associated
+energy cost for that aggregate. This energy information will be used for empirical adaptation to energy-efficient
+paths. Specifically, the negative reinforcement rule uses this information for path truncation (Section 4.3). However,
+different neighbors might report aggregates of different subsets of data items, with varying costs. The challenge is
+to find the set of incoming aggregates which cover the data items at the smallest cost. Given incoming aggregates,
+it is not trivial to calculate the minimum energy cost of the outgoing aggregate because it is a weighted set-covering
+problem [4, 6] (i.e., a generalized version of an NP-hard set-covering problem).
+An instance of the set-covering problem consists of a finite set and a family  of subsets such that every element of  belongs to at least one subset in The regular set-covering problem is to determine 
+a minimum-size subset whose members cover all of For the weighted set-covering problem, each set in the family is associated with a weight and the weight of a cover The problem is to find a minimum-weight cover (The regular set-covering problem is a special case of the weighted set-covering problem with for all  
+  Our problem can be directly mapped into the weighted set-covering problem as follows. An incoming aggregate is a subset whereas the outgoing aggregate is. Each incoming aggregate is associated with the energy cost Therefore, the energy cost of the outgoing aggregate is the minimum weight of the cover plus 1.
+Approximate algorithms for this problem include greedy heuristics [4, 6], probabilistic methods [17], geneticalgorithms-
+based heuristics [15], neural-networks-based techniques [9], and Lagrangian heuristics [5]. We chose
+the greedy heuristic because of its high-quality solutions (The worst ratio between the cost of a greedy solution and
+the optimal solution is where  is the maximum size of any set 	 [6, 9]). The heuristic of the greedy
+set-covering algorithm is to greedily select the next subset (among the remaining subsets) for covering uncovered elements at the lowest cost ratio until all elements are covered. The cost ratio is the
+set of uncovered elements in 	. However, there might exist a subset 	 in  where all elements in 	are covered by the union of other subsets in. The final step of the greedy heuristic is to remove such redundant subsets from
+For example (Figure 4(a)), node L receives incoming aggregates Suppose that are the associated energy costs. Therefore are the initial cost ratios. Given that is the minimum cost ratio, is the first selected subset and the remaining uncovered element is. At the second step,and because and. Thus, 	is selected as the final subset of the cover. L then sends an outgoing aggregate 	  	 	to P with associated energy cost 
+  
+  
+    
+.

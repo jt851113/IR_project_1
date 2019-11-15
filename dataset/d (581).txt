@@ -1,0 +1,37 @@
+We use a similar set of simulation runs as mentioned in section 7.3.1 for values of c and M
+N
+as mentioned in section 6.2
+As figure 11 shows, for all values of c considered in this study, the average energy consumption
+of ACQUIRE increases with increasing M
+N . This behavior is also seen for ERS when c = 1.
+These observations are consistent with the analytical behavior in section 6.2. However, for
+c = 0.05 and c = 0.2, we should note that ERS seems to have a lower energy consumption
+at M
+N = 1. This has to do with the way we modelled the caching behavior of ERS in section
+5.1. For all mechanisms, we had modelled the update frequency as 1
+c ; however in ERS the
+central querier caches only those variables which are part of the query. In such situations,
+in the simulations, an update would occur if even a single variable of a new query cannot
+be resolved from the cache. This makes our ERS analysis differ from the simulations when
+c < 1 and M < N. However, when M = N, all variables can be cached at the center, and
+one in every 1/c queries can answered directly from the cache, reducing the query cost. If
+c = 1, ERS will need to update every query and hence in this case, the energy consumption
+increases with increasing M
+N . The analysis and simulation for ACQUIRE are better matched
+because because in ACQUIRE we cache all the variables within d hops (not just those queried
+Figure 11: Comparison of ACQUIRE and ERS by simulations (N = 100) with respect to
+M
+N for different amortization factors. Compare with theoretical curves in figure 8
+for).
+From simulations, at M
+N = 1, c = 0.05, ERS performs better than ACQUIRE. On the
+other hand, for all other values of c used in our study, ACQUIRE outperforms ERS across
+all relative query sizes. The energy savings of ACQUIRE over ERS is around 65% for
+c = 0.02 (for all values M
+N < 1) and c = 1 (for all values of M
+N ).
+Our analysis of the energy cost of ACQUIRE, ERS and FBQ by analytical models and
+simulations illustrate that ACQUIRE achieves significant energy savings for moderate to
+high values of c depending on the relative query size. Do these energy savings come at a
+cost? We attempt to answer this question in the next section by modelling the average
+response latency incurred by these mechanisms.

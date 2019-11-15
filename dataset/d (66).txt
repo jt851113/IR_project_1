@@ -1,0 +1,22 @@
+Over the past year, I have also been working with the TinyOS [20] group at UC Berkeley on developing software
+for their “mote” sensor platform to support query processing. My research in this regard has focused on the
+following areas:
+ Catalog Management for Sensor Networks: Sensors need a generic way to advertise themselves to other
+sensors and sensor database systems if they are to be used in a heterogeneous, randomly deployed fashion.
+I have designed a simple catalog layer which our query processor can use to locate and query TinyOS
+motes.
+ Aggregation in the Network: The most important class of queries over sensor networks are aggregates
+– queries about the values of groups of sensors. Efficiently evaluating these queries without sending all
+data-tuples back to a central processing system is a major goal of the TinyOS project. My work on Tiny
+Aggregates (TAG), submitted to VLDB 2002 and published in a preliminary form in WMCSA 2002 [31],
+discusses the design of a system for processing such queries.
+Thus, the on-sensor portions of the query processor enable location and power efficient querying of motes; when
+combined with the server-side query processor described above, most of the pieces of the sensor-query processor
+are in place. Figure 1 shows an overview of these components and how they fit together – we will discuss the
+additional components that are needed in Section 5 below.
+The remainder of this proposal is divided as follows: the next section offers some details about Fjords,
+sensor-proxies, and the CACQ system. Section 3 then presents details of the catalog and on-sensor aggregation
+3
+systems discussed above. This is followed by a discussion of related work in Section 4. Finally, a discussion
+of additional research that will be incorporated into my Ph.D, with a particular focus on the work required to
+combine the components described above into a system for sensor query processing is given in Section 5.

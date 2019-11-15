@@ -1,0 +1,6 @@
+Definition 2.4 Given a pattern with period and a sequence of
+events we say
+that is in compliance with P at position
+holds.
+For example, the sequence is in compliance
+with the pattern at positions 1 and 4.

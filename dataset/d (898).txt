@@ -1,0 +1,27 @@
+Progress in miniaturization has allowed researchers to build
+networked sensors, increasingly compact devices that combine
+the functionality of sensors, radios, and processors [1, 5, 8].
+Their low cost and wireless communication capability make it
+feasible to deploy them in large numbers, and without preexisting
+infrastructure. With more sensors available in the
+environment, it is more likely that phenomena of interest are
+near some sensors, thereby leading to the main appeal of wireless
+sensors compared to the tethered ones. On the other hand,
+such sensors rely on limited sources of power, and so energy
+efficiency becomes an important feature of the systems that use
+them.
+Tracking consists of detecting and monitoring locations of
+real-world objects, possibly using several types of sensing such
+as acoustic, seismic, electromagnetic, etc. Numerous applications
+of tracking are currently in use; for example, air traffic
+control, fleet tracking, habitat monitoring, mobile telephony,
+etc. Networked sensors have recently been used for this purpose
+[2].
+We are interested in designing an efficient tracking method,
+based on networked sensors, that has the ability to cover large
+regions of interest by using many sensors with small detection
+range. The method will need to handle a large number of moving
+objects at once. To address the scalability goals, we use
+hierarchical organization, similar to schemes previously used
+in cellular telephone systems [6]. We focus on improving the
+energy efficiency of such schemes.

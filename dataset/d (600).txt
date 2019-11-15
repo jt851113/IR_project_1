@@ -1,0 +1,71 @@
+Based on our cost model in Section 4.2, we propose to estimate
+the number of groups Ki as follows.
+We first build two histograms, one for estimating indexing cost,
+called H1, and the other for estimating posting list retrieval cost,
+called H2, as
+We classify all failed queries of length two in Qi into Ni – 1
+classes, defined as
+For each class Qik defined above, we build one histogram HQk as
+The maximum number of histograms is (Ni + 1). Actually, we
+don’t have to build all (Ni + 1) histograms, as many sets Qik are
+empty. For example, all sets Qik, with k < 2 min t (?dl_li(t)?), are
+empty. The number of buckets in H1 and H2 is at most Ni; and the
+number of buckets in HQk is at most k/2.
+We can build the histograms above efficiently. H1 and H2 can be
+built easily based on the already-built local posting lists (a peer
+needs to build its local, document-level posting lists for the
+efficient local processing of queries). The set of HQk histograms
+can be built in a single pass over the query log. They actually can
+be built incrementally: each time a peer receives a failed query, it
+can easily update the appropriate histograms.
+Based on our cost model in Section 4.2 and these histograms, we
+can estimate the cost of the group-level indexing, given the
+number of groups desired. Our EstimateCost algorithm is
+specified below.
+EstimateCost
+Input: H1, H2, HQk – histograms
+Ki – number of groups
+Ni – number of documents
+Output: cost(Ki) – estimate cost for Ki
+1. cost(Ki) = 0
+2. If Ki = 1
+cost(Ki) = Sj H1(j) + Sj H2(j)/Ne + Sk Sj HQk(j)
+3. Else If Ki = Ni
+cost(Ki) = Sj H1(j)j/Ne + Sj H2(j)j/Ne
+4. Else
+a. For j = 1 to Ki –1
+cost(Ki) = cost(Ki) + H1(j)j/Ne + H2(j)(j/Ne)
+b. For j = Ki to Ni
+cost(Ki) = cost(Ki)+H1(j)Ki/Ne+H2(j)( Ki/Ne)
+c. For j = 1 to Ki –1
+cost(Ki) = cost(Ki) + Sm HQj(m)(1 – m/Ki
+2)Ki
+d. For j = Ki to Ni
+cost(Ki) = cost(Ki) + Sm HQj(m)
+AdaptiveIndexing
+Input: Di – set of documents
+Ni – number of documents
+Q – query workload
+1. Build histograms H1, H2, HQk
+2. For n = 1 to Ni
+3. cost[n] = EstimateCost(n, Ni, H1, H2, HQk)
+4. Ki = argmin n cost[n]
+5. DocumentGrouping(Ki, Di)
+The algorithm is straightforward. For two special cases, Ki = 1 and
+Ki = Ni, we can directly calculate the associated costs as shown in
+Step 2 and Step 3, respectively. (In fact, for these two cases, the
+“grouping solutions” are trivial.) For Ki other than 1 or Ni, since
+we don’t know how documents are grouped, we based on the
+histograms and the cost model to estimate the cost of the grouping
+solution, as in step 4a, 4b, 4c, and 4d. In step 4a, we estimate the
+cost of index-building and posting list retrieval related to terms
+whose posting lists contain less than Ki postings. In step 4b, we
+estimate the same cost for terms whose posting lists contain Ki or
+more postings. In step 4c (4d), we estimate query issuing cost for
+terms whose posting lists contain less than Ki (exactly Ki or more)
+postings.
+Given the estimated costs of grouping with different number of
+groups, our AdaptiveIndexing algorithm is specified above. We
+first build all histograms as required, and then estimate the cost
+for each possible value of Ki. The value of Ki that incurs the least
+cost is chosen, and documents are

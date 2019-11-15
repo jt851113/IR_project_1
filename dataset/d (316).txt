@@ -1,0 +1,44 @@
+Garlic’s cost-based [S
+
+79] optimizer enumerates plans by
+invoking the appropriate root STARs of Section 3.2. Plans
+for select queries are enumerated bottom up in three phases.
+In the first phase, the enumerator applies the AccessRoot
+STAR to every collection used in the query. Since at this
+time Garlic stores no data, AccessRoot basically serves
+to call RepoAccess.
+In the second phase, the enumerator applies the
+JoinRoot STAR, which invokes the RepoJoin STAR
+as well as various other join STARs, each of which represents
+one Garlic join method. It applies the JoinRoot
+STAR iteratively, passing it two plans and a join predicate
+each time. Initially, each plan is one of those enumerated in
+phase one for a single table access. When all possible twoway
+join plans have been examined, the enumerator invokes
+the JoinRoot STAR to combine single table access plans
+with two-way join plans to create the three-way joins, and
+so on, until plans which join all the collections of the query
+have been created. The enumerator considers all bushy join
+orders. Since Garlic is a distributed system, bushy plans are
+particularly efficient in many situations.
+Garlic’s optimizer employs dynamic programming in order
+to find the best plan with reasonable effort [S
+
+79]. In
+every step of plan enumeration, Garlic’s optimizer applies
+pruning; that is, the optimizer does not use plan A as a building
+block for other, more complex plans if A has higher
+cost than another plan and A’s properties are a subset of
+that plan’s. Only plans whose properties are included in a
+cheaper plan’s are pruned; for example, if Plan 1 has higher
+cost than Plan 2, but the Source of Plan 1 is Garlic (i.e.,
+Source property is “Garlic”) and the Source of Plan 2 is
+some data source, then Plan 1 may not be pruned because it
+might be a building block for a winning plan that executes
+most operators of the query in Garlic’s query engine.
+In the third phase, the enumerator applies Garlic’s
+FinishRoot STAR to get a final query plan that includes
+all projections, selections and orderings specified in the
+query and not so far achieved. When this rule completes,
+all remaining plans will have the same properties, and the
+least cost plan is chosen for execution.

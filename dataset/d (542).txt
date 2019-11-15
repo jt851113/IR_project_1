@@ -1,0 +1,20 @@
+In the following, we describe a slight variant of Chord. The
+nodes and the keys (i.e., the item ids) in Chord have identifiers
+structured in an identifier circle. Suppose the identifier lengths
+are b. A key k can be assigned to k’s predecessor (i.e., the first
+node whose id is equal to k, or precedes k in the id space).
+Thus, a lookup for a key has to visit the key’s predecessor,
+i.e., the node whose id most closely precedes the key. A node
+with id x in Chord keeps log n neighbors whose ids lie at
+exponentially increasing fractions of the id space away from
+itself. The node with the numerically smallest id among the
+ones with id within the range x + 2i and x + 2i+1 (modulo
+2b) is used as the ith neighbor of x. Then, the Chord routing
+policy is the following: for a query with id v at x, the next
+hop is the neighbor of x that is closest to v and is between
+x and v in the clockwise direction on the ring. The choice
+of Chord pointers ensures that, with n nodes in the system,
+it takes a maximum of log n hops for the query to reach the
+destination (in the steady state). We refer the reader to [22]
+for the complete details, including handling of node joins and
+leaves.

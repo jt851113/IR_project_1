@@ -1,0 +1,25 @@
+In this section, we introduce our intelligence-based approach
+for information retrieval in mobile P2P networks,
+which mimics social human behaviors to facilitate efficient
+information retrieval. It re-adjusts IA values after query
+processes just like people learning from their experiences; it
+updates and exchanges the intelligence information as the
+way people gossip; its strategies to forward queries like people
+finding answers from acquaintances.
+As shown in Figure 1, a query routing process can be
+divided into several forwarding steps. At each step, the participant
+forwards the query to one of its neighbors within
+its reachable range, by checking the intelligence information
+provided by them. Here, we define a node’s reachable range
+as the range in which the node can reach all other nodes
+in one-hop connection. We use query time-to-live (TTL) to
+control the hops of query propagation. If the query routing
+path’s length is equal to TTL and the result is still not
+found, the query fails in finding its results. Otherwise, the
+resource provider node (denoted as R-provider) will send
+the result back along the query routing path to the query
+issuer node (denoted as Q-issuer). As discussed in [25, 16],
+an appropriate value of TTL is needed to tradeoff the success
+probability of queries and the overall query load in the
+network. However, this value is highly dependent on the
+workload and the network scenario.

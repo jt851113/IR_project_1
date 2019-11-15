@@ -1,0 +1,4 @@
+In this section, we present the implementation details of
+the prototype that we built for discovering cyclic association
+rules. We first describe the synthetic data generator used to
+generate our data.

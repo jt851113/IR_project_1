@@ -1,0 +1,20 @@
+Each test time series is a synthetic time-series databases
+generated using a randomized periodicity data generation
+algorithm. From a set of features, potentially frequent 1-
+patterns are composed. The size of the potentially frequent
+1-patterns is determined based on a Poisson distribution.
+These patterns are generated and put into the time-series
+according to an exponential distribution.
+The basic parameters used to generate the synthetic
+databases are listed in Table 1. The parameters of LENGTH? 
+(the length of time series) and
+(a period) are independently
+chosen. The parameters of MAX-PAT-LENGTH (the maximal
+-length of frequent patterns) and (the number of frequent 
+1-patterns) are for a fixed, and they are controlled
+by the choice of some appropriate confidence threshold.
+We found that other parameters, such as the number of
+features occurring at a fixed position and the number of features
+in the time series, do not have much impact on the
+performance result and thus they are not considered in the
+tests.

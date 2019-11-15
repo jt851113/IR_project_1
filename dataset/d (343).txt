@@ -1,0 +1,59 @@
+After the zones have been formed, each zone initiator collects the
+feature vectors from the peers in its zone and creates new clusters
+based on similarity between the feature vectors. No restrictions are
+imposed on the choice of similarity (distance) function, so without
+loss of generality we use the cosine similarity (computed based on
+fi, wi) in the rest of this paper
+Clustering feature vectors of different peers results in grouping
+the corresponding peers together. This is practically a grouping
+of peers based on their contents, therefore peers that are grouped
+together form a SON. Note that because each peer in general contributes
+more than one feature vector, a peer can be member of more
+than one SON.
+Cluster merging (see Algorithm 1) consists of iteratively determining
+the two most similar clusters ci,cj from a set of clusters C
+(line 5) assembled at an initiator, computing the new feature vector,
+creating the new merged cluster, and then adding the new cluster
+to the list of clusters (line 19), until only L clusters are left. The
+new cluster cnew resulting from two merged clusters ci and cj will
+initially contain all terms in the feature vectors of ci and cj , with
+weights calculated in the way shown in Algorithm 1. Essentially,
+if a term ti exists in both feature vectors of ci and cj , then its new
+weight and corresponding tuple in the merged cluster description
+is:
+This is practically a progressive TF/IDF calculation, and it is feasible
+since term frequencies (tfi), document frequencies (dfi) and
+number of documents (Di) are maintained in the cluster descriptions.
+As a final step, only the k top-weighted features of the new
+cluster description are kept.
+As already mentioned, each cluster is associated with a SON, i.e.
+a set of peers. When two clusters ci and cj are merged, this necessarily
+implies that the SONs (Si and Sj respectively) that they represent
+are linked together and form a new SON. In order to ensure
+peer connectivity within the new SON after merging, a number of
+d links are created between the two merged SONs. In this way, the
+probability that a SON will become disconnected due to peer failure
+is practically eliminated. The d links between the peers of the
+two SONs are formed by iteratively selecting from each SON, the
+two least connected peers, and then establishing a link that connects
+them. This is done in order to maintain a low peer connectivity degree.
+The algorithm ensures that there exists a path that connects
+each peer to any other peer in the new SON.
+Zone clustering at an initiator results into new intra-zone clusters,
+which are finally represented by cluster descriptors (CDs), one
+for each cluster ci. A CD consists of the cluster identifier ci, a feature
+vector F, and a random selection of Nr representative peers
+{R} belonging to the SON, i.e., CDi = (ci, F, {R}). The set R
+of representative peers is created from a subset of (representative)
+peers from each of the merged SONs. The sole purpose of peers
+in R is to act as representative peers of the SON, hence they maintain
+connections to peers in the SON and they can forward any
+incoming message to all peers in the SON. In the special case when
+Nr = 1, the representative peer acts like a super-peer for the SON.
+It should be stressed that the value of Nr does not affect the quality
+of the generated SONs in any way. However, there exists a tradeoff
+when defining its value. High values minimize the probability of
+all representative peers disappearing (due to churn) during the lifetime
+of the CD. Low values avoid high communication cost when
+transmitting the CDs and maintenance cost when a representative
+peer fails.

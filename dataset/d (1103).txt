@@ -1,0 +1,36 @@
+In this paper, we have shown how decentralized and collaborative
+mechanisms can efficiently complement existing
+large-scale search systems. The objective is twofold: avoid
+the typical bootstrap problem faced when designing distributed
+variants of centralized system; and demonstrate that collaborative
+approaches can provide added value and new services
+for the users.
+We have presented the basic architecture and building
+blocks of a novel collaborative ranking service, which leverages
+user-centric information such as interest profiling and
+relevance tracking in order to return search results lists tailored
+to the user interests. These results are expected to be
+more relevant to the user that those returned by centralized
+search mechanisms based only on structural or popularity
+ranking. Result lists are based on the interest profile of the
+user, and special care is taken to ensure that the system
+keeps as much information diversity as possible to fulfill the
+requests from large sets of different users.
+Our work builds upon a solid, fully distributed and specially
+designed P2P system. This system combines classical
+key-based routing with an application specific storage layer,
+as well as specifically designed load balancing mechanisms
+that go beyond typical “blind” approaches used in other P2P
+systems, by taking into account the specific needs and characteristics
+of the storage layer.
+We are currently evaluating our system on a prototype
+implementation by observing its behavior along several metrics:
+(1) quality of the produced results, both analytically
+and based on sample user opinions, (2) overhead incurred by
+using the system at the client and on the distributed system,
+and (3) performance and flexibility of the load balancing,
+routing, and storage layers. Our tests are performed using
+both synthetic and real traces for both user-related behaviors
+(queries and accesses) and system-related characteristics
+(churn, failures, etc.). Deployment is being conducted both
+in emulated networks and on PlanetLab.

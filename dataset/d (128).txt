@@ -1,0 +1,19 @@
+With the growing prevalence of sensor and wireless networks
+comes a new demand for location-based access control mech-
+anisms. We introduce the concept of secure location veri-
+cation, and we show how it can be used for location-based
+access control. Then, we present the Echo protocol, a simple
+method for secure location verication. The Echo protocol
+is extremely lightweight: it does not require time synchro-
+nization, cryptography, or very precise clocks. Hence, we
+believe that it is well suited for use in small, cheap, mobile
+devices.
+Categories and Subject Descriptors
+D.4.6 [Operating Systems]: Security and Protection Ac-
+cess controls; D.4.6 [Operating Systems]: Security and
+Protection Authentication
+General Terms
+Security, Algorithms
+Keywords
+Secure Location Authentication, Secure Location Verica-
+tion, Sensor Networks

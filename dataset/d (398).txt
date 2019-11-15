@@ -1,0 +1,87 @@
+[1] A. Bhattacharya and S. K. Das. Lezi-update: An
+information-theoretic framework for personal mobility
+tracking in PCS networks. ACM/Kluwer Journal
+on Wireless Networks), 8(2-3):121–135, March-May
+2002.
+[2] L. Clare, G. Pottie, and J. Agre. Self-organizing distributed
+sensor networks. In The International Society
+for Optical Engineering, pages 229–237, Orlando,
+FL, April 1999.
+[3] D. Estrin, R. Govindan, J. Heidemann, and S. Kumar.
+Next century challenges: Scalable coordination in sensor
+networks. In Proceedings of the ACM/IEEE International
+Conference on Mobile Computing and Networking,
+pages 263–270, Seattle, Washington, USA,
+August 1999.
+[4] S. Goel and T. Imielinski. Prediction-based monitoring
+in sensor networks: taking lessons from MPEG.
+ACM Computer Communication Review, 31(5), October
+2001.
+[5] W. R. Heinzelman, A. Chandrakasan, and H. Balakrishnan.
+Energy-efficient communication protocol
+for wireless microsensor networks. In IEEE Proceedings
+of the Hawaii International Conference on System
+Sciences(HICSS), 2000.
+[6] J. Hill, R. Szewczyk, A.Woo, S. Hollar, D. Culler, and
+K. Pister. System architecture directions for network
+sensors. In ACM SIGOPS Operating Systems Review,
+volume 34, pages 93–104, 2000.
+[7] T. Imielinski, S. Viswanathan, and B. R. Badrinath.
+Data on the air - organization and access. IEEE
+Transactions of Data and Knowledge Engineering,
+June 1997.
+[8] D. Lee, W.-C. Lee, J. Xu, and B. Zheng. Data management
+in location-dependent information services.
+IEEE Pervasive Computing, 1(3), 2002.
+[9] W.-C. Lee and D. L. Lee. Using signature techniques
+for information filtering in wireless and mobile environments.
+Special Issue on Database and Mobile Computing,
+Journal on Distributed and Parallel Databases,
+4(3):205–227, July 1996.
+[10] Ben Liang and Zygmunt J. Haas. Predictive distancebased
+mobility management for PCS networks. In
+IEEE INFOCOM, pages 1377–1384, 1999.
+[11] G. Pei and C. Chien. Low power TDMA in large
+wireless sensor networks. In Military Communications
+Conference, 2001.
+[12] J. Rabaey, J. Ammer, T. Karalar, S. Li, B. Otis,
+M. Sheets, and T. Tuan. Picoradios for wireless sensor
+networks: the next challenge in ultra-low-power
+design. In Proceedings of the International Solid-
+State Circuits Conference, San Francisco, CA, February
+2002.
+[13] J. M. Rabaey, M. J. Ammer, J. L. da Silva Jr.,
+D. Patel, and S. Roundy. Picoradio supports ad hoc
+ultra-low power wireless networking. IEEE Computer,
+33(7):42–48, 2000.
+[14] V. Raghunathan, C. Schurgers, S. Park, and M. B.
+Srivastava. Energy aware wireless microsensor networks.
+IEEE Signal Processing Magazine, 19(2):40–
+50, March 2002.
+[15] H. Schwetman. CSIM user’s guide (version 18).
+Mesquite Software, Inc, http://www.mesquite.com,
+1998.
+[16] N. Shivakumar and S. Venkatasubramanian. Efficient
+indexing for broadcast based wireless systems.
+ACM/Baltzer Mobile Networks and Applications
+(MONET), 1(4):433 – 446, December 1996.
+[17] K. Sohrabi and G. J. Pottie. Performance of a novel
+self-organization protocol for wireless ad-hoc sensor
+networks. In IEEE Vehicular Technology Conference,
+volume 2, pages 1222–1226, 1999.
+[18] WINS project. Electrical engineering department,
+ucla. http://www.janet.ucla.edu/WINS/.
+[19] G. Wan and E. Lin. A dynamic paging scheme for
+wireless communication systems. In Proceedings of the
+Third Annual ACM/IEEE International Conference
+on Mobile Computing and Networking, pages 195–203,
+September 1997.
+[20] Y. Xu and W.-C. Lee. On localized prediction for
+power efficient object tracking in sensor networks. In
+In Proc. 1st International Workshop on Mobile Distributed
+Computing (MDC), pages 434–439, Providence
+Rhode Island, May 2003.
+[21] L. C. Zhong, R. Shah, C. Guo, and J. Rabaey. An
+ultra-low power and distributed access protocol for
+broadband wireless sensor networks. In IEEE Broadband
+Wireless Summit, Las Vegas, N.V., May 2001.

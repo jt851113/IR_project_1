@@ -1,0 +1,86 @@
+We first investigate the benefit of creating a flow block
+according to the data reduction rate at the leader using
+the following query:
+(Q3) SELECT AVG(value)
+FROM Sensor D
+WHERE D.loc IN [(400,400),(500,500)]
+HAVING AVG(value)>t
+7The accuracy is measured at the end of each round. Packets
+are dropped at internal nodes if they belong to the previous
+round.
+Let us consider two different query plans for Query
+Q3. In Plan 1, we use an existing flow block which
+covers the whole network. This flow block is also used
+to collect system catalog information, thus it does not
+incur additional maintenance cost. In Plan 2, we construct
+a new flow block for Query Q3 just inside the
+query region, where we first compute the average at a
+leader of this block, and then send qualifying averages
+to the gateway node.
+Both plans may perform the HAVING operation as a
+filter over the average value of the sensor reading, at
+the gateway for Plan 1, but the leader node in Plan 2.
+The result in Figure 11 shows that if the selectivity of
+the HAVING operator is close to 100% and thus the computation
+at the leader does not reduce the number of
+outgoing averages, then there is not much difference in
+terms of the average dissipated sensor energy for each
+round of the query. Plan 2 spends only a little more
+energy on maintenance of the additional flow block.
+However, as the leader discards aggregated data packets
+with higher and higher probability, Plan 2 is a much
+better choice. It reduces the traffic flow significantly
+through aggregation at the leader much closer to data
+sources, compared to the gateway node of Plan 1.
+Next, we evaluate different query plans for Query
+Q1, a query with a GROUP BY clause. Assume that
+there are four different groups. Let us consider three
+simple cases: In the distributed case, sensors that below
+to a single group are physically close, but far away
+from other groups. In the close-by case, the groups are
+close to each other, but they do not overlap, whereas
+in the overlap scenario, all four groups are in the same
+area. We again consider two different query plans for
+this query. Plan 1 creates one big cluster to be shared
+by all groups. Aggregation within each group happens
+at the global cluster leader. Plan 2 creates a separate
+cluster for each group, and aggregates only the tuples
+relevant for each group at the respective cluster leader.
+Figure 16 shows the different spatial distributions of
+the four groups for the three cases.
+We can see from Figure 12 that if the groups are
+physically close, then there is no big difference between
+Plans 1 and 2. However, creating one big cluster
+increases the connectivity of the cluster, and reduces
+the risk of network partitioning within a cluster. If
+the four groups are spatially distant from each other,
+Plan 2 is more efficient as the selection at the aggregation
+leaders can reduce the number of data packets
+for transmission back to the gateway node. In the last
+scenario, where the different groups of sensors are randomly
+distributed, Plan 1 outperforms Plan 2, since
+the cost to collect data records at the leader is high.
+Figures 13 and 14 show the influence of operator
+selectivity on the two plans in the previous experiment
+for two different sensor topologies, the distributed
+topology in Figure 13 and the overlap topology
+in Figure 14. The experiment shows that operator
+selectivity has a strong influence on plan performance,
+although the sensor topology has a much larger impact.
+Next we consider the Join Query Q2. Again we
+consider two query plans to evaluate this query. In
+Plan 1, sensors send all tuples back to the gateway
+without any in-network computation; Plan 2 creates
+a flow block for the Join operator inside the query
+region. In Plan 2, in case the join reduces the data
+size at the leader, the leader sends the result of the
+join back to the gateway, otherwise, the leader sends
+all individual data records to the gateway for the join
+to be performed there.
+Figure 15 shows that the cost to collect data at the
+leader is non-trivial. If the join operator at the leader
+fails to reduce the data size, then the total energy consumption
+at the node increases. Thus the optimizer
+needs to estimate the selectivity of the join operator,
+and it needs statistics in the systems catalog to make
+the right decision.

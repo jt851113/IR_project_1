@@ -1,0 +1,1 @@
+In this section, we introduce definitions for sensor databases and sensor queries. We build on existing work by Seshadri et al [19] to define a data model for sensor data and an algebra of operators to formulate sensor queries.  

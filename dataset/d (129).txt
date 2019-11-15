@@ -1,0 +1,67 @@
+Computer scientists are used to studying access control
+mechanisms where one's identity determines what one is au-
+thorized to do. However, in the physical world, identity is
+not the only thing that matters: often, the physical location
+of the requester also plays an important role in determining
+access rights. This suggests studying location-based access
+control.
+This work was supported in part by DARPA NEST con-
+tract F33615-01-C-1895, NSF CCR-0113941, and an equip-
+ment donation from Intel.
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+WiSE’03, September 19, 2003, San Diego, California, USA.
+Copyright 2003 ACM 1581137699/
+03/0009 ...$5.00.
+Location-based access control in the physical world is easy,
+natural, and familiar. For example, being able to turn on or
+o the lights in a particular room requires having a physical
+presence in the room. The very design of the light switch
+is what enforces the security policy. In contrast, achieving
+the same kind of guarantee with information systems, such
+as wireless networks, is less straightforward; it is not simply
+a matter of putting a switch in the right place. To en-
+force location-based access control policies on information
+resources, we need a way to perform location verication,
+where a principal's location is securely veried to meet cer-
+tain criteria: e.g., being inside a particular room or a specic
+building.
+Location verication enables location-based access con-
+trol. Once a principal's location has been veried using
+a protocol for location verication, the principal can be
+granted access to a particular resource according to the de-
+sired policy. This approach is naturally combined with phys-
+ical security; guards or locks might be used to determine who
+is allowed to enter a building, then location verication em-
+ployed to allow wireless access to all those inside. In this
+way, the location verication problem is the key technical
+challenge that must be surmounted to implement location-
+based access control.
+Location-based access control has several benets. Most
+importantly, it is natural for many applications. One sim-
+ple policy might allow wireless control of only the lights for
+the room you are in, or might insist that a company server
+cease operating if it is taken outside the building. In ad-
+dition, using location for access control obviates the need
+to establish shared secrets in advance. Visitors to a build-
+ing need not obtain wireless encryption keys prior to their
+visit; instead, the keys could be granted automatically to
+all physical occupants of the building. Likewise, at the ball-
+park, fans at a baseball game could receive live scorecards
+on their wireless devices, while stadium owners could restrict
+this service to only those actually present in the stadium.
+It would be quite cumbersome to distribute new keys to all
+fans attending each game, but location-based access con-
+trol allows bootstrapping o the existing physical security
+measures controlling entry to the premises.
+In this paper, we study the location verication problem.
+First, we introduce and dene the location verication prob-
+lem in a careful way (Section 2). Then, we propose a new
+protocol for location verication, called the Echo protocol
+(Section 3), and we prove its security (Section 4). This work
+provides a foundation for securely using location in wireless
+information systems.

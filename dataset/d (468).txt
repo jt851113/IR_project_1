@@ -1,0 +1,28 @@
+DEFINITION 2.3. The information of a pattern 	 
+       is the summation of the information carried by
+each individual position, i.e., 	    .
+Figure 1 shows the set of events corresponding to different
+workload states of a web server. There are total 1024 different
+events. Their probabilities of occurrence are arbitrarily assigned
+and the corresponding information is calculated accordingly.
+We use 10246 as the base in the calculation. The information
+of pattern      is        
+  	
+
+    	  	    . After defining
+the information of a pattern, now we begin to formulate the
+definition of information gain of a pattern in a subsequence of
+events.
+Given a pattern 	         with period  and a
+sequence of  events         , we say that  is in
+compliance with 	 at position       iff either   
+or    holds. For example, the sequence     is in
+compliance with the pattern     at positions 1 and 4.
+Given a pattern 	         with period  and
+a sequence of  events         , we say that 	
+matches  (or  supports 	), iff  is in compliance
+with 	 at every position     . For instance, the
+sequence      supports the pattern     
+while the sequence      does not support it since
+the sequence is not in compliance with the pattern on the last
+position.

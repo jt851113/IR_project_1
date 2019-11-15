@@ -1,0 +1,22 @@
+Assume that a query Q consisting of M sub-queries is at a sensor x. If d is the look-ahead,
+then sensor x will have information about the values stored by f(d) sensors. Thus, x can
+resolve at most min(f(d),M) out of the M sub-queries. In the worst case, x cannot resolve
+any of the M sub-queries. After resolving the possible queries, x will forward the remaining
+query Q0  Q to a sensor which is chosen uniformly at random from those exactly d hops
+away. Assuming that whenever a sensor gets the query, it can always get information from
+f(d) new nodes (i.e. there are no loops in the query forwarding process and the topology of
+the network is regular), the probability of answering K0 of the M sub-queries is dependent
+only on the information obtained from the f(d) nodes. This characteristic of the query
+Figure 13: Markov Chain with states representing the number of unresolved sub-queries of an
+active query. Transitions are only to lower-valued states at most min(f(d),M) to the right, and
+the chain terminates at the absorbing state 0 when all sub-queries have been resolved.
+forwarding process naturally lends itself to be modelled as a Markov Chain, as shown in
+figure 13.
+The states of this Markov Chain are the number of unresolved sub-queries at any instant.
+Thus, given a query consisting of M sub queries, the states of the Markov Chain are M,M?
+1,M?2, ...0. State 0 is the absorption state. This Markov Chain has certain characteristics:
+1. There is no transition from state M0 to M00 where M0 < M00
+2. From a state M0, there can be no transition to a state M00 where M0 ?M00 > f(d)
+The Markov Chain formulation is useful in that once the transition probabilities between the
+various states are known, the mean time to absorption (i.e. SM) can be easily calculated.
+Our next step is to find the transition probabilities of the Markov Chain.

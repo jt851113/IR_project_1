@@ -1,0 +1,45 @@
+Search in peer-to-peer (P2P) systems can be used to find
+information that resides on distributed and autonomous machines.
+Currently, the most successful fully decentralized
+P2P applications are for file sharing (e.g., Gnutella1 and
+BitTorrent2). Those systems search for files that have the
+given terms in their names. We consider a more general
+setup of autonomous peers, where each one holds a collection
+of documents and users can search the full content.
+P2P networks can be classified into structured and unstructured
+networks. In an unstructured network, a query
+is propagated between neighboring peers until matching files
+are found. Due to the unstructured architecture, search
+requests do not always return results, because there is no
+bound on the number of peers that a message has to pass
+before it reaches a peer with the requested resource.
+Structured networks can guarantee that a resource (identified
+by a unique key) will be found after at most O(logn)
+messages, where n is the number of peers. This is done by
+means of a distributed hash table (DHT) that facilitates the
+mapping of resources to peers using a hashing function that
+is known to all peers. In particular, the DHT views each
+term t (appearing in either the name or content of a document)
+as a resource and maps it to a specific peer pt that
+is responsible for keeping all the information about t. Every
+peer sends the information about its terms to the peers
+responsible for those terms.
+When a conjunctive query q = (t1, . . . , tn) is initiated at
+peer pq, the following is done. Firstly, pq uses the DHT to locate
+the peers pt1, . . . , ptn that are responsible for the query
+terms. Next, peer pq contacts each pti and requests the posting
+list that pti is responsible for. Based on the statistics
+available in those lists, pq estimates the top-K most promising
+peers for answering the query. Then, pq sends the query
+to those top-K peers, and each one of them returns its own
+top-k results. Finally, pq finds the top-k documents among
+all the returned results. (K and k need not be the same.)
+The challenge is how to achieve a good recall of the top-k
+documents (where the reference/ground truth is defined as
+the top-k results among all the peers in the P2P network),
+while keeping at a minimum both the number of contacted
+peers and the overall communication cost (i.e., the number of
+bytes sent). Several solutions [1, 7, 4, 6, 5] proposed different
+granularities of the statistics about terms. These solutions
+include a whole range of options: coarse statistics (i.e., peerlevel
+summaries about the occurrences of each term), very

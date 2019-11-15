@@ -1,0 +1,41 @@
+No matter what kind of heuristics we use, we do
+not expect the prediction to achieve 100% accuracy.
+In this case, prediction errors means object missing,
+which causes excessive energy overhead for re-locating
+the object. To accommodate the prediction errors, a
+set of target nodes are waken up to help capturing the
+object, instead of only one destination node.
+Figure 3: Heuristics for wake up mechanisms
+We propose a wake up mechanism that decides the
+membership of the target nodes based on the different
+levels of conservativeness.
+‧ Heuristic DESTINATION. The current node
+only informs the destination node. Hence, the
+overhead for this heuristic is one node, but with
+the higher probability of losing the object.
+‧ Heuristic ROUTE. In addition to the predicted
+destination, the target nodes also include the
+nodes on the route from the current node to the
+destination node. This heuristic assumes the direction
+is estimated correctly but leaves a room
+for errors in speed estimation. Therefore waking
+up the nodes on the route can efficiently catch up
+the speed changes.
+‧ Heuristic ALL_NBR. In addition to the nodes
+on the route and the destination node, the current
+node also informs the neighboring nodes surrounding
+the route, current node and the destination.
+This heuristic assumes the prediction of the
+moving speed and direction will have observable
+difference from the actual values. Thus, waking
+up more nodes reduce the probability of objects
+missing.
+Among the heuristics discussed, All_NBR is the
+most conservative one since it assumes the predictions
+for both of the speed and directions may
+have errors. Thus, it wakes up all the nodes and
+neighbors along the predicted route to make up
+the deficiency. Heuristics ROUTES and DESTI-NATION
+are more energy-efficient since they assume
+at lease one of the estimations for moving
+direction or speed is correct.

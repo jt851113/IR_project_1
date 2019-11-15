@@ -1,0 +1,34 @@
+Assume a person want to purchase a notebook computer and is looking for
+suitable one. Assume there is a database containing eight notebooks as listed
+in Table 1. In the table, each notebook is represented as a tuple containing
+six attributes, CPU, RAM, HDD, HDD speed, Quality, and VRAM. Without
+loss of generality, we assume larger value is better in each attribute and all the
+attributes have equal importance.
+Conventional skyline query for this database returns six notebooks: N2, N3,
+N4, N5, N6 and N7. N1 and N8 are not in skyline because both are dominated
+by N2. If we look the six skyline notebooks, we can find that not all notebooks
+are significant in a sense. For example, N3 is survived only by its value of “HDD
+Speed” and N7 is survived only for “RAM” size. N6 is skyline because no other
+notebook fails to dominate it in all dimensions, even though it does not have
+any maximal feature values. In such situation, the person naturally consider to
+eliminate the skyline notebooks by using stronger criterion
+Chan et al. considered k-dominant skyline query to handle the problem [6].
+They relaxed the definition of “dominated” so that an object is likely to be
+dominated by another. Given a database X consists of n attributes, an object p
+is said to be in k-dominant skyline of X if there is no object q in X such that q
+is better than p in k (?n) dimensions. If there exist such a q, then we say that
+p is k-dominated by q or q k-dominates p.
+In the example, if we consider 5-dominant skyline instead of conventional
+skyline, i.e., 6-dominant skyline, N1, N3, N5, N6, and N8 are eliminated from
+5-dominant skyline because they all are 5-dominated by N2. N7 fails to become
+5-dominant skyline because it is 5-dominated by N4.
+If the person is satisfied with the selectivity of 5-dominant skyline, he/she can
+analyze the returned notebooks intensively. If he/she is still unsatisfied with the
+selectivity, he/she can compute further k-dominant skyline query with smaller
+k. Thus, k-dominant query solve the problems of conventional skyline query for
+high dimensional databases.
+The contributions of this paper are as follows: 1) We have developped an
+efficient method for computing k-dominant skyline by using a Sort-Filtering
+method that sorts objects by domination power. 2) We have performed intensive
+experiments on a variety of synthetic and real datasets to demonstrate that the
+proposed method is efficient and performs better than other existing methods.

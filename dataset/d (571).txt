@@ -1,0 +1,19 @@
+We first analytically study the behavior of ACQUIRE for different values of c and d and find
+the optimal look-ahead d for a given c, M and N. We used Eqn. 13 derived in section 4.5.
+N was set to 100 and M was set to 20. We varied c from 0.001 to 1 in steps of 0.001 and d
+from 1 to 10. For d = 0, Eavg is independent of c and d as shown by Eqn. 15 in section 4.5.
+Figure 4 shows the energy consumption of the ACQUIRE scheme for different amortization
+factors and look-ahead values. Let d be the look-ahead value which produces the minimum
+average energy consumption. It appears that d significantly depends on the amortization
+factor.
+Figure 5 shows that as the amortization factor c decreases, d increases. i.e. as the query
+rate increases and the network dynamics decreases it is more energy-efficient to have a higher
+look-ahead. This is intuitive because in this case, with a larger look-ahead, the sensor can
+get more information that will remain stable for a longer period of time which will help it
+to answer subsequent queries. Thus, in our study, for very small c (0.001  c  0.01), d
+is as high as possible ( d = 10 ). On the other hand, for 0.08  c < 0.9 (approx.), the
+most energy efficient strategy is to just request information from the immediate neighbors
+(d = 1). It is also seen that there are values of c in the range from [0.001, 0.1] such that
+each of 1, 2, ...10 is the optimal look-ahead value. If c  0.9 (approx.), the most efficient
+strategy for each node x is to resolve the query based on the information it has (without
+even requesting for information from its neighbors i.e. d = 0).

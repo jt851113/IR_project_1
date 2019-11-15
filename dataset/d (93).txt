@@ -1,0 +1,19 @@
+Another way to improve resource selection is to refine the
+queries instead of the profiles, e.g. by query expansion. As
+is pointed out in [29], query expansion may help to overcome
+problems due to the loss of document boundaries in profiles.
+Two studies [29, 20] examine the effectiveness of query
+expansion in DIR, reaching rather different conclusions: the
+first study finds significant improvement over the baseline
+CORI selection, the second one has discouraging results.
+Query expansion is also used in some approaches to P2PIR:
+in [8], a local pseudo feedback approach based on language
+modeling is presented, first ranking peers w.r.t. the unexpanded
+query and then using the best k results returned by
+the top-ranked peer for pseudo feedback.
+A final optimisation of resource selection concerns not so
+much the query formulation process, but the overlap of documents
+among information resources. This problem is addressed
+in DIR by [24] and in P2PIR by [2], but not in the
+experiments of section 5. However, it will be interesting to
+investigate overlap more closely in future work.

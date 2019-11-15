@@ -1,0 +1,40 @@
+We simulated the algorithm described in Section IV-A on
+networks of sensors distributed uniformly with various spatial
+densities. In all cases, we assumed that 1 unit of energy spent in
+communicating 1 unit of data. We use the algorithm to generate
+a clustering hierarchy with different number of levels in it to
+see how the energy spent in the network reduces with the
+increase in number of levels of clusters. In these simulations,
+we have used the numerically computed set of optimal
+probabilities (that minimizes E[C] given by (20)) of becoming
+clusterheads at each level in the clustering hierarchy. Fig. 4.
+and Fig. 5 show how the energy consumption decreases as the
+number of levels in the hierarchy increases.
+In Fig. 4, we observe that the energy savings are higher for
+networks of sensors with lower communication radius. These
+results can be explained as follows. In networks of sensors with
+higher communication radius, the distance between a sensor
+and the processing center in terms of number of hops is smaller
+than the distance in networks of sensors with lower
+communication radius and hence there is lesser scope of energy
+savings. The energy savings with increase in the number of
+levels in the hierarchy are also observed to be more significant
+for lower density networks. This can be attributed to the fact
+that among networks of same number of sensors, the networks
+with lower density has the sensors distributed over a larger
+area. Hence, in a lower density network, the average distance
+between a sensor and the processing center is larger as
+compared to the distance in a higher density network. This
+means that there is more scope of reducing the distance
+traveled by the data from any sensor in a non-clustered
+network, thereby reducing the overall energy consumption.
+Since data from each sensor has to travel at least one hop,
+the minimum possible energy consumption in a network with
+n sensors is n , assuming each sensor transmits 1 unit of data
+and the cost of doing so is 1 unit of energy. From Fig. 4 and
+Fig. 5, it is apparent that the energy consumption is very close
+to this value when the number of levels in the hierarchy is 5,
+irrespective of the density of sensors and their communication
+radius. Hence, if one chooses to store the numerically
+computed values of optimal probability in the sensor memory,
+only a small amount of memory would be needed.

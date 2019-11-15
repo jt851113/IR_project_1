@@ -1,0 +1,9 @@
+Fenster is distributed under the terms of the GNU GPLv34. It was coded in C++ and
+compiled with GCC 4.5.2. Most of the following experiments were performed on an
+IntelR processor cadenced at 2GHz, 2 GB of RAM and running a GNU/Linux? operating
+system. Because AC-Close only runs onWindows?, the experiment involving
+it was performed on another computer equipped with an IntelR processor cadenced
+at 2.26GHz and 3 GB of RAM. The implementations of CubeMiner (Ji et al. 2006),
+Trias (Jaschke et al. 2006), AC-Close (Cheng et al. 2008) and DCE (Georgii et al.
+2011) were kindly provided by their respective authors. DCE’s ability to rank the
+patterns was disabled.

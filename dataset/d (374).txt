@@ -1,0 +1,16 @@
+In order to fully realize the potential of sensor networks,
+energy awareness should be incorporated into every stage
+of the network designs and operations. In this paper,
+we address the energy management issue in a sensor networks
+killer application - object tracking sensor networks
+(OTSNs). Based on the fact that the movements of the
+tracked objects are sometimes predictable, we propose a
+Prediction-based Energy Saving scheme, called PES, to
+reduce the energy consumption for object tracking under
+acceptable conditions. We compare PES against the basic
+schemes we proposed in the paper to explore the conditions
+under which PES is most desired. We also test the effect
+of some parameters related to the system workload, object
+moving behavior and sensing operations on PES through
+extensive simulation. Our results show that PES can save
+significant energy under various conditions.

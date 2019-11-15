@@ -1,0 +1,125 @@
+Traditionally, ranking schemes are evaluated by computing
+precision and recall on a pre-labeled corpus, such as
+the TREC [17] collection. We compare our algorithms
+based on precision and relative recall at 5 and 10 documents.
+We used relative recall instead of recall since
+we do not know the number of relevant documents for a
+topic on the Web, or even in the Neighborhood Graph.
+We used a set of 28 queries previously used by [6] in
+comparing the rankings from their version of Kleinberg's
+algorithm with category listings on the Web. Table 1
+gives a listing of the queries ordered by the number of
+results returned by AltaVista in December 1997 for each
+query, which can be taken as a measure of the topic's
+popularity on the Web.
+We ran our 8 algorithms and base on each of the
+queries and considered documents with the top 14 hub
+and authority scores. The set of top authority documents
+from all the algorithms were pooled together randomly
+and independently rated for relevance by 3 volunteers.
+The ratings were then combined and the nal relevance
+rating for each document was decided by majority vote.
+A similar rating was done for the top hub documents.
+In each case the subjects were instructed to determine
+whether the document was not relevant to the topic (case
+i), relevant to the the topic (case ii), or both relevant to
+the topic and a good example of a hub or an authority
+as the case may be (case iii). Only documents classied
+under case iii by a majority of reviewers (i.e., 2 out of 3)
+were considered relevant for the purposes of computing
+precision and relative recall.
+The subjects were encouraged to follow links and
+browse the document's neighborhood before deciding on
+a rating. Specically, the subjects were told:
+Table 1: Queries used in sorted order of AltaVista result
+set size in December 1997. The table also lists for
+each topic the total number of relevant documents that
+appeared in the top-10 ranking of at least one algorithm.
+For authority rankings this is listed as ta and for hub
+rankings as th.
+\You have some latitude in deciding what constitutes
+a good hub or authority. A good hub generally has useful
+links. A good authority is generally a document with useful
+content. If a document with little content has links to
+relevant content-rich documents on the same site (e.g., if
+it is a `Table of Contents' page), it may still count as an
+authoritative page. You might instead choose to regard
+all good hubs as good authorities. Whatever policy you
+adopt please be consistent."
+Two issues came up: (i) Sometimes queries had more
+than one interpretation. For instance, some reviewers restricted
+architecture to building related topics, whereas
+others included computer architecture as well. (ii) There
+was disagreement among the reviewers on whether to include
+pages on the topic containing very localized information,
+e.g., pages on bicycling trails in New Jersey for
+the query \bicycling."
+No rating was given in cases where documents were
+not accessible or were in a language that the subjects
+did not understand. To compensate for this we obtained
+ratings for the top 14 documents in each ranking, and
+omitted the unrated documents. This gave us a list of
+at least 10 documents for each algorithm{topic pair with
+3 ratings for each. We computed precision and relative
+recall for this list using the combined relevance measure
+described previously (relevant if placed in class iii by a
+majority of the reviewers). We computed precision at 5
+and at 10 documents for each algorithm{topic pair, as
+well as average precision for specic sets of documents
+and all the documents combined. To compute relative
+recall in the context of a topic, we rst determined t, the
+total number of relevant documents for the topic occurring
+in the top-10 ranking of at least one of the algorithms.
+Table 1 lists values of t for the various topics (ta
+for authorities and th for hubs). For each algorithm, relative
+recall at 5 (similarly 10) documents was computed as
+the number of relevant documents in the top 5 (similarly
+10) ranked documents expressed as a fraction of t.
+Table 2 shows the precision after the top 5 and 10
+ranked authority documents. We classied the ve queries
+with the smallest AltaVista result set size as rare, and
+the ve the with largest result set size as popular. We
+also give precision values for the sets of rare and popular
+queries. Similarly, Table 3 gives precision values for hub
+documents.
+First, we discuss the performance in the context of
+authority ranking. We observe that in all cases imp,
+which eliminates mutually reinforcing relationships between
+hosts, provides an appreciable improvement over
+base, the algorithm described by Kleinberg. Adding content
+analysis either by pruning nodes or regulating the
+inuence of nodes improves on imp, especially in the case
+of rare topics. Med, startmed, and maxby10 all perform
+roughly the same and improve precision by about 10%
+over imp. Regulation helps imp in all cases, about as
+much as pruning. For the algorithms that use pruning,
+adding regulation does not seem to aect precision.
+On both popular and rare topics the algorithms performed,
+in general, worse than on all topics. Precision
+for rare topics is in general lower than for popular topics.
+We conjecture that rare topics do not have enough connectivity
+for the algorithms to exploit, while for popular
+topics that threshold based pruning is too simplistic. In
+the next section we present algorithms that prune more
+selectively. One of them performs signicantly better on
+popular topics.
+To summarize authority rankings, imp improves precision
+by at least 26% over base; regulation and pruning
+each improve precision further by about 10%, but combining
+them does not seem to give any additional improvement.
+Considering precision in the ranking for hubs we nd
+as before that imp improves on base (by 23% or more),
+and med improves on imp by a further 10%. Regulation
+slightly improves imp and maxby10 but not the others.
+Overall hub precisions are better than authority precisions,
+even for base, but medr still improves precision
+by 45% over base. In general at 10 precision averaged
+over all topics is higher than on rare and popular topics.
+Due to the distribution of the ta and th (see Table 1)
+no algorithm can have a better relative recall at 10 than
+0.65 for authorities and 0.6 for hubs. Base achieved a
+relative recall at 10 of 0.27 for authorities and 0.29 for
+hubs. Our best algorithm for authorities gave a relative
+recall of 0.41; similarly for hubs it was 0.46 (see Table 4),
+i.e., we achieved roughly half the potential improvement
+by this measure.

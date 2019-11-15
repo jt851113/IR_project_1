@@ -1,0 +1,70 @@
+To see how the whole framework works, we now describe
+how a query against the sources of Section 4 would be
+processed by the Garlic optimizer using Garlic’s built-in
+STARs (Section 3) and the wrapper STARs defined above.
+Suppose that the ombudsman has just received a complaint
+about an Ancient Studies course. She remembers receiving
+a number of complaints about courses concerning the
+ancient world recently, and wants to see what faculty are
+involved. She poses the following query:
+SELECT C.Course, C.Prof
+FROM Classes C, Descrs D, Complaints P
+WHERE D.Name = C.Course AND
+C.Course = P.Subject
+ORDER BY D.is about(“ancient world, Greece, Rome”)
+In phase one of optimization, Garlic’s AccessRoot
+STAR is invoked once for each collection of the query.
+In each case, it invokes the appropriate wrapper’s
+plan access STAR, and then creates a PushDown POP.
+This results in four plans, shown in Figure 12, one from
+each of the Mail and Relational wrappers, and two from the
+Text Wrapper. Their properties will be those of the wrapper
+POPs in Table 1.
+In phase two, Garlic’s JoinRoot STAR is fired, first
+to make all possible two-collection joins, and then to look
+at all three-collection plans. This entails four calls to
+JoinRoot to join Classes and Descrs (one with each of
+the plans for Descrs as the outer, and two with Classes as
+the outer, using the different plans for Descrs as the inners),
+four more for Descrs and Complaints, and two for
+joining Classes and Complaints. Each time it is called,
+Figure 14: Three-Way Join Plans Surviving Pruning
+JoinRoot instantiates all three Garlic join rules. For this
+query, RepoJoin never returns any plans, as no two collections
+are co-located. NestedLoopJoin always returns
+a plan, as Garlic can always perform the join, so
+ten nested loop plans are returned. Since only the relational
+wrapper defines a plan bind STAR, BindJoin
+returns a plan only when Classes is the inner. This occurs in
+three plans, so in total, thirteen join plans are considered in
+this phase. However, only five plans survive pruning (Figure
+13). The others are eliminated because they have the
+same properties as another plan, and cost at least as much.
+Note that each plan of Figure 13 builds on the plans of
+Figure 12. For example, plan P5 combines plans P1 and P3,
+storing the results of P3, and adding the join operator with
+a scan of the new collection. Plan P8 similarly builds on
+plans P4 and P2, but discovers that it needs to add a fetch of
+subject before making the temporary collection, in order to
+apply the join predicate during join processing.
+Plans P7 and P8 demonstrate the benefits of extending
+well-known optimizer technology. Both plans apply a join
+predicate that did not appear in the query, but could be deduced
+from it by taking the transitive closure of the predicates
+[G
+
+93]. These plans required no new rules, nor did
+the new, generic Garlic rules disturb them; the existing optimizer
+computed transitive closures of predicates, and the
+Garlic optimizer therefore (automatically) does so.
+In the next step of phase two, these two-way join plans
+will be combined with the single-table access plans from
+phase one to generate the three-way joins. In this phase,
+fourteen plans are created, but only two survive pruning,
+one ordered by is about (P11) and one not ordered (P10).
+These two plans, shown in Figure 14, are the input to phase
+three. In this phase, the FinishRoot STAR is invoked
+to complete both plans. P11 is already complete, so it is
+returned as is, but FinishRoot adds a Sort POP to P10 to
+complete it. As both plans now have the same properties, a
+winner is chosen on the basis of cost.

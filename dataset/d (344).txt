@@ -1,0 +1,30 @@
+At the end of the three phases outlined above, initiators have finished
+zone clustering and some intra-zone clusters and intra-zone
+SONs have been created. Next, this process is recursively applied
+to the initiators only (as shown in Figure 1), since they now constitute
+an unstructured P2P network, with links between neighboring
+initiators established due to the zone creation phase. The overall
+aim is to generate SONs that span the entire network, not just a
+zone. Therefore, this recursive process continues, thus resulting in
+a hierarchy of initiators of different levels. Zones and clusters are
+merged recursively, as shown in Figure 2. The CDs from each peer
+in a zone are combined into new clusters. Illustrated as an example
+on the right bottom part of the figure is the relationship between
+documents and CDs in peers, and the relationship between upperlevel
+clusters and CDs from level below.
+At each level of the hierarchy, a number of neighboring zones
+are merged to one higher-level zone, where a zone initiator from
+the previous level is selected to act as zone initiator for the merged
+zones. When a level-(i+1) zone is created from a number of level-i
+zones, CDs created at the previous level are collected by the level-
+(i+1) initiator and the most similar clusters from the level-i zones
+are merged. More specifically, this initiator assembles the feature
+vectors (i.e. cluster descriptions) of the initiators of the zones one
+level below, and the feature vectors of that level are clustered in
+order to create the next level clusters and SONs. These SONs now
+span all peers belonging to the level-i zones that merged into one
+level-(i + 1) zone.
+This recursive process continues until the final level with only
+one initiator/zone is reached (in practice the number of levels is
+small logSZNP ). The result is a number of global clusters/SONs
+that span the entire network.

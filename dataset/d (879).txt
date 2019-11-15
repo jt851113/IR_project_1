@@ -1,0 +1,131 @@
+Before discussing the query forwarding strategy, we introduce
+the notion of intelligence and our method to measure
+the accuracy of intelligence information. In this paper,
+the intelligence of a query item in a node is the information
+about the distance from the node to the result item.
+This kind of intelligence is collected from neighbors’ gossiplike
+intelligence exchanging and query forwarding experiences.
+They are stored in the index tables of each node, as
+shown in Figure 2. The index table at left side, named selfcontained
+items (SCI) table, stores the intelligence of data
+items which are provided by the node itself, obtained from
+previous queries or evaluated from neighbors’ items (NI) table.
+This information is the node’s own intelligence which
+will be sent to its neighbors for exchanging. The NI table at
+right side maintains all selected intelligence collected from
+neighbors which can help to decide where to forward a query.
+The Intelligence Accuracy (IA) is a criterion representing
+the evaluating distance from the nearest copy of the resource
+data. We denote data item j’s Intelligence Accuracy value
+as Ij . Additionally, since the mobile P2P network is a highly
+dynamic environment, we bring in a time parameter tj to
+indicate the timeliness of intelligence. We measure IA in
+following ways:
+‧ For the self-provided data items of a node, we assign
+them a fixed value I0 and a fixed time parameter t0.
+I0 is the maximum value of IA in the network, while
+t0 denotes that the data is the original copy and is
+always valid unless it is explicitly deleted or updated.
+They are stored in the SCI index table as shown in
+Figure 2. Whenever we find I0 in the NI table, we are
+sure that this intelligence is accurate and we can get
+the resource at next hop.
+‧ After forwarding each query, the IA value of the query
+item will be re-adjusted and the time parameter will
+be updated, which exploits the experiences from query
+processes for refinement. This process makes the intelligence
+information up-to-date. The re-adjustment
+of the IA value follows the same principle for the data
+item, i.e., if the node is nearer to the resource provider,
+its IA value is higher. After a query request is finished,
+the corresponding result is cached in the query issuer
+for a certain period of time. This newly cached data
+item will undoubtedly affect the IA value of neighbor
+nodes around it, which should be taken into consideration
+during adjustment. We re-adjust the IA value
+in a node according to its position between the node
+with cache and the resource provider. As illustrated in
+Figure 3, the nodes closer to either of those two nodes
+have higher IA values and the node in the middle of
+the path has the lowest IA value because it is the one
+who is farthest to both data copies.
+In order to achieve our IA value re-adjusting plan, we
+use an adjusted normal distribution function for new
+value calculation illustrated in Figure 3.1 Referring to
+the example in Figure 1, we assume that the query
+item is item j, node i is one of the forwarding nodes
+in j’s query forwarding path, i’s position is k and the
+length of that path is l. We use the following formula
+to re-adjust IA value of j:
+Formula 1 is an adjusted normal distribution function
+with a mathematical expectation parameter μ = 1/l
+and a standard dispersion parameter σ = (l + 1)/2.
+Take the query forwarding process shown in Figure 1
+as the example. Node k = 0 and node k = 3 have the
+same IA value I0. While node k = 1 and node k = 2
+have the same IA value I < I0, since they both have
+one-hop distance to the data item. We specify that
+if there are two duplicate items within the reachable
+range of a node, that node will only choose one of
+them randomly. If the query fails, all the nodes in
+this query path set their corresponding IA value to 0,
+because their intelligence information is out-of-date.
+With this formula, we can also re-adjust the IA value
+without the effect of the query path length l, which
+makes the IA value more precise. Suppose that there
+exist two nodes u and u
+, they are both in the second
+position (ku = 1 and ku = 1) of their own query path
+1In case that L is odd number, the two circles in the middle
+actually represents the single trough point of the curve as
+L/2 = (L ? 1)/2.
+lu and lu, where lu < lu . Though their position are
+the same, the intelligence information they provided
+are not the same at beginning. But after re-adjusted,
+they should have the same IA value because they both
+have one-hop distance with the new cached result. The
+formula can be automatically adapted to guarantee the
+correctness of that situation.
+‧ Each node collects intelligence from its neighbors with
+gossips and updates its NI table, using the following
+formula:
+where Ii,j is the IA value of query item j in neighbor
+i and ti,j is the corresponding time interval between
+current time and the latest update time of Ii,j .
+nj is the number of neighbors of node j. Fi,j is the
+forwarding weight of Ii,j and Fmax is the one who
+has the maximum forwarding weight. The forwarding
+weight F is a criterion to tradeoff the timeliness and IA
+value. Here, we store the item Ii,j with the maximum
+forwarding weight from all neighbors in every update
+process. Since the NI table is directly devoted to our
+intelligence-based forwarding strategy, the additional
+maintenance of NI table entries will be discussed in
+Section 3.2.
+‧ At the same time, the nodes periodically update their
+SCI tables after their NI tables have changed, using
+the following formula:
+where Ij represents item j’s new IA value in SCI table,
+j represent j’s former IA values in SCI
+and NI tables respectively. After that, they send the
+intelligence of all the updated items to their neighbors,
+whose values are larger than a threshold δ which will
+be discussed in Section 3.2. Note that, in a mobile
+P2P network, neighbors of a node are always changing.
+Hence, indexes of NI table are changed frequently.
+However, we integrate the intelligence from NI table
+into SCI table periodically, for the sake of reducing
+the communication cost incurred by frequent updates.
+In our implementation, to expedite the data dissemination
+in mobile environments, we store the result in the query issuer
+node for a certain period of time. During this period,
+the query issuer node can serve this resource to the others.
+If the data storage in the query issuer node exceeds a limitation,
+it forces the oldest cache to be deleted. This duration
+for cache can be a system tuning factor and may vary for different
+applications. The duration of cache is generally short
+and during this period we consider the cache of resource to
+be valid using a version number to distinguish it from new
+update versions (refer to Section 3.3). We don’t cache results
+in intermediate peers because it is a tradeoff between
+data dissemination and device storage consumption.

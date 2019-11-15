@@ -1,0 +1,57 @@
+The HT-p2p plus is a distributed version of the HT-p2p. Having in
+mind that each super-peer may have under its cluster many
+thousands of peers, it is desirable for performance and scalability
+reasons to host one running instance of HT-p2p at each relevant
+super-peer which is executed independently of each other and in a
+distributed way. So instead of assigning all the set of peers to a
+single super-peer we use multiple super-peers and each one
+applies the HT-p2p only to the peers for which he is responsible
+for. Then the results from all super peers are combined to
+determine the final top-k objects. It is not necessary for all superpeers
+to perform the same number of steps during the execution of
+HTp2p but the final phase cannot begin until all the Super-Peers
+have calculate their final top-k items. In HT-p2p plus, an
+additional role is defined, namely that of Contributor super-peer,
+which contributes to the final top-k results by applying a running
+instance of HT-p2p across its relevant peers. In general, once a
+routing strategy has returned the set of ranked objects of relevant
+(contributor) peers for each corresponding (contributor) superpeer,
+an instance of HT-p2p plus is ready to run. If the Originator
+super-peer has the role of Contributor super-peer as well, then we
+select to give it the additional role of Collector. The role of
+Collector super-peer in HT-p2p plus is to collect all top-k results
+from the running instances of HT-p2p plus, combine them and
+finally return them to the Originator super-peer. The processing
+steps of HT-p2p plus are the same with HT-p2p for each
+independent running instance. So each group of super-peer and
+peers will execute the HT-p2p algorithm until the point that the
+top-k results have been calculated in the Super-Peer. After that
+instead of returning the results to the peer the initiated the query,
+each Contributor super-peer start communicate with the Collector
+super-peer for the last phase. This last phase is required for the
+combination of the results from the contributors’ super peers. At
+the end of Phase 4, the collector super-peer has to combine the
+results from all the contributor super peers. This has to do with the
+following processing steps of phase 5:
+Each contributor super-peer sends its top-k objects to the
+Collector super-peer. The Collector super-peer combines all these
+objects and creates a list with discrete objects (L1). The collector
+super-peer sends this list to all the Contributor super-peers and
+asks the scores for these objects. When, all super-peers answer he
+calculates and stores the scores for all objects in L1 and identifies
+the objects with the k highest sums .The kth highest sum will be
+called “phase 5 bottom” (τ5). The Collector super-peer sets a
+threshold for phase-5 Τ_combine=τ5?z (where z is the number of
+the contributor super-peers) and announces (with a broadcast) this
+threshold to all the contributor super-peers. Then each contributor
+super-peer sends to the Collector super-peer the objects (and their
+scores) with scores greater than Τ_combine so a new list with
+discrete objects can be created (L2) and stored. The final top-k
+objects will be calculated from the set L3={L1L2}.The collector
+super-peer has stored all the information for the objects in this list
+and in the previous steps and there is no need for further
+communication actions. After this point the Collector super-peer
+has identified the final top-k objects and can return them to the
+peer that initiated the query. The correctness of HT-p2p and HTp2p
+plus is based on the native proof of [1], while the correctness
+of phase 5 can be found in [2]

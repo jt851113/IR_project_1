@@ -1,0 +1,93 @@
+[1] R. Agrawal and R. Srikant. Mining Sequential Patterns. Proc. Int.
+Conf. on Data Engineering (ICDE), Taipei, Taiwan, 3-14, March
+1995.
+[2] J. Bentley. Programing pearls. Communications of ACM, vol. 27,
+no. 2, 865-871, 1984.
+[3] D. Berndt and J. Clifford. Finding patterns in time series: a dynamic
+programming approach. Advances in Knowledge Discovery
+and Data Mining, 229-248, 1996.
+[4] Claudio Bettini, Xiaoyang Sean Wang, Sushil Jajodia, and Jia-
+Ling Lin. Discovering frequent event patterns with multiple
+granularities in time sequences. IEEE Transaction on Knowledge
+and Data Engineering, 10(2), 222-237, 1998.
+[5] S. Brin, R. Motwani, C. Silverstein. Beyond market baskets: generalizing
+association rules to correlations. Proc. ACM SIGMOD
+Conf. on Management of Data, 265-276, 1997.
+[6] Gautam Das, King-Ip Lin, Heikki Mannila, Gopal Renganathan,
+and Padhraic Smyth. Rule discovery from time series. Proc. Int.
+Conf. on Knowledge Discovery and Datamining, 16-22, 1998.
+[7] T. Fukuda, Y. Morimoto, S. Morishita, and T. Tokuyama. Mining
+optimized association rules for numeric attributes. Proc. 15th
+ACM Symposium on Principles of Database Systems, 182-191,
+1996.
+[8] M. Garofalakis, R. Rastogi, and K. Shim. SPIRIT: sequential
+pattern mining with regular expression constraints. Proc. Int.
+Conf. on Very Large Data Bases (VLDB), 223-234, 1999.
+[9] J. Han, W. Gong, and Y. Yin. Mining segment-wise periodic
+patterns in time-related databases. Proc. Int. Conf. on Knowledge
+Discovery and Data Mining, 214-218, 1998.
+[10] J. Han, G. Dong, and Y. Yin. Efficient mining partial periodic
+patterns in time series database. Proc. Int. Conf. on Data Engineering,
+106-115, 1999.
+[11] J. Han, J. Pei, B. Mortazavi-Asl, Q. Chen, U. Dayal, and M. Hsu.
+FreeSpan: frequent pattern-projected sequential pattern mining.
+Proc. Int. Conf. on Knowledge Discovery and Data Mining, 2000.
+[12] M. Klemetinen, H. Mannila, P. Ronkainen, H. Toivonen, and A.
+Verkamo. Finding interesting rules from large sets of discovered
+association rules. Proc. CIKM, 1994.
+[13] B. Liu, W. Hsu, and Y. Ma. Mining association Rules with
+multiple minimum supports. Proc. ACM SIGKDD, 337-341,
+1999.
+[14] B. Liu, M. Hu, and W. Hsu. Multi-level organization and summarization
+of the discovered rules. Proc. ACM SIGKDD, 208-217,
+2000.
+[15] Heikki Mannila, Hannu Toivonen, and A. Inkeri Verkamo. Discovery
+of frequent episodes in event sequences. Data Mining and
+Knowledge Discovery, vol. 1, no. 3, 259-289, 1997.
+[16] B. Ozden, S. Ramaswamy, and A. Silberschatz. Cyclic association
+rules. Proc. 14th Int. Conf. on Data Engineering, 412-421,
+1998.
+[17] B. Padmanabhan and A. Tuzhilin. Pattern discovery in temporal
+databases: a temporal logic approach. Proc. ACMKDD, 351-354,
+1996.
+[18] B. Padmanabhan and A. Tuzhilin. Small is beautiful: discovering
+the minimal set of unexpected patterns. Proc. ACM SIGKDD, 54-
+63, 2000.
+[19] N. Pasquier, Y. Bastide, R. Taouil, and L. Lakhal. Discovering
+frequent closed itemsets for association rules. Proc. Int. Conf. on
+Database Theory, 398-416, 1999.
+[20] J. Pei, J. Han, and R. Mao. CLOSET: an efficient algorithm for
+mining frequent closed itemsets. Proc. ACM SIGMOD Workshop
+on Research Issues in Data Mining and Knowledge Discovery,
+21-30, 2000.
+[21] J. Pei, J. Han, B. Mortazavi-Asl, H. Pinto, Q. Chen, U. Dayal,
+and M. Hsu. PrefixSpan: mining sequential patterns by prefixprojected
+growth. Proc. 17th Int. Conf. on Data Engineering,
+215-224, 2001.
+[22] S. Sahar. Interestingness via what is not interesting. Proc. 5th
+ACM Int. Conf. on Knowledge Discovery and Data Mining
+(SIGKDD), pp. 332-336, 1999.
+[23] Myra Spiliopoulou. Managing interesting rules in sequence mining.
+Proc. European Conf. on Principles and Practice of Knowledge
+Discovery in D atabases, 554-560, 1999.
+[24] R. Srikant and R. Agrawal. Mining sequential patterns: generalizations
+and performance improvements. Proc. 5th Int. Conf. on
+Extending Database Technology (EDBT), 3-17, 1996.
+[25] K. Wang, Y. He, and J. Han. Mining frequent itemsets using
+support constraints. Proc. 26th Intl. Conf. on Very Large Data
+Bases (VLDB), 2000.
+[26] J. Yang, W. Wang, and P. Yu. Mining asynchronous periodic
+patterns in time series data. Proc. ACM SIGKDD Int. Conf. on
+Knowledge Discovery and Data Mining (SIGKDD), pp. 275-279,
+2000.
+[27] J. Yang, W. Wang, and P. Yu. InfoMiner: mining surprising
+periodic patterns. Proc. ACM Knowledge Discovery and Data
+Mining, 395-400, 2001.
+[28] J. Yang,W.Wang, and P. Yu. InfoMiner+: mining partial periodic
+patterns with gap penalties. Proc. 2nd IEEE Int. Conf. on Data
+Mining, 2002.
+[29] M. Zaki. Sequence mining in categorical domains: incorporating
+constraints. Proc. 9th Int. Conf. on Information and Knowledge
+Management, 422-429, 2000.
+[30] M. Zaki. Generating non-redundant association rules. Proc. ACM
+Knowledge Discovery and Data Mining, 34-43, 2000.

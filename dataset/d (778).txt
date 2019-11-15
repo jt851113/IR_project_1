@@ -1,0 +1,14 @@
+We introduced the problems of view selection, aggregation
+tree selection, and node scheduling in a sensor network, and
+presented a high-level description of our approach to solving
+them. In future work, we plan to investigate the interaction
+between these three problems. We are interested in exploring
+efficient wave schedules given specific message generation
+patterns, view locations, and aggregation trees. Another interesting
+direction is to study fault-tolerance in the context of
+materialized views and scheduled data propagation.
+Acknowledgements. We are grateful to Douglas Holzhauer
+and Zen Pryke for helpful discussions. This work is supported
+by NSF Grants CCR-0205452, IIS-0133481, and IIS-0330201,
+by the Cornell Information Assurance Institute, and by Lockheed
+Martin.

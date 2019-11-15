@@ -1,0 +1,35 @@
+The goal of zone creation is to partition an unstructured P2P network
+into smaller subgroups. These subgroups are called zones
+and each zone is created by an initiator. Given a preferred zone
+size SZ, initiator selection results in approximately one initiator –
+also called zone initiators – in every SZ peers. During zone creation,
+the task of each initiator is to create a zone of peers by means
+of a local flooding-based algorithm. Using this algorithm, an initiator
+first captures its neighboring peers, then their neighbors, and so
+forth, as long as neighboring peers have not been captured by another
+initiator. These captured peers constitute the initiator’s zone.
+Thus an initiator’s zone is restricted by the boundaries of other initiators’
+zones.
+Moreover, the algorithm ensures that any connected peer in the
+network finally belongs to some zone. We emphasize that a zone
+is a plain topological (not semantic) grouping of peers that are
+"around" a zone initiator, and obviously zones contain nonoverlapping
+sets of peers. Both initiator selection and zone creation
+are completely distributed and they are performed using the
+algorithm presented in [6]. The basis of the zone creation algorithm
+is a probe message sent from each initiator and flooded until it is
+received by a node which is also initiator or has received a probe
+message from another initiator. Since a certain amount of peers are
+initiators and a zone will have limited size, the amount of messages
+is not very high.
+Zone creation is a necessary step, in order to put an upper bound
+on the burden imposed on initiators. As will be shown next in detail,
+initiators assemble cluster descriptions of peers in their zone,
+and they perform clustering to create new clusters that span the
+contents of the entire zone. Thus, SZ practically defines an upper
+limit on the number of peers that can belong to a zone, as well as
+the number of initiators. Hence, if peers in a network do not have
+high processing capabilities, SZ can be set to a low value, in order
+to avoid excessive load on some initiators. Notice that in the case
+of a zone of excessive size, the initiator can decide to partition its
+zone, by splitting it into two or more zones.

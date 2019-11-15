@@ -1,0 +1,37 @@
+The most prominent work in top-k query processing has been
+defined by the seminal approach of Fagin et al. on the Threshold
+Algorithm (TA) [3] which was designed for standalone database
+applications. But especially for p2p applications, TA seems
+insufficient since it requires several round-trips to return the
+results (unpredictable time and network consumption) because it
+doesn’t take data distributions into account. To the direction of
+TA adjustment for distributed networks, four algorithms TPUT
+[4] and {TPAT, TPOR, HT} [1] have been presented including 3
+basic phases and using thresholds to order to determine the final
+top-k set of objects. These algorithms seem to overcome the
+problems of TA and belong to the class of exact algorithms which
+means that they return exactly the real highest ranked objects
+without any kind of prediction. TPUT prunes ineligible objects
+based on their scores in 3 standard phases and in its evaluation
+outperforms TA in most cases [1]. TPAT does not belong to the
+category of exact algorithms since it uses statistics to further
+enhance the pruning power of TPUT. However, both TPAT and
+TPUT algorithm assume uniform data distribution which could be
+restrictive as, in real p2p systems some peers may host data
+following other distributions. TPOR prunes ineligible objects by
+their rankings (positions in sorted lists). The Hybrid Threshold
+Algorithm [1] combines the advantages of both TPUT and TPOR,
+estimates data distributions without a-priori knowledge, which
+means that it does not assume a specific distribution of scores. It
+is based on partial sums and upper bounds to prune non-eligible
+objects, and terminates in a fixed number of 3 + 1 phases.
+It is worth noting that all the above algorithms except TPAT
+belong to the family of exact algorithms, which means that they
+always return the highest ranked objects correctly without using
+any sense of probabilities. The latter refers to another category of
+algorithms usually termed approximate which enable the final
+pruning of objects under specific probabilistic guarantees is
+achieved using routing filters and histograms. A detailed
+presentation of exact, approximate and combined approaches can
+be found in [2]. Also in [2, 5] some related problems such as the
+query routing and the ranking of objects are addressed.

@@ -1,0 +1,56 @@
+Four, possibly overlapping, n-sets are randomly placed in a cubic dataset, i. e., all
+attribute domains have the same cardinality. The obtained relation is named Rhidden.
+Some noise is added to it5. In this way, we obtain the relation R that is mined. The
+noise follows a Bernoulli distribution, i. e., every n-tuple has the same probability
+(called “noise level”) to be switched (an n-tuple absent from Rhidden becomes present
+in R or vice versa). The experiments are performed with relations whose noise level
+varies between 0 and 0.45 (0.5 corresponds to purely random datasets). The mining
+task being symmetric w.r.t. the attributes, every tested parametrization satisfies
+?i = 1..n, i =  ? N.
+In this experimental section, Fenster is compared to DCE and AC-Close. DCE
+(Georgii et al. 2011) is the only other existing approach able tomine noise tolerant-patterns
+in arbitrary n-ary relations. Contrary to Fenster, its noise tolerance is relative
+(rather than absolute) and per-pattern (rather than per-element), i. e., the proportion
+of absent n-tuples covered by a whole pattern must exceed a density threshold for this
+pattern to be output by DCE. Since most of the extracted patterns barely satisfy the
+minimal size constraints, DCE’s density thresholds are chosen so that they relate to
+the proportions of absent n-tuples Fenster tolerates in these smallest patterns. For
+instance, considering a ternary relation, the extractions performed by Fenster with
+ = 2 and at least four elements per attribute are compared with those performed
+by DCE with a minimal density of 1 ? 2
+4×4
+= 0.875 and the same minimal size
+constraints.
+Several approaches were designed to extract noise-tolerant patterns from binary
+relations (see Sect. 7.1). Three main reasons justify our choice of AC-Close as a
+competitor in this specific context (w.r.t. what Fenster can achieve). First of all, its
+tolerance to noise is, like Fenster’s, per-element, i. e., per-transaction and per-item.
+Then, and again like Fenster, AC-Close mines closed ET-patterns, whereas most
+of the other approaches do not force the returned itemsets to be closed. Finally, by
+constraining the cardinality of the exact support of a pattern to exceed αs (where s is a
+minimal size constraint on the ET-pattern and α ? [0, 1] is a user-defined parameter),
+AC-Close somehow circumvents the performance issues the other approaches go
+through when tolerating proportions of noise. Indeed, in their experimental section,
+the authors claim that AC-Close runs much faster than AFI, described in Liu et al.
+(2006).
+As detailed in Sect. 7, the numerous other ET-itemset miners are less comparable to
+Fenster. Notice, in particular, that the works of Ardian K. Poernomo and Vivekanand
+Gopalkrishnan allow the discovery of 1-dimensional patterns in binary relations, i. e.,
+return subsets of items forwhich there exists at least one support so that the chosen definition
+of the pattern is verified. Because several 2-dimensional patterns may involve
+a same set of items, less patterns are listed and the tuples they cover are not directly
+accessible. This prevents the use of a post-process such as Cerf et al. (2009b), which
+heuristically agglomerates the patterns to tolerate more noise than what is possible, in
+a reasonable time, with complete approaches. Indeed, when listing every noise-tolerant
+pattern verifying the definition, the hidden patterns usually are unreachable in a
+reasonable time and heuristics are required to “finish the work”. More precisely, the
+complete approaches can, in a real-life context, only list multiple fragments of the
+hidden patterns. If these fragments cover the same tuples as the hidden patterns (and
+only them), agglomerating the fragments allow to recover the hidden patterns. This
+explains our choice of a tuple-based measure to assess, in this section, the quality of
+the patterns extracted in a complete way:
+Definition 11 (Quality) Given E the set of n-tuples covered by the extracted patterns
+and Rhidden the relation before the addition of noise, the quality of the extraction is
+The other criteria used to evaluate the performances of Fenster and its competitors
+are the number of patterns they list (the smaller, the faster the subsequent agglomeration)
+and the running time.

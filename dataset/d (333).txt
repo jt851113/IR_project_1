@@ -1,0 +1,17 @@
+Considering the continuity of a data stream, the general definition
+of finding frequent itemsets used in conventional data mining
+methodology may not be valid in a data stream. This is because
+the old information of a data stream may be no longer useful or
+possibly incorrect at present. In order to support various needs of
+data stream analysis, the interesting recent range of a data stream
+needs to be defined flexibly. Based on this range, a mining method
+can be able to identify when a transaction becomes obsolete and
+needs to be disregarded. The estDec method proposed in this
+paper finds recent frequent itemsets over an online data stream by
+decaying the weight of old transactions as time goes by. As a
+result, the recent change of information in a data stream can be
+adaptively reflected to the current mining result of the data stream.
+The weight of information in a transaction of a data stream is
+gradually reduced as time goes by while its reduction rate can be
+flexibly controlled. Due to this reason, no transaction needs to be
+maintained physically.

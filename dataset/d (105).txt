@@ -1,0 +1,15 @@
+The basic procedure applied in all evaluations of this section
+is to judge the quality of a peer ranking by the quality
+of the results that will be retrieved if peers are visited in the
+order implied by the ranking.
+The top 100 peers are visited according to the peer ranking,
+and effectiveness of the resulting merged document ranking
+(the best 1,000 documents found so far) is measured after
+visiting each peer. In all cases, if there is no peer left with a
+score greater than 0, the next best peer is chosen randomly.
+Because document scores are comparable across all peers
+(cf. section 3.1), merging rankings is trivial: when visiting
+peer i, its set of documents is united with the documents
+found at peers 1, .., i- 1 and the resulting set of documents
+is sorted by the documents’ global scores and pruned to a
+length of 1,000.

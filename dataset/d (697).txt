@@ -1,0 +1,11 @@
+In this section, we present a preliminary performance study demonstrating
+the features of our system, and the flexibility and effectiveness
+of our architecture. The salient points of our experimental
+study can be summarized as follows :
+ Our flexible architecture allowing arbitrary logical-to-physical
+mappings can harvest the processing power in the system
+more effectively than any traditional solution.
+ Caching can be very effective in both reducing latencies of
+queries, and in offloading work to increase overall throughput.
+ Compiling XSLT queries directly leads to huge savings in
+query processing time.

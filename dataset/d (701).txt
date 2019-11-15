@@ -1,0 +1,23 @@
+As discussed in the earlier section, our system is capable of
+changing the mapping of logical nodes in the hierarchy to the physical
+sites dynamically while still being able to answer queries.
+We show the effectiveness of dynamic load balancing through an
+experiment that traced the average throughput of the system over
+time. For this experiment, we started multiple querying clients
+all asking queries of type 1 with 90% of the queries directed to
+a fixed neighborhood | , and 10% of the queries asking for a block
+in a randomly chosen neighborhood. Figure 9 shows the average
+throughput of the system over time. As we can see, initially when
+all the blocks in neighborhood | are located on a single site, the
+average throughput of the system was quite low. At 206 seconds
+into the experiment (the first dashed line), we started redistributing
+the data on that site to other sites by explicitly asking the site manager
+to delegate its blocks to other nodes one by one. In our current
+prototype, this has to be done by sending a request for delegating
+ownership of each block one at a time. These requests were sent at
+even intervals until 373 seconds (the second dashed line). At that
+time, the blocks under neighborhood | were distributed across all
+the machines evenly. As we can see, the average throughput of
+the system increased by nearly a factor of 3 even with this crude
+load-balancing scheme, while the system was still able to answer
+queries.

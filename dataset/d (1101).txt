@@ -1,0 +1,20 @@
+As previously mentioned, the user profile is built from the
+history of accessed documents. We plan to evaluate several
+recently proposed techniques to select representative keywords
+for a user profile [7, 23, 24]. When using profiles in
+the clustering algorithm, we have to deal with the problem
+of too general or too specific profile representations w.r.t to
+the user’s interest topics. Important parameters include the
+time window that controls the evolution of user profiles, the
+number of profiles maintained, as well as the number of keywords
+in a profile. The settings of the Bloom filters (number
+of bits, number of hash functions, number of inserted elements)
+also need to be analyzed for finding good trade-offs
+between false positive ratio and profiles’ accuracies.
+Notice that in the feedback content, we do not take into
+account the relevance scores provided by the search engine
+because they are too heterogeneous and difficult to aggregate.
+We could, however, derive interesting information
+from the rank of document in the results lists, the order
+in which the users visits the documents, or the duration between
+successive accesses in the result list

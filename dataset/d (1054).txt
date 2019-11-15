@@ -1,0 +1,39 @@
+In order to construct the velocity profiles, we need a way of
+picking a reasonable set of coordinates for plotting the data.
+The discretized version of the velocity density is used for
+this purpose. We pick a total of  coordinates along each
+dimension. For a two-dimensional system, this corresponds
+to 2 spatial coordinates. The higher the value of , the
+better the resolution for the visualization system; on the
+other hand, the computational requirements are greater.
+First, the velocity density is calculated at each of these 2
+points. The temporal velocity profile can be calculated by a
+simple  additive operations per data point.
+Let us say that it has been decided to calculate the
+temporal velocity profile in the interva Then, for
+each coordinate Xg in the grid, we maintain two sets of
+counters (corresponding to forward and reverse density
+counters) which are updated as each point in the data
+stream is received. When a data point Xi is received at time
+ti, then we add the value to the
+forward density counter, and the value to the reverse density counter 
+for
+At the end of time t, the values computed for each
+coordinate at the grid need to be normalized. The process of
+normalization is the same for either the forward or the
+reverse density profiles. In each case, we sum up the total
+value in all the 2 counter, and divide each counter by this
+total. Thus, for the normalized coordinates, the sum of the
+values over all the coordinates will be equal to 1. This is
+analogous1 to the requirement expressed in (4).
+Successive sets of temporal profiles are generated at
+user-defined time-intervals of of ht. In order to ensure
+online computation, the smoothing parameter vector hs for
+the time-interval must be available at time T 
+ht as soon as the first data point of that interval is scheduled
+to arrive. Therefore, we need a way of estimating this vector
+using the data from past intervals. In order to generate the
+velocity density for the interval the spatial
+kernel smoothing vector hs is determined using the
+Silverman’s approximation for Gaussian kernels
+on the set of data points which arrived in the interval

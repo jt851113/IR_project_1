@@ -1,0 +1,71 @@
+Our notion of profiles is unique in that it combines a language
+for specifying predicates over data items with a rich
+language for specifications of the user’s preferences, priorities,
+and requirements. User profiles for Web-based applications
+(such as Yahoo, PointCast [21], etc.) are typically
+fairly simple, allowing the user to specify particular categories
+of information (channels) that they are interested in
+receiving. This approach to building information dissemination
+systems (publish/subscribe [19]) typically uses a
+walled garden approach in which the data that can be delivered
+to the user is restricted to that found on specific content
+sites. Most systems allow simple, channel-specific predicates
+to identify channels of interest to users (e.g., to specify
+particular companies for stock prices). The Grand Central
+Station system [15] developed at IBM Almaden provides a
+more general form of predicates over its channels, and is
+therefore closer to our notion of the domain specification
+portion of a profile.
+User profiles for text-based data have been extensively
+investigated in the context of Information-Filtering and Selective
+Dissemination of Information research [12]. The
+systems in these areas use techniques from the Information
+Retrieval (IR) world for filtering unstructured text-based
+documents [4]. In general, IR profile systems use either a
+Boolean model or a similarity based model. In the Boolean
+model a user profile is constructed by combining keywords
+with boolean operators (e.g., And, Or, Not), and an “exact
+match” semantics is used — a document either satisfies
+the predicate or not. Similarity-based models use a “fuzzy
+match” semantics in which the profiles and documents are
+assigned a similarity value. A document whose similarity
+to a profile is above a certain threshold is said to match
+that profile. The Stanford Information Filtering Tool (SIFT)
+[23], is a well-known content-based text filtering system for
+Internet News articles. With the advent of XML, filtering
+of web-documents based on structure as well as content has
+become more feasible. The XFilter system [3] is a recent
+example of such a filtering system. XFilter, however, has
+no notion of variable utility as exists in our profile model.
+One recent effort that has investigated the representation
+of variable utility is the user preference framework proposed
+by Agrawal and Wimmers [1]. This model allows
+users to specify numeric weights for entities or sets of entities
+and provides a well-defined mechanism for combining
+sets of preferences. This model, however, provides no notion
+of thresholds or dependencies and this work did not
+address the performance and scalabablity of algorithms for
+exploiting the preference information.
+All of the work discussed above was focused on improving
+the relevance of data returned by search or delivered
+to users via push-based dissemination. Profile information
+has also been used in a limited way to direct the management
+of caches. Early work in this area was the “quasicaching”
+system of Alonso et al.[2], in which specifications
+of user requirements in terms of data quality were
+used to reduce the amount of data sent from a server to
+update client caches. More recently, a cache maintenance
+technique that exploits user specifications of preferences in
+terms of the tradeoff between latency and recency were presented
+in [5]. Due to the emphasis on cache consistency
+in this work, the language for describing user preferences
+in these systems is limited to specifying quality constraints.
+Our notion of profiles is focused on priorities and dependencies
+amongst items, but can be extended to incorporate such
+quality constraints. An alternative approach to maintaining
+the recency of cache contents is the notion of “data freshening”
+[11]. Rather than determining update priorities based
+on user preferences, this work determines the refresh rates
+based on how often the underlying data elements change.
+Recent work [6] has used user profiles to achieve more effective
+freshening policies.

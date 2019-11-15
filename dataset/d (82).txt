@@ -1,0 +1,33 @@
+As discussed previously, one significant contribution of this work will be a performance characterization of the
+unified system and its various sub-systems. This characterization will take the form of a number of empirical
+measurements of the parameters of the system in a real-world environment, namely the building monitoring
+application currently being deployed at the Intel-Berkeley lab. By deploying a real system in the lab, and
+allowing lab occupants to execute queries over the system for an extended period of time, it should be possible to
+measure how people would actually use an interactive sensor query processing system. In addition to validating
+the usefulness of my thesis, a “user-study” of this sort would be an extremely valuable asset, as there are many
+assumptions made by current research projects on streaming and continuous queries (both at Berkeley and other
+universities) about rate of data arrival, commonality of work between queries, loss rates, etc., that may or may
+not be valid. Measurements that would ideally come from a performance study include:
+1. Types of Queries: What kinds of queries are people interested in running over such a network? Are the
+queries typically over the current state of the system, or over the historical state of the sensors? What data
+rates do users want? To what extent is sharing (in the style of CACQ) possible given this query workload?
+2. Loss Characteristics: What percentage of data that sensors send actually makes it to the root of the
+network? If mechanisms to improve reliability (such as retransmission) are used, how effective are they
+and what is their power overhead?
+3. Power Characteristics: What is the power drain on the sensors? How do different types of queries affect
+that power drain?
+4. Amount of Storage: What are the storage demands placed on the sensors themselves? TAG requires that
+sensors keep a small cache of the aggregate values of their children. How big is that cache typically (in
+terms of bytes?) Are there situations where the memory demands of the queries exhaust the available
+RAM?
+5. Server Load: At what rate is data actually being delivered to the server-based query processor? Is the
+performance of the query processing system significant? Of the queries running at a given time, how
+many can be executed in the network and how many must be run centrally?
+6. Variability in Data Rates and Selectivities: How much variability is there in data rates from different
+sensors? How do the selectivities of various selection predicates vary over time, and are there correlations
+with external phenomena (e.g. day of week, time of day)? Determining if such variability exists will help
+to show whether adaptive query processing techniques of the sort proposed by the Telegraph project are
+actually necessary.
+7. Lifetime of Queries: How long do typical queries run? Are users mostly just looking for snapshots of
+the current state of the network, or do they pose long running monitoring queries that look for particular
+phenomena?

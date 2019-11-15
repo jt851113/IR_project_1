@@ -1,0 +1,69 @@
+As mentioned, when only part of the data are indexed, queries
+whose involved tuples are not indexed cannot be answered using
+the index. In this case, flooding the entire network is an alternative.
+This is clearly undesirable and impractical for large scale network
+because of the significant communication overhead. In this paper,
+a new kind of index, the approximate range index, is used to handle
+this problem. Suppose the max and min values of attribute A in
+node ni are vmax and vmin respectively. ni can build a range index
+[vmin, vmax] to indicate that it may answer queries which overlap
+with this range. We refer to this kind of index an approximate range
+index. However, as such an approximate index introduces false
+positive (i.e., a query is forwarded to a node that contains no answer
+to the query) if applied for query processing, it must be carefully
+designed for good performance. For example, in an extreme case,
+assume node ni’s tuples have the same A value, vmin; then, the index
+will always return a false candidate if used to answer the queries in
+(vmin, vmax]. In our system, a range index entry is in the format
+of (namespace, min, max, number of unique values). To measure
+the effectiveness of an approximate range index, we define False
+Positive Factor as:
+Definition 4.1. False Positive Factor
+The false positive factor (ρ) of a range is defined as the probability
+of returning a false positive for an arbitrary query (range or exact
+query) that overlaps with the range.
+As we use cell as a unit for index building, two kinds of False
+Positive Factor should be considered, outer cell factor and inner
+cell factor. To simplify the notation, we use |R| to represent the
+total number of cells in the range R.
+Definition 4.2. Outer Cell Factor
+Outer cell factor is used to estimate the false positive of queries
+with range greater than cell length l. Suppose f (i) returns the frequency
+of consecutive i empty cells, outer cell factor ρ0 is computed
+as:
+For example, in Figure 2, let the shaded cells represent nonempty
+cells. f (1) returns 4 for both Figure 2(a) and Figure 2(b)
+(4 empty cells in each case), while f (2) returns 1 (r1 = (c2, c3)) for
+Figure 2(a) and 2 (r1 = (c5, c6), r2 = (c6, c7)) for Figure 2(b) respectively.
+Finally, the outer cell factor of Figure 2(a) and Figure 2(b)
+are estimated as 17.8% and 25% respectively. Note that the two
+ranges with the same length and same number of non-empty cells
+in Figure 2 have different false positive factors due to their distinct
+data distributions.
+Definition 4.3. Inner Cell Factor
+Suppose P(r) represents the possibility of issuing a range query
+with length r < l (l is the cell length), and ni is the number of unique
+values in cell i, the inner cell factor for range R is computed as:
+Inner cell factor gives a more precise description for possible
+false positives of small range queries (exact query are 0-length
+range query). If the query distribution is unknown, we assume that
+queries of different ranges are issued in the same probability. Then
+the cell’s inner false positive factor can be calculated as Finally,
+the false positive factor of range R is estimated as:
+To incrementally compute the false positive factor, we introduce
+the following properties.
+Lemma 4.1. If range r is chosen to be indexed and ci is a border
+cell of r, ci must be non-empty cell. Otherwise, we can get a better
+indexing strategy.
+Proof. (sketch) If a range r has empty cells as its borders, we
+can remove the empty cells and obtain an indexed range with lower
+cost. The range can answer the same set of queries but the maintenance
+cost is reduced since the number of false positives is decreased.
+As shown in Figure 3, the original indexing strategy has two
+entries, [L, a] and [a, U]. But we can shrink them to get two ranges,
+[L, b] and [c, d], with lower cost. The removed empty range from
+the index entries must be the maximal empty range (all the cells in
+the range are empty cells and its adjacent cells are non-empty).
+Theorem 4.1. Suppose a range R is partitioned into a maximal
+empty range r0 and two non-empty ones, r1 and r2. The outer cell
+factors of ranges satisfy:

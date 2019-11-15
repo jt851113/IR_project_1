@@ -1,0 +1,55 @@
+The cost of approximate range index includes index maintenance
+cost and false positive cost. When used during query processing,
+the approximate range index may return false positives, i.e., some
+queries may be forwarded to nodes that will not contribute any answer
+tuples. Let x be the number of queries for the range R. The
+overhead of the approximate index for range R is estimated as:
+Centry is the average maintenance cost of a single range index entry.
+It can be derived from Equation 6.
+Because the update frequency of approximate range index is far
+lower than that of tuple-level index, we discard the term for updates
+in Equation 13 when computing cost for range entries.
+Now we face the problem of building an optimal approximate
+range index, which can be formalized as
+Definition 4.4. Optimal Range Index Problem
+Given query distribution Pq, for attribute A with domain [L, H],
+node n wants to set up an approximate range index I with k entries.
+For any non-empty cell ci of n, and the cost
+is minimized.
+The optimal range index problem is an NP-hard problem, if the
+range is partitioned in a continuous way. Fortunately, as we use
+cell as a basic unit for indexing, the optimal indexing strategy can
+be solved by dynamic programming. We search the possible solutions
+of different partitioning strategies and select the best one. Let
+f (p, q, k) denote the optimal indexing strategy by partitioning the
+range from cell p to cell q into k entries (q ? p). The optimal solution
+can be computed as the best combination of the sub-solutions,
+which is represented as:
+Algorithm 1 lists the detail of selecting the optimal indexing
+strategy. At first, the cost table is initialized to compute the basic
+cost (lines 1 to 5). In line 5, shrinkcost(i, j) removes the empty
+cells as suggested in Lemma 4.1 and returns the shrunk cost of the
+range from cell i to j. Then we compute strategies with different
+number of partitions and return the one with the least cost (lines
+7-11). In line 8, a recursive function f is invoked to compute the
+minimal cost of partitioning the whole space into a specific number
+of entries. The detail of f is illustrated in Algorithm 2. If the cost of
+the strategy has already been recorded, we return it directly (lines
+3-4). Otherwise, the minimal cost is computed by Equation 15 (line
+7-11). And the new cost is updated in the cost table. The complexity
+of Algorithm 1 is O(e ? s)3. Once, the entries of cost table have
+been filled up, the algorithm terminates.
+Theorem 4.3. Algorithm 1 returns an optimal indexing strategy.
+Proof. (sketch) We first prove that for a specific k, f(p,q,k) returns
+the minimal cost. Then, as our algorithm iterates all possible
+ks, it can get the optimal one. When k=1, there is only one indexing
+strategy and thus f(p,q,1) is the best strategy. Assume for k<n,
+f(p,q,k) always returns optimal strategy, now we prove that for k=n,
+the above conclusion also stands. Suppose f(p,q,n) is not the optimal
+one, and we get another best strategy f’(p,q,n). In f’(p,q,n), we
+can get two sub partitions, f’(p,q-x,n-y) and f’(q-x+1,q,y). f’(p,qx,
+n-y) and f’(q-x+1,q,y) must be the suboptimal solutions, other
+wise f’(p,q,n) is not the optimal one either, which means f’(p,qx,
+n-y)=f(p,q-x,n-y) and f’(q-x+1,q,y)=f(q-x+1,q,y). So the cost of
+our solution f(p,q,n) is no more than that of f’(p,q,n) and it must be
+the optimal one.

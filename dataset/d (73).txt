@@ -1,0 +1,9 @@
+Before any data can be extracted from a sensor network, it is necessary to have some facility to understand the
+capabilities of each sensor. The sensor catalog is a lightweight layer designed to run on every TinyOS mote to
+allow it to answer queries about the properties of the mote’s on board sensors. A simple text-based schema file
+which indicates the name, units, and range of each sensor, along with the set of functions to call to extract a
+sensor value, is compiled into a few bytes of data which is stored in the EEPROM of the mote. When a catalog
+query is received by the mote, the schema information is used to describe the capabilities of the mote. This
+capability description can in turn be used by the query-processor to ask the mote for the reading on a specific
+sensor. As a part of this system, I have also built a simple interface to automatically detect and register sensors
+with the Telegraph query processor.

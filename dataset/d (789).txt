@@ -1,0 +1,19 @@
+Our data generator is based on the synthetic data generator
+used in [AS94]. We augmented it to generate data for
+cyclic association rules. In addition to the parameters used
+by [AS94] shown in Table 1, we used additional parameters
+shown in Table 2 (The parameters are described in the
+following paragraphs).
+The generation of the large itemsets and their weights
+closely follows the procedure in [AS94]. We generate
+itemsets of average size
+. Each itemset is associated with
+a weight, which is an exponentially distributed random
+variable. We define a pattern to be the union of a set
+of cycles of the same length. For example, pattern 1001
+represents the union of cycles 4 and 4. In order
+to model the fact that certain rules might occur cyclically,
+we associate num patterns with each large itemset that we
+generate. The length of the patterns is uniformly distributed
+between min and max time units. The density parameter
+den, which is a real number between 0 and 1, controls

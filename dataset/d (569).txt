@@ -1,0 +1,7 @@
+We make the assumption that each active node forwards the resolved query to another node
+that is exactly d hops away, requiring d transmissions. Hence the average energy spent in
+answering a query of size M is given as follows:
+where  is the expected number of hops from the node where the query is completely resolved
+to the querier x.9 This is the cost of returning the completed response back to the querier
+node. This response can be returned along the reverse path in which case  can be atmost
+dSM. Thus,

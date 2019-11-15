@@ -1,0 +1,53 @@
+The rapid progress of wireless communication and embedded micro-sensing MEMS technologies
+have made wireless sensor networks possible. Such environments may have many inexpensive wireless
+nodes, each capable of collecting, processing, and storing environmental information, and communicating
+with neighboring nodes. In the past, sensors are connected by wire lines. Today, this
+environment is combined with the novel ad hoc networking technology to facilitate inter-sensor communication
+[8]. The flexibility of installation and configuration is greatly improved. A flurry of
+research activities have recently been commenced in sensor networks.
+With sensor networks, the physical world can interact with the internet more closely. Grouping
+thousands of sensors together may revolutionize information gathering. For example, a disaster detector
+may be set up so that temperatures of a forest can be monitored by sensors to prevent small
+harmless brush fires from becoming monstrous infernos. Similar techniques can be applied to flood
+and typhoon detection. Another application is environment control; sensors can monitor factors such
+as temperature and humidity and feed these information back to a central air conditioning and ventilation
+system. By attaching sensors on vehicles, roads, and traffic lights, traffic information can be
+fed back to the traffic control center immediately. Location-based services can be combined with
+sensor networks. We can dispatch a mobile agent following a person to provide on-site services (such
+applications might be attractive for disability people who have such as hearing or visual problems).
+Sensors may also be used in combination with GPS to improve positioning accuracy. However, many
+issues remain to be resolved for the success of sensor networks.
+‧ Scalability: Since a sensor network typically comprises a large number of nodes, how to
+manage these resources and information is not an easy job. Distributed and localized algorithms
+are essential in such environments [1, 6, 7]. Also, scalability is a critical issue in handling the
+related communication problems. In [17, 18, 19], the coverage and exposure of an irregular
+sensor network are formulated as computational geometry problems. This coverage problem
+is related to the Art Gallery Problem and can be solved optimally in a 2D plane, but is shown
+to be NP-hard in the 3D case [10]. Regular placement of sensors and their sensing ability are
+discussed in [4] and [13].
+‧ Stability: Since sensors are likely to be installed in outdoor or even hostile environments, it
+is reasonable to assume that device failures would be regular and common events. Protocols
+should be stable and fault-tolerant.
+‧ Power-saving: Since no plug-in power is available, sensor devices will be operated by battery
+powers. Energy conservation should be kept in mind in all cases. Energy consumption of
+communications might be a major factor. Techniques such as data fusion may be necessary [3],
+but the timeliness of data should be considered too. Data dissemination is investigated in [5].
+Mobile agent-based solutions are sometimes more power-efficient [9].
+Since sensor networks are typically used to monitor the environment, one fundamental issue is the
+location-tracking problem, whose goal is to trace the roaming paths of moving objects in the network
+area [15, 20, 11, 16, 14]. This problem is similar to the location-update problem in PCS networks, but
+is more challenging in two senses: (1) there are no central control mechanism and backbone network
+in such environment, and (2) the wireless communication bandwidth is very limited. In this paper, we
+propose a novel protocol based on the mobile agent paradigm. Once a new object is detected, a mobile
+agent will be initiated to track the roaming path of the object. The agent is mobile since it will choose
+the senor closest to the object to stay. In fact, the agent will follow the object by hopping from sensor
+to sensor. The agent may invite some nearby slave sensors to cooperatively position the object and
+inhibit other irrelevant (i.e., farther) sensors from tracking the object. Using mobile agents may have
+two advantages. First, the sensing, computing, and communication overheads can be greatly reduced.
+In this work, we will address the delivery and fusion of the tracking results [21]. Second, on-site
+or follow-me services may be provided by mobile agents. Our prototyping of the location-tracking
+mobile agent based on IEEE 802.11b NICs and our experimental experiences are also reported.
+The organization of this paper is as follows. Section 2 describes our network model and defines
+the location-tracking problem. Our protocol based on mobile agents is presented in Section 3. Fusion
+and delivery of tracking history are discussed in Section 4. Our prototyping experiences and some
+simulation results are given in Section 5. Section 6 draws our conclusions.

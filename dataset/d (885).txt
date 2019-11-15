@@ -1,0 +1,15 @@
+In this section, we evaluate our approach as well as two
+comparative approaches, Naive approach and Eureka [10], in
+the network simulator ns-2 [3]. The naive approach simply
+disseminates the queries in a flooding way. We use it as a
+baseline approach because it is simplest in maintenance yet
+proved to be efficient in search though with obvious drawbacks.
+We also compare our algorithm with Eureka because
+the Eureka approach is the most recently proposed approach
+related to our work and has been proved to be more effective
+than several previous works. In the Eureka approach, each
+node maintains information density evaluation of resources
+in the surrounding range, within which it can reach other
+nodes in multi-hops. This range is called a region. Queries
+are propagated to a region that is evaluated to have higher
+information density.

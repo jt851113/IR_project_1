@@ -1,0 +1,23 @@
+In addition to these pieces of sensor software, several mote-to-DBMS interfaces need to be designed and implemented
+before a fully functional sensor-query processor can be deployed:
+1. Catalog Server: Although a facility for managing catalog information on-board sensors was described
+above, conventional (centralized) database catalog designs are not made to support thousands of devices
+that come and go frequently. Furthermore, most sensor queries will not be of the form select value from
+sensor x but rather select value from sensors with property x. Designing a catalog that can handle both of
+these cases is a requirement before a fully usable sensor-query system can be implemented. Wei Hong (at
+Intel Berkeley) and I have designed the interfaces for such a system. An initial implementation is under
+construction at the Intel lab; I hope to be able to leverage this development.
+2. Integration into Telegraph Wrapper Interface: The Telegraph database system includes an interface for
+heterogeneous data sources that allows them to be “wrapped” into native relational tables. Integrating
+sensor data into Telegraph via this interface is an important step toward building an integrated query
+processing system (fully realizing this integration requires the sensor-proxy, described below.)
+3. Sensor Proxy Policies and Query Optimizer: The sensor-proxy, as discussed above, serves as the interface
+between motes and a more conventional DBMS by distributing queries between sensors and the database
+system. The mechanism for performing this distribution is fairly straightforward (as described in [28] and
+[29]), but still needs to be built.
+Furthermore, there will be situations where the resource limitations of sensors will preclude them from
+executing certain types of queries, or where there will be so many queries that not all of them can be
+executed on the motes. In these situations, some policy for choosing which queries to push down and
+which to execute at the DBMS is needed. One possible formulation for this policy is as a cost-based
+query-optimization problem (as in [39]); by using such a formulation, it should be possible to determine
+a power-efficient partitioning of queries between motes and the main DBMS.

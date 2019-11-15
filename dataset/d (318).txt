@@ -1,0 +1,31 @@
+which returns the Plan without an attached Fetch POP if
+no columns are missing. The ability to invoke other STARs
+to enforce certain properties is powerful; it allows Garlic to
+detect discrepancies between what a plan provides and what
+is needed, and to compensate. Thus, Garlic can provide
+powerful queries against even very limited data sources.
+The third Garlic join rule, the one for bind joins, is
+shown in Figure 8. A bind join is a nested loop join in
+which Garlic passes intermediate results (e.g., values for
+the join predicate) from the outer objects to the wrapper
+for the inner, which uses these results to filter the data it returns.
+If the intermediate results are small and indexes are
+available at data sources, bindings can significantly reduce
+the amount of work done by a data source. Furthermore,
+bindings can reduce communication cost in the same way
+that a semi-join does in distributed databases. On the other
+hand, bindings result in poor plans if intermediate results
+are large: high processing costs at Garlic’s query engine,
+the wrapper and the data source, plus high communication
+costs to ship intermediate results. Therefore, binding plans
+should be enumerated and costs evaluated in addition to the
+other two alternatives. The BindJoin STAR checks that
+the wrapper for the data source which produces the inner
+plan accepts bindings (provides a plan bind STAR), and
+if so, asks the wrapper to re-plan the inner with the additional
+bind predicates. For each resulting wrapper plan, the
+BindJoin STAR produces a new PushDown POP as the
+inner. Using our variant of FetchCols, BindJoin ensures
+that all the attribute values needed from the outer for
+the join predicates are retrieved, so that the Bind POP can
+pass them to the inner.

@@ -1,0 +1,75 @@
+We now describe FM sketches for the distinct count-
+ing problem.
+Denition 2 Given a multi-set of items M =
+fx1; x2; x3; : : : g, the distinct counting problem is to
+compute n  jdistinct(M)j :
+Given a multi-set M, the FM sketch of M, denoted
+S(M), is a bitmap of length k. The entries of S(M),
+denoted S(M)[0; : : : ; k ??1], are initialized to zero and
+are set to one using a random binary hash function h
+applied to the elements of M. Formally,
+S(M)[i]  1 i 9x 2 M s:t: minfj j h(x; j) = 1g = i:
+By this denition, each item x is capable of setting a
+single bit in S(M) to one { the minimum i for which
+h(x; i) = 1. This gives a simple serial implementation
+which is very fast in practice and requires two invoca-
+tions of h per item on average.
+Theorem 1 An element xi can be inserted into an FM
+sketch in O(1) expected time.
+We now describe some interesting properties of the
+sketches observed in [7].
+Property 1 The FM sketch of the union of two multi-
+sets is the bit-wise OR of their FM sketches. That is,
+S(M1 [M2)[i] = (S(M1)[i] _ S(M2)[i]):
+Property 2 S(M) is entirely determined by the distinct
+items ofM.Duplication and ordering do not aect S(M).
+Property 1 allows each node to compute a sketch
+of locally held items and send the small sketch for ag-
+gregation elsewhere. Since aggregation via union oper-
+ations is cheap, it may be performed in the network
+without signicant computational burden. Property 2
+allows the use of multi-path routing of the sketches for
+robustness without aecting the accuracy of the esti-
+mates. We expand upon these ideas in Section 4.
+The next lemma provides key insight into the be-
+havior of FM sketches and will be the basis of eAcient
+implementations of summation sketches later.
+Lemma 1 For i <
+with probability.
+Proof: This lemma is proven in [7] and follows from
+basic balls and bins arguments.
+The lemma implies that given an FM sketch of n
+distinct items, one expects an initial prex of all ones
+and a suAx of all zeros, while only the setting of the
+bits around S(M)[log2 n] exhibit much variation. This
+gives a bound on the number of bits k required for
+S(M) in general: k = 3
+2 log2 n bits suAce to repre-
+sent S(M) with high probability. It also suggests that
+just considering the length of the prex of all ones in
+this sketch can produce an estimate of n. Formally, let
+Rn  minfi j S(M)[i] = 0g when S(M) is an FM
+sketch of n distinct items. That is, Rn is a random
+variable marking the location of the rst zero in S(M).
+In [7], a method to use Rn as an estimator for n is de-
+veloped using the following theorems.
+Theorem 2 The expected value of Rn for FM sketches
+satises E(Rn) = log2('n) + P(log2 n) + o(1); where
+the constant ' is approximately 0:775351 and P(u) is a
+periodic and continuous function of u with period 1 and
+amplitude bounded by
+Theorem 3 The variance of Rn for FM sketches, de-
+noted 2n
+, satises 2n
+= 2 1
++ Q(log2 n) + o(1); where
+constant 2 1
+is approximately 1:12127 and Q(u) is a pe-
+riodic function with mean value 0 and period 1.
+Thus, Rn can be used for an unbiased estimator of
+log2 n if the small periodic term P(log2 n) is ignored.
+A much greater concern is that the variance is slightly
+more than one, dwarng P(log2 n), and implying that
+estimates of n will often be o by a factor of two or
+more in either direction. To address this, methods for
+reducing the variance will be discussed in Section 3.3.

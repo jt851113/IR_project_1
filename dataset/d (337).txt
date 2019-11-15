@@ -1,0 +1,76 @@
+Content organization in P2P systems has attracted a lot of attention
+recently. Semantic Overlay Networks (SONs) [3] have been
+proposed as an approach for organizing peers in thematic groups,
+so that queries can be forwarded to only those peers having content
+within specific topics. A different notion of SONs related to
+peers that are logically interconnected through schema mappings is
+presented in [1].
+Liu et al. [12] propose HSPIR, a hierarchical SON based on
+CAN [19] and Range Addressable Network. Support for semantics
+is achieved by using Latent Semantic Indexing (LSI). Tang et
+al. [24] propose a system for SON creation on top of structured P2P
+networks using LSI. Improvements to this approach are presented
+in [12, 14]. However, some of the inherent problems of LSI, like
+processing cost, choosing number of dimensions etc., make it difficult
+to employ this technique in a large-scale dynamic document
+repository. More importantly, both [12] and [24] assume a central
+LSI computation, which presumes that all document representations
+or a sample of reasonable size must be assembled at a central
+location, which is not scalable for a large P2P system. In contrast to
+these approaches, we do not presume a central point that collects all
+documents, and we believe that a feasible P2P approach for search
+using LSI should focus on distributed LSI computation. Hence, this
+is a family of LSI-based approaches that cannot be compared to our
+work directly.
+Although several papers describe how to use SON-like structures,
+little work exists on how to actually create SONs in an unsupervised,
+decentralized and distributed way in unstructured P2P
+1Recall is the fraction of the documents that are relevant to the
+query that are successfully retrieved.
+networks. Cholvi et al. [2] propose the use of acquaintances as an
+extension to Gnutella-like networks to improve searching. Peers
+with similar contents are linked together, so that searches for a particular
+topic can be routed to more relevant peers in less time. A
+similar approach has been described in [18]. Other relevant approaches
+include gossiping algorithms [25], which have been proposed
+as an alternative to flooding for routing queries in unstructured
+P2P networks. A shortcoming of these approaches is that
+they are restricted to networks of limited size, as they provide no
+guarantees that remote peers will get acquainted in very large P2P
+networks. Recently, a self-organizing super-peer network architecture
+is presented, named SOSPNET [8], which deals with the issue
+of how clients connect to a super-peer.
+In previous work [6], we have proposed the DESENT protocol
+for generating hierarchical semantic overlays. In this paper, we
+present novel algorithms for SON merging that do not rely on a
+fixed hierarchy, rather the focus is on building SONs that eventually
+form a super-peer network, with a super-peer being responsible
+for each SON. This results in a more robust and self-organizing architecture
+that has a less hierarchical structure and is better in terms
+of load-balancing and fault tolerance. Moreover we describe how
+similarity search can be performed over the newly formed SONs
+and perform a large-scale evaluation of the approach.
+Content-based search in P2P networks [20] is usually related to
+full-text search [13, 23, 26], with most approaches relying on the
+use of structured P2P networks. Some research focuses on providing
+P2P web search functionalities, like in [15], whereMINERVA∞
+is presented, a P2P web search engine that aims at scalability and
+efficiency. In MINERVA∞, each peer decides what fraction of the
+Web it will crawl and subsequently index. Previous approaches regarding
+P2P web search have focused on building global inverted
+indices, as for example Odissea [22] and PlanetP [4]. A major
+shortcoming of all these approaches is that their efficiency degrades
+with increasing query length and thus they are inappropriate for
+similarity search. Recently, approaches have been proposed that
+reduce the global indexing load by indexing carefully selected term
+combinations [21].
+Recently, an approach for P2P similarity search in metric spaces,
+called SIMPEER has been proposed [7]. Similarly to this work,
+SIMPEER employs a super-peer architecture and it is applicable
+for distributed document collections, since it is designed for metric
+spaces. However, SIMPEER focuses more on the performance of
+query processing for an existing super-peer network. Recently a
+number of papers on P2P similarity search has appeared, e.g., [9].
+However, these approaches are not suitable for similarity search
+in document collections because of the very high dimensionality
+(which is equal to the vocabulary cardinality).

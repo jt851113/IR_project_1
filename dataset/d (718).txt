@@ -1,0 +1,67 @@
+Common Parameters: Table 2 gives the parameter settings
+that were constant for the unshared cache, NCP and
+PCP experiments we present in Section 4.2 and 4.3. We
+fixed the cache size to be 64 MB, as this is a typical memory
+size for current PDA’s: the most obvious choice of device
+for data recharging. Each experiment ran over 96 randomly
+generated profiles (as described below), and each of
+these profiles included 20 domain definitions and accompanying
+utility equations. Every experiment assumed a candidate
+object set consisting of roughly 12800 objects (and
+distributed in size as specified in the table).6 The size distribution
+was determined by downloading the 50 most popular
+web site homepages (including images and any necessary
+files for correct display) as rated by Media Metrix [17] for
+December 2001. We divided the range of sizes for these
+pages into five equally sized intervals, and for each interval
+calculated the average homepage size as well as the percentage
+of homepages that fell in that interval. The cardinality
+of the candidate object was set so that each domain set in
+the profile was represented and assigned an equal number
+of objects that fit the distribution shown in Table 2. The total
+size of all objects for each domain exceeded the size of
+cache, so that algorithms were free to choose objects based
+on their policy rather than object availability. Given the average
+size of objects of 104 KB, this amounted to a candidate
+set cardinality of about 12800.
+Random Profile Generation: For these experiments, 96
+monotonic profiles were randomly generated, each with 20
+domains and 20 utility equations. For each profile, 20% of
+its utility equations are flat (i.e., of the form U (A) = k)
+and 80% are non-flat equations, which have the form,
+Non-flat utility equations subsume utility equations with no
+dependencies (A could be set to be 0) as well as utility equations
+with no thresholds ( could also be set to be 0).7
+The values of A, ,  and 
+ in non-flat utility equations
+determine how objects of a given domain type change in
+value as more get added to a cache, as categorized below:
+Immediate vs Delayed Gratification: The value of A determines
+how quickly A objects acquire value as B objects get
+added to a cache. If A is very small (e.g., 0 or 1), the utility
+equation for A objects exhibits immediate gratification,
+whereas larger values of A (e.g., 10-15% of the size of the
+cache) result in utility equations with delayed gratification.
+Appreciating vs Depreciating: The relative values of  and
+
+ determine whether or not the value of an A object tends
+to appreciate or depreciate in value as the cache contains
+more objects. If EE E , the utility equation for A objects
+is depreciating. If E3E E  , the utility equation is appreciating.
+An appreciating utility equation might be used to give
+value to an object that gains importance as it becomes part
+of a larger collection, such as emails reporting system problems
+(several reports of the same problem suggest that the
+problem is system-wide).
+Quickly vs. Slowly Accelerating: Finally, the value of  indicates
+whether a utility equation appreciates/depreciates in
+value quickly or slowly. If  is very small (e.g., 1), the utility
+equation for A is quickly accelerating. If  is large (e.g.,
+50), then the utility equation for A is slowly accelerating.
+The 96 randomly generated profiles fall into 24 different
+profile “classes” of 4 profiles each, with each class distin-
+guished by their preset values for ,  and in their non-
+flatequations. Specifically, for any given class,  is fixed
+to be either or is fixed to be either or  and 
+and are fixed to be randomly generated numbers between
+and  such that  is eithe  or .

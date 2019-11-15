@@ -1,0 +1,55 @@
+Quenching has been proposed ([17]) as an enhancement to
+the straightforward centralized approach in xed networks
+(Figure 3). An Event Source is given a \combined active
+subscription expression" (call), which represents the logical
+Figure 3: Centralized architecture with quenching.
+OR of all the currently active subscriptions on the Event
+Broker. Essentially, we have call = c1 _ c2 _ : : : _ cN. When
+a new event e is generated, the ES rst checks it against call.
+If call(e) = false, that means no subscription will match e
+at the EB. Hence the event is discarded (quenched) at the
+source. If e matches call, then at least one subscription will
+match, and the event is forwarded to the EB as usual. This
+quenching behavior is represented by the bubbles labeled
+call in Figure 3.
+Note that in order for quenching to make sense it must be
+much easier to gure out whether or not an event e matches
+the combined call than to gure out the exact subset of
+fc1; c2; : : : ; cNg that matches, so that the Event Source does
+not have to duplicate all the work that is being done at the
+EB1. Quenching has proved to be particularly eective in
+reducing network trac and the load of the central EB if
+a signicant portion of the events generated do not match
+any subscriptions.
+However, the appropriateness of using quenching in a mo-
+bile environment needs to be further examined. We have
+said previously that an ES can be a wireless low capabil-
+ity sensor device. Thus it might not be feasible for the ES
+to evaluate a complicated condition for every event gener-
+ated. Moreover, informing the sensor of newly added or
+deleted subscription could consume valuable wireless band-
+width. On the other hand, eective quenching can also sig-
+nicantly reduce the bandwidth needed to transmit events.
+Fundamentally, quenching represents a tradeo between the
+bandwidth required to send all events and the computation
+power needed to match and lter events. Since a mobile de-
+vice is usually limited in both resources, the answer is not
+apparent.
+Quenching can be a particularly attractive option when an
+ES is disconnected, since it allows the ES to discard certain
+events on the fly, thus reducing the potential size needed for
+the event queue. However, quenching is also problematic
+since the system cannot contact an ES about newly added
+subscriptions when the ES is disconnected. A reasonable
+1A trivial example where this is true is the following. Sup-
+pose c1 = (e:value > 10) and c2 = (e:value > 20). To gure
+out whether an event matches either c1 or c2, it is sucient
+to only test whether its \value" is larger than 10.
+Figure 4: Distributed broadcast. The dotted lines
+are the path of an example event which satises c1
+and c2.
+strategy might be to save all events in the buer at the be-
+ginning of a disconnection in case a new subscription not
+known to the ES matches them. When the buer overflows,
+however, the ES can then start to discard older events ac-
+cording to the quenching criteria it has.

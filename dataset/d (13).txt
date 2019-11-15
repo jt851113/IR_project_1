@@ -1,0 +1,34 @@
+A.4 Pseudocode
+for translating motionvectors
+into prediction models
+function translateVectorToModel(frame, vmVector,
+blockWidth)
+returns Prediction-model
+mVector = vmVector.motionVectorIndex;
+topLeftX = vmVector.topLeftX;
+topLeftY = vmVector.topLeftY;
+newModel = NULL;
+if (mVector.displacementX == 0 &&
+mVector.displacementY == 0) {
+/* Send a temporal model */
+newModel.type = TEMPORAL;
+newModel.model = {FUNCTION, f(x, t) = f(x,
+t-1)};
+newModel.destination = {GEO, topLeftX,
+topLeftY, topLeftX+blockWidth,
+topLeftY+blockWidth};
+newModel.TTL = 4; /* valid for next 4 time
+units */
+return newModel;
+}
+/* Send an absolute model */
+macro_block = extractMacroBlock(frame, topLeftX,
+topLeftY, blockWidth);
+newModel.type = ABSOLUTE;
+newModel.model = {ABSOLUTE,
+size=blockWidth*blockWidth, macro_block};
+newModel.TTL = 4; /* valid for next 4 time units */
+destPolygon = computeDestPolygon(topLeftX,
+topLeftY, mVector, newModel.TTL);
+newModel.destination = {GEO_TEMPORAL, destPolygon};
+return newModel;

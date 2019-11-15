@@ -1,0 +1,51 @@
+Given Fjord operators and sensor proxies as the main
+elements of our solution, it is straightforward to generate
+a Fjord from a user query over a sensor. For this discussion,
+we will make the simple assumption that queries consist
+of a set of selections to be applied, a list of join predicates,
+and an optional aggregation and grouping expression.
+We are not focused on a particular query language,
+and believe Fjords are a useful architectural construct for
+any query language – other research projects, such as Predator
+and Tribeca, have proposed useful languages for querying
+streaming data, which we believe are readily adaptable
+to our architecture [22, 25]. We do not allow joins of two
+streams nor can we aggregate or sort a stream. Users are
+allowed to define windows on streams which can be sorted,
+aggregated, or joined. A single stream can be joined with
+a stream window or a fixed data source if it is treated as
+the outer relation of an index join or the probe relation of
+a hash-join. Users can optionally specify a sample rate for
+sensors, which is used to determine the rate at which tuples
+are delivered for the query.
+Building the Fjord from such a query works as follows:
+for each base relation, ifis a sensor, we locate the persistently
+running sensor proxy for.We then install our query into
+s proxy, asking it to deliver tuples at the user provided
+sample rate and to apply any filters or aggregates which the
+user has specified for the sensor stream. The proxy may
+choose to fold those filters or aggregates into existing predicates
+it has been asked to apply, or it may request that they
+be managed by separate operators. For a relationthat does not 
+represent a sensor, we create a new scan operator over. We then 
+instantiate each selection operator, connecting it to a base 
+relation scan or earlier selection operator as appropriate. If 
+the base relation is a sensor, we connect the selection via a 
+push-queue, meaning that the sensor will push results into the 
+selection. For non-sensor relations, we use a pull queue, which 
+will cause the selection to invoke the scan when it looks for a 
+tuple on its input queue.We then connect join operators to these 
+chains of scans and selects, performing joins in the order 
+indicated by a standard static query optimizer. If neither of 
+the joined relations represents a sensor, we choose the join 
+method recommended by the optimizer. If one relation is a sensor, we
+use it as the probe relation of a hash join, hashing into the
+static relation as each stream tuple is pushed into the join.
+The output of a join is a push queue if one relation is from
+a sensor, and a pull queue otherwise.
+Sorts and aggregates are placed at the top of the query
+plan. In the case where one (or both) of the relations is
+from a sensor with a user specified window size, we treat
+it as a non-sensor relation by interposing a filter operator
+above the sensor proxy that passes only those tuples in the
+specified window.

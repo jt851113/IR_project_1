@@ -1,0 +1,112 @@
+3.5 Discussion: Sophisticated OIS Pruning with Superfluous
+Gain Elimination In this section, we discuss some techniques
+that can provide a better estimation of the value OIS.
+In section 3.2, we only consider the case that the gap between
+two consecutive occurrences of an event  exceeds the period
+when the information loss is calculated. We now examine the
+case that the gap is less than the period. Let’s first consider the
+scenario that  repeats itself perfectly at certain distance  in
+a subsequence . For every occurrence of  (except the first
+and last one) at position  within , we can observe two companion
+occurrences of  at position    and   , referred
+to as the backward and forward companion, respectively. Figure
+9(a) shows a series of 4 occurrences of event  with period
+3, each of which (e.g., at position  ) has two companions
+at the third preceding position (e.g., 	) and the third subsequent
+position (e.g., 	) of the current one. The total generalized
+information gain of the pattern    generated from
+the subsequence is . The above claim also holds
+in the case where an event occurs multiple times within a period.
+Figure 9(b), shows two overlapping series of repetitions of
+ which may bring  generalized information
+gain to pattern   .
+As we mentioned before, the net information gain  can
+contribute to a pattern is much confined if one of the following
+is true.
+1. Some information loss would incur due to the absence of
+ at some position. This absence can be viewed as a
+companion absence of the neighboring occurrence(s). For
+example, the circled position in Figure 9(c) is considered as
+an absence of  for pattern   . This absence makes
+both position 	 and position 	 lose one companion.
+2. Some misaligned occurrence of  has to be treated as
+an eternal event or even as an absence of some other
+event and hence no generalized information gain can be
+collected from it. These occurrences usually are associated
+with companion absences. The third occurrences of 
+in Figure 9(c) have to be treated as an eternal event for
+pattern    and treated as “absence of ” for pattern
+  . We also observe that in Figure 9(c) the event
+ at position 	 has no companion at both position 	
+and position 	.
+It is obvious that all of these suboptimal scenarios would
+weaken the net generalized information gain that  may contribute
+to any pattern. By carefully identifying companion absence
+and assessing its impact to the generalized information
+gain, we can obtain a tighter estimation of the net contribution
+to the generalized information gain that  could make to any
+pattern in   . Since the companionship is essentially a
+mutual relationship, we choose to examine the backward companion
+to avoid looking forward in the event sequence. This is
+achieved by employing an additional discipline to estimate the
+OIS that an event  might contribute to any pattern in   .
+	 3. For each occurrence of  at position  , if the distance
+to the previous occurrence of  is less than , then the
+previous occurrence of  is not the backward companion
+of  at position  . So an information adjustment of
+ is needed.
+The new calculation of  is as follows.
+  	  	
+      #  
+        
+      $    
+            
+where #   is the product of  and the number of
+occurrences of  in the previous  events prior to the th
+occurrence of . Here $   is the adjustment according
+to the third discipline stated above. The revised computation of
+ is shown in Figure 10(a).
+For each period length , the addition storage requirement to
+perform the generalized information gain adjustment is an array
+of  elements (to store the previous  events). The computation
+complexity remains the same.
+Finally, we give some rationale for the third discipline. Intuitively,
+when the companion absence is present, the generalized
+information gain would not be as high as expected. Some
+adjustment needs to be taken to provide a tighter estimation.
+Let’s reconsider the example shown in Figure 5(a), which is also
+described in Figure 10(b).   ,   , and   
+are the three possible patterns that involve  because  only
+appears at the second and third position on each segment.
+	 The adjustment in position 8 comes from the following
+reasons. The solid ovals indicate the adjustments that are
+taken according to the third discipline. For   , comparing
+the actual information gain/loss with the previous
+estimation in section 3.2, the generalized information gain
+on position 6 is superfluous. For   , the generalized
+information gain on position 8 is superfluous, while the information
+on position 6 for pattern    is superfluous.
+Therefore, by position 8, one generalized information
+gain of 0.87 is superfluous for all patterns, thus, we adjust
+the generalized information gain by -0.87.
+	 The adjustment in position 15 is necessary because of
+the following reasons. Generalized information gain on
+position 14 and 15 is superfluous for pattern    and
+  , respectively, due to the similar reasons described
+above. For   , on position 11 and 12, we need
+to deduct generalized information gain by 1.74; however,
+we only deduct generalized information gain by 0.87 on
+position 14. As a result, an additional 0.87 needs to be
+deducted from the net generalized information gain. Thus,
+we add an adjustment of -0.87 on position 15.
+	 On position 20, another adjustment is created. There are
+two superfluous information gain of 0.87 on position 18
+and 20 for   . Also, there is one superfluous
+information gain of 0.87 by position for both   
+and    as indicated in Figure 10(b). Therefore, one
+generalized information gain adjustment of -0.87 is created
+on position 20.
+As a rule of thumb, for an event , the adjustment is postponed
+until the time it would apply to all possible patterns involving
+. Therefore, the new estimation could be used as a tighter
+bound on the generalized information gain.

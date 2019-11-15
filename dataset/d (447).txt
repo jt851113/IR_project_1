@@ -1,0 +1,3 @@
+Definition 2.3
+The information of a pattern is the summation
+of the information carried by each individual position,

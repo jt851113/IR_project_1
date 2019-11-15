@@ -1,0 +1,40 @@
+Chan et al. introduce k-dominant skyline query [6]. They proposed three algorithms
+to compute the k-dominant skyline query. The first algorithm, One-Scan
+Algorithm (OSA), uses the property that a k-dominant skyline objects cannot
+be worse than any skyline on more than k dimensions. This algorithm maintains
+the skyline objects in a buffer during a scan of the dataset and uses them to
+prune away objects that are k-dominated. As the whole set of skyline objects
+can be large, the authors proposed the Two-Scan Algorithm (TSA). In the first
+scan, a candidate set of dominant skyline objects is retrieved by comparing every
+object with a set of candidates. The second scan verifies whether these objects
+are truly dominant skyline objects. This method turns out to be much more
+efficient than the one-scan method. A theoretical analysis is provided to show
+the reason for its superiority. The third algorithm, Sorted Retrieval Algorithm
+(SRA), is motivated by the rank aggregation algorithm proposed by Fagin et al.,
+which pre-sorts data objects separately according to each dimension and then
+merges these ranked lists [7].
+As the authors mentioned in the OSA, skyline objects need to be maintained
+to compute the k-dominant skyline objects. Since the set of skyline objects could
+be much larger than the set of k-dominant skyline objects, maintaining skyline
+can incur large space and computation overhead.
+Compared with their works, the proposed method can find k-dominant skyline
+objects without maintaining skyline. Therefore, there is no possibility for space
+and computational overhead. In addition, TSA algorithm scans whole data twice.
+In first scan, it generates candidate set of dominant skyline objects by comparing
+every object with a set of candidates and in second scan it verifies whether
+these objects are truly dominant skyline objects, while the proposed method
+can compute dominant skyline directly and does not suffer for false positive
+elimination procedure. As for SRA, the performance is uncertain because it
+depends crucially on the choice of proper dimension. Section 5 demonstrates
+that the performance of our algorithm is better than all of the three algorithms
+proposed in [6].
+Algorithm called CoSMuQ also computes k-dominant skyline [8]. It divides the
+space in pairs of attributes and maintains a grid for each pair of dimensions. Each
+grid maintains its skyline tuples. Finally, the k-dominant skyline is obtained by
+the union of the skylines of these grids. This method has two severe problems, in
+high dimensional case. It needs to maintain huge number of grids. For example, if
+dimension size is equal to 15, then this algorithm needs to maintain 105 grids. In
+addition to the space complexity problem, CoSMuQ always needs to maintained
+2-dominant skyline to compute k-dominant skyline. Compared with theirs, the
+proposed method does not suffer from such kinds grid as well as 2-dominant
+skyline maintaining problems.

@@ -1,0 +1,56 @@
+A popular key idea used in the efficient mining of association
+rules is the Apriori property discovered in [2]: If one
+subset of an itemset is not frequent, then the itemset itself
+cannot be frequent. This allows us to use frequent itemsets
+of size
+  Interestingly, for each period p, the proterty supporing
+the Apriori "trick" still holds:
+
+
+Property 3.1 [Apriori on periodicity] Each subpattern of
+a frequent pattern of period
+is itself a frequent pattern of
+period
+?
+The proof is based on the fact that patterns are more restrictive
+than their subpatterns Suppose is a subpattern of a frequent pattern
+Then is obtained from by changing
+some set of letters to a subset or Hence is more restrictive than 
+and thus the frequency count of is greater than
+or equal to that of Thus is frequent as well.
+An algorithm for mining partial periodic patterns for a
+given fixed period based on this Apriori “trick” was presented
+in [7]. We include a simplied version here for the
+sake of completeness.
+Algorithm 3.1 [Single-period Apriori] Find all partial periodic
+patterns for a given period
+satisfying a given confidence
+threshold min conf in time-series , based on the
+Apriori property 3.1.
+Method.
+1. Find, the set of frequent 1-patterns of period, by accumulating
+the frequency count for each 1-pattern in each
+whole period segment and selecting among them whose
+frequency count is no less than, where
+a is the maximum number of periods.
+2. Find all frequent-patterns of period, for
+from 2 up to, based on the idea of Apriori, and terminate immediately
+when the candidate frequent-pattern set is empty.
+Analysis.
+Number of scans over the time series. Step 1 of the
+algorithm needs to scan the time series once. Step 2 needs
+to scan up to times in the worst case. Thus the total
+number of scans is no more than the period
+Space needed. (1) At Step 1, suppose there exist a total of
+distinct features at positions in where is the number such that We
+need units of space to hold the counts. In the worst case when every 
+feature is distinct in the entire time series we need units of space
+After Step 1, we only need units of space to keep the set of frequent
+patterns in.(2) At Step 2, the maximum number of candidate subpatterns 
+that we may generate is Considering that we still need space to keep the 
+set of frequent 1-patterns, the total amount of space needed is  in the
+worse case in this computation. However, the average case
+should be much smaller than the worst case since if every
+feature is distinct in the time series, then there is no need to
+find periodic patterns. The existence of any periodicity in
+the time series will reduce the memory needed.

@@ -1,0 +1,49 @@
+Before we can start with the actual profile and query
+refinement strategies, some preparatory issues need to be
+fixed:
+‧ Profiles: The computation of profiles is designed to allow
+for a variant of the CORI algorithm for ranking
+information resources (cf. [5]): each term t that appears
+in a peer p’s document collection is assigned a
+weight according to the CORI formula
+
+where the minimum belief component db is set to 0.
+The I component is normally computed using the number
+of resources (i.e. peers in our context) that contain
+term t. Since this is unknown in a P2PIR scenario, it
+will be replaced by an idf weight as discussed below.
+The T component is computed (as in CORI):
+where dft is the document frequency of term t within
+p’s collection, cw is the number of index terms in p’s
+collection and avgcw is the average number of terms in
+all peer collections1 and k and b are free parameters,
+set to 100 and 0.75 in the experiments, respectively.
+‧ Compression: Profiles are compressed by simple thresholding
+applied to the list of terms ranked by CORI
+weights, i.e. the n terms ranked most highly by P(t|p)
+will form the profile of peer p. In the experiments,
+the n-values 10, 20, 40, 80, 160, 320 and 640 are explored
+and compared to using uncompressed profiles.
+The sizes of profiles are absolute, because we must assume
+that the maximum acceptable size of a profile is
+defined by some technical constraints dictated by the
+underlying network.
+‧ Global term weights: Since no global view on the collection
+is permitted, the I component of the CORI
+algorithm cannot be computed. It will be replaced by
+idf estimates derived from a mix of a large external collection
+and a small sample of the target collection as
+described in [26]. The same idf estimation is used when
+performing the centralised retrieval, so that scores of
+documents are the same in both scenarios. This means
+that differences in scores among the two will only be
+attributable to the query routing decisions – and not
+blurred by any result merging effects. In addition, as
+pointed out in [26], such idf estimation can realistically
+be implemented in P2PIR systems.
+‧ Query routing and retrieval : For query routing, peers
+will be ranked by the sum of the CORI weights of all
+the query terms that are contained in the (pruned)
+profile. Each peer that receives the query retrieves
+documents from its local repository using the BM25
+retrieval function [22].

@@ -1,0 +1,5 @@
+Recently, as more and more social network data has been
+made publicly available [1], [2], [3], [4], preserving privacy in
+publishing social network data becomes an important concern.
+Is it possible that releasing social network data, even with
+individuals in the network aonymized, still intrudes privacy?

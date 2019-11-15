@@ -1,0 +1,34 @@
+The following design goals allow DIMENSIONS to minimize
+the bits communicated:
+Multi-Resolution Data Storage: A fundamental design goal
+of DIMENSIONS is the ability to extract sensor data in a multiresolution
+manner from a sensor network. Such a framework offers
+multiple benefits (a) it allows users to look at low-resolution
+data from a larger region cheaply, before deciding to obtain more
+detailed and potentially more expensive datasets (b) Compressed
+low-resolution sensor data from large number of nodes can often
+be sufficient for spatio-temporal querying to obtain statistical estimates
+of a large body of data [7].
+Distributed: Design goals of distributed storage systems such
+as [8, 9] of designing scalable, load-balanced, and robust systems,
+are especially important for resource constrained distributed sensor
+networks. We have as a goal that the system balances communication
+and computation load of querying and multi-resolution data
+extraction from the network. In addition, it should leverage distributed
+storage resources to provide a long-term data storage capability.
+Robustness is critical given individual vulnerability of sensor
+nodes. Our system shares design goals of sensor network protocols
+that compensate for vulnerability by exploiting redundancy in communication
+and sensing.
+Adapting to Correlations in sensor data: Correlations in sensor
+data can be expected along multiple axes: temporal, spatial and
+between multiple sensor modalities. These correlations can be exploited
+to reduce dimensionality. While temporal correlation can be
+exploited locally, the routing structure needs to be tailored to spatial
+correlation between sensor nodes for maximum data reduction.
+The correlation structure in data will vary over time, depending on
+the changing characteristics of the sensed field. For example, the
+correlation in acoustic signals depend on the source location and
+orientation, which can be time-varying for a mobile source. The
+storage structure should be able to adapt to the correlation in sensor
+data.

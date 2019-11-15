@@ -1,0 +1,10 @@
+We have performed an evaluation of the fusion and placement
+modules of the DFuse architecture at two different levels:
+micro-benchmarks to quantify the overhead of the primitive operations
+of the fusion API including channel creation, attachments/
+detachments, migration, and I/O; ability of the placement
+module to optimize the network given a cost function.
+The experimental setup uses a set of wireless iPAQ 3870s running
+Linux “familiar” distribution version 0.6.1 together with
+a prototype implementation of the fusion module discussed in
+section 5.1.

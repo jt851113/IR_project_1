@@ -1,0 +1,48 @@
+Sensor networks will become ubiquitous, and the
+database community has the right expertise to address
+the challenging problems of tasking the network and
+managing the data in the network. We described a
+vision of processing queries over sensor networks, and
+we discussed some initial steps in in-network aggregation,
+implications on the routing layer, and query
+optimization. We have started at Cornell to design
+and implement a prototype that allows us to experiment
+with the design space of various algorithms and
+data structures [6].
+Future work. This work opens a plethora of new
+research directions at the boundary of database systems
+and networking. First, we believe that TDMA
+MAC protocols will be very important in powerconstrained
+sensor networks [27], and we plan to investigate
+the interaction of a TDMA MAC layer with
+routing and query processing in future work. In addition,
+our current simulation assumes bidirectional
+links, which is usually not true in practice. Having
+filters as an additional interface to the routing layer
+leaves many open questions, such as an efficient implementation
+of filters, the order in which filters should
+be evaluated, handling of conflicting actions, etc. We
+assumed very simple SQL blocks as query templates
+without discussing a full-fledges spatio-temporal query
+language whose design is a challenging topic for future
+work. In addition, we only scratched the surface of
+query processing, metadata management, and query
+optimization, and much work needs to be done multiquery
+optimization, distributed triggers, and the design
+of benchmarks. We anticipate that the emergence
+of new applications, as well as the implementation and
+usage of our prototype system will lead to other research
+directions. We believe that sensor networks will
+be a fruitful research area for the database community
+for years to come.
+Acknowledgments. We thank the DARPA SensIT
+community for helpful discussions. Praveen Sheshadri
+and Philippe Bonnet made influential initial
+contributions to Cougar. The Cornell Cougar Project
+is supported by DARPA under contract F-30602-99-
+0528, NSF CAREER grant 0133481, the Cornell Information
+Assurance Institute, Lockheed Martin, and by
+gifts from Intel and Microsoft. Any opinions, findings,
+conclusions or recommendations expressed in this material
+are those of the authors and do not necessarily
+reflect the views of the sponsors.

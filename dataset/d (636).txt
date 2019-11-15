@@ -1,0 +1,113 @@
+The best adjustment technique could be developed if
+the data behaviors can be predicted, which is impossible
+in real applications. Learning the distributions of data by
+fitting statistical models can also be a good solution. But
+due to the limited storage and computing power of sensor
+nodes, those strategies will be too complex to implement.
+We propose a simple strategy for estimating sensor
+node workloads based on update frequencies. Other factor
+such as resource constraints (e.g. power level) can be
+assimilated into the estimation as well. In the A3 protocol,
+an adjustment is always initiated by a parent node
+who keeps in its cache default values and error bounds of
+all its children. In order to know the workloads of child
+nodes, the parent node also keeps a record of the update
+frequency, f, for all its children over certain period of
+time in history. This time period can be envisioned as
+a time-driven or round-driven sliding window. Then f is
+the number of updates a child node makes during the time
+window. In our experiments, we set all window sizes to
+32 (rounds).
+At each time an adjustment is activated at a parent
+node, our algorithm adjusts only two child nodes who
+have maximum and minimum update frequencies. An
+overall balance among sibling nodes will be achieved in
+a long run. We use the following criterion to initiate the
+adjustment:
+where fmax is the maximum frequency and fmin is
+the minimum. rth is a threshold we choose for the algorithm.
+We represent error tolerances corresponding to
+fmax and fmin by  and. Then we can reset
+the error tolerances using the following formulae:
+In the formulae,  is an adjustment factor which allows
+us to keep part of the previous error tolerance and redistribute
+the other part between the two (min and max
+update frequency) nodes. The value of  should be chosen
+based on the sensitivity of the update value. Care
+should be taken to ensure that the choice of  do not
+cause any oscillation effect in which frequency of node
+with fmax becomes too small after the adjustment and
+that of node with fmin gets too large. The basic A3 protocol
+can be enhanced by selecting rth and  adaptively.
+Once an error adjustment action is taken by a tree node,
+the node waits for a fixed number of rounds before attempting
+another adjustment. This is necessary to factor
+in the time lag between the error adjustment and the actual
+impact on the update frequencies.
+For a 2-level architecture, the AP and cluster-heads
+are in charge of the error bound adjustment process. For
+a multi-level structure, similar to the resetting process of
+default values, the effect of error bounds being changed
+must be propagated to descendants. Special care needs
+to be taken in the propagation since reducing the error
+bound on a node is an unsafe operation and may cause
+the total error bound on a node’s children to be greater
+than the reduced bound on a node. This may result in
+incorrect results for monitoring queries. To handle this,
+we can introduce the notion of “safe operation” and “unsafe
+operation” similar to those used in [1]. An unsafe
+operation can only be committed after the unsafe operations
+on child nodes are committed. In another words,
+if a node has its error bound reduced, it can not perform
+approximate aggregation until all children (and thus, descendants)
+have reduced their error bounds. On the other
+hand, enlarging error bound is a safe operation that will
+not yield incorrect results. The operation can be committed
+any time.
+Procedure A3 Protocol
+INPUT:
+ : default and new values of the ith child;
+: error bound of the ith child; C : cluster;
+: total members in C; Nv : members reporting;
+fmax, fmin: max and min update frequencies;
+rth,  : adjustment threshold and factor;
+// Data Updating
+(1) while(receive v
+i from child)
+(2) if(PNv
+i=1(v
+0
+i ?? vi) > PNv
+i=1 Ai)
+(3) vc = vc +PNv
+i=1(v
+0
+i ?? vi);
+(4)
+(5) endIf;
+(6) else
+(7) ;
+(8) reset vinew as ith child’s default value;
+(9) endElse;
+(10) endWhile;
+(11) if(recieve vinew from parent)
+(12) reset default values for all children;
+(13) vi  vinew;
+(14) endIf;
+// Error Bound Adjustment
+(15) if(this is not leaf node and fmax??fmin
+fmax
+ rth)
+(16) 
+;
+(17) 
+;
+(18) update Afmax;
+(19) update Afmin;
+(20) endIf;
+(21) if(recieve Anew from parent)
+(22) if(this is not a leaf node)
+(23) reset A for all children;
+(24) endIf;
+(25) A   Anew;
+(26) endIf;

@@ -1,0 +1,281 @@
+In order to test the methods discussed in this paper, we
+used a combination of real and synthetic data sets. The
+specific measures on which we tested the method were the
+following:
+1. Examples of interesting spatial velocity and temporal
+velocity profiles created by the algorithm.
+2. The use of such profiles in order to identify
+interesting phenomena, such as coagulations, dissolutions,
+and shifts.
+3. Interesting combinations of dimensions in which the
+greatest amount of data evolution occurs.
+4. Computational results illustrating the efficiency of
+the method.
+In our description in the earlier sections, we set the
+values of min-coag, min-dissol, and min-vel to be user-defined
+in the interest of greater flexibility. It is also possible to
+provide some system guidance in picking them effectively.
+Let be the evolution coefficient computed using
+the grid coordinates. Then, the average velocity density at
+any grid point in the data set is given by For
+the purpose of our empirical tests, we chose this to be the
+value of min-coag and min-dissol. The value of min-vel was
+conservatively set at zero. Such a choice of min-vel is able to
+detect any significant spatial shift in the data.
+First, we used some simple cases with synthetic data sets
+in order to illustrate the intuitive nature of the results. The
+first data set consisted of a shifting cluster embedded in a
+uniformly distributed two-dimensional data stream. The
+uniform distribution was spread over the unit square. Each
+dimension of the cluster was distributed around the center
+of the cluster with a uniform distribution of total range 0:2.
+This center shifted in a straight line at an angle of 45 degrees
+to each axis. We refer to this stream as S-Stream. We have
+illustrated in temporal and spatial velocity profiles in Figs. 8
+and 9, respectively. As evident from the charts, there was
+one region of coagulation and one region of dissolution.
+This also resulted in one valid shift line. It is also clear from
+Fig. 9 that there was a data shift along the true direction of
+cluster shifting. We also note that while the static part of the
+data was uniformly distributed, its nature did not affect the
+profiles substantially. For example, when the uniformly
+distributed part of the stream was replaced by static
+clusters, the temporal and spatial profiles continued to be
+similar. Thus, the approach measures only the changing
+part of the data, as opposed to the base distribution.
+A second stream was generated in which a cluster
+materialized in the data at a given location. Thus, the center
+of the cluster was fixed, whereas the probability of a point
+belonging to the cluster increased with time. For every
+1,000 data points, the probability of a point belonging to this
+cluster increased by 0:005. As in the previous case, the base
+data was uniformly distributed in the unit square. The
+cluster had a range of 0:2. We refer to this stream by
+C-Stream. The spatial profile for this case is illustrated in
+Fig. 10. It is clear that in this case, there was a single area of
+coagulation corresponding to the cluster of increasing size.
+A similar result can also be demonstrated for a stream in
+which the cluster size reduces. We generated a stream in
+exactly the same methodology as C-Stream, except that the
+probability of a point belonging to a cluster reduced with
+time. We refer to this stream as D-Stream. The spatial
+profile is illustrated in Fig. 11. The only difference of these
+results from those of C-Stream is that a region of dissolution
+is created instead of a coagulation.
+We also tested the evolution detection system with a
+number of real data sets. An important feature provided by
+this framework is to find those combinations of dimensions
+which show the greatest amount of global evolution. How
+do we empirically show that the combinations of dimensions
+found by the algorithm are interesting and meaningful?
+In order to do so, we generated a data stream from a
+(real) static data set by using a feature ordering technique.
+We removed one of the attributes from the data and
+generated the remaining data set in the order of the value of
+this particular attribute. Since the attributes in most real
+data sets are correlated, the observation of the most highly
+evolving projections provides an insight into those combinations
+of attributes which influence the stripped attribute
+the most. We emphasize that the only purpose of generating
+the data in this biased way is to establish the meaningfulness
+of the projections which show the greatest
+amount of evolution.
+We tested the evolution algorithm using the housing data
+set of the UCI machine learning repository.4 The data was
+sorted in the order of increasing housing price in order to test
+which projections of the data had the greatest amount of
+evolution. On examining the projections which showed the
+greatest amount of change, we found some interesting
+trends. For example, the two-dimensional projection with
+the largest evolution coefficient was (RM, LSTAT). Here
+“RM” stands for the average number of rooms per dwelling
+and “LSTAT” stands for the percentage lower status of the
+population. Clearly, both of these attributes have a high
+relationship to the price of the houses in a given locality, as
+the price of the houses in a given locality increases with the
+number of rooms per dwelling and it reduces with
+increasing percentage lower status of the population. The
+corresponding temporal velocity profile (see Fig. 12) clearly
+shows this trend. To make a reverse argument, if we had an
+application in which the data stream showed the kind of
+trend illustrated in Fig. 12, then even without having access
+to the variable on housing price, one could infer that the
+stream was gradually getting biased toward more and more
+expensive housing localities. The provision of algorithmic
+and visual aid in order to make such diagnosis and
+understanding can be critical for many commercial applications.
+One of the interesting aspects that we noted in the data
+stream was that the variable LSTAT tended to be quite
+important since it occurred in a number of combinations of
+dimensions showing high evolution rates. This is because
+LSTAT directly reflected the financial status of the population;
+a factor which is closely related to the biased way in
+which the stream was generated. Other interesting combinations
+of dimensions which showed high evolution rates were
+(NOX, DIS) and (NOX, RAD). Here, “NOX” corresponds to
+the nitric oxides concentration, “DIS” corresponds to the
+weighted distance to five Boston employment centers, and
+“RAD” corresponds to the index of accessibility to radial
+highways. Again, these combinations of dimensions have
+high influence on the housing price, which was used to bias
+the data stream.
+Another data set on which we tested the algorithm was
+the Auto-Mpg data set from the UCI machine learning
+repository. This data set contained a set of records of
+different cars along with their mileage (mpg) rates. The
+numeric attributes contained features such as displacement,
+horsepower, acceleration, weight, and model year of a car.
+We again intentionally biased the data stream using the mpg
+attribute so that the records were in increasing order of mpg.
+Then, we tested the evolution of different combinations of
+the remaining dimensions. We found that the most highly
+evolving projection was the combination (horsepower,
+model year). The corresponding temporal velocity profile
+is illustrated in Fig. 13. An interesting trend from the graph is
+that the later arrivals correspond to lower horsepower but
+increasing model year. Again, this seems to reveal the fact
+that the data was biased in increasing order of the mileage/
+gallon. Thus, in both cases, by mining the most highly
+evolving projections, it was possible to make inferences
+about the nature of the bias in the stream generation.
+The results are illustrated further from network packets
+captured from a real-time VOIP application. Thirteen
+attributes corresponding to the voice features were captured
+and the corresponding results are presented. Of these
+13 attributes, we are illustrating the results on two attributes
+which correspond to the voice pitch. Fig. 14 corresponds to
+a case in which we have a consistent background noise over
+the data stream. This curve shape remains constant over the
+computation and corresponds to the noise in the data. On
+the other hand, in Fig. 15, we have illustrated the behavior
+of the velocity density over a window when the background
+noise changes to a single speaker. It is clear that in this case,
+the level of changes are much more significant. Therefore,
+the velocity density method is able to identify interesting
+changes in patterns over the course of the computation.
+We also used the spatial velocity profiles in order to
+generate interesting animations which show the trends in
+the data. We have illustrated an example of such an
+animation in Figs. 16, 17, 18, and 19. This is generated from
+the housing data set. In order to generate the animation we
+used ko ? 4 overlapping time-windows. Each of these time
+windows correspond to 1 unit of time, assuming that the
+data arrives at 300 records per time unit. The X-axis of the
+spatial velocity profile corresponds to the full value
+property tax-rate, whereas the Y-axis is proportional to
+the number of members of a minority community. We can
+see from Figs. 16, 17, 18, and 19 that there are gradual
+changes in the nature of the velocity profile over time.
+Specifically, we note that there is a region of dissolution at
+the coordinate e200; 375T, which gradually disappears in
+later frames. What this means is that the earlier frames
+show a reduction in the amount of the data at that
+coordinate, but this gradually stabilizes when the dissolution
+process is over.
+In order to test the computational scalability, we
+generated a data set in a similar way as S-Stream, except
+that the data was generated in 20 dimensions. We refer to
+this new stream as SM-stream. A similar stream, which was
+generated in correspondence to C-Stream, was referred to
+as CM-Stream. The process of velocity density calculation
+requires us to maintain the forward and reverse time slice
+densities. This is a simple additive process and is also the
+only process which is dependent on the stream arrival rate.
+Any additional computation in order to calculate the spatial
+and temporal velocity profiles from these values needs to be
+done only once for each temporal window used. This is an
+(asymptotically) negligible overhead for a fast data stream.
+In order for the technique to work effectively, the amount of
+time required in order to calculate the contribution for a
+given data point to the forward and reverse time slice
+densities cannot be higher than the rate at which the stream
+arrives. This ensures that a user can avail himself of the
+online trends in the data as soon as the temporal window
+has passed. First, we present the computational requirements
+of a technique in which the user is presented with the
+nonoverlapping velocity density profiles at periodic intervals
+of ht ? 60 seconds.
+In order to calculate the viability of the technique, we
+computed the throughput rate which could be supported
+by the stream. The throughput rate is the number of data
+points processed per second for a given value of the grid
+discretization parameter. We assumed that the time
+window ht in which the trends were processed is
+significantly larger than the interarrival time between
+two data points. Successive profiles were generated at
+times ht; 2  ht . . . k  ht. Since ht is significantly larger than
+the interarrival time, the amount of time required by the
+final postprocessing procedure at time i  ht in order to
+compute the profiles from the densities is (asymptotically)
+small compared to the time required to process the data
+points. Therefore, we used the throughput rate as the
+inverse of the time required in order to process each data
+point for the velocity density calculation. This is sensitive
+to the level of discretization used. The higher the value of
+the discretization parameter, the fewer the number of
+data points per second which can be processed, but the
+greater the level of accuracy and refinement. The trends
+for SM-Stream and CM-Stream are indicated in Figs. 20,
+21, and 22, respectively. It is clear that in each case, the
+algorithm scales quadratically with the grid discretization
+parameter. Another observation was that the processing
+rates of the two data sets were not significantly different.
+This is because the computational requirements of the
+density estimation process are essentially independent of
+the underlying data distribution. Note that because of the
+simplicity of the techniques used, thousands of data
+points can be processed per second at modest values
+(such as 10 or 15) of the grid discretization parameter.
+When the rate of arrival of a data stream is higher than
+the rate that can be supported by the computational
+resources available, one may choose to either sample
+selectively in order to maintain the density values, or
+may choose to reduce the level of refinement level at
+which the velocity densities are maintained.
+The results of Fig. 20 are for a single projection of the
+dimensions in the data. In order to provide visual insights
+into the most highly evolving two-dimensional projections
+of a high-dimensional application, we need to maintain the
+velocity density profiles of all pairs of two-dimensional
+combinations. In Figs. 21 and 23, we have shown the
+scalability of the velocity density estimation technique to
+increasing data dimensionality for the data streams SMStream
+and CM-Stream, respectively. In each case, the grid
+discretization parameter  is fixed at 10. In order to create
+data streams of different dimensionalities, projections of
+different dimensionalities were picked from SM-Stream and
+CM-Stream. Since a total of d
+2combinations of projections
+need to be maintained, the running time per data point
+scales quadratically with data dimensionality. Again,
+thousands of data points per second can be supported for
+modest applications.
+We also tested the batch processing component of the
+algorithm in order to find how the computational requirements
+varied with data dimensionality. We generated a
+100-dimensional version of the above mentioned data set.
+We will refer it to as SM100-data. In this case, a fixed set of
+1,000 data points from SM-Stream was used for the
+computation. We have illustrated the corresponding computational
+results in Fig. 24. Note that, even though the
+number of evolving combinations of dimensions increases
+exponentially with dimensionality, we are only interested in
+minimal evolving projections. In practice, only a small
+subset of the relevant combinations of dimensions are
+explored. As a result, the rate of increase of the computational
+time with dimensionality is significantly lower. This
+behavior is reflected in Fig. 24. We note that when the
+running times are essentially proportional to the size of the
+output. For data mining purposes, it is usually desirable to
+only study a small number of minimal evolving projections.
+Therefore, while the running times increase with dimensionality,
+only those portions of the curve with small
+running times are relevant for data mining purposes. The
+same algorithm can be used with more conservative
+parameter settings in order to generate results in even
+higher dimensions. We also tested the data size scalability
+of the results for the 10-dimensional case. The results are
+illustrated in Fig. 25. In this case, it is clear that the
+algorithm scaled linearly with data size. This is because the
+batch processing method is modeled on a levelwise
+technique which scales linearly with data size.

@@ -1,0 +1,31 @@
+We implemented various strategies for aggregation
+and transmission using the TAG simulator. Under each
+of these strategies, each node aggregates results re-
+ceived from its children with its own reading, and then
+sends the aggregate to one or more of its parents. Any
+node within broadcast range which was at a lower level
+(closer to the root) was considered a candidate parent.
+In particular, we used the following methods in our ex-
+periments:
+TAG1: The main strategy of [15] (each sensor sends
+its aggregate to a single parent).
+TAG2: The \fractional parents" strategy of [15] de-
+scribed in Section 2.2.
+LIST: The aggregate consists of an explicit list of
+all the items in the aggregate with any duplicates re-
+moved. These lists are sent to all parents.
+SKETCH: The strategy described in Section 4 us-
+ing duplicate insensitive sketches. The default values
+for sketches is 20 bitmaps and 16 bits in each bitmap
+using the PCSA technique.
+For our basic experimental network topology, we
+used a regular 30  30 grid with 900 sensors, where
+each sensor was placed at each grid point. The com-
+munication radius was p2 (allowing the nearest eight
+grid neighbors to be reached) and the default link loss
+rate was set at 5%. The root node is always at the cen-
+ter of the grid. Figure 1 illustrates an example of 77
+grid.
+In all the graphs, we show the average values of 500
+runs. Also, for each average value, we show the 5th and
+95th percentiles.

@@ -1,0 +1,98 @@
+Avis D, Fukuda K (1996) Reverse search for enumeration. Discret Appl Math 65(1–3):21–46
+Bayardo RJ, Goethals B, Zaki MJ (eds) (2004) In: FIMI ’04, Proceedings of the IEEE ICDM Workshop
+on Frequent Itemset Mining Implementations, Brighton, UK, November 1, 2004, CEUR Workshop
+Proceedings, vol 126, CEUR-WS.org
+Besson J, Robardet C, Boulicaut JF, Rome S (2005) Constraint-based formal concept mining and its application
+to microarray data analysis. Intell Data Anal 9(1):59–82
+Besson J, Robardet C, Boulicaut JF (2006) Mining a new fault-tolerant pattern type as an alternative to formal
+concept discovery. In: ICCS ’06: Proceedings of the 14th International Conference on Conceptual
+Structures, Springer, pp 144–157
+Bonchi F, Lucchese C (2004) On closed constrained frequent pattern mining. In: ICDM ’04: Proceedings
+of the 4th IEEE International Conference on Data Mining, IEEE Computer Society, pp 35–42
+Bonchi F, Lucchese C (2005) Pushing tougher constraints in frequent pattern mining. In: PAKDD 05 Proceedings
+of the 9th Pacific-Asia Conference on Knowledge Discovery and Data Mining. Springer, pp
+114–124
+Boulicaut JF, Bykowski A (2000) Frequent closures as a concise representation for binary data mining.
+In: PAKDD ‘00: Proceedings of the 4th Pacific-Asia Conference on Knowledge Discovery and Data
+Mining, Springer, pp 62–73
+Calders T, Rigotti C, Boulicaut JF (2005) A survey on condensed representations for frequent sets. In:
+Constraint-BasedMining and Inductive Databases, Springer, Lecture Notes in Computer Science, vol
+3848, pp 64–80
+Cerf L, Besson J, Robardet C, Boulicaut JF (2009a) Closed patterns meet n-ary relations. ACM Trans
+Knowl Discov Data 3(1):1–36
+Cerf L, Mougel PN, Boulicaut JF (2009b) Agglomerating local patterns hierarchically with ALPHA. In:
+CIKM ‘09: Proceedings of the 18th International Conference on Information and Knowledge Management,
+ACM Press, pp 1753–1756
+Cerf L, Nguyen TBN, Boulicaut JF (2009c) Discovering relevant cross-graph cliques in dynamic networks.
+In: ISMIS ‘09: Proceedings of the 18th International Symposium on Methodologies for Intelligent
+Systems, Springer, pp 513–522
+Cerf L, Nguyen TBN, Boulicaut JF (2010) Mining constrained cross-graph cliques in dynamic networks.
+Inductive databases and constraint-based data mining, Springer, pp 199–228
+Cheng H, Yu PS, Han J (2008) Approximate frequent itemset mining in the presence of random noise. In:
+Maimon O, Rokach L (eds) Soft computing for knowledge discovery and data mining. Springer, pp
+363–389
+Gallo A, Bie TD, Cristianini N (2007) MINI: Mining informative non-redundant itemsets. In: PKDD ‘07:
+Proceedings of the 11th European Conference on Principles and Practice of Knowledge Discovery in
+Databases, Springer, pp 438–445
+Gallo A, Mammone A, Bie TD, Turchi M, Cristianini N (2009) From frequent itemsets to informative
+patterns. Tech. Rep. 123936, University of Bristol, UK
+Ganter B, Stumme G,Wille R (eds) (2005) Formal concept analysis, foundations and applications, lecture
+notes in computer science. Springer, Berlin
+Ganti V, Gehrke J, Ramakrishnan R (1999) CACTUS: clustering categorical data using summaries. In:
+KDD ‘99: Proceedings of the 5th SIGKDD International Conference on Knowledge Discovery and
+Data Mining, ACM Press, pp 73–83
+Garriga GC, Kralj P, Lavrac N (2008) Closed sets for labeled data. J Mach Learn Res 9:559–580
+Georgii E, Tsuda K, Scholkopf B (2009) Multi-way set enumeration in real-valued tensors. In: DMMT ’09:
+Proceedings of the 2nd ACM SIGKDDWorkshop on Data Mining using Matrices and Tensors, ACM
+Press, pp 32–41
+Georgii E, Tsuda K, Scholkopf B (2011) Multi-way set enumeration in weight tensors. Mach Learn
+82(2):123–155
+Goethals B (2010) Frequent set mining. In: Maimon O, Rokach L (eds) Data mining and knowledge
+discovery handbook. Springer, Berlin pp 321–338
+Gupta R, Fang G, Field B, Steinbach M, Kumar V (2008) Quantitative evaluation of approximate frequent
+pattern mining algorithms. In: KDD ’08: Proceedings of the 14th SIGKDD International Conference
+on Knowledge Discovery and Data Mining, ACM Press, pp 301–309
+Jaschke R, Hotho A, Schmitz C, Ganter B, Stumme G (2006) Trias: an algorithm for mining iceberg
+tri-lattices. In: ICDM ’06: Proceedings of the 6th IEEE International Conference on Data Mining,
+IEEE Computer Society, pp 907–911
+Ji L, Tan KL, Tung AKH (2006) Mining frequent closed cubes in 3D data sets. In: VLDB ‘06: Proceedings
+of the 32nd International Conference on Very Large Data Bases, VLDB Endowment, pp 811–822
+JiangD, Pei J (2009) Mining frequent cross-graph quasi-cliques.ACMTrans KnowlDiscovData 2(4):1–42
+Koh JL, Yo PW (2005) An efficient approach for mining fault-tolerant frequent patterns based on bit vector
+representations. In: DASFAA ‘05: Proceedings of the 10th International Conference on Database
+Systems for Advanced Applications, Springer, pp 568–575
+Liu J, Paulsen S, Sun X, Wang W, Nobel AB, Prins J (2006) Mining approximate frequent itemsets in the
+presence of noise: algorithm and analysis. In: SDM ‘06: Proceedings of the 6th SIAM International
+Conference on Data Mining, SIAM, pp 405–416
+Pan F, Cong G, Tung AK, Yang J, Zaki MJ (2003) CARPENTER: finding closed patterns in long biological
+datasets. In: KDD ‘03: Proceedings of the 9th ACMSIGKDD International Conference on Knowledge
+Discovery and Data Mining, ACM Press, pp 637–642
+Pasquier N, Bastide Y, Taouil R, Lakhal L (1999) Efficient mining of association rules using closed itemset
+lattices. Inf Syst 24(1):25–46
+Pei J, Tung AKH, Han J (2001) Fault-tolerant frequent patternmining: problems and challenges. In: DMKD
+‘01: Proceedings of the 6th ACMSIGMODWorkshop on Research Issues in Data Mining and Knowledge
+Discovery, ACM Press
+Poernomo AK, Gopalkrishnan V (2007) Mining statistical information of frequent fault-tolerant patterns
+in transactional databases. In: ICDM ‘07: Proceedings of the 7th IEEE International Conference on
+Data Mining, IEEE Computer Society, pp 272–281
+Poernomo AK, Gopalkrishnan V (2009a) Efficient computation of partial-support for mining interesting
+itemsets. In:SDM’09: Proceedings of the 9th SIAM International Conference on Data Mining, SIAM,
+pp 1014–1025
+Poernomo AK, Gopalkrishnan V (2009b) Towards efficient mining of proportional fault-tolerant frequent
+itemsets. In: KDD ’09: Proceedings of the 15th ACM SIGKDD International Conference on Knowledge
+Discovery and Data Mining, ACM Press, pp 697–706
+Seppanen JK, Mannila H (2004) Dense itemsets. In: KDD ’04: Proceedings of the 10th ACM SIGKDD
+International Conference on Knowledge Discovery and Data Mining, ACM Press, pp 683–688
+Sim K, Liu G, Gopalkrishnan V, Li J (2011) A case study of financial ratios via cross-graph quasi-cliques.
+Inf Sci 181:201–216
+Stumme G, Taouil R, Bastide Y, Pasquier N, Lakhal L (2002) Computing iceberg concept lattices with
+titanic. Data Knowl Eng 42(2):189–222
+Uno T (2007) An efficient algorithm for enumerating pseudo cliques. In: ISAAC ‘07: Proceedings of the
+18th International Symposium on Algorithms and Computation, Springer, pp 402–414
+Yang C, Fayyad U, Bradley PS (2000) Efficient discovery of error-tolerant frequent itemsets in high dimensions.
+Tech.Rep. 2000-20, MicrosoftResearch,MicrosoftCorporation, OneMicrosoftWay,Redmond,
+WA 98052
+Zaki MJ (2004) Mining non-redundant association rules. Data Min Knowl Discov 9(3):223–248
+Zaki MJ, Peters M, Assent I, Seidl T (2007) Clicks: an effective algorithm for mining subspace clusters
+in categorical datasets. Data Knowl Eng 60(1):51–70
+Zeng Z, Wang J, Zhou L, Karypis G (2007) Out-of-core coherent clos

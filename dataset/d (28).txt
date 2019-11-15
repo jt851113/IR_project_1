@@ -1,0 +1,68 @@
+publish/subscribe system connects together information
+providers and consumers by delivering events from sources
+to interested users. A user expresses his/her interest in re-
+ceiving certain types of events by submitting a predicate
+dened on the event contents, called the user's subscription.
+When a new event is generated and published to the system,
+the publish/subscribe infrastructure is responsible for check-
+ing the event against all current subscriptions and deliver-
+ing it eciently and reliably to all users whose subscriptions
+match the event.
+The publish/subscribe communication paradigm diers from
+traditional point-to-point models in a number of ways. In
+publish/subscribe, communication is anonymous, inherently
+asynchronous and multicasting in nature. The system is able
+to quickly adapt in a dynamic environment. Anonymity
+means that the communication partners are not required to
+identify the party they want to talk to. For example, instead
+of naming a publisher to receive events from, the subscriber
+simply describes the characteristics of the events it wants to
+receive. Publish/subscribe is also inherently asynchronous
+because the sender (publisher) does not have to wait for an
+acknowledgment from the recipient (subscriber) before mov-
+ing on. The reliable transmission of events to the subscribers
+is taken care of by the infrastructure. Publish/subscribe re-
+sembles multicast because it allows a publisher to send the
+same event to many subscribers with only one publish op-
+eration. Finally, the system can cope with a dynamically
+changing operational environment where the publishers and
+subscribers frequently connect and disconnect.
+This combination of unique characteristics makes the pub-
+lish/subscribe model well suited to a variety of application
+areas, such as distributed information dissemination, nan-
+cial analysis and factory automation. In the past decade
+many problems related to publish/subscribe have been tack-
+led and solved, with some systems having reached commer-
+cial maturity ([19, 20]).
+However, almost all of the research on publish/subscribe
+systems so far has concentrated on publish/subscribe sys-
+tems in a xed network. We argue that publish/subscribe
+systems are also advantageous in a mobile and/or wireless
+environment ([9]). The anonymity and dynamism of pub-
+lish/subscribe allow the systems to adapt quickly to frequent
+connections and disconnections of mobile nodes, character-
+istic of a mobile network. Asynchrony is helpful because
+mobile devices are often turned o or disconnected from the
+network for long periods of time. Wireless devices have lim-
+ited capabilities and bandwidth. The multicasting nature of
+publish/subscribe helps a system scale to millions of units.
+With increasing popularity of mobile handheld devices, there
+is a pressing need to extend publish/subscribe to a mobile
+environment. As a sample application, in a military bat-
+tleeld, thousands of wireless and mobile sensors such as
+satellites and equipment sensors report all kinds of informa-
+tion ranging from the location of enemy troops to whether
+the engine of a tank has overheated. There are also many
+parties interested in receiving certain types of information.
+An individual soldier may need to know the location of the
+nearest enemy troops, or whenever a missile has been red.
+The above scenario requires the deployment of a highly scal-
+able and dynamic communication infrastructure, for which
+a mobile publish/subscribe system is an ideal candidate.
+In this paper, we briefly review a few publish/subscribe mod-
+els and discuss how they might be adapted to a mobile en-
+vironment. After presenting our framework (Section 2), we
+start with the simplest model, namely, the centralized ap-
+proach (Section 3). We then discuss distributed models that
+address the scalability problem (Section 4). Finally, we look
+at the use of replication and its impact (Section 5).

@@ -1,0 +1,12 @@
+The simplest approach to supporting monitoring in sensor
+networks would be to have all the sensors report their sensed
+readings to base station whenever it changes. We refer to
+this mode of operation of sensors as \update-mode". The
+base station collects these updates and sends them to an
+access point. Thus, at any point, a base station maintains
+the database of current readings of all the sensors in its cell.
+Also, the access points collectively maintain a database of
+current readings of all the sensors in the sensor eld. Users
+interested in monitoring the sensor eld may register their
+interest with the appropriate access points [10]. We refer to
+this as the centralized approach.

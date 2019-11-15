@@ -1,0 +1,29 @@
+Like many complete algorithms for constraint-based local pattern mining (including
+Cerf et al. (2009a), the state-of-the-art algorithm for n-ary relation mining), Fenster
+is based on enumerating candidates in a way that can be represented by a binary tree
+where (a) at every node, an element e is enumerated; (b) every pattern extracted from
+the left child does contain e; (c) every pattern extracted from the right child does not
+contain e. This provides a partition of the search space, i. e., the union of the closed
+ET-n-sets found in both enumeration sub-trees are exactly the closed ET-n-sets to be
+extracted from the parent node (correctness) and each of these closed n-sets is found
+only once (unicity). In the case of Fenster, the enumerated element e can always be
+freely chosen among all the elements (from all attribute domains D1, D2, . . ., Dn)
+remaining in the search space.
+Each node N in the enumeration tree is a pair (U, V) whereU and V are two n-sets.
+N represents all the n-sets containing every element in U and a subset of the elements
+in V. In other words, N defines the search space region that contains every n-set X s.t.
+U  X  U  V. The root node, ((?, . . . , ?), (D1, . . . ,Dn)), represents all possible
+n-sets. On the contrary, any node of the form (U, (?, . . . , ?)) represents a single n-set:
+U. More generally, a node (U, V) represents 2n n-sets.
+Example 4 The enumeration node N = (U, V ) where U = ({α, γ }, ?, {B}) and V =
+(?, {1, 2, 3, 4}, {A}) represents 25 (i. e., 32) 3-sets. E. g., it represents ({α, γ }, ?, {B})
+and ({α, γ }, {1, 2}, {B}). On the contrary, it represents neither ({α, γ }, {1, 2}, ?) (B
+must be in the 3-set) nor ({α, β, γ }, {1, 2}, {B}) (β must not be in the 3-set).
+At a node N = (U, V), Fenster chooses an element e from V (the selection
+criterion is discussed in Sect. 4.2) and generates two new nodes, NL = (UL , VL ) =
+(U ∪{e}, V \{e}) and NR = (UR, VR) = (U, V \{e}). NL (resp. NR) represents the nsets
+of N that contain (resp. do not contain) e. Figure 2 depicts this simple partitioning
+of the search space.
+Example 5 Considering the node N of Example 4, the selection of the element A ? V3
+leads to the two nodes NL = (({α, γ }, ?, {A, B}), (?, {1, 2, 3, 4}, ?)) and NR =
+(({α, γ }, ?, {B}), (?, {1, 2, 3, 4}, ?)) (see Fig. 3).

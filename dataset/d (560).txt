@@ -1,0 +1,26 @@
+While sensor networks are going to be deployed in diverse application specific contexts,
+one unifying view is to treat them essentially as distributed databases. The
+simplest mechanism to obtain information from this kind of a database is to flood
+queries for named data within the network and obtain the relevant responses from
+sources. However, if the queries are a) complex, b) one-shot, and c) for replicated
+data, this simple approach can be highly inefficient. In the context of energy-starved
+sensor networks, alternative strategies need to be examined for such queries.
+We propose a novel and efficient mechanism for obtaining information in sensor
+networks which we refer to as ACQUIRE. The basic principle behind ACQUIRE is to
+consider the query as an active entity that is forwarded through the network (either
+randomly or in some directed manner) in search of the solution. ACQUIRE also
+incorporates a look-ahead parameter d in the following manner: intermediate nodes
+that handle the active query use information from all nodes within d hops in order
+to partially resolve the query. When the active query is fully resolved, a completed
+response is sent directly back to the querying node.
+We take a mathematical modelling approach in this paper to calculate the energy
+costs associated with ACQUIRE. The models permit us to characterize analytically
+the impact of critical parameters, and compare the performance of ACQUIRE with
+respect to other schemes such as flooding-based querying (FBQ) and expanding ring
+search (ERS), in terms of energy usage, response latency and storage requirements.
+We show that with optimal parameter settings, depending on the update frequency,
+ACQUIRE obtains order of magnitude reduction over FBQ and potentially 60 to 85%
+energy reduction over ERS (in highly dynamic environments and high query rates). We
+show that these energy savings are provided in trade for increased response latency.
+The mathematical analysis is validated through extensive simulations.
+2

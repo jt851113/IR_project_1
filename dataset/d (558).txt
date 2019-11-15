@@ -1,0 +1,21 @@
+In this paper, we have proposed a novel technique for
+improving average lookup times in P2P systems by caching
+auxiliary neighbors based on the access frequencies of peers.
+Our approach is particularly useful for applications such as
+name services in mobile environments or location services,
+where we can expect low churn rate for peers and relatively
+higher churn rate for items. We have presented efficient, scalable
+algorithms for optimally choosing k auxiliary neighbors
+in prefix-based P2P systems like Pastry and small-world based
+P2P systems like Chord. We have also shown how to adapt
+these algorithms to handle queries that require worst-case
+performance guarantees. Simulations with Chord and Pastry
+demonstrate that our algorithms are very effective in reducing
+the lookup times significantly.
+Our results give rise to several questions that warrant
+further investigation. We opted for locally optimal algorithms,
+primarily to ensure that they can be easily deployed in an
+incremental fashion. However, since our algorithms do not
+take into account the auxiliary neighbors of other peers,
+the “globally” optimal choice of auxiliary neighbors can be
+different. The challenge would be to design a globally optimal

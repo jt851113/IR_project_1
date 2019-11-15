@@ -1,0 +1,25 @@
+DEFINITION 2.2. For an event    and a sequence 
+of 
+ events, let 	  be the expected probability that 
+occurs at any given position in 4. Then the information of
+ with respect to  is defined as     
+  
+	 . The information of the “eternal” event * is
+always 05.
+In practice, the probability of each event can be determined
+in many ways including, but not limited to
+	 	  	      	      
+ ;
+	 	  	
+ 
+ for all    where 
+ 
+and 
+ are the number of occurrences of the event  in 
+and the length of the event sequence , respectively;
+	 	  is determined according to some domain knowledge.
+In this paper, we adopt the second option and will not assume
+the same probability for every event, i.e. an occurrence of
+frequent event carries less information than a rare event. Note
+that this also coincides with the original intention of information
+in the data communication community.

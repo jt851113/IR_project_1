@@ -1,0 +1,69 @@
+The sensor nodes in the networks we consider in this
+paper have capabilities similar to Mica Motes [11] which
+have a 4 MHz ATMEL processor, an embedded sensor,
+an A/D converter, and a RFM TR1000 radio with
+data rate at 40 kbits/second. The networks have a super
+node, an access point (AP) with unlimited resources (in
+terms of computation and communication) that interacts
+freely with remote users in a wide area network(where
+queries originate). All sensor nodes are scattered around
+the access points to form a connected network. The network
+topology is relatively stable. Communication between
+sensors and between a sensor and the AP occurs
+via multi-hop messaging. The sensor nodes are homogeneous
+and generate single attribute data. They are also
+clock-synchronized1 which allows each newly generated
+data to be assigned a round number. A round is a processing
+cycle for the network to collect all data generated
+at a specific time instant. Sensor nodes may also have
+other features such as location-awareness.
+The data to be aggregated is generated at a pre-known
+subset of sensor nodes, as specified in the query. Usually
+they are distributed in the geographical regions where
+the physical phenomena are being monitored. We assume
+these nodes are grouped into a set of clusters using
+cluster-oriented techniques such as those proposed in
+[7, 15, 24]. The clustering process is implicitly designed
+as part of routing algorithms. Data can be aggregated at
+cluster-heads before the aggregated results are reported to
+the access point. A cluster-head is physically represented
+by a sensor node. On the other hand, a sensor node can
+logically represent more than one cluster-head.
+Sensor Data Representation: In this paper, we assume
+that the values captured by sensors are numerical.
+To support the notion of error tolerance, an approximation
+of the numerical sensor values is represented in the
+sensor database as an interval. Instead of using an upperand
+lower-bound, we use the center value (v) and an error
+tolerance  to represent the interval, which is
+. Such a representation allows us to manipulate
+and adapt the value and error tolerance of a sensor
+node independently in our adaptive approximate aggregation
+protocol (Section 3). The data is also time-stamped
+with a logical value of time (a round number, in our case).
+Cost Metrics: Due to the fact that communication is
+the dominant cost factor as compared to sensing and computing
+in normal data collection applications, we only
+model the communication cost. Communication cost can
+be measured in a number of ways - number of messages,
+total network load etc. We specifically evaluate architectures
+and protocols in terms of the number of messagehops
+generated in the network. One message-hop is one
+communication operation that transfers one packet of information
+between two neighboring sensors in one hop.
+Considering the fact that radio transmission ranges of
+sensor nodes, which decide power consumption, are set
+to be identical in common practice, the communication
+cost is directly proportional to the number of messages
+and the number of hops each message has to traverse. The
+significant advantage of the total message hops metric is
+that it indirectly covers other factors that can contribute to
+communication overhead in a sensor network, such as energy
+consumption for powering electronic sensor devices
+and overhearing cost2. As is the case with aggregation
+queries, we assume that all messages, including control
+messages are of the same size; in other words, an aggregate
+data packet will be of the same size as the data that
+has been aggregated within it. This approach is conservative
+since our protocol produces many control messages
+and they are usually smaller than sensor data messages.

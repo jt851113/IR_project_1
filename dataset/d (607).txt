@@ -1,0 +1,17 @@
+In this paper we present the AlvisP2P IR engine, which en-
+ables e±cient retrieval with multi-keyword queries from a
+global document collection available in a P2P network. In
+such a network, each peer publishes its local index and in-
+vests a part of its local computing resources (storage, CPU,
+bandwidth) to maintain a fraction of a global P2P index.
+This investment is rewarded by the network-wide accessibil-
+ity of the local documents via the global search facility.
+The AlvisP2P engine uses an optimized overlay network
+and relies on novel indexing/retrieval mechanisms that en-
+sure low bandwidth consumption, thus enabling unlimited
+network growth.
+Our demonstration shows how an easy-to-install AlvisP2P
+client can be used to join an existing P2P network, index
+local (text or even multimedia) documents with collection-
+speci¯c indexing mechanisms, and control access rights to
+them.

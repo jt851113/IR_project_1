@@ -1,0 +1,83 @@
+Privacy leakage has been examined from various angles:
+characterization [11, 12], prevention techniques and tools [16,
+1]. With the radical shift in the number of users worldwide
+onto online social networks (OSNs), there are new and signi
+cantly higher privacy leakage concerns as compared to
+traditional Web sites. OSN users are encouraged to share
+a variety of personal identity-related information, including
+physical, mental, cultural, and social attributes. Users who
+do this often believe that such information accessible to the
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for prot or commercial advantage and that copies
+bear this notice and the full citation on the rst page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specic
+permission and/or a fee.
+WOSN'08, August 18, 2008, Seattle, Washington, USA.
+Copyright 2008 ACM 978-1-60558-182-8/08/08 ...$5.00.
+OSN and maybe their \friends" on that OSN. In reality,
+the set of entities that can have access to various bits of
+private information is large and diverse: third-party advertisers
+and data aggregators, members in the OSN who are
+not friends of the user, and external applications. Also, if
+external actions taken by users while logged in to an OSN
+are tracked, such information can be used not just for marketing
+purposes, but shared with friends of the user leading
+to personal embarrassment. Facebook beacons1 recently exempli
+ed this problem and Facebook changed their policy.
+For this work, we dene the notion of privacy \bits" (pieces
+of information) for a user within an OSN2, grouped together
+for setting of privacy controls, as shown in Figure 1. Ideally
+such grouping can be controlled by the user (as shown for the
+two users in the gure), but for existing OSNs such grouping
+is xed by the OSN. Within an OSN, user's privacy settings
+dictate a left to right partial ordering of these groups with
+more private bits on the left and less private ones as we move
+right. Stacked privacy groups indicate groups with the same
+privacy settings. We explore this partial ordering in more
+detail as we examine the default privacy settings for OSNs
+as well as how OSN users make use of these settings.
+Figure 1 also shows the ow of information among OSNs,
+external applications, third-party servers, and traditional
+Web sites. One current problem is that the manner in which
+private information is gathered by the various entities is often
+hidden. It is dicult for the user to know and control
+the various entities who can gain access to their information
+and to limit in such a way that it does not erode their ability
+to take full advantage of the various features of the OSN.
+On some OSNs, such as Facebook, the choice varies from
+ne-grained settings for some features, to all or nothing in
+others. For example, when an external application is added
+by a user, the user must grant access to all of one's information
+to use the application. This is true even when the
+external application may need only a few relevant bits of private
+information or none at all. The granularity with which
+consent to access private information can be withheld is an
+important notion that we examine. Our goal is to see how
+to reduce privacy leakage while still enabling access to all
+the features of a OSN including use of external applications.
+We also examine how OSNs group and provide a range
+of privacy settings for these bits. We study the default privacy
+settings for a variety of popular OSNs and if/how users
+modify them. The two dominant OSNs, Facebook and MySpace,
+account for a large portion of the market share [8,
+13]. Other popular OSNs we examine include Bebo, Digg,
+Friendster, Hi5, Imeem, LiveJournal, Orkut, Xanga, as well
+as the smaller and newer micro-content network Twitter.
+For these OSNs we characterize and study privacy, along
+with its potential for leakage by examining the bits of private
+information that a user supplies. We look at the allowable
+and default options for controlling what other OSN parties
+that can access the private information. We also study the
+involvement of third-party advertisers and data aggregators
+in tracking the actions of a user interacting with a OSN.
+Section 2 describes the various bits of private information
+associated with user accounts on OSNs and who can access
+them. Section 3 examines if users change their privacy
+settings when allowed. Section 4 studies the role of thirdparty
+domains in aggregating user-related data and contrast
+it with their role in traditional Web sites. Section 5 looks at
+how privacy protection could be provided in OSNs by tailoring
+the actual privacy bits needed for specic interactions on
+OSNs. Section 6 presents related work and the concluding
+Section 7 includes future work.

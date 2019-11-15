@@ -1,0 +1,47 @@
+Figure 1 illustrates the schematic of a basic publish/subscribe
+system. It consists of one or more Event Sources (ES), an
+Event Brokering System (EBS), and one or more Event
+Displayers (ED). An Event Source generates events in re-
+sponse to changes to a real world variable that it monitors,
+such as the location of an enemy tank. We assume that
+each event is labeled with its source and a consecutive se-
+quence number to facilitate our description. Other than
+that, we do not make any assumptions about an event's
+content. The events are published to the Event Brokering
+System, which matches them against a set of subscriptions,
+submitted by users in the system. For example, a soldier
+could subscribe to receive all events reporting the location
+of any tank within a certain range. Note that, as the core
+of the publish/subscribe system, the EBS could be imple-
+Figure 1: A content-based publish/subscribe sys-
+tem. The bubbles represent ltering of events, and
+are labeled with the respective ltering criteria.
+mented as either a single server (Event Broker) or multiple
+distributed ones working together. Additionally, an Event
+Broker can be replicated to increase availability. Sections 4
+and 5 discuss distributed and replicated architectures and
+their mobile adaptations.
+In Figure 1, we use ci to denote the subscription criterion of
+user i. In other words, user i wants all events and only those
+events that satisfy ci. If a user's subscription matches, the
+event is forwarded to the Event Displayer associated with
+that user. The presence of a bubble labeled ci in the link
+between the EBS and an ED implies that only events satis-
+fying ci passes through on this link. The Event Displayer is
+responsible for alerting the user. In our example, the soldier
+will be notied by a message on his/her mobile communica-
+tion device.
+Note that some of the event services surveyed in this paper
+provide additional functionality such as event stream manip-
+ulation. For example, some systems can trigger on events
+to generate new events. In this case, a subscription might
+look like: \generate a buy order when the price of stock
+X has climbed for more than 20 percent for three straight
+quotes." The ability to generate new events has been termed
+\content-based with patterns" ([6]), \event stream inter-
+pretation" ([3]) and \historical condition triggering" ([12]),
+among other things. In this paper, we do not take into ac-
+count any of the specic system extensions such as this. In-
+stead, we will focus on the most fundamental functionality,
+namely, to route events from their sources to their targets
+eciently and reliably.

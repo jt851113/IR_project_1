@@ -1,0 +1,59 @@
+Work on CACQ is heavily indebted to a variety of adaptive query processing systems, most notably Eddies.
+Eddies were originally proposed in [4]. The work was not specifically focused on continuous query processing,
+although attention to adaptivity and responsiveness in eddy lead to some shared attributes with continuous query
+systems, such as the use of non-blocking, pipelined operators and the ability to perform mid-query reoptimization
+via tuple lineage.
+Notions of adaptivity and pipelining used throughout my research are well established in the research community.
+Parallel-pipelined joins, used heavily in CACQ, were proposed in [50]. Adaptive systems such as XJoin,
+Query Scrambling, and Tukwila [47, 48, 22] demonstrated the importance of pipelined operators to adaptivity.
+Fjords is closely related to these systems as well, as it seeks to provide a mechanism to unblock query processing
+operators that might otherwise be forced to wait for blocking operators to return.
+Continuous Queries
+Existing work on continuous queries provides techniques for simultaneously processing many queries over a
+variety of data sources. These systems propose the basic continuous query framework adopted in CACQ and
+also offer some extensions for combining related operators within query plans to increase efficiency. Generally
+speaking, the techniques employed for sharing work between queries are considerably more complex and less
+effective at adapting to rapidly changing query environments than CACQ.
+Efficient trigger systems, such as the TriggerMan system[17] are similar to continuous queries in that they
+perform incremental computation as tuples arrive. In general, the approaches used by these systems is to use
+a discrimination network, such as RETE [13] or TREAT [33], to efficiently determine the set of triggers to fire
+when a new tuple arrives. These approaches typically materialize intermediate results to reduce the amount of
+work required for each update.
+Continuous queries were proposed and defined in [46] for filtering of documents via a limited, SQL-like
+language. In the OpenCQ system [27], continuous queries are likened to trigger systems where queries consists
+of four element tuples: a SQL-style query, a trigger-condition, a start-condition, and an end-condition.
+The NiagaraCQ project [6] is the most recently described CQ system. Its goal is to efficiently evaluate
+continuous queries over changing data, typically web-sites that are periodically updated, such as news or stock
+quote servers. Users install queries that consist of an XML-QL [9] query as well as a duration and re-evaluation
+interval. The NiagaraCQ approach to optimizing continuous queries is substantially different from the approach
+presented in CACQ: grouping in NiagaraCQ is performed by a static query optimizer, and the order in which
+operators are applied is fixed by this query plan. Although plans can be “dynamically regrouped”, heuristics
+for when to do so are unclear, and, unlike our continuous adaptivity, regrouping is an expensive operation that
+cannot be performed frequently.
+The XFilter and follow on YFilter system [3, 11] are also recent continuous-query systems. Both are based
+on XML-documents streaming into the system and being matcher matched to filter-profiles expressed in the
+XPath [7] language. They optimizes queries by indexing profiles based on the filter conditions that appear
+within those profiles. Thus, when a new XML document arrives in the system, each of its tags is matched
+against this filter-condition index to rapidly determine which profiles have conditions that need to be checked
+against the document: essentially, it is an extremely efficient predicate index for matching XML-documents
+and XPath predicates. It is explicitly focused on handling the structure of XML and does not address joins or
+adaptivity.
+The problem of sharing work between queries is not new. Multi-query optimization, as discussed in [40]
+seeks to exhaustively find an optimal query plan, including common subexpression, between a small number of
+queries. Recent work, such as [37, 34] provides heuristics for reducing the search space, but is still fundamentally
+based on the notion of building a query-plan, which we avoid in this work.
+Streams
+The query processing architecture used in this paper is essentially a stream-processor. Fundamental notions of
+time-series processing are developed in SEQ[41], including extensions to SQL for windows and discussions of
+non-blocking and timestamped operators. SVP [35] discusses the semantics of stream processing and presents
+a nice overview of parallel-processing in stream-based environments. DeWitt, et al. [10] propose windows as a
+means of managing joins over very large sets of data. Tribeca [44] discusses operators for processing streams in
+the context of network routing; it includes an interesting discussion of appropriate query languages for streaming
+data. There are many other relevant languages in models from the Temporal Database literature; see [43] for a
+survey of relevant work.
+Aggregation
+As a distributed database-style aggregation engine, the TAG component of TeleTiny bears some superficial
+similarity to existing distributed query processors. Indeed, the database community has proposed a number
+of distributed and push-down based approaches for aggregates in database systems [42, 51], but as discussed
+in the TAG paper[29], most of these assume a well-connected, low-loss topology that is unavailable in sensor
+networks; such assumptions make the techniques developed in these papers largely inapplicable.

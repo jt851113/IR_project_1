@@ -1,0 +1,4 @@
+Since we focus on Pastry and Chord, we first describe the
+routing protocols in these two P2P systems in more detail. We
+then discuss other related work on improving lookup times in
+these or other similar P2P systems.

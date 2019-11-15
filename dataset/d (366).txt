@@ -1,0 +1,55 @@
+The root node is responsible for creating a schedule of time
+slots. Each time slot is designated as a send or receive slot,
+whether it is for upstream or downstream communication,
+and by the event type which it should be used to propagate.
+The root creates the schedule one iteration at a time and
+passes it down through the dissemination tree inside a control
+event. The schedule of slots between two consecutive
+downstream control events is called a single iteration of the
+schedule.
+Figure 2 illustrates the basic idea of creating a schedule
+and passing it down the network tree using a simple scenario
+that involves downstream propagation of control and data
+events. The control event is a special type of event which
+is created by TD-DES and contains scheduling information.
+The control event is received by the node at level X in the
+first time slot. In the next time slot, this node transmits the
+control event down to the next level, X+1. In the time slot
+following this, the node at level X+1 passes the control event
+down to level X+2, and so on and so forth. To summarize,
+iterations are delimited by control events and can consist of
+a different number of data events. The control event that
+initiates an iteration specifies the schedule of events (which
+events will be disseminated and when) within that iteration.
+Note that the schedule is shifted one slot at each level.
+The schedule consists of a sequence of atomic send and
+receive time slots, each one for a specified event type. In
+general, for a particular event in a schedule, at a given node,
+time slots are allocated as a receive slot followed by an immediate
+send slot most of the time. At a particular node,
+if the schedule specifies a receive time slot for event e1, the
+node, if it subscribes to e1, will listen to the RF medium in
+Rx mode during this time slot to receive such an event. If
+the schedule specifies a send time slot for e1, the node can
+use this time slot to transmit an event of this type (should
+it have one to send).
+Furthermore, each slot is distinguished as either a downstream
+slot (for parent-to-child communication away from
+the root) or as an upstream slot (for child-to-parent communication
+toward the root). For downstream communication,
+send and receive slots are used. Upstream slots are not designated
+for event types, as they are speculatively allocated
+– any event which is generated should be able to make use
+of the next upstream slot. In addition, nodes must always
+listen to upstream receive slots, as all events must be passed
+up to the root, regardless of event type. Therefore, distinguishing
+upstream slots for particular event types would
+serve no beneficial purpose.
+The downstream control event also includes data used by
+the tree construction protocol, such as the number of hops
+to the root and the parent node’s network-unique identifier.
+Notice that for each downstream send event, the simultaneous
+time slot at the next level down is a receive time slot for
+the same type of event. Similarly, for upstream send events,
+the concurrent time slot at the next level up the tree is a
+corresponding receive time slot for the same type of event.

@@ -1,0 +1,39 @@
+Procedure A3 Protocol
+INPUT:
+vi, v
+
+ : default and new values of the ith child;
+ : error bound of the ith child; C : cluster;
+ : total members in C; Nv : members reporting;
+fmax, fmin: max and min update frequencies;
+rth,  : adjustment threshold and factor;
+// Data Updating
+(1) while(receive v
+0
+i from child)
+(2)
+(3) vc = vc +PNvi=1(v0i ?? vi);
+(4) update () to parent;
+(5) endIf;
+(6) else
+(7)
+(8) reset vinew as ith child’s default value;
+(9) endElse;
+(10) endWhile;
+(11) if(recieve vinew from parent)
+(12) reset default values for all children;
+(13)
+(14) endIf;
+// Error Bound Adjustment
+(15) if(this is not leaf node and
+(16)
+(17)
+(18) update;
+(19) update;
+(20) endIf;
+(21) if(recieve Anew from parent)
+(22) if(this is not a leaf node)
+(23) reset A for all children;
+(24) endIf;
+(25) ;
+(26) endIf;

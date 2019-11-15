@@ -1,0 +1,30 @@
+Each sensor in the network becomes a clusterhead (CH)
+with probability p and advertises itself as a clusterhead to the
+sensors within its radio range. We call these clusterheads the
+volunteer clusterheads. This advertisement is forwarded to all
+the sensors that are no more than k hops away from the
+clusterhead. Any sensor that receives such advertisements and
+is not itself a clusterhead joins the cluster of the closest
+clusterhead. Any sensor that is neither a clusterhead nor has
+joined any cluster itself becomes a clusterhead; we call these
+clusterheads the forced clusterheads. Because we have limited
+the advertisement forwarding to k hops, if a sensor does not
+receive a CH advertisement within time duration t (where t
+units is the time required for data to reach the clusterhead from
+any sensor k hops away) it can infer that it is not within k
+hops of any volunteer clusterhead and hence become a forced
+clusterhead. Moreover, since all the sensors within a cluster are
+at most k hops away from the cluster-head, the clusterhead can
+transmit the aggregated information to the processing center
+after every t units of time. This limit on the number of hops
+thus allows the cluster-heads to schedule their transmissions.
+Note that this is a distributed algorithm and does not demand
+clock synchronization between the sensors.
+The energy used in the network for the information
+gathered by the sensors to reach the processing center will
+depend on the parameters p and k of our algorithm. Since the
+objective of our work is to organize the sensors in clusters to
+minimize this energy consumption, we need to find the values
+of the parameters p and k of our algorithm that would ensure
+minimization of energy consumption. We derive expressions
+for optimal values of p and k in the next subsection.

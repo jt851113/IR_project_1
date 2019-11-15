@@ -1,0 +1,10 @@
+In this paper, we propose a exible model of asynchronous
+periodic patterns to mine patterns that are of any length and
+may only be present within a subsequence, and whose occur-
+rences may be shifted due to disturbance. Two parameters
+min rep and max dis are employed to qualify valid patterns
+and the longest valid subsequence is returned for each valid
+pattern. A two-phase algorithm is devised to rst generate
+potential periods by distance-based pruning, followed by an
+iterative procedure to derive and validate candidate patterns
+and locate the longest valid subsequence.

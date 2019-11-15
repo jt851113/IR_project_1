@@ -1,0 +1,22 @@
+In this paper, we propose indexing of important data based on
+the scheme proposed in [19]. We shall first review how this scheme
+works: Once a node obtains the mediated schema and mapping relations,
+it indexes the data according to the mediated schema. Suppose
+we are building an index for attribute A of relation R. Then
+the index is given a namespace of R.name + A.name. Let vk be a
+value of the indexed attribute of A. An index message including the
+namespace, vk and ip address of the owner node is sent via the P2P
+protocol to the corresponding node (responsible for value vk). After
+the index is established, it can be applied to answer the query (exact
+query or range query) involving A. Each index entry is assigned a
+timestamp. The node responsible for the index may discard the index
+entry if its timestamp has expired. To guarantee that the nodes
+responsible for the index are still alive, the owner node should send
+refreshment messages to those nodes periodically. If the node is
+still alive, it will refresh the timestamp. Otherwise, the index will
+be recreated.
+In PIER, all tuples in the database are published for sharing. This
+full indexing strategy is impractical for a corporate network as business
+databases are data intensive. In PISCES, a partial indexing
+strategy is proposed to construct the index adaptively, which can
+significantly reduce cost.

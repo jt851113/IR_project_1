@@ -1,0 +1,25 @@
+In FBQ, the querier x sends out a request to all its immediate neighbors. These nodes in
+turn, resolve the query as much as possible based on their information and then forward
+the request to all their neighbors and so on. Thus, the request reaches all the nodes in the
+network.
+In general, as mentioned in Eqn. 8 from section 4.4,
+In FBQ:
+1. The request for triggered updates will have to be sent as far as R hops away from the
+querier x (near the center of the grid) where R is the “radius” of the network i.e. the
+maximum number of hops from the center of the grid.
+2. d = 0, as the query is not forwarded.
+3.  = 0, as the query is completely resolved at the origin of the query itself.
+4. SM = 1.
+Let Navg(i) be the expected number of nodes at hop i, that can resolve some part of the
+query. This can be determined along similar lines as in section 4.2.1:
+As before, consider the fetching of information from a sensor as a “trial”. In each “trial”,
+the probability of success is p = M
+N and the probability of failure is q = N?M
+N . The number
+of successes is a binomial random variable. The total number of “trials” at hop i is N(i).
+Thus, the expected number of successes at hop i is given by
+The response of each of the Navg(i) nodes will be forwarded over i hops.
+Thus, for FBQ, Eavg is given as follows:
+For a grid with X nodes, R =
+p
+X. Thus, For a given M, N and c, Eavg / X3/2.

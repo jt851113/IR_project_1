@@ -1,0 +1,46 @@
+DFuse is suitable for applications that apply hierarchical fusion
+functions (input to a fusion function may be the output of
+another fusion function) on time-sequenced data items. A fusion
+operation may apply a function to a sequence of stream
+data from a single source, from multiple sources, or from a set
+of sources and other fusion functions.
+DFuse accepts an application as a task graph, where a vertex
+in the task graph can be one of data source, data sink, or fusion
+point. A data source represents any data producer, such as
+a sensor or a standalone application. DFuse assumes that data
+sources are known at query time (when the user specifies the application
+task graph). A data sink is an end consumer, including
+a human in the loop, an application, an actuator, or an output
+device such as a display. Intermediate fusion points perform
+application-specific processing on streaming data. Thus, an application
+is a directed graph, with the data flow (i.e. producerconsumer
+relationships) indicated by the directionality of the
+associated edge between any two vertices.
+For example, Figure 1 shows a task graph for a tracking application.
+The filter fusion function selects images with some
+interesting properties (e.g. rapidly changing scene), and sends
+the compressed image data to the collage function. Thus, the
+filter function is an example of a fusion point that does data contraction.
+The collage function uncompresses the images coming
+from possibly different locations. It combines these images
+and sends the composite image to the root (sink) for further
+processing. Thus, the collage function represents a fusion point
+that may do data expansion.
+DFuse is intended for deployment in a heterogeneous ad hoc
+sensor network environment. However, DFuse cannot be deployed
+in current sensor networks given the limited capabilities
+available in sensor node prototypes such as Berkeley motes [7].
+But, as we add devices with more capabilities to the sensor network,
+or improve the sensor nodes themselves, more demanding
+applications can be mapped onto such networks and DFuse
+provides a flexible fusion API for such a deployment. As will
+become clear in later sections, DFuse handles the dynamic nature
+of such networks by employing a resource-aware heuristic
+for placing the fusion points in the network.
+DFuse assumes that any node in the network is reachable
+from any other node. Further, DFuse assumes a routing layer
+that exposes hop-count information between any two nodes in
+the network. Typically, such support can be provided by a separate
+layer that supports a routing protocol for ad hoc networks,
+like Dynamic Source Routing (DSR) [10], and exposes an interface
+to query the routing information.

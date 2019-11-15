@@ -1,0 +1,124 @@
+In addition to making optimization simple for Garlic, the
+STAR framework makes it easy to describe wrapper query
+capabilities, and allows wrappers to start simply, and evolve
+over time. While Garlic STARs may be complicated, due in
+part to their use of other STARs to enforce needed properties,
+wrapper STARs tend to be simple. Indeed, we have
+found no need for wrapper STARs to invoke other STARs,
+or even to build multiple wrapper POPs. In this section, we
+demonstrate the power and simplicity of the STAR framework
+for heterogeneous systems, by means of an example
+involving three very different data sources. In the next section,
+we extend our example to show how the Garlic optimizer
+would optimize a query involving these three sources.
+Consider a university with a relational database storing
+basic information on each course offered, course descriptions
+in a special text store, and an on-line complaint
+mechanism that sends mail to an ombudsman. These three
+sources (relational, text, and mail) are integrated using Garlic.
+In the following, we provide relevant details of these
+wrappers and define STARs for them.
+The mail wrapper exports a Complaints collection of objects
+of type Message. Messages each have Sender, Date,
+Body and Subject attributes. The wrapper provides only the
+ability to iterate through a collection, retrieving the OIDs.
+To model this ability, it defines the simple plan access
+STAR shown in Figure 9. Like every plan access
+STAR, this STAR takes as parameters the identifier of a
+collection (
+
+), a set of attributes ( ), and a set of predicates
+(
+
+) that are used in the query. Regardless of  and
+
+, this STAR always returns one plan consisting of a single
+Quantifier POP. The Quantifier POP models the execution
+of the query “select OID from T” in the data source
+that stores
+
+. The values of the properties (except cost and
+cardinality) of the Quantifier POP are defined in Table 1;
+the RepoAccess STAR would get these values from the
+wrapper plan to create its PushDown POP. Query plans
+generated using this STAR are executed as follows: the
+OIDs of all messages of a collection are passed from the
+wrapper to Garlic’s execution engine, which uses method
+calls to the wrapper to get the attributes of the messages.
+The simple STAR of Figure 9 could be used as a starting
+point for wrappers of many different sources. (There
+is nothing Mail-specific about it.) This STAR guarantees
+that any query that accesses data from one of a wrapper’s
+sources can be processed, but it does not model a wrapper’s
+query processing capability, and therefore, plans generated
+by this STAR often show poor performance. Initially
+a wrapper writer might define only this STAR to integrate a
+source quickly; later (s)he could add more powerful STARs
+to improve performance. For example, we could initially
+use this STAR to integrate the relational database, and then,
+once we had made the relational data accessible, replace it
+with the STARs of Figure 10 to exploit the relational engine’s
+query processing power, improving performance.
+The relational wrapper exports a Classes collection.
+Class objects have attributes Course, Professor, etc. The
+relational data source supports the usual relational operations,
+and the wrapper provides STARs for access, bind and
+join. These STARs are shown in Figure 10. They construct
+a set of POPs which model the relational source’s operations.
+Their properties are given in Table 1. plan access
+generates an R Scan POP which models the execution of a
+single-table query, aggressively applying all predicates and
+retrieving all necessary columns. plan bind also builds
+an R Scan POP, adding the binding predicates to the set. Finally,
+plan join constructs an R Join POP, which models
+the relational source’s ability to join two tables, again
+applying all predicates and fetching all columns.
+The text wrapper exports a single collection, Descrs,
+which contains objects of type Blurb, with attributes
+Name and Description. The text data source supports
+single-collection queries with methods of the form contains(
+string) or is about(string) modeling its search capabilities.
+contains returns a boolean value, depending on
+whether the document it is applied to contains the words
+in the string. is about(string) returns a rank between 0 and
+1 indicating how closely the document matches the terms in
+the argument string. STARs defining this wrapper’s plans
+are found in Figure 11. The POPs for these STARs are also
+described in Table 1. Note that this wrapper provides two
+plan access rules: one, which produces a T Scan POP,
+simply scans the documents, returning whatever attributes
+are asked for, and applying any “contains” or other String
+predicates, and the other, which produces the T Rank POP,
+returns the results in order of rank computed as a result of
+an is about method in the order by clause.
+From these three examples, we can see that the basic
+query power of wrappers and data sources with vastly
+different querying abilities can be modeled easily with a
+handful of simple, single-POP STARs. There are two reasons
+why wrapper STARs can be so simple. First, Garlic
+provides a powerful query engine which can make up for
+missing query function in the wrappers. Second, wrapper
+STARs model “what” can be executed by a wrapper, not
+“how”. For example, the relational wrapper exported a simple
+plan join STAR to model that joins can be executed
+by its data sources; it did not need to enumerate alternative
+plans with different join methods because plans with
+an R Join POP are translated into a multi-table (SQL) query,
+and the optimizer of the relational data source automatically
+determines the most efficient join methods. Precise modeling
+of join methods may be required in the wrapper’s cost
+model in order to estimate the cost of join processing in the
+data source, but it is not required in the wrapper’s STARs.
+These examples also demonstrate three further advantages
+of our approach. First, we defined a simple minimal
+STAR that might be the first STAR a wrapper would export.
+This makes it easy to get a wrapper up and running. Second,
+wrapper writers can add STARs or alternatives for an
+existing STAR at any time, to expose more wrapper query
+functionality to Garlic. This makes it easy to modify and
+evolve wrappers. Third, each wrapper’s STARs were defined
+independently of the others’, and without affecting
+Garlic STARs or Garlic’s query services, making it easy
+to add new wrappers to the system. Modeling power, low
+“entry-cost” for writing wrappers, evolvability, and extensibility
+are key advantages of our approach.

@@ -1,0 +1,39 @@
+A. Motivation Example
+With some local knowledge about individual vertices in a
+social network, an adversary may attack the privacy of some
+victims. As a concrete example, consider a synthesized social
+network of “close-friends” shown in Figure 1(a). Each vertex
+in the network represents a person. An edge links two persons
+who are close friends.
+Suppose the network is to be published. To preserve privacy,
+is it sufficient to remove all identities as shown in Figure 1(b)?
+Unfortunately, if an adversary has some knowledge about the
+neighbors of an individual, the privacy may still be leaked.
+If an adversary knows that Ada has two close friends who
+know each other, and has another two close friends who
+do not know each other, i.e., the 1-neighborhood graph of
+Ada as shown in Figure 1(c), then the vertex representing
+Ada can be identified uniquely in the network since no other
+vertices have the same 1-neighborhood graph. Similarly, Bob
+can be identified in Figure 1(b) if the adversary knows the
+1-neighborhood graph of Bob.
+Identifying individuals from released social networks intrudes
+privacy immediately. In this example, by identifying
+
+Ada and Bob, an adversary can even know from the released
+social network (Figure 1(b)) that Ada and Bob are close
+friends, and they share one common close friend. Other private
+information can be further derived such as how well a victim
+is connected to the rest of the network and the relative position
+of the victim to the center of the network.
+To protect the privacy satisfactorily, one way is to guarantee
+that any individual cannot be identified correctly in the
+anonymized social network with a probability higher than 1
+k ,
+where k is a user-specified parameter carrying the same spirit
+in the k-anonymity model [5]. By adding a noise edge linking
+Harry and Irene, the 1-neighborhood graph of every vertex in
+Figure 1(d) is not unique. An adversary with the knowledge
+of 1-neighborhood cannot identify any individual from this
+anonymous graph with a confidence higher than 1/
+2 .

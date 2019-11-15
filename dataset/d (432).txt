@@ -1,0 +1,130 @@
+Periodicy detection of time series data is a challenging prob-
+lem of great importance in many real applications. Most
+previous research in this area has assumed that the distur-
+bance within a series of repetitions of a pattern, if any, would
+not result in the loss of synchronization of subsequent occur-
+rences of the pattern with previous occurrences [1]. Distur-
+bance is allowed only in terms of \missing occurrences" but
+not as general as any \insertion of random noise events".
+However, this assumption is often too restrictive since we
+may fail to detect an interesting pattern if some of its occur-
+rences is misaligned due to inserted noise events. Consider
+the application of inventory replenishment. The history of
+inventory rell orders can be regarded as a symbol sequence.
+Assume that the time between two replenishments of cold
+medicine is normally a month. The rell order is led at the
+beginning of each month. But suppose a major outbreak of
+u causes an early rell at the 3rd week. Afterwards, even
+though the replenishment frequency is back to once each
+month, the rell time shifts to the 3rd week of a month.
+Therefore, it would be desirable if the pattern can still be
+recognized when the disturbance is within some reasonable
+threshold.
+In addition, the system behavior may change over time.
+Some patterns may not be present all the time (but rather
+within some time interval). Therefore, in this paper we
+aim at mining periodic patterns that are signicant within
+a subsequence of symbols which may contain disturbance of
+length up to a certain threshold. Two parameters, namely
+min rep and max dis, are employed to qualify valid patterns
+and the symbol subsequence containing it, where this sub-
+sequence in turn can be viewed as a list of valid segments
+of perfect repetitions interleaved by disturbance. Each valid
+segment is required to be of at least min rep contiguous rep-
+etitions of the pattern and the length of each piece of dis-
+turbance is allowed only as large as max dis. The intuition
+behind this is that a pattern needs to repeat itself at least
+a certain number of times to demonstrate its signicance
+and periodicy. On the other hand, the disturbance between
+two valid segments has to be within some reasonable bound.
+Otherwise, it would be more appropriate to treat such dis-
+turbance as a signal of \change of system behavior" instead
+of random noise injected into some persistent behavior. The
+parameter max dis acts as the boundary to separate these
+two phenomena. For patterns satisfying these two require-
+ments, our model will return the subsequence with the max-
+imum overall repetitions. Note that, due to the presence of
+disturbances, some subsequent valid segments may not be
+well synchronized with the previous ones. This in turn would
+impose a great challenge in the mining process.
+Similar to [1], we allow a pattern to be partially lled to
+enable a more exible model. For instance, (cold medi, *,
+*, *) is a partial monthly pattern showing that the cold
+medicine is reordered on the rst week of each month while
+no strong regularity presents for the rest of the month. How-
+ever, since we also allow the shifted occurrence of a valid
+segment, this exible model poses a dicult problem to be
+solved. For a given pattern P, its associated valid segments
+Permission to make digital or hard copies of part or all of this work or
+personal or classroom use is granted without fee provided that copies are not
+made or distributed for profit or commercial advantage and that copies bear
+this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers, or to redistribute to lists, requires prior specific
+permission and/or a fee.
+KDD 2000, Boston, MA USA
+c ACM 2000 1-58113-233-6/00/08 ...$5.00
+may overlap. In order to nd the valid subsequence with
+the most repetitions for P, we have to decide which valid
+segment and more specically which portion of a valid seg-
+ment should be selected. While it is relatively easy to nd
+the set of valid segments for a given pattern, substantial dif-
+culties lie on how to assemble these valid segments to form
+the longest valid subsequence. As shown in Figure 1(b),
+with min rep = 3, S1, S2, S3, and S4 are four valid seg-
+ments of the pattern P = (d1; ; ). If max dis = 6, then
+X in Figure 1(d) is the longest subsequence before S4 is
+considered, which in turn makes Y the longest one. If we
+only look at the symbol sequence up to position 10 without
+looking ahead in the sequence, it is very dicult to deter-
+mine whether we should switch to S2 or continue on S1.
+This indicates that we may need to track multiple ongoing
+subsequences simultaneously. Since the number of dierent
+assemblages (of valid segments) grows exponentially with in-
+creasing period length, the process to mine the longest sub-
+sequence becomes a daunting task, even for a very simple
+pattern such as (d1; ; ). To solve this problem for a given
+pattern, a segment-based algorithm is developed to identify
+subsequences that may be extended to become the longest
+one and maintain them in such a way that the longest valid
+subsequence can be identied by a single scan of the input
+sequence.
+Another innovation of our mining algorithm is that it can
+discover all periodic patterns regardless of the period length.
+Most previous research in this area focused on patterns for
+some pre-specied period length [1] [2] or some pre-dened
+calendar [3]. Unfortunately, in practice, the period is not
+always available a priori (it is also part of what we want to
+mine out from the data). A period may span thousands of
+symbols in a long time series data or just a few symbols.
+We rst introduce a distance-based pruning mechanism to
+discover all possible periods and the set of symbols that are
+likely to appear in some pattern of each possible period.
+In order to nd the longest valid subsequence for all possi-
+ble patterns, we employ a level-wise approach. The Apriori
+property also holds on patterns of the same period. A valid
+segment of a pattern is also a valid segment of any pattern
+with fewer symbols specied in the pattern. For example,
+a valid segment for (d1; d2; ) will also be one for (d1; ; ).
+Then, for each likely period, all valid patterns with their
+longest supporting subsequences can be mined via an itera-
+tive process.
+In summary, we claim the following contributions.
+ A pattern can be partially specied, e.g., (d; ; ).
+ A more exible model of asynchronous periodic pat-
+terns is proposed to allow mining of all patterns (1)
+whose periods can cover a wide range and are not
+known a priori; (2) that present within only a subse-
+quence; and (3) whose occurrences may be misaligned
+due to the insertion of some random disturbance.
+ A two phase algorithm is devised to rst generate po-
+tential periods by distance-based pruning followed by
+an iterative procedure to derive and validate candi-
+date patterns and locate the longest valid subsequence
+containing each pattern.
+The remainder of this paper is organized as follows. The gen-
+eral model and the algorithm outline are presented in Sec-
+tion 2. The algorithms of distance-based pruning, the sin-
+gular pattern verication, and the complex pattern verica-
+tion are elaborated in Sections 3, 4, 5, respectively. Section
+6 presents experimental results. The conclusion is drawn in
+Section 7.

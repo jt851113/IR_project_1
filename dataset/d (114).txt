@@ -1,0 +1,50 @@
+Information on the Web is often duplicated and
+expressed in a variety of forms. If all information
+was (correctly) expressed in all possible ways, precise
+information retrieval would be simple: A search
+for any one particular way of expressing the information
+would succeed.
+The NECI engine recognizes and transforms
+certain queries submitted in the form of a question
+into queries phrased in the form of an answer—
+specific expressive forms (SEFs). For example, the
+query “What does NASDAQ stand for?” is transformed
+into the query “NASDAQ stands for”
+“NASDAQ is an abbreviation” “NASDAQ
+means.” Clearly the information may be expressed
+in forms other than these, but if the information
+exists in just one of these forms, it is more likely to
+satisfy the query. The technique thus trades recall
+for precision.
+Our informal experiments indicate that using
+SEFs is effective for certain retrieval tasks on the
+Web. Figure 4 shows the NECI engine’s results for
+the query “What does NASDAQ stand for?” The
+answer to the query is contained in the local context
+displayed for four out of the first five pages. In
+contrast, the standard search engines we queried
+did not have the answer in any of the documents
+listed on the first page—even for engines that list
+support for natural language queries.
+As the amount of easily accessible information
+increases, so too will the viability of the SEF technique.
+An extension to it that we have not yet
+implemented is to define an order over the various
+SEFs. For example, “x stands for” might be more
+likely to find the answer than “x means.” If none
+of the SEFs are found, the engine could fall back
+to a standard query.
+Currently, the NECI metasearch engine uses the
+SEF technique for a number of queries. For example,
+the engine recognizes “What [is|are] x ?,”
+“What [causes|creates|produces] x?,” “What does
+x [stand for|mean]?,” and “[Why|how] [is|are]
+(a|the) x y ?” As examples of the transformations,
+“What does x [stand for|mean]?” is converted to “x
+stands for,” “x is an abbreviation,” and “x means”;
+and “What [causes|creates|produces] x?” is converted
+to “x is caused,” “x is created,” “causes x,”
+“produces x,” “makes x,” and “creates x.” Although
+we created the SEF transformations manually, an
+interesting area of research would be to learn SEFs
+from implicit or explicit feedback.

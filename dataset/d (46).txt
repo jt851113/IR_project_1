@@ -1,0 +1,6 @@
+A simple aggregate query is an aggregate query without
+Group By and Having clauses, a very popular class
+of queries in sensor networks [21]. In this section we
+outline how to process such simple aggregate queries.
+Query processing strategies for more general queries
+are discussed in Section 5.

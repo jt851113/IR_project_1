@@ -1,0 +1,163 @@
+We now present another algorithm, which we refer to as the
+interleaved algorithm, for discovering cyclic association
+rules. The interleaved algorithm consists of two phases. In
+the first phase, the cyclic large itemsets are discovered. In
+the second phase, cyclic association rules are generated.
+In the first phase, the search space for the large itemsets
+is reduced using cycle-pruning, cycle-skipping and cycleelimination
+as follows. For each 
+1 :
+1. If  is equal to one, then all possible cycles are initiallyassumed
+to exist for each single itemset. Otherwise
+(if 1), cycle-pruning is applied to generate
+the potential cycles for  
+itemsets using the cycles
+for  
+1
+ 
+itemsets.
+2. Time segments are processed sequentially. For each
+time unit 	
+:
+2.1 Cycle-skipping determines, from the set of
+candidate cycles for 
+itemsets, the set of
+itemsets for which support will be calculated
+in time segment
+2.2 If a     
+itemset
+
+chosen in Step 2.1 does not
+have the minimum support in time segment
+ 
+then cycle-elimination is used to discard
+each cycle! 
+for which  mod
+holds, from the set of potential cycles of  
+This process terminates when the list of potential cycles
+for each 
+itemset is empty. Cycle-pruning, cycleskipping
+and cycle-elimination can reduce the candidate 
+itemsets for which support will be counted in the
+database substantially, and therefore can reduce the running
+time of calculating the large itemsets. This is demonstrated
+by the following example.
+Example 4: Suppose that the length of the longest cycle we
+are interested in is and 1110000000111111111
+and 1111010111111111111 represent items
+
+and
+ 
+respectively.
+If the sequential algorithm is used, then the
+support for
+
+and
+
+will be calculated in all the time segments
+and the support for 
+will be calculated in time
+segments 0-2, 10-19 (due to support-pruning). If the interleaved
+algorithm is used, then the support for
+
+will be
+calculated in time segments 0-9 (due to cycle-elimination
+and cycle-skipping), whereas the support for
+
+will be calculated
+in all the time segments, and since
+
+has no cycles, 
+cannot have any cycle (due to cycle-pruning), and
+the support for 
+will not be calculated in any of the
+time units (due to cycle-skipping).
+In the second phase of the interleaved algorithm, the
+cyclic association rules can be calculated using the cycles
+and the support of the itemsets without scanning the
+database. Interleaving cycle detection with large itemset
+detection also reduces the overhead of rule generation
+phase. This is because a cycle of the rulew
+must be a
+multiple of a cycle of itemset
+and at the end of the
+first phase of the interleaved algorithm we already knowthe
+cycles of large itemsets. Thus, the set of candidate cycles
+for a rule
+initially consists of the set of cycles of
+the itemset 
+As a result, we need to calculate the
+confidence of a rule 
+only for time units that are
+part of cycles of 
+Moreover, whenever we encounter
+a time unit 	
+in which this rule does not have minimum
+confidende
+  
+	
+we can eliminate each other candidate
+cycle of this rule for which   mod  	
+1
+
+  
+  holds.
+Once the cycles of the association rules are detected, the
+cycles that are not large can be eliminated (see Section 3.4).
+Although the interleaved algorithm reduces the CPU
+overhead of calculating support for itemsets substantially, it
+incurs a higher overhead for I/O operations when compared
+to the sequential algorithm. In order to remedy this problem,
+each time a time segment
+ is accessed, calculation
+of cycles and support for 
+
+-itemsets,
+for some  1, can be combined. In this case, cyclepruning
+for each    
+itemset, 0
+
+  
+  
+is done by
+merging the cycles of  subsets of the     
+itemset.
+That is, the set of candidate cycles of a     
+itemset consists
+of the intersection of the sets of cycles of all 
+1
+subsets of the itemset. While scanning a time segment
+ 
+first supports for the  
+itemsets that have candidate
+cycles into which time unit 	
+participates are calculated. If
+the support for a candidate  
+itemset
+
+is below
+	  	
+,
+then cycle-elimination is applied not only to the candidate
+cycles of itemset, but also to each    itemset,that is a superset of
+Note that cycle elimination eliminates potentially more    
+itemsets compared to support-pruning. This is because support-pruning
+eliminates itemsets that are supersets of
+
+only in whereas cycle-elimination eliminates    
+itemsets
+that are supersets of
+
+not only in
+ but potentially also
+in other time segments following
+ 
+Once supports for
+the candidate  
+itemsets in
+ are calculated, then supports
+for the candidate 
+ itemsets in are calculated
+similarly, followed by supports for the candidate itemsets in
+and so on. The determination of
+the optimal value of  is beyond the scope of this paper.

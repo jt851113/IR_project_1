@@ -1,0 +1,17 @@
+The dimension of a dataset has major impact on database
+management, such as indexing and querying processing. The embedding
+dimension (i.e., the number of attributes of the dataset) usually overestimates
+the actual contribution of the attributes to the main characteristics of the
+data, as the typical assumption of uniform distribution and independence
+between attributes usually does not hold. In fact, due to dependencies and
+attribute correlations, real data are typically skewed and exhibit intrinsic
+dimensionality much lower than the embedding dimension. Similarly, the
+intrinsic dimension can also be applied to improve data stream processing
+and analysis. Data streams are generated as sequences of events represented
+by a predetermined number of numerical attributes. Thus, without loss of
+generality, we can consider events as elements from a dimensional domain.
+This paper presents a fast, linear algorithm to measure the intrinsic dimension
+of a data stream on the fly, following its continuously changing behavior.
+Experimental studies show that the intrinsic dimension can be used to analyze
+attribute correlations. The results on well-understood datasets closely follow
+what is expected from the known behavior of the data.

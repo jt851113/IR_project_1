@@ -1,0 +1,6 @@
+Given a cluster structure of a sensor network, precise
+data collection through aggregation is straightforward. In
+this section, we will show that whenever approximate results
+are acceptable, extra savings can be achieved by developing
+an adaptive approximate data aggregation (A3)
+protocol.

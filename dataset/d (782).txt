@@ -1,0 +1,122 @@
+Given a set of items and a set of transactions, where
+each transaction consists of a subset of the set of items, the
+problem of discovering association rules is defined as finding
+relationships between the occurrences of items within
+transactions. An association rule of the form
+  
+is a
+relationship between the two disjoint itemsets
+
+and
+
+(an
+itemset is a set of items). An association rule is described in
+terms of support and confidence. The support of an itemset
+
+is the fraction of transactions that contain the itemset.
+An itemset is called large, if its supports exceeds a given
+threshold
+	  	
+. The confidence of a rule
+  
+is the
+fraction of transactions containing
+
+that also contain
+The association rule  
+  
+holds, if 
+is large and the
+confidence of the rule exceeds a given threshold
+In order to deal with cyclic association rules, w	e en
+ha	n c e
+the transaction model by a time attribute that describes the
+time when the transaction was executed. In this paper, we
+assume that a unit of time is given (e.g., by the user). More
+complicated treatments of time, such as multiple units of
+time and/or a time hierarchy, are not in the scope of this
+paper. We denote the   time unit,  
+ We define the problem of discovering cyclic
+association rules as finding cyclic relationships between the
+presence of items within transactions.
+The support of an itemset in is the fraction of
+transactions in that contain the itemset, whereas the
+confidence of a rule in is the fraction of transactions
+in containing that also contain An association rule
+  
+holds in time unit	
+, if the support
+of
+in
+ exceeds
+	
+and the confidence of
+ 
+exceeds
+	   	
+. A cycle
+
+is a tuple  
+consisting
+of a length
+
+(in multiples of the time unit) and an offset
+
+(the first time unit in which the cycle occurs), 0
+We say that an association rule has a cycle 
+     
+if the
+association rule holds in every
+
+  time unit starting with
+time unit 
+For example, if the unit of time is an hour and
+“coffee
+
+doughnuts” holds during the interval7AM-8AM
+every day (i.e., every 24 hours), then “coffee
+
+doughnuts”
+has a cycle 24 
+We denote the minimum and maximum
+cycle lengths of interest by and, respectively. We
+refer to an association rule that has a cycle as cyclic. An
+association rule may have multiple cycles. For example,
+if the unit of time is an hour and “coffee
+doughnuts”
+holds during the interval 7AM-8AM and 4PM-5PM every
+day (i.e., every 24 hours), then “coffee
+doughnuts” has
+two cycles:
+We say that a cycle    	 	
+is a multiple of another cycle
+ 
+holds. By
+definition, once a cycle exists, all of its multiples with
+length less than or equal to
+
+will exist. Therefore, it
+is only interesting to discover “large” cycles, where a large
+cycle is the one that is not multiple of any other cycle. A
+time unit	
+is said to be “part of a cycle”
+holds.
+An association rule can be represented as a binary sequence
+where the ones correspond to the time units in
+which the rule holds and the zeros correspond to the time
+units in which the rule does not have the minimum confidence
+or support. For instance, if the binary sequence
+001100010101 represents the association rule then 
+holds in
+is a cycle since the corresponding rule
+holds within every fourth time unit starting from time unit
+ cycle can also be represented by a binary sequence.
+For example, cycle 4
+can also be represented as 0001.
+Similar to association rules, itemsets can also be represented
+as binary sequences where ones correspond to time
+units in which the corresponding itemset is large and zeros
+correspond to time units in which the corresponding itemset
+does not have the minimum support. Also, an itemset is
+said to be cyclic, if the itemset is large at regular intervals
+(i.e., the sequence representing the itemset is cyclic).

@@ -1,0 +1,18 @@
+4.2 Effects of OIS Pruning Figure 11 (a) shows the difference
+of the pruning power of the sophisticated OIS pruning
+with superfluous information gain elimination and the segmentbased
+OIS pruning. Since the behaviors are similar with different
+event sequences, we only show the pruning results for sequence
+	. It is evident that the sophisticated one is much
+more effective. Although the more sophisticated OIS pruning
+requires a little bit more space and time, the result is improved
+dramatically. Therefore, we decide that in the remainder of this
+section, we use the implementation of the more sophisticated
+OIS pruning technique in STAMP.
+Figure 11 (b) shows the effectiveness of the more sophisticated
+OIS pruning. The y-axis shows the fraction of the MIG
+counters that would not be needed. It is evident that when the
+generalized information gain threshold  increases, the OIS is
+more effective because less events at each period may qualify
+for MIG counting. However, even with   , the OIS pruning
+can filter out more than 50% of the MIG counters.

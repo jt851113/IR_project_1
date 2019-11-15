@@ -1,0 +1,17 @@
+3.3 Candidate Pattern Generation After all these MIG
+counters have been gathered, for each position of a period (of
+length ), we keep all events with positive MIG as the candidate
+events for this position as shown in Figure 7(b). The candidate
+complex patterns10 of period  can be generated iteratively. A
+pattern        is constructed each time by assigning
+each position  either an event in the corresponding candidate
+event set or eternal event. Let "  is the MIG count for
+the singular pattern            with  at the th position.
+If  "  
+ , this pattern will be taken as a candidate
+pattern to the verification process presented later in this
+section. Otherwise, this generated pattern is simply discarded
+since it is impossible for this pattern to meet the generalized information
+gain threshold . For example, Figure 7(c) shows the
+set of candidate patterns generated from the candidate events in
+Figure 7(b) with the threshold   .

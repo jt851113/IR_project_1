@@ -1,0 +1,57 @@
+Consider rst a simplied case, where we have only a sin-
+gle verier node v, where the region R is a circle1, and where
+this circle is centered at v. This scenario is shown pictorially
+in Figure 1. Now, suppose that the prover claims to be at
+some location ` 2 R inside the region.
+We present a simple protocol for validating the location
+claim in this restricted case. First note that if the claimed
+location ` is not inside R, then the verier can reject the
+claim immediately. Thus, we may safely assume that the
+prover claims to be inside R. The protocol begins when
+the verier node v sends a packet containing a nonce to the
+prover using RF; the prover immediately echoes the packet
+back to the verier using ultrasound. The verier node v
+can then calculate how long it should take to hear the echo,
+namely, the sum of the time it takes to reach ` using RF, plus
+the time it takes for a return packet to go from ` to v using
+ultrasound. Thus, the total elapsed time for the prover to
+hear the echoed nonce should be about d(v; `)=c + d(v; `)=s
+seconds. The only thing v has to do is time this process: If
+the elapsed time from the initial transmission to reception of
+the echo packet is more than this amount, the verier node
+v rejects the prover's claim; otherwise, if the elapsed time is
+at most this expected amount, v accepts. This protocol is
+summarized in Figure 2.
+Why does this work? If the prover is able to return the
+packet in sucient time, then the verier is assured that
+the prover is within d(v; `) meters of v. This means that `
+is known to be inside a circle of radius d(v; `) centered at v.
+Call this circle C; then we know ` 2 C. Since R is dened
+to be a circle of radius at least d(v; `) centered at v, we have
+1In practice, the region is a sphere, instead of circle. How-
+ever, for simplicity, our discussion will be phrased in terms
+of circles in the plane. This simplication will make the pro-
+tocol easier to understand and does not aect the validity
+of our results.
+C  R, and hence ` 2 R. In short, we know that the prover
+must be inside R.
+If the prover cannot return the nonce in sucient time,
+it may be for one of two reasons. Either the prover is more
+than d(v; `) meters away from v, or the prover has some pro-
+cessing delay between receiving the RF packet and returning
+the ultrasound packet. We will explore this latter issue in
+the following section.
+What if the prover tries to cheat by delaying his response?
+This attack only increases the total elapsed time of the pro-
+cess, thereby making the verier reject. Intuitively, the
+longer it takes to complete the protocol, the farther away
+the prover appears to be. It is not in the prover's inter-
+est to appear to be farther from v, because this will put
+the prover's apparent location outside of R, hence making v
+reject the prover's claim.
+Can the prover cheat by starting the transmission of the
+response early? No, this attack is not possible. The nonce in
+the packet prevents the prover from sending a reply before
+it has received the outgoing RF packet. Hence, the speed of
+light and sound prevents the prover from pretending to be
+closer to v than he really is.

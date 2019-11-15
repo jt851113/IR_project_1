@@ -1,0 +1,26 @@
+This paper addresses the challenging problem of similarity search
+over widely distributed ultra-high dimensional data. Such an application
+is retrieval of the top-k most similar documents in a widely
+distributed document collection, as in the case of digital libraries.
+Peer-to-peer (P2P) systems emerge as a promising solution to delve
+with content management in cases of highly distributed data collections.
+We propose a self-organizing P2P approach in which an
+unstructured P2P network evolves into a super-peer architecture,
+with super-peers responsible for peers with similar content. Our approach
+is based on distributed clustering of peer contents, thus managing
+to create high quality clusters that span the entire network.
+More importantly, we show how to efficiently process similarity
+queries capitalizing on the newly constructed, clustered super-peer
+network. During query processing, the query is propagated only
+to few carefully selected super-peers that are able to return results
+of high quality. We evaluate the performance of our approach and
+demonstrate its advantages through simulation experiments on two
+document collections.
+Categories and Subject Descriptors
+H.3.3 [Information storage and retrieval]: Information search
+and retrieval; H.3.1 [Information storage and retrieval]: Content
+Analysis and Indexing
+General Terms
+Algorithms, Design, Performance
+Keywords
+Distributed and peer-to-peer search, semantic overlay networks

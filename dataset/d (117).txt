@@ -1,0 +1,19 @@
+Figure 6 (on p. 45) shows a sample document from
+the “digital watermark” search. The links at the top
+jump to the first occurrence of the query terms in
+the document, and indicate the number of occurrences.
+Each query term within the text also links
+to the next use of the term. Such linking and highlighting
+helps users quickly identify page relevance.
+The NECI engine can also track query results and
+page contents, automatically informing users when
+new matching documents are found or when a
+given page has been modified (“Track page”).
+Currently, the NECI engine uses two forms of
+caching. The engine caches all downloaded pages
+for a limited time period, and query terms and links
+are added on demand. The engine also caches the
+top 20 relevance-ranked results from each query. If
+a user repeats the query, these pages are the first displayed—
+if they still exist and contain the query
+terms.

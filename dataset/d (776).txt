@@ -1,0 +1,93 @@
+We now present wave scheduling, a class of simple activation
+schedules and associated routing protocols that achieve
+scalability and energy-efficiency with modest delay penalties.
+As discussed in Section II, we assume that the nodes of
+the sensor network are organized in a grid with only nearestneighbor
+communication allowed. Our goal is to compute a
+periodic edge activation schedule and an associated routing
+scheme for nodes arranged in such a grid, where the number
+of destinations (sites at which queries are posed) is modest.
+Tree Scheduling. Consider first a network with only a
+single view server. The edges of an optimal activation schedule
+form a spanning tree. A natural schedule for such a tree
+simply activates edges in reverse order of their distance (in the
+tree) from the view server, enabling a message to propagate
+from any leaf of the tree to the view node in a single
+scheduling period. Routing in a tree is trivial: each non-view
+node forwards every message it receives to its parent. We note
+that this use of a tree to route messages from sensor nodes to a
+specific server is not new. For example, it is a key component
+of the TAG method for handling aggregate queries [32].
+The above discussion ignores the effect of interference
+between edges, which could arise in the “bottom-up” schedule
+owing to the simultaneous activation of edges that are within
+collision range of one another. In fact, the immediate children
+of a tree node, which are always activated together, are certain
+to be within collision range. Thus, even when there is only a
+single view, this approach demands an effective MAC protocol.
+We next consider the more realistic case of a network with
+multiple view servers. To generalize tree scheduling to handle
+this case, we construct a forest containing one spanning tree
+rooted at each of the view servers. An edge activation schedule
+for the entire forest can then be derived from schedules for the
+individual trees in several ways. At one extreme is a conservative
+schedule, which is simply a concatenation of schedules
+for the individual trees, activating edges of each spanning tree
+in succession. At the other extreme, an aggressive schedule
+activates all the trees in parallel. Neither scheme scales well.
+With a conservative schedule, message latency grows linearly
+with the number of views.With an aggressive schedule, energy
+consumption grows linearly. In addition, an aggressive schedule
+tends to generate many more collisions, further increasing
+energy consumption (due to message retransmissions) and
+reducing network capacity.
+Wave Scheduling. With the above motivation, we can
+now describe our wave scheduling technique, by which we
+avoid the scaling problems inherent in tree scheduling. Recall
+that tree scheduling handles multiple destination view nodes
+by computing a separate activation schedule for each view
+and then combining the schedules. Scaling problems arise
+because there is no obvious way to combine schedules without
+increasing either the period or the collision frequency.
+To avoid these problems, we can compute a single “generalpurpose”
+schedule, in which every edge of the network is
+activated exactly once per period, and which is guaranteed
+to have no collisions. Since every edge is activated infinitely
+often, it is always possible to route a message between any
+connected pair of nodes using such a schedule.
+Unfortunately, even though a path can be followed in
+principle, its latency may be unacceptably high if the path and
+activation schedule do not “fit” together well. For example,
+suppose a path enters node along edgeand leaves it along
+. Each message arriving along must be queued at until the next time
+is scheduled. Ifis activated just
+before in the schedule, the message must wait nearly a full
+period in
+’s queue before it can be forwarded (during the next
+iteration of the schedule). In the worst case, this phenomenon
+occurs at every node along the path. The resulting message
+latency (the product of the path length and scheduling period)
+is unacceptable for most applications.
+Thus, we seek an activation schedule and associated routing
+algorithm that yield a “reasonably” low-latency path from
+any source node to any view server. Wave Scheduling is our
+proposed solution.
+Periodic Activation Schedules. In a wave schedule, horizontal
+and vertical communication edges are activated in a
+periodic sequence of phases. Each phase has a direction –
+north, east, south or west – along which a “wave” of messages
+traverses the grid for some number of steps. For example, in a
+north-going phase there is a pattern of non-interfering north-
+going edges, containing at least one edge in each column
+(assuming the sensor network contains a large number of
+cells). The edges are activated simultaneously, then the entire
+pattern shifts north by one cell, wrapping around between the
+north and south edges of the grid as necessary to maintain the
+integrity of the pattern. This process is repeated one or more
+times for the duration of the phase. The east, south and west
+waves are scheduled analogously.
+The preceding framework admits a number of different activation
+schedules. Due to space constraints, we only mention
+one schema that we call SimpleWave, which is illustrated in
+Figure 3. Due to space constraints, we omit the description of
+the impact of wave scheduling on routing.

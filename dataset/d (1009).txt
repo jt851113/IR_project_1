@@ -1,0 +1,141 @@
+In this paper we showed that Kleinberg's connectivity
+analysis has three problems. We presented various algorithms
+to address them. The simple modication suggested
+in algorithm imp achieved a considerable improvement
+in precision. Precision was further improved by
+adding content analysis, with algorithms medr, pca0 and
+pca1 being the most promising. In our current implementation
+pca0 and pca1 compute ranking with a relatively
+fast turnaround (about 3 minutes) when using the Connectivity
+Server to compute the graph.
+For authorities, pca1 seems to be the best algorithm
+overall. It provides enough of an improvement over imp
+to justify the overhead of analyzing a small set of documents.
+For hubs, medr is the best general-purpose algorithm,
+but if term vectors are not available for the documents
+in the collection, we suggest using imp. In each
+case the best algorithm improves precision over baseline
+Kleinberg by at least 45%.
+This approach is limited to topics that are well represented
+and well connected on the Web. Additionally, this
+work assumes that the results of a search service query
+denes a good start set, which is debatable. It would be
+interesting to apply query expansion and clustering to
+produce a better start set.
+Hypertext encourages documents to be split up into
+pieces. One could argue that what users are looking for
+on the Web are good sites, containing a set of connected
+documents on the topic, rather than individual documents.
+Connectivity based ranking schemes might serve
+this purpose well since they have a tendency to return
+the root document within a site, which is a good starting
+point for exploration. This happens because external
+hyperlinks most often link to the root document, even if
+it does not have much content.
+References
+[1] AltaVista, www.altavista.digital.com/
+[2] Anick, P.G. 1994 \Adapting a Full-text Information
+Retrieval System to Computer the Troubleshooting
+Domain." Proc. of ACM SIGIR '94
+pp. 349{358.
+[3] Anick, P.G. and Vaithyanathan, S. 1997. \Exploiting
+Clustering and Phrases for Context-
+Based Information Retrieval." Proc. of ACM
+SIGIR '97 pp. 314{323.
+[4] Bharat, K., Broder, A., Henzinger, M., Kumar,
+P., and Venkatasubramian, S. 1998. \The Connectivity
+Server: Fast Access to Linkage Information
+on the Web.", Proc. of 7th World Wide Web
+Conference, pp. 469{477, available as www7.conf.
+au/programme/fullpapers/1938/com1938.htm
+[5] Bourdoncle, F. 1997 \LiveTopics: Recherche Visuelle
+d'Information sur l'Internet." Dossiers de
+l'Audiovisuel, La Documentation Francaise No.
+74 (July-Aug 1997), pp. 36{38.
+[6] Chakrabarti, S., Dom, B., Gibson, D., Kleinberg,
+J., Raghavan P., and Rajagopalan, S. 1998 \Automatic
+Resource Compilation by Analyzing Hyperlink
+Structure and Associated Text" Proc. of
+7th World Wide Web Conference, pp. 65{74.
+[7] Chu, H. and Rosenthal, M. 1996 \Search Engines
+for the World Wide Web: A Comparative
+Study and Evaluation Methodology." Proc.
+of ASIS 1996 Annual Conference.
+[8] Cronin, B. and Snyder, B. 1996 \Citation Indexing's
+Achilles Heel? Evaluative Bibliometrics
+and Non Coverage of the Monographic
+Literature." www.slis.indiana.edu/Research/
+cronin-achilles.html
+[9] Croft, W.B., Cook, R., and Wilder, D. 1995.
+\Providing Government Information on the Internet:
+Experience with `THOMAS'." U. of Mass.
+Technical Report 95{45.
+[10] Cutting, D.R., Karger, D.R., Pedersen, J., and
+Tukey, J.W. 1992. \Scatter/Gather: A Cluster-
+Based Approach to Browsing Large Document
+Collections." Proc. of ACM SIGIR '92.
+[11] Ding, W. and Marchionini. G. 1996 \Search Engines
+for the World Wide Web: A Comparative
+Study and Evaluation Methodology." Proc.
+of ASIS 1996 Annual Conference.
+[12] Efthimiadis, E.N. 1993 \A User-Centered Evaluation
+of Ranking Algorithms for Interactive Query
+Expansion", Proc. of ACM SIGIR '93, pp. 146{
+159.
+[13] Excite, www.excite.com/
+[14] Golub, G., Van Loan, C. F., \Matrix Computations",
+Johns Hopkins University Press, Baltimore,
+1989.
+[15] Harman, D.K. 1988 \Towards Interactive Query
+Expansion." Proc. of ACM SIGIR '88 pp. 321{
+331.
+[16] Infoseek, www.infoseek.com/
+[17] Harman, D.K. 1995 \The TREC Conferences" R.
+Kuhnlen and M. Rittberger (Eds.) Hypertext {
+Information Retrieval { Multimedia: Synergieeffekte
+Elektronischer Informationssysteme, Proc.
+of HIM '95 pp. 9{28.
+[18] Hearst, M. 1997 \Distinguishing between Web
+Data Mining and Information Access: Position
+Statement." KDD '97 Panel on Web Data Mining.
+[19] Hearst, M. and Karadi, C. 1997 \Cat-a-Cone: An
+Interactive Interface for Specifying Searches and
+Viewing Retrieval Results using a Large Category
+Hierarchy." Proc. of ACM SIGIR '97, pp. 246{
+255.
+[20] Karlin, S., Taylor, H. M., \A rst course in
+stochastic processes", Academic Press, London,
+1975.
+[21] Kleinberg, J. 1998. \Authoritative sources in a
+hyperlinked environment." Proc. of 9th ACMSIAM
+Symposium on Discrete Algorithms. Also
+appeared as IBM Research Report RJ 10076, May
+1997.
+[22] Larson, R.R. 1996 \Bibliometrics of the World
+Wide Web: An Exploratory Analysis of the Intellectual
+Structure of Cyberspace." Proc. of ASIS
+'96 Annual Conference.
+[23] Marchionini, G. 1992. \Interfaces for End-User
+Information Seeking." Journal of the American
+Society for Information Science, 43(2):156{163.
+[24] Magennis, M. and van Rijsbergen, C.J. 1997 \The
+Potential and Actual Eectiveness of Interactive
+Query Expansion." Proc. of ACM SIGIR '97, pp.
+324{332.
+[25] Page, L. 1997 \PageRank: Bringing Order to the
+Web." Stanford Digital Libraries Working Paper,
+1997{0072.
+[26] Pirolli, P., Pitkow, J., and Rao, R. 1996 \Silk
+from a sow's ear: Extracting usable structures
+from the Web." Proc. of ACM SIGCHI '96, pp.
+118{125.
+[27] Porter, M.F. 1980 \An Algorithm for Sux Stripping."
+Program, 14, 130{137.
+[28] Salton, G. and Buckley, C. 1988. \Term-
+Weighting Approaches in Automatic Text Retrieval."
+Information Processing and Management,
+24(5), 513{23.
+[29] Velex, Weiss R., Sheldon M. A., Giord, D. K.
+1997. \Fast and Eective Query Renement."
+Proc. of ACM SIGIR '97, pp. 6{15.
+[30] Yahoo!. www.yahoo.com/

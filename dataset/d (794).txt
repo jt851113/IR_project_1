@@ -1,0 +1,18 @@
+Figure 3 plots the execution time for the interleaved
+and sequential algorithms as support is varied from 1% to
+25%. With support set to 1%, the interleaved algorithm
+is only about 5% faster than the sequential algorithm. This
+is because the number of large itemsets (both cyclic and
+otherwise) at this level of support is fairly small and the
+interleaved algorithm does not incur a significant benefit
+from its pruning techniques. As support decreases, the
+amount of wasted work done by the sequential algorithm
+increases significantly as the number of itemsets found to
+be large by the sequential algorithm increases. (Many of
+these large itemsets and the rules derived from them later
+turn out to not contribute to useful cyclic association rules.)
+The interleaved algorithm, from early on, concentrates only
+on large itemsets that can contribute to cycles and benefits
+from this strategy. The result is that the running time of the
+sequential algorithm is more than 50% higher than that of
+the interleaved algorithm, when support  025%.

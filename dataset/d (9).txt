@@ -1,0 +1,79 @@
+[1] Forest of sensors project.
+http://www.ai.mit.edu/projects/vsam/.
+[2] TinyOS: An operating system for networked sensors.
+http://tinyos.millennium.berkeley.edu/.
+[3] Tools for programming rene motes.
+http://tinyos.millennium.berkeley.edu/release/tos-
+latest.tar.gz.
+[4] L. Doherty, L. E. Ghaoui, and K. S. J. Pister. Convex
+position estimation in wireless sensor networks. In
+Proceedings of IEEE INFOCOM, Alaska, April 2001.
+[5] S. Goel and T. Imielinski. Prediction-based
+monitoring in sensor networks: Taking lessons from
+mpeg. Technical Report DCS-TR-438, Rutgers
+University, June 2001.
+[6] R. Harding and D. Quinney. Simple Introduction to
+Numerical Analysis : Interpolation and
+Approximation. Adam Hilger Ltd, 1989.
+[7] J. Heidemann, F. Silva, C. Intanagonwiwat,
+R. Govindan, D. Estrin, and D. Ganesan. Building
+eAcient wireless sensor networks with low-level
+naming. In Proceedings of the Symposium on Operating
+Systems Principles, Ban, Canada, October 2001.
+[8] W. Heinzelman, A. Chandrasekaran, and
+H. Balakrishnan. Energy-eAcient communication
+protocol for wireless microsensor network. In
+
+Proceedings of the 33rd Hawaii International
+Conference on System Sciences (HICSS '00), January
+2000.
+[9] J. Hill, R. Szewczyk, A. Woo, S. Hollar, and K. P.
+D. Culler. System architecture directions for
+networked sensors. In Proceedings of the 9th
+International Conference on Architectural Support for
+Programming Languages and Operating Systems,
+November 2000.
+http://tinyos.millennium.berkeley.edu/papers/tos.pdf.
+[10] T. Imielinski and S. Goel. Dataspace { querying and
+monitoring deeply networked collections in physical
+space. IEEE Personal Communication Magazine,
+Special issue on "Networking the physical world, pages
+4{9, October 2000.
+[11] C. Intanagonwiwat, R. Govindan, and D. Estrin.
+Directed diusion: A scalable and robust
+communication paradigm for sensor networks. In
+Proceedings of 6th Annual ACM/IEEE International
+Conference on Mobile Computing and Networking
+(MobiCom '00),Boston, August 2000.
+[12] J. Kulik, W. Rabiner, and H. Balakrishnan. Adaptive
+protocols for information dissemination in wireless
+sensor networks. In Proceedings of 5th Annual
+ACM/IEEE International Conference on Mobile
+Computing and Networking (MobiCom '99), Seattle,
+WA, 1999.
+[13] D. Niculescu and B. Nath. Ad-hoc positioning system.
+Technical Report DCS-TR-435, Rutgers University,
+April 2001. To appear in the Proc. of IEEE Globecom,
+November 2001.
+[14] G. Pottie and W. Kaiser. Wireless integrated network
+sensors. Communications of ACM, 43(5), May 2000.
+[15] J. Rabaey. Silicon platforms for the next generation
+wireless systems - what role does recongurable
+
+hardware play? In Proceedings FPL 2000, Austria,,
+August 2000.
+[16] A. Savvides, C.-C. Han, and M. Srivastava. Dynamic
+ne-grained localization in ad-hoc networks of sensors.
+In Proceedings of 6th Annual ACM/IEEE
+International Conference on Mobile Computing and
+Networking (MobiCom '01), Los Angeles, August
+2001.
+[17] M. Srivastava. Energy eAcient wireless systems. In
+Submitted for publication in DIMACS Summer School
+on Foundations of Wireless Networks and
+Applications, August 2000.
+[18] L. Subramanium and R. Katz. An architecture for
+building self-congurable systems. In IEEE/ACM
+workshop on Mobile Ad Hoc Networking and
+Computing (MobiHOC '00), Boston, August 2000.
+[19] J. Watkinson. MPEG-2. Local Press, 1999.

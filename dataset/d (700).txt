@@ -1,0 +1,78 @@
+With our first set of experiments, we demonstrate the flexibility
+of our arhcitecture in harvesting the processing power available in
+the system. We consider four different architectures each of which
+is a viable alternative for our application. We show results for five
+query workloads, QW-1, QW-2, QW-3, QW-4, consisting of randomly
+generated queries of types 1 to 4 respectively, and QW-Mix,
+a mixed query workload that asks 40% queries of type 1 and 2 each,
+15% queries of type 3 and 5% queries of type 4.
+ Centralized – Figure 6(i): In this architecture, all the data is
+located at a central server, and data updates as well as queries
+are sent to a central server. Such an architecture can not be
+expected to scale very well as it can handle very few sensor
+updates (200 updates per second).
+ Centralized querying, distributed update – Figure 6(ii): In
+this scenario, we offload the sensor updates to other machines
+by distributing the blocks among the rest of the machines.
+The queries are still sent to the centralized server, because
+the server is the sole repository for the mapping from blocks
+to physical machines. This scenario is intended to simulate
+a simple distributed object-relational database, where the
+blocks form an object-relational table that is distributed and
+the hierarchy is maintained as another set of tables that are
+all stored at the central server. Of course, this is not the only
+possible design using an object-relational database, but most
+such designs will suffer from similar flaws as this design.
+(Object-relational sensor databases are discussed further in
+Section 6.)
+ Distributed querying, distributed update, fixed two-level
+organization – Figure 6(iii): This scenario is similar to the
+above scenario, except that we use the DNS server to store
+the mapping from blocks to physical machines. This helps in
+solving the queries of type 1 significantly, but does not help
+much with other kinds of queries.
+ Distributed querying, distributed update, hierarchical organization
+– Figure 6(iv): A more logical organization of the
+data, considering the nature of the query workloads, would
+be to arrange it hierarchically in a geographic fashion. We
+do this by assigning the 6 neighborhoods to 6 different site,
+assigning the 2 cities to two different sites, and assigning the
+rest of the hierarchy to one site. This corresponds to the scenario
+of choice in IrisNet.
+Note that all architectures use the same number of sensor proxies,
+and the latter three architectures use the same number of sites.
+Figure 7 shows the query throughputs for these four architectures
+for the five query workloads. As we can see, the centralized
+solution does not scale very well for querying either, and can handle
+very few queries efficiently. Although distributing only the updates
+(Architecture 2) increases the number of sensor data updates
+the system is able to handle, it only improves query throughput by
+a factor of 2 over the centralized solution, because all queries go
+through the centralized server. Using DNS for self-starting distributed
+queries (Architecture 3) shows the effectiveness of this
+technique, as the throughput for type 1 queries increases by nearly
+an order of magnitude. However, all other queries still go through
+the central server, which is the bottleneck for the other types of
+queries, and also for the mixed workload. The hierarchical distribution
+of data (Architecture 4) turns out to perform the best overall
+as it can handle all kinds of queries quite well. It does perform
+25% worse than Architecture 3 for type 1 queries, because it is
+using 25% fewer machines in processing these queries. However,
+it performs at least 66% better than the other architectures on the
+mixed workload.
+Because the mapping of logical nodes in the hierarchy to the
+physical sites is not fixed in our architecture, our system is able
+to handle the skewed query workloads arising in our application
+much more effectively than other architectures. For example, during
+business hours, a large percentage of the queries may be asking
+for information for blocks in the Downtown neighborhood. Such a
+skewed query workload can be much better handled by redistributing
+those blocks across all available machines, as opposed to them
+being on a single node as in the above mapping. Figure 8 shows the
+results of a simple experiment where we skewed the query workload
+to consist of 90% queries targetting a single neighborhood for
+type 1 and type 2 queries. As we can see, the original distribution
+of the data (Architecture 4) does not perform very well, whereas a
+more balanced architecture that distributes the blocks in that neighborhood
+across all sites has a factor of 4 higher throughput for this
+workload.

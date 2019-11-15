@@ -1,0 +1,14 @@
+Object tracking is considered as one of the killer applications
+for sensor networks. There are a lot of research
+issues in design and implementation of the object
+tracking sensor networks (OTSNs), including data
+fusion, aggregation, routing, and energy conservation,
+etc. Among those, energy conservation is one of the
+most critical one. Like other sensor networks, the
+OTSN is driven by scarce energy resource and faces
+the energy limitations. Therefore, energy saving is
+the major issue to be addressed in this paper. In the
+following, we first provide some background of the OTSNs,
+describe the assumptions we made in this paper,
+and discuss the factors that contribute to energy consumption
+and design complexity of the OTSNs.

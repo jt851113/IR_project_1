@@ -1,0 +1,106 @@
+The idea in velocity density estimation is to estimate the
+rate at which the changes in the data density are occurring
+at each spatial location based on some user-defined
+temporal window ht. In general, when a user is faced with
+a massive data stream, there are several interesting
+questions which arise: for example, what are the spatial
+locations at which the data is increasing, reducing, or
+shifting to? What is the level of change in the data
+characteristics occurring at different spatial locations?
+Intuitively, the temporal window ht is associated with the
+time horizon over which the rate of change is measured.
+Thus, if ht is chosen to be large, then the velocity density
+estimation technique provides long-term trends, whereas if
+ht is chosen to be small, then the trends are relatively short
+term. This provides the user flexibility in analyzing the
+changes in the data over different kinds of time horizons. In
+addition, we have a spatial smoothing vector hs whose
+function is quite similar to the standard spatial smoothing
+vector which is used in kernel density estimation.
+Let t be the current instant and S be the set of data points
+which have arrived in the time window et  ht; tT. We
+intend to estimate the rate of increase in density at spatial
+location X and time t by using two sets of estimates: the
+forward time slice density estimate and the reverse time slice
+density estimate. Intuitively, the forward time slice estimate
+measures the density function for all spatial locations at a
+given time t based on the set of data points which have
+arrived in the past time window et  ht; tT. Similarly, the
+reverse time slice estimate measures the density function at
+a given time t based on the set of data points which will
+arrive in the future time window et; t t htT. Let us assume
+that the ith data point in S is denoted by, where i varies from 
+1 to . Then, the forward time slice estimate of the set S at the 
+spatial location X and time t is given by:
+Here; is a spatiotemporal kernel smoothing
+function, hs is the spatial kernel vector, and ht is temporal
+kernel width. The kernel function ; t is a
+smooth distribution which decreases with increasing value
+of t  ti. The value of Cf is a suitably chosen normalization
+constant, so that the entire density over the spatial plane is
+one unit. This is done because our purpose of calculating
+the densities at the time slices is to compute the relative
+variations in the density over the different spatial locations.
+Thus, Cf is chosen such that we have:
+The reverse time slice density estimate is also calculated in a
+somewhat different way from the forward time slice density
+estimate. We assume that the set of points which have
+arrived in the time interval  is given by U. As
+before, the value of Cr is chosen as a normalization
+constant. Correspondingly, we define the value of the
+reverse time slice density estimate ; tT as follows:
+Note that in this case, we are using ti  t in the argument
+instead of t  ti. Thus, the reverse time-slice density in the
+interval  would be exactly the same as the forward
+time slice density if we assumed that time was reversed and
+the data stream arrived in reverse order, starting at t t ht
+and ending at t. Examples of the forward and reverse
+density profiles are illustrated in Figs. 1 and 2, respectively.
+We note that Figs. 1 and 2 are quite similar except for a few
+subtle differences at various places.
+For a given spatial location X and time T, let us
+examine the nature of the functions Fehs;  and
+ Note that both functions are almost
+exactly the same and use the same data points from the
+interval , except that one has been calculated
+assuming time runs forward, whereas the other has been
+calculated assuming that the time runs in reverse.
+Furthermore, the volumes under each of these curves,
+when measured over all spatial locations X, is equal to
+one unit because of the normalization. Correspondingly,
+the density profiles at a given spatial location X would
+be different between the two depending upon how the
+relative trends have changed in the intervala greater number of
+points which are closer to X have arrived at the end of the
+interval. On the other hand, when a greater number of
+points which are closer to X are at the beginning of the
+interval then the velocity density is negative at
+the spatial location. If the trends have largely remained
+unchanged over the interval, then the velocity density at the
+location X will be almost zero. Thus, the velocity density at
+a given point provides an intuitive understanding of the
+rate of change of the density at that spatial location over the
+time horizon A global overview of the rate of
+changes of densities at different points specific to the time T
+is referred to as the temporal velocity profile. An example of a
+temporal velocity profile (which will be discussed in a
+greater detail in the empirical section) is illustrated in Fig. 3.
+Note that the total volume which is trapped between the
+temporal velocity profile curve and the spatial axis plane is
+at most 2=ht, since the total volume under each of the
+forward and reverse time slice density curves is exactly one
+unit. The larger this volume, the greater the total amount of
+evolution that has occurred. We note that the velocity density
+may also be interchangeably referred to as the evolution
+density, since it refers to the rate of evolution of the
+underlying data. We note that the term velocity density is
+more intuitive for spatial applications, whereas the term
+evolution density is more intuitive for real applications
+which do not necessarily have spatial interpretation. In
+order to retain consistency in terminology, we will refer to
+the technique as velocity density, though the term evolution
+density may have better interpretation for many applications.
+In a later section, we will discuss how the volume
+under the evolution density curve may be used in order to
+provide evolution rates for a data stream which are
+intuitively comprehensible to a user

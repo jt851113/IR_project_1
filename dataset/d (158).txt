@@ -1,0 +1,22 @@
+In this section, we use the concept of instance optimality
+[5] to show that our proposed round-robin iteration method
+is instance optimal with a constant factor.
+Let A be a class of algorithms, and let D be a class of
+legal inputs with at most O(1) points having same value on
+any dimension. If the time cost of the algorithm  on
+data  is C(A,D), an algorithm  is said to be
+instance optimal if it satisfies the following condition.
+Definition 4.3. [5] An algorithm  is instance optimal
+in A on D if C(Ai,D) = O(C(Aj,D)) for any 
+and .
+In the following part of the section, we prove that roundrobin
+iteration is such an instance optimal iteration method
+based on the sorted arrays.
+Lemma 4.4. If a point p can be pruned by any iteration
+method after t comparisons, it can be pruned by round-robin
+after at most O(td) comparisons.
+Lemma 4.5. If any iteration method can assert that point
+p is a k-dominant skyline point after t comparisons, roundrobin
+method can assert it after at most O(td) comparisons.
+Theorem 4.6. Round-robin iteration is instance optimal
+in the iteration method class A and data sets D.

@@ -1,0 +1,8 @@
+5.2.3 Statistically Significant Patterns There are much
+work in discovering statistically significant patterns [5, 18, 27].
+All those work only takes into account the occurrence of a pattern
+in a sequence or a transaction. However, it does not assign
+any penalty if a pattern fails to be present when it is supposed
+to. In addition, all those work only discovers the significant
+patterns for the entire data set, and does not identify the subsequence
+(subset) where a pattern is significant.

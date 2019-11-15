@@ -1,0 +1,21 @@
+While the SON creation process can be performed at regular intervals
+(as shown in [6] the cost of constructing the hierarchical
+structure is acceptable, the burden on each peer is in general less
+than the typical load from various web crawlers accessing the site),
+new peers joining should also become members of SONs and thus
+contribute to the results of similarity search. This is achieved by
+the peer joining the SON with the highest similarity to its contents.
+Note that no other changes will be performed to existing SONs
+(and their CDs) when new peers join, so after a while a cluster description
+might become less accurate. However, SON creation is
+performed at regular intervals and it creates a new peer and data
+organization that reflects also the data of new nodes. In this way,
+new or modified documents, which have changed the feature vectors
+of existing peers, are also taken into account. This strategy
+considerably reduces the maintenance cost in terms of communication
+bandwidth compared to incremental reclustering, and also
+avoids the significant computational cost that could be the result of
+continuous reclustering.
+Churn during overlay creation is handled by k-replication, while
+multiple connections between peers in a SON assure a low probability
+of SON partitioning.

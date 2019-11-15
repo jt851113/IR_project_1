@@ -1,0 +1,21 @@
+We have started to implement a prototype of our query
+processing layer in the ns-2 network simulator [4]. Ns-2
+is a discrete event simulator targeted at simulating network
+protocols to highest fidelity. Due to the strong interaction
+between the network layer and our proposed
+query layer, we decided to simulate the network layer
+to a high degree of precision, including collisions at
+the MAC layer, and detailed energy models developed
+by the networking community. In our experiments, we
+used IEEE 802.11 as the MAC layer [36], setting the
+communication range of each sensor to 50m and assuming
+bi-directional links; this is the setup used in
+most other papers on wireless routing protocols and
+sensor networks in the networking community [14].
+In our energy model the receive power dissipation is
+395mW, and the transmit power dissipation is 660mW
+[14]. (This matches numbers from previous studies.)
+There are many existing power-saving protocols that
+can turn the radio to idle [35, 27], thus we do not take
+the energy consumption in the idle state into account.
+Sensor readings were modeled as 30 bytes tuples.6

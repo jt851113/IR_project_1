@@ -1,0 +1,76 @@
+In addition to the challenges facing a mobile centralized
+system, there are more issues associated with adapting a
+distributed publish/subscribe architecture to a mobile en-
+vironment. Because EDs often move around, an ED may
+disconnect and connect to a dierent EB quite often. When
+the ED reconnects to a dierent EB, two things need to hap-
+pen. First, the new EB needs to be informed of the ED's
+subscription so that the routing tree can be adjusted to di-
+rect relevant events this way. Second, the new EB needs to
+obtain all the events queued on behalf of the ED while the
+ED was disconnected and deliver them to the ED. For both
+tasks, the new EB may contact the EB previously in charge
+of the user's subscription to obtain the information as part
+of a \hando" protocol ([8]).
+Alternatively, however, an ED can carry its own subscrip-
+tion information, and upload it onto the new EB when the
+ED reconnects. The advantage of this approach is that the
+ED can still receive new events even if the old EB is tem-
+porarily down or partitioned from the new EB. (Of course
+the new EB still needs to attempt contact with the old EB
+periodically to cancel the old subscriptions.)
+The potential downside is that the ED may end up with
+more than one EBs monitoring the same subscription for
+it. Reference [11] proposes several schemes for mobile hand-
+held devices which ensure that the ED receives the same
+message exactly once. For example, one variation requires
+the ED to keep a log of its past connections, which includes a
+timestamp and the id of the EB for each connection. When-
+ever the ED makes a new connection, this information is
+uploaded to the new EB, which uses it to check for any
+potential danger of duplicate delivery. For instance, events
+generated after the ED's last previous connection can safely
+be delivered. Moreover, if another EB cannot be contacted
+at the moment, but the log shows that the last connection
+to that EB happened \long enough" ago in the past, then
+queued events may still be delivered without worrying about
+duplication.
+The subscription hando protocol needs to be designed care-
+fully so that, as the new routing information slowly perco-
+lates up the forwarding tree, no event from any potential
+source is lost. Ideally the same event should not be delivered
+both to the old and to the new EBs (unless the alternative
+approach above is taken). If that is impossible to guarantee,
+however, mechanisms to eliminate duplicates will be needed
+again.
+Because a wireless device can be turned o or disconnected
+for long periods of time, a lot of missed events can accrue in
+the meantime. Even if storage at the EB is not a concern
+(which can be in an ad-hoc environment, for example), the
+sheer amount of time and precious wireless bandwidth re-
+quired to transmit all of the queued events to the ED when it
+reconnects might be unreasonable. Again, knowledge about
+the semantics of a subscription often helps. For example,
+an EB can purge old events from the queue if it knows that
+the subscription is time-sensitive. Or it may keep only the
+more \important" events (e.g. the current high water mark
+if the client is interested in only maximums).
+In a wireless system, it is sometimes possible to further op-
+timize the connection behavior by using an \integrated" ap-
+proach. Base stations are used as access points of wireless
+devices into the xed network. A wireless device is con-
+trolled by one and only one base station at any time it
+is connected. When it moves out of the range of an old
+base station and into the range of a new one, a wireless
+hando protocol is invoked. Naturally, the base stations
+are ideal candidates as Event Brokers in a distributed pub-
+lish/subscribe system. In this case, subscription hando can
+be handled as merely an additional step in wireless connec-
+tivity hando, thus saving valuable time and resources.
+Figure 6: Replicated publish/subscribe.
+The discussion thus far in this section has assumed that
+the EBs are placed in the xed network for eciency and
+robustness. In an ad-hoc network where the EBs have to be
+mobile, additional problems arise similar to those discussed
+in Section 3.1. We do not discuss these issues due to space
+limitations

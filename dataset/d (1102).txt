@@ -1,0 +1,43 @@
+Many research efforts have been conducted for determining
+the feasibility of P2P Web search, mostly focusing on
+scalability and bandwidth consumption [3, 11, 13, 21, 22].
+None of these, however, has addressed the bootstrapping
+problem or the added value of collaborative approaches. The
+authors of Chora [7] and Sixearch [1] use decentralized architectures
+for sharing and leveraging users’ search experiences
+and addressing context limitations of centralized search engines.
+Note that using distributed techniques for enhancing
+the quality of service of existing centralized systems has been
+already considered sound in other contexts, such as for availability
+in [15]. In that paper, the authors define the concept
+of a “P2P-izer”: a complementary P2P system working with
+some centralized system. We go one step further as the P2P
+system is actually adding value to the system and not only
+strengthening it.
+The personalization of search results for some user based
+on his interest profile was proposed by [23, 24]. None of
+these systems use interest profiles for improving search results
+in a collaborative manner and not for just one single
+user but all of them. Recent work [2, 19] explores the use of
+social annotations to improve Web search, based on online
+bookmarking platforms such as del.icio.us. A drawback of
+this approach is that such services requires more effort from
+the user to bookmark and annotate the items he accesses.
+An automatic system is certainly more effective at attracting
+users.
+A decentralized storage specifically designed for P2P Web
+search has been proposed in [10] for term frequency–inverse
+document frequency (TF-IDF). The authors present the priority-
+based and packing-based routing techniques that our
+system also uses. Nonetheless, they do not provide any
+mechanism for dealing with the skewness of terms popularity,
+and they do not deal either with the terms extraction,
+nor use user-centric information to answer the queries.
+Similarly, Lopes et al. have proposed in [12] a storage mechanism
+for large, non-mutable data on top of a DHT. This
+mechanism, while presented for TF-IDF, can be applied to
+any collection of large data. It uses B+-trees to balance the
+storage load over several peers in the DHT. Finally, a set of
+proposals uses the inverse routing paths convergence property:
+for load balancing [20], for replication and performance
+in BeeHive [16].

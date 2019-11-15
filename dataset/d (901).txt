@@ -1,0 +1,7 @@
+Consider a set of objects moving through a certain region of
+interest, where a number of short-range wireless sensors has
+been deployed for detection purposes. The distributed tracking
+problem we are interested in solving is about communicating
+the locations of the detected objects from the sensors to a querying
+point, where the information is further utilized by the
+user.

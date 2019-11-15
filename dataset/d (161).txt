@@ -1,0 +1,15 @@
+Since the Two-Scan algorithm maintains only candidate
+k-dominant skyline points but not the free skyline points
+that are not k-dominant, it is not possible to precisely maintain
+the maxkdom(.) values as in the extended One-Scan approach.
+Instead, we apply a binary search technique to determine
+the smallest k value such that .
+The details are given in Algorithm 5.
+Although the Two-Scan algorithm might be invoked log(|S|)
+times in the worst case, when the minimum value of k for
+ to hold turns out to be small (which
+
+is necessary when δ is small), Theorem 4.2 indicates that
+the Two-Scan algorithm and hence its extended variant are
+very efficient due to the pruning effectiveness of the dominant
+skyline points.

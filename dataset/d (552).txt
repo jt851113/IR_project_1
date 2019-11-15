@@ -1,0 +1,68 @@
+We now present an improved algorithm to solve the recurrence
+given by (7) that scales with the number of nodes
+as O(n log n). There are two obstacles to doing so. First,
+tabulating all the possible O(n2) values of s(j;m) for solving
+(7) is clearly O(n2). Secondly, given the values of s(j;m),
+solving the recurrence given by (7) using a naive dynamic
+programming is again O(n2k). The second challenge can be
+overcome using a result from [9], which can be adapted to
+solve (7) using O(kn log n) operations (assuming the values
+of s(j;m) are known or can be computed in O(1) time). To
+overcome the first challenge, we avoid tabulating all the O(n2)
+values of s(j;m) a priori. Rather, we construct suitable datastructures
+using O(bn log n) operations such that s(j;m) (for
+any j and m) can be computed using O(log b) operations.
+Overview of the algorithm: We now provide a brief sketch
+of the algorithm. We first present the data structures that
+are maintained to compute s(j;m) for a given (j;m) pair.
+In the following paragraphs, let F(j) denote the cumulative
+frequencies until node j, i.e., F(j) =
+For simplicity, let us first consider the case in which there
+is no core neighbor of the zero-node between node j and node
+m. In this case, s(j;m) can be written as follows.
+Let pj(r) denote the node that is farthest from j among all
+the nodes that are at distance at most r from j. Then, the
+total frequency of nodes at a distance r is simply F(pj(r))!
+F(pj(r !1)). Hence, the above equation can be re-written as
+follows.
+The relationship given by (9) points us to a recipe for the
+minimal data structures that we need to maintain to compute
+s(j;m) for a given (j;m) pair. First, we need to maintain the
+points pj(r) for all r · d(j;N0). Second, we need to maintain
+the cumulative frequencies F(j).
+Since distance is upper-bounded by b, the space requirement
+for the points pj(r) (1 · j < n, 1 · r · b) is at most O(nb).
+Now, each pj(r) can be computed using binary search over the
+n ordered points. Because there are at most b such points for
+all j, the overall complexity for computing the points pj(r) is
+O(nb log n). Cumulative frequencies can be easily computed
+using O(n) operations.
+Let us now consider the case in which there is a core
+neighbor between the nodes j and m. Let j1; j2; : : : ; jr be
+the core neighbors of the zero-node (the node for which we
+are running the algorithm) that lie between j and m. Then,
+s(j;m) can be obtained as follows.
+This follows because a pointer placed at node j can only help
+a node i such that there is no core neighbor between j and
+i. Otherwise, the routing in Chord dictates that queries to i
+are routed through the closest core neighbor that lies between
+j and i. The relationship given by (10) gives us a two-step
+procedure to compute s(j;m) using the pj(k)’s and F(j)’s.
+First, we determine the core neighbors between which m lies
+using binary search, and then use (9) to compute each of the
+terms in (10).
+Thus, the necessary data structures can be constructed using
+O(nb log n) operations, and as shown in [7], can be used to
+compute s(j;m) for any (j;m) pair using O(log b) operations.
+In order to improve the straightforward dynamic programming
+algorithm described in Section V-A, we use a key result
+from [9], which shows how to solve the following recurrence
+using O(n log n) computations assuming the function w(i; j)
+is concave.
+It is easy to show that s(j;m) is also concave, and though
+our recurrence is two dimensional, it is not difficult to extend
+the algorithm of [9] to obtain an O(nk log n) algorithm for
+solving (7). A detailed description of our algorithm and a proof
+for the following theorem can be found in [7].
+Theorem 5.1: The recurrence (7) can be solved using
+O(n(b + k log b) log n) operations and O(n(b + k)) space.

@@ -1,0 +1,100 @@
+1] S. Ratnasamy, P. Francis, M. Handley, R. Karp, and S.
+Shenker, “A scalable content-addressable network,” in Proc.
+SIGCOMM, Aug. 2001.
+[2] I. Stoica, R. Morris, D. Karger, M. F. Kaashoek, and H.
+Balakrishnan, “Chord: A scalable peer-to-peer lookup
+service for internet applications,” in Proc. SIGCOMM, Aug.
+2001.
+[3] B. Y. Zhao, L. Huang, J. Stribling, S. C. Rhea, A. D. Joseph,
+and J. Kubiatowicz, “Tapestry: A resilient global-scale
+overlay for service deployment,” IEEE JSAC, vol. 22, no. 1,
+pp. 41-53, Jan. 2004.
+[4] A. Rowstron and P. Druschel, “Pastry: Scalable,
+decentralized object location and routing for large-scale peerto-
+peer systems,” in Proc. IFIP/ACM Int’l Conf. on
+Distributed System Platforms (Middleware) 2001.
+[5] J. Li, B. T. Loo, J. Hellerstein, M. F. Kaashoek, D. R.
+Karger, and R. Morris, “On the feasibility of peer-to-peer
+web indexing and search,” in Proc. Int’l Workshop on Peerto-
+Peer Systems (IPTPS), 2003.
+[6] Y. Yang, R. Dunlap, M. Rexroad, and B. F. Cooper,
+“Performance of full text search in structured and
+unstructured peer-to-peer systems,” in Proc. IEEE Infocom,
+2006.
+[7] P. Reynolds and A. Vahdat, “Efficient peer-to-peer keyword
+searching,” in Proc. ACM/IFIP/USENIX Int’l Middleware
+Conference, 2003.
+[8] A. Crespo and H. Garcia-Molina, “Routing indices for peerto-
+peer systems,” in Proc. Int’l Conf. on Distributed
+Computing Systems (ICDCS) 2002.
+[9] B. H. Bloom, “Space/time trade-offs in hash coding with
+allowable errors,” Communications of the ACM, vol. 13, no.
+7, pp. 422-426, 1970.
+[10] I. Podna, M. Rajman, T. Luu, F. Klemn, and K. Aberer,
+“Scalabe peer-to-peer web retrieval with highly
+discriminative keys,” in Proc. IEEE ICDE, 2007.
+[11] G. Skobeltsyn, T. Luu, I. P. Zarko, M. Rajman, and K.
+Aberer, “Web text retrieval with a P2P query driven index,”
+in Proc. ACM SIGIR, 2007.
+[12] S. Michel, M. Bender, N. Ntarmos, P. Triantafillou, G.
+Weikum, and C. Zimmer, “Discovering and exploiting
+keyword and attribute-value co-occurrences to improve P2P
+routing indices,” in Proc. Conf. Information and Knowledge
+Management (CIKM), 2006.
+[13] O. D. Gnawali, “A keyword set search system for peer-topeer
+networks,” MS Thesis, MIT, 2002.
+[14] C. Tang, and S. Dwarkadas, “Hybrid global-local indexing
+for efficient peer-to-peer information retrieval,” in Proc.
+NSDI, 2004.
+[15] C. Tang, Z. Xu, and S. Dwarkadas, “P2P information
+retrieval using self-organizing semantic overlay networks,”
+in Proc. ACM SIGCOMM, 2003.
+[16] J. Lu, and J. Callan, “Content-based retrieval in hybrid peerto-
+peer networks,” in Proc. Conf. Information and
+Knowledge Management (CIKM), 2003.
+[17] J. Lu, and J. Callan, “Federated search of text-based digital
+libraries in hierarchical peer-to-peer networks,” in Proc.
+ECIR, 2005.
+[18] G. Koloniari, and E. Pitoura, “Content-based routing of path
+queries in peer-to-peer systems,” in Proc. EDBT, 2004.
+[19] A. Kurma, J. Xu, and E. W. Zegura, “Efficient and scalable
+query routing for unstructured peer-to-peer networks,” in
+Proc. INFOCOM, 2005.
+[20] The Gnutella protocol specification v0.6. http://rfcgnutella.
+sourceforge.net.
+[21] C. Rohrs, “Query routing for the Gnutella network,”
+Limewire LLC Technical Report, http://rfcgnutella.
+sourceforge.net/src/qrp.html, December, 2001.
+[22] J. Callan, Z. Lu, and W. B. Croft, “Searching distributed
+collections with inference networks,” in Proc. ACM SIGIR,
+1995.
+[23] L. Gravano, C. Chang, and H. Garcia-Molina, “GlOSS: textsource
+discovery over the internet,” in ACM Trans. Database
+Sys. 24(2), 1999.
+[24] L. Si, R. Jin, J. Callan, and P. Ogilvie, “A language modeling
+framework for resource selection and results merging,” in
+Proc. ACM CIKM, 2002.
+[25] J. Xu, and W. B. Croft, “Cluster based language models for
+distributed retrieval,” in Proc. ACM SIGIR, 1999.
+[26] W. Meng, C. Yu, and K. Liu, “Building efficient and
+effective meta search engines,” in ACM Computing Survey,
+Vol. 34, No. 1, pp. 48-89, March 2002.
+[27] F. M. Cuenca-Acuna, C. Peery, R. P. Martin, and T. D.
+Nguyen, “PlanetP: Using gossiping to build content
+addressable peer-to-peer information sharing communities,”
+in 12th IEEE Int’l Symp. on High Performance Distributed
+Computing (HPDC-12), IEEE Press, June 2003.
+[28] S. Kullback, “The Kullback-Leibler Distance,” The
+American Statistician, 41:340-341, 1987.
+[29] H. Schutze, and C. D. Manning, Foudations of Statistical
+Natural Language Processing, Cambridge, MA, MIT Press, p
+304, 1999.
+[30] L. T. Nguyen, W.G. Yee, and O. Frieder, “Query workload
+driven summarization for P2P query routing,” in Proc. IEEE
+Int’l Conf. on Peer-to-Peer Computing (P2P), 2008.
+[31] W. G. Yee, L. T. Nguyen, D. Jia, and O. Frieder, “Efficient
+query routing by improved peer description in P2P
+networks,” in Proc. ACM/ICST Int’l Conf. on Scalable
+Information Systems (INFOSCALE), 2008.
+[32] L. T. Nguyen, W. G. Yee, D. Jia, and O. Frieder, “A tool for
+information retrieval research in peer-to-peer

@@ -1,0 +1,25 @@
+An appropriate cost metric must weight multiple parameters: (a)
+communication overhead (b) query performance (c) error or signal
+distortion from lossy compression (d) computation overhead (e)
+storage cost . Combinations of the above parameters can be tuned
+to specific sensor network deployments.
+We have explored configurations that compress based primarily
+on either communication cost or error. Bounding the communication
+cost at each level of the hierarchy ensures that clusterheads do
+not incur significantly higher communication overhead than other
+nodes in the network. The compression error can, however, vary
+depending on the spatio-temporal correlation in the data. For example,
+an area with high correlation may be described with low
+error within the specified communication bound, but a region with
+low correlation would incur greater error. Conversely, bounding
+the compression error would result in the compression adapting to
+the correlation in different regions, but unbounded communication
+overhead if the data is highly uncorrelated. We are exploring joint
+optimization criteria that include both these parameters.
+In a different scenario, a sensor network might consist of lowend,
+highly resource constrained devices (such as motes [13]),
+where computation, memory and storage are highly constrained, in
+additional to energy. In these networks, the hierarchy can be constructed
+by propagating approximation coefficients of the wavelet
+transform, which is computationally less expensive than subband
+coding.

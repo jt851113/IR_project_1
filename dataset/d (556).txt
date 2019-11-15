@@ -1,0 +1,24 @@
+As mentioned before, we present plots for  = 1:2 as well
+as for R = 0:91. Note that the improvement for  < 1
+can be expected to be lower because hashing results in the
+node popularities being almost uniform even though the item
+popularities are zipfian. However, we saw significant gains
+even for  < 1. The general trends for  < 1 and  > 1 are
+similar to those observed for 0:91 and 1:2, respectively.
+Variation with n: We measured the percentage reduction
+(over a frequency-oblivious approach) in the average number
+of hops as n is varied from 256 to 2048, with k fixed at log n
+(which is same as the expected number of core neighbors).
+Figure 3 shows the observed improvements for  values of
+1:2 and 0:91. Clearly, the auxiliary neighbors selected by our
+algorithm gives a significant improvement. In particular, for
+n = 2048 and  = 1:2, we see around 49% reduction in the
+average query lookup times, i.e., the average number of hops
+required for answering a query reduces to almost half. Even
+for  = 0:91, we see substantial improvements of up to 29%.
+Variation with k: We also studied the effect of varying the
+number of auxiliary neighbors. Figure 4 shows the observed
+improvement over a frequency-oblivious approach for k 2
+flog n; 2 log n; 3 log ng, where n is fixed at 1024. For  = 1:2,
+the observed improvement increases from 50% for k = log n
+to 60% for k = 3 log n.

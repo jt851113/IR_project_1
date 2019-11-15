@@ -1,0 +1,29 @@
+Our experimental setup consists of a set of light sensors.
+Each light sensor is tted on a Rene Mote [2] (g 6), a
+tiny computation device (about the size of a quarter dollar)
+with communication capability. A Mote has a 8-bit micro-
+processor (ATMEL AVR 90LS8535 running at 4 MHz) and
+a small ash memory (8KB program memory and 512 bytes
+data memory). The Motes run a tiny micro-threaded op-
+erating system called TinyOS [9]. A set of tools [3] allows
+the Motes to be extensively and easily programmed using
+a combination of C language and a component description
+language. One of the main design criteria for Motes was low
+power consumption. It draws 19.5 mA of current in active
+mode4 and can run for around 30 hrs on 2 AA batteries. In
+inactive mode5, the Mote draws only 10 A of current and
+can run for a year [9].
+A Mote consumes 1 J (on an average) for transmitting one
+bit and 0.5 J to receive 1 bit. Furthermore it consumes
+0.8 J of energy for executing 208 machine cycles (roughly
+100 instructions) [9]. A Mote has a radio (RFM TR1000)
+on-board that works at 916 MHz. The radio can support a
+maximum bit rate of 19.2Kbps (on/o keying).
+The light sensor is not soldered on the Mote. Instead, it
+sits on a tiny sensor board that can be plugged onto the
+Rene Mote via a small on-board connector (g 6). The light
+sensor measures light intensity and gives a reading between
+0 and 7, where 0 represents lowest level and 7 represents the
+highest level.
+
+Figure 6: Rene Mote and sensor board

@@ -1,0 +1,39 @@
+For most of our experiments, we use a homogenous cluster of 9
+2GHz Pentium IV machines running Redhat Linux 7.3 connected
+by a local area network. In our current prototype, we have 10 sensor
+proxies that each have an associated sensor (webcam) that monitors
+a toy parking lot (Figure 5). For these larger-scale experiments,
+we simulate as many sensor proxies as required by running fake
+sensor proxies that produce random data updates. As our backend,
+we use the Apache Xindice 1.0 [1] native XML database. Xindice
+currently does not support XSLT processing (though it is a planned
+feature). Hence, in our current prototype, we use the Xalan XSLT
+processor [2] for that purpose (Xalan is also used by Xindice for
+processing XPath).
+We use an artificially generated database for our parking space
+finder application consisting of a total of 2400 parking spaces using
+a hierarchy similar to the one shown in Figure 1. This database
+models a small part of a nationwide database and contains 2 cities,
+3 neighborhoods per city, 20 blocks per neighborhood, and 20 parking
+spaces per block. We envision that the queries in such a database
+will typically ask for available parking spaces geographically close
+to a particular location. As described in Section 3.4, the queries
+are initially routed to the site manager that owns the lowest common
+ancestor of the data, and as such, we distinguish between the
+queries in our workload based on the level in this hierarchy to which
+they are first routed.
+ Type 1: These queries ask for data from one block, specifying
+the exact path to the block from the root.
+ Type 2: These queries ask for data from two blocks from a
+single neighborhood.
+ Type 3: These queries ask for data from two blocks from
+two different neighborhoods. (Such a query may be asked
+by a user if her destination is near the boundary of the two
+neighborhoods.)
+ Type 4: These queries ask for data from two blocks from
+two different cities. (The destination is near the boundary
+between two cities.)
+We expect that type 3 and type 4 queries will be relatively uncommon,
+and most of the queries will be of type 1 or 2. Hence, we will
+also show results for mixed workloads that include more queries of
+the first two types.

@@ -1,0 +1,105 @@
+A. Neighborhood Extraction and Coding
+  In order to meet the k-anonymity requirement, we need to
+put vertices into groups and anonymize the neighborhoods of
+vertices in a group. Ideally, vertices having similar neighborhoods
+should be grouped together. As the first step, we extract
+neighborhoods of vertices and represent them in a concise way.
+  Extracting the neighborhood of a vertex is straightforward.
+The challenge is how we can represent the neighborhood
+information to facilitate the later operations in anonymization.
+Since we need to anonymize all neighborhoods of the vertices
+in one group to the same, isomorphism tests are frequently
+conducted.
+  The general graph isomorphism problem which determines
+whether two graphs are isomorphic is NP-hard [17]. Here,
+we propose a coding technique for neighborhood subgraphs
+so that whether two neighborhoods are isomorphic can be
+determined by the corresponding coding.
+  In a social network G, a subgraph C of G is a neighborhood
+component of u 2 V (G) if C is a maximal connected
+subgraph in NeighborG(u).
+  Example 1 (Neighborhood component): Figure 2 shows
+NeighborG(u), the neighborhood of a vertex u.
+NeighborG(u) contains three neighborhood components, C1,
+C2, and C3 as shown in the figure.
+  Clearly, the neighborhood of a vertex can be divided into
+neighborhood components. To code the whole neighborhood,
+we need to first code each component.
+  The depth-first search tree (DFS-tree for short) [18] is
+popularly used for navigating connected graphs. Thus, it is
+natural to encode the edges and vertices in a graph based on
+its DFS-tree. All the vertices in G can be encoded in the preorder
+of T. However, the DFS-tree is generally not unique for a
+graph. That is, there can be multiple DFS-trees corresponding
+to a given graph.
+  For example, Figures 3(b) and 3(c) show two DFS-trees of
+the graph G in Figure 3(a). The thick edges in Figures 3(b)
+and 3(c) are those in the DFS-trees, and are called the
+forward edges, while the thin edges are those not in the DFStrees,
+and are called the backward edges. The vertices in the
+graph are encoded v0 to v3 according to the pre-order of the
+corresponding DFS-trees.
+  To solve the uniqueness problem, a minimum DFS code
+notation is proposed in [19]. For any connected graph G, let
+T be a DFS-tree of G. Then, an edge is always listed as
+(vi, vj) such that i < j. A linear order  on the edges in
+G can be defined as follows. Given edges e = (vi, vj) and
+e' = (vi' , vj' ).  if (1) when both e and e0 are forward
+edges (i.e., in DFS-tree T), j < j' or (i > i' ^ j = j'); (2)
+when both e and e' are backward edges (i.e., edges not in
+DFS-tree T), i < i' or (i = i' ^ j < j0); (3) when e is a
+forward edge and e0 is a backward edge, ; or (4) when
+e is a backward edge and e0 is a forward edge, i < j'.
+  For a graph G and a DFS-tree T, a list of all edges
+in E(G) in order A is called the DFS code of G with
+respect to T, denoted by code(G; T). For example, the
+DFS code with respect to the DFS-tree T1 in Figure 3(b)
+is code(G. T1) =  ((v0, v1, x, x)-(v1, v2, x, z)-(v2, v0, z, x)-
+(v1, v3, x, y)), where an edge (vi, vj) is written as (vi, vj ,
+L(vi), L(vj)), i.e., the labels are included. Similarly, the
+DFS code with respect to the DFS-tree T2 in Figure 3(c) is
+code(G; T2) = ((v0, v1, y, x)-(v1, v2, x, x)-(v2, v3, x, z)-
+(v3, v1, z, x)).
+  Suppose there is a linear order over the label set L. Then,
+for DFS-trees T1 and T2 on the same graph G, their DFS
+codes can be compared lexically according to the vertex pairs
+as labels of edges. For example, we have code(G, T1) <
+code(G, T2) in Figures 3(b) and 3(c).
+  The lexically minimum DFS code is selected as the representation
+of the graph, denoted by DFS(G). In our example
+in Figure 3, DFS(G) = code(G, T1).
+  Minimum DFS code has a nice property [19]: two graphs G
+and G0 are isomorphic if and only if DFS(G) = DFS(G').
+Using minimum DFS code, we can code every component of
+the neighborhood of a vertex. Now, the problem becomes how
+we can combine the minimum DFS codes of all components
+in a neighborhood into one code.
+  For two neighborhood components Ci and Cj in
+NeighborG(u), we define ;
+
+  Based on the neighborhood component order, we can
+assign a canonical label for each neighborhood. In a social
+network G, for vertex , the neighborhood
+component code of NeighborG(u) is a vector	
+NCC(u) = (DFS(C1),..,DFS(Cm)) where C1,..,Cm
+are the neighborhood components of NeighborG(u), i.e.,
+NeighborG(u) = 
+  Example 2 (Neighborhood component code): In Figure 2,
+the neighborhood component code of NeighborG(u) is
+NCC(u) = (DFS(C1) ,FS(C2),DFS(C3)).
+  Using neighborhood component code, we can easily identify
+isomorphic neighborhoods.
+Theorem 3 (Neighborhood component code): For two vertices
+ where G is a social network, NeighborG(u)
+and NeighborG(v) are isomorphic if and only if NCC(u) =
+NCC(v).
+  Using neighborhood component code to label and index
+neighborhoods has some advantages. First, it is easy to examine
+whether a group of neighborhoods are isomorphic.
+Second, since each neighborhood is decomposed into several
+neighborhood components, it is easy to calculate the structure
+similarity between two neighborhoods. Third, we can find similar
+components between two neighborhoods. Anonymizing
+similar components can lead to low information loss and high
+similarity between the anonymization and the original social
+network.

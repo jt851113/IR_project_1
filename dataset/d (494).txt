@@ -1,0 +1,10 @@
+In this paper, we focus on mining partial periodic patterns
+with random replacement. The generalized information gain
+is used to seamlessly accommodate the different frequency of
+event occurrences as well as gaps in an event sequence. The
+triangle inequality preserved by the generalized information
+gain enables us to devise a linear algorithm, STAMP, to mine the
+significant pattern in any subsequence combinations. The OIS
+pruning and MIG counting strategies also provide additional
+performance improvement. The efficiency is demonstrated by
+the experimental results.

@@ -1,0 +1,27 @@
+Here we define the basic application requirements and
+specify several parameters needed for energy saving
+schemes. The information of interests regarding
+to the moving objects includes location, direction,
+speed, and some unique attributes that can identify
+the object such as size, shape, etc.
+3
+Requirement: A sensor network with S sensor
+nodes is equipped to track O moving objects. Each
+sampling duration takes X seconds. The application
+requires the sensor nodes to report the objects location
+(represented by Sensor ID) every T seconds.
+Based on the above requirements of object tracking
+applications, the problem to be addressed in this
+paper can be defined as follows.
+Problem Definition: Given the requirements for
+the object tracking application, develop energy saving
+schemes which minimize overall energy consumption
+of the OTSN under an acceptable missing rate.
+In the above, two performance metrics are implicitly
+given. Total energy consumption measures
+the performance of various energy saving schemes for
+OTSN, while the missing rate denotes the ratio of
+sensor node failing to report on time the required information
+about the moving objects to the application.
+These two metrics will be formally defined again
+in Performance Evaluation (see Section 5).

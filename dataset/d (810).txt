@@ -1,0 +1,42 @@
+Health of a node is quantified by an application-supplied cost
+function. The choice of the particular set of parameters to use in
+a cost function depends on the figure of merit that is important
+for the application at hand.
+We describe four sample cost functions below. They are motivated
+by recent works on power-aware routing in mobile ad
+hoc networks [14, 9]. The health of a node k to run fusion role
+f is expressed as the cost function c(k; f). A fusion node compares
+its own health with the reported health of its neighbors,
+and it does the role transfer if there is an expected health improvement
+that is beyond a threshold. Note that the lower the
+cost function value, the better the node health.
+Minimize transmission cost - 1 (MT1): This cost function
+aims to decrease the amount of data transmission required for
+running a fusion function. Input data needs to be transmitted
+from sources to the fusion point, and the output data needs to be
+propagated to the consumer nodes (possibly across hops). For a
+fusion function f with m input data sources (fan-in) and n output
+data consumers (fan-out), the transmission cost for placing f on
+node k is formulated as:
+Here, t(x) represents the transmission rate of the data source
+x, and hopCount(i; k) is the distance (in number of hops) between
+node i and k.
+Minimize power variance (MPV): This cost function tries to
+keep the power of network nodes at similar levels. If power(k)
+is the remaining power at node k, the cost of placing any fusion
+function on that node is:
+Minimize ratio of transmission cost to power (MTP): This
+cost function aims to decrease both the transmission cost and
+lower the difference in the power levels of the nodes. The intuition
+here is that the cost reflects how long a node can run the
+fusion function. The cost of placing a fusion function f on node
+k can be formulated as:
+Minimize transmission cost - 2 (MT2): This cost function
+is similar to MT1, except that now the cost function behaves
+like a step function based upon the node’s power level. For a
+powered node, the cost is same as cMT1(k; f), but if the node’s
+power level goes below a threshold, then its cost for hosting
+any fusion function becomes infinity. Thus, if a fusion point’s
+power level goes down, a role transfer will happen even if the
+transfer deteriorates the transmission cost. The cost function
+can be represented as:

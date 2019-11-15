@@ -1,0 +1,10 @@
+Abstract -- We apply sensor networks to the problem of tracking
+moving objects. We describe a publish-and-subscribe tracking
+method, called Scalable Tracking Using Networked Sensors
+(STUN), that scales well to large numbers of sensors and moving
+objects by using hierarchy. We also describe a method, called
+drain-and-balance (DAB), for building efficient tracking hierarchies,
+computed from expected characteristics of the objects’
+movement patterns. DAB is shown to perform well by running it
+on 1D and 2D sensor network topologies, and comparing it to
+schemes which do not utilize movement information.

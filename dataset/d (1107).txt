@@ -1,0 +1,8 @@
+In this section, we discuss some recent development aiming
+at handling noises in the form of injection. Periodicity
+detection on sequence data is a challenging problem of
+great importance in many real applications. Two models,
+namely asynchronous patterns [16] and meta patterns [17],
+are proposed recently to address the issues of accommodating
+insertion of random noise and characterizing change of
+behavior.

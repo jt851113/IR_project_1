@@ -1,0 +1,10 @@
+Abstract—We present an update on the status of the Cougar
+Sensor Database Project in which we are investigating a database
+approach to sensor networks: Clients “program” the sensors
+through queries in a high-level declarative language (such as a
+variant of SQL). In this paper, we give an overview of our activities
+on energy-efficient data dissemination and query processing.
+Due to space constraints, we cannot present a full menu of results;
+instead, we decided to only whet the reader’s appetite with some
+interesting problems in energy-efficient routing and in-network
+aggregation and some thoughts on how to approach them.

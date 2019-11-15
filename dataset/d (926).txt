@@ -1,0 +1,43 @@
+[1] R. Agrawal, G. Psaila, E. L. Wimmers, and M. Zait. Querying
+shapes of histories. In Proc. 21st Int. Conf. Very Large
+Data Bases, pages 502–514, Zurich, Switzerland, Sept.
+1995.
+[2] R. Agrawal and R. Srikant. Fast algorithms for mining association
+rules. In Proc. 1994 Int. Conf. Very Large Data
+Bases, pages 487–499, Santiago, Chile, September 1994.
+[3] R. Agrawal and R. Srikant. Mining sequential patterns. In
+Proc. 1995 Int. Conf. Data Engineering, pages 3–14, Taipei,
+Taiwan, March 1995.
+[4] R. J. Bayardo. Efficiently mining long patterns from
+databases. In Proc. 1998 ACM-SIGMOD Int. Conf. Management
+of Data, pages 85–93, Seattle, Washington, June 1998.
+[5] C. Bettini, X. Sean Wang, and S. Jajodia. Mining temporal
+relationships with multiple granularities in time sequences.
+Data Engineering Bulletin, 21:32–38, 1998.
+[6] J. Han and Y. Fu. Discovery of multiple-level association
+rules from large databases. In Proc. 1995 Int. Conf.
+Very Large Data Bases, pages 420–431, Zurich, Switzerland,
+Sept. 1995.
+[7] J. Han, W. Gong, and Y. Yin. Mining segment-wise periodic
+patterns in time-related databases. In Proc. 1998 Int’l Conf.
+on Knowledge Discovery and Data Mining (KDD’98), New
+York City, NY, August 1998.
+[8] H. J. Loether and D. G. McTavish. Descriptive and Inferential
+Statistics: An Introduction. Allyn and Bacon, 1993.
+[9] H. Lu, J. Han, and L. Feng. Stock movement and ndimensional
+inter-transaction association rules. In Proc.
+1998 SIGMOD Workshop on Research Issues on Data Mining
+and Knowledge Discovery (DMKD’98), pages 12:1–
+12:7, Seattle,Washington, June 1998.
+[10] H. Mannila, H Toivonen, and A. I. Verkamo. Discovering
+frequent episodes in sequences. In Proc. 1st Int. Conf.
+Knowledge Discovery and Data Mining, pages 210–215,
+Montreal, Canada, Aug. 1995.
+[11] R. Ng, L. V. S. Lakshmanan, J. Han, and A. Pang. Exploratory
+mining and pruning optimizations of constrained
+associations rules. In Proc. 1998 ACM-SIGMOD Int. Conf.
+Management of Data, pages 13–24, Seattle, Washington,
+June 1998.
+[12] B. O‥ zden, S. Ramaswamy, and A. Silberschatz. Cyclic association
+rules. In Proc. 1998 Int. Conf. Data Engineering
+(ICDE’98), pages 412–421, Orlando, FL, Feb. 1998.

@@ -1,0 +1,61 @@
+The placement module implementation is an event-based simulation
+of the distributed heuristic for assigning roles (Section
+4) in the network. It takes an application task graph and the network
+topology information as inputs, and generates an overlay
+network, wherein each node in the overlay is assigned a unique
+role of performing a fusion operation. It currently assumes an
+ideal routing layer (every node knows a route to every other
+node) and an ideal MAC layer (no contention). It should be
+noted that any behavior different from this ideal one can be encoded,
+if necessary, in an appropriate cost function. Similarly,
+any enhancement in the infrastructure capabilities such as multicast
+can also be captured in an appropriate cost function.
+The placement module runs in three phases, each for a predefined
+duration. The application is instantiated only at the end
+of the second phase. The three phases are:
+1. Naive tree building phase: This phase starts with registering
+the “build naive tree” event at the root node with
+the application task graph as the input. In this phase, the
+task graph is simply mapped to the network starting from
+the root node (or the set of sinks in the task graph) as
+described in Section 4, disregarding cost function evaluation.
+At the end of this phase, there will be a valid,
+though naive, role assignment. Every node will know its
+role, if any, and it will know the addresses of the producer
+and consumer nodes corresponding to its role.
+2. Optimization phase: In this phase, the heuristic runs with
+a cost-function based upon the hop-count information and
+fusion function characteristic (data expansion or contraction)
+at the fusion points. The application has not yet
+been launched. Therefore the nodes do not have actual
+data transmission rates to incorporate into the cost function.
+The nodes exchange the hop-count and fusion characteristics
+information frequently to speed up the optimization,
+and lead to an initial assignment of roles prior
+to launching the application.
+3. Maintenance phase: This phase behaves similarly to the
+optimization phase, with the difference that the application
+is actually running. Therefore, the cost function will
+use real transfer rates from the different nodes in possibly
+changing the role assignments. In principle, we could
+have moved directly from the first phase to this phase.
+The reason for the second (optimization) phase prior to
+application startup is to avoid excessive energy drain with
+actual application data transmissions before the network
+stabilizes to an initial good mapping. The frequency of
+role transfer request broadcasts in the third phase is a tunable
+parameter.
+During the optimization phase, the cost function uses the
+fusion function characteristics such as data expansion or contraction.
+If such information is not available for a role, then
+data contraction is assumed by the placement module. If there
+are multiple consumers for data produced at some fusion point,
+then it is tricky to judge if there is an effective data expansion
+or contraction at such nodes. Even if the fusion characteristic
+indicates that there is data contraction, if the same data is to be
+transmitted to more than one consumer, effectively there may
+be data expansion. Also, if two or more consumers are within
+a broadcast region of the fusion point, then a single transmission
+may suffice to transport the data to all the consumers, and
+this will lessen the effect of the data expansion. However, these
+effects are accountable in the cost function.

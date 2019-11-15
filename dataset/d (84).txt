@@ -1,0 +1,16 @@
+Fjords [28], CACQ [30], and TAG [29], along with the sensor catalog and visualization systems I have built form
+a solid research foundation for sensor query processing. However, to complete the research projects described
+above, and empirically verify the ideas presented in these papers, a complete system must be built, deployed,
+and studied.
+Thus, my primary research agenda is to develop the TeleTiny query processing system for streaming sensor
+data. There are two key components to TeleTiny: an on-sensor query engine for computing aggregates and selections
+in a power-efficient manner; and a server-side query-processor specially designed to handle streaming data
+and continuous queries. Furthermore, the interface between these two components is very important, serving
+two key roles: first, it allows sensor data to be treated like other types of streaming data without squandering the
+limited power available to the motes and, second, it interfaces the database’s catalog the internal schema’s of the
+neighboring motes.
+Along with this core system, there are several important research problems the TeleTiny system will help to
+answer. The first is a characterization of the real-world query and data workloads that are placed on the system
+with an understanding of the bottlenecks and demands of query processing in a sensor environment. The second
+is set of techniques (and expressions of those techniques to the end-user) that can be used to control and limit
+the utilization of the very scarce power, memory, and bandwidth available to sensors.

@@ -1,0 +1,43 @@
+Fjords can use standard
+database operators, but to be able to run queries over
+streaming data, special operators that are aware of the infinite
+nature of streams are required. Some relational operators,
+like selections and projections, work with streams
+without modification. Others cannot be applied to a stream
+of data: aggregates like average and count and sorts fall
+under this category. Some join implementations, such as
+sort-merge join, which require the entire outer relation also
+fail. We use a variety of special operators in place of these
+solutions.
+First, non-blocking join operators can be used to allow
+incremental joins over streams of data. Such operators have
+been discussed in detail in adaptive query processing systems
+such as Xjoin [26], Tukwila [14], Eddy [3] and Ripple
+Joins [9]. We have implemented an in memory symmetric
+hash-join [28], which maintains a hashtable for each relation.
+When a tuple arrives, it is hashed into the appropriate
+hash table, and the other relation’s table is probed for
+matches.
+It is also possible to define aggregate operators, like
+count and average, which output results periodically; whenever
+a tuple arrives from the stream, the aggregate is updated,
+and its revised value is forwarded to the user. Similar
+techniques were also developed in the context of adaptive
+databases, for instance, the CONTROL Project’s Online
+Aggregation algorithms [10] and the Niagara Internet
+Query System [24].
+If traditional (i.e., blocking) aggregates, sorts, or joins
+must be used, a solution is to require that these operators
+specify a subset of the stream which they operate over. This
+subset is typically defined by upper and lower time bounds
+or by a sample count. Defining such a subset effectively
+converts an infinite stream into a relation which can be used
+in any database operator. This approach is similar to previous
+work done on windows in sequence database systems
+[22, 25].
+By integrating these non-blocking operators into our system,
+we can take full advantage of Fjords’ ability to mix
+push and pull semantics within a query plan. Sensor data
+can flow into Fjords, be filtered or joined by non-blocking
+operators, or be combined with local sources via windowed
+and traditional operators in a very flexible way.

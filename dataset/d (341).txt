@@ -1,0 +1,25 @@
+Given an unstructured P2P network of NP peers, initiator selection
+is a pseudo-random distributed algorithm that runs on each
+peer and determines whether the peer will be assigned the role of
+initiator [6]. Initiators are peers with special roles, similar to superpeers,
+only they do not have fixed roles, but different initiators are
+selected each time the algorithm runs. This tackles the problem of
+being stuck with faulty initiators and it reduces the probability of
+permanent cheaters.
+The global overlay network construction is assumed to start simultaneously
+at regular temporal intervals at all peers. The length
+of these intervals is a parameter of the protocol and can be as low
+as a few hours, thus ensuring that fresh contents are clustered and
+thus made retrievable. Because the aim of the clustering process
+is to achieve a global result, it is beneficial to perform the subsequent
+phases at the same time at the different peers in the network.
+Achieving (or even assuming) a common global time for temporal
+synchronization is not feasible in a large P2P network, and fortunately
+not necessary. Our technique to cope with this problem
+is to use a partial synchronization technique, making only the assumption
+that each peer has a clock that is accurate within a certain
+amount of time ta (for example 1 minute deviation at most). In
+cases where peers have clock deviating more than ta from actual
+time, this is detected by the fact that they are performing operations
+asynchronously to the other peers, and they are considered
+faulty.

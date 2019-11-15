@@ -1,0 +1,63 @@
+In this section, we describe our model for sensor networks
+and sensor data, and outline our architectural assumptions.
+Sensor Networks. We consider a sensor network that
+consists of a large number of sensor nodes connected through
+a multi-hop wireless network [22], [37]. We assume that
+nodes are stationary, all node radios have the same fixed
+communication range1, and that each node is aware of its own
+location. Sensor networks have the following physical resource
+constraints:
+Communication. The bandwidth of wireless links connecting
+sensor nodes is usually limited, on the order of a few
+hundred Kbps; the network provides limited quality of service,
+with variable latency and high packet loss rates.
+Power consumption. Sensor nodes have limited supply of
+energy; thus, energy-efficiency is a major design consideration.
+Computation. Sensor nodes have limited computing power
+and memory sizes that restrict the types of data processing
+algorithms that can be deployed and intermediate results that
+can be stored on the sensor nodes.
+Sensor Data. Each sensor can be viewed as a separate data
+source that generates structured records with several fields
+such as the id and location of the sensor, the time stamp,
+the sensor type, and the value of the reading. (We assume
+that some of the signals might have been postprocessed at a
+signal processing layer.) Conceptually, we view the data distributed
+throughout the sensor network as forming a distributed
+database system consisting of multiple tables with different
+types of sensor data.
+Queries and View Nodes. The sensor network is programmed
+through declarative queries which abstract the functionality
+of a large class of applications into a common
+interface of expressive queries. Our work does not depend on
+any specific query language; instead it applies to any query
+processing strategy that performs in-network processing by
+collecting data from multiple sensors onto a designated subset
+of nodes that we call the view nodes. The view nodes may
+either store directly unprocessed sensor readings or materialize
+the result of more complex processing over sensor readings.
+Synchronization Between Sensors. We assume that the
+clocks of neighboring nodes in the sensor network are reasonably
+synchronized, either through GPS or through distributed
+time synchronization algorithms (e.g., [8], [28]).
+Embedding on a Grid. We assume that the area is divided
+into a grid of square cells. The size of each cell is set so that a
+node anywhere in a cell can communicate directly with nodes
+in any of the four horizontally and vertically neighboring cells.
+This constrains the size of a cell to have length at most where
+is the transmission range of a node. In such a grid
+it can be shown that a shortest (rectilinear) path between any
+two nodes is at most a factor of
+
+more hops than the optimal
+(non-grid) path. We assume that each grid cell is occupied by
+exactly one node.
+The above assumption can be realized by layering our techniques
+on top of a protocol like GAF [45], which periodically
+elects a single representative node for each nonempty grid cell.
+This achieves significant power savings (only representative
+nodes expend energy on inter-cell message routing), and
+provides some fault-tolerance as well. Of course, a few cells
+may be entirely empty; while the treatment of such “holes” is
+an important consideration in our ongoing research, we omit
+discussing this issue here due to space constraints.

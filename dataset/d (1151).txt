@@ -1,0 +1,30 @@
+Incremental evaluation allows queries to be invoked only on the
+changed data. It reduces the amount of computation significantly
+because typically the amount of changed data is smaller than the
+original data file. For each file, on which continuous queries are
+defined, NiagaraCQ keeps a “delta file” that contains recent
+changes. Queries are run over the delta files whenever possible
+instead of their original files. However, in some cases the
+complete data files must be used, e.g., incremental evaluation of
+join operators. NiagaraCQ uses different techniques for
+handling delta files of ordinary data sources and those of
+intermediate files used to store the output of the split operator.
+NiagaraCQ calculates the changes to a source XML file and
+merges the changes into its delta file. For intermediate files,
+outputs from the split operators are directly appended to the
+delta file.
+In order to support timer-based queries, a time stamp is added to
+each tuple in the delta file. Since timer-based queries with
+different firing times can be defined on one file, the delta file
+must keep data for the longest time interval among those queries
+that use the file as an input. At query execution time, NiagaraCQ
+fetches only tuples that were added to the delta file since the
+query's last firing time.
+Whenever a grouped plan is invoked, the results of its execution
+are stored in an intermediate file regardless of whether or not
+queries defined on these intermediate files should be fired
+immediately. Subsequent invocations of this group query do not
+need to repeat previous computation. Upper level queries
+defined on intermediate files will still be fired at their scheduled
+execution time. Thus, the shared computation is totally
+transparent to these subsequent operators.

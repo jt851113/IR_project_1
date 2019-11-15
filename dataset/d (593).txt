@@ -1,0 +1,89 @@
+Much recent research has been conducted on efficiently searching
+for shared contents in peer-to-peer (P2P) networks. To support
+general multi-term queries, structured P2P networks (a.k.a. DHTbased
+networks), such as those described in [2][3][4], implement
+a distributed index on the collective documents shared by all
+peers. It turns out that the costs of creating and using these indices
+are interdependent (i.e., minimizing one may increase the other), a
+dependency that has been given little attention in previous work.
+We therefore propose a technique that minimizes the sum of these
+costs.
+In structured P2P networks, each term in a document collection is
+associated with one peer based on a hashing mechanism [2][3][4].
+The peer responsible for term t maintains t’s global posting list
+(i.e., the list of all documents that contain the term and all peers
+that share these documents). To create a global posting list for t,
+each peer builds a local posting list for t (i.e., a posting list based
+on local shared content) and sends this list to the peer responsible
+for t. The global posting list for t is a concatenation of t’s local
+posting lists. To process a query, a peer must download all of the
+global posting lists of all of the query terms, and then compute
+their intersection to identify the peers that potentially share the
+relevant files. The query is then issued to all of these peers who
+return any matching documents.
+For P2P applications, the cost of transferring data among peers
+(e.g., in posting list retrieval or in issuing queries to peers who
+may share matching documents) is significant compared with
+local query processing costs. One way to reduce cost is by
+keeping posting lists short, which reduces the cost required to
+transfer them. Another way to reduce cost is by making the
+intersection of the posting lists more precise, thereby reducing the
+number of peers that are necessary to query for matching
+documents. Unfortunately, these two goals conflict as shorter
+posting lists lead to less precise intersections.
+To keep posting lists short, peers might choose a “peer-level”
+indexing strategy, where each peer indicates only whether a
+particular term occurs in its collection, excluding any indication
+of which particular local documents contains the term. Thus the
+peer level global posting list of a term contains only the IDs of the
+peers whose collection contains the term.
+In contrast, “document-level” indexing contains information
+about which document contains which term for each peer. This
+results in longer posting lists, but the precision of their
+intersections leads to more accurate query issuing. Thus, the
+document-level global posting list of a term contains the IDs of
+documents that contain the term as well as the IDs of the peers
+share those documents.
+For example, consider a query “automobile auction” and a peer
+that shares the documents “automobile design” and “fine art
+auction.” By using peer-level indexing, both of the global posting
+lists of the terms “automobile” and “auction” contain the ID of the
+considered peer. As a result, their intersection will contain this ID.
+Consequently, the query will be issued to this peer even though it
+does not share any matching documents.
+Document-level indexing eliminates this “erroneous query
+issuing” problem. Because the posting list of a term contains
+document IDs, queries are guaranteed to be forwarded to peers
+who have at least one document containing all query terms.
+Unfortunately, this document-level approach is unscalable, as
+document-level global posting lists might be too long.
+We study the performance of keyword search in structured peerto-
+peer networks, measured by the total network cost, including
+the costs of index building, posting list retrieval and query
+issuing.
+Our approach in reducing total cost is to trade index building and
+posting list retrieval costs for query issuing cost. For an individual
+peer, we propose to create groups of local shared documents and
+represent each group by its “term set.” Our indexing strategy is
+called “group-level” indexing, where the posting list of a term
+contains pairs of peer ID and group ID. Group-level indexing is a
+generalization of both peer-level and document-level indexing. If
+each document forms a group, group-level indexing is equivalent
+to document-level indexing and if a single group is formed,
+group-level indexing is equivalent to peer-level indexing.
+There are two important decisions to be made in using group-level
+indexing: the number of groups to create and the assignment of
+documents to groups. Creating more groups lowers the query
+issuing cost, but raises the cost of index building and posting list
+retrieval. Assigning a document to its “appropriate” group reduces
+the likelihood of query issuing errors.
+First, we propose a probabilistic model to estimate the cost
+associated with a given number of groups based on the term
+distributions derived from both user queries and local contents.
+Using this model, we efficiently identify the number of groups
+appropriate to each peer.
+Second, we propose a grouping algorithm, which is also based on
+the term distributions derived from user queries and local
+contents. We reveal that grouping semantically similar documents
+together, as done by traditional text clustering algorithms, is not
+appropriate, and thus, we define a new grouping technique.

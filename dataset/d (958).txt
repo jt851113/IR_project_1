@@ -1,0 +1,33 @@
+We present here two sample queries which we will refer
+to through the rest of the section, as given by the following
+SQL excerpts. These queries are representative of the
+types of queries commuters might realistically ask of a traffic
+inquiry system. These queries are run over data from 32
+of CalTrans’ inductive loops collected by an older generation
+of sensors equipped with wireless radio links that relay
+data back to UC Berkeley. These sensors consist of sixteen
+sets of two sensors (referred to as “upstream” and “downstream”),
+with one pair on either side of the freeway on eight
+distinct segments of I-80 near UC Berkeley. The sensors are
+386-class devices with Ricochet 19.2 kilobit modem links
+to the Internet. They collect data at 60Hz and relay it back
+to a Berkeley server, where it is aggregated into counts of
+cars and average speeds or distributed to various database
+sources (such as ours) via JDBC updates.
+Query 1 selects theaveragespeedover segments of the
+road, using an average window interval of
+seconds. These queries can be evaluated using just the streaming 
+data currently arriving into the system.They require no additional
+data sources or access to historical information.
+Query 2 joins sensor readings from slow road segments
+the user is interested in to traffic incidents which are
+known to have recently occurred in the Bay Area. Slow
+road segments are those with an average speed less than. The set 
+of segments the user is interested in is.“Recently” means since
+
+seconds before the current time. The California
+Highway Patrol maintains a web site of reported incidents
+all over California, which we can use to build the
+incidents relation [4]. Evaluating this query requires a join
+between historical and streaming data, and is considerably
+more complicated to evaluate than Query 1.

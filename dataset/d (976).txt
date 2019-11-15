@@ -1,0 +1,246 @@
+In database field, a conventional dataset differs from a data stream in two
+main aspects: firstly, a conventional dataset has a current “state”; secondly, it
+can be accessed at any time to attend applications’ demands. A data stream, on
+the contrary, has no current state and usually allows only one access to the data.
+Usually, questions regarding the behavior of the data stream are made over the
+last period of time. Thus, as the events flow, it is useful to store parameters
+that can be used to answer a query whenever it is posed.
+We showed that one important property of a dataset (conventional or
+data stream) is its intrinsic dimension D. This property has a large impact over
+the way many queries are executed. Moreover, the value of D is usually lower
+than the embedding dimension E, potentially leading to significant performance
+improvement when processing a query. In particular, D can be explored in
+stream management for tasks such as cost and selectivity estimation, query
+optimization and forecasting. Without loss of generality, such tasks can use the
+changing value of D rather than the number of attributes E to represent the
+behavior of the data.
+Our work proposes a method to continuously measure D in evolving data
+streams. The SID-meter module performs such calculations with the following
+interesting properties.
+ It can track D even if the behavior of the data stream skews intensely
+over time.
+2 After a short warm-up period, D can be asked at any time.
+ Its complexity is linear on the number of events inside a sliding window
+and independent of the number of attributes of the data stream.
+ Its precision depends on the main memory availability, i.e., it can
+self-adjust to achieve better precision if more memory becomes available.
+Our experiments also demonstrate that by measuring the intrinsic
+dimension we can track the changing behavior of evolving data streams,
+extracting additional knowledge about attribute correlations. This knowledge
+can also be applied, for example, in data mining tasks performed over data
+streams.
+Acknowledgements
+This research has been partially supported by the Brazilian National
+Research Council (CNPq) under grants 471950/2004-1, 501214/2004-6,
+471782/2004-1 and 52.1685/96-6, and by the S?ao Paulo State Research
+Foundation (FAPESP) under grants 01/03370-6 and 2005/04272-9. This
+material is based upon work supported by the National Science Foundation
+under grants IIS-0209107, SENSOR-0329549, EF-0331657, IIS-0326322 and
+IIS-0534205. This work is also supported in part by the Pennsylvania
+Infrastructure Technology Alliance (PITA), a partnership of Carnegie Mellon,
+Lehigh University and the Commonwealth of Pennsylvania’s Department of
+Community and Economic Development (DCED). Additional funding was
+provided by donations from Intel, NTT and Hewlett-Packard. Any opinions,
+findings, and conclusions or recommendations expressed in this material are
+those of the author(s) and do not necessarily reflect the views of the National
+Science Foundation, or other funding parties. The authors are grateful to
+Eamonn Keogh for providing real datasets.)
+References
+1) Abadi, D.J., Carney, D. C﹐ etintemel, U., Cherniack, M., Convey, C., Lee, S.,
+Stonebraker, M., Tatbul, N. and Zdonik, S.B., “Aurora: A New Model and
+Architecture for Data Stream Management,” VLDB Journal, 12, 2, pp. 120–139,
+August, 2003.
+2) Aggarwal, C.C., “A Framework for Diagnosing Changes in Evolving Data
+Streams,” in Proc. of the 2003 ACM SIGMOD International Conference on
+Management of Data (SIGMOD’03), pp. 575–586, ACM Press, June, 2003.
+3) Aggarwal, C.C., Han, J., Wang, J. and Yu, P.S., “A Framework for Projected
+Clustering of High Dimensional Data Streams,” in Proc. of the Thirtieth
+International Conference on Very Large Data Bases (VLDB’04), pp. 852–863,
+Morgan Kaufmann, August/September, 2004.
+4) Aggarwal, C.C., Han, J., Wang, J.and Yu, P.S., “On Demand Classification of
+Data Streams,” in Proc. of the 2004 ACM SIGKDD International Conference
+on Knowledge Discovery and Data Mining (KDD’04), pp. 503–508, ACM Press,
+2004.
+5) Arasu, A. and Widom, J., “Resource Sharing in Continuous Sliding-window
+Aggregates,” in Proc. of the Thirtieth International Conference on Very Large
+Data Bases (VLDB’04), pp. 336–347, Morgan Kaufmann, August/September
+2004.
+6) Babcock, B., Babu, S., Datar, M., Motwani, R. and Widom, J., “Models
+and Issues in Data Stream Systems,” in Proc. of the Twenty-first ACM
+SIGACT-SIGMOD-SIGART Symposium on Principles of Database Systems
+(PODS’02), pp. 1–16, ACM Press, June 2002.
+7) Babu, S., Motwani, R., Munagala, K., Nishizawa, I. and Widom, J., “Adaptive
+Ordering of Pipelined Stream Filters,” in Proc. of the 2004 ACM SIGMOD
+International Conference on Management of Data (SIGMOD’04), pp. 407–418,
+ACM Press, June, 2004.
+8) Babu, S., Munagala, K., Widom, J. and Motwani, R., “Adaptive Caching for
+Continuous Queries,” in Proc. of the 21st International Conference on Data
+Engineering (ICDE’05), pp. 118–129, IEEE Computer Society, April, 2005.
+9) Barbar’a D. and Chen, P., “Using Self-similarity to Cluster Large Data Sets,”
+Data Mining and Knowledge Discovery, 7, 2, pp. 123–152, April, 2003.
+10) Belussi, A. and Faloutsos, C., “Estimating the Selectivity of Spatial Queries
+Using the ‘Correlation’ Fractal Dimension,” in Proc. of the 21st International
+Conference on Very Large Data Bases (VLDB’95), pp. 299–310, Morgan
+Kaufmann, September, 1995.
+11) Belussi, A. and Faloutsos, C., “Self-spatial Join Selectivity Estimation Using
+Fractal Concepts,” ACM Transactions on Information Systems, 16, 2, pp.
+161–201, April, 1998.
+12) B‥ohm, C., “A Cost Model for Query Processing in High Dimensional Data
+Spaces,” ACM Transactions on Database Systems, 25, 2, pp. 129–178, June,
+2000.
+13) B‥ohm, C. and Kriegel, H.-P., “Dynamically Optimizing High-dimensional Index
+Structures,” in Proc. of the 7th International Conference on Extending Database
+Technology (EDBT’00), LNCS 1777, pp. 36–50, Springer, March 2000.
+14) Bowman, I.T. and Salem, K., “Optimization of Query Streams Using Semantic
+Prefetching,” in Proc. of the 2004 ACM SIGMOD International Conference on
+Management of Data (SIGMOD’04), pp. 179–190, ACM Press, June, 2004.
+15) Capitani, P. and Ciaccia, P., “Warping the Time on Data Streams,” in Proc. of
+the 20th Brazilian Symposium on Databases (SBBD’05), pp. 310–324, October,
+2005.
+16) Chakrabarti, D. and Faloutsos, C., “F4: Large-scale Automated Forecasting
+Using Fractals,” in Proc. of the 11th International Conference on Information
+and Knowledge Management (CIKM’02), pp. 2–9, ACM Press, 2002.
+17) Chen, J., DeWitt, D.J., Tian, F. and Wang, Y., “Niagaracq: A Scalable
+Continuous Query System for Internet Databases,” in Proc. of the 2000 ACM
+SIGMOD International Conference on Management of Data (SIGMOD’00), pp.
+379–390, ACM Press, May, 2000.
+18) Dobra, A., Garofalakis, M.N., Gehrke, J. and Rastogi, R., “Sketch-based
+Multi-query Processing over Data Streams,” in Proc. of the 9th International
+Conference on Extending Database Technology (EDBT’04), LNCS 2992, pp.
+551–568., Springer, March 2004.
+19) Faloutsos, C. and Kamel, I., “Beyond Uniformity and Independence: Analysis
+of R-trees Using the Concept of Fractal Dimension,” in Proc. of the 13th ACM
+SIGACT-SIGMOD-SIGART Symposium on Principles of Database Systems
+(PODS’94), pp. 4–13, ACM Press, May, 1994.
+20) Faloutsos, C., Seeger, B., Traina, A.J.M. and Traina, C., “Spatial Join
+Selectivity Using Power Laws,” in Proc. of the 2000 ACM SIGMOD
+International Conference on Management of Data (SIGMOD’00), pp. 177–188,
+ACM Press, May, 2000.
+21) Gama, J., Medas, P. and Rodrigues, P., “Learning Decision Trees from Dynamic
+Data Streams,” in Proc. of the 2005 ACM Symposium on Applied Computing
+(SAC’05), pp. 573–577, ACM Press, March, 2005.
+22) Gama, J., Rocha, R. and Medas, P. “Accurate Decision Trees for Mining
+High-speed Data Streams,” in Proc. of the Ninth ACM SIGKDD International
+Conference on Knowledge Discovery and Data Mining (KDD’03), pp. 523–528,
+ACM Press, August, 2003.
+23) Golab, L., Garg, S. and ‥ Ozsu, M.T., “On Indexing Sliding Windows Over
+Online Data Streams,” in Proc. of the 9th International Conference on Extending
+Database Technology (EDBT’04), LNCS 2992, pp. 712–729, Springer, March,
+2004.
+24) Golab, L. and ‥ Ozsu, M.T., “Issues in Data Stream Management,” SIGMOD
+Record, 32, 2, pp. 5–14, June, 2003.
+25) Guha, S., Kim, C. and Shim, K., “Xwave: Approximate Extended Wavelets
+for Streaming Data,” in Proc. of the Thirtieth International Conference
+on Very Large Data Bases (VLDB’04), pp. 288–299, Morgan Kaufmann,
+August/September, 2004.
+26) Guha, S., Meyerson, A., Mishra, N., Motwani, R. and O’Callaghan, L.,
+“Clustering Data Streams: Theory and Practice,” IEEE Transactions on
+Knowledge and Data Engineering, 15, 3, pp. 515–528, May/June, 2003.
+27) Guttman, A., “R-trees: A Dynamic Index Structure for Spatial Searching,” in
+Proc. of the 1984 ACM SIGMOD International Conference on Management of
+Data (SIGMOD’84), pp. 47–57, ACM Press, June, 1984.
+28) Jiang, C., Li, Y., Shao, M. and Jia, P., “Accelerating Clustering Methods
+Through Fractal Based Analysis,” in Proc. of the ACM SIGKDD Workshop
+on Fractals and Self-similarity in Data Mining: Issues and Approaches, pp.
+16–20, ACM Press, July, 2002.
+29) Jin, C., Qian, W., Sha, C., Yu, J.X. and Zhou, A., “Dynamically Maintaining
+Frequent Items over a Data Stream,” in Proc. of the 12th International
+Conference on Information and Knowledge Management (CIKM’03), pp.
+287–294, ACM Press, November, 2003.
+30) Kantardzic, M., Sadeghian, P. and Shen, C., “The Time Diversification
+Monitoring of a Stock Portfolio: An Approach based on the Fractal Dimension,”
+in Proc. of the 2004 ACM Symposium on Applied Computing (SAC’04), pp.
+637–641, ACM Press, March, 2004.
+31) Kantardzic, M. and Zurada, J. (eds.), Next Generation of Data-Mining
+Applications, Wiley-IEEE Press, 2005.
+32) Keogh, E. and Folias, T., “The UCR Time Series Data Mining Archive,”
+Riverside CA University of California, Computer Science and Engineering
+Department, 2002. http://www.cs.ucr.edu/eamonn/tsdma/index.html
+33) Kifer, D., Ben-David, S. and Gehrke, J., “Detecting Change in Data Streams,”
+in Proc. of the Thirtieth International Conference on Very Large Data Bases
+(VLDB’04), pp. 180–191, Morgan Kaufmann, August/September, 2004.
+34) Kleinberg, J.M., “Bursty and Hierarchical Structure in Streams,” Data Mining
+and Knowledge Discovery, 7, 4, pp. 373–397, October, 2003.
+35) Krishnamurthy, S., Chandrasekaran, S., Cooper, O., Deshpande, A., Franklin,
+M.J., Hellerstein, J.M., Hong, W., Madden, S., Reiss, F. and Shah, M.A.,
+“Telegraphcq: An Architectural Status Report,” IEEE Data Engineering
+Bulletin, 26, 1, pp. 11–18, March, 2003.
+36) Law, Y.-N., Wang, H. and Zaniolo, C., “Query Languages and Data Models for
+Database Sequences and Data Streams,” in Proc. of the Thirtieth International
+Conference on Very Large Data Bases (VLDB’04), pp. 492–503, Morgan
+Kaufmann, August/September, 2004.
+37) Li, J., Maier, D., Tufte, K., Papadimos, V. and Tucker, P.A., “Semantics and
+Evaluation Techniques for Window Aggregates in Data Streams,” in Proc. of
+the 2005 ACM SIGMOD International Conference on Management of Data
+(SIGMOD’05), pp. 311–322, ACM Press, 2005.
+38) Liu, L., Pu, C. and Tang, W. “Continual Queries for Internet Scale Event-driven
+Information Delivery,” IEEE Transactions on Knowledge and Data Engineering,
+11, 4, pp. 610–628, July/August, 1999.
+39) Maier, D., Li, J., Tucker, P.A., Tufte, K. and Papadimos, V., “Semantics of
+Data Streams and Operators,” in Proc. of the 10th International Conference on
+Database Theory (ICDT’05), LNCS 3363, pp. 37–52, Springer, January, 2005.
+40) Manjhi, A., Shkapenyuk, V., Dhamdhere, K. and Olston, C., “Finding
+(Recently) Frequent Items in Distributed Data Streams,” in Proc. of the 21st
+International Conference on Data Engineering (ICDE’05), pp. 767–778, IEEE
+Computer Society, April, 2005.
+41) Metwally, A., Agrawal, D. and Abbadi, A.E., “Efficient Computation of
+Frequent and Top-k Elements in Data Streams,” in Proc. of the 10th
+International Conference on Database Theory (ICDT’05), LNCS 3363, pp.
+398–412, Springer, January, 2005.
+42) NEMMCO, National Electricity Market Management Company, 2006.
+http://www.nemmco.com.au.
+43) Pagel, B.-U., Korn, F. and Faloutsos, C., “Deflating the Dimensionality
+Curse Using Multiple Fractal Dimensions,” in Proc. of the 16th International
+Conference on Data Engineering (ICDE’00), pp. 589–598, IEEE Computer
+Society, February/March, 2000.
+44) Rodrigues, P., Gama, J. and Pedroso. J.P., “Clustering of Time-series Data
+Streams,” in Second International Workshop on Knowledge Discovery from
+Data Streams, in conjunction with The 16th European Conference on Machine
+Learning (ECML’05) and The 9th European Conference on Principles and
+Practice of Knowledge Discovery in Databases (PKDD’05), October, 2005.
+45) Schroeder, M., Fractals, Chaos, Power Laws: Minutes from an Infinite Paradise,
+W. H. Freeman and Company, 1991.
+46) Sousa, E.P.M., Traina, A.J.M., Traina, C. and Faloutsos, C., “Evaluating the
+Intrinsic Dimension of Evolving Data Streams,” in Proc. of the 21st ACM
+Symposium on Applied Computing (SAC’06), pp. 643–648, April, 2006.
+47) Srivastava, U. and Widom, J., “Memory-limited Execution of Windowed Stream
+Joins,” in Proc. of the Thirtieth International Conference on Very Large Data
+Bases (VLDB’04), Morgan Kaufmann, August 2004.
+48) The STREAM Group, “STREAM: The Stanford Stream Data Manager,” IEEE
+Data Engineering Bulletin, 26, 1, pp. 19–26, March, 2003.
+49) Traina, A., Traina, C., Papadimitriou, S. and Faloutsos, C., “Tri-plots: Scalable
+Tools for Multidimensional Data Mining,” in Proc. of the Seventh ACM
+SIGKDD International Conference on Knowledge Discovery and Data Mining
+(KDD’01), pp. 184–193, ACM Press, August, 2001.
+50) Traina, C., Sousa, E.P.M. and Traina. A.J.M., “Using Fractals in Data Mining,”
+inKantardzic and Zurada,31) pp. 599–630, 2005.
+51) Traina, C., Traina, A., Wu, L. and Faloutsos, C., “Fast Feature Selection Using
+Fractal Dimension,” in Proc. of the XV Brazilian Symposium on Data Base
+(SBBD’00), pp. 158–171, October, 2000.
+52) Traina, C., Traina, A.J.M. and Faloutsos, C., “Distance Exponent: A
+New Concept for Selectivity Estimation in Metric Trees,” Technical Report,
+CMU-CS-99-110, Carnegie Mellon University, School of Computer Science,
+March 1999.
+53) Traina, C., Traina, A.J.M., Faloutsos, C. and Seeger, B., “Fast Indexing and
+Visualization of Metric Data Sets Using Slim-trees,” IEEE Transactions on
+Knowledge and Data Engineering, 14, 2, pp. 244–260, March/April, 2002.
+54) Traina, C., Traina, A.J.M., Seeger, B. and Faloutsos, C., “Slim-trees: High
+Performance Metric Trees Minimizing Overlap between Nodes,” in Proc. of the
+7th International Conference on Extending Database Technology (EDBT’00),
+LNCS 1777, pp. 51–65, Springer, March, 2000.
+55) Tucker, P.A., Maier, D. and Sheard, T., “Applying Punctuation Schemes to
+Queries over Continuous Data Streams,” IEEE Data Engineering Bulletin, 26,
+1, pp. 33–40, March, 2003.
+56) Tucker, P.A., Maier, D., Sheard, T., and Fegaras, L., “Exploiting Punctuation
+Semantics in Continuous Data Streams,” IEEE Transactions on Knowledge and
+Data Engineering, 15, 3, pp. 555–568, May/June, 2003.
+57) Wu, K.-L., Chen, S.-K. and Yu, P.S., “Interval Query Indexing for Efficient
+Stream Processing,” in Proc. of the 13th ACM Conference on Information and
+Knowledge Management (CIKM’04), pp. 88–97, ACM Press, November, 2004.
+58) Zhu, Y., Rundensteiner, E.A. and Heineman. G.T., “Dynamic Plan Migration
+for Continuous Queries over Data Streams,” in Proc. of the 2004 ACM SIGMOD
+International Conference on Management of Data (SIGMOD’04), pp. 431–442,
+ACM Press, June, 2004.
+59) Zhu, Y. and Shasha, D., “Efficient Elastic Burst Detection in Data Streams,”
+in Proc. of the Ninth ACM SIGKDD International Conference on Knowledge
+Discovery and Data Mining (KDD’03), pp. 336–345, ACM Press, 2003.

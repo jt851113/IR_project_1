@@ -1,0 +1,43 @@
+In order to verify the feasibility of the proposed protocol, we have prototyped a system based on
+IEEE 802.11b NICs. Signal strength is used as the criterion to position objects. Specifically, one
+laptop equipped with a Lucent ORiNOCO 802.11b WaveLAN card is used to simulate an object. A
+number of laptops, also equipped with IEEE 802.11b cards, are placed in triangular/square patterns
+to emulate sensor nodes, as shown in Fig. 12. The object can roam around and will measure beacon
+strengths transmitted from different sensors. For better accuracy, we average ten samples in one
+second.
+First, we measure the degradation of signal strength versus distance. Fig. 13 shows one set of
+data that we collected. For every 5 meters from 0 to 100 meters a measurement is recorded. As can
+be expected, signal strengths received from IEEE 802.11b are not very stable. We use the “regression
+quadratic polynomial” to smooth out the curve, as illustrated by the solid line in Fig. 13. The curve is
+used to convert a received signal strength to an estimated distance.
+Since signal strength is not an accurate measurement, the aforementioned trilateration algorithm
+can not be applied directly. In fact, as one may expect, signal strengths change all the time, even
+under a motionless situation. Certain gaps inherently exist between estimated distances and actual
+distances. The real situation is as shown in Fig. 14, where the three estimated circles centered at
+sensors have no common intersection
+To solve the problem, we propose an approximation algorithm as follows. Let A, B, and C be
+the sensor nodes, which are located at (xA, yA), (xB, yB), and (xC, yC), respectively. For any point
+(x, y) on the plane, we then define a difference function
+where rA, rB, and rC are the estimated distances to A, B, and C respectively. The location of the
+object is determined to be the point (x, y) among all points such that its difference function x,y is
+minimized. In our experiment, we consider only integer grid points on the plane. We measure the
+location of the object every second. Furthermore, to take sudden fluctuation of signal strength into
+account, we enforce a condition that the object does not move faster than 5 meters per second. As a
+result, when searching for the object’s location, only those points in (x ± 5, y ± 5) are evaluated for
+their difference functions, where (x, y) represents the location in the previous measurement.
+Our experiments were done in an outdoor, plain area with no obstacles. Two roaming paths as
+illustrated in Fig. 12(a) were tested. For roaming path (1), three sets of results are shown in Fig. 15.
+For roaming path (2), the results are demonstrated in Fig. 16. As can be seen, the predicted paths are
+close to the actual roaming paths, but there are still large gaps yet remaining to be improved further.
+We have also tested the arrangement in Fig. 12(b), where four sensors arranged as a square are
+used. The extension for the tracking protocol and positioning algorithm is straightforward. Our tested
+results are shown in Fig. 17 and Fig. 18.
+A larger-scale experiment with 12 sensors is shown in the Fig. 19(a). With our agent-based
+approach, the object is tracked by the four sensors with the strongest signals. The other distanced
+sensors will be inhibited from monitoring the object (and thus reporting their tracking results). On
+the contrary, if all sensors which can detect the object are allowed to track the object, the tracking
+result will be as shown in Fig. 19(b). Surprisingly, the result shows that the positioning accuracy only
+improves very slightly. We believe that this is because the signal strength from a distanced sensor is
+typically very unstable. This usually enlarges the range of error. As a result, using our agent-based
+approach not only reduces the amount of data being transmitted, but also remains the same level of
+positioning accuracy.

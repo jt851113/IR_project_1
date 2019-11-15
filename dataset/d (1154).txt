@@ -1,0 +1,13 @@
+Figure 4.1 shows the architecture of Niagara system. NiagaraCQ
+is a sub-system of Niagara that handles continuous queries.
+NiagaraCQ consists of
+1.A continuous query manager, which is the core module of
+NiagaraCQ system. It provides a continuous query interface to
+users and invokes the Niagara query engine to execute fired
+queries.
+2. A group optimizer that performs incremental group
+optimization.
+3. An event detector that detects timer events and changes of
+data sources.
+In addition, the Niagara data manager was enhanced to support
+the incremental evaluation of continuous queries.

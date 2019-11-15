@@ -1,0 +1,11 @@
+An interesting special case of the method is when we would
+like to detect the changes between two static snapshots of
+data at a time interval of ht. Thus, in this case, we assume
+that the first set of points all arrived at time T  ht, whereas
+the second set arrived at time T. When the method is
+applied to this special case, then the velocity density is
+proportional to the difference in the spatial kernel densities
+of the two data sets. It is clear how the magnitude and sign
+of the corresponding density at a given point would
+provide an insight into the changes which have occurred
+between the two data sets.

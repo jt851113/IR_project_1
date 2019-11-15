@@ -1,0 +1,13 @@
+In this section we combine content analysis using traditional
+Information Retrieval techniques with improved
+connectivity analysis to tackle topic drift. There are two
+basic approaches both assuming we can determine the
+relevance of a node to the query topic: (i) eliminating
+non-relevant nodes from the graph, and (ii) regulating
+the inuence of a node based on its relevance. We have
+also experimented with combinations of these techniques.
+These mostly address problem 3 since they discard or penalize
+nodes that do not belong to the topic. However,
+in practice they also seem to solve problem 2, since automatically
+generated links often point to pages outside
+the topic.

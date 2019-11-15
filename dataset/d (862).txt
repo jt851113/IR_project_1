@@ -1,0 +1,5 @@
+The nodes check for an object at every discrete detection interval ζ.
+It is assumed that an object triggers the detector and causes an
+event when it crosses into the sensing radius S and is at its nearest
+position to the node. Nodes can broadcast to all other nodes within
+a certain radius R.

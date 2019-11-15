@@ -1,0 +1,130 @@
+As we pointed out in Section 3.3, prefetching algorithms
+that assume a single profile and an unshared cache can be
+adapted to work with multiple profiles and a shared cache
+by merging the multiple profiles into a single superprofile
+that is representative of them all. The merged profile can
+then be used as input to each of the prefetching algorithms
+described in Section 3.
+One complication brought on by profile combination is
+the fact that different profiles may define domains that intersect
+or that are even equivalent, even though they are
+defined differently. In other words, for superprofiles we
+must assume that any given object can belong to multiple
+domains.11 This means that GREEDY must be adapted so
+that it always chooses an object that gives the most added
+value to the cache according to all of the utility equations
+that give it value. (SA, because it chooses objects randomly,
+need not be altered.)
+We refer to the greedy algorithm that allows for objects
+to belong to multiple domains as GREEDY. GREEDY
+maintains 3 data structures as it uses an input superprofi￡Uil&e
+to determines the contents of a cache:
+: a Boolean membership matrix that specifies all of
+the domains to which each object belongs. Thus, is
+an  matrix such that ? is the size of the candidate
+object set,is the number of domains defined by the
+superprofile, and ?) iff object, , belongs to
+domain,;
+ : an added value vector that specifies for each of the
+ domains, the change in value that would result from
+adding an object from the domain to the current cache.
+Note that unlike the membership matrix which can be
+computed statically, the added value vector must be recomputed
+every time an object is added to the cache;
+and
+: a size vector that specifies the size of each of the objects in the candidate object set. 
+GREEDY
+  begins by initializing the membership matrix,
+added value vector (relative to an empty cache) and
+size vector. It then chooses one object at a time to add to
+the cache, by following the steps below:
+1. First, it computes the ? element vector, :  ) e﹐oEo .
+For any object, -8, :?E?ktA is the value that object would
+add to the current cache if it were inserted (without
+replacing any existing object in the cache).
+2. Next, it computes the ? element vector, :?x)o:?'a? .
+For any object, -38, : ?ktA is the value per byte that object
+would add to the current cache.
+3. Next, it finds the maximum value in :?, :?E?kMA, and
+designates object -8 as the next object to add to the
+current cache.
+4. Next, it updates the added value vector to reflect domain
+values relative to the new cache.
+5. Finally, it removes column kfrom e to reflect that object,
+-8, is no longer eligible to be added to the cache.
+This process is repeated until the candidate object set contains
+no more objects that can fit in the remaining cache
+and that add value to the cache. Note that GREEDY
+is far more expensive than GREEDY (which simply c￡Uiy&-
+cled through the added value vector looking for the domain
+which added the most value to the cache), as it requires
+a matrix-vector multiplication be performed for every
+object chosen. We use some tricks to reduce the cost
+of GREEDY
+. For one, we partition the set of candidate
+objects into classes, where objects in a given class belong
+to the same set of domains. This allows us to reduce
+the size of one dimension of the Boolean matrix (from the
+number of objects in the candidate object set to the number
+of classes). Also, every time an object is added to the
+cache, we keep track of which domains have their values
+affected. For example, in the case of the Traveler profile
+of Figure 1, adding a Di object to an empty cache only
+changes the values for domains RC, Di and Ho. Any class
+whose objects do not belong to any of the affected domains
+need not be included in the matrix calculation (objects of
+such classes would add the same value to the new cache
+as they did to the previous cache). While these tricks reduced
+the cost of GREEDY
+ somewhat, our experiments
+showed that this new version of GREEDY
+ still does not
+scale. We ran GREEDY
+ assuming superprofiles of increasing
+size (with candidate object sets, classes and cache
+sizes increasing proportionally in the size of the superprofile)
+and recorded the time GREEDY
+￡Ui & required to determine
+a cache. We also measured the value of the cache
+constructed by GREEDY
+  and compared it to that produced
+by SA which was allowed to run for 30 minutes (by
+setting its temperature to 30 and its timeout to 1 minute).
+The results are shown in Table 5. Each row in the table
+shows a run of GREEDY
+  with a superprofile of size,,
+where  denotes the number of single profiles merged to
+construct the superprofile. Single profiles are chosen ran-
+domly from the 96 randomly generated profiles described
+in Section 4.1. All other parameters were determined as
+functions of ?. The number of object classes was set to 
+(i.e., twice the number of domains), under the assumpaftio?n
+that domains in a superprofile can usually be clustered into
+disjoint sets of related topics, and that objects from the candidate
+set that belonged to multiple domains would belong
+to domains from a single cluster. As the number of disjoint
+clusters is bounded by the number of domains, we set the
+number of classes to be twice the number of domains (also
+accounting for objects that belonged to a single domain).
+Each object class was assumed to contain 5000 objects, distributed
+in size according to the distribution shown in Figure
+2. The cache size was set to be to the maximum of 
+MB and 8GB. 100 MB per client is widely considered to
+be a useful metric for determining the size of a shared web
+proxy cache [13]. u GB is the size of the shared web proxy
+cache employed at Brandeis (serving 3000 clients). And the
+average number of domains that classes included was set to
+2. Given that there are domains in all, this means that
+for any class, kand Domain, with probability,
+As Table 5 shows, GREEDY
+ scaled to before
+its execution time took more than 3 hours. On the
+other hand, SA (which always ran in 30 minutes) produced
+competitive results with GREEDY
+, suggesting that a randomized
+approach is better suited for large scale cache
+prefetching problems. This raises the possibility of twotiered
+prefetching: data recharging might use GREEDY to
+decide what to prefetch into an individual device cache, but
+SA to manage the shared cache from which multiple data
+recharging clients draw.

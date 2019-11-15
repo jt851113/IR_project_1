@@ -1,0 +1,23 @@
+In this section we briefly describe how the NiagaraCQ group
+optimizer performs incremental group optimization.
+When a new query (Figure 3.6) is submitted, the group
+optimizer traverses its query plan bottom up and tries to match
+its expression signature with the signatures of existing groups.
+The expression signature of the new query, which is the same as
+the signature in Figure 3.2, matches the signature of the group in
+Figure 3.5. The group optimizer breaks the query plan (Figure
+3.7) into two parts. The lower part of the query is removed. The
+upper part of the query is added onto the group plan. If the
+constant table does not have an entry “AOL”, it will be added
+and a new destination buffer allocated.
+In the case that the signature of the query does not match any
+group signature, a new group will be generated for this signature
+and added to the group table.
+In general, a query may have several signatures and may be
+merged into several groups in the system. This matching process
+will continue on the remainder of the query plan until the top of
+the plan is reached. Our incremental grouping is very efficient
+because it only requires one traversal of the query plan.
+In the following sections, we first discuss our query-split
+scheme and then describe how incremental group optimization
+is performed on selection and join operators.

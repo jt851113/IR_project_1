@@ -1,0 +1,13 @@
+PROPOSITION 2.1. (Triangle Inequality) Given an event sequence
+ and two complementary patterns 	 and 	  of the
+same period, let  be the minimum common super pattern of
+	 and 	 . Then the generalized information gain of  with
+respect to  is at most the summation of that of 	 and 	 .
+Proof. Since 	 and 	  are complementary, the information of
+ is   	  	 and   	  	
+for any event sequence . Then for any sequence , the
+generalized information gain of  with respect to  is
+because the support of  in  (i.e., ) is at most the
+support of 	 in  (i.e., 	). Thus this proposition holds.
+Proposition 2.1 can be easily generalized to a set of complementary
+patterns, which is stated as follows.

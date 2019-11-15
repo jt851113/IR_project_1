@@ -1,0 +1,17 @@
+As we mentioned earlier, the correlation in the readings of
+sensors in a sensor network may be spatial, temporal, or
+spatio-temporal. A wide range of techniques based on PRE-
+MON paradigm may be used to exploit each type of correla-
+tion. In this paper we focus primarily on exploiting spatio-
+temporal correlation. Our interest is in approaches that may
+be used over a wide range of sensor types. At the same time,
+we realize that the domain knowledge would play a signi-
+cant role in giving nal shape to the specic technique used,
+based on these approaches.
+Spatio-temporal correlation is typically present in sensor
+networks sensing a moving phenomenon. For example con-
+sider a network of motion sensors. When an object passes
+through the eld of these motion sensors, the readings of
+sensors along its path are very likely temporally correlated.
+In this paper, we propose techniques to exploit this type of
+correlation.

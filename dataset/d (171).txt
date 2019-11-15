@@ -1,0 +1,22 @@
+The skyline operator has been used as an effective mechanism
+to identify “dominating” points in a multi-dimensional
+data set. Unfortunately, as the dimensionality of the data
+set grows, the skyline operator begins to lose its discriminating
+power and returns a large fraction of the data. In this
+paper, we proposed a generalization of the skyline concept,
+called k-dominant skyline, to overcome this difficulty. We
+presented three different algorithms to solve the k-dominant
+skyline problem. We defined notions of a top-δ dominant
+skyline query and a weighted (dominant) skyline query, and
+showed how the three algorithms for the k-dominant skyline
+problem could be extended to address these problems
+as well. Our experimental results showed that our methods
+can find interesting objects in the data set efficiently.
+In summary, the notion of k-dominant skylines proposed in
+this paper gracefully extends traditional skylines, and leads
+to both more meaningful skyline results as well as more efficient
+computation.
+Acknowledgements Chee-Yong Chan and Kian-Lee Tan
+are supported in part by NUS Grant R-252-000-207-112.
+H.V. Jagadish is supported in part by US National Science
+Foundation Grant IIS-0438909.

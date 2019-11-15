@@ -1,0 +1,5 @@
+We will examine two application scenarios, represented by
+the CiteSeer collection on the one hand and the Ohsumed
+and GIRT collections on the other. The latter two were
+chosen because their documents are labeled with categories
+that may easily be identified with peers.

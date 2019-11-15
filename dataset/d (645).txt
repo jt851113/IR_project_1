@@ -1,0 +1,98 @@
+As computation-enabled devices shrink in scale and
+proliferate in quantity, a relatively recent research di-
+rection has emerged to contemplate future applications
+of these devices and services to support them. A canon-
+ical example of such a device is a sensor mote, a de-
+vice with measurement, communication, and computa-
+tion capabilities, powered by a small battery [12]. In-
+dividually, these motes have limited capabilities, but
+when a large number of them are networked together
+into a sensor network, they become much more capa-
+ble. Indeed, large-scale sensor networks are now being
+applied experimentally in a wide variety of areas |
+some sample applications include environmental mon-
+itoring, surveillance, and traAc monitoring.
+In a typical sensor network, each sensor produces
+a stream of sensory observations across one or more
+sensing modalities. But for many applications and sens-
+ing modalities, such as reporting temperature readings,
+it is unnecessary for each sensor to report its entire
+data stream in full delity. Moreover, in a resource-
+constrained sensor network environment, each message
+transmission is a signicant, energy-expending oper-
+ation. For this reason, and because individual read-
+ings may be noisy or unavailable, it is natural to
+use data aggregation to summarize information col-
+lected by sensors. As a reection of this, a database
+approach to managing data collected on sensor net-
+works has been advocated [15, 20], with particular at-
+tention paid to eAcient query processing for aggregate
+queries [15, 20, 23].
+In the TAG system [15], users connect to the sen-
+sor network using a workstation or base station directly
+connected to a sensor designated as the sink. Aggregate
+queries over the sensor data are formulated using a sim-
+ple SQL-like language, then distributed across the net-
+work. Aggregate results are sent back to the worksta-
+tion over a spanning tree, with each sensor combining
+its own data with results received from its children. If
+there are no failures, this in-network aggregation tech-
+nique is both eective and energy-eAcient for distribu-
+tive and algebraic aggregates [11] such as MIN, MAX,
+COUNT and AVG. However, as we will argue, this
+technique is much less eective in sensor network sce-
+narios with moderate node and link failure rates. Node
+failure is inevitable when inexpensive, faulty compo-
+nents are placed in a a variety of uncontrolled or even
+hostile environments. Similarly, link failures and packet
+losses are common across wireless channels because of
+environmental interference, packet collisions, and low
+signal-to-noise ratios [23].
+When a spanning tree approach is used for aggre-
+gate queries, as in TAG, a single failure results in an
+entire subtree of values being lost. If this failure is close
+to the sink, the change in the resulting aggregate can be
+signicant. Retransmission-based approaches are ex-
+pensive in this environment, so solutions based upon
+multi-path routing were proposed in [15]. For aggre-
+gates such as MIN and MAX which are monotonic and
+exemplary, this provides a fault-tolerant solution. But
+for duplicate-sensitive aggregates such as COUNT or
+AVG, that give incorrect results when the same value
+is counted multiple times, existing methods are not sat-
+isfactory.
+In this paper, we propose a robust and scalable
+method for computing duplicate-sensitive aggregates
+across faulty sensor networks. Guaranteeing exact so-
+lutions in the face of losses is generally impractical, so
+we instead consider approximate methods. These meth-
+ods are robust against both link and node failures. Our
+contributions can be summarized as follows:
+ We extend well-known duplicate insensitive
+sketches [7] to handle SUM aggregates. Through
+analysis and experiments, we show that the new
+sketches provide accurate approximations.
+ We present a method to combine duplicate insen-
+sitive sketches with multi-path routing techniques
+to produce accurate approximations with low com-
+munication and computation overhead.
+ We provide an analysis of the expected perfor-
+mance of previous methods as well as our method.
+ Finally, we present an extensive experimental eval-
+uation of our proposed system which we compare
+with previous approaches.
+Concurrent with our work, Nath and Gibbons [17]
+independently studied the use of duplicate-insensitive
+sketches for aggregation in sensor networks. Their work
+focused more on the logical decoupling of routing and
+aggregation, along with the necessary sketch properties
+for correctness using multipath routing, namely having
+an associative, commutative, and idempotent aggrega-
+tion operation.
+The remainder of this paper proceeds as follows.
+Background material is covered in Section 2. Count-
+ing sketches, along with theory and new generaliza-
+tions, are discussed in Section 3. A robust aggrega-
+tion framework using these sketches is then presented
+in Section 4. We validate our methods experimentally
+in Section 5 and conclude in Section 6.

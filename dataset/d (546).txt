@@ -1,0 +1,70 @@
+Given the ids of the nodes in V , we construct a tree T
+that is a trie of these ids. Figure 1 illustrates such a trie.
+Note that each node in V corresponds to a leaf of T, such
+that the path from the root of T to the leaf determines the
+node’s id. Henceforth, we use “nodes” and “leaf vertices”
+interchangeably to refer to the corresponding Pastry nodes.
+The following properties about vertices in T form the basis
+for our algorithm. (Please refer to [7] for the proofs.)
+Proposition 4.1: The distance between two Pastry nodes
+is equal to the height of the common ancestor of their
+corresponding leaf vertices (where the height of a vertex is
+its distance to the closest leaf in the trie).
+Proposition 4.2: If a leaf in a subtree Ta has been chosen
+as a neighbor (core or auxiliary), then queries for any leaf in
+Ta are always routed via some leaf in Ta.
+The problem of selecting the optimal set of auxiliary
+neighbors is equivalent to selecting the best k leaves in T,
+such that the sum of the weighted distances for all the leaves
+is minimized. By Proposition 4.1, the weighted distance for
+a leaf v is the product of fv and the height of the closest
+common ancestor with any of its core or auxiliary neighbors.
+We now introduce some additional notation to simplify the
+algorithm description.
+Let Ta denote the subtree rooted at vertex a, and La
+and Ra denote the left and the right subtrees of Ta. Let
+Leafset(Ta) denote the set of all leaves in the subtree Ta.
+We use F(Ta) to represent the sum of the frequencies of all
+the leaves in Ta,
+denote the cost contributed (within Ta) by the leaves of Ta if
+S (μ Leafset(Ta)) is chosen as the set of auxiliary neighbors.
+Then, C(Ta; S) can be obtained recursively as follows.
+Here,  is used as a shorthand notation for 
+Leafset(La)). Also, IA is 1 if A is true, and 0 otherwise.
+The intuition behind (2) is that S consists of some leaf
+vertices from La and some from Ra. By Proposition 4.2, the
+number of pointers placed in the left subtree of a does not
+affect the cost contributed by the right subtree of a and viceversa.
+Hence the cost can be split according to the split of
+pointers between La and Ra. The presence of the additional
+term F(La) can be explained as follows. Note
+that this term is equal to F(La) only if there is no neighbor
+(core or auxiliary) in La and it is 0 otherwise. If there is no
+neighbor in La, then there is an additional cost of one for
+each leaf in La due to the edge between a and La (which is
+essentially one extra bit that needs to be fixed while routing).
+On the other hand, if there is a neighbor in La, then the edge
+between a and La is part of the common prefix between the
+neighbor and any leaf in La, and does not contribute to the
+cost. A similar argument applies to Ra as well.
+With a slight abuse of notation, we use C(Ta; j) to represent
+the minimum cost with j pointers, i.e., C(Ta; j) =
+minjSj=j C(Ta; S). Then, C(Ta; j) can also be obtained recursively
+as follows.
+This recurrence follows from (2) by noting that j pointers in
+Ta can be split between La and Ra in j + 1 different ways:
+(i; j ! i), where i ranges from 0 to j. The optimal set of
+neighbors corresponds to the split that produces the minimum
+cost. Note that the indicator function essentially remains the
+same as in (2): for instance,  is 1 iff there
+is no neighbor (core or auxiliary) in La.
+The recurrence given by (3) can be easily solved by
+traversing the trie bottom-up. In order to compute the optimal
+set of neighbors, each vertex maintains the set of leaves that
+corresponds to cost C(Ta; j) for all 1 · j · k. This implies
+that the storage cost at each vertex is O(k2). Thus, total storage
+is O(nk2b) as there are at most O(nb) vertices in the trie. The
+computational complexity is also O(nk2b) because there are
+at most O(nb) vertices at which the computation is done, and
+at every vertex a, the recurrence (3) for computing C(Ta; j)
+for all 0 · j · k requires O(k) computations .

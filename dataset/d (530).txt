@@ -1,0 +1,70 @@
+consider a group g of documents. Ideally, we would like to
+calculate the expected value of scoreq(d), where d is a document
+that is randomly chosen from g. A higher expected
+value indicates that g is more relevant to the query q. We
+call this expected value the score of g for the query q and
+denote it by scoreq(g).
+Computing the exact value of scoreq(g) is impossible; instead,
+we would like to estimate it. A naive approach is to
+keep for each term t, the value maxt that is defined as the
+maximum of scoret(d) over all the documents d of g. For
+the query q = (t1, . . . , tn), we can use f(maxt1, . . . , maxtn)
+as an estimate of the score of g for q.
+The score distributions given by the histograms can provide
+a better estimation of the score of g as follows. Consider
+the query q = (t1, . . . , tn) and some fixed group g in peer p;
+thus, we only need the row for g from each two-dimensional
+histogram. We assume that each histogram is divided into
+m score intervals.3 In Figure 1, for example, m = 4. The
+score intervals in each histogram are identified (from left to
+right) as 1, 2, . . . , m.
+Let C be the set of all tuples (h1, . . . , hn), where 1 ? hi ?
+m (i = 1, . . . , n). A tuple h = (h1, . . . , hn) ? C describes
+a combination of choosing one interval from the histogram
+of each term ti of the query. In particular, h corresponds
+to interval h1 from the histogram of t1, interval h2 from
+the histogram of t2 and so on. We define the score of a
+particular interval as its middle point (i.e., the average of
+the end points). The score of h, denoted by score(h), is
+defined by applying the aggregate function f to the scores
+of all the hi (i.e., as if (h1, . . . , hn) represents a document
+that has the score of hj for the term tj ).
+For example, consider the first group (first row) in the
+histograms of Figure 1. The tuple (3, 4) represents the interval
+[0.6, 0.8] from the histogram of t1 and the interval
+[0.8, 1.0] from the histogram of t2. The score of this tuple is
+f(0.7, 0.9), which is 1.6 if f is sum.
+Consider some h = (h1, . . . , hn) ? C. We say that a
+document d of g is in h if scoretj (d) ? hi (1 ? j ? n), that
+is, the scores of d for the terms t1, . . . , tn are in the intervals
+identified by h1, . . . , hn, respectively. It follows that if d is
+in h then scoreq(d) > 0, because the intervals include only
+positive scores. In Figure 1, for example, the intervals cover
+the range from 0.2 to 1.0.
+Our estimate of the score of g for the query q is given by
+the following expression.
+In other words, for each tuple h of C, we multiply the score of
+h by the probability that a randomly chosen document of g is
+in h and then take the sum over all the possible combinations
+(which are described by the tuples of C). We multiply the
+sum by |g| to give higher scores to larger groups (multiplying
+by |g| modestly improved the recall in our experiments).
+Next, we describe how to estimate each probability in the
+above sum.
+Consider the tuple h = (h1, . . . , hn) and let Xj be the
+value of the histogram for the interval hj. That is, Xj documents
+of g have a score for tj that falls in the interval hj .
+For example, if the tuple (3, 4) refers to the first group in
+the histograms of Figure 1, then the values are X1 = 5 and
+X2 = 4. Let N be the total number of documents in the
+group g. The probability that a random document d of g
+satisfies scoretj (d) ? hj is simply Xj
+N . Assuming that distributions
+of different terms are independent of one another,
+the following is the probability that d is in (h1, . . . , hn).
+Thus, for each h ? C, we substitute the above product for
+the corresponding probability in Expression (1).
+We take the score of peer pi to be the maximum score
+over all its groups, namely,
+We can now use scoreq(p) to rank the peers and select the
+most promising ones for the task of executing the query.

@@ -1,0 +1,15 @@
+We introduced the in-region verication problem. Then,
+we designed a provably secure, lightweight protocol to ad-
+dress it, named the Echo protocol. The Echo protocol does
+not require cryptography, time synchronization, or any prior
+agreement between the prover and verier, making it suit-
+able for low-cost devices such as those in sensor networks.
+It is robust against a malicious adversary with unbounded
+computing power; the security rests on physical properties
+of sound and RF signal propagation. We showed that for
+a reasonable scenario, coverage of 80{90% could be easily
+achieved, i.e., the Echo protocol could guarantee in-region
+verication for 80{90% of legitimate location claims. Con-
+sequently, we expect the Echo protocol to be a useful contri-
+bution in contexts where physical presence is used for access
+control.

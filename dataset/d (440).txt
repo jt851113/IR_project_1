@@ -1,0 +1,17 @@
+In this paper, we focus on mining periodic patterns allowing some degree
+of imperfection in the form of random replacement from a perfect
+periodic pattern. Information gain was proposed to identify patterns
+with events of vastly different occurrence frequencies and adjust for
+the deviation from a pattern. However, it does not take any penalty
+if there exists some gap between the pattern occurrences. In many
+applications, e.g., bio-informatics, it is important to identify subsequences
+that a pattern repeats perfectly (or near perfectly). As a solution,
+we extend the information gain measure to include a penalty
+for gaps between pattern occurrences. We call this measure as generalized
+information gain. Furthermore, we want to find subsequence
+such that for a pattern
+the generalized information gain of
+in is high. This is particularly useful in locating repeats in DNA
+sequences. In this paper, we developed an effective mining algorithm,
+InfoMiner+, to simultaneously mine significant patterns and the associated
+subsequences.

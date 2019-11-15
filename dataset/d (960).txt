@@ -1,0 +1,100 @@
+We now present two experiments related to Fjords: In the
+first, we demonstrate the performance advantage of combining
+related queries into a single Fjord. In the second, we
+demonstrate that the Fjords architecture allows us to scale
+to a large number of simultaneous queries.
+We implemented the described Fjords architecture, using
+join and selection operators which had already been built as
+a part of the Telegraph dataflow project. All queries wererun 
+on a single, unloaded Pentium III 933Mhz with a single
+EIDE drive running Linux 2.2.18 using Sun’s Java Hotspot
+1.3 JDK. To drive the experiments we use traces obtained
+from the BHL traffic sensors. These traces are stored in a
+file, which is read once into a buffer at the beginning of each
+experiment so that tests with multiple queries over a single
+sensor are not penalized for multiple simultaneous disk IOs
+on a single machine.
+For the particular queries discussed here, sample window
+size is not important, so we generate traces with 30-second
+windows. The trace file contained 10767 30-byte records
+corresponding to traffic flow at a single sensor during June
+’00.
+In the first experiment, we compare two approaches
+to running multiple queries over a single streaming data
+source. For both approaches, some set of
+user queries, is submitted. Each query consists of a predicate 
+to be evaluated against the data streaming from a single sensor.
+The first approach, called the multi-Fjord approach allocates
+a separate Fjord (such as the one shown in Figure 4)
+for each query. In the second approach, called the single Fjord 
+approach, just one Fjord is created for all of the queries. This 
+Fjord contains a filter operator for each of thequeries (as shown 
+in Figure 5.) Thus, in the first case,threads are created, each 
+running a Fjord with a single filter operator, while in the second 
+case, only a single thread is running, but the Fjord hasfilter 
+operators. In order to isolate the cost of evaluating filters, we 
+also present results for both of these architectures when used with 
+no filter operator (e.g. the sensor proxy outputs directly to the
+user queue), and with a null operator that simply forwards
+tuples from the sensor proxy to the end user.
+Figure 6 shows the total time per query for these two approaches
+as the number of concurrent queries is increased
+from 1 to 10. All experiments were run with 150 MB of
+RAM allocated to the JVM and with a 4MB tuple pool allocated
+to each Fjord. Notice that the single Fjord version
+handily outperforms the multi-Fjord version in all cases,
+but that the cost of the selection and null filter is the same
+in both cases (300 and 600 milliseconds per query, respectively).
+This behavior is due to several reasons: First, there
+is substantial cost for laying out additional tuples in the
+buffer pools of each of the Fjords in the multi-Fjord case.
+In the single Fjord case, each tuple is read once from disk,
+placed in the buffer pool, and never again copied. Second,
+there is some overhead due to context switching between
+multiple Fjord threads.
+Figure 6 reflects the direct benefit of sharing the sensor
+proxy: additional queries in the single Fjord version are less
+expensive than the first query, whereas they continue to be
+about the same amount of work as a single query in the
+multi-fjord version. The spike in the multi-fjords lines at
+two queries in 6 is due to queries building up very long
+queues of output tuples, which are drained by a separate
+thread. Our queues become slower when there are more
+than a few thousand elements on them. This does not occur
+for more simultaneous queries because each Fjord thread
+runs for less time, and thus each output queue is shorter and
+performs better. This is the same reason the slope of the
+single fjord lines in Figure 6 drops off: all queries share a
+single output queue, which becomes very long for lots of
+queries.
+Having shown the advantage of combining similar user
+queries into a single Fjord, we present a second experiment
+that shows this solution scaling to a large number of user
+queries. In these tests, we created
+user queries, each of
+which applied a simple filter to the same sensor stream, in
+the style of Query 1 in Section 4.1. We instantiated a Fjord
+with a single sensor proxy, plus one selection operator per
+query. We allocated 150MB of RAM to the query engine
+and gave the Fjord a 4MB tuple pool. We used the same
+data file as in the previous section. Figure 7 shows the the
+aggregate number of tuples processed by the system as the
+number of queries is increased. The number of tuples per
+second per query is the limit of the rate at which sensors can
+deliver tuples to all users and still stay ahead of processing.
+Notice that total tuple throughput climbs up to about
+20 queries, and then remains fairly constant, without decreasing.
+This leveling off happens as the processor load
+becomes maximized due to evaluation of the select clauses
+and enqueuing and dequeuing of tuples.
+We also ran similar experiments from Query 2 (Section
+4.1). Due to space limitations, we do not present these results
+in detail. The results of this experiments were similar
+to the Query 1 results: the sensor proxy amortizes the
+cost of stream buffering and tuple allocation across all the
+queries. With Query 2, the cost of the join is sufficiently
+high that the benefit of this amortization is less dramatic:
+50 simultaneous queries have a per query cost which is only 
+seven percent less than the cost of a single query. In [16],
+we discuss techniques for combining joins to overcome this
+limitation.

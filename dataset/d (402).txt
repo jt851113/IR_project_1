@@ -1,0 +1,11 @@
+We rst describe the model of sensor networks considered
+in this paper and state our assumptions about it. We then
+describe the mechanisms based on PREMON paradigm for
+performing energy-eAcient monitoring in sensor networks,
+in section 3. We have implemented these mechanisms in a
+test bed of sensors. In section 4, we describe the experiments
+we have performed and the results we have obtained. In sec-
+tion 6, we present the related work in the eld and contrast
+our approach. In section 7, we briey describe the scope
+for future work in this area and present our conclusions in
+section 8.

@@ -1,0 +1,54 @@
+In mobile P2P networks or wireless ad hoc networks, a
+number of research studies have been conducted on data
+dissemination and discovery [6, 14]. Siddhartha et al. [20]
+proposed a P2P data dissemination protocol over an ad hoc
+network. It focuses on data transmission, in which a file
+is divided into segments according to a particular mobility
+model, while it ignores the issue of data search. Papadopouli
+et al. [17] introduced a peer-to-peer architecture called 7DS,
+which enables data sharing in a self-organizing fashion with
+either mobile or stationary nodes by simply using random
+forward method. Das et al. [8] studied a cooperative downloading
+strategy for content delivery and sharing in wireless
+vehicular-to-vehicular (V2V) networks, called SPAWN.
+It leverages the inherent broadcast nature of the wireless
+medium for neighbor discovery and uses a proximity-based
+piece-selection strategy to exchange data pieces. Klemm et
+al. [11] presented a special-purpose system for search and
+file transfer tailored to both the characteristics of MANET
+and the requirements of peer-to-peer file sharing. Motani et
+al. [15] proposed a wireless virtual network called PeopleNet,
+which mimics the way people seek information via social
+networking. It divides nodes into groups and propagates
+queries to a particular group based on given types. Wolfson
+et al. [22] proposed a rank-based dissemination (RANDI) algorithm
+which considers three constraints of mobile devices,
+including energy, communication bandwidth and storage.
+Tchakarov et al. [21] proposed a Geography-based Content
+Location Protocol (GCLP) to make use of physical location
+information for efficient content location in ad hoc networks.
+Lupu et al. [14] introduced a fast data dissemination method
+for structured P2P networks with mobile devices. It quickly
+constructs a CAN-like [19] structured P2P network for people
+who stay together with a short period of time. Most
+of above algorithms investigate how to disseminate the data
+in a peer-to-peer environment, which differ from our work
+that they push the data to the end users while we focus on
+processing the user-issued queries.
+More recently, Fiore et al. [10] proposed an algorithm
+called Eureka to retrieve user contents in MANET. To the
+best of our knowledge, Eureka is the most related work to
+our research. It focuses on the query propagation and applies
+a pure peer-to-peer approach to conduct data retrieval.
+Mobile nodes with Eureka estimate the information density
+in their proximity and use it to direct queries toward areas
+where the requested data is denser. However, it suffers
+from high maintenance cost of indexing information density
+estimation of all data items in every node. It also suffers
+from high communication overhead caused by information
+updating because a single change of information density estimation
+can incur the updates of all relevant nodes in the
+network. Our proposed IA approach assumes a more general
+environment with users in different mobilities, and it is well
+adapted to the highly dynamic environment with frequent
+data/peer update.

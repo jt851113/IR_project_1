@@ -1,0 +1,29 @@
+Recall from Section 3 that we can optimize aggregate
+operators through in-network aggregation, such
+as packet merging and partial aggregation at internal
+nodes. These techniques require internal nodes to
+intercept data packets passing through them to perform
+packet merging or partial aggregation. However,
+with the traditional “send and receive” interfaces of
+the network layer, only the leader will receive the data
+packets. The network layer on an internal node will
+automatically forward the packages to the next hop towards
+the destination, and the upper layer is not aware
+of data packets traveling through the node. This functionality
+is sufficient for direct delivery of packets to
+a destination node, but to implement in-network aggregation,
+a node needs the capability to “intercept”
+packages that are not destined for itself; the query
+layer needs a way to communicate to the network layer
+which and when it wants to intercept packages that are
+destined for the leader [14].
+With filters [14], the network layer will first pass
+a package through a set of registered functions that
+can modify (and possibly even delete) the packet. In
+case of the query layer, if a node n is scheduled to
+aggregate data from all children nodes, it can intercept
+all data packets received from the children nodes
+and cache the aggregated result. At a specific time,
+n will generate a new data packet and send it to the
+leader. All this happens completely transparently to
+the network layer.

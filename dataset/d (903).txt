@@ -1,0 +1,93 @@
+We now discuss several properties of the STUN architecture.
+First we define some terms.
+1) Notation and Definitions
+We use a weighted graph , called the
+sensor graph, to represent the sensors and certain expected
+characteristics of the moving objects being detected by the sensors.
+The vertices represent the sensors. The locations of
+the sensors are represented by a function , mapping senors
+to geographical locations. The edges indicate adjacencies
+between pairs of sensors; we say two sensors are adjacent if it
+is possible for objects to move from the detection range of one
+of the two sensors to that of the other without passing through
+that of any other sensor. We assume that G is connected, in the
+sense that any two nodes can be connected through a path.
+The weights represent the movement pattern of the
+objects in various regions in units of detection rates, as follows.
+Each time an object arrives at or departs from a sensor’s
+detection range, the sensor generates a detection event. We
+assume that objects move from sensor to sensor so that for each
+pair of adjacent sensors that an object passes through, the two
+sensors will experience the same detection rates with respect to
+that object. This assumption basically says that an object will
+not terminate its movement in the middle between two sensors,
+or if it does such occurrences must be statistically insignificant.
+With this assumption, we can assign a weight to each pair of
+adjacent sensors, representing the detection rate that each of
+these two sensors will experience with respect to objects moving
+between them. For example, the sensor graph in Figure 2
+depicts a 1D sensor array with each edge connecting a pair of
+adjacent sensors. The larger weight on the rightmost edge indicates
+heavier movement between the two rightmost sensors.
+The hierarchical network that connects the sensors is represented
+by a tree denoted by , where and
+represent the nodes and edges of the tree, respectively, and
+the function specifies locations of tree nodes. We assume
+that tree nodes are located in the same space as that of sensors.
+For example, for the case of a 1D or 2D sensor graph, the tree
+nodes will be in the same 1D or 2D array as the sensors,
+respectively. A tree link can be an overlay link over multiple
+sensor nodes.
+2) Performance Metrics: Communication Cost and Delay
+We will evaluate the performance of distributed tracking
+using two metrics. The first is the communication cost defined
+as the total number of detection messages occurring in the network
+in a unit time. The second is the delay defined as the time
+required for the information about a detection to reach the querying
+point from the detecting sensor. A good tracking method
+is characterized both by a low communication cost, and a low
+delay.
+The performance of STUN is determined by the structure of
+its message-pruning hierarchy and the tracked objects’ mobility
+pattern. Given information about these two items, we can
+compute STUN’s communication cost and delay.
+Communication Cost. Given a sensor graph and a messagepruning
+hierarchy tree , we can compute the cost, in detection
+messages per unit time, that the network will incur in order
+to keep the detected sets of intermediate nodes up to date. In
+particular, consider the cost contributed by a pair of adjacent
+sensors, say and , with weight . Their detection
+messages, triggered by object movements between and ,
+travel upward, but get absorbed at the first common ancestor,
+say, , of the two sensors. Thus, the events between and
+induce a cost of messages per unit time on the path
+from and to .
+We illustrate this with the example in Figure 3, where all of
+the detection events occur between the middle two sensors at a
+unit rate. These events cause detection messages to travel
+across the six links indicated by the arrows until they reach a
+common ancestor, leading to a cost of 6 messages per unit
+time. Note that these links comprise the only path in
+between the two indicated sensors.
+We thus define the communication cost for a sensor graph
+and hierarchy as the sum of the individual contributions of
+all pairs of sensors adjacent in G
+Since adjacent tree nodes may be physically distant, we
+define the costs of tree links used in the PathCostT computation
+to be Euclidean distances. Thus, the communication cost
+reflects the required radio power consumption.
+In order to obtain hierarchies that yield low communication
+costs, the intermediate nodes near the root should be connecting
+points for adjacent sensors sharing low-rate edges. For
+example, the hierarchy from Figure 3 could have had a lower
+cost if the adjacent sensors sharing the high-rate edge had been
+connected by a low level intermediate node, instead of the root.
+An example of a better hierarchy appears in Figure 4.
+Delay. The second metric is the maximum or average delay
+incurred by messages traveling from leaves to the root.
+Expressed in units of intermediate nodes, this is equivalent to
+the height of the hierarchy tree.
+The maximum or average delay is smallest in trees which are
+fully balanced, since their height is minimal. The worst case
+delay occurs in a degenerate tree where the intermediate nodes
+form a line graph.

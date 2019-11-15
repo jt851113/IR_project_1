@@ -1,0 +1,54 @@
+Following the query model of [1, 4] we assume that each peer
+maintains a list of pairs (O, Si(O)) where O is an object and Si(O)
+is the score of the corresponding object. From this point on, when
+we refer to object O we mean the Object_id of O and not the
+actual object. The objects (object_ids) in each list are sorted in
+descending order of their scores. If an object does not appear in
+the list of a peer, its score in that list is zero by default. After
+submitting the query to relevant peers according to the specified
+routing strategy, our goal is to find the k-highest aggregated
+values (f(S1(O),...,Sm(O)), where f is a monotonic function,
+which is used to compute the overall score of an object. We use
+the SUM function for ease of exposition. The objects with the khighest
+values are denoted as top-k objects.
+All threshold algorithms are trying to use appropriate thresholds
+in order to prune ineligible objects with low aggregated scores and
+return the top-k set of objects. In this paper, we study the problem
+of answering top-k queries efficiently. An efficient top-k retrieval
+algorithm in such context should primarily take into account the
+bandwidth consumption and the execution time as a real p2p
+system may receive thousands of queries at a time. Also some
+other characteristics need to be addressed, such as the ad-hoc
+behavior of peers, the different distributions of scores, the
+scalability and the topology of the network. A representative case
+of threshold algorithm is the HT [1] which resulted from a
+combination of TPAT and TPOR [1]. The first experiments on
+bandwidth consumption performance show that HT outperforms
+TPAT, TPOR and the alternative approach of TPUT [4] as well.
+In this work we present two extended versions of the HT
+algorithm called HT-p2p and HT-p2p plus adapted to p2p
+environment. Due to lack of space we emphasize briefly on the
+main adaptations of these versions [2]. We choose a super-peer
+topology in order to avoid the flooding of network messages while
+the super-peers could play the role of central managers for each
+cluster of peers which they are responsible. Also, in the extended
+versions of HT choose to save the intermediate results and apply a
+specific policy for ad-hoc peers in order to be consistent. The
+storing ability of HT-p2p helps pruning some steps of the HT
+basic algorithm. The required data for saving are limited to seen
+object_ids, scores, partial sums which means that their capacity in
+bytes is fairly low. On the other hand we gain in processing cost
+(no need for examining again the “examined” seen objects) and
+communication cost as well (the pruning of some steps entails
+fewer transferred messages and less bandwidth
+consumption).Finally, for modeling reasons it is preferable to
+define discrete roles at peers for the HT-p2p algorithm. The peer
+that issues the original query across the p2p network is called an
+Originator peer. Respectively, its responsible super-peer plays the
+role of Originator super-peer. Each relevant to the query peer is
+called Contributor peer. A Collector super-peer executes the
+specific running instance of HT-p2p. It collects the intermediate
+results from all the contributor peers and returns them to the
+Originator super-peer. For the selection of the Collector superpeer
+we could take into account the number of Contributor peers
+or the number of the relevant objects.

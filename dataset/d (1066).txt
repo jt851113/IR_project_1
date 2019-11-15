@@ -1,0 +1,19 @@
+A k-dominant object has the following a priori property.
+Theorem 1. Any (k?1)-dominant object must be a k-dominant object for any
+k such that 1 < k ? n.
+Theorem 2. Any k-dominated objects cannot be a (k ? 1)-dominant object for
+any k such that 1 < k ? n.
+Proof. Based on the definition, a (k ? 1)-dominant object p is not (k ? 1)-
+dominated by any other objects in X. It implies that p is not k-dominated by any
+other objects. Therefore, we can say p is k-dominant object. On the other hand,
+if an object q is k-dominated by another object, it must be (k ? 1)-dominated
+by the object. Therefore, q cannot be a (k ? 1)-dominant object.
+The conventional skyline is the n-dominant skyline. If we decrease k of the
+k-dominant skyline, more objects are eliminated. For example, N1 and N8 of
+Table 1 are not in skyline because they are dominated (n-dominated) by N2.
+So, they can’t be a candidate of k-dominant skyline object for k < n. We can
+prune such non-skyline objects for further procedure of the k-dominant query.
+If we consider 5-dominant query, N3, N5, N6, and N7 are 5-dominated objects
+in addition to the 6-dominated objects, N1 and N8. Therefore, we can prune
+those objects in 5-dominant query computation. Thus, by decreasing k, more
+dominated objects can be pruned away.

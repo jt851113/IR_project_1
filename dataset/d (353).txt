@@ -1,0 +1,11 @@
+We evaluate the quality of similarity search in terms of absolute
+recall achieved. We use as similarity threshold Ts=0.2. In Table 2,
+we present the recall achieved when the 1-5 most similar SONs to
+the query are examined, for two different setups. It is clear that
+even by searching just the most similar SON, the achieved recall is
+approximately 68%, which is a very encouraging result.
+Moreover, we test the scalability of the approach in terms of
+number of participating peers, increasing the network size from
+1000 to 5000 peers. We observe that recall is practically unaffected
+by the size of the network. We also tried Ts=0.1, and obtained
+similar results.

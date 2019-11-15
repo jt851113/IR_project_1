@@ -1,0 +1,61 @@
+A number of authors have proposed using time-of-ight
+measurements and the speed of light to securely gain lo-
+cation information about untrusted parties. Brands and
+Chaum proposed a time-bounded challenge-response proto-
+col [4] as a defense against man-in-the-middle attacks on
+cryptographic identication schemes. Hu, et al., proposed
+using temporal packet leashes for wireless networks to de-
+fend against similar attacks [12]. However, a major limita-
+tion of these schemes is that both the prover and verier send
+RF signals, requiring a much more accurate timing system
+at the verier as well as tight real-time processing guaran-
+tees on both the prover and verier for accurate readings.
+For these reasons, we believe our algorithm is better suited
+to mobile devices than those previous proposals.
+In independent and concurrent work, Waters and Felten
+present a scheme that uses round-trip time-of-ight of RF
+signals to achieve goals similar to ours [19]. Their architec-
+ture is similar to ours, in that they, too, suggest focusing on
+secure location verication rather than on secure location
+determination. However, their reliance on RF seems likely
+to limit deployment, like the previous proposals mentioned
+above. Additionally, by using tamper-resistant trusted de-
+vices, they are able to defend against stronger adversaries.
+If their verier accepts, they can successfully show that the
+trusted device is at the specied location. In comparison,
+we can show that the device or a collaborator has a presence
+at the specied location.
+The idea of using time-of-ight to estimate distance is
+not a new one: it dates back to the birth of radar systems,
+which often use time-dierence-of-arrival (TDOA) to deter-
+mine the range to detected objects. Ultrasonic time-of-ight
+ranging can even be found in nature, where it is used by bats.
+Coarse-grained location authentication has been used in
+the television industry to prevent cloning of set-top boxes [9].
+Gabber and Wool propose four coarse-grained techniques,
+relying on extensive telecommunications infrastructure such
+as satellites, paging and cellular networks. Their techniques
+rely on tamper-resistant hardware.
+Location-limited channels provide a communication mech-
+anism that is restricted to a short range and provides both
+endpoints a mechanism to guarantee the authenticity of each
+participant [16]. Balfanz, et al., have proposed using location-
+limited channels for location-based access control [3], and
+many others have also proposed use of limited-range radio
+broadcasts as a way to verify proximity [13, 6, 5]. However,
+there are no strong security guarantees that the communi-
+cation range will always be limited as desired: an adversary
+with more powerful equipment may be able to participate
+in the protocols even if they are substantially further away
+than non-malicious parties.
+Finally, there are many techniques to help localize devices
+[2, 14, 15, 10, 18, 1], GPS being one of the most widely
+deployed. However, none of those works addressed secu-
+rity, and in fact, GPS signals can be spoofed [17, x3.2.2].
+Nonetheless, we have noted that combining a (possibly inse-
+cure) localization mechanism with our secure location ver-
+ication technique yields a secure localization algorithm.
+Thus, insecure localization protocols should be seen as com-
+plementary to our work on secure location verication.
+Many authors have commented on the value of location-
+based access control [7, 5, 3, 13, 6].

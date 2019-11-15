@@ -1,0 +1,24 @@
+A sensor node has one or more sensors attached that
+are connected to the physical world. Example sensors
+are temperature sensors, light sensors, or PIR sensors
+that can measure the occurrence of events (such as the
+appearance of an object) in their vicinity. Thus each
+sensor is a separate data source that generates records
+with several fields such as the id and location of the
+sensor that generated the reading, a time stamp, the
+sensor type, and the value of the reading. Records
+of the same sensor type from different nodes have the
+same schema, and collectively form a distributed table.
+The sensor network can thus be considered a large distributed
+database system consisting of multiple tables
+of different types of sensors.
+Sensor data might contain noise, and it is often possible
+to obtain more accurate results by fusing data
+from several sensors [12]. Summaries or aggregates of
+raw sensor data are thus more useful to sensor applications
+than individual sensor readings [21, 10]. For
+example, when monitoring the concentration of a dangerous
+chemical in an area, one possible query is to
+measure the average value of all sensor readings in that
+region, and report whenever it is higher than some predefined
+threshold.

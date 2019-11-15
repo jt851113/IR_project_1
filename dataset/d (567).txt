@@ -1,0 +1,27 @@
+Consider the following experiment. Each sensor tracks a value chosen between 1 and N with
+equal probability. Fetching information from each sensor can be thought of as a trial. Define
+a “success” as the event of resolving any one of the remaining queries. Thus, if there are
+currently M queries to be resolved, then the probability of success in each trial is p = M
+N
+and the probability of failure is q = N?M
+N . The number of trials till the first success i.e. the
+number of sensors from which information has to be fetched till one of the queries can be
+answered is a geometric random variable. Thus, the expected number of trials till the first
+success is 1
+p = N
+M . Now the whole experiment can be repeated again with one less query.
+Thus, now, p = M?1
+N and q = N?M+1
+N . The expected number of trials till the first success
+(i.e. another query being answered) is N
+M?1 and so on.
+Define the following:
+1. M = The number of trials till M successes i.e. the resolution of the entire query.
+2. Xi: The number of trials (counted from the (i ? 1)th success) till the ith success.
+Now, since we consider fetching information from f(d) sensors as 1 trial (step) rather than
+f(d) trials (steps)8:
+Eqn. 6 expresses the average number of steps to query completion (SM) as a function of the
+total number of variables (N), the query size (M) and the neighborhood size (f(d)).
+To answer more complex questions like “what is the probability that a complex query can
+be reduced in size in a single step?”, we formulate the query forwarding process as a Markov
+Chain. Detailed analysis of this Markov Chain is in section 12 in the Appendix.

@@ -1,0 +1,1 @@
+In this section, we introduce our query language for ACQP focusing on issues related to when and how often samples are acquired.3

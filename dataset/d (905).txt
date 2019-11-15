@@ -1,0 +1,37 @@
+Our method, called DAB (drain-and-balance), constructs the
+tree in a bottom-up fashion, i.e., from leaves to the root,
+through a series of DAB steps. Within each DAB step, a subset
+of the sensors is merged into balanced subtrees, without regard
+for event rates. The effectiveness of the method comes from
+properly choosing the nodes to merge in each of these steps—
+this time by utilizing the event rate information. In particular,
+sensors are partitioned using one or more event rate thresholds,
+that we will call “draining thresholds,” and the high-rate subsets
+are merged first. We now describe this process precisely.
+The input to the method is a sensor graph
+, and its output is a hierarchy tree
+. The method is parameterized by a
+sequence of decreasing “draining” thresholds,
+, where . The k-step DAB tree construction
+for a 1D sensor graph proceeds as follows:
+1. Initialize to be an empty graph.
+2. For each draining threshold , in the increasing
+order of i, perform a DAB step, consisting of the following
+two phases:
+2.1 Draining. Add those nodes in into which have
+at least one incident edge whose weight is greater than
+or equal to . This inserts a number of singleton
+trees into . We say that two trees in are adjacent if
+some of their leaves are adjacent in .
+2.2 Balancing. Repeatedly merge pairs of adjacent trees in
+to form clusters of sensors, in a non-decreasing
+manner. That is, at each merging step connect the
+roots of two adjacent trees with a new intermediate
+node so that the merged tree will have the smallest
+number of sensors among all possible merges of adjacent
+tree pairs. The merging process terminates when
+there remain only non-adjacent trees in .
+Note that the last DAB step corresponds to the threshold
+, guaranteeing that all nodes from are inserted into
+and that the output of the last merging step is a single tree.
+This follows from the assumption that G is connected.

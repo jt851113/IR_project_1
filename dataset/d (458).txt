@@ -1,0 +1,8 @@
+Proposition 2.1 (Triangle Inequality) Given an event se-
+quence D and two complementary patterns P and P'of the
+same period, let Q be the minimum common super pattern of
+P and P'. Then the generalized information gain of D with
+respect to Q is at most the summation of that of P and P'.
+
+Proposition 2.1 can be easily generalized to a set of complementary
+patterns, which is stated as follows.

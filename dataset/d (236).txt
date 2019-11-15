@@ -1,0 +1,21 @@
+[1] A. HARTER AND A. HOPPER. A New Location Technique for the Active Of?ce. IEEE Personal Communications 4, 5 (October 1997), 43–47.
+[2] ADJIE-WINOTO, W. A Self-Con?guring Resolver Architecture for Resource Discovery and Routing in Device Networks. Master’s thesis, Massachusetts Institute of Technology, May 2000.
+[3] ADJIE-WINOTO, W., SCHWARTZ, E. AND BALAKRISHNAN, H. AND LILLEY, J. The design and implementation of an intentional naming system. In Proc. ACM Symposium on Operating Systems Principles (Kiawah Island, SC, Dec. 1999), pp. 186–201.
+[4] BAHL, P., AND PADMANABHAN, V. RADAR: An InBuilding RF-based User Location and Tracking System. In Proc. IEEE INFOCOM (Tel-Aviv, Israel, Mar. 2000).
+[5] BANAVAR, G., BECK, J., GLUZBERG, E., MUNSON, J., SUSSMAN, J., AND ZUKOWSKI, D. An Application Model for Pervasive Computing. In Proc. 6th ACMMOBICOM Conf. (Boston, MA, Aug. 2000).
+[6] BULUSU, N., HEIDEMANN, J., AND ESTRIN, D. GPSless Low Cost Outdoor Localization For Very Small Devices. Tech. Rep. 00-729, Computer Science Department, University of Southern California, Apr. 2000.
+[7] CHAKRABORTY, A. A Distributed Architecture for Mobile, Location-Dependent Applications. Master’s thesis, Massachusetts Institute of Technology, May 2000.
+[8] CZERWINSKI, S., ZHAO, B., HODES, T., JOSEPH, A., AND KATZ, R. An Architecture for a Secure Service Discovery Service. In Proc. 5th ACM MOBICOM Conf. (Seattle, WA, Aug. 1999), pp. 24–35.
+[9] DERTOUZOS, M. The Future of Computing. Scienti?c American (Aug. 1999). Available from http://www.sciam. com/1999/0899issue/0899dertouzos.html.
+[10] FEDERAL COMMUNICATIONS COMMISION. Understanding the FCCregulations for low-power, non-licensed transmitters, Feb. 1996.
+[11] GETTING, I. The Global Positioning System. IEEE Spectrum 30, 12 (December 1993), 36–47.
+[12] HARTER, A., HOPPER, A., STEGGLES, P., WARD, A., AND WEBSTER, P. The Anatomy of a Context-Aware Application. In Proc. 5th ACM MOBICOM Conf. (Seattle, WA, Aug. 1999).
+[13] Hertz Services: Hertz NeverLost. http://www.hertz. com/serv/us/prod_lost.html, 2000.
+[14] Jini (TM). http://java.sun.com/products/ jini/, 1998.
+[15] LILLEY, J. Scalability in an Intentional Naming System. Master’s thesis, Massachusetts Institute of Technology, May 2000.
+[16] Oxygen home page. http://oxygen.lcs.mit.edu/.
+[17] Ultrasonics and robotics. http://www. seattlerobotics.org/encoder/may97/ sonar2.html, May 1997.
+[18] VEIZADES, J., GUTTMAN, E., PERKINS, C., AND KAPLAN, S. Service Location Protocol, June 1997. RFC 2165 (http: //www.ietf.org/rfc/rfc2165.txt).
+[19] WANT, R., HOPPER, A., FALCAO, V., AND GIBBONS, J. The Active Badge Location System. ACM Transactions on Information Systems 10, 1 (January 1992), 91–102.
+[20] WEISER, M. The computer for the 21st century. Scienti?c American (September 1991).
+[21] X-10 home page. http://www.x10.com/homepage. htm.

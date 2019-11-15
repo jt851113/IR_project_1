@@ -1,0 +1,10 @@
+John Byers and Jerey Considine are supported in
+part by NSF grants ANI-9986397, ANI-0093296 and
+ANI-0205294. George Kollios and Feifei Li are sup-
+ported in part by NSF grants IIS-0133825 and IIS-
+0308213.
+The authors would like to thank Phil Gibbons and
+Suman Nath for valuable feedback on versions of this
+manuscript, Sam Madden for providing the simulation
+code and answering questions about the code, and Joe
+Hellerstein for valuable discussions.

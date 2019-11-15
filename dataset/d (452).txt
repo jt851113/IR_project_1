@@ -1,0 +1,7 @@
+Definition 2.7 Given a pattern with period
+and a sequence of events the
+information loss of on position with respect to P is the
+information of the event  is not in compliance with P
+at position and there is no information loss otherwise. The
+overall information loss of D' with respect to P is the summation
+of the information loss of each position.

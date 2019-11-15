@@ -1,0 +1,26 @@
+We now compare the effectiveness of our cost-based distance
+function and the standard, similarity-based, cosine distance
+function. Our distance function, defined in (3), is based on the
+term distributions of both local documents and user queries, while
+the cosine distance function is based on only the term distribution
+of documents. Also, the cosine distance function is designed to
+group semantically “similar” documents, while our distance
+function is designed to group documents in a way that minimizes
+the query processing cost in (2). The question is whether
+traditional text clustering techniques are appropriate for creating
+groups that reduce index-building and query processing costs in
+DHTs.”
+Figure 4 shows that our cost-based distance function is more
+effective than the cosine distance function. It outperforms the
+cosine distance function for all settings, reducing the total cost by
+20% to 25%. We have similar results for other similarity-based
+distance functions, such as the KL-divergence and the squared
+Jensen-Shannon divergence.
+The reason our cost-based distance function outperforms the
+similarity-based distance functions is because the groups formed
+by the latter are highly unbalanced in size (i.e., the number of
+unique terms in each group). In our experiments, the largest group
+created by cosine distance, for example, contains 90% of the
+unique terms. Therefore, this solution approximates the peer-level
+indexing solution, which we have shown to be less efficient for
+query processing than our proposed techniques.

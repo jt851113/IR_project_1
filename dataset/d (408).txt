@@ -1,0 +1,33 @@
+This paradigm trades increased computation (for comput-
+ing prediction models) and slight increase in number of re-
+ceptions (for receiving the prediction-models) for savings in
+number of typical transmissions. Note that the cost of trans-
+mission is orders of magnitude higher than the cost of com-
+putation and is twice the cost of reception [9]. If one is
+able to generate prediction-models without \too much over-
+head" and if they are correct a \majority" of times, we can
+achieve signicant savings in energy at the sensors. Thus,
+performance of any system based on PREMON paradigm is
+a function of how computationally expensive is the opera-
+tion of generating prediction-models, and how good is the
+\predictability" of the sensor readings. \Predictability" of
+sensor readings increases with the increase in degree of cor-
+relation among readings of sensors in close proximity, and
+with the increase in degree of correlation between recent his-
+tory and the readings that a sensor is going to see in near
+future. At the same time, it also decreases with the decrease
+in the degree of correlation. For example, readings of sensors
+sensing wind direction, or readings of seismic sensors sens-
+ing earthquakes, have bad temporal correlation in general.
+Fortunately, a number of real world phenomenon like tem-
+perature, pressure, and motion, tend to have characteristics
+amenable to PREMON.We expect that generating a predic-
+tion model that makes precise predictions most of the times
+will be computationally expensive if not impossible. How-
+ever, a more modest goal of generating a prediction model,
+which can predict within a small margin of error, should be
+achievable without too much computational overhead. Since
+\some" amount of error in reported data is tolerable in sen-
+sor networks (as is \small" delay), we expect the paradigm
+of prediction-based monitoring to work well in practice. The
+experimental results presented in section 4 bear this out.

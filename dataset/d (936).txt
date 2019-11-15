@@ -1,0 +1,77 @@
+For the evaluation of threshold algorithms behavior we measured
+the bandwidth usage and the total (execution) time. Each of the
+above was observed with the following criteria under
+consideration: the number of peers in the network, the number of
+objects located on each peer and the distribution that the score of
+the objects follow among the peers. For our experiments we
+generated 3 types of datasets that follow normal, uniform and
+zipfian distributions for a large number of peers, using the
+libraries of [6]. Also we collected manually some real datasets
+from imdb.com [7] as it contains rankings from real users to real
+objects (movies). We spread the scores of highly ranked movies
+across peers and we make the IMDB spread dataset with unique
+and different (Object, Score) pairs following horizontal data
+partitioning. In all other datasets, as well, we produced synthetic
+data to evaluate cases where data were too or less similar among
+peers by using the random walk model. Thus each score at each
+peer i is s[i] = S[i-1] + C, where C is a constant. For all
+experiments we used the Planetsim Simulator [8]. For all
+simulated networks CHORD overlay [9] was used. The
+simulation was performed on a PentiumR 4 3.0GHZ 3.0GHZ with
+1.5GB of RAM, Java version 1.6.0_10 under WINDOWS XP SP3.
+Each time presented in the experiments, is the average time from
+5 runs in safe mode. Also, in all experiments the top-10 items
+were asked from each algorithm.
+Due to space limitations we present a part of the detailed
+evaluation on threshold algorithms [2]. We marked as HT-p2p
+plus BEST, the case in which the HT-p2p plus algorithm exhibits
+the best behavior while HT-p2p WORST is the corresponding
+worst case against the tested cases. As evaluating bandwidth
+performance all kind of datasets lead us to the same conclusions.
+Figure 1 below show the results zipfian dataset {A=1, range of
+scores from one to 500}, while Figure 2 depicts HT-p2p plus
+cases for uniform dataset {n=150 values, range= (1, 500)}
+according to different network topology. For example, 4x5 in
+topology means that we had 4 contributor Super-Peers and 5
+contributor peers. In both experiments we had a maximum of
+75000 objects (150 objects per contributor peer) across 500 peers.
+From this kind of experiments, we can draw four main
+conclusions. Firstly, HT-p2p plus exhibits in most cases the best
+bandwidth performance. The differences between the HT-p2pplus
+BEST and WORST were negligible. Secondly, the TPUT
+algorithm in all cases transferred more bytes than the naive
+algorithm. Specifically in all datasets for HT-p2p and HT-p2p
+plus algorithm we got about 100-497 % and 160-545 % less
+bandwidth consumption as compared with Naive and TPUT
+threshold algorithm respectively. For zipfian and uniform
+distributions the results were similar, but we measured sharper
+increases for HT-p2p plus algorithm, while in some cases of real
+“synthetic” data (IMDB), HT-p2p was better in bandwidth
+consumption. It is worth noting that when the HT-p2p plus BEST
+was second after HT-p2p, both algorithms were close enough. So,
+we can conclude that HT-p2p plus is in general the most economic
+for bandwidth usage. Finally for HT-p2p plus we noticed that for
+zipfian and uniform data distribution the more super-peers we
+used the less bytes transferred. Also, the algorithm finished in two
+running phases with identical results for best cases.
+As evaluating time performance of algorithms we measured the
+total time each algorithm takes to return the final top-k results and
+the clear processing time which is the calculation time. Here we
+should mark that PlanetSim simulator cannot support a fully
+distributed message mechanism at Super-Peers and it is based on a
+random network topology. This means that it is not fair enough to
+compare HT-plus with the others who only need one Super-Peer.
+On the contrary, it is noteworthy that the HT-plus BEST is better
+in execution time than TPUT and not far from the HT-p2p which
+is faster. The low calculation times (5.7 % to 18.9% as compared
+with the total time) at each Super-Peer and this limitation of the
+simulator give us the opportunity to claim that a new fully
+distributed version of the simulator could bring HT-p2p plus
+(BEST) on the first position. In addition for both HT-p2p and
+plus, up to 200 peers, we have a linear increase in total execution
+time which becomes sharper if we increase the number of
+contributor peers to 400 or 500 (see figure 3). Finally TPUT
+appears to need more than 300% more time than HT-p2p and HTp2p
+plus. On the other hand the naive case proved to be optimal
+for all datasets, two or three times faster than HT-p2p. The tradeoff
+between time and network consumption arises clearly here.

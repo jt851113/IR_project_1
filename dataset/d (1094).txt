@@ -1,0 +1,64 @@
+Each query Q is associated with some node P(Q). This
+node stores all information pertaining to Q: a set of documents
+references, the associated relevance tracking and interest
+profiling information. Our design is based on the
+standard API for structured P2P system proposed by [6].
+This design is a specialized form of a distributed hash table
+(DHT), which associates a key-based routing layer (KBR)
+and a storage layer. The role of the KBR layer is to locate
+the node responsible for some query’s key. To that end, it relies
+on a structured overlay (e.g., an augmented ring), where
+each node is assigned a unique identifier and the responsibility
+of a range of data items identifiers. In our case, each
+query Q has an identifier determined by hashing its terms
+to a key h(Q). The node P(Q) whose range covers h(Q)
+is responsible for maintaining information related to Q and
+provide the appropriate sorted set of document references
+when asked to by some distant node. The main APIs are:
+The application issues a request or inserts relevance tracking
+information for some query Q to the local instance of
+the storage layer, which in turn uses the KBR Send call
+for reaching P(Q). On each routing step towards the destination,
+the storage layer can be notified by the Transit
+call that a message is transiting via the local node, towards
+P(Q). It can in turn modify the content of this message,
+or even answer the request on behalf of P(Q). This latter
+mechanism is used in our design to implement load balancing
+and fault tolerance (as described in Section 3.2), by exploiting
+the routing paths convergence property of the underlying
+structured overlay.
+Informally, the property of path convergence results from
+the greedy routing algorithm used by many KBRs. Our
+system will be based on the routing layer of Pastry [17], for
+its stability and its performance (number of hops, usage of
+network distance for choosing peers, etc.). In Pastry, nodes
+and items have identifiers of d digits (each digit is a number
+in base b, with b = 4 in the common case) and are organized
+on an augmented ring. Each node in the ring constructs a
+routing table that contains references to a set of other peers
+(chosen according to the prefixes of their identifiers). When
+routing a request to its destinations, each intermediary node
+will select as next hop a peer from its routing table with an
+identifier that has a longer common prefix with the target
+key than itself. As each routing step “resolves” at least one
+digit, at most d = O(logN) routing steps are required (N is
+the number of nodes in the network).
+An interesting property of such a greedy routing strategy
+is that routing paths towards a destination converge to the
+same set of peers, and does so with a higher probability as
+digits are resolved: the more digits have been resolved, the
+less peers remain that have a longer common prefix with the
+target key. Routes from all nodes to some key in the network
+collide in the last hops, as illustrated below. The path
+convergence property is particularly useful for the design of
+load balancing and fault tolerance mechanisms [16, 20].
+A“standard”DHT provides a raw put/get interface to the
+application [6]. Elements are stored as blocks on the node
+responsible for their key, and retrieved as blocks as well. Our
+design differs in the important following point: our storage
+layer does not store information blindly, but provides an
+interface and functionalities that are specific to the storage
+and processing of ranking information. This has a strong
+impact in particular on the design of load balancing and
+fault-tolerance mechanisms that would not be conceivable
+with a standard DHT.

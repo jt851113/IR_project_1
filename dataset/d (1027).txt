@@ -1,0 +1,45 @@
+With Algorithm 1, given the query distribution, we can compute
+the optimal range indexing strategy in O(n)3, where n represents
+the number of cells. Once the query distribution evolves,
+the indexing strategy should be recomputed. However, we do not
+want to invoke Algorithm 1 frequently. Although cell number is
+far smaller than the tuple number, O(n)3 is still a remarkable cost.
+Moreover, indexing range entries incurs additional network overheads.
+In this section, we propose our light-weight maintenance
+scheme. The scheme is based on the observation that the query
+distribution changes slowly.
+After Algorithm 1 computes the optimal indexing strategy for the
+current query distribution, we construct a binary tree to organize
+the index entries. The leaf node of the tree refers to an index entry,
+whereas the inner node represents a set of entries. The tree node is
+represented in the format of:
+{errorbound, (cost, tupleNumber), cellrange}
+Error bound is applied to limit the estimation error, cost represents
+the maintenance cost of the range entries computed by Algorithm 1,
+tuple number is the approximate number of tuples in the range and
+cell range describes the start and end cell IDs.
+Definition 4.5. Estimation Error
+For a tree node n, suppose its initial cost computed by Equation 12
+is c. After a time t, if the new observed cost is c’, the estimation
+error is defined as |c?c |
+c .
+As shown in Figure 4, the root node represents the domain of
+the attribute (cell 1 to cell 10). The total error bound is 0.4 and
+its current cost is 100. The node splits its range into two children
+such that their cost variance is minimized. The error bounds of
+the children are half of their parents. Note that the combination
+of children’s ranges may not equal to the parent’s range, because
+some empty cells are excluded from the index entries.
+If the query distribution of an index entry changes, the corresponding
+leaf node will check if the change results in violation of
+the error bound. If not, the change will be discarded. Otherwise,
+the node will ask its parent for help. The parent node computes its
+estimation error. If the change is still bounded, the parent node will
+invoke Algorithm 1 to compute an optimal indexing strategy for
+its range, and all descendant nodes update their ranges and initial
+cost. Otherwise, the parent will forward the request to its own parent.
+The process may be recursively invoked until the root node is
+reached, where the total optimal indexing strategy is recomputed.
+The total error bound is a tunable parameter. A small error bound
+makes the index more sensitive to query distribution, while a large
+bound leads to lazy update. In the experiments, we set it to 0.4.

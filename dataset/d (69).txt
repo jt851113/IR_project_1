@@ -1,0 +1,19 @@
+The second major component of our sensor-query solution is the sensor-proxy, which acts as an interface between
+a single sensor and the Fjords querying that sensor. The sensor proxy runs in the query processor on a
+host-machine, and serves a number of purposes. The most important of these is to shield the sensor from having
+to individually deliver data to hundreds of interested end-users. It accepts queries and services them on behalf
+on the sensor, using the sensor’s processor to simplify this task when possible.
+Another role of the sensor proxy is to adjust the sample rate of the sensors, based on user demand. If users
+are only interested in a few samples per second, there is no reason for sensors to sample at hundreds of hertz,
+since lower sample rates are directly proportional to longer battery life. Similarly, if there are no user queries
+over a sensor, the sensor proxy can ask the sensor to power off for a long period, coming on-line every few
+seconds to see if queries have been issued.
+A third role of the proxy is to direct the sensor to aggregate samples in predefined ways, or to download a
+completely new program into the sensor if needed. For instance, if the proxy observes that all of the current
+5
+user queries are interested only in samples with values above or below some threshold, the proxy can instruct
+the sensor to not transmit samples outside that threshold, thereby saving communication.
+Via simulations (with a microprocessor simulator), I have been able to show that isolating sensors from
+queries and intelligently aggregating on those sensors can their reduce power consumption (and thus battery
+life) by more than an order of magnitude. These experiments are a primary motivation for my recent work on
+in-network aggregation, discussed in section 3 below.

@@ -1,0 +1,48 @@
+Here, in addition to results for stable systems, we also
+present the improvements observed in a churn-intensive system.
+(Note that a system with low churn rate shows a behavior
+similar to a stable system.) The way we simulate churn is
+similar to the way it was done in [13]: essentially, the n
+nodes crash and re-join the system alternately. Once a node
+joins (or fails), it remains alive (or dead) for a mean duration
+of 900 seconds with the duration being sampled from an
+exponential distribution. On an average, we simulate 4 queries
+per second. The above parameters equate to a churn rate
+of around 2 peer-joins and peer-leaves per second, i.e., one
+join and one leave for every two queries on an average. The
+stabilization interval is set to 25 seconds, and the auxiliary
+neighbor computation period is set to 62:5 seconds. Our results
+show that significant performance benefits can be obtained
+even under this high churn rate.
+Variation with n: We vary n from 128 to 1024, and fix k as
+log n. As shown in Figure 5, the improvements are again quite
+significant. In particular, we see up to 57% reduction in the
+average number of hops in a stable system with 1024 nodes
+with our algorithm. Even in the presence of very high churn,
+we see improvements of up to 25%.
+Variation with k: We fixed n at 1024 and varied k from
+flog n; 2 log n; 3 log ng. Figure 6 shows the observed improvements.
+As shown, the observed improvement reduces as the
+number of additional neighbors increases. For example, in
+the high churn case, the improvement is around 26% for
+k = log n, whereas the improvement drops to around 17%
+for k = 3 log n. Intuitively, when the number of additional
+pointers is small, then it is more important that the optimal
+ones are chosen to provide the most benefit. As k increases,
+the benefit obtained by even a random choice of neighbors
+increases because the chance of an optimal neighbor being
+chosen randomly increases. This leads to a reduction in the
+relative benefit observed by using our approach to select the
+auxiliary neighbors.
+On the other hand, the improvements observed for Pastry
+actually keep increasing as k increases (see Figure 4). This
+behavior is an artifact of the FreePastry implementation and
+can be explained as follows. Routing in FreePastry is localityaware,
+i.e., if there is more than one candidate node for the
+next hop, then the candidate node that is live and closest to
+the current node is picked. Thus, increasing the number of
+core neighbors does not decrease the hop count as much as
+increasing the number of auxiliary neighbors. In our Chord
+implementation, we select the candidate node in the routing
+table that is closest to the destination, and hence the observed
+behavior is different.

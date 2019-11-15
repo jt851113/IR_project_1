@@ -1,0 +1,13 @@
+Despite the many research efforts invested recently in peerto-
+peer search engines, none of the proposed system has
+reached the level of quality and efficiency of their centralized
+counterpart. One of the main reasons for this inferior performance
+is the difficulty to attract a critical mass of users
+that would make the peer-to-peer system truly competitive.
+We argue that decentralized search mechanisms should not
+aim at replacing existing engines, but instead complement
+them by adding novel functionalities that would be difficult
+to provide in a centralized manner. This paper introduces
+an example of such a complementary search mechanism and
+presents the design of a distributed collaborative system for
+leveraging user feedback and document/user profiling information.

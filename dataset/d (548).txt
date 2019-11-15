@@ -1,0 +1,19 @@
+Recall from Section IV-B that the optimal set of k neighbors
+is computed for every subtree of T. Note that as long as
+nothing changes in a subtree, the computed set remains
+optimal. In other words, if a node’s popularity changes (or
+it is inserted/deleted), then the only vertices affected are the
+ones whose subtree contains this node. These are exactly the
+vertices that are on the path from the root of T to the affected
+leaf. This observation provides us with a simple algorithm
+for re-computing the optimal set as popularities change. In
+particular, the algorithm presented in Section IV-B is modified
+to take an additional parameter I, the id of the affected peer.
+Each vertex checks whether I is a leaf within its subtree; if
+not, it simply returns the previously-computed values of the
+cost and pointers, and does not invoke the algorithm on its
+children. Thus, new computations are performed only on the
+vertices along the path corresponding to I. The running time
+of this algorithm is O(bk), because the processing cost at each
+vertex in the trie is O(k), and the number of vertices at which
+the optimal set is re-computed is at most b.

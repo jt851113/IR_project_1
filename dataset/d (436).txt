@@ -1,0 +1,27 @@
+After discovering the single patterns, valid subsequences of
+dierent symbols may be combined to form a valid subse-
+quence of multiple symbols of the same period. We employ
+a level-wise search algorithm, which generates the subse-
+quences of i-patterns based on valid subsequences of (i??1)-
+patterns with the same period length. To eciently prune
+the search space, we use two properties:
+
+ Symbol property. If a pattern P is valid, then all of
+its generalizations are valid.
+
+ Segment property. If D0 = dj; dj+1; dj+2; : : : ; dk is
+a valid segment for pattern P, then D0 is also a valid
+segment of all generalizations of P.
+
+Since these two properties are straightforward, we omit the
+proof. Based on these properties, we can prune the candi-
+dates of a valid pattern eciently. For example, if two pat-
+terns (d1; ; ; ) and (d2; ; ; ) are valid, then three candi-
+date 2-patterns can be generated: (d1; d2; ; ), (d1; ; d2; )
+and (d1; ; ; d2). Similarly, (d1; d2; d3; ) can become a can-
+didate 3-pattern only if (d1; d2; ; ), (d1; ; d3; ), and (d2; d3;
+; ) are all valid. After the candidate set of valid i-patterns
+is generated, then a similar algorithm to the SB algorithm is
+executed to verify whether these candidates are indeed valid
+patterns. The SB algorithm also nds the valid subsequence
+with the most repetitions for each valid pattern.

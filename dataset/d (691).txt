@@ -1,0 +1,28 @@
+Our query processing system starts with the XML document defined
+by the service. For simplicity, assume that the document is
+fixed: only the values of attributes and fields are changing.4 The
+document defines a logical hierarchy on the data (see Figure 1). At
+any point in time, we have partitioned ownership for fragments of
+the document to a collection of sites (discussed in Section 3.2). A
+site may also cache data owned by other sites (Section 3.3).
+Users pose XPATH queries on the view of the data as a single
+XML document. The query selects data from a set of nodes in the
+hierarchy. The query is sent directly to the lowest common ancestor
+of these nodes, using our technique for self-starting distributed
+queries (Section 3.4). There it begins a potentially recursive process,
+which we denote query-evalute-gather (Section 3.5). Upon
+receiving a query, the site manager queries its local database and
+cache, and evaluates the result. If necessary, it gathers missing data
+by sending subqueries to other sites, who may recursively query additional
+sites, and so on. Finally the subquery answers return from
+the other sites, and the combined results are sent back to the user.
+XPATH queries supported. Throughout this paper, we take the
+common approach of viewing an XML document as unordered, in
+that we ignore any ordering based solely on the linearization of the
+hierarchy into a sequential document. For example, although siblings
+may appear in the document in a particular order, we assume
+that siblings are unordered, as this matches our data model. Thus
+we focus on the unordered fragment of XPATH, ignoring the few
+operators such as "!$#&%(')%*!,+.-*/ or axes like following-siblings that
+are inappropriate for unordered data. We support (and have implemented)
+the entire unordered fragment of XPATH 1.0.

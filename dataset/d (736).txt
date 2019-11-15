@@ -1,0 +1,26 @@
+Given an arity n ? N and n finite sets (Di )i=1..n, let R ? ×i=1..nDi (×i=1..nDi
+stands for D1 × D2 × · · · × Dn) the n-ary relation where patterns are to be discovered.
+All along this article, R denotes this dataset. Table 1 represents an example of
+such a relation RE ? {α, β, γ} × {1, 2, 3, 4} × {A, B,C}, hence a ternary relation.
+In this table, every ‘1’ at the intersection of three elements stands for the presence
+of the related triplet in RE . For example the bold ‘1’ at the intersection of the elements
+α, 1 and A means (α, 1, A) ? RE . On the contrary a ‘0’ in Table 1 is at
+the intersection of three elements that form a triplet absent from RE . For example
+the bold ‘0’means (α, 2,C) /? RE . N-ary relations are available in many application
+domains. For instance, RE could represent customers (1, 2, 3 and 4) buying
+items (A, B and C) along three months (α, β and γ ). In this context, the bold ‘1’
+in Table 1 would mean that “Customer 1 bought Item A during the first month”. The
+bold ‘0’ would be understood as “Customer 2 did not buy Item C during the first
+month”.
+More generally, binary relation mining has been quite popular in the many application
+domains where we can record Boolean properties of sets of Objects, i. e., mining
+an Objects × Properties relation. A generic though common context can be to add
+spatial and/or time information to get an Objects × Properties × Dates and/or an
+Objects×Properties×Dates×Places relations. Among others, we are interested
+by dynamic graph description by means of n-ary relations. The idea is that the two
+first dimensions correspond to the vertices such that we encode the graph incidence
+matrix. Given RE could represent vertices (1, 2, 3 and 4) which can be linked or not
+to the vertices (A, B and C) along three time-stamps (α, β and γ ). In this context,
+the bold ‘1’ in Table 1 would mean Vertex 1 is connected to Vertex A at the first
+time-stamps. Section 6 is a case study on a real graph which evolves in two temporal
+dimensions.

@@ -1,0 +1,104 @@
+Search services on the World Wide Web are the information
+retrieval systems that most people are familiar with.
+As argued by Marchionini [23] \end users want to achieve
+their goals with a minimum of cognitive load and a maximum
+of enjoyment." Correspondingly, in the context of
+Web searches we observe that users tend to type short
+queries (one to three words) [2, 9], without giving much
+thought to query formulation. Additionally, it is often
+the case that users themselves are unclear about their
+information need [12] when framing the query. Since determining
+relevance accurately under these circumstances
+is hard, most search services are content to return exact
+query matches { which may or may not satisfy the user's
+actual information need.
+In this paper we describe a system that takes a somewhat
+dierent approach in the same context. Given typical
+user queries on the World Wide Web (i.e., short
+queries), our system attempts to nd quality documents
+related to the topic of the query. Note that this is more
+general than nding a precise query match and not as
+ambitious as trying to exactly satisfy the user's information
+need. The latter is often hard to do since most short
+queries do not express the need unambiguously. In cases
+Permission to make digital/hard copy of all or part of this work
+for personal or classroom use is granted without fee provided that
+copies are not made or distributed for prot or commercial advantage,
+the copyright notice, the title of the publication and its
+date appear, and notice is given that copying is by permission of
+ACM, Inc. To copy otherwise, to republish, to post on servers or
+to redistribute to lists, requires prior specic permission and/or
+fee. SIGIR'98, Melbourne, Australia c 1998 ACM 1-58113-015-5
+8/98 $5.00.
+where the query is ambiguous, i.e. there is more than
+one possible query topic, our goal is to return relevant
+documents for (some of) the main query topics. This excludes
+minor interpretations of the query and encourages
+users to type in queries that are representative of the
+topic they seek to explore. We call the process of nding
+quality documents on a query topic, topic distillation.
+The situation on the World Wide Web is dierent
+from the setting of conventional information retrieval systems
+for several reasons. The main reasons are:
+ Users tend to use very short queries (1 to 3 words
+per query [2, 9]) and are very reluctant to give feedback.
+ The collection changes continuously.
+ The quality and usefulness of documents varies
+widely. Some documents are very focused; others
+involve a patchwork of subjects. Many are not
+intended to be sources of information.
+ Preprocessing all the documents in the corpus requires
+a massive eort and is usually not feasible.
+However, there is an additional source of information that
+an information retrieval system on the World Wide Web
+can harness: namely, the opinions of people who create
+hyperlinks. A simple approach to nding quality documents
+is to assume that if document A has a hyperlink to
+document B, then the author of document A thinks that
+document B contains valuable information. Thus, using
+the in-degree of a document as a measure of its quality is
+a rst heuristic. However, transitivity is worth exploiting
+as well. If A is seen to point to a lot of good documents,
+then A's opinion becomes more valuable, and the fact
+that A points to B would suggest that B is a good document
+as well.
+Using this basic idea, Kleinberg [21] developed a
+connectivity analysis algorithm for hyperlinked environments.
+Given an initial set of results from a search service,
+the algorithm extracts a subgraph from the Web
+containing the result set and its neighboring documents.
+This is used as a basis for an iterative computation that
+estimates the value of each document as a source of relevant
+links and as a source of useful content.
+While this algorithm works well for some queries,
+it performed poorly in several of our test cases. To
+better understand its behavior we built a visualization
+tool. This enabled us to discover three problems with
+connectivity analysis as suggested by Kleinberg, i.e. a
+\links-only" approach: Mutually Reinforcing Relationships
+Between Hosts (where certain arrangements of documents
+\conspire" to dominate the computation), Automatically
+Generated Links (where no human's opinion
+is expressed by the link), and Non-relevant Documents
+(where the graph contains documents not relevant to the
+query topic). In this paper we present several techniques
+for tackling these three scenarios. The last problem is
+by far the most common, and our general solution is to
+use content analysis to help keep the connectivity-based
+computation \on the topic."
+We compare the performance of 10 algorithms with
+the basic Kleinberg algorithm on 28 topics that were used
+previously in [6]. The best approach increases the precision
+over basic Kleinberg by at least 45% and takes less
+than 3 minutes. This running time is dominated by the
+time to fetch 130 documents from the World Wide Web
+and can be reduced considerably when term vectors for
+the documents are available.
+The paper is structured as follows. Section 2 describes
+the connectivity analysis algorithm, its implementation,
+and the problems we encountered. Section 3 shows how
+be address the rst problem, Section 4 gives algorithms
+addressing the other two problems. In Section 5 we evaluate
+the dierent algorithms. Section 6 presents considerably
+faster algorithms that additionally improve precision.
+In Section 7 we discuss related work.

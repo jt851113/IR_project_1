@@ -1,0 +1,34 @@
+Another property of sensors is
+that they produce continuous, never ending streams of data
+(at least, until the sensors run out of battery power!). Any
+sensor query processing system needs to be able to operate
+directly on such data streams. Because streams are infinite,
+operators can never compute over an entire streaming
+relation: i.e. they cannot be blocking. Many implementations
+of traditional operators, such as sorts, aggregates, and
+some join algorithms therefore, cannot be used. Instead, the
+query processor must include special operators which deliver
+results incrementally, processing streaming tuples one
+at a time or in small blocks.
+Streaming data also implies that sensors push data into
+a query plan. Thus, the conventional pull-based iterator
+model [8] does not map well onto sensor streams. Although
+possible, implementing a strict iterator model-like interface
+on sensors requires them to waste power and resources. To
+do so, sensors must keep the receivers on their radios powered
+up at all times, listening for requests for data samples
+from multiple user queries. Power, local storage, and communications
+limitations make it much more natural for sensors
+to deliver samples when those samples become available.
+Since many sensors have wireless connections, data
+streams may be delivered intermittently with significant
+variability in available bandwidth. Even when connectivity
+is generally good, wireless sensor connections can be
+interrupted by local sources of interference, such as microwaves.
+Any sensor database system needs to expect variable
+latencies and dropped or garbled tuples, which traditional
+databases do not handle. Furthermore, because of
+these high latencies, an operator looking for a sensor tuple
+may be forced to block for some time if it attempts to pull
+a tuple from the sensor. Thus, operators must process data
+only when sensors make it available.

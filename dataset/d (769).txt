@@ -1,0 +1,9 @@
+We have discussed several coordination services
+for wireless sensor networks. The
+general applicability of these services is demonstrated
+both through their use with
+applications and through the way they build
+upon each other. We expect that the availability
+of this toolkit of wireless sensor network
+services will aid in the future development of
+structural health monitoring systems.

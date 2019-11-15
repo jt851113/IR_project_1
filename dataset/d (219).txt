@@ -1,0 +1,1 @@
+In this section, we describe the implementation of Cricket. We describe the system parameters and hardware con?guration, the API provided by the listener to applications running on the attached node, and some deployment issues with ultrasonic hardware.

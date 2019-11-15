@@ -1,0 +1,34 @@
+Since there are a huge number of potential patterns, O(j=jLmax ),
+a pruning method is needed to reduce the number of can-
+didates. The pruning method is motivated by our observa-
+tion that if a symbol d participates in some valid pattern
+of period l, there should be at least min rep times that the
+distance between two occurrences of d is exactly l (in order
+to form a valid segment). So the proposed distance-based
+pruning method makes one pass over the data sequence to
+discover all possible periods and the set of symbols that are
+likely to appear in some pattern of each possible period. For
+each symbol d and period l, the number of times when the
+distance between two occurrences of d in the sequence is l is
+collected.
+
+Our model not only allows partially specied patterns such
+as (d; ; ) where d can also occur in the \*" position, but
+also recognizes patterns with repetition of the same sym-
+bol such as (d; ; d). Hence it is not sucient to just track
+the distance of a symbol to its last occurrence. To perform
+the distance-based pruning when scanning through the se-
+quence, we need to maintain a moving window of the last
+Lmax symbols scanned. For the next symbol, say d, we com-
+pare it with each of the symbol in the moving window. If
+a match occurs at the jth position, the count for period
+(Lmax ?? j +1) of symbol d (denoted as Cd;Lmax??j+1) is
+incremented by 1. For example, in Figure 1(a), the third
+d1 in the sixth position will contribute to both Cd1;2 and
+Cd1;5. Due to the generality of our model, for each occur-
+rence of a symbol d we need to track its distance to all of
+its previous occurrences within the moving window. Given
+a symbol d and a period l, if Cd;l is larger than or equal
+to the min rep threshold, then it is possible that d might
+participate in some valid pattern of period l. We can use
+this property to reduce the candidate patterns signicantly.

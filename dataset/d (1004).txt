@@ -1,0 +1,64 @@
+Although the content analysis based algorithms described
+in the previous section improve precision { they do so at
+the expense of response time. Query response times with
+imp are about half a minute, whereas content analysis
+of all nodes in the graph requires downloading roughly
+2000 documents from the Web which can take about
+30 minutes. Ideally, we would like to use the advantage
+that content analysis provides { i.e., reduction of
+the eect of non-relevant nodes, without paying the high
+cost of a full graph download. In this section we describe
+two algorithms that involve content pruning but
+only analyze a part of the graph (less than 10% of the
+nodes). This makes them a factor of 10 faster than previous
+content analysis based algorithms, supporting query
+response times of around 3 minutes, which are more tolerable.
+Our two algorithms are motivated by the observation
+that not all nodes are equally inuential in deciding the
+outcome of the improved connectivity analysis. Some are
+better connected than others and hence likely to dominate
+the computation. The new algorithms attempt to
+selectively analyze and prune if needed, the nodes that
+are most inuential in the outcome. Since the act of
+pruning itself alters the course of the computation selecting
+the best candidates for pruning is problematic.
+We use two heuristics, degree based pruning and iterative
+pruning, to select the nodes to be analyzed. These are
+described in the subsections below.
+In both cases, as before, an expanded query, Q, is
+needed to compute the relevance weights of nodes. Previously
+the entire start set was used to compute Q. With
+partial content analysis only a subset of the start set
+(30 documents in our implementation) is used for this
+purpose. These are selected by another heuristic, based
+solely on the information the Connectivity Server can
+provide { namely the URL and connectivity of each document.
+With some experimentation we arrived at a heuristic
+that selects nodes based on in-degree, out-degree, and
+match of the URL string with the original query. Specifically,
+we select the 30 start set documents that maximize
+the value of in degree+2num query matches+
+has out links, where num query matches is the number
+of unique substrings of the URL that exactly match
+a term in the user's query, and has out links is 1 if the
+node has at least one out-edge and otherwise 0.
+The documents selected from the start set are fetched
+and their initial 1000 words are concatenated to give Q.
+Each of them is then scored against Q and the 25th percentile
+relevance weight is selected as the pruning threshold.
+The pruning threshold is used in the next phase
+(the pruning phase) to eliminate some of the inuential
+but non-relevant nodes in the graph. In computing
+similarity between the query, Q, and a document, D, a
+slightly modied formula is used from before. The weight
+of terms in the original query is boosted by a factor of
+three. Specically, wiq is computed as freqiq IDFi3,
+whenever term i is a (stemmed form) of a term in the
+user's query. This is done in the pruning phase as well.
+In the pruning phase a hundred nodes are selected
+from the graph by one of two heuristics, which we describe
+next. They are matched with Q, and pruned if
+their relevance weight is below the pruning threshold. In
+all at most 130 documents are fetched and analyzed.
+We experimented with two partial pruning approaches:
+(i) Degree Based Pruing and (ii) Iterative Pruning.

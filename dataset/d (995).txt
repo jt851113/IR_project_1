@@ -1,0 +1,22 @@
+To determine the neighborhood of the start set the algorithm
+needs to follow links that point in and out of
+these documents. Outlinks are easily obtained by fetching
+the document. One way of obtaining inlinks is to use
+AltaVista queries of the form link : u, which returns a
+list of documents that point to the URL u. This was the
+implementation used by [21].
+In our queries, the neighborhood graph contained on
+the order of 2000 nodes. The running time is completely
+dominated by the time it takes to fetch the documents.
+With a download rate of 1 document per second queries
+takes about 30 minutes.
+To get fast access to linkage information within the
+World Wide Web, we built a Connectivity Server [4] that
+provides linkage information for all pages indexed by the
+AltaVista search engine. The server provides a specialized
+interface to compute the neighborhood graph for a
+set of URLs. This speeds up the graph construction to
+under half a minute and enables us to handle queries in
+almost real time.
+We ran the computation for 150 iterations in each
+case, although the system seemed to converge after 10.

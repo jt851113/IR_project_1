@@ -1,0 +1,128 @@
+In this section, we discuss extensions to our scheme, including
+cache consistency issues, handling larger nesting depths, ownership
+changes, schema changes, and speeding up XSLT processing.
+Query-based consistency. Due to delays in the network and the
+use of cached data, answers returned to users will not reflect the
+absolutely most recent data. Instead, we provide a very flexible
+mechanism in which each query may specify its tolerance for stale
+data. We store timestamps along with the data, indicating when
+the data was created. An XPATH query specifying a tolerance is
+automatically routed to the data of appropriate freshness. In particular,
+each query will take advantage of cached data only if the data
+is sufficiently fresh. For example, a consistency predicate such as
+[timestamp o > now - 30] in a query Q means that Q can be answered
+using any data whose timestamp is within 30 seconds of
+the time Q was posed.
+Although allowing users to specify a degree of staleness violates
+strict data transparency, we believe it provides an easily understandable
+means for queries that trade off freshness for possibly large
+performance improvements. For example, when a user is several
+miles from her destination, the Parking Space Finder service may
+fire off queries that tolerate minutes-old availability information.
+As the user approaches her destination, the service fires off queries
+that insist upon the most recent data.
+The following changes to the XSLT program are needed to handle
+consistency predicates in queries. If status = owned, then we
+ignore consistency predicates, because the owner of the data has
+the freshest copy. Thus the semantics of the above consistency
+predicate allows for returning the freshest data even if that data
+is more than 30 seconds old. This ensures that users get an answer.
+Alternatively, the system could return an error message. If
+status = complete, and we can separate out the consistency predicates
+from ] , then we first check ]c[d)e9f —the rest of
+the predicates in P. If that evaluates to false, then there is no need
+to check for the consistency predicates. If that evaluates to true and
+ evaluates to false, then we add a asksubquery tag at
+this point to signal the post-processor. As before, if ] is
+not readily divided out, we fall back to adding a asksubquery tag,
+in order to query the owner.
+Larger nesting depths. The main challenge with XPATH queries
+with nesting depths greater that 0 is that the query may specify
+predicates that can not be evaluated locally (recall the example
+query in Section 3.5). Many such queries are quite natural in the
+kinds of applications we are interested in.
+There are two approaches to solving such queries. The first approach
+is to collect all the data needed to evaluate the predicate at
+one site. The main question here is: what data needs to fetched and
+at which site should the data be collected? Referring to our example
+query from Section 3.5,
+.../block[@id=’1’]
+/parkingSpace[not(price > ../parkingSpace/price)]
+even though the predicate with nesting depth 1 is associated with
+the parkingSpace tag, because of the upward reference in the predicate
+(“..”), the data needed to check this predicate is the entire subtree
+under the block tag.
+Currently, we solve such a query by analyzing the query to find
+out the earliest tag that is referred to in such a nested predicate
+in the query. In this example query, this tag would be the block
+tag. During query execution, when the XSLT program encounters
+a node with this tag, it stops the execution at that point, issues a
+subquery to fetch all the data under that block (in this case, using
+the query .../block[@id=’1’]/), and proceeds with the execution
+when the answer to the subquery returns. This approach guarantees
+that whenever the predicate is evaluated, all the data that it requires
+is always present locally.
+This approach may not be optimal for certain queries. For example,
+consider a (frivolous) query requesting all available spaces in
+all cities that have Soho as a neighborhood:
+... /city[./neighborhood[@id=’Soho’]]/ ...
+Fetching all the data below the city nodes at the corresponding sites
+(as will be done by the above approach) may be an overkill for this
+query. It would be preferable to just evaluate the predicates directly,
+which can be done by firing off subqueries of the form
+boolean(... /city/neighborhood[@id=’Soho’])
+We are planning to implement and experiment with this approach
+in the future.
+Ownership changes. For the purposes of load balancing or accommodating
+arriving or departing sites, it is useful to be able to
+dynamically change the ownership of a set of IDable nodes. The
+transition must appear simultaneous to the rest of the system. The
+steps to be done to transfer an IDable node are (1) the site taking
+ownership of an IDable node fetches a copy of the local information
+from the owner, (2) any sensor proxy reporting to the previous
+owner is asked to report to the new owner, and (3) the new owner
+sets the status for that node to owned while the old owner sets the
+status to complete. In addition, the DNS entry needs to be updated
+to the IP address of the new owner. Various relaxations in simultaneity
+are possible, due to the fact that fresh data obsoletes the
+old data. The DNS update can be done lazily because the old site
+can reject (or possibly forward) messages targetting the transferred
+IDable node.
+Schema changes. Schema changes that do not affect the hierarchy
+of IDable nodes can be done locally by the site manager that
+owns the relevant fragment of the data. Such schema changes include
+adding attributes to, or deleting attributes from the data, and
+adding or removing non-IDable nodes. This might lead to transient
+inconsistencies as the site manager has no way of knowing who
+else might have cached that part of the data. But in a continously
+changing environment such as ours, we expect this inconsistency
+to be corrected quickly.
+Some of the schema changes that affect the hierarchy of the IDable
+nodes can be handled similarly. For example, addition or deletion
+of IDable nodes is performed by the site manager that owns the
+parent of the affected IDable node. More drastic schema changes,
+such as a restructuring of the hierarchy, may have to be performed
+by collecting the entire document at one site, making the changes,
+and redistributing the document back amongst the nodes. Once
+again, such a change might lead to transient inconsistencies in the
+data that, although undesirable, are permissible for the kinds of
+applications we are looking at. More stringent consistency guarantees
+can also be implemented by maintaining auxiliary information
+about the copies of the data as we will discuss in Section 6.
+Speeding up XSLT processing. Recall that the QEG processing
+at a site involves creating an XSLT program from the XPATH
+query, compiling the XSLT program, and then executing the compiled
+program against the document. As demonstrated in Section 5,
+there is significant overhead in the compilation step. We now describe
+our technique for eliminating most of this overhead by directly
+generating mostly compiled XSLT programs.
+When a site manager starts up, one of the first things it does is
+to create and compile an XSLT program using a dummy XPATH
+query. Once this is done, it identifies the parts of this compiled
+XSLT query that depend on the XPATH query. Subsequently, when
+the site manager needs to create the XSLT program for an actual
+XPATH query, it simply modifies this XSLT program directly to
+set the query-dependent information. Some compilation is still required,
+because the query-dependent structures are in XPATH and
+need to be recompiled. But the cost is much lower than the cost of
+compiling the entire XSLT program.

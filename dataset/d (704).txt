@@ -1,0 +1,108 @@
+Previous work in sensor databases has focused primarily on networks
+of closely co-located sensors with limited resources [5, 26,
+27]. The sensor query processing system operates directly on continuous,
+never-ending streams of sensor data that are pushed into
+the query plans for continuous queries. The stream of data is viewed
+as a streaming relation (e.g., in Fjords [26]) or a time series (e.g., in
+Cougar [5]). These efforts have developed techniques for answering
+continuous queries over streaming data and for performing certain
+query processing tasks in the sensor network itself in order to
+eliminate communication and extend sensor battery lifetimes.
+This paper complements this previous work by addressing fundamental
+challenges in distributed query processing over wide area
+sensor databases. Based on the applications we were considering,
+we sought to provide a more familiar abstraction of the database as
+the collection of values corresponding to the most recent updates
+(e.g., the currently available parking spaces). Even in this more traditional
+setting, there were plenty of challenges to overcome. The
+distributed database infrastructure in IrisNet shares much in common
+with a variety of large-scale distributed databases. For example,
+DNS [28] relies on a distributed database that uses a hierarchy
+based on the structure of host names, in order to support nameto-
+address mapping. LDAP [35] addresses some of DNS’s limitations
+by enabling richer standardized naming using hierarchicallyorganized
+values and attributes. However, a key difference is that
+these efforts target a very narrow set of lookup queries (with very
+limited predicates), not the richness of a query language like XPATH.
+Abiteboul et al. [19] present techniques for materializing and
+maintaining views over semistructured data. Answering queries
+from views is a hard problem in general. Our caching infrastructure
+differs significantly from this work in that we do not store or
+use the queries that resulted in the caching of the data, only the
+data itself. Our approach is more data-driven in nature. We generalize
+subqueries, tag the data, and maintain certain invariants, all to
+make our partial-match caching scheme tractable. There has been a
+lot of work on caching in distributed databases, and object-oriented
+databases. Franklin and Carey [22] present techniques for clientserver
+caching in object-oriented databases. Various work [13, 12,
+30, 3, 25, 4, 6, 29] discusses issues of data replication and replicate
+management in distributed databases. Much of this work has
+focused on maintaining replicas consistent with the original data,
+with various levels of consistency guarantees. In our work, we take
+the approach of not providing any strict guarantees of consistency.
+We believe that for the kinds of applications for which wide area
+sensor databases will be used, such strict guarantees are not required.
+Depending upon the requirements of an application, it is
+certainly possible to provide such guarantees by maintaining auxiliary
+information about the replicas of the data in the system. Our
+approach is more akin to DNS, in that it is based on specifying
+consistency requirements with the queries, and using a time-to-live
+(ttl) field associated with the cached copies in order to determine
+staleness.
+Recently, there has been a lot of interest in streaming data sources
+and continuous query processing [9, 20, 18]. This work is related
+to ours in that the sensor proxies can be thought of as producing
+data streams, and continuous queries over such streams are quite
+natural in such a system. To our knowledge, most of this work focuses
+on a centralized system, whereas distributed data storage and
+query processing is one of our main design goals. As a result, the
+query processing challenges we face in our system are quite different.
+Also, these systems assume that the streaming data sources are
+relational in nature, whereas we use XML as our data model.
+Although we propose a hierarchical, native XML storage approach
+to wide area sensor databases, an alternative would be to
+use a distributed object-relational database [32] to store the leaves
+of the XML document (as discussed in Section 5). In our parking
+space finder application, these would correspond to either the
+blocks or the parking spaces. The hierarchy information can be
+maintained either at a central server or along with the leaves themselves.
+This approach has several critical disadvantages. First, the
+hierarchy information becomes a bottleneck resource, as demonstrated
+in our performance study. Approaches to avoid this bottleneck
+would likely entail mimicking much of our hierarchical approach,
+and hence would benefit from the techniques presented
+in this paper. Second, the richness of XML allows transparent
+schema changes, and the use of highly expressive languages such
+as XPATH, XSLT or XQuery. Many queries that can be naturally
+described using these languages are not easily expressible in SQL.
+Third, use of such a database seriously restricts how data can be
+partitioned among available sites, limiting opportunities for loadbalancing.
+Our architecture also enables powerful caching semantics
+naturally; we are not aware of any work on caching in objectrelational
+databases that is equally as powerful. Much work has
+also been done on storing XML using object-relational databases,
+and publishing object-relational data as XML [15, 24, 33, 31]. This
+work is orthogonal to the issues we discuss here, as the challenges
+in our ? query processing come mainly from the single document
+view of the data, and the distributed nature of our system.
+Recent work on peer-to-peer databases [14, 7, 21, 16] is quite
+closely related to our work. Although our data is organized hierarchically,
+and for performance reasons, we expect the participating
+sites to also have a hierarchical organization, this is not required
+by our architecture. As such, the participating sites can be thought
+of as peers cooperating with each other to store and query data.
+In [14], distributed hash tables (DHTs) perform the analogous role
+of the DNS server in our architecture in that both of them are used
+to find relevant data satisfying a query. DNS is more attractive in
+our scenario because of the hierarchical nature of our data. Our
+work differs considerably in the actual query processing part itself
+because of our use of XML and the XPATH query language. [21,
+16] discuss issues of data placement, and caching in peer-to-peer
+networks. The OLAP caching framework presented in [16] relates
+quite closely to our caching framework, but handles different kinds
+of data and queries.
+There is a large body of literature on load balancing techniques
+for parallel and distributed systems (e.g., [17, 8, 23, 11, 34, 10]).
+Our current system provides a natural mechanism for performing
+load balancing, but we have not yet determined effective load balancing
+policies for our setting.

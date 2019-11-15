@@ -1,0 +1,66 @@
+Steve Kirsch has proposed a ranking scheme whereby
+the underlying search engines are modified to
+return additional information, such as how many
+times a term occurs in each document and the
+entire database.7With the NECI engine, this step is
+unnecessary as it downloads and analyzes the actual
+pages. It can therefore apply a uniform ranking
+measure to documents returned by different
+engines. Currently, the engine displays documents
+in descending order of query-term occurrence. If
+none of the first few pages contain all terms, the
+engine displays documents with the maximum
+number of query terms found so far.
+Once all pages are downloaded, the engine relists
+documents according to a simple relevance measure.
+This measure considers the number of query
+terms in the document, the proximity between
+query terms, and term frequency (inverse document
+frequency can also be useful8). We use the following
+equation for pages containing more than
+one of the query terms; when only one query term
+is found we currently use the term’s distance from
+the start of the page.
+where Np is the number of query terms that appear
+in the document (each term is counted only once);
+Nt is the total number of query terms in the document;
+d (i, j) is the minimum distance between the
+ith and jth query terms (currently measured in
+number of characters); c1 is a constant that controls
+the overall magnitude of R, which is the document’s
+relevance score; c2 is a constant that specifies the
+maximum useful distance between query terms; and
+c3 is a constant that specifies term-frequency importance
+(currently c1 = 100, c2 = 5000, and c3 = 10c1).
+This ranking criterion is particularly useful for
+Web searches. Because the Web database is so large
+and diverse, searching for multiple terms can return
+documents that use the terms in unrelated sections,
+such as terms that exist in different bookmarks on
+a bookmarks page.
+After all pages have been retrieved, the engine
+displays the top 30 pages ranked by term proximity.
+As Figure 5 shows, the engine then displays
+additional information: duplicate context strings,
+results clustered by site, documents with fewer or
+no search terms, and pages that could not be downloaded.
+It also displays a summary table with results
+for each engine queried and suggestions for subsequent
+queries, as the sidebar “Improving User
+Queries” on p. 44 describes.
+These added features are important. Where other
+metasearch engines categorize pages as duplicate if
+the normalized URLs are identical, the NECI
+metasearch engine considers pages duplicate if the
+relevant context strings are identical. Thus, even
+duplicate pages with different headers and footers
+will be detected, such as when a single mailing list
+message is archived in several places. Knowing which
+pages do not match the query or are not available is
+also important. Different engines use different relevance
+techniques; if one engine returns poor relevance
+results, it can lead to poor overall results from
+standard metasearch engines. Other metasearch services
+also provide “dead link” detection, but this feature
+is typically turned off by default or does not
+return results until all pages are checked.

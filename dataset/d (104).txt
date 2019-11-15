@@ -1,0 +1,25 @@
+For the Ohsumed and GIRT collections, existing relevance
+judgments are used so that the possibility of the distributed
+system performing better than a centralised one is not ruled
+out.
+For the CiteSeer collection, we do not have relevance judgments.
+Therefore, the performance of the distributed retrieval
+system will be evaluated by comparing its results to
+that of a centralised system via the measure relative precision
+(RP). It exploits the ranking of the centralised system
+as an indicator of probability of relevance and is defined as
+follows:
+Let C be the ranking of a reference (e.g. a centralised)
+retrieval system for a given query. Then we estimate the
+probability of relevance of a document d as the inverse of its
+rank rC(d) in C:
+With this notion of probability of relevance, we can define
+the new measure relative precision at k documents for a
+ranking D returned by a distributed system as the average
+probability of relevance p(rel|d,C) among the first k documents in D:
+Later, experiments will be performed with k = 10, mostly
+because it is common (e.g. in web search) for search engines
+to display the first 10 results on the first page and because
+very few users look at the remaining result pages.
+For a motivation of RP, see [27] where a predecessor of
+RP with very similar properties is introduced.

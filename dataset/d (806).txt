@@ -1,0 +1,133 @@
+DFuse utilizes a package of high-level abstractions for supporting
+fusion operations in stream-oriented environments. This
+package, called Fusion Channels, is conceptually language and
+platform independent.
+Data fusion, broadly defined, is the application of an arbitrary
+transformation to a correlated set of inputs, producing a
+“fused” output item. In streaming environments, this is a continuous
+process, producing an output stream of fused items. As
+mentioned previously, such transformations can result in the expansion,
+contraction, or status quo in the data flow rate after the
+fusion. Note that a filter function, taking a single input stream
+and producing a single output stream, is a special case of such
+a transformation. We assume that fusion outputs can be shared
+by multiple consumers, allowing “fan-out” from a fusion point,
+but we disallow a fusion point with two or more distinct output
+streams. Fusion points with distinct output streams can be easily
+modeled as two separate fusion points with the same inputs,
+each producing a single output. Note that the input of a fusion
+point may be the output of another fusion point, creating fusion
+pipelines or trees. Fusion computations that implement control
+loops with feedback create cyclic fusion graphs.
+The Fusion Channels package aims to simplify the application
+of programmer-supplied transformations to correlated sets
+of input items from sequenced input streams, producing a (possibly
+shared) output stream of “fused items.” It does this by
+providing a high-level API for creating, modifying, and manipulating
+fusion points that subsumes certain recurring concerns
+(failure, latency, buffer management, prefetching, mobility,
+sharing, concurrency, etc.) common to fusion environments
+such as sensor networks. Only a subset of the capabilities in the
+Fusion Channels package are currently used by DFuse.
+The fusion API provides capabilities that fall within the following
+general categories:
+Structure management: This category of capabilities primarily
+handles “plumbing” issues. The fundamental abstraction in
+DFuse that encapsulates the fusion function is called a fusion
+channel. A fusion channel is a named, global entity that abstracts
+a set of inputs and encapsulates a programmer-supplied
+fusion function. Inputs to a fusion channel may come from the
+node that hosts the channel or from a remote node. Item fusion
+is automatic and is performed according to a programmerspecified
+policy either on request (demand-driven, lazy, pull
+model) or when input data is available (data-driven, eager, push
+model). Items are fused and accessed by timestamp (usually the
+capture time of the incoming data items). An application can request
+an item with a particular timestamp or by supplying some
+wildcard specifiers supported by the API (such as earliest item,
+latest item). Requests can be blocking or non-blocking. To accommodate
+failure and late arriving data, requests can include a
+minimum number of inputs required and a timeout interval. Fusion
+channels have a fixed capacity specified at creation time.
+Finally, inputs to a fusion channel can themselves be fusion
+Correlation control: This category of capabilities primarily
+handles specification and collection of “correlation sets” (related
+input items supplied to the fusion function). Fusion requires
+identification of a set of correlated input items. A simple
+scheme is to collect input items with identical applicationspecified
+sequence numbers or virtual timestamps (which may
+or may not map to real-time depending on the application).
+Fusion functions may declare whether they accept a variable
+number of inputs and, if so, indicate bounds on the correlation
+set size. Correlation may involve collecting several items
+from each input (for example, a time-series of data items from
+a given input). Correlation may specify a given number of inputs
+or correlate all arriving items within a given time interval.
+Most generally, correlation can be characterized by two
+programmer-supplied predicates. The first determines if an arriving
+item should be added to the correlation set. The second
+determines if the collection phase should terminate, passing the
+current correlation set to the programmer-supplied fusion function.
+Computation management: This category of capabilities primarily
+handles the specification, application, and migration of
+fusion functions. The fusion function is a programmer-supplied
+code block that takes as input a set of timestamp-correlated
+items and produces a fused item (with the same timestamp)
+as output. A fusion function is associated with the channel
+when created. It is possible to dynamically change the fusion
+function after channel creation, to modify the set of inputs, and
+to migrate the fusion point. Using a standard or programmersupplied
+protocol, a fusion channel may be migrated on demand
+to another node of the network. This feature is essential for
+supporting the role assignment functionality of the placement
+module. Upon request from an application, the state of the fusion
+channel is packaged and moved to the desired destination
+node by the fusion module. The fusion module handles request
+forwarding for channels that have been migrated.
+Memory Management: This category of capabilities primarily
+handles caching, prefetching, and buffer management. Typically,
+inputs are collected and fused (on-demand) when a fused
+item is requested. For scalable performance, input items are
+collected (requested) in parallel. Requests on fusion pipelines
+or trees initiate a series of recursive requests. To enhance performance,
+programmers may request items to be prefetched and
+cached in a prefetch buffer once inputs are available. An aggressive
+policy prefetches (requests) inputs on-demand from input
+fusion channels. Buffer management deals with sharing generated
+items with multiple potential consumers and determining
+when to reclaim cached items’ space.
+Failure/latency handling: This category of capabilities primarily
+allows the fusion points to perform partial fusion, i.e.
+fusion over an incomplete input correlation set. It deals with
+sensor failure and communication latency that are common,
+and often indistinguishable, in sensor networks. Fusion functions
+capable of accepting a variable number of input items
+may specify a timeout on the interval for correlation set collection.
+Late arriving items may be automatically discarded or included
+in subsequent correlation sets. If the correlation set contains
+fewer items than needed by the fusion function, an error
+event occurs and a programmer-supplied error handler is activated.
+Error handlers and fusion functions may produce special
+error items as output to notify downstream consumers of errors.
+Fused items include meta-data indicating the inputs used
+to generate an item in the case of partial fusion. Applications
+may use the structure management API functions to remove the
+faulty input if necessary.
+Status and feedback handling: This category of capabilities
+primarily allows interaction between fusion functions and data
+sources such as sensors that supply status information and support
+a command set (for example, activating a sensor or altering
+its mode of operation - such devices are often a combination of
+a sensor and an actuator). We have observed that applicationsensor
+interactions tend to mirror application-device interactions
+in operating systems. Sources such as sensors and intermediate
+fusion points report their status via a “status regis
+ter1.” Intermediate fusion points aggregate and report the status
+of their inputs along with the status of the fusion point itself
+via their respective status registers. Fusion points may poll this
+register or access its status. Similarly, sensors that support a
+command set (to alter sensor parameters or explicitly activate
+and deactivate) should be controllable via a “command” register.
+The specific command set is, of course, device specific but
+the general device driver analogy seems well-suited to control
+of sensor networks.

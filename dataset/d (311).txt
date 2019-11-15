@@ -1,0 +1,89 @@
+Businesses today rely on data stored in diverse systems with
+differing capabilities. Some data are in traditional database
+systems with a powerful query language and efficient indices
+for parametric data. Others are in spreadsheets and
+file systems with limited query capabilities, or in legacy application
+systems which provide specialized ways to access
+and manipulate data. The emergence of protocols such as
+CORBA, OLE DB and Java/JDBC makes it easier to access
+this range of sources, while database middleware systems
+or mediators [Wie93] offer the possibility of interrelating
+their data via a single high-level query interface. The first
+generation of commercial middleware systems has gained
+rapid acceptance in the marketplace. However, these products
+typically connect only a limited set of data sources, predominantly
+relational, and generally model all data sources
+as relational systems. This simplifies the middleware considerably,
+as it can assume that all the data sources have
+ Current address: University of Passau, 94030 Passau, Germany
+ Current address: Stanford University, Stanford, CA 94305
+Permission to copy without fee all or part of this material is granted provided
+that the copies are not made or distributed for direct commercial
+advantage, the VLDB copyright notice and the title of the publication and
+its date appear, and notice is given that copying is by permission of the
+Very Large Data Base Endowment. To copy otherwise, or to republish,
+requires a fee and/or special permission from the Endowment.
+Proceedings of the 23rd VLDB Conference
+Athens, Greece, 1997
+similar capabilities. The price of this simplification is that
+any specialized search or data manipulation capabilities of
+the underlying systems cannot be exploited when they are
+accessed through the middleware. Thus this first generation
+of middleware is not extensible to the arbitrary systems
+which may exist in a given business.
+Several projects are addressing the problem of middleware
+for increasingly diverse systems [Day83, S
+
+94,
+PGMW95, TRV96, LRO96]. Many of the data sources
+these systems integrate have limited or specialized query
+processing capabilities. Queries in this environment vary
+widely in performance depending on how and where their
+operations are executed. One key challenge for these systems
+is thus to develop a general-purpose query optimizer
+which can use information about the capabilities of a new
+data source to produce correct plans that efficiently answer
+queries ranging over data in multiple sources, with differing
+query capabilities. This paper takes up that challenge.
+In this paper we present the design of a cost-based optimizer
+for heterogeneous middleware systems. We have
+implemented our approach in Garlic [C
+
+95], a middleware
+system designed to integrate data from a broad range of
+data sources, with very different query capabilities. Our
+approach extends Lohman’s [Loh88] grammar-like rules to
+work in a heterogeneous environment. Data sources are
+connected to the middleware engine via wrappers. The
+optimizer is given a set of rules that capture the engine’s
+query execution strategies. Among these are several generic
+rules, which produce source-specific plans using matching
+wrapper-provided rules that encapsulate the capabilities of
+a particular data source. A normal dynamic-programming
+enumerator fires rules to generate all possible alternative execution
+plans for a query.
+We have pursued and implemented our approach because
+it has several crucial advantages. First, since our optimizer
+is an extension of a standard optimizer we get all
+the benefits of advances in optimizer technology, as well
+as the benefits of considering the entire search space, leading
+to high quality, efficient plans. We believe ours is the
+first solution based on traditional dynamic-programming
+techniques. Second, the system is extensible. Regardless
+of their data model and query processing capabilities, new
+wrappers can be integrated without affecting other wrappers
+or the middleware. Third, wrappers can evolve gracefully.
+Figure 1: Garlic System Architecture
+At any time, it is possible to refine or add wrapper rules to
+improve the performance of queries over the wrapper’s data
+sources. Finally, this approach is extremely flexible, making
+it possible to integrate wrappers of strange data sources
+with unusual query processing capabilities.
+The remainder of this paper is structured as follows: Section
+2 describes the Garlic architecture. Section 3 presents
+the Garlic query optimizer and its built-in rules. Section 4
+shows how easy it is to model the query behavior of diverse
+sources. Section 5 shows by example how the Garlic optimizer
+uses Garlic and wrapper rules to optimize a query
+across very different sources. Section 6 discusses related
+work, and Section 7 concludes the paper.

@@ -1,0 +1,68 @@
+TD-DES can schedule time slots in two modes: deterministic
+and speculative. We use the deterministic algorithm for
+downstream and the speculative algorithm for upstream dissemination.
+The decision is based on the observation that
+most event propagation would be downstream (even when
+events are generated at internal nodes).1
+In the deterministic algorithm, events are propagated in
+back to back iterations. Each iteration is further divided
+into slots of fixed width. The scheduler (root node), already
+knows the exact events to be broadcast at the beginning
+of each iteration and allocates the exact number of slots
+required. The schedule is propagated to every node in the
+tree in the form of a control packet at the beginning of each
+iteration. In addition to containing the schedule for events,
+a control packet can also contain timing information for the
+next control packet, if iterations are not of fixed length.
+When the root node starts trasmitting events, each node
+just needs to leave radio in Rx mode for the duration of the
+slot when some interesting event will arrive.
+Figure 3 illustrates the process of deterministic scheduling.
+As before, R and S denote the receive and send slots
+for the control events, respectively. Event e1 generated during
+iteration k cannot be scheduled till iteration k +1. The
+control event transmitted during the second S includes the
+schedule for iteration k+1. The exact time slot during which
+e1 will be scheduled is determined by the specific ordering
+criterion used.
+In speculative scheduling, the scheduler estimates the (expected)
+frequency of event types at the root node and preallocates
+slots based on this combined frequency estimation.
+Since allocation of slots for each event type is periodic
+and therefore is the same from one iteration to the
+next, no schedule broadcasting is needed except when updating
+schedule. The disadvantage of speculative scheduling
+is that nodes might have to stay in Rx mode for scheduled
+slots regardless of whether or not interesting event is actually
+coming.
+Figure 4 illustrates the process of speculative scheduling.
+Event e1 is received during iteration k after its scheduled slot
+(indicated by the dashed lines). Thus, e1 needs to be queued
+before it can be transmitted during its slot in iteration k+1.
+Regardless of which algorithm is being used, the schedule
+decided by the root node is known to every node in the
+tree. A child node’s downstream schedule is one slot behind
+its parent node’s downstream schedule. A child node’s
+upstream schedule is one slot ahead of the parent node’s
+upstream schedule. This allows tight pipelining: a downstream/
+upstream event received by node i in slot t will be
+1We note that our scheduling mechanism is general and does
+not in any way require upstream scheduling to be speculative.
+Figure 3: Deterministic scheduling
+Figure 4: Speculative scheduling
+sent downward/upward to i’s children/parent in slot t + 1.
+If shifting happens at the boundary of upstream and downstream
+schedule, downstream scheduling will shift beyond
+the neighboring upstream schedule and upstream scheduling
+will shift beyond the neighboring downstream schedule.
+The schedule as determined by the root node can be extended
+at an internal node to accomodate events generated
+at internal nodes. The schedule decided by the root node
+has to allocate slots for all events. A subtree rooted at an
+internal node might not be interested in every event. So
+when internal node is propagating down root schedule to its
+descendants, it can extend the root schedule by replacing
+those un-interesting slots with slots for its own events or if
+even more slots are required, it can modify blank slot in the
+root schedule. Note that this extended schedule only affects
+the subtree rooted at this internal node.

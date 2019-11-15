@@ -1,0 +1,30 @@
+In general, given the number of groups Ki, to find the optimum Ki
+groups of documents in Di that minimize the cost defined in (1),
+we need to consider all possible Ki disjoint subsets of Di, which is
+intractable. We therefore adopt a simple greedy algorithm below
+to build our groups. Our DocumentGrouping algorithm aims to
+greedily minimize Ci(Q) for each document assignment. The
+algorithm starts with an “empty” solution (i.e., with Ki empty
+groups, where Ci(Q) = 0). At each step, the algorithm randomly
+picks an unassigned document and assigns it to a group so that
+Ci(Q) measured on the new solution increases the least. The
+algorithm stops when all documents are assigned to a group.
+Assigning a document to a group can only increases Ci(Q), as it
+may increase the length of some posting lists, and it may increase
+the number of erroneously issued queries. We call the increase in
+Ci(Q) caused by the assignment of document dik to group Gij the
+“cost of the assignment of dik to group Gij,” and denote it by
+cost(dik, Gij). We describe our method to measure cost(dik, Gij) as
+follows.
+First, assigning document dik to group Gij adding one posting in
+the posting lists of terms in the set T(dik) \ T(Gij), as Gij is in the
+posting lists of those terms only after the assignment.
+Second, assigning document dik to group Gij may extend the set of
+erroneously issued queries, Qi. For simplicity, we consider queries
+of length two only. Assume that assigning document dik to group
+Gij adds a failed query q = {t1, t2} to the set Qi. Obviously, it is not
+that case that either both t1 and t2 belong to T(dik), since q is a
+failed query, nor both t1 and t2 belong to T(Gij), otherwise q is not
+a new failed query. Thus we must have t1 I T(Gij) \ T(dik) and t2 I
+T(dik) \ T(Gij), or vice versa. Therefore the cost of assigning dik to
+Gij can be measured as

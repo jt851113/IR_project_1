@@ -1,0 +1,20 @@
+[1] R. Blahut. Principles and Practice of Information
+Theory, Addison-Wesley Publishing Company, 1987.
+[2] R. Durbin, S. Eddy, A. Krough, and G. Mitchison.
+Biological Sequence Analysis: Probabilistic Models
+of Proteins and Nucleic Acids. Cambridge University
+Press, 1998.
+[3] J. Han, G. Dong, and Y. Yin. Efficient mining partial
+periodic patterns in time series database. Proc. Int.
+Conf. on Data Engineering, 106-115, 1999.
+[4] E. Keogh, S. Lonardi, and W. Chiu. Finding surprising
+patterns in a time series database in linear
+time and space. Proc. ACM Knowledge Discovery
+and Data Mining, pp 550-556, 2002.
+[5] J. Yang, W. Wang, and P. Yu. Mining asynchronous
+periodic patterns in time series data. Proc. ACM
+SIGKDD Int. Conf. on Knowledge Discovery and
+Data Mining (SIGKDD), pp. 275-279, 2000.
+[6] J. Yang,W. Wang, and P. Yu. InfoMiner: mining surprising
+periodic patterns. Proc. ACM Knowledge Discovery
+and Data Mining, 395-400, 2001.

@@ -1,0 +1,128 @@
+[1] Crossbow Mica Motes. http://www.xbow.com.
+[2] Great duck island homepage.
+http://www.greatduckisland.net/.
+[3] IEEE 802.11.
+http://standards.ieee.org/getieee802/802.11.html.
+[4] The official Bluetooth website.
+http://www.bluetooth.com/.
+[5] The TINYOS Web site.
+http://www.cs.berkeley.edu/ jhill/tos/.
+[6] P 802.11; draft wireless LAN medium access control
+(MAC) and physical layer (PHY) specifications. Technical
+report, New York, 1997.
+[7] S. Acharya, R. Alonso, M. J. Franklin, and S. B. Zdonik.
+Broadcast disks: Data management for asymmetric
+communications environments. In Proceedings of the 1995
+ACM SIGMOD, pages 199–210, San Jose, California,
+22–25 May 1995.
+[8] J. Elson and D. Estrin. Time synchronization for wireless
+sensor networks. In Proceedings of the 15th International
+Parallel and Distributed Processing Symposium
+(IPDPS-01), pages 186–186, Los Alamitos, CA, Apr.
+23–27 2001.
+[9] J. Elson, L. Girod, and D. Estrin. Fine-grained network
+time synchronization using reference broadcasts. In 5th
+Symposium on Operating Systems Design and
+Implementation (OSDI’02), Boston, MA, Dec 2002.
+[10] D. Estrin, L. Girod, G. Pottie, and M. Srivastava.
+Instrumenting the world with wireless sensor networks. In
+Proceedings of ICASSP 2001, Salt Lake City, Utah, May
+2001.
+[11] C. L. Fullmer and J. J. Garcia-Luna-Aceves. FAMA-PJ: a
+channel access protocol for wireless LANs. Proceedings of
+the Annual International Conference on Mobile Computing
+and Networking, MOBICOM, pages 76–85, 1995.
+[12] R. Govindan, T. Faber, J. Heidemann, and D. Estrin. Ad
+hoc smart environments. In Proceedings of the
+DARPA/NIST Workshop on Smart Environments,
+Atlanta, June 1999.
+[13] G.Pottie and W. Kaiser. Wireless integrated network
+sensors. Communications of the ACM, 3(5):51–58, May
+2000.
+[14] J. Haartsen, M. Naghshineh, J. Inouye, O. Joeressen, and
+W. Allen. Bluetooth: Vision, goals, and architecture.
+Mobile Computing and Communications Review,
+5(6):784–803, December 1998.
+[15] Q. Hu, D. L. Lee, and W.-C. Lee. Performance evaluation
+of a wireless hierarchical data dissemination system. In
+Mobile Computing and Networking, pages 163–173, 1999.
+[16] Y. Huang and H. Garcia-Molina. Publish/subscribe tree
+construction in wireless ad-hoc networks. Technical report,
+Stanford University, Department of Computer Science,
+2001.
+[17] T. Imielinski, S. Viswanathan, and B. R. Badrinath.
+Energy efficient indexing on air. In ACM SIGMOD, pages
+25–36, 1994.
+[18] C. Intanagonwiwat, D. Estrin, R. Govindan, and
+J. Heidemann. Impact of network density on data
+aggregation in wireless sensor networks. In Proceedings of
+International Conference on Distributed Computing
+Systems (ICDCS), Vienna, Austria, July 2002.
+[19] C. Intanagonwiwat, R. Govindan, and D. Estrin. Directed
+diffusion: A scalable and robust communication paradigm
+for sensor networks. In Proceedings of the International
+Conference on Mobile Computing and Networks
+(MOBICOM), Boston, Massachusetts, August 2000.
+[20] C. E. Jones, K. M. Sivalingam, P. Agrawal, and J.-C. Chen.
+A survey of energy efficient network protocols for wireless
+networks. Technical report, School of EECS, Washington
+State University, Pullman, WA 99164, 2001.
+[21] D. Jonhson and D. Maltz. Mobile Computing, chapter 5
+(Dynamic Source Routing). Kluwer Academic Publishers,
+1996.
+[22] J. Kahn, R. Katz, and K. Pister. Next century challenges:
+mobile networking for smart dust. In International
+Conference on Mobile Computing and Networking
+(MOBICOM ’99), pages 271–278, Aug. 1999.
+[23] J. Kardach. Bluetooth architecture overview. Intel
+Technology Journal, (Q2):7, May 2000.
+[24] P. Karn. Maca – a new channel access method for packet
+radio. In ARRL/CRRL Amateur Radio 9th Computer
+Networking Conference, pages 134–40, 1990.
+[25] P. Levis and D. Culler. Mate: A tiny virtual machine for
+sensor networks. In Proceedings of the Tenth International
+Conference on Architectural Support for Programming
+Languages and Operating Systems (ASPLOS), San Jose,
+CA, October 2002.
+[26] S. Madden, M. J. Franklin, J. M. Hellerstein, and W. Hong.
+Tag: A tiny aggregation service for ad hoc sensor networks.
+In Proceedings of the OSDI Conference, December 2002.
+[27] S. Madden, M. J. Franklin, J. M. Hellerstein, and W. Hong.
+The design of an acquisitional query processor for sensor
+networks. In ACM SIGMOD, San Diego, June 2003.
+[28] E. L. Madruga and J. Garcia-Luna-Aceves. Multicasting
+along meshes in ad-hoc networks. In Proceedings of the
+IEEE International Communications Conference (ICC),
+June 1999.
+[29] C. E. Perkins and P. Bhagwat. Highly-dynamic
+destination-sequenced distance vecor routing (DSDV) for
+mobile computers. In Proceedings of the ACM
+SIGCOMM’94 Conference, pages 234–244, August 1994.
+[30] C. E. Perkins and E. M. Royer. Ad-hoc on-demand
+distance vector (AODV) routing. In Proceedings of the 2nd
+annual IEEE Workshop on Mobile Computing Systems and
+Applications, February 1999.
+[31] P. Saas. Communications networks for the force XXI
+digitized battlefield. ACM/Baltzer Mobile Networks and
+Applications Journal, October 1999.
+[32] P. Saffo. Sensors: The next wave of information.
+Communications of the ACM, 40(2):92–97, February 1997.
+[33] S. Schlosser, J. Griffin, D. Nagle, and G. Ganger. Designing
+computer systems with mems-based storage. In Proceedings
+of ASPLOS, June 2000.
+[34] C. Schurgers, S. Ganeriwal, and M. Srivastava. Optimizing
+sensor networks in the energy-latency-density design space.
+IEEE Transactions of Mobile Computing, 1(1), Jan 2002.
+[35] M. K. Simon, J. K. Omura, S. R. A., and B. K. Levitt.
+Spread Spectrum Communications Handbook. McGraw-Hill,
+New York, NY, USA, 1994. ISBN 0-07-057629-7.
+[36] C.-K. Toh. Ad Hoc Mobile Wireless Networks: Protocols
+and Systems. Prentice-Hall, Englewood Cliffs, NJ 07632,
+USA, 2002.
+[37] Y. Yao and J. E. Gehrke. Query processing in sensor
+networks. In First Biennial Conference on Innovative Data
+Systems Research (CIDR 2003), Asilomar, California,
+January 2003.
+[38] W. Ye, J. Heidemann, and D. Estrin. An energy-efficient
+MAC protocol for wireless sensor networks. In IEEE
+Infocom, June 2002.

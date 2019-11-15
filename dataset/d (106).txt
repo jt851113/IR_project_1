@@ -1,0 +1,68 @@
+We now turn to the first of the two questions formulated
+in section 1.2: how strongly does degradation of retrieval
+effectiveness correlate with profile compression? To answer
+this question, we will compare the effectiveness of runs with
+pruned profiles to that reached with unpruned profiles.
+This comparison will be based on statistical significance
+testing (using a Wilcoxon test on a 95% confidence level)
+in the case of GIRT and Ohsumed. For Citeseer, I chose
+to abandon significance tests because tests with such a vast
+number of queries (10,000) will always yield significant differences.
+Instead, a difference between a pruned-profile run
+and the unpruned baseline is considered meaningful iff the
+value of the corresponding measure is not within 5% of that
+of the baseline.
+Figure 1 shows the performance of pruned-profile runs for
+some profile sizes as a function of number of peers visited.
+Table 1 shows the degradation of effectiveness introduced by
+profile pruning when compared with unpruned profiles (this
+is done only for the few top peers (5 and 15) because these
+are the most interesting ranges in P2PIR).
+We see that, for Ohsumed and Citeseer, the majority
+of measurements yield no meaningful differences between
+pruned and unpruned profiles from 20 terms on.
+For GIRT, the situation is a little more complicated: pruned
+profiles seem to deliver better results on average within the
+first 5 peers than within the first 15 peers, i.e. pruned-profile
+results seem to get worse – in comparison with the unpruned
+run – as more peers are visited. In all cases, profiles need to
+consist of at least 80 terms in order to reach the effectiveness
+of unpruned profiles. When comparing the effectiveness of
+the pruned-profile run to that of a centralised system, how-
+Table 1: Pruned profiles: the entries are -1 if, among
+the first 15 and 5 measurements, respectively (a
+measurement taking place after each visited peer),
+there is a majority of measurements stating that the
+pruned profiles yield results that are significantly
+worse than when using unpruned ones; the entry is 0
+if the majority of measurements yield no significant
+difference between pruned and unpruned profiles.
+ever, we find that – when a profile consists of 80 or more
+terms – results are not significantly worse than those of the
+centralised system after visiting a maximum of 4 peers. This
+implies that, although there may be significant differences
+w.r.t. the unpruned-profile runs, these differences do not
+exist w.r.t. the centralised run and that hence the results
+delivered using pruned profiles will definitely be acceptable
+from 80 terms on.
+To see the impact of pruning in terms of how much compression
+it yields, we study the space savings achieved by the
+various profile sizes given in table 2. The average Ohsumed
+and GIRT peers have large profiles so that profile pruning
+has large impact. For Citeseer, where most peers have
+smaller profiles anyway, the impact is much smaller.
+These results are interesting because they suggest that
+the degradation in effectiveness that is caused by pruning
+profiles to a predefined absolute size does not necessarily
+depend on the original size of profiles: although most un-
+Table 2: Space savings for profile pruning: the values
+are obtained by dividing the total number of
+terms that are used in pruned profiles of the various
+sizes by the number of terms that occur in unpruned
+profiles and subtracting that figure from 1.
+pruned Ohsumed profiles are large, they can be pruned heavily
+without ill effects. GIRT profiles – although of similar
+size – are harder to prune, for reasons probably related to
+term-distributional phenomena.
+All in all, we conclude that pruning profiles does not degrade
+results nearly as much as one might expect.

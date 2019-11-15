@@ -1,0 +1,17 @@
+In this paper, we motivated the view of a wide area sensor database
+as a distributed hierarchical database with timestamped updates arriving
+at the leaves. We showed the advantages of using XML as
+a data representation, constructing a logical site hierarchy matching
+the XML document hierarchy, mapping this logical hierarchy
+onto a smaller hierarchy of physical sites, and providing for flexible
+partitioning and caching that adapts to query workloads. We
+described the many challenges in providing efficient and correct
+XPATH query processing in such an environment, and proposed
+novel solutions to address these challenges in an effective, flexible,
+unified, and scalable manner. New techniques were presented
+for self-starting distributed queries, query-evaluate-gather, partialmatch
+caching, and query-based consistency. Experimental results
+on our IrisNet prototype demonstrated the significant performance
+advantages of our approach even for a small collection of sites. We
+anticipate that these advantages will only increase when IrisNet is
+deployed over hundreds of sites and thousands of miles.

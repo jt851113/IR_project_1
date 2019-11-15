@@ -1,0 +1,39 @@
+Once sensors detect phenomena, generated events are disseminated to users. Intermediate nodes may aggregate
+several events into a single event to reduce transmissions and total data size for system resource savings. The total
+size reduction mainly depends on data characteristics, event representations, and applications. Only data aggregation
+that leads to total size reduction is considered and justified in this paper. Furthermore, data aggregation will also
+reduce transmissions. As a result, the total per-transmission overhead (e.g., packet headers, MAC control packets)
+will be reduced and the energy savings will be even more evident.
+Similar to data compression, data aggregation can be classified into two approaches (i.e., lossless and lossy).
+With lossless aggregation, all detailed information is preserved. However, according to information theory, the total
+size reduction is upper bounded by entropy (i.e., a measure of how much information is encoded in a message). The
+basic principle of data reduction is to eliminate redundant information. Given that events may be highly correlated,
+there will be a significant amount of redundancy among them. Unlike lossless aggregation, lossy aggregation may
+discard some detailed information and/or degrade data quality for more energy savings.
+Examples of lossless aggregation are the timestamp aggregation and the packing aggregation. The timestampaggregation can be used in a remote surveillance application where an event consists of several attributes including
+a timestamp. Distinct events may actually be temporally correlated (within seconds of one another). The redundant
+information (e.g., the hour and minute field in the timestamp) may be minimized (i.e., not repeated) using an efficient
+representation for aggregated events. For the packing aggregation, several non-aggregated messages are packed
+into one aggregate without compression. The only savings are the total per-transmission overhead, such as packet
+headers.
+An example of lossy aggregation is the outline aggregation used in eScan [24]. The goal of eScan is to depict
+the remaining energy levels of sensor nodes. Leveraging the spatial locality of energy usage, topologically adjacent
+nodes can sometimes be approximately represented by a bounding polygon. This approach trades off some
+inaccuracy in node energy representation for reduced energy usage.
+Directed diffusion was designed with application-level data processing in mind. Unsurprisingly, directed diffusion
+can take advantage of data aggregation due to in-network data processing capability. Nevertheless, some directed
+diffusion mechanisms can be adjusted to achieve even more benefit out of data aggregation. It is expected that,
+with the proper interactions between data aggregation rules and reinforcement rules, energy efficient paths would be
+selected rather than low delay paths. In particular, if aggregated data are distinguishable from non-aggregated data,
+it will be possible to design reinforcement rules that favor aggregated data paths over non-aggregated data paths.
+Those rules will encourage path sharing and achieve even more energy saving due to more data aggregation (See
+Section 4).
+Energy savings of data aggregation depend on reduction in total data size. If the total data size is rarely reduced
+after aggregation, a shortest path will be more energy efficient than an aggregated data path. Moreover, without
+a reasonable reduction in total data size, aggregated data paths introduce traffic concentration (and probably also
+congestion) which adversely impacts network lifetime. Under this scenario, path optimization is not worth performing.
+Conversely, if the total data size is dramatically reduced after aggregation, it will be reasonable to trade off
+delay for energy efficiency by favoring longer but aggregated data paths over shorter but non-aggregated data paths.
+A gradient map (i.e., data gradients from sources to sinks) similar to a greedy tree will be preferred. Specifically,
+aggregation points need to be carefully selected (using reinforcement) so that additional dissipated energy (due to
+longer paths) does not exceed energy savings (due to total data size reduction).

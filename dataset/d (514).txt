@@ -1,0 +1,60 @@
+If the number of the edges removed by the maximum
+branching algorithm can be reduced, the information kept
+in the access forest can be increased. The goal of refining the
+access graph is to modify the access graph such that the
+refined access graph keeps the same information as the
+original access graph but the number of edges to be
+removed by the maximum branching algorithm is reduced.
+The access graph shown in Fig. 8 is called a graph. The
+definition of a  graph is as follows:
+Definition 1. A  graph is an acyclic directed weighted graph
+;ET, where V  fr;m; eg and E ferm; ere; emeg. r is
+called the root node of the  graph.
+The following lemma shows that, for a  graph, the OCO
+can be determined by a simple statement.
+  According to Lemma 5, we know which edge can be
+removed without affecting the optimal order. For example,
+in Fig. the edge ere should be removed
+and the access graph becomes an access tree. Applying the
+optimal linear ordering algorithm, the OCO “rme” will be
+obtained. Refer to Property 1, adding new children or a new
+parent to node r does not affect the optimal order of the
+three nodes. Therefore, Lemma 5 can be extended to
+Lemma 6 which can deal with a more complex graph
+named  graph.
+Definition 2. A  graph is a directed weighted graph
+0 ;E)0 T, which has at least one  graph as its subgraph
+and the root node of the ) graph is a cut node.
+Lemma 6. Given a  graph, the OCO of the three nodes r, m,
+and e in the  graph is equal to the OLO of the three nodes in
+the graph modified as follows: If
+For a )0 graph () graph is a special case of )0 graph), we
+can modify the access graph according to Lemma 6 to get a
+refined access graph which can avoid information loss after
+executing the maximum branching algorithm. An example
+is shown in Fig. 9. Referring to
+weemeT  kmk , therefore, in
+the refined access graph, ere is removed and  and
+weemeT are set to 3 + 7 and 2 + 7, respectively. For the case
+shown in
+weereT (1  3 t 3  2 < 2  7), therefore, in the refined
+access graph, eme is removed and weermT and weereT are
+set to 3 	 2 and 7 t 2, respectively.
+The refinement algorithm is presented as follows:
+
+Access Graph Refinement Algorithm
+In our approach, the Access Graph Refinement Algorithm
+is applied to the access graph first to get the refined
+access graph. Then, take the refined access graph as the
+input of the maximum branching algorithm to get an access
+forest. Fig. 10 shows the refined access graph and its
+maximum branching of the graph shown in Fig. 6. For more
+complex cases, the information loss cannot be avoided by
+simply modifying the access graph. Therefore, we record
+the edges removed when applying the maximum branching
+algorithm. As mentioned above, there are two kinds of
+removed edges (intraedge and interedge). We store the
+intraedges and interedges in REintra and REinter, respectively.
+REintra and REinter will be further used to reduce the
+information loss.
+

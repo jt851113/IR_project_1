@@ -1,0 +1,30 @@
+We consider the energy consumption of battery while nodes
+are forwarding the queries or updating IA values. Suppose
+ei is the energy cost of node i for one-hop connection. As we
+know a mobile device can be configured with several power
+levels at which it can send packets. Different power levels
+lead to different reachable ranges. To simplify our model,
+we let p to be a standard power level in our network. Each
+node sends messages at power level p and consequently has
+the same reachable range. In general, the energy cost ei of
+sending a data unit by node i is
+where σi is a battery state parameter. Here σi reflects node
+i’s internal states such as remaining electric energy of the
+battery and the valuation of each unit of power.
+We distinguish two cases in explaining the energy cost
+during query routing:
+‧ If node i is not on the query routing path, then ei = 0.
+‧ If node i is on the query routing path, then whenever
+node i forwards a data unit of query request or query
+result at power level p, the corresponding cost ei is pσi.
+On the other hand, the receiving energy cost of a node i for
+a data unit is a fixed value ri. We now consider energy cost of
+different roles in the network. For an arbitrary intermediate
+node Eitm, it receives and forwards the message twice in
+both query propagation process and result delivery process.
+Therefore, the energy cost is
+For an issuer node Eisr or a resource provider node Ersp,
+it only receives and forwards the message once. Thus, the
+energy cost is
+For a node who updates its IA value to its ni neighbors.
+The energy cost Eupd is

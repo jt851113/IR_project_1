@@ -1,0 +1,14 @@
+Mining of frequent patterns in databases has been studied for several
+years. However, real-world databases contain noise and frequent pattern
+mining which extracts patterns that are absolutely matched is not enough.
+An approach, called fault-tolerant frequent pattern (FT-pattern) mining, is
+more suitable for extracting interesting information from real-world data
+that may be polluted by noise. In this paper, we consider the problem of
+mining proportional FT-patterns. That is, the number of faults tolerable in
+a pattern is proportional to the length of the pattern. To reduce the disk
+I/O times, a depth-first mining approach is proposed to mine proportional
+FT-patterns efficiently in large database. Moreover, a set of experiments
+is performed to show the advantage of the approach. Experimental results
+indicate that the proposed algorithm outperforms the other existing approach
+when the database size is large.
+Keywords: Data Mining, association patterns, Fault-tolerant patterns

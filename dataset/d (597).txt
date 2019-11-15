@@ -1,0 +1,31 @@
+We propose to group the documents in Di into Ki disjoint groups
+Gij, j = 1, …, Ki such that EGij = Di, and Gij C Gik = A, where j 1
+k. The value of Ki (1 ￡ Ki ￡ Ni) is independently identified for
+each peer Pi based on its local shared content Di and the query
+workload Q. The term set of a group Gij is defined as T(Gij) =
+ET(dik), where dik I Gij. Each group can be considered as one
+“super-document,” and thus the local posting list of a term t is
+defined as li(t) = {<Gij, Pi>? tIT(Gij)}.
+Our grouping technique is designed to minimize the following
+cost
+where Qi is defined as the set of queries that are erroneously
+issued to peer Pi :
+Clearly, the total cost C(Q), as defined in (1), is proportional to
+the sum of Ci(Q) over all peers.
+The first term of Ci(Q) is the cost of indexing local content.
+Notice that the posting list of a term t may contain a maximum of
+Ki postings. Thus, reducing Ki reduces the indexing cost. The
+second term of Ci(Q) is the cost that Pi contributes to the total cost
+of retrieving posting lists for queries in Q. Notice that this cost is
+not directly related to Pi, but to peers responsible for terms in
+VQ C Vi . The longer Pi’s local posting list for term t, the longer
+the global posting list of term t, and the higher the posting list
+retrieval cost imposed on the peer responsible for t, resp(t). By
+optimizing this cost, Pi reduces cost of retrieving its posting lists.
+Other peers, likewise, help Pi reduce its cost of maintaining the
+global posting lists assigned to it. The last term of Ci(Q) is the
+cost of erroneously issuing queries to Pi . We do not include the
+cost of correctly issued queries, as this cost is the same for all
+indexing strategies, and is unavoidable. Reducing Ki, however,
+increases query issuing cost, since it increases the number of
+erroneously issued queries.

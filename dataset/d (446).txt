@@ -1,0 +1,9 @@
+In the information theory community, information is originally
+used to quantify the a priori uncertainty that an event will occur
+or the “surprise” if the event occurs; and is defined as a
+continuous function of the probability that an event occurs.
+When the probability of an event occurrence approaches 1, the
+information of that event approaches 0. This enables us to
+handle the eternal event seamlessly. In addition, information
+is additive for independent events. This does not only provide
+a solid theoretical foundation, but also offer computational efficiency.

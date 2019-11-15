@@ -1,0 +1,61 @@
+Given a d-dimensional data set, a point p is said to dominate
+another point q if it is better than or equal to q in all
+dimensions and better than q in at least one. A skyline is
+a subset of points in the data set that are not dominated
+by any other points. Skyline queries, which return skyline
+points, are useful in many decision making applications that
+involve high dimensional data sets. We give two examples
+here.
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+SIGMOD 2006, June 27–29, 2006, Chicago, Illinois, USA.
+Copyright 2006 ACM 1-59593-256-9/06/0006 ...$5.00
+Example 1.1 Cell Phone Finder
+Consider a person looking for a suitable cell phone at a website
+1. He/she may care about a large number of features
+including weight, size, talk time, standby time, screen size,
+screen resolution, data rate and camera quality in order to
+pick one that suits him/her. There are too many phones
+at the website for the user to examine them all manually.
+Computing the skyline over these cell phone features may
+remove a large number of cell phones whose features are
+“worse” than those in the skyline, hopefully leaving only
+a manageable number of candidates for manual evaluation.
+
+Example 1.2Movie Rating
+Consider a person looking for top-rated movies based on the
+ratings given by other users2. In this case, the rating of each
+user correspond to a dimension in the data set and given the
+large number of users, the data set being handled is obviously
+a high-dimensional one. The skyline of the data set
+will contain top-rated movies while movies that are consistently
+ranked worse than others in the data set are pruned
+away. 
+We note that in both the above cases, ranking can be done
+by providing some preference functions [1, 8] and requesting
+users to provide some weight assignments for their preferred
+features or more trusted users in the latter case. However
+providing such weight assignments for a large number of dimensions
+is not always easy without any initial knowledge
+about the data. For example, it is not clear how weight assignments
+can be provided to aggregate the talk time and
+camera quality of a phone into one grade. In fact, as stated
+in the seminal paper on skyline operator [2], the aim of providing
+the skyline to the user is to help them to determine
+the weight assignment.
+Computing skylines in high dimensional data sets is challenging
+because of the large number of skyline points [9, 14,
+17]. On the movie ranking website, for example, it is nearly
+impossible to find a movie which is ranked lower than another
+movie by all the users. Such a blowup in the answer
+set not only renders the skyline operator worthless (with
+respect to the desired pruning of candidates), but it also results
+in high computational complexity for both index and
+non-index methods as many pairwise comparisons are performed
+without effecting any pruning.
+1http://www.phonescoop.com/phones/finder.php?m=e
+2http://movielens.umn.edu/

@@ -1,0 +1,14 @@
+We introduce the secure in-region verication problem.
+We argue that, for security purposes, the in-region veri-
+cation problem is a better model to focus on than trying
+to solve the secure location determination problem directly.
+This is a novel view of localization.
+Second, we present a provably secure protocol for perform-
+ing in-region verication with minimal hardware require-
+ments.
+While our protocols use ultrasound and time-of-ight tech-
+niques, neither of these ideas are new: others have previously
+proposed localization algorithms based on time-of-ight and
+on ultrasound ranging. Rather, the novel contribution of
+this paper is to provide a solution to the security problem
+in localization.

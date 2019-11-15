@@ -1,0 +1,52 @@
+Previous database architectures are not suited to combining streaming and static data. They are either primarily
+pull-based, as with the basic iterator model, or primarily push based, as in parallel processing environments. In
+the Telegraph project, we have developed a hybrid approach called Fjords, whereby streams can be combined
+with static sources in a way which varies from query-to-query. We believe that this is an essential part of any
+data processing system that is intended to compute over streams.
+The key advantage of Fjords is that they allow distributed query plans to use a mixture of push and pull
+connections between operators. Push or pull is implemented by the queue that connects a pair of operators: a
+push queue relies on its input operator to
+??
+data into it which the output operator can later
+
+. A pull queue
+actively requests that the input operator produce data in response to a
+	
+
+call on the part of the output operator.
+Conversely, in a push queue, the input operator’s
+	
+
+request is non-blocking, does not schedule the output
+operator, and only yields data when the output operator has made data available.
+The insight underlying Fjords is that in interactive, adaptive, and streaming systems, the traditional iterator
+model breaks down because the query processor cannot afford to block waiting for long running operators to
+complete, for slow web pages to return results, or for individual sensors, which may have run out of power or
+temporarily disconnected, to come back online. One way to deal with this is the solution proposed in Volcano
+[16], in which a special “exchange” operator between two query processing operators, one of which is producing
+some data and one of which is consuming that data. In this model, the producer can run in its own thread (or on
+another machine); it delivers results to the exchange operator, which queues them and synchronously delivers
+them to the consumer when it needed. The consumer, however, is still forced to block when no data is available,
+limiting the ability of the query processing system to adapt. Instead, Fjords allow the query planner to decide
+if two operators should be connected by a pull-queue, in which case the consumer will block waiting for data
+from the producer, or a push-queue, in which case the producers will asynchronously produce and and enqueue
+results, and control will be returned to the consumer when the queue is empty so it can pursue some other
+computational avenue.
+Push queues make it possible for the query processor to handle sensor streams. When a sensor tuple arrives
+from a sensor, the query processor pushes it onto the input queues of the queries which use it as a source. The
+operators draining those queues never actively ask the sensor for data; they merely operate on sensor data as it
+is pushed into them, thus triggering computation when data is available and unblocking the query processor so
+it can make useful progress despite slow data delivery from a particular sensor.
+Figure 2 illustrates several possibilities for connecting operators in a push or pull fashion. Three types of
+connections between a producer and a consumer operator are shown; in the iterator approach, operators function
+in lock-step: when the consumer blocks looking for data, the producer is scheduled and runs until it produces
+data. Exchange decouples the producer and the consumer, but the consumer still blocks until data is produced–
+Figure 2: Producer-Consumer Coupling in Fjords, Iterators, and Exchange. Notice that Fjords can connect
+operators in any of the three configurations show here. The “pull-queue” model enables sensor query processing.
+this approach limits the ability of the system to adapt to slow, offline, or disconnected producers. The pullqueue
+approach rectifies this situation by returning control back to the consumer when no data is available so it
+can perform other computation. Note that, by encapsulating the blocking behavior of the system in the queues
+between operators, any of these three modes of computation is easily implemented via Fjords.
+The Fjords architecture has been used to execute queries over data streamed from traffic sensors along the
+freeway near UC Berkeley. Fjords allow data from the sensors to be pushed into the query processor, where it is
+combined with fixed data about traffic accidents to answer queries about current freeway conditions.

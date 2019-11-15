@@ -1,0 +1,23 @@
+5.2.1 Refining Mined Results As a well-known fact, the
+number of patterns/rules discovered under the support model
+can be very large. Many post-processing techniques have been
+developed to reduce the number of discovered patterns into a
+manageable size while preserving the discovered knowledge as
+much as possible. Human interaction is involved in [12, 22, 23]
+to specify the interestingness or beliefs to guide the process
+while others [13, 14] focused on reducing redundant information
+possessed by the discovered rules. It is clear that these
+post-processing techniques are typically used as an additional
+pruning step after the normal mining procedure (which produces
+a large rule set). In contrast, our proposed scheme successfully
+avoids the generation of large number of insignificant/
+uninteresting patterns from the beginning and enables a
+much more efficient solution.
+  Another approach to reduce redundancy is to return only
+closed frequent itemset [19, 20, 30]. Intuitively, an itemset is a
+closed itemset if all of its supersets have smaller support. While
+the set of frequent closed itemsets is typically much smaller,
+it has been proved that all frequent itemsets can be uniquely
+derived from the set of frequent closed itemsets. Again, this
+approach still focuses on mining frequent itemsets and fails to
+address the problem we mentioned previously.

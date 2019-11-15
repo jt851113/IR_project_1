@@ -1,0 +1,16 @@
+In this section, how to represent a set of query patterns as an
+access graph is discussed. A query pattern contains an
+ordered access triple [SA, JA, PA]. Notice that there is no
+access order constraint among the data objects in SA, JA, or
+PA. As mentioned above, an access graph is a directed
+weighted graph, where each node represents a data object
+and each edge eij represents the access order from data
+object i to data object j. The weight associated with eij
+denotes the total frequencies of the accesses from data
+object i to data object j. Therefore, to transform a set of query
+patterns to an access graph, the access order of the data
+objects in SA, JA, and PA should be determined.
+There are two steps to determine the access order. The
+first step makes use of the known access order of some data
+object pairs and the second step makes use of Property 2
+given in Section 2.

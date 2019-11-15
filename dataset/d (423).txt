@@ -1,0 +1,75 @@
+In this section, we provide a brief overview of recent advances
+that is closely related to our work presented in this
+paper. There is much work in mining periodic patterns[4,
+7, 13]. Despite the difference in problem formulation, most
+work adopted the support as the measure of interestingness
+(or significance) and aimed at discovering frequent patterns.
+Recently, many efforts have been carried out to address the potential
+disadvantages associated with the support model and
+to propose alternative solutions. Due to space limitations, we
+are focusing on the related work of models of interestingness.
+Multiple supports scheme was introduced by Liu et. al. [6]
+and later extended by Wang et al. [12] to find itemsets which
+do not occur frequently overall, but have high correlation to
+occur with some other items. The support threshold to qualify
+a frequent itemset can be specified as a fraction of the minimum
+support of all items [6] or subsets of items [12] in the
+itemset. This variable support has similar effect as the information
+gain introduced in this paper. However, there exists
+some fundamental difference between these two concepts. For
+example, if the support of item A, B, and C is 0.01, 0.02, 0.8,
+respectively, then the support threshold to qualify itemset AB
+and AC is the same. Nevertheless, the itemset AC is expected
+to occur more frequently than AB because the support of C
+is much larger than that of B. This aspect was not fully taken
+into account by the multiple support model. In contrast, the
+information gain metric proposed in this paper would capture
+the difference of occurrences between B and C.
+Mining patterns that are statistically significant (rather than
+frequent) becomes a popular topic. Brin et al. [3] first introduced
+the concept of correlation and it was shown that in many
+applications the correlation measurement can reveal some very
+important patterns. The Chi-squared test was used to test the
+correlation among items. Instead of explicitly enumerating all
+correlated itemsets, the border comprising the set of minimal
+correlated itemsets 1 is identified, and no further distinction is
+made on the degree of correlation of itemsets above the border
+(i.e., supersets of some itemset on the border). This model
+sometimes becomes sub-optimal. As shown in Figure 1, itemsets
+A and B are highly correlated but C is independent of
+them 2. In addition, {A, B, C, D} is also highly correlated. We
+can view that the degree of correlation of {A, B, C} is not as
+strong as that of {A, B} and {A, B, C, D}. This observation
+can also be confirmed by the Chi-squared test a. In many applications,
+users are only interested in the itemsets such as {A, B}
+and {A, B, C, D}, but not {A, B, C}. However, [3] cannot distinguish
+between {A, B, C} and {A, B, C, D} once {A, B} is
+identified as a correlated itemset. Another potential drawback
+of this model is the expensive computation required by
+this model. The running time of all patterns with/-correlated
+items is O(n x ICAND I x rain{n, 2i}) where n and ]CANDI
+are the number of transactions and the number of candidates
+at ith level, respectively. To overcome these drawbacks, Oates
+et al. [9] proposed models for statistical dependencies using
+G statistic and devised randomized algorithms to produce approximate
+results. In contrast, our model not only can successfully
+identify {A, B} and {A, B, C, D} without including
+{A, B, C} but also leads to a much more efficient deterministic
+algorithm.
+Another important advance is accomplished in mining socalled
+unexpected patterns. Berger et al. [1] proposed a probabilistic
+measure of interestingness based on unexpectedness
+1A minimal correlated itemset is a correlated itemset whose
+subsets are all independent.
+2Prob(AB) x Prob(C) = ~1 x g2 = Prob(ABC).
+3In general, the chi-squared test requires a large sample. For
+the demonstration purpose only, we assume that the chisquared
+test is valid in this example.
+in the context of temporal logic, whereby a pattern is deemed
+interesting if the ratio of the actual number of occurrences
+of the pattern exceeds the expected one by some user defined
+threshold. Solving the problem in its general frame is in nature
+NP-hard and hence some heuristics are proposed to produce
+an approximate answer. Our model presented in this paper
+can in fact achieve a similar objective but enables an efficient
+solution without sacrificing the accuracy.

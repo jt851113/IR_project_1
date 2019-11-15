@@ -1,0 +1,90 @@
+The basic idea of skyline queries came from some old research
+topics like contour problem [12], maximum vectors
+[10] and convex hull [15].
+Borzonyi et al. [2] first introduced the skyline operator
+into relational database systems, and proposed three algorithms:
+the block nested loops (BNL), divide-and-conquer,
+and B-tree-based schemes.
+Chomicki et al. [4] proposed an algorithm named Sort-
+Filter-Skyline (SFS) as a variant of BNL. SFS requires the
+dataset to be pre-sorted according to some monotone scoring
+function. Since the order of the points can guarantee that
+no point can dominate points before it in the order, the
+comparisons of tuples are simplified. In [6], Godfrey et al.
+further improved the efficiency of this method by combining
+the final pass of the external pre-sort with the first skylinefilter
+pass.
+In [16], Tan et al. proposed two progressive processing
+algorithms: Bitmap and Index. In the Bitmap approach,
+every dimension value of a point pt is represented by a few
+bits. By applying bit-wise and operation on these vectors,
+a given point can be checked if it is in the skyline without
+referring to other points. The Index approach partitions
+the whole data set into some lists, every of which contains
+points with smallest value on the same dimension among
+all the dimension values. Every list is further divided into
+batches according the index value of the points. Within each
+batch, local skyline is computed by comparing every points
+with global skyline and is merged into the global skyline
+after computation.
+Kossmann et al. [9] proposed a Nearest Neighbor (NN)
+method to process skyline queries progressively. By indexing
+the dataset by an R
+?
+-tree, the method uses the result
+of nearest neighbor query to partition the space recursively.
+The nearest neighbor to the origin in the partitioned region
+must be part of the skyline. Papadias et al. [13, 14]
+proposed a new progressive algorithm named Branch-and-
+Bound Skyline (BBS) based on the best-first nearest neighbor
+(BF-NN) algorithm [7]. Instead of searching for nearest
+neighbor again and again, it directly prunes using the R
+?
+-
+tree structure.
+Yuan et al. [17] proposed two methods that efficiently
+find the skylines of all subspaces, in bottom-up and topdown
+manner respectively. Their studies aim to find skyline
+in a subset of dimensions specified by the users. This is in
+contrast with our work which directly determines a set of
+interesting skyline points from the full set of dimensions.
+In [11], the concept of dominance is generalized to define
+three types of queries called dominant relationship queries
+(DRQs) to support microeconomic data mining. A data
+cube is proposed to answer DRQs efficiently. We believe
+that our work here will eventually be useful for this purpose
+as well.
+To find the top objects under some monotone aggregation
+function, Fagin proposed three methods, FA, TA and NRA
+in [5] which are optimal in some cases. The FA algorithm
+accesses in parallel the sorted lists on every dimension. We
+can find the top-k points when there is a set of at least k
+points such that each of them has been seen in each list.
+The TA algorithm improves the FA algorithm by setting a
+threshold by the function from all the smallest value that
+have seen from all the lists. The algorithm stops when the
+current top-k points all have aggregation value larger than
+the threshold. The NRA algorithm works with only sorted
+access. The smallest values seen in all dimension lists are
+used to calculate the upper bound on the points not seen.
+We can get top-k result without exact aggregation value,
+when the lower bounds on the current top-k points are larger
+than the upper bound on the (k+1)th point.
+More recently, there has been work on identifying interesting
+skylines to address the problem of having too many skyline
+points particularly when the data is high dimensional.
+The concept of the skyline frequency of a data point was proposed
+in [3], which measures the number of subspaces that
+a point is a skyline point. Our proposal of k-dominance
+offers a different notion of interestingness from skyline frequency.
+For example, consider two data points p and q on
+a 3-dimensional data space S = {s1, s2, s3}, where p is a
+skyline point in the four subspaces {s1}, {s1, s2}, {s1, s3},
+and {s1, s2, s3}; while q is a skyline point in the four subspaces
+{s1, s2}, {s1, s3}, {s2, s3}, and {s1, s2, s3}. Note that
+although both p and q have the same skyline frequency of
+4, q is “stronger” in terms of k-dominance since q is a 2-
+dominant skyline but p is only a 3-dominant skyline. On the
+other hand, it is also possible for two points to be equally
+“strong” in terms of k-dominance but differ in their skyline
+frequencies.

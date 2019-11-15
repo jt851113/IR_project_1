@@ -1,0 +1,6 @@
+Definition 2.10 For any two patterns
+
+and of the same period,and are
+complementary if either or for all
+  A set of patterns of the same period are said to be complementary
+if every pair of patterns in the set are complementary.

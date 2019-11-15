@@ -1,0 +1,18 @@
+In an Expanding ring search, at stage 1, the querier x will request information from all
+sensors exactly one hop away. If the query is not completely resolved in the first stage, x
+will send a request to all sensors two hops away in the second stage. Thus, in general at
+stage i, x will request information from sensors exactly i hops away. The average number of
+stages tmin taken to completely resolve a query of size M can be approximately determined
+by the First order analysis in section 4.2.1:
+tmin can be determined by solving the above quadratic equation (taking the ceiling if necessary
+to get tmin as an integer).
+In ERS, at stage i, all nodes within i?1 hops of the querier x will forward the x’s request.
+Let Navg(i) be the expected number of nodes at hop i that will resolve some sub-query. The
+response from these nodes will be forwarded over i hops. There are a total of tmin stages.
+Thus, the total update cost is given as follows:
+Navg(i) can be computed as follows:
+At the ith step, f(i?1) nodes would already have been requested for their information. The
+expected number of queries resolved Mr(i ? 1) before the ith step can be given as follows:
+Thus, in the ith step, the probability of “success” is given by
+Thus, in step i, the expected number of nodes that will resolve some sub-query is given by:
+Since the query is not forwarded to any other node,

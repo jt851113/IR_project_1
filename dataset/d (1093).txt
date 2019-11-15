@@ -1,0 +1,17 @@
+When a user browses the result list for a query, the title,
+document reference and snippet help him to determine
+relevant document w.r.t his query and interests. Accessed
+documents and user interest profiles are thus the important
+feedback information that is exploited by the CFRS. When
+the user selects one element in the results list for a query Q,
+the following information is tracked: (1) the query Q is used
+to route the feedback information to P(Q), the peer responsible
+for processing it; (2) the document reference D — this
+is the identifier of the document (its nature depends on the
+centralized search mechanism being used, e.g., an URL for
+Web searching, a file hash for P2P file sharing, etc.) and the
+document descriptors (title, snippet); (3) the document profile
+DP which is extracted from the content or description
+of D, in a form of a Bloom filter. Meanwhile, the profile of
+accessed documents is inserted into the local interest profiles
+as described in the previous section.
