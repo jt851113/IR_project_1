@@ -82,7 +82,6 @@ linked_list_data = {}
 for word in unique_words_all:
     linked_list_data[word] = SlinkedList()
     linked_list_data[word].head = Node(1, Node)
-word_freq_in_doc = {}
 idx = 1
 for file in glob.glob(file_folder):
     file = open(file, "r")
@@ -96,17 +95,14 @@ for file in glob.glob(file_folder):
     words = [word for word in words if word not in Stopwords]
     words_stemmed = [stemmer.stem(x) for x in words]
     words_freq = finding_freq(finding_unique(words_stemmed))
-    for word in word_freq_in_doc.keys():
-        print(w)
+    for word in words_freq.keys():
         linked_list = linked_list_data[word].head
         while linked_list.nextval is not None:
             linked_list = linked_list.nextval
-        linked_list.nextval = Node(idx, word_freq_in_doc[word])
+        linked_list.nextval = Node(idx, words_freq[word])
     idx = idx + 1
 
 # TODO:change input method
-
-print(linked_list_data)
 
 try:
     while True:
@@ -117,10 +113,12 @@ try:
         different_words = []
         for word in query:
             if word.lower() != "and" and word.lower() != "or" and word.lower() != "not":
-                different_words.append(word.lower())
+                words_stemmed = stemmer.stem(word.lower())
+                different_words.append(words_stemmed)
             else:
                 connecting_words.append(word.lower())
         #print(connecting_words)
+
         total_files = len(files_with_index)
         zeroes_and_ones = []
         zeroes_and_ones_of_all_words = []
