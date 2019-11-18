@@ -8,10 +8,16 @@ import os
 import numpy as np
 import sys
 
-Stopwords = set((
+"""
+We sorted all words in whole data docs with it freq, 
+and pick up the top 100 words.
+Then choose the following eight words to be stopwords
+by discussion.
+"""
+Stopwords = (
     "a", "and", "be", "in", 
     "is", "of", "the", "to"
-))
+)
 stemmer = SnowballStemmer("english")
 
 def finding_unique(words):
@@ -27,11 +33,6 @@ def finding_freq(words_unique):
     for word in words_unique:
         words_freq[word] = words.count(word)
     return words_freq
-
-"""
-def finding_freq_of_word_in_doc(word, words):
-    freq = words.count(word)
-"""
 
 def remove_special_characters(text):
     regex = re.compile('[^a-zA-Z0-9\s]')
@@ -96,7 +97,7 @@ for file in glob.glob(file_folder):
     words = [word for word in words if len(words) > 1]
     words = [word.lower() for word in words]
     words = [word for word in words if word not in Stopwords]
-    words_stemmed = [stemmer.stem(x) for x in words]
+    words_stemmed = [stemmer.stem(x) for x in words]        ## doc words stem
     words_freq = finding_freq(finding_unique(words_stemmed))
     for word in words_freq.keys():
         linked_list = linked_list_data[word].head
@@ -136,6 +137,7 @@ try:
                 zeroes_and_ones_of_all_words.append(zeroes_and_ones)
             else:
                 print(word, " not found")
+                continue
         #print(zeroes_and_ones_of_all_words)
         for word in connecting_words:
             word_list1 = zeroes_and_ones_of_all_words[0]
