@@ -8,7 +8,10 @@ import os
 import numpy as np
 import sys
 
-Stopwords = set(stopwords.words('english'))
+Stopwords = set((
+    "a", "and", "be", "in", 
+    "is", "of", "the", "to"
+))
 stemmer = SnowballStemmer("english")
 
 def finding_unique(words):
@@ -113,7 +116,7 @@ try:
         different_words = []
         for word in query:
             if word.lower() != "and" and word.lower() != "or" and word.lower() != "not":
-                words_stemmed = stemmer.stem(word.lower())
+                words_stemmed = stemmer.stem(word.lower())  ## Query Stem
                 different_words.append(words_stemmed)
             else:
                 connecting_words.append(word.lower())
