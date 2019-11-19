@@ -49,7 +49,7 @@ file_folder = '/mnt/c/Users/eddielaio/Project/IR_project1/dataset/*'
 idx = 1
 files_with_index = {}
 for file in glob.glob(file_folder):
-    #print(file)
+    # print(file)
     fname = file
     file = open(file, "r")
     text = file.read()
@@ -101,14 +101,21 @@ try:
         cnt = 1
         no_found_cnt = 0
         different_words = []
+        chk_not_at_first_place = 0
         for word in query:
-             # remove special char in query 
+             # remove special char in query
             word = remove_special_characters(word)
             if word.lower() != "and" and word.lower() != "or" and word.lower() != "not":
                 different_words.append(word.lower())
             else:
                 connecting_words.append(word.lower())
-        # print(connecting_words)
+
+        # remove add if before not
+        for index, item in enumerate(connecting_words):
+            if item == "and" and connecting_words[index+1] == "not":
+                connecting_words.pop(index)
+        print(connecting_words)
+
         total_files = len(files_with_index)
         zeroes_and_ones = []
         zeroes_and_ones_of_all_words = []
@@ -122,6 +129,8 @@ try:
                     linkedlist = linkedlist.nextval
                 zeroes_and_ones_of_all_words.append(zeroes_and_ones)
             else:
+                zeroes_and_ones = [0] * total_files
+                zeroes_and_ones_of_all_words.append(zeroes_and_ones)
                 no_found_cnt = no_found_cnt + 1
                 print(word, " not found")
         # print(zeroes_and_ones_of_all_words)
@@ -130,7 +139,7 @@ try:
             no_found_cnt = 0
             continue
         # when single keyword
-        elif len(different_words) == 1 and no_found_cnt != 1 :
+        elif len(different_words) == 1 and no_found_cnt != 1:
             files = []
             lis = zeroes_and_ones_of_all_words[0]
             cnt = 1
