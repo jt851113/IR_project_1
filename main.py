@@ -49,7 +49,7 @@ file_folder = '/mnt/c/Users/eddielaio/Project/IR_project1/dataset/*'
 idx = 1
 files_with_index = {}
 for file in glob.glob(file_folder):
-    print(file)
+    #print(file)
     fname = file
     file = open(file, "r")
     text = file.read()
@@ -102,6 +102,8 @@ try:
         no_found_cnt = 0
         different_words = []
         for word in query:
+             # remove special char in query 
+            word = remove_special_characters(word)
             if word.lower() != "and" and word.lower() != "or" and word.lower() != "not":
                 different_words.append(word.lower())
             else:
@@ -123,9 +125,20 @@ try:
                 no_found_cnt = no_found_cnt + 1
                 print(word, " not found")
         # print(zeroes_and_ones_of_all_words)
+        # when all keywords not found
         if no_found_cnt == len(different_words):
             no_found_cnt = 0
             continue
+        # when single keyword
+        elif len(different_words) == 1 and no_found_cnt != 1 :
+            files = []
+            lis = zeroes_and_ones_of_all_words[0]
+            cnt = 1
+            for index in lis:
+                if index == 1:
+                    files.append(files_with_index[cnt])
+                cnt = cnt+1
+            print(files)
         else:
             for word in connecting_words:
                 word_list1 = zeroes_and_ones_of_all_words[0]
