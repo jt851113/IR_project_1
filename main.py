@@ -1,29 +1,38 @@
 import nltk
 from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer, PorterStemmer
+from nltk.stem import WordNetLemmatizer, SnowballStemmer
 from nltk.tokenize import sent_tokenize, word_tokenize
 import glob
 import re
 import os
 import numpy as np
 import sys
-Stopwords = set(stopwords.words('english'))
 
+"""
+We sorted all words in whole data docs with it freq, 
+and pick up the top 100 words.
+Then choose the following eight words to be stopwords
+by discussion.
+"""
+Stopwords = (
+    "a", "and", "be", "in", 
+    "is", "of", "the", "to"
+)
+stemmer = SnowballStemmer("english")
 
-def finding_all_unique_words_and_freq(words):
+def finding_unique(words):
     words_unique = []
-    word_freq = {}
+    
     for word in words:
         if word not in words_unique:
             words_unique.append(word)
+    return words_unique
+
+def finding_freq(words_unique):
+    words_freq = {}
     for word in words_unique:
-        word_freq[word] = words.count(word)
-    return word_freq
-
-
-def finding_freq_of_word_in_doc(word, words):
-    freq = words.count(word)
-
+        words_freq[word] = words.count(word)
+    return words_freq
 
 def remove_special_characters(text):
     regex = re.compile('[^a-zA-Z0-9\s]')
@@ -45,7 +54,7 @@ class SlinkedList:
 
 all_words = []
 dict_global = {}
-file_folder = '/mnt/c/Users/eddielaio/Project/IR_project1/dataset/*'
+file_folder = 'dataset/*'
 idx = 1
 files_with_index = {}
 for file in glob.glob(file_folder):
@@ -60,10 +69,15 @@ for file in glob.glob(file_folder):
     words = [word for word in words if len(words) > 1]
     words = [word.lower() for word in words]
     words = [word for word in words if word not in Stopwords]
-    dict_global.update(finding_all_unique_words_and_freq(words))
+    words_stemmed = [stemmer.stem(x) for x in words]
+    words_freq = finding_freq(finding_unique(words_stemmed))
+    dict_global.update(words_freq)
     files_with_index[idx] = os.path.basename(fname)
     idx = idx + 1
-
+"""
+for i, (key, value) in enumerate( sorted(dict_global.items(), key=lambda x: x[1]) ):
+    print("%d, %s: %s" % (i, key, value))
+"""
 unique_words_all = set(dict_global.keys())
 
 # index construct
@@ -72,7 +86,6 @@ linked_list_data = {}
 for word in unique_words_all:
     linked_list_data[word] = SlinkedList()
     linked_list_data[word].head = Node(1, Node)
-word_freq_in_doc = {}
 idx = 1
 for file in glob.glob(file_folder):
     file = open(file, "r")
@@ -84,12 +97,13 @@ for file in glob.glob(file_folder):
     words = [word for word in words if len(words) > 1]
     words = [word.lower() for word in words]
     words = [word for word in words if word not in Stopwords]
-    word_freq_in_doc = finding_all_unique_words_and_freq(words)
-    for word in word_freq_in_doc.keys():
+    words_stemmed = [stemmer.stem(x) for x in words]        ## doc words stem
+    words_freq = finding_freq(finding_unique(words_stemmed))
+    for word in words_freq.keys():
         linked_list = linked_list_data[word].head
         while linked_list.nextval is not None:
             linked_list = linked_list.nextval
-        linked_list.nextval = Node(idx, word_freq_in_doc[word])
+        linked_list.nextval = Node(idx, words_freq[word])
     idx = idx + 1
 
 # no_found bug fix
@@ -106,14 +120,17 @@ try:
              # remove special char in query
             word = remove_special_characters(word)
             if word.lower() != "and" and word.lower() != "or" and word.lower() != "not":
-                different_words.append(word.lower())
+                words_stemmed = stemmer.stem(word.lower())  ## Query Stem
+                different_words.append(words_stemmed)
             else:
                 connecting_words.append(word.lower())
 
         # remove add if before not
-        for index, item in enumerate(connecting_words):
-            if item == "and" and connecting_words[index+1] == "not":
-                connecting_words.pop(index)
+        if(len(connecting_words)>=2) :
+            for index, item in enumerate(connecting_words):
+                if item == "and" and connecting_words[index+1] == "not":
+                    connecting_words.pop(index)
+        
         print(connecting_words)
 
         total_files = len(files_with_index)
