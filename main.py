@@ -20,6 +20,8 @@ Stopwords = (
 )
 stemmer = SnowballStemmer("english")
 
+file_folder = 'dataset/*'
+
 def finding_unique(words):
     words_unique = []
     
@@ -31,7 +33,7 @@ def finding_unique(words):
 def finding_freq(words_unique):
     words_freq = {}
     for word in words_unique:
-        words_freq[word] = words.count(word)
+        words_freq[word] = words_unique.count(word)
     return words_freq
 
 def remove_special_characters(text):
@@ -51,65 +53,92 @@ class SlinkedList:
     def __init__(self, head=None):
         self.head = head
 
-
-all_words = []
 dict_global = {}
-file_folder = 'dataset/*'
-idx = 1
 files_with_index = {}
-for file in glob.glob(file_folder):
-    # print(file)
-    fname = file
-    file = open(file, "r")
-    text = file.read()
-    text = remove_special_characters(text)
-    text = re.sub(re.compile('\d'), '', text)
-    sentences = sent_tokenize(text)
-    words = word_tokenize(text)
-    words = [word for word in words if len(words) > 1]
-    words = [word.lower() for word in words]
-    words = [word for word in words if word not in Stopwords]
-    words_stemmed = [stemmer.stem(x) for x in words]
-    words_freq = finding_freq(finding_unique(words_stemmed))
-    dict_global.update(words_freq)
-    files_with_index[idx] = os.path.basename(fname)
-    idx = idx + 1
-"""
-for i, (key, value) in enumerate( sorted(dict_global.items(), key=lambda x: x[1]) ):
-    print("%d, %s: %s" % (i, key, value))
-"""
-unique_words_all = set(dict_global.keys())
-
-# index construct
-
 linked_list_data = {}
-for word in unique_words_all:
-    linked_list_data[word] = SlinkedList()
-    linked_list_data[word].head = Node(1, Node)
-idx = 1
-for file in glob.glob(file_folder):
-    file = open(file, "r")
-    text = file.read()
-    text = remove_special_characters(text)
-    text = re.sub(re.compile('\d'), '', text)
-    sentences = sent_tokenize(text)
-    words = word_tokenize(text)
-    words = [word for word in words if len(words) > 1]
-    words = [word.lower() for word in words]
-    words = [word for word in words if word not in Stopwords]
-    words_stemmed = [stemmer.stem(x) for x in words]        ## doc words stem
-    words_freq = finding_freq(finding_unique(words_stemmed))
-    for word in words_freq.keys():
-        linked_list = linked_list_data[word].head
-        while linked_list.nextval is not None:
-            linked_list = linked_list.nextval
-        linked_list.nextval = Node(idx, words_freq[word])
-    idx = idx + 1
+doc_length = len(glob.glob(file_folder))
 
+def doc_proc(op="Add"):
+    global dict_global
+    global files_with_index
+    global linked_list_data
+    idx = 1
+    for file in glob.glob(file_folder):
+        # print(file)
+        fname = file
+        file = open(file, "r")
+        text = file.read()
+        text = remove_special_characters(text)
+        text = re.sub(re.compile('\d'), '', text)
+        sentences = sent_tokenize(text)
+        words = word_tokenize(text)
+        words = [word for word in words if len(words) > 1]
+        words = [word.lower() for word in words]
+        words = [word for word in words if word not in Stopwords]
+        words_stemmed = [stemmer.stem(x) for x in words]
+        words_freq = finding_freq(finding_unique(words_stemmed))
+        dict_global.update(words_freq)
+        files_with_index[idx] = os.path.basename(fname)
+        
+        progress = (idx/doc_length)*100
+        print("1/2\t", int(progress) , "%", end="\r")
+        idx = idx + 1
+    """
+    for i, (key, value) in enumerate( sorted(dict_global.items(), key=lambda x: x[1]) ):
+        print("%d, %s: %s" % (i, key, value))
+    """
+    unique_words_all = set(dict_global.keys())
+    print()
+    # index construct
+
+    for word in unique_words_all:
+        linked_list_data[word] = SlinkedList()
+        linked_list_data[word].head = Node(1, Node)
+    idx = 1
+    for file in glob.glob(file_folder):
+        file = open(file, "r")
+        text = file.read()
+        text = remove_special_characters(text)
+        text = re.sub(re.compile('\d'), '', text)
+        sentences = sent_tokenize(text)
+        words = word_tokenize(text)
+        words = [word for word in words if len(words) > 1]
+        words = [word.lower() for word in words]
+        words = [word for word in words if word not in Stopwords]
+        words_stemmed = [stemmer.stem(x) for x in words]        ## doc words stem
+        words_freq = finding_freq(finding_unique(words_stemmed))
+        for word in words_freq.keys():
+            linked_list = linked_list_data[word].head
+            while linked_list.nextval is not None:
+                linked_list = linked_list.nextval
+            linked_list.nextval = Node(idx, words_freq[word])
+        
+        progress = (idx/doc_length)*100
+        print("2/2\t", int(progress) , "%", end="\r")
+        idx = idx + 1
+print()
 # no_found bug fix
 try:
+    doc_proc(op="Add")
     while True:
-        query = input('Enter your query:')
+        options = input("\n" + \
+        "1) Add documents\n" + \
+        "2) Delete documents\n" + \
+        "3) Enter query\n"
+        )
+        if options == '1':
+            doc_proc(op="Add")
+            print("Documents Added!")
+            continue
+        elif options == '2':
+            doc_proc(op="Del")
+            print("Documents Deleted!")
+            continue
+        elif options == '3':
+            query = input('Enter your query:')
+        else:
+            print("Input Error!")
+            continue
         query = word_tokenize(query)
         connecting_words = []
         cnt = 1
@@ -137,7 +166,7 @@ try:
         zeroes_and_ones = []
         zeroes_and_ones_of_all_words = []
         for word in (different_words):
-            if word.lower() in unique_words_all:
+            if word.lower() in set(dict_global.keys()):
                 zeroes_and_ones = [0] * total_files
                 linkedlist = linked_list_data[word].head
                 print(word)
